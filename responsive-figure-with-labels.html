@@ -13,25 +13,39 @@
     <div class="page">
       <main>
         <!-- responsive picture -->
-        <div class="img-responsive">
+        <div id="parent" class="img-responsive">
           <div class="label label-1"><span class="fa fa-arrow-circle-right fa-spin"></span> label 1</div>
           <div class="label label-2"><span class="fa fa-arrow-circle-right fa-spin"></span> label 2</div>
           <div class="label label-3"><span class="fa fa-arrow-circle-right fa-spin"></span> label 3</div>
           <div class="label label-4"><span class="fa fa-arrow-circle-right fa-spin"></span> label 4</div>
           <picture>
-            <source media="(min-width:1920px)" srcset="http://placehold.it/3840x2160/eebb00/ddaa00?text=full-hd" />
-            <source media="(min-width:1600px)" srcset="http://placehold.it/1920x2160/eebb00/ddaa00?text=more-than-xtra-large" />
-            <source media="(min-width:1280px)" srcset="http://placehold.it/1600x1200/eebb00/ddaa00?text=xtra-large" />
-            <source media="(min-width:1024px)" srcset="http://placehold.it/1280x960/eebb00/ddaa00?text=large" />
-            <source media="(min-width:768px)" srcset="http://placehold.it/1024x768/eebb00/ddaa00?text=medium" />
-            <source media="(min-width:576px)" srcset="http://placehold.it/768x640/eebb00/ddaa00?text=small" />
-            <source media="(max-width:575px)" srcset="http://placehold.it/576x432/eebb00/ddaa00?text=xtra-small" />
-            <img src="http://placehold.it/3840x2160/eebb00/ddaa00?text=fallback" alt="" />
+
+            <!-- <source media="(min-width:1920px)" srcset="http://placehold.it/3840x2160/eebb00/ddaa00?text=full-hd" />
+            <source media="(min-width:1600px)" srcset="http://placehold.it/1920x1080/eebb00/ddaa00?text=more-than-xtra-large" />
+            <source media="(min-width:1280px)" srcset="http://placehold.it/1600x900/eebb00/ddaa00?text=xtra-large" />
+            <source media="(min-width:1024px)" srcset="http://placehold.it/1280x720/eebb00/ddaa00?text=large" />
+            <source media="(min-width:768px)" srcset="http://placehold.it/1024x756/eebb00/ddaa00?text=medium" />
+            <source media="(min-width:576px)" srcset="http://placehold.it/768x432/eebb00/ddaa00?text=small" />
+            <source media="(max-width:575px)" srcset="http://placehold.it/576x324/eebb00/ddaa00?text=xtra-small" />
+            <img id="image" src="http://placehold.it/3840x2160/eebb00/ddaa00?text=fallback" alt="" /> -->
+
+            <source media="(min-width:1920px)" srcset="assets/figures/full-hd.jpg" />
+            <source media="(min-width:1600px)" srcset="assets/figures/more-than-xtra-large.jpg" />
+            <source media="(min-width:1280px)" srcset="assets/figures/xtra-large.jpg" />
+            <source media="(min-width:1024px)" srcset="assets/figures/large.jpg" />
+            <source media="(min-width:768px)" srcset="assets/figures/medium.jpg" />
+            <source media="(min-width:576px)" srcset="assets/figures/small.jpg" />
+            <source media="(max-width:575px)" srcset="assets/figures/xtra-small.jpg" />
+            <img id="image" src="assets/figures/full-hd.jpg" alt="" />
           </picture>
         </div>
         <!-- /responsive picture -->
       </main>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.3/picturefill.min.js" charset="utf-8"></script>
+    <script src="assets/js/responsive-figure-with-labels.js" charset="utf-8"></script>
+
   </body>
 
 </html>

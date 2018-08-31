@@ -25,9 +25,139 @@ html {
 
 /** @layout */
 
+body {
+  margin: 0;
+}
+
 .img-responsive img {
+  min-width: 100%;
   max-width: 100%;
   height: auto;
+}
+
+html, body, .page {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#parent {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: auto;
+}
+
+/** @responsive fonts */
+
+/** @fallback */
+
+@media screen {
+  .label {
+    display: block;
+    position: absolute;
+    min-width: 80px;
+    min-height: 20px;
+    padding: 0.33rem;
+    border-radius: 20px;
+    text-align: center;
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+  }
+}
+
+/** @xtra-small */
+
+@media screen and (max-width:575px) {
+  .label {
+    font-size: 0.8rem;
+    padding: 0.2rem;
+  }
+}
+
+/** @small */
+
+@media screen and (min-width:576px) {
+  .label {
+    font-size: 1rem;
+    padding: 0.3rem;
+  }
+}
+
+/** @medium */
+
+@media screen and (min-width:768px) {
+  .label {
+    font-size: 1.2rem;
+    padding: 0.4rem;
+  }
+}
+
+/** @large */
+
+@media screen and (min-width:1024px) {
+  .label {
+    font-size: 1.4rem;
+    padding: 0.5rem;
+  }
+}
+
+/** @xtra-large */
+
+@media screen and (min-width:1280px) {
+  .label {
+    font-size: 1.6rem;
+    padding: 0.6rem;
+  }
+}
+
+/** @more-than-xtra-large */
+
+@media screen and (min-width:1600px) {
+  .label {
+    font-size: 1.8rem;
+    padding: 0.7rem;
+  }
+}
+
+/** @full-hd */
+
+@media screen and (min-width:1920px) {
+  .label {
+    font-size: 2rem;
+    padding: 0.8rem;
+  }
+}
+
+.label-1 {
+  background-color: hsla(60, 80%, 80%, 0.5);
+  z-index: 10;
+  left: 70%;
+  top: 70%;
+  left: calc(70% - 40px);
+  top: calc(70% - 10px);
+}
+
+.label-2 {
+  background-color: hsla(60, 80%, 80%, 0.5);
+  z-index: 11;
+  left: 30%;
+  top: 50%;
+}
+
+.label-3 {
+  background-color: hsla(60, 80%, 80%, 0.5);
+  z-index: 12;
+  left: 50%;
+  top: 30%;
+}
+
+.label-4 {
+  background-color: hsla(60, 80%, 80%, 0.5);
+  z-index: 13;
+  left: 10%;
+  top: 10%;
 }
 
 /** @states */
