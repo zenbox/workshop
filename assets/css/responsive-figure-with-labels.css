@@ -1,5 +1,5 @@
 /**
- * Responsive figure with labels
+ * Responsive Figure With Labels
  *
  * @author Michael <michael.reichart@gfu.net>
  * @since 2018/08/31
@@ -8,8 +8,8 @@
  * @license MIT License [https://opensource.org/licenses/MIT]
  */
 
-@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
-@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro");
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 /** @base */
 
 * {
@@ -17,160 +17,17 @@
 }
 
 html {
-  font-family: 'PT Sans Narrow', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
   line-height: 1.428;
-  color: white;
+  color: black;
 }
 
 /** @layout */
-
-body {
-  margin: 0;
-}
-
-html, body, .page {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
 
 .img-responsive img {
   max-width: 100%;
   height: auto;
 }
 
-/** the parent for responsive labels */
-
-#parent {
-  width: 100%;
-  height: auto;
-  position: relative;
-  overflow: hidden;
-}
-
-/** some labels */
-
-.label {
-  display: block;
-  position: absolute;
-  min-width: 80px;
-  max-width: 140px;
-  min-height: 20px;
-  border-radius: 20px;
-  padding: 5px;
-  text-align: center;
-  transition-property: all;
-  transition-duration: 1s;
-  transition-timing-function: ease-out;
-}
-
-.label-1 {
-  background-color: hsla(60, 80%, 80%, 0.5);
-  z-index: 10;
-  top: calc(70% - 10px);
-  left: calc(70% - 50px);
-}
-
-.label-2 {
-  background-color: hsla(65, 80%, 80%, 0.5);
-  z-index: 11;
-  top: calc(50% - 10px);
-  left: calc(50% - 50px);
-}
-
-.label-3 {
-  background-color: hsla(70, 80%, 80%, 0.5);
-  z-index: 12;
-  top: calc(30% - 10px);
-  left: calc(30% - 50px);
-}
-
-.label-4 {
-  background-color: hsla(75, 80%, 80%, 0.5);
-  z-index: 13;
-}
-
-/** a response font behaviour */
-
-@media screen, print {
-  .label {
-    font-size: 1rem;
-  }
-}
-
-/** @xtra-small */
-
-@media screen and (max-width:575px) {
-  .label {
-    font-size: 0.8rem;
-  }
-}
-
-/** @small */
-
-@media screen and (min-width:576px) {
-  .label {
-    font-size: 1rem;
-  }
-}
-
-/** @medium */
-
-@media screen and (min-width:768px) {
-  .label {
-    font-size: 1.2rem;
-  }
-}
-
-/** @large */
-
-@media screen and (min-width:992px) {
-  .label {
-    font-size: 1.4rem;
-  }
-}
-
-/** @xtra-large */
-
-@media screen and (min-width:1200px) {
-  .label {
-    font-size: 1.6rem;
-  }
-}
-
-/*
- #image {
-   background-image: url(http://placehold.it/640x480);
-   background-repeat: no-repeat;
-   background-size: contain;
-   width: 100%;
-   height: 100%;
- }
-
- @media (max-width:575px) {
-   #image {
-     background-image: url(http://placehold.it/576x432);
-   }
- }
-
- @media (min-width:576px) {
-   #image {
-     background-image: url(http://placehold.it/768x640);
-   }
- }
-
- @media (min-width:768px) {
-   #image {
-     background-image: url(http://placehold.it/480x320);
-   }
- }
-
- @media (min-width:992px) {
-   #image {
-     background-image: url(http://placehold.it/640x480);
-   }
- }
-
- }
- */
+/** @states */
