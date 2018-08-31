@@ -15,5 +15,6 @@
 - https://css-tricks.com/snippets/css/complete-guide-grid/
 
 ## polyfills
-https://github.com/jonathantneal/flexibility
-https://necolas.github.io/normalize.css/
+- https://github.com/jonathantneal/flexibility
+- https://necolas.github.io/normalize.css/
+- https://github.com/scottjehl/picturefill
