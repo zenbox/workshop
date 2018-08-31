@@ -56,14 +56,17 @@ html, body, .page {
   .label {
     display: block;
     position: absolute;
-    min-width: 80px;
-    min-height: 20px;
+    /* min-width: 80px;
+    min-height: 20px; */
     padding: 0.33rem;
     border-radius: 20px;
     text-align: center;
     transition-property: all;
     transition-duration: 1s;
     transition-timing-function: ease-out;
+  }
+  .label-text {
+    display: inline;
   }
 }
 
