@@ -1,0 +1,111 @@
+/**
+ * A Flexbox Template
+ *
+ * @author Michael <michael.reichart@gfu.net>
+ * @since 2018/08/30
+ * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
+ */
+
+/** @fallback */
+
+.page {
+  display: block;
+  width: 100%;
+}
+
+.page-header {
+  display: block;
+  width: 100%;
+}
+
+.page-content {
+  display: block;
+  width: 100%;
+}
+
+.page-aside {
+  display: block;
+  width: 100%;
+}
+
+.page-footer {
+  display: block;
+  width: 100%;
+}
+
+.content-nav {
+  display: block;
+  width: 100%;
+}
+
+.content-main {
+  display: block;
+  width: 100%;
+}
+
+.content-aside {
+  display: block;
+  width: 100%;
+}
+
+/** @xtra-small */
+
+@media screen and (max-width:575px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+  }
+  .page-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/**  @small */
+
+@media screen and (min-width:576px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+  }
+  .page-content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/** @medium */
+
+@media screen and (min-width:767px) {
+  .page-content {
+    flex-direction: row;
+  }
+  .content-nav {
+    flex-basis: 25%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    order: 1;
+  }
+  .content-main {
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    order: 2;
+  }
+  .content-aside {
+    flex-basis: 25%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    order: 3;
+  }
+}
+
+/** @large */
+
+@media screen and (min-width:992px) {}
+
+/** @xtra-large */
+
+@media screen and (min-width:1200px) {}

@@ -1,55 +1,143 @@
 /**
- * Template css
+ * A Floating Box Template
  *
- * @author Michael
- * @version 1.0.0
- * @since 2018/08/30
+ * @author Michael <michael.reichart@gfu.net>
+ * @since 2018/08/31
+ * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
  */
 
 /** all devices fallback */
-.page          { display: block; width: 100%;}
-.page-header   { display: block; width: 100%;}
-.page-content  { display: block; width: 100%;}
-.page-footer   { display: block; width: 100%;}
-.content-nav   { display: block; width: 100%;}
-.content-main  { display: block; width: 100%;}
-.content-aside { display: block; width: 100%;}
-.page-header .bars { display : none; }
+
+.page {
+  display: block;
+  width: 100%;
+}
+
+.page-header {
+  display: block;
+  width: 100%;
+}
+
+.page-content {
+  display: block;
+  width: 100%;
+}
+
+.page-footer {
+  display: block;
+  width: 100%;
+}
+
+.content-nav {
+  display: block;
+  width: 100%;
+}
+
+.content-main {
+  display: block;
+  width: 100%;
+}
+
+.content-aside {
+  display: block;
+  width: 100%;
+}
+
+.page-header .bars {
+  display: none;
+}
+
+.clearfix::before, .clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
 /** Xtrasmall devices */
-@media screen and (max-width: 575px) {
-  .content-nav   { display: none; }
-  .content-aside { display: none; }
 
-  .page-header .bars { display : block; float : right; }
+@media screen and (max-width: 575px) {
+  .content-nav {
+    display: none;
+  }
+  .content-aside {
+    display: none;
+  }
+  .page-header .bars {
+    display: block;
+    float: right;
+  }
 }
 
 /** Small devices (landscape phones, 576px and up) */
+
 @media screen and (min-width: 576px) {
-  .content-nav   { display: none; }
-  .content-aside { display: none; }
-
-  .page-header .bars { display : block; float : right; }
+  .content-nav {
+    display: none;
+  }
+  .content-aside {
+    display: none;
+  }
+  .page-header .bars {
+    display: block;
+    float: right;
+  }
 }
+
 /** Medium devices (tablets, 768px and up) */
-  @media screen and (min-width: 768px) {
-    .page          { width : 100%; clear : both;}
-    .page-header   { width : 100%; clear : both;}
-    .page-content  { width : 100%; clear : both;}
-    .page-footer   { width : 100%; clear : both;}
 
-    .content-nav   { display : block;  width :  33%; float : left;}
-    .content-main  {                   width :  67%; float : left;}
-
-    .page-header .bars { display : none; }
+@media screen and (min-width: 768px) {
+  .page {
+    width: 100%;
+    clear: both;
+  }
+  .page-header {
+    width: 100%;
+    clear: both;
+  }
+  .page-content {
+    width: 100%;
+    clear: both;
+  }
+  .page-footer {
+    width: 100%;
+    clear: both;
+  }
+  .content-nav {
+    display: block;
+    width: 33%;
+    float: left;
+  }
+  .content-main {
+    width: 67%;
+    float: left;
+  }
+  .page-header .bars {
+    display: none;
+  }
 }
 
 /** Large devices (desktops, 992px and up) */
+
 @media screen and (min-width:992px) {
-  .content-nav   {                  width :  25%; float : left;}
-  .content-main  {                  width :  50%; float : left;}
-  .content-aside { display : block; width :  25%; float : left;}
+  .content-nav {
+    width: 25%;
+    float: left;
+  }
+  .content-main {
+    width: 50%;
+    float: left;
+  }
+  .content-aside {
+    display: block;
+    width: 25%;
+    float: left;
+  }
 }
 
 /** Extra large devices (large desktops, 1200px and up) */
-@media screen and (min-width: 1200px) { ... }
+
+@media screen and (min-width: 1200px) {
+  ...
+}

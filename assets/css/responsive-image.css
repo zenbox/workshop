@@ -1,0 +1,58 @@
+/**
+ * responsive images
+ *
+ * @package Webapplication
+ * @author Michael [michael@zenbox.de]
+ * @since 2018/08/30
+ * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
+ */
+
+/* base */
+
+.img-responsive {}
+
+#image {
+  background-image: url(http://placehold.it/640x480);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media (max-width:575px) {
+  #image {
+    background-image: url(http://placehold.it/576x432);
+  }
+}
+
+@media (min-width:576px) {
+  #image {
+    background-image: url(http://placehold.it/768x640);
+  }
+}
+
+@media (min-width:768px) {
+  #image {
+    background-image: url(http://placehold.it/480x320);
+  }
+}
+
+@media (min-width:992px) {
+  #image {
+    background-image: url(http://placehold.it/640x480);
+  }
+}
+
+#image {
+  display: block;
+  height: 480px;
+}
+
+/* layout */
+
+.img-responsive img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* states */

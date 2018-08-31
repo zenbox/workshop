@@ -1,0 +1,51 @@
+/**
+ * Base Style
+ *
+ * @author Michael <michael.reichart@gfu.net>
+ * @since 2018/08/31
+ * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
+ */
+
+/** @fallback */
+
+@media screen, print {
+  html {
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 1.428;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  p, pre, code {
+    font-size: 1rem;
+  }
+}
+
+/** @xtra-small */
+
+@media screen and (max-width:575px) {}
+
+/** @small */
+
+@media screen and (min-width:576px) {}
+
+/** @medium */
+
+@media screen and (min-width:768px) {}
+
+/** @large */
+
+@media screen and (min-width:992px) {}
+
+/** @xtra-large */
+
+@media screen and (min-width:1200px) {}

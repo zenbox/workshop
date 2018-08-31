@@ -1,14 +1,45 @@
 /**
- * Theme Css
  *
- * @author Michael
- * @since 2018/08/30
+ *
+ * @author Michael <michael.reichart@gfu.net>
+ * @since
  * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
  */
-.page          { background-color: hsla( 120, 100%, 50%, 0.8 )}
-.page-header   { background-color: hsla( 150, 100%, 50%, 0.8 )}
-.page-content  { background-color: hsla( 180, 100%, 50%, 0.8 )}
-.page-footer   { background-color: hsla( 210, 100%, 50%, 0.8 )}
-.content-nav   { background-color: hsla(   0, 100%, 50%, 0.8 )}
-.content-main  { background-color: hsla(  30, 100%, 50%, 0.8 )}
-.content-aside { background-color: hsla(  60, 100%, 50%, 0.8 )}
+
+/** @fonts */
+
+/** @colors */
+
+.page {
+  background-color: hsla( 120, 100%, 50%, 0.8)
+}
+
+.page-header {
+  background-color: hsla( 150, 100%, 50%, 0.8)
+}
+
+.page-content {
+  background-color: hsla( 180, 100%, 50%, 0.8)
+}
+
+.page-footer {
+  background-color: hsla( 210, 100%, 50%, 0.8)
+}
+
+.content-nav {
+  background-color: hsla( 0, 100%, 50%, 0.8)
+}
+
+.content-main {
+  background-color: hsla( 30, 100%, 50%, 0.8)
+}
+
+.content-aside {
+  background-color: hsla( 60, 100%, 50%, 0.8)
+}
+
+/** @layout */
+
+/** @states */

@@ -1,0 +1,23 @@
+/**
+ * Navigation Css
+ *
+ * @author Michael <michael.reichart@gfu.net>
+ * @since 2018/08/30
+ * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
+ */
+
+/** @base */
+
+.nav {}
+
+/** @layout */
+
+.nav ul {}
+
+.nav li {}
+
+/** @states */
+
+.nav a[href]:hover {}
