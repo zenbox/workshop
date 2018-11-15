@@ -17,3 +17,8 @@
 - Intro: Fragen aus der Praxis, ggfs. Wiederholung Vertiefung und anspruchsvolle Gestaltungen mit CSS 3
 -  Übungen an bestehenden Templates, Durchführen von Anpassungen und Modifikationen
 - Tricks, Kniffe, Empfehlungen
+
+## Links
+### HTML Referenzen
+https://wiki.selfhtml.org
+https://www.w3schools.com
