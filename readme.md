@@ -23,3 +23,5 @@
 - https://wiki.selfhtml.org
 - https://www.w3schools.com
 - https://css-tricks.com
+- https://html5test.com/
+- https://caniuse.com/
