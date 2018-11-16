@@ -6,6 +6,15 @@
     <title>Stellenanzeigen</title>
     <style media="screen">
       /* common styles */
+      /* layout */
+      html * { box-sizing:border-box; }
+
+      .wrapper { display : block; width : 600px; margin : 0 auto; padding:20px;}
+      .header  { display : block; width : 100%; }
+      .main    { display : block; width : 260px; float : left; margin-right:20px;}
+      .footer  { display : block; width : 100%; }
+
+
       /* typography */
       @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
       @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i');
@@ -40,11 +49,13 @@
         ;
       }
 
-      h1,
-      p,
-      ul,
-      li {
-        border: 1px solid red;
+      div {
+        background-color: lightgrey;
+      }
+
+      div {
+        display: block;
+        width: 100%;
       }
     </style>
   </head>
@@ -52,25 +63,33 @@
   <body>
 
     <!-- - - - - - - - - - - -->
+    <div class="wrapper">
+      <div class="header">
+        <img class="img-teaser" src="http://placekitten.com/600/320" alt="">
+        <h1 class="header-teaser">Lorem Ipsum Dolor Sit Amet Consectetur Ad Piscit.</h1>
+      </div>
 
-    <img class="img-teaser" src="http://placekitten.com/600/320" alt="">
-    <h1 class="header-teaser">Lorem Ipsum Dolor Sit Amet Consectetur Ad Piscit.</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero a quam sunt error hic nesciunt, nam? Fugiat modi nemo quia suscipit soluta placeat tenetur, doloremque, laudantium maxime exercitationem sunt reiciendis.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero a quam sunt error hic nesciunt, nam? Fugiat modi nemo quia suscipit soluta placeat tenetur, doloremque, laudantium maxime exercitationem sunt reiciendis.</p>
+      <div class="main">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero a quam sunt error hic nesciunt, nam? Fugiat modi nemo quia suscipit soluta placeat tenetur, doloremque, laudantium maxime exercitationem sunt reiciendis.</p>
+      </div>
 
-    <address>
-      <h3>Ihr Ansprechpartner</h3>
-      <ul>
-        <li>John Doe</li>
-        <li>Telefon +12 3456 789-0</li>
-        <li>E-Mail john.doe@company.com</li>
-      </ul>
-    </address>
+      <div class="main">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero a quam sunt error hic nesciunt, nam? Fugiat modi nemo quia suscipit soluta placeat tenetur, doloremque, laudantium maxime exercitationem sunt reiciendis.</p>
+      </div>
 
+      <div class="footer">
+        <address>
+          <h3>Ihr Ansprechpartner</h3>
+          <ul>
+            <li>John Doe</li>
+            <li>Telefon +12 3456 789-0</li>
+            <li>E-Mail john.doe@company.com</li>
+          </ul>
+        </address>
+      </div>
+
+    </div>
     <!-- - - - - - - - - - - -->
-
-
-
   </body>
 
 </html>
