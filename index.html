@@ -8,6 +8,11 @@
     <style media="screen">
       @import url('https://fonts.googleapis.com/css?family=Allerta+Stencil');
 
+rootElement, html, body {
+  width : 100%;
+  height : 100%;
+}
+
   html {
     font-family : sans-serif;
     font-weight : 400;
@@ -19,6 +24,7 @@
         background-color:#000000;
         color:#FFFFFF;
         font-family:Helvetica, Arial, sans-serif;
+        height : 100%
       }
       h1 {
         color:#FF9900;
@@ -29,29 +35,42 @@
         color:lightcoral;
         font-family:monospace;
       }
+
+    #concludis p {
+      color : lightsteelblue;
+    }
+
+      .concludis-paragraph {
+        color : mint;
+      }
     </style>
   </head>
 
   <body>
+    <div id="concludis">
+      <h1>Hallo Anzeige.</h1>
 
-    <h1>Hallo Welt.</h1>
+      <p class="concludis-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+        ea commodo consequat. Duis
+        aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <ol type="A">
+        <li>Eins</li>
+        <li>Zwei</li>
+        <li>Drei</li>
+      </ol>
 
-    <ol type="A">
-      <li>Eins</li>
-      <li>Zwei</li>
-      <li>Drei</li>
-    </ol>
+      <ul>
+        <li>Eins</li>
+        <li>Zwei</li>
+        <li>Drei</li>
+      </ul>
 
-    <ul>
-      <li>Eins</li>
-      <li>Zwei</li>
-      <li>Drei</li>
-    </ul>
+      <img src="http://placekitten.com/200/300" alt="Ängstliches Kätzchen.">
+    </div>
 
-    <img src="http://placekitten.com/200/300" alt="Ängstliches Kätzchen.">
+
     <!--<img src="http://placekitten.com/200/300" alt="Ängstliches Kätzchen.">
     <img src="http://placekitten.com/200/300" alt="Ängstliches Kätzchen.">-->
 
