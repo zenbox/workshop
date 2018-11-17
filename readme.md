@@ -25,3 +25,6 @@
 - https://css-tricks.com
 - https://html5test.com/
 - https://caniuse.com/
+- https://docs.emmet.io/cheat-sheet/
+- http://getbem.com/introduction/
+- http://smacss.com

@@ -4,10 +4,19 @@
   <head>
     <meta charset="utf-8">
     <title>Stellenanzeigen</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+
     <style media="screen">
       /* imports */
       @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
       @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i');
+
+      /*attribute selectors */
+      [href] {
+        display: none;
+      }
+
 
       /* common styles */
       html {
@@ -81,24 +90,24 @@
       }
 
       /* images */
-      .img-teaser {
+      #concludis .img-teaser {
         width: 600px;
         height: 320px;
       }
 
       /* typography */
-      .header-teaser {
+      #concludis .header-teaser {
         font-family: "Roboto Condensed", sans-serif;
         font-size: 24px;
         font-weight: bold;
       }
 
-      ul {
+      #concludis ul {
         padding-left: 12px;
         ;
       }
 
-      div {
+      #concludis div {
         border: 3px dotted red;
         background-color: lightgrey;
       }
@@ -127,7 +136,7 @@
   <body>
 
     <!-- - - - - - - - - - - -->
-    <div class="wrapper">
+    <div id="concludis" class="wrapper">
       <div class="header">
         <img class="img-teaser" src="http://placekitten.com/600/320" alt="">
         <h1 class="header-teaser">Lorem Ipsum Dolor Sit Amet Consectetur Ad Piscit.</h1>
@@ -150,13 +159,53 @@
           <ul>
             <li>John Doe</li>
             <li>Telefon +12 3456 789-0</li>
-            <li>E-Mail john.doe@company.com</li>
+            <li>E-Mail <a href="mailto:john.doe@company.com?subject=Betreff...">john.doe@company.com</a></li>
           </ul>
         </address>
       </div>
 
     </div>
     <!-- - - - - - - - - - - -->
+    <style>
+      input[type=email]:hover { background-color:red;}
+</style>
+    <form method="post">
+      <label>email</label>
+      <input type="email">
+      <label>Notiz</label>
+      <input type="text">
+      <label>AGB's?</label>
+      <input type="checkbox"> ja
+    </form>
+
+    <style>
+      nav ul>li>ul li {
+        background-color: red;
+      }
+    </style>
+    <nav>
+      <ul class="nav nav-stacked">
+        <li>links eins</li>
+        <li>links zwei</li>
+        <li>links drei<ul>
+            <li>links zwei eins</li>
+            <li>links zwei zwei</li>
+          </ul>
+        </li>
+        <li>links vier</li>
+      </ul>
+    </nav>
+    <nav>
+      <li>links eins</li>
+      <li>links zwei</li>
+      <li>links drei</li>
+      <li>links vier</li>
+    </nav>
+
+
+
+
+
   </body>
 
 </html>
