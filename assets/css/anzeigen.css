@@ -9,11 +9,26 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i');
 
+/* ALL DEVICES FALLBACK */
 #alle-anzeigen {
   font-family: Roboto, sans-serif;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.5;
+}
+
+@media screen and (max-width:480px) {
+  #alle-anzeigen {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+@media screen and (min-width:481px) {
+  #alle-anzeigen {
+    font-size: 18px;
+    line-height: 1.6;
+  }
 }
 
 #alle-anzeigen h2 {
@@ -63,6 +78,21 @@
   flex-basis: 50%;
   flex-shrink: 1;
   flex-grow: 1;
+}
+
+@media screen and (max-width:480px) {
+  #alle-anzeigen .multi-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  #alle-anzeigen .multi-column>* {
+    flex-basis: 100%;
+    flex-shrink: 1;
+    flex-grow: 1;
+  }
 }
 
 /* STATES */
