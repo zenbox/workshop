@@ -6,14 +6,23 @@
  * @version 1.0.0
  */
 /* BASE */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,700,700i');
+
 #alle-anzeigen {
-  font-family: sans-serif;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
   font-size: 16px;
   line-height: 1.5;
 }
 
 #alle-anzeigen h2 {
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 2em;
+}
+
+#alle-anzeigen h2+p {
+  color: lightcoral;
 }
 
 #alle-anzeigen p {
@@ -37,12 +46,29 @@
 }
 
 #alle-anzeigen .anzeige {
-  margin-left: 0.5em;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+#alle-anzeigen .multi-column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+#alle-anzeigen .multi-column>* {
+  flex-basis: 50%;
+  flex-shrink: 1;
+  flex-grow: 1;
 }
 
 /* STATES */
 #alle-anzeigen .anzeige:hover {
   background-color: grey;
+  color: white;
 }
 
 #alle-anzeigen .anzeige {
