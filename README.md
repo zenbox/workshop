@@ -1,16 +1,19 @@
-# links
+# nodejs Einführung
 
-https://js.foundation/
+Dateien zum Seminar und Workshop Januar 2019.
+
+## Links
 
 https://nodejs.org
-
+https://npmjs.com
+https://js.foundation/
+https://nodejs.org
 https://www.ecma-international.org/
-
 http://www.icndb.com/
 
 
 
-# snippets
+## snippets
 ```coffeescript
 # - - - - - - - - - -
 # MODULE BLOCK FOR NODEJS
