@@ -1,0 +1,19 @@
+document.addEventListener('click', function (event) {
+
+})
+
+function addEventListener(type, fn) {
+  let timestamp;
+  switch type {
+    case 'click':
+    timestamp = Date.now();
+    break;
+  }
+
+  event.timestamp = timestamp;
+  event.type = type;
+
+  // call back function
+  fn(event);
+
+}
