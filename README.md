@@ -16,6 +16,9 @@ Chuck Norris Database: http://www.icndb.com/
 
 EJS Template Engine: https://ejs.co/
 
+The Godfather of good JS Style: http://jslint.com/
+
+
 
 ## snippets
 ```coffeescript

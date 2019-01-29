@@ -15,9 +15,15 @@
 const http = require('http');
 const path = require('path');
 const express = require('express');
-
 const indexRoute = require(path.join(__dirname, 'routes/index'));
 const searchRoute = require(path.join(__dirname, 'routes/search'));
+
+const log = require('./modules/logger/index.js');
+log.prefix = 'EXPRESS:';
+
+const circleCalculator = require('./modules/circleCalculator/index.js');
+console.log(circleCalculator.area(15));
+console.log(circleCalculator.circumference(15));
 
 // express declaration
 let
@@ -36,11 +42,11 @@ expressServer.use(express.static(path.join(__dirname, 'public')));
 
 // dynamic routes
 expressServer.use('/', indexRoute);
-
 expressServer.use('/index.html', indexRoute);
+
 // expressServer.use('/search', searchRoute);
 
 // express control
 expressServer.listen(port, function () {
-    console.log('Express server runs on port ' + port + ' ...');
+    log.asString('Express server runs on port ' + port + ' ...');
 });
