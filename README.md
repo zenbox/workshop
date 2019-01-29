@@ -4,13 +4,17 @@ Dateien zum Seminar und Workshop Januar 2019.
 
 ## Links
 
-https://nodejs.org
-https://npmjs.com
-https://js.foundation/
-https://nodejs.org
-https://www.ecma-international.org/
-http://www.icndb.com/
+Nodejs: https://nodejs.org
 
+Node Package Manager: https://npmjs.com
+
+Javascript Foundation: https://js.foundation/
+
+ECMA Script: https://www.ecma-international.org/
+
+Chuck Norris Database: http://www.icndb.com/
+
+EJS Template Engine: https://ejs.co/
 
 
 ## snippets
