@@ -60,8 +60,18 @@ socketServer = socketio(httpServer);
 socketServer.sockets.on('connection', function (socket) {
     // - - - - - - - - - - -
     log.asString('a client is connected');
+    // log.asObject(socket);
 
+    //log.asString(socket.id);
+    //log.asString(socket.client);
+    //log.asString(socket.rooms);
 
+    socket.on('clientMessage', function (data) {
+        log.asString(data);
+        socket.emit('serverMessage', 'Hi there. This is a greeting from server...');
+
+        socketServer.emit('serverBroadcast', 'sending to all socket clients ...');
+    })
 
 
     // - - - - - - - - - - -
