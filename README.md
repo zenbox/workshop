@@ -18,6 +18,8 @@ EJS Template Engine: https://ejs.co/
 
 The Godfather of good JS Style: http://jslint.com/
 
+Socket.io https://socket.io/
+
 
 
 ## snippets
