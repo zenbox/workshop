@@ -32,6 +32,8 @@ Typescript Tutorial: https://www.typescriptlang.org/docs/tutorial.html
 
 Typescript, Nodejs, Webpack: https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
 
+ECMAScript: https://www.ecma-international.org/ecma-402/5.0/index.html
+
 ## snippets
 ```coffeescript
 # - - - - - - - - - -
