@@ -1,0 +1,22 @@
+[{
+        "Vorname": "string",
+        "Nachame": 42,
+        "Email": true,
+        "key_4": [true, "zwei", 3]
+    },
+
+    {
+        "Vorname": "string",
+        "Nachame": 42,
+        "Email": true,
+        "key_4": [true, "zwei", 3]
+    },
+
+    {
+        "Vorname": "string",
+        "Nachame": 42,
+        "Email": true,
+        "key_4": [true, "zwei", 3]
+    }
+]
+
