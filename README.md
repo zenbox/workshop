@@ -20,7 +20,17 @@ The Godfather of good JS Style: http://jslint.com/
 
 Socket.io https://socket.io/
 
+ES6 in Node: https://node.green/
 
+ES6 for beginner: https://codeburst.io/es6-tutorial-for-beginners-5f3c4e7960be
+
+ES6 Map vs. Object: https://medium.com/front-end-weekly/es6-map-vs-object-what-and-when-b80621932373
+
+React mit Typescript: https://reactjs.de/artikel/react-typescript/
+
+Typescript Tutorial: https://www.typescriptlang.org/docs/tutorial.html
+
+Typescript, Nodejs, Webpack: https://www.typescriptlang.org/docs/handbook/react-&-webpack.html
 
 ## snippets
 ```coffeescript
