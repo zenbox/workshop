@@ -1,28 +1,27 @@
 /**
- * An Application Class
- * @since 2019/01/29  
- * @author Michael
- * @version 1.0.0
+ * an node app with typescript
  */
 import * as express from 'express'
 
+
 class App {
-  public express
+    public app: express.Application
 
-  constructor() {
-    this.express = express()
-    this.mountRoutes()
-  }
+    constructor() {
+        this.app = express.default()
+        this.mountRoutes()
+    }
 
-  private mountRoutes(): void {
-    const router = express.Router()
-    router.get('/', (request, response) => {
-      response.json({
-        message: 'Hello World!'
-      })
-    })
-    this.express.use('/', router)
-  }
+    private mountRoutes(): void {
+        const router = express.Router()
+
+        router.get('/', (request, response) => {
+            response.json({ message: 'Hello World' });
+        })
+
+        this.app.use('/', router)
+
+    }
 }
 
-export default new App().express
+export default new App().app

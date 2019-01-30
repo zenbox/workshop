@@ -1,17 +1,13 @@
 /**
- * Index für an Webapp
- * @since 2019/01/29  
- * @author Michael
- * @version 1.0.0
+ * a node application
  */
-import app from './App'
 
-const port = process.env.PORT || 3000
+import app from './App';  // let app = require('./App')
 
-app.listen(port, (err) => {
-    if (err) {
-        return console.log(err)
-    }
+const port = process.env.PORT || 3001
 
-    return console.log(`server is now listening on ${port}`)
+app.listen(port, (error: object) => {
+    if (error) return console.log(error)
+
+    return console.log(`Server is running on port ${port}`)
 })
