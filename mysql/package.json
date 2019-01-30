@@ -1,0 +1,14 @@
+{
+  "name": "mysql-app",
+  "version": "1.0.0",
+  "description": "a simple mysql data access app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}
