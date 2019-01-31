@@ -24,6 +24,8 @@ ES6 in Node: https://node.green/
 
 ES6 for beginner: https://codeburst.io/es6-tutorial-for-beginners-5f3c4e7960be
 
+nodejs and react: https://blog.risingstack.com/building-a-node-js-app-with-typescript-tutorial/
+
 ES6 Map vs. Object: https://medium.com/front-end-weekly/es6-map-vs-object-what-and-when-b80621932373
 
 React mit Typescript: https://reactjs.de/artikel/react-typescript/
