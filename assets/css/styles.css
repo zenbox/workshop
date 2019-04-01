@@ -1,0 +1,18 @@
+/**
+ * Some Styles;
+ *
+ * @author Michael <michael.reichart@gfu.net>
+ * @since 2019/04/01  ;
+ * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
+ */
+/** @base */
+/** @layout */
+#basicMap {
+  display: block;
+  width: 800px;
+  height: 600px;
+}
+
+/** @states */

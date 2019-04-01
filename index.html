@@ -4,9 +4,19 @@
   <head>
     <meta charset="utf-8">
     <title>a page ...</title>
+
+    <script src="http://openlayers.org/api/OpenLayers.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
   </head>
 
   <body>
+
+    <nav>
+      <button data-command="ajax" data-url="http://localhost/workshop/assets/data/data.json">load data</button>
+      <button data-command="start">start worker</button>
+      <button data-command="stop">stop worker</button>
+    </nav>
+
     <h1>Headline</h1>
 
     <ul>
@@ -14,7 +24,12 @@
       <li><output id="longitude"></output></li>
     </ul>
 
+    <div id="basicMap"></div>
+
     <script src="assets/js/geolocation.js" charset="utf-8"></script>
+    <script src="assets/js/openstreetmap.js" charset="utf-8"></script>
+
+    <script src="assets/js/mainthread.js" charset="utf-8"></script>
   </body>
 
 </html>
