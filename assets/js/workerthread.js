@@ -19,33 +19,57 @@
   function ajaxLoad(url) {
     let xhr = new XMLHttpRequest();
 
-    xhr.addEventListener('readystatechange', function () {
+    // console.log('ich bin noch nicht drin');
+
+    xhr.addEventListener('progress', function () {
+      // console.log('response in progress');
+    })
+    xhr.addEventListener('load', function () {
+      // console.log('loaded');
+    })
+    xhr.addEventListener('error', function () {
+      // console.log('error');
+    })
+    xhr.addEventListener('abort', function () {
+      // console.log('abort');
+    })
+
+    xhr.onreadystatechange = function () {
+
+      // console.log('ich bin drin');
 
       switch (xhr.readyState) {
       case 0:
-        console.log('no ajax');
+        // console.log('no ajax');
         break;
       case 1:
-        console.log('request opened');
+        // console.log('request opened');
         break;
       case 2:
-        console.log('request sent');
+        // console.log('request sent');
         break;
       case 3:
-        console.log('response part 1 received');
+        // console.log('response part 1 received');
         if (xhr.status === 404) {
-          self.postMessage('file not found.');
+          self.postMessage(JSON.stringify({
+            message: 'file not found.'
+          }));
+        }
+        if (xhr.status === 200) {
+          self.postMessage(JSON.stringify({
+            message: 'file found.'
+          }));
         }
         break;
       case 4:
-        console.log('response end');
+        // console.log('response end');
         self.postMessage(xhr.response);
         break;
       }
 
-      xhr.open('post', url);
-      xhr.send();
-    });
+    }
+    xhr.open('POST', url);
+    xhr.send();
   }
 
   function onMainThreadMessage(event) {

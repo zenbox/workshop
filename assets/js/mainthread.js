@@ -17,7 +17,9 @@
   let
     init = undefined,
     worker = new Worker('assets/js/workerthread.js'),
-    buttons = document.querySelectorAll('button[data-command]');
+    buttons = document.querySelectorAll('button[data-command]'),
+    message = document.querySelector('#message'),
+    output = document.querySelector('#data');
 
   // METHODS
   init = function () {
@@ -27,7 +29,19 @@
   };
 
   function onWorkerMessage(event) {
-    console.log(event.data);
+    let data = JSON.parse(event.data);
+
+    if ('message' in data) {
+      message.innerHTML = data.message;
+    }
+
+    if ('data' in data) {
+      for (let key in data.data) {
+        output.innerHTML += '<li>' + key + ': ' + data.data[key] + '</li>';
+        //data.innerHTML += `<li>${key}: ${data['key']}</li>;
+      }
+    }
+
   }
 
   function onButtonsClick(event) {
