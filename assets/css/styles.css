@@ -15,4 +15,12 @@
   height: 600px;
 }
 
+.accessible {
+  background-color: hsla(0, 100%, 50%, 0.5);
+  background-image: url(../figures/accessible.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 /** @states */
