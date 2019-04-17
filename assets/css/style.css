@@ -90,13 +90,18 @@ button:hover {
 .notification {
   display: block;
   position: absolute;
+
   padding: 1rem;
+
   background-color: lightsteelblue;
+
   border-width: 5px;
   border-style: solid;
   border-color: steelblue;
   border-radius: 5px;
+
   box-shadow: 3px 5px 6px #888888;
+
   transition-duration: 200ms;
   transition-property: all;
   transition-timing-function: ease-in;

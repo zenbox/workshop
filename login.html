@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>A Login Form</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+
+  <body>
+
+    <main>
+      <form action="login.php" autocomplete="off" id="formLogin">
+        <h2>Login</h2>
+        <fieldset>
+          <legend>your login data here ...</legend>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" autofocus>
+          </div>
+
+          <div>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password">
+          </div>
+
+          <div>
+            <label for="countryCode">country code</label>
+            <input type="text" name="countryCode" id="countryCode">
+          </div>
+
+          <div>
+            <label class="checkbox">
+              <input type="checkbox" name="terms" id="terms">
+              you must agree the terms
+            </label>
+          </div>
+
+          <button type="submit">log in</button>
+
+        </fieldset>
+      </form>
+    </main>
+    <script src="assets/js/login.js" charset="utf-8"></script>
+    <script>
+      (function() {
+        // setting an autocursor for old browser
+        document.getElementById('email').focus();
+      }())
+    </script>
+  </body>
+
+</html>

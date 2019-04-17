@@ -16,10 +16,19 @@
   // DECLARATION
   let
     emailInput = document.querySelector('#email'),
+    passwordInput = document.querySelector('#password'),
     formLogin = document.querySelector('#formLogin');
   // let emailInput = document.getElementById('email');
 
   // METHODS
+  function validatePassword(password) {
+    let
+      _password = password || undefined,
+      reg = /[a-zA-Z0-9]/;
+
+    console.log(reg.exec(password));
+  }
+
   function setNotification(message) {
     let
       _message = message || undefined,
@@ -58,16 +67,24 @@
   function onEmailInputKeyDown(event) {
     console.log('keydown');
     console.log(event);
-    console.log(event.which); // ASCII code
+    console.log(event.which); // ASCII code 
     console.log(event.key) // letter;
   };
 
   function onEmailInputChange(event) {
-    console.log('change');
+    console.log('email change');
   };
 
   function onEmailInputBlur(event) {
     console.log('blur');
+  };
+
+  function onPasswordInputChange(event) {
+    console.log('password change');
+
+    console.dir(event.target.value);
+
+    validatePassword(event.target.value);
   };
 
   // CONTROL
@@ -75,6 +92,8 @@
   emailInput.addEventListener('change', onEmailInputChange);
   emailInput.addEventListener('blur', onEmailInputBlur);
   formLogin.addEventListener('submit', onFormLoginSubmit);
+
+  passwordInput.addEventListener('change', onPasswordInputChange);
 
   setNotification('Gut gemacht!');
 
