@@ -1,88 +1,104 @@
 html,
 html * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 form>fieldset>div {
-    display: block;
+  display: block;
 }
 
 form {
-    display: block;
-    width: 30rem;
-    box-shadow: 3px 3px 10px #888888;
-    padding: 2rem;
-    margin: 0 auto;
-
+  display: block;
+  width: 30rem;
+  box-shadow: 3px 3px 10px #888888;
+  padding: 2rem;
+  margin: 0 auto;
 }
 
 fieldset {
-    border-color: rgb(220, 220, 220);
+  border-color: rgb(220, 220, 220);
 }
 
 label,
 input {
-    display: inline-block;
-    height: 2rem;
+  display: inline-block;
+  height: 2rem;
 }
 
 label {
-    width: 8rem;
-    font-size: 0.8rem;
+  width: 8rem;
+  font-size: 0.8rem;
 }
 
-label.inline {
-    display: inline;
-    margin-left: 8rem;
-    font-size: 0.8rem;
+label.checkbox {
+  display: inline;
+  margin-left: 8rem;
+  font-size: 0.8rem;
 }
 
-label.inline>input {
-    width: 1rem;
-    vertical-align: -20%;
+label.checkbox>input {
+  width: 1rem;
+  vertical-align: -20%;
 }
-
 
 input {
-    font-family: Menlo, 'Courier New', Courier, monospace;
-    font-size: 15px;
-    line-height: 1.6;
-    width: 12rem;
-    height: 1.5rem;
-    padding: 0.2rem;
-    border-color: black;
-    border: 0;
-    border-bottom: thin;
-    border-style: solid;
+  font-family: Menlo, 'Courier New', Courier, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  width: 12rem;
+  height: 1.5rem;
+  padding: 0.2rem;
+  border-color: black;
+  border: 0;
+  border-bottom: thin;
+  border-style: solid;
 }
 
 input:focus {
-    outline: none;
-    box-shadow: 3px 3px 3px #888888;
-    border-bottom: 0;
+  outline: none;
+  box-shadow: 3px 3px 3px #888888;
+  border-bottom: 0;
 }
 
 button {
-    display: block;
-    margin: 1rem auto;
-
-    width: 8rem;
-    height: 2rem;
-
-    font-size: 0.8rem;
-    background-color: white;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
+  display: block;
+  margin: 1rem auto;
+  width: 8rem;
+  height: 2rem;
+  font-size: 0.8rem;
+  background-color: white;
+  border-width: 3px;
+  border-style: solid;
+  border-color: black;
+  transition-duration: 200ms;
+  transition-property: all;
+  transition-timing-function: ease-in;
+  transition-delay: 0;
 }
 
 button:hover {
-    background-color: darkcyan;
+  background-color: darkcyan;
+}
+
+.notification {
+  display: block;
+  position: absolute;
+  padding: 1rem;
+  background-color: lightsteelblue;
+  border-width: 5px;
+  border-style: solid;
+  border-color: steelblue;
+  border-radius: 5px;
+  box-shadow: 3px 5px 6px #888888;
+  transition-duration: 200ms;
+  transition-property: all;
+  transition-timing-function: ease-in;
+  transition-delay: 0;
 }
