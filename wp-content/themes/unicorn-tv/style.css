@@ -1,0 +1,70 @@
+/*!
+Theme Name: Unicorn TV
+Theme URI: http://github.com/zenbox/workshop
+Description: Vestibulum id ligula porta felis euismod semper.
+Author: Michael
+Author URI: http://github.com/zenbox
+Version: 1.0.0
+Tags: 2-columns, white, blog
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: unicorn-tv
+ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+body {
+  margin: 4rem;
+}
+
+/* layout */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* sidebar calendar */
+/* base */
+#my-calendar table {
+  background-color: #738c73;
+}
+
+button {
+  border-radius: 8px;
+  border-width: 2px;
+  border-color: #330000;
+}
+
+nav ul, nav ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+a[href] {
+  color: #cc0000;
+}
+a[href]:visited {
+  color: #cc6600;
+}
+a[href]:hover {
+  color: #00cc00;
+}
+a[href]:active {
+  color: #00cc66;
+}
+
+/*# sourceMappingURL=style.css.map */

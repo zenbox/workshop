@@ -1,0 +1,41 @@
+// base
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $fontFamily;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+body {
+  margin: 4rem;
+}
+
+/* layout */
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* sidebar calendar */
+/* base */
+#my-calendar {}
+
+#my-calendar table {
+  background-color: hsla(120, 10%, 50%, 1);
+}
+
+// use a mixing
+button {
+  @include borderRadius(8px);
+  border-width : 2px;
+  border-color : $darkgray;
+}
