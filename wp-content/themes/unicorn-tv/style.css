@@ -67,4 +67,10 @@ a[href]:active {
   color: #00cc66;
 }
 
+.my-widget {
+  text-align: center;
+  padding: 1rem;
+  border: 2px solid lightcoral;
+}
+
 /*# sourceMappingURL=style.css.map */

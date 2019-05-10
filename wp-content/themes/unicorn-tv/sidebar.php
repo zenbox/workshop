@@ -1,4 +1,8 @@
-<?php
+
+<aside>
+  <?php
+ if (!function_exists(dynamic_sidebar) || !dynamic_sidebar(1)) :
+
 $argsArchive = array(
   'type' => 'daily'
 );
@@ -9,7 +13,7 @@ $argsCalendar = array(
 
 );
 ?>
-<aside>
+
   <nav>
     <h4>Archive</h4>
   <ul>
@@ -30,4 +34,6 @@ $argsCalendar = array(
 </ul>
 </nav>
 
+
+<?php endif ?>
 </aside>

@@ -1,5 +1,5 @@
 /*!
-Theme Name: Unicorn TV
+Theme Name: Unicorn TV Child Theme
 Theme URI: http://github.com/zenbox/workshop
 Description: Vestibulum id ligula porta felis euismod semper.
 Author: Michael
@@ -8,10 +8,12 @@ Version: 1.0.0
 Tags: 2-columns, white, blog
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: unicorn-tv
+Text Domain: unicorn-tv-child
+Template: unicorn-tv
  */
-@import 'variables';
-@import 'mixins';
-@import 'base';
-@import 'navigation';
-@import 'widget';
+@import url("../unicorn-tv/style.css");
+
+body {
+  background-color: lightcoral !important;
+  color: white !important;
+}
