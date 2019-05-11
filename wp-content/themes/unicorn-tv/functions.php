@@ -48,16 +48,40 @@ if (function_exists(register_sidebar)) {
 
 
 
+
+
+
+
+
+
 // - - - - - - - - - -
 // WIDGETS
 // - - - - - - - - - -
 /**
  * Adding an own widget
- * @var [type]
  */
  add_action('widgets_init', function () {
      register_widget('My_Widget');
  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  /**
   * [My_Widget description]

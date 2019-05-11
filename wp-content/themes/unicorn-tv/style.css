@@ -57,12 +57,15 @@ nav ul, nav ol {
 a[href] {
   color: #cc0000;
 }
+
 a[href]:visited {
   color: #cc6600;
 }
+
 a[href]:hover {
   color: #00cc00;
 }
+
 a[href]:active {
   color: #00cc66;
 }

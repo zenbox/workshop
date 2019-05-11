@@ -1,7 +1,9 @@
 
 <aside>
   <?php
- if (!function_exists(dynamic_sidebar) || !dynamic_sidebar(1)) :
+ //if (!function_exists(dynamic_sidebar) || !dynamic_sidebar(1)) :
+
+
 
 $argsArchive = array(
   'type' => 'daily'
@@ -15,7 +17,7 @@ $argsCalendar = array(
 ?>
 
   <nav>
-    <h4>Archive</h4>
+    <h4><?php echo __('Primary Menu'); ?></h4>
   <ul>
   <?php wp_get_archives($argsArchive); ?>
   </ul>
@@ -35,5 +37,8 @@ $argsCalendar = array(
 </nav>
 
 
-<?php endif ?>
+<?php //endif?>
+
+<?php if (!function_exists(dynamic_sidebar) || !dynamic_sidebar(2)) : endif; ?>
+
 </aside>
