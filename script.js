@@ -1,74 +1,51 @@
-// mein erstes Programm
-document.write("<b>hallo Welt!</b>");
+/* global console, window, document */
+/**
+ * A Webapplication
+ *
+ * @package Webapplication
+ * @author Michael [michael@zenbox.de]
+ * @since 2019/05/15
+ * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
+ */
 
-// Variablen
+// declarations
 var
-  nettoPreis = 43, // number
-  zahl2 = 108,
-  deviceName = "Computer", // string
-  flag = true, // boolean
+  field = document.getElementById('1.1.5');
 
-  array = [true, "zwei", 3], // object
-  object = { // object
-    price: "38.4 €",
-    "1.3.5": "ein Wert"
-  },
-
-  d;
-let e = "neu";
-
-// null, undefined, infinity
-// null -> eine Variable existiert nicht
-// undefined -> existiert, hat aber keinen Wert
-var c = 42;
-var pi = 3.14159;
-
-c = "was anderes";
-
-document.write("<br>")
-document.write(typeof object);
-document.write("<br>")
-document.write(object.price);
-document.write("<br>")
-document.write(object["price"]);
-document.write("<br>")
-document.write(array[0]);
-
-
-// Kontrollstrukturen
-
-// Funktionen
-//var doSomething = function () {};
-
-function doSomething() {
-  var cb = 108;
-  console.log(cb);
-  console.log(nettoPreis);
+// functions/methods
+function onFocus() {
+  // - - - - - - - - - -
+  console.log('jemand hat in das Feld geklickt!');
+  // - - - - - - - - - -
 }
 
-function doSomethingMore() {
-  var cb = 108;
-  console.log(cb);
+function onBlur() {
+  // - - - - - - - - - -
+  console.log('Das Feld ist verlassen worden!');
+  console.log(field.value);
+  // - - - - - - - - - -
+  var
+    value = field.value,
+    allGood = false // boolean: true | false
+  ;
 
+  // proof for a value
+  console.log(value.length);
+  if (value.length > 0) {
+    allGood = true;
+  }
+
+  if (allGood === true) {
+    console.log('Alles ist ganz prima');
+  } else {
+    console.log('Nichts ist gut');
+  }
+
+  // - - - - - - - - - -
 }
-// console.log(cb);
-doSomething();
-doSomethingMore();
 
-// Ereignisse
-window.addEventListener("load", function () {
-  var cb = "hey there";
-  console.log(cb);
-});
-
-
-
-
-
-
-
-// var c = nettoPreis * 2;
-// document.write("<br>")
-// document.write(a);
-// document.write("<br>")
-// document.write(c);
+// control, event control
+field.addEventListener('focus', onFocus);
+field.addEventListener('blur', onBlur);
