@@ -91,3 +91,11 @@ label.checkbox {
   width: auto;
   min-width: 0;
 }
+
+input.false {
+  background-color: hsla(0, 100%, 40%, 0.25);
+}
+
+input.true {
+  background-color: hsla(180, 100%, 40%, 0.25);
+}
