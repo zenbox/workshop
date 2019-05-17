@@ -1,0 +1,85 @@
+Properties of a textfield
+- - - - - - - - - -
+alignment       [string]
+left
+- - - - - - - - - -
+borderStyle     [string]
+solid
+- - - - - - - - - -
+defaultValue    [string]
+''
+- - - - - - - - - -
+borderWidth     [number]
+1
+- - - - - - - - - -
+lineWidth       [number]
+1
+- - - - - - - - - -
+calcOrderIndex  [number]
+-1
+- - - - - - - - - -
+charLimit       [number]
+0
+- - - - - - - - - -
+delay           [boolean]
+false
+- - - - - - - - - -
+fillColor       [object]
+RGB,0.5,1,0.5
+- - - - - - - - - -
+bgColor         [object]
+RGB,0.5,1,0.5
+- - - - - - - - - -
+borderColor     [object]
+T
+- - - - - - - - - -
+strokeColor     [object]
+T
+- - - - - - - - - -
+doc             [object]
+[object Doc]
+- - - - - - - - - -
+signatureValidate           [function]
+function signatureValidate() {
+    [native code]
+}
+- - - - - - - - - -
+signatureSign               [function]
+function signatureSign() {
+    [native code]
+}
+- - - - - - - - - -
+signatureInfo               [function]
+function signatureInfo() {
+    [native code]
+}
+- - - - - - - - - -
+signatureGetSeedValue       [function]
+function signatureGetSeedValue() {
+    [native code]
+}
+- - - - - - - - - -
+signatureSetSeedValue       [function]
+function signatureSetSeedValue() {
+    [native code]
+}
+- - - - - - - - - -
+signatureGetModifications   [function]
+function signatureGetModifications() {
+    [native code]
+}
+- - - - - - - - - -
+signatureAddLTV             [function]
+function signatureAddLTV() {
+    [native code]
+}
+- - - - - - - - - -
+setLock                     [function]
+function setLock() {
+    [native code]
+}
+- - - - - - - - - -
+getLock                     [function]
+function getLock() {
+    [native code]
+}

@@ -11,6 +11,18 @@
  */
 
 // - - - - - - - - - - -
+// Acrobat renaming pointer
+// - - - - - - - - - - -
+// var
+//   _app = window,
+//   _this = {
+//     document: window.document
+//   };
+//
+// _app.doc = window.document;
+// _this.getField = document.getElementById;
+
+// - - - - - - - - - - -
 // declaration
 // - - - - - - - - - - -
 var
@@ -145,6 +157,7 @@ function main() {
   for (key in fields) {
 
     field = document.getElementById(fields[key]['id'])
+    // field = this.getField(fields[key]['id'])
 
     if (field != null) {
       field.addEventListener('change', onChange);
