@@ -1,6 +1,6 @@
 # code snippets
 
-'''
+```CoffeeScript
 # - - - - - - - - - -
 # MODULE BLOCK FOR NODEJS
 # - - - - - - - - - -
@@ -76,4 +76,4 @@
                      // - - - - - - - - - -
                  }());
            """
-'''
+```
