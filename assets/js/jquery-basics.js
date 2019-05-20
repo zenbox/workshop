@@ -11,10 +11,10 @@
  */
 
 // jQuery umbenennen
-// var jq341 = jQuery.noConflict();
+var jq341 = jQuery.noConflict();
 
-// jq341('button.continue')
-//   .html('a lot of more steps ...');
+jq341('button.continue')
+  .html('a lot of more steps ...');
 
 // $ -> jQuery
 // $('button.continue')
@@ -51,7 +51,6 @@ jQuery('button.continue')
 
     console.dir(this);
   });
-
 
 
 //
