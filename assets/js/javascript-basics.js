@@ -10,10 +10,49 @@
  * @license MIT License [https://opensource.org/licenses/MIT]
  */
 
-var a = 42;
-var b = 108;
+window.onload = function () {
+  'use strict';
+  // - - - - - - - - - -
+  // declaration
+  var a = 42;
+  var b = 108;
 
-if (typeof a === 'number' && typeof b === 'number') {
-  console.log(a + b);
+  // control
+  if (typeof a === 'number' && typeof b === 'number') {
+    console.log(a + b);
+  }
+  console.log(typeof a);
+
+  // - - - - - - - - - -
 }
-console.log(typeof a);
+
+// IIFE - Immediate Invoked Function Expression
+(function () {
+  'use strict';
+  // - - - - - - - - - -
+  var a = 42;
+  // - - - - - - - - - -
+})();
+
+
+
+window.onload = function () {
+  'use strict';
+  // - - - - - - - - - -
+  console.log('window loaded');
+  // - - - - - - - - - -
+}
+
+
+// Javascript
+document.addEventListener('readystatechange', function (event) {
+      console.log('document state has changed!');
+
+      switch (document.state) {
+      case 'loading':
+        break;
+      case 'interactive':
+        break;
+      case 'complete':
+        break;
+      }
