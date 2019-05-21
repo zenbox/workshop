@@ -14,8 +14,15 @@ window.onload = function () {
   'use strict';
   // - - - - - - - - - -
   // declaration
+  //
+  var a, b, c;
+
+
   var a = 42;
   var b = 108;
+  var c = 108;
+
+  d = 4;
 
   // control
   if (typeof a === 'number' && typeof b === 'number') {
@@ -56,3 +63,30 @@ document.addEventListener('readystatechange', function (event) {
       case 'complete':
         break;
       }
+
+
+      // Classes with Javascript
+      // ES 6+, JS 1.8.5
+      var domObj = document.querySelector('input#id');
+
+      domObj
+        .classList
+        .add('new-class')
+        .remove('old-class')
+        .toggle('new')
+
+
+      // Creating elements
+      var
+        container = document.createElement('div'),
+        label = document.createElement('label'),
+        input = document.createElement('input'),
+        text = document.createTextNode('keep password');
+
+
+      container.setAttribute('id', 'keep');
+
+      label.appendChild(text);
+
+      container.appendChild(input)
+      container.appendChild(label)
