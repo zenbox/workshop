@@ -16,8 +16,16 @@ jQuery(document)
     // - - - - - - - - - -
     // DECLARATION
     var
+      // undefined variables
+
+      // DOM elements
+      form = jQuery('#form-login'),
       elements = jQuery('#form-login input'),
-      onFocus = undefined;
+
+      // functions
+      onFocus = function () {},
+      manipulate = function () {},
+      main = function () {};
 
     // METHODS
     onFocus = function (event) {
@@ -25,7 +33,25 @@ jQuery(document)
       console.log(global);
     }
 
+    // DOM Manipulation
+    manipulate = function () {
+      // adding elements
+      jQuery('<input>')
+        .appendTo(form);
+    }
+
+    // The Main Programm Control Function
+    main = function () {
+      console.log('main');
+      manipulate();
+    }
+
+    // CONTROL
+    jQuery(window)
+      .on('load', main);
+
     // EVENT CONTROL
     elements.on('focus', onFocus);
+
     // - - - - - - - - - -
   });
