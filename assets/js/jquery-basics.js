@@ -53,4 +53,20 @@ jQuery('button.continue')
   });
 
 
+event.which = 2; // 2 oder 3
+
+switch (which) {
+case 1:
+  console.log('left mouse key');
+  break;
+case 2:
+  console.log('middle mouse key');
+  break;
+case 3:
+  console.log('right mouse key');
+  break;
+default:
+  console.log('???');
+  break;
+}
 //

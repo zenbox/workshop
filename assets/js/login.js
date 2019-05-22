@@ -30,7 +30,6 @@ jQuery(document)
     // METHODS
     onFocus = function (event) {
       console.log('focus an input field!');
-      console.log(global);
     }
 
     // DOM Manipulation
