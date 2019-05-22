@@ -18,9 +18,24 @@ jQuery(document)
       // DOM elements
       // anchors = jQuery('a[href]'),
       anchors = jQuery('nav'),
+      form = jQuery('#form-login'),
 
       // methods
-      onAnchorClick = function () {};
+      onAnchorClick = function () {},
+      onSubmit = function () {};
+
+
+    onSubmit = function (e) {
+      // ! get params or set a default value
+      var _event = e || undefined;
+
+      // early exit
+      if (_event === undefined) return false;
+
+      // do your stuff
+      _event.preventDefault();
+      console.log('submit');
+    }
 
     // METHODS
     onAnchorClick = function (e) {
@@ -68,7 +83,7 @@ jQuery(document)
 
     // event delegation!!!
     anchors.on('click', 'a[href]', onAnchorClick);
-
+    form.on('submit', onSubmit);
     // switches event listener off
     // anchors.off('click', onAnchorClick);
 
