@@ -22,16 +22,35 @@ jQuery(document)
       form = jQuery('#form-login'),
       elements = jQuery('#form-login input'),
 
-      // functions
-      onFocus = function () {},
+      // methods
+      main = function () {},
       manipulate = function () {},
-      main = function () {};
+      getLoginData = function () {},
+
+      // event handler
+      onFocus = function () {},
+      onFormLoginSubmit = function () {};
 
     // METHODS
+    // event handlern
     onFocus = function (event) {
       console.log('focus an input field!');
     }
 
+    onFormLoginSubmit = function (e) {
+      var
+        _event = e || undefined,
+        _action = _event.target.action || undefined;
+
+      if (_event === undefined) return false;
+      if (_action === undefined) return false;
+
+      _event.preventDefault();
+
+      getLoginData(_action);
+    };
+
+    // methods
     // DOM Manipulation
     manipulate = function () {
       // adding elements
@@ -88,6 +107,20 @@ jQuery(document)
         .appendTo('#form-login');
     }
 
+    getLoginData = function (a) {
+      var
+        _action = a || undefined,
+        _json = undefined,
+        _request = new XMLHttpRequest();
+
+      if (_action === undefined) return false;
+
+      console.log('perform an ajax request!');
+      console.log(_action);
+
+
+    }
+
     // The Main Programm Control Function
     main = function () {
       manipulate();
@@ -101,6 +134,6 @@ jQuery(document)
 
     // EVENT CONTROL
     elements.on('focus', onFocus);
-
+    form.on('submit', onFormLoginSubmit);
     // - - - - - - - - - -
   });
