@@ -16,11 +16,8 @@
 - Container ist abhängig vom DOM , -> auflösen
 
 ## Textengine bauen
-
-
-1. Ausblenden per JS über style
-
-- -
+- Textobjekte hinterlegen
+- -> haben ein Timing Problem
 
 ## Fragen:
 

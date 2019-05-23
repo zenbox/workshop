@@ -17,6 +17,49 @@ jQuery(document)
     // DECLARATION
     var
       container = undefined,
+      messages = [{
+        message: 'Aenean lacinia bibendum nulla sed consectetur.',
+        category: 'warning',
+        blendingTime: 0,
+        messageTime: 1000
+      }, {
+        message: 'Maecenas sed diam eget risus varius blandit sit amet non magna.',
+        category: 'strange',
+        blendingTime: 0,
+        messageTime: 500
+      }, {
+        message: 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
+        category: 'success',
+        blendingTime: 0,
+        messageTime: 500
+      }, {
+        message: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
+        category: 'default',
+        blendingTime: 0,
+        messageTime: 500
+      }, {
+        message: 'Cras mattis consectetur purus sit amet fermentum.',
+        category: 'success',
+        blendingTime: 0,
+        messageTime: 500
+      }, {
+        message: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.',
+        category: 'warning',
+        blendingTime: 0,
+        messageTime: 500
+      }, {
+        message: 'Sed posuere consectetur est at lobortis.',
+        category: 'success',
+        blendingTime: 0,
+        messageTime: 500
+      }, {
+        message: 'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.',
+        category: 'error',
+        blendingTime: 0,
+        messageTime: 500
+      }, {
+        message: 'Sed posuere consectetur est at lobortis.'
+      }],
       main = function () {},
       selectContainer = function () {},
       removeContainer = function () {},
@@ -46,8 +89,13 @@ jQuery(document)
     };
 
     buildMessage = function (m) {
-      var _message = m || undefined;
+      var
+        _message = m.message || undefined,
+        _messageTime = m._messageTime || 2000,
+        _blendingTime = m.blendingTime || 500,
+        _category = m.category || 'default';
 
+      if (typeof m !== 'object') return false;
       if (_message === undefined) return false;
       if (typeof _message !== 'string') return false;
 
@@ -58,17 +106,14 @@ jQuery(document)
         .children()
         .last() //                 -> message
         .addClass('message')
-        .addClass('warning')
+        .addClass(_category)
         .text(_message)
         .hide()
-        .delay(500)
-        .fadeIn(250)
-        .delay(2000)
-        .fadeOut(250, function () {
+        .fadeIn(_blendingTime)
+        .delay(_messageTime)
+        .fadeOut(_blendingTime, function () {
           this.remove();
         });
-
-
     }
 
     /**
@@ -85,11 +130,19 @@ jQuery(document)
     jQuery(function () {
       main();
       buildContainer(selectContainer);
-      buildMessage('huddel!!');
+      buildMessage({
+        message: 'huddel!! huddel!! huddel!! huddel!! huddel!!'
+      });
       // removeContainer();
     })
     // EVENT CONTROL
     jQuery('h1')
-      .on('click', buildMessage);
+      .on('click', function () {
+        var
+          _randomNumber = Math.floor(Math.random() * (messages.length)),
+          _message = messages[_randomNumber];
+
+        buildMessage(_message);
+      });
     // - - - - - - - - - -
   });
