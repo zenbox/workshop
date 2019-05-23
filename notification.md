@@ -12,8 +12,11 @@
 - Später schauen, wo kommen Texte her
 
 ## Ergebnisse des ersten Sprint:
-- Nachrichten müssen wieder aus dem DOM gelöscht werden
+- OK! Nachrichten müssen wieder aus dem DOM gelöscht werden
 - Container ist abhängig vom DOM , -> auflösen
+
+## Textengine bauen
+
 
 1. Ausblenden per JS über style
 
@@ -22,12 +25,12 @@
 ## Fragen:
 
 - es sind beliebig viele Nachrichten
-- Wann erscheinen die Nachrichten? zu x beliebeigen ereignissen!
+- Wann erscheinen die Nachrichten? zu x beliebigen Ereignissen!
 - Die Texte kommen nicht aus einer DB. kein AJAX!
 
 - Auf 5 Boxen begrenzen, die für Nachrichten wiederverwendet werden
 
-- Wo sollen wir sie platzieren (obe, unten, links, rechts?)
+- Wo sollen wir sie platzieren (oben, unten, links, rechts?)
 - Wie sehen sie aus? (opaque, transparent, Schatten, Rahmen, runde Ecken?)
 - Wie ist das Verhalten? (Flug von links, einblenden, ausblenden, *Explosionen*, Bouncing, Drehung)
 

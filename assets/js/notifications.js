@@ -16,26 +16,50 @@ jQuery(document)
     // - - - - - - - - - -
     // DECLARATION
     var
-      container = jQuery('#notifications'),
-      messages = jQuery('.messages'),
-
+      container = undefined,
       main = function () {},
+      selectContainer = function () {},
       removeContainer = function () {},
+      buildContainer = function () {},
       buildMessage = function () {};
 
     // METHODS
-    removeContainer = function () {
-      container.remove();
-    }
+    selectContainer = function () {
+      container = jQuery('#notifications');
+    };
 
-    buildMessage = function () {
+    buildContainer = function (fn) {
+      var _callback = fn || undefined;
+
+      if (_callback === undefined) return false;
+
+      jQuery('<div>')
+        .attr('id', 'notifications')
+        .appendTo('body');
+
+      _callback();
+    };
+
+    removeContainer = function () {
+      if (container === undefined) return false;
+      container.remove();
+    };
+
+    buildMessage = function (m) {
+      var _message = m || undefined;
+
+      if (_message === undefined) return false;
+      if (typeof _message !== 'string') return false;
+
+      if (container === undefined) return false;
+
       container
         .append('<div>')
         .children()
         .last() //                 -> message
         .addClass('message')
         .addClass('warning')
-        .text('Sed posuere consectetur est at lobortis.')
+        .text(_message)
         .hide()
         .delay(500)
         .fadeIn(250)
@@ -60,7 +84,8 @@ jQuery(document)
     // MAIN CONTROL
     jQuery(function () {
       main();
-      buildMessage()
+      buildContainer(selectContainer);
+      buildMessage('huddel!!');
       // removeContainer();
     })
     // EVENT CONTROL
