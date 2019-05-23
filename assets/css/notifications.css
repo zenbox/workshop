@@ -1,0 +1,58 @@
+/**
+ * Notifications CSS
+ *
+ * @author Michael <michael.reichart@gfu.net>
+ * @since 2019/05/23
+ * @version v1.0.0
+ * @copyright (c) 2018 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
+ */
+/** @base */
+html {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/** @layout */
+#notifications {
+  display: block;
+  position: absolute;
+  right: 0.25rem;
+  top: 0.25rem;
+  width: 33vw;
+}
+
+.message {
+  margin: 0;
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+}
+
+/** @theme */
+.message {
+  color: hsla(210, 100%, 0%, 1);
+  background-color: hsla(210, 100%, 95%, 1);
+  box-shadow: none;
+  border-style: solid;
+  border-color: hsla(210, 100%, 0%, 1);
+  border-width: 1px;
+  border-radius: 0;
+}
+
+/** @states */
+.default {
+  background-color: hsla(210, 100%, 95%, 1);
+}
+
+.warning {
+  background-color: hsla(60, 100%, 95%, 1);
+}
+
+.error {
+  background-color: hsla(0, 100%, 95%, 1);
+}
