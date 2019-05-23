@@ -32,15 +32,19 @@ jQuery(document)
       container
         .append('<div>')
         .children()
-        .last()
+        .last() //                 -> message
         .addClass('message')
         .addClass('warning')
         .text('Sed posuere consectetur est at lobortis.')
         .hide()
-        //.delay(5000)
+        .delay(500)
         .fadeIn(250)
         .delay(2000)
-        .fadeOut(250);
+        .fadeOut(250, function () {
+          this.remove();
+        });
+
+
     }
 
     /**

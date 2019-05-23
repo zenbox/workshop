@@ -11,6 +11,12 @@
 - Funktion in der der Text als Parameter übergeben wird
 - Später schauen, wo kommen Texte her
 
+## Ergebnisse des ersten Sprint:
+- Nachrichten müssen wieder aus dem DOM gelöscht werden
+- Container ist abhängig vom DOM , -> auflösen
+
+1. Ausblenden per JS über style
+
 - -
 
 ## Fragen:
