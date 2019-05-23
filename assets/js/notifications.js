@@ -118,8 +118,6 @@ jQuery(document)
      * @return {boolean}  if false
      */
     buildMessage = function (m) {
-      console.log(m);
-
       var
         _m = m || undefined,
         _message = undefined,
@@ -128,11 +126,13 @@ jQuery(document)
         _category = undefined;
 
       if (_m === undefined) return false;
+
       if (typeof _m === 'string') {
         _m = {
           message: _m
         };
       }
+
       if (typeof _m !== 'object') return false;
       if (container === undefined) return false;
 
@@ -180,7 +180,6 @@ jQuery(document)
       main();
       buildContainer(selectContainer);
       buildMessage('hello world');
-      // removeContainer();
     })
     // EVENT CONTROL
     jQuery('h1')
