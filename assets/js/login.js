@@ -110,16 +110,33 @@ jQuery(document)
     getLoginData = function (a) {
       var
         _action = a || undefined,
-        _json = undefined,
-        _request = new XMLHttpRequest();
+        _request = undefined;
 
       if (_action === undefined) return false;
 
       console.log('perform an ajax request!');
-      console.log(_action);
 
+      _request = jQuery.ajax({
+        url: _action,
+        method: 'POST',
+        dataType: 'json' // html || text || json || jsonp || xml
+      });
+      _request
+        // ajax was successful
+        .done(function (r) {
+          var _response = r || undefined;
 
+          if (_response === undefined) return false;
+
+          console.log(_response);
+          console.log(typeof _response);
+        })
+        // there is an ajax error
+        .fail(function (error) {
+          console.log('ajax error!');
+        });
     }
+
 
     // The Main Programm Control Function
     main = function () {

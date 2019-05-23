@@ -48,6 +48,16 @@ jQuery(document)
 
       if (_event === undefined) return false;
 
+      if (
+        (event.type && event.type == "contextmenu") ||
+        (event.button && event.button == 2) ||
+        (event.which && event.which == 3)
+      ) {
+        console.log('rechte Maustaste');
+      } else {
+        console.log('andere Maustaste');
+      }
+
       _event.preventDefault();
       // - - - - - - - - - -
 
@@ -69,6 +79,12 @@ jQuery(document)
     // event delegation!!!
     anchors.on('click', 'a[href]', onAnchorClick);
     form.on('submit', onSubmit);
+
+    // blocking the right mouse button
+    jQuery('body')
+      .on('contextmenu', function () {
+        return false;
+      });
     // switches event listener off
     // anchors.off('click', onAnchorClick);
 
