@@ -2,33 +2,26 @@
  * All In One
  */
 
-jQuery('form > button')
+jQuery('form > button') // collection of all buttons        -> button
   .before('<div>')
-  .prev()
-  .attr('id', 'new')
+  .prev() // change the collection to the previous sibling  -> div
+  .attr('id', 'new') // add attribute to the collection
 
-  .append('<input>')
-  .children()
-  .last()
+  .append('<input>') // add input into div
+  .children() // select the all new children
+  .last() // take the last child                            -> input
   .attr('id', 'cb')
   .attr('type', 'checkbox')
 
-  .parent()
+  .parent() //                                              -> div
   .append('<label>')
   .children() // array!
-  .eq(1)
+  .eq(1) //                                                 -> label
   .attr('for', 'cb')
   .text('OK!')
 
-  .parent()
+  .parent() //                                              -> div
   .append('<p>')
   .children() // array!
-  .last()
-  .text('Lorem ipsum dolor ...')
-
-  .parent()
-  .children()
-  .eq(0)
-  .text('sit amet consectetur')
-
-;
+  .last() //                                                -> p
+  .text('Lorem ipsum dolor ...');
