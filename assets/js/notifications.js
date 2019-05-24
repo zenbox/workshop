@@ -20,12 +20,12 @@ jQuery(document)
       container = undefined,
       messages = undefined,
       // method declarations
-      main = function () {},
-      selectContainer = function () {},
-      removeContainer = function () {},
-      buildContainer = function () {},
-      buildMessage = function () {},
-      getMessage = function () {};
+      _main = function () {},
+      _selectContainer = function () {},
+      _removeContainer = function () {},
+      _buildContainer = function () {},
+      _buildMessage = function () {},
+      _getMessage = function () {};
 
     messages = [{
       message: 'Aenean lacinia bibendum nulla sed consectetur.',
@@ -76,7 +76,7 @@ jQuery(document)
      * selects the messages container
      * @return {boolean} if false
      */
-    selectContainer = function () {
+    _selectContainer = function () {
       // ! container is global
       container = jQuery('#notifications');
 
@@ -88,16 +88,21 @@ jQuery(document)
 
     /**
      * builds the messages container
-     * @param  {Function} fn callback for selectContainer
+     * @param  {Function} fn callback for _selectContainer
      * @return {boolean}     if false
      */
-    buildContainer = function (fn) {
+    _buildContainer = function (fn) {
       var _callback = fn || undefined;
 
       if (_callback === undefined) return false;
 
+      var myOptions = {
+        css: '/assets/css/notifications.css'
+      };
+
       jQuery('<div>')
         .attr('id', 'notifications')
+        .closeable()
         .appendTo('body');
 
       _callback();
@@ -107,7 +112,7 @@ jQuery(document)
      * removes the messages container
      * @return {boolean} if false
      */
-    removeContainer = function () {
+    _removeContainer = function () {
       if (container === undefined) return false;
       container.remove();
     };
@@ -117,7 +122,7 @@ jQuery(document)
      * @param  {object} m contains message, time and category values
      * @return {boolean}  if false
      */
-    buildMessage = function (m) {
+    _buildMessage = function (m) {
       var
         _m = m || undefined,
         _message = undefined,
@@ -150,42 +155,43 @@ jQuery(document)
         .text(_message)
         .hide()
         .fadeIn(_blendingTime)
-        .delay(_messageTime)
-        .hide('puff', 100, function () {
-          //        .fadeOut(_blendingTime, function () {
-          this.remove();
-        });
+      // .delay(_messageTime)
+      // .hide('puff', 100, function () {
+      //   //        .fadeOut(_blendingTime, function () {
+      //   this.remove();
+      // });
+      ;
     }
 
     /**
      * grabs a random message
      * @return {object} the message object
      */
-    getMessage = function () {
+    _getMessage = function () {
       var _randomNumber = Math.floor(Math.random() * (messages.length)),
         _message = messages[_randomNumber];
       return _message;
     };
     /**
-     * the main call of this app
+     * the _main call of this app
      * @param  {mixed} args [description]
      * @return {boolean}    [description]
      */
-    main = function (args) {
+    _main = function (args) {
       console.log('hello folks');
       return true;
     }
 
     // MAIN CONTROL
     jQuery(function () {
-      main();
-      buildContainer(selectContainer);
-      buildMessage('hello world');
+      _main();
+      _buildContainer(_selectContainer);
+      _buildMessage('hello world');
     })
     // EVENT CONTROL
     jQuery('h1')
       .on('click', function () {
-        buildMessage(getMessage());
+        _buildMessage(_getMessage());
       });
     // - - - - - - - - - -
   });
