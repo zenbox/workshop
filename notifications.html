@@ -16,7 +16,12 @@
     <script src="lib/jquery-3.4.1.js" charset="utf-8"></script>
     <script src="lib/jq-closeable/jq-closeable.js" charset="utf-8"></script>
 
-
+    <script type="text/javascript">
+      // mieser trick!
+      setTimeout(function() {
+        jQuery('p').closeable().addClass('new');
+      }, 1000);
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" charset="utf-8"></script>
     <script src="assets/js/notifications.js" charset="utf-8"></script>
