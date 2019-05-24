@@ -151,7 +151,8 @@ jQuery(document)
         .hide()
         .fadeIn(_blendingTime)
         .delay(_messageTime)
-        .fadeOut(_blendingTime, function () {
+        .hide('puff', 100, function () {
+          //        .fadeOut(_blendingTime, function () {
           this.remove();
         });
     }
