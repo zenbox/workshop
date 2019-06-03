@@ -42,7 +42,7 @@ jQuery(document)
   .ready(function () {
     'use strict';
     // - - - - - - - - - -
-    console.clear();
+    // console.clear();
 
     // selections
     jQuery('.my-class')

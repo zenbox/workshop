@@ -70,18 +70,23 @@ Code Snippets die in Atom in die Snippetsdammlung kopiert werden können.
    'jQuery iife':
      'prefix': 'jq iife'
      'body':"""
-                  $jQuery(function($) {
-                      'use strict';
-                      // - - - - - - - - - -
-                      // DECLARATION
-                      let init = undefined;
+             jQuery(function ($) {
+               'use strict';
+               // - - - - - - - - - -
+               // DECLARATION
+               let init = undefined;
 
-                      // METHODS
-                      init = function () {};
+               console.log('lalala');
 
-                      // CONTROL
-                      window.addEventListener('load', init);
-                      // - - - - - - - - - -
-                  }(jQuery));
+               // METHODS
+               init = function () {};
+
+               // CONTROL
+               $(document)
+                 .ready = function () {
+                   init();
+                 };
+               // - - - - - - - - - -
+             }(jQuery));
             """
 ```
