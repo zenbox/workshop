@@ -76,16 +76,14 @@ Code Snippets die in Atom in die Snippetsdammlung kopiert werden können.
                // DECLARATION
                let init = undefined;
 
-               console.log('lalala');
-
                // METHODS
-               init = function () {};
+               init = function () {
+                 };
 
                // CONTROL
-               $(document)
-                 .ready = function () {
-                   init();
-                 };
+               $(function () {
+                 init();
+               });
                // - - - - - - - - - -
              }(jQuery));
             """
