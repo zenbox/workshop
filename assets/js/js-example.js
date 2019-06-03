@@ -26,3 +26,23 @@ addEventListener = function (t, f) {
 
 // control (event-control)
 button.addEventListener('click', fn);
+
+
+
+
+
+
+function fn(arg) {
+  var _arg = arg;
+  console.log(_arg); // hallo
+}
+
+
+
+fn('hallo');
+
+var jQuery;
+
+function ($) {
+  var _$ = $;
+}(jQuery);
