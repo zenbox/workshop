@@ -1,0 +1,16 @@
+/**
+ * Some Styles
+ *
+ * @author Michael <michael.reichart@gfu.net>
+ * @since 2019/06/03
+ * @version v1.0.0
+ * @copyright (c) 2019 Michael Reichart, Cologne
+ * @license MIT License [https://opensource.org/licenses/MIT]
+ */
+/** @base */
+/** @layout */
+.my-class {
+  display: block;
+}
+
+/** @states */
