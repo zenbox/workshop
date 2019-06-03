@@ -14,14 +14,46 @@ jQuery(function ($) {
   'use strict';
   // - - - - - - - - - -
   // DECLARATION
-  let init = undefined;
+  // - - - - - - - - - -
+  let
+    // primitive values (string, number, boolean)
+    a = undefined,
 
+    // list, objects
+    container = {},
+    collection = [],
+
+    // functions
+    init = function () {},
+    setContainer = function () {},
+    removeContainer = function () {};
+
+  // - - - - - - - - - -
   // METHODS
-  init = function () {
-    console.log('notifications running');
+  // - - - - - - - - - -
+  setContainer = function () {
+    console.log('set container');
+
+    $('<div>')
+      .addClass('notification-container')
+      .appendTo('body');
+
+
   };
 
+  removeContainer = function () {
+    console.log('remove container');
+  };
+
+  init = function () {
+    console.clear();
+    console.log('notifications running');
+    setContainer();
+  };
+
+  // - - - - - - - - - -
   // CONTROL
+  // - - - - - - - - - -
   $(function () {
     init();
   });
