@@ -4,7 +4,7 @@
 var fn = undefined;
 
 // methods
-fn = function () {
+fn = function (e) {
   console.log('click!');
 };
 
@@ -19,6 +19,7 @@ addEventListener = function (t, f) {
   _event.type = _type;
   _event.timestamp = new Date();
   _event.which = 1;
+  _event.target = this;
 
   // callback!
   _fn(_event);
@@ -46,3 +47,18 @@ var jQuery;
 function ($) {
   var _$ = $;
 }(jQuery);
+
+
+
+
+
+
+
+
+
+fn = function (args) {
+  return true;
+};
+setTimeout(function () {
+  fn(args);
+}, 3000);
