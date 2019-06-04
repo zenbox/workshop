@@ -40,6 +40,7 @@ jQuery(function ($) {
     console.log('click on anchor!');
 
     console.log(_event.target);
+    console.log(_event.type);
 
 
 
