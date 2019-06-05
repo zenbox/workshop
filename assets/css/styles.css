@@ -50,4 +50,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
 }
 
+.form-login input[type=email] {}
+
+.form-login input[type=password] {}
+
+.form-login input[type=checkbox] {}
+
+.form-login button[type=submit] {}
+
 /** @states */

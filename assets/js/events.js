@@ -25,7 +25,9 @@ jQuery(function ($) {
   // EVENT HANDLER METHODS
   // - - - - - - - - - -
   function onAnchorClick(e) {
-    var _event = e || window.event;
+    var
+      _event = e || window.event,
+      _request = undefined;
 
     //! early exit
     if (!_event) return false;
@@ -34,11 +36,26 @@ jQuery(function ($) {
     _event.preventDefault();
 
     //! do the job
-    console.log('click on anchor!');
+    // console.log('click on anchor!');
+    // console.log(_event.target);
+    // console.log(_event.type); // click!
+    // console.log(_event.which); // 1 (left)
 
-    console.log(_event.target);
-    console.log(_event.type); // click!
-    console.log(_event.which); // 1 (left)
+    _request = $.ajax(_event.target.href);
+
+    // promises:
+    // done - only if ajax succeeded
+    // fail - if not
+    _request
+      .done(function (response) {
+        $('main')
+          .html(response);
+      })
+      .fail(function (error) {
+        $('main')
+          .html(error.responseText);
+      })
+
   }
 
   function onContextmenu(e) {
