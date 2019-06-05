@@ -11,88 +11,69 @@
  */
 
 jQuery(function ($) {
-      'use strict';
-      // - - - - - - - - - -
-      // DECLARATION
-      // - - - - - - - - - -
-      let init = undefined;
+  'use strict';
+  // - - - - - - - - - -
+  // DECLARATION
+  // - - - - - - - - - -
+  let init = function () {};
 
-      // - - - - - - - - - -
-      // METHODS
-      // - - - - - - - - - -
-      init = function () {};
+  // - - - - - - - - - -
+  // METHODS
+  // - - - - - - - - - -
 
-      // - - - - - - - - - -
-      // EVENT HANDLER METHODS
-      // - - - - - - - - - -
-      function onAnchorClick(e) {
-        var _event = e || window.event;
+  // - - - - - - - - - -
+  // EVENT HANDLER METHODS
+  // - - - - - - - - - -
+  function onAnchorClick(e) {
+    var _event = e || window.event;
 
-        //! early exit
-        if (!_event) return false;
+    //! early exit
+    if (!_event) return false;
 
-        //! cancel the browsers job
-        _event.preventDefault();
+    //! cancel the browsers job
+    _event.preventDefault();
 
-        //! do the job
-        console.log('click on anchor!');
+    //! do the job
+    console.log('click on anchor!');
 
-        console.log(_event.target);
-        console.log(_event.type); // click!
-        console.log(_event.which); // 1 (left)
-      }
+    console.log(_event.target);
+    console.log(_event.type); // click!
+    console.log(_event.which); // 1 (left)
+  }
 
-      function onContextmenu(e) {
-        let _event = e || window.event;
+  function onContextmenu(e) {
+    let _event = e || window.event;
 
-        //! early exit
-        if (!_event) return false;
+    //! early exit
+    if (!_event) return false;
 
-        //! cancel the browsers job
-        _event.preventDefault();
+    //! cancel the browsers job
+    _event.preventDefault();
 
-        // ! do the job
-        console.log(_event.target);
-        console.log(_event.type);
-        console.log(_event.which);
-      }
-      /**
-       *
-       * @param  {object} e  event object
-       * @return {boolean}   wether the function did the job or not
-       */
-      function onFormLoginSubmit(e) {
-        let _event = e || window.event;
+    // ! do the job
+    console.log(_event.target);
+    console.log(_event.type);
+    console.log(_event.which);
+  }
 
-        //! early exit
-        if (!_event) return false;
+  // - - - - - - - - - -
+  // CONTROL
+  // - - - - - - - - - -
+  $(function () {
+    // initialisation
+    init();
+    // set an event listener, delegate events!
+    $('nav > ul')
+      // on: type, [delegation,] [data,] callback
+      .on('click', 'a[href]', onAnchorClick);
 
-        //! cancel the browsers job
-        _event.preventDefault();
+    $('body')
+      .on('contextmenu', onContextmenu);
 
-        // ! do the job
+    // // delete event listeners
+    // $('nav > ul')
+    //   .off(click ');
 
-      }
-
-      // - - - - - - - - - -
-      // CONTROL
-      // - - - - - - - - - -
-      $(function () {
-        init();
-        // set an event listener, delegate events!
-        $('nav > ul')
-          // on: type, [delegation,] [data,] callback
-          .on('click', 'a[href]', onAnchorClick);
-
-        $('body')
-          .on('contextmenu', onContextmenu);
-
-        $('form#form-login')
-          .on('submit', onFormLoginSubmit());
-
-        // // delete event listeners
-        // $('nav > ul')
-        //   .off(click ');
-        //   });
-        // - - - - - - - - - -
-      }(jQuery));
+  });
+  // - - - - - - - - - -
+}(jQuery));
