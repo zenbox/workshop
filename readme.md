@@ -12,6 +12,7 @@ Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: 
 - https://kangax.github.io/compat-table/es6/
 - https://developer.mozilla.org/de/docs/Web/JavaScript/Reference
 - https://itnext.io/ecmascript-6-features-823b1a44c024
+- https://docs.microsoft.com/de-de/visualstudio/javascript/tutorial-nodejs-with-react-and-jsx?view=vs-2019
 
 # Code Snippets
 Code Snippets die in Atom in die Snippetsdammlung kopiert werden können.
