@@ -1,18 +1,17 @@
-# Welcome to ECMAScript 6+
+# Welcome to Javascript
 
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
 
 ## Foliensatz
-Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **ECMAScript 6+.pdf**. Dort ist alles enthalten, was innerhalb des Seminars erläutert wird.
+Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **Javascript kompakt.pdf**. Dort finden Sie zum Nachlesen, was im des Seminars erläutert wird. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
 ## Links
-- http://es6-features.org
-- https://kangax.github.io/compat-table/es6/
+- https://opensource.org/licenses/MIT
 - https://developer.mozilla.org/de/docs/Web/JavaScript/Reference
-- https://itnext.io/ecmascript-6-features-823b1a44c024
-- https://docs.microsoft.com/de-de/visualstudio/javascript/tutorial-nodejs-with-react-and-jsx?view=vs-2019
+- https://kangax.github.io/compat-table/es6/
+- ...
 
 # Code Snippets
 Code Snippets die in Atom in die Snippetsdammlung kopiert werden können.
