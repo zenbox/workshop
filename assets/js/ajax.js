@@ -16,43 +16,69 @@
   // DECLARATION
   let
     main = undefined,
-    load = undefined;
+    load = undefined,
+    showArticle = undefined;
 
-  load = function (fn) {
+  /**
+   *
+   * @param  {String} t
+   * @return {none}
+   */
+  showArticle = function (t) {
+    let
+      _text = t || undefined,
+      mainNode = document.querySelector('main'),
+      articleNode = undefined,
+      paragraphNode = undefined,
+      textNode = undefined;
+
+    if (_text === undefined) return false;
+
+    articleNode = document.createElement('article');
+    paragraphNode = document.createElement('p');
+    textNode = document.createTextNode(_text);
+
+    mainNode
+      .appendChild(articleNode) //   returns the article
+      .appendChild(paragraphNode) // returns the paragraph
+      .appendChild(textNode);
+  };
+
+  /**
+   *
+   * @param  {Function} fn
+   * @param  {Function} cb
+   * @return {none}
+   */
+  load = function (fn, cb) {
     let
       _filename = fn || undefined,
+      _callback = cb || undefined,
       request = new XMLHttpRequest(),
       method = 'get';
 
-    if (_filename === undefined) return false;
+    if (_filename === undefined) {
+      return false;
+    }
+    if (_callback === undefined) {
+      return false;
+    }
 
     request.addEventListener('readystatechange', function () {
-      console.log(request.readyState);
-
-      switch (request.readyState) {
-      case 1:
-        console.log('request opened');
-        break;
-      case 2:
-        console.log('request sent');
-        break;
-      case 3:
-        console.log('response');
-        break;
-      case 4:
-        console.log('response ready');
-        break;
+      if (request.readyState !== 4) {
+        return false;
       }
-
+      if (request.status >= 200 && request.status < 500) {
+        _callback(request.responseText);
+      }
     });
-
     request.open(method, _filename);
     request.send();
   };
 
   // METHODS
   main = function () {
-    load('assets/data/data.txt');
+    load('assets/data/data.txt', showArticle);
   };
 
   // CONTROL
