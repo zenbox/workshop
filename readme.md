@@ -11,7 +11,11 @@ Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: 
 - https://opensource.org/licenses/MIT
 - https://developer.mozilla.org/de/docs/Web/JavaScript/Reference
 - https://kangax.github.io/compat-table/es6/
-- ...
+- https://hammerjs.github.io/
+- https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches
+- https://tc39.es/ecma262/
+- https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events
+- https://caniuse.com/#search=addevent
 
 # Code Snippets
 Code Snippets die in Atom in die Snippetsdammlung kopiert werden können.
