@@ -15,16 +15,43 @@
   // - - - - - - - - - -
   // DECLARATION
   let
-    main = undefined,
-  ;
-
+    onAnchorInNavClick = function () {}, // typeof 'function'
+    main = function () {};
 
   // METHODS
+  onAnchorInNavClick = function (event) {
+    let _event = event || undefined;
+
+    if (!_event) return false;
+    console.dir(_event);
+
+    // prevent browser behaviour
+    _event.preventDefault();
+
+    // filter for anchor elements
+    console.log(_event.target);
+    console.log(_event.target.tagName);
+
+    switch (_event.target.tagName) {
+    case 'A':
+      console.log('Anchor is clicked!');
+      break;
+    default:
+      console.log('Something is clicked!');
+      break;
+    }
+
+    console.log('click!');
+
+  };
+
   main = function () {
-    let collection = document.querySelectorAll('a[href]');
+    let collection = document.querySelectorAll('nav');
 
-    // Event listener
-
+    // Setting event listener
+    collection.forEach(function (item, index) {
+      item.addEventListener('click', onAnchorInNavClick);
+    });
   };
 
   // CONTROL
