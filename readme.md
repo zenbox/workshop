@@ -17,6 +17,7 @@ Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: 
 - https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events
 - https://caniuse.com/#search=addevent
 - http://thklein.com/de_DE/cost-of-defect/
+- https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata
 
 # Code Snippets
 Code Snippets die in Atom in die Snippetsdammlung kopiert werden können.
