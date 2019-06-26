@@ -18,6 +18,10 @@ Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: 
 - https://caniuse.com/#search=addevent
 - http://thklein.com/de_DE/cost-of-defect/
 - https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata
+- https://github.com/getify/You-Dont-Know-JS
+- https://eloquentjavascript.net/
+- https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises
+- https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous
 
 # Code Snippets
 Code Snippets die in Atom in die Snippetsdammlung kopiert werden können.
