@@ -26,6 +26,12 @@
    */
   getLoginCredentials = function () {
 
+    let form = document.querySelector('#login');
+
+    for (let i = 0; i < form.length; i++) {
+      console.log(i, ': ', form[i]);
+    };
+
 
 
     let email = document.querySelector('#login-email')
