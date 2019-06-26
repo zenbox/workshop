@@ -123,6 +123,7 @@
     fn();
     fn(0);
     fn(false);
+    fn('');
     fn(null);
     fn(undefined);
     fn(NaN);
