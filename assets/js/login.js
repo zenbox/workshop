@@ -26,6 +26,8 @@
    */
   getLoginCredentials = function () {
 
+
+
     let email = document.querySelector('#login-email')
       .value.trim();
     let password = document.querySelector('#login-password')
