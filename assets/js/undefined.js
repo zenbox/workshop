@@ -14,9 +14,16 @@
   'use strict';
   // - - - - - - - - - -
   // DECLARATION
-  let main = undefined;
+  let
+    main = undefined,
+    fn = undefined;
 
   // METHODS
+  fn = function (a) {
+    let _args = a || undefined;
+    console.log('a :', a, ', _args :', _args)
+  }
+
   main = function () {
     // UNDEFINED
     // undefined means, there is var 'a' but no value assigned
@@ -96,6 +103,30 @@
     console.log('null == null: ', null == null);
     console.log('undefined == undefined: ', undefined == undefined);
     // finish
+    console.log('- - - - - - - - - -');
+    console.log('undefined as default value ?');
+    console.log('fn = function (a) {');
+    console.log(' let _args = a || undefined;');
+    console.log('}');
+    console.log('- - - - - - - - - -');
+
+    fn(123);
+    fn('abc');
+    fn(true);
+    fn(Infinity);
+
+    fn({});
+    fn([]);
+    fn(function () {});
+
+    console.log('\nbut:');
+    fn();
+    fn(0);
+    fn(false);
+    fn(null);
+    fn(undefined);
+    fn(NaN);
+
     console.log('- - - - - - - - - -');
   };
 
