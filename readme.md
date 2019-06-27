@@ -22,6 +22,14 @@ Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: 
 - https://eloquentjavascript.net/
 - https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises
 - https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous
+- https://github.com/scottjehl/picturefill
+- https://github.com/scottjehl/Respond
+- https://github.com/aFarkas/html5shiv
+- http://html5test.com/index.html
+- https://meyerweb.com/eric/tools/css/reset/
+- https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss
+- https://necolas.github.io/normalize.css/
+- https://modernizr.com/
 
 # Code Snippets
 Code Snippets die in Atom in die Snippetsdammlung kopiert werden können.
