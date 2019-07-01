@@ -1,0 +1,53 @@
+/**
+ * Public Comments
+ * @author Michael
+ * @since 1.1.0
+ * @version 1.1.0
+ */
+.page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.page-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.page-header {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+.page-navigation {
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+
+.page-main {
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+
+.page-aside {
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
+}
+
+.page-footer {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+/*# sourceMappingURL=style.css.map */
