@@ -1,0 +1,36 @@
+// single line comment are not public
+// multilining is ...
+
+@import 'variables';
+@import 'mixins';
+
+// default layout (float)
+.page-header {
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+.page-navigation {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.page-main {
+    display: block;
+    float: left;
+    width: 50%;
+}
+
+.page-aside {
+    display: block;
+    float: left;
+    width: 25%;
+}
+
+.page-footer {
+    display: block;
+    clear: both;
+    width: 100%;
+}
