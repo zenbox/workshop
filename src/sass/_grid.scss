@@ -1,5 +1,15 @@
-.container {}
+@import 'variables';
+@import 'mixins';
 
-.row {}
+.container {
+    display: block;
+}
 
-.column {}
+.row {
+    display: block;
+}
+
+.column {
+    display: block;
+    float: left;
+}
