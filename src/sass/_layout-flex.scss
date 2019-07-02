@@ -1,0 +1,51 @@
+// single line comment are not public
+// multilining is ...
+
+@import 'variables';
+@import 'mixins';
+
+// default layout (flex)
+.page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.page-header {
+    flex-basis: 100%;
+}
+
+.page-navigation {
+    width: 50%;
+    // flex-basis: 1;
+    flex-grow: 2;
+    flex-shrink: 2;
+    order: 1;
+}
+
+.page-main {
+    width: 50%;
+    // flex-basis:1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    order: 2;
+}
+
+.page-aside {
+    width: 50%;
+    // flex-basis: 1;
+    flex-grow: 0;
+    flex-shrink: 0;
+    order: 3;
+}
+
+.page-footer {
+    flex-basis: 100%;
+}
