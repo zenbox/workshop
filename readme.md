@@ -42,12 +42,13 @@
 - **ESLint**, dbaeumer.vscode-eslint
 - **Live Sass Compiler**, ritwickdey.live-sass
 - **Live Server**, ritwickdey.liveserver
+- **Markdown All in One**, yzhang.markdown-all-in-one
 - **Markdown Preview Github Styling**, bierner.markdown-preview-github-styles
 
 ## Codes
 ```Javascript
 !(function () {
     let a = 42;
-    document.addElement();
+    document.addEventListener();
 })()
 ```
