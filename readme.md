@@ -20,3 +20,7 @@
   - CSS Transitions und Animations
   - CSS Grids und Flexboxes
   - Responsive Content: Icons, Scalable Vector Graphics, Textverhalten
+
+# Links
+
+# VS Code Extensions
