@@ -43,3 +43,11 @@
 - **Live Sass Compiler**, ritwickdey.live-sass
 - **Live Server**, ritwickdey.liveserver
 - **Markdown Preview Github Styling**, bierner.markdown-preview-github-styles
+
+## Codes
+```Javascript
+!(function () {
+    let a = 42;
+    document.addElement();
+})()
+```
