@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'mixins';
+// - - - - - - - - - -
+// Demo purposes only
+// - - - - - - - - - -
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+header {
+    padding: 20px;
+    display: flex;
+    align-items: baseline;
+}
+
+article {
+    padding: 30px;
+    max-width: 55em;
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+article h2 {
+    font-weight: 500;
+    font-size: 28px;
+}
+
+.logo {
+    margin: 0 30px 0 10px;
+    font-size: 1.5em;
+}
