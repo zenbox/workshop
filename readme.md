@@ -21,6 +21,6 @@
   - CSS Grids und Flexboxes
   - Responsive Content: Icons, Scalable Vector Graphics, Textverhalten
 
-# Links
+## Links
 
-# VS Code Extensions
+## VS Code Extensions
