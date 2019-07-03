@@ -1,12 +1,11 @@
 /**
- * Public Comments
+ * CSS Architecture Styles
  * @author Michael
- * @since 1.1.0
- * @version 1.1.0
+ * @version 1.0.0
  */
-@import 'test';
 @import 'base';
-@import 'header';
 @import 'layout-grid';
+
+// COMPONENTS:
+@import 'header';
 @import 'navigation';
-@import 'theme';
