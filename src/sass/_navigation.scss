@@ -30,9 +30,17 @@ ol.navigation {
         padding-bottom: $defaultPadding;
     }
 
-    @media (max-width:768px) {}
+    @breakpoint(extrasmall) {
+        main {
+            background-color: red !important;
+        }
+    }
 
-    @media (max-width:767px) {}
+    @breakpoint(small) {
+        main {
+            background-color: green !important;
+        }
+    }
 }
 
 
@@ -40,7 +48,7 @@ ol.navigation {
 // layout
 // larger devices
 // - - - -
-@media screen and (min-width:768px) {}
+@include breakpoint(large) {}
 
 // - - - - - - - - - -
 // theme
