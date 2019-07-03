@@ -1,9 +1,9 @@
 /**
  * CSS Architecture Styles
  * @author Michael
- * @since 1.1.0
- * @version 1.1.0
+ * @version 1.0.0
  */
+/* BASE */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -24,7 +24,7 @@ body {
 html,
 html * {
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -54,64 +54,65 @@ body {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 25% 25% 25% 25%;
-  grid-template-columns: 25% 25% 25% 25%;
+      grid-template-columns: 25% 25% 25% 25%;
   -ms-grid-rows: 20% auto 20%;
-  grid-template-rows: 20% auto 20%;
+      grid-template-rows: 20% auto 20%;
 }
 
 .page-header {
   -ms-grid-column: 1;
-  grid-column-start: 1;
+      grid-column-start: 1;
   grid-column-end: 5;
   -ms-grid-row: 1;
-  grid-row-start: 1;
+      grid-row-start: 1;
   grid-row-end: 2;
 }
 
 .page-navigation {
   -ms-grid-column: 1;
-  grid-column-start: 1;
+      grid-column-start: 1;
   grid-column-end: 2;
   -ms-grid-row: 2;
-  grid-row-start: 2;
+      grid-row-start: 2;
   grid-row-end: 3;
 }
 
 .page-main {
   -ms-grid-column: 2;
-  grid-column-start: 2;
+      grid-column-start: 2;
   grid-column-end: 4;
   -ms-grid-row: 2;
-  grid-row-start: 2;
+      grid-row-start: 2;
   grid-row-end: 3;
 }
 
 .page-aside {
   -ms-grid-column: 4;
-  grid-column-start: 4;
+      grid-column-start: 4;
   grid-column-end: 5;
   -ms-grid-row: 2;
-  grid-row-start: 2;
+      grid-row-start: 2;
   grid-row-end: 3;
 }
 
 .page-footer {
   -ms-grid-column: 1;
-  grid-column-start: 1;
+      grid-column-start: 1;
   grid-column-end: 5;
   -ms-grid-row: 3;
-  grid-row-start: 3;
+      grid-row-start: 3;
   grid-row-end: 4;
 }
 
+/* HEADER */
 header {
   padding: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .logo {
@@ -125,12 +126,12 @@ header {
   padding: .75em 15px;
   line-height: 1em;
   font-size: 1em;
-  color: #333;
+  color: #666;
 }
 
 .menu-toggle:hover,
 .menu-toggle:focus {
-  color: #c00;
+  color: #06C;
 }
 
 /*
@@ -180,7 +181,7 @@ header {
 
 .main-menu a:hover,
 .main-menu a:focus {
-  background: #333;
+  background: #666;
   text-decoration: underline;
 }
 
@@ -221,8 +222,8 @@ header {
    We could us `.main-menu:target:after`, but
    it wouldn't be clickable.
   */
-.main-menu:target+.backdrop,
-.main-menu[aria-expanded="true"]+.backdrop {
+.main-menu:target + .backdrop,
+.main-menu[aria-expanded="true"] + .backdrop {
   position: absolute;
   display: block;
   left: 0;
@@ -230,15 +231,14 @@ header {
   width: 100%;
   height: 100%;
   z-index: 998;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.65);
   cursor: default;
 }
 
 @supports (position: fixed) {
-
   .main-menu,
-  .main-menu:target+.backdrop,
-  .main-menu[aria-expanded="true"]+.backdrop {
+  .main-menu:target + .backdrop,
+  .main-menu[aria-expanded="true"] + .backdrop {
     position: fixed;
   }
 }
@@ -248,12 +248,10 @@ header {
    Horizontal menu
   */
 @media (min-width: 768px) {
-
   .menu-toggle,
   .main-menu .menu-close {
     display: none;
   }
-
   /* Undo positioning of off-canvas menu */
   .main-menu {
     position: relative;
@@ -262,7 +260,6 @@ header {
     height: auto;
     display: block;
   }
-
   .main-menu ul {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -275,21 +272,20 @@ header {
     width: auto;
     background: none;
   }
-
   .main-menu a {
     color: #06c;
     border: 0 !important;
     /* Remove borders from off-canvas styling */
   }
-
   .main-menu a:hover,
   .main-menu a:focus {
     background: none;
     /* Remove background from off-canvas styling */
-    color: #c00;
+    color: #06c;
   }
 }
 
+/* NAVIGATION */
 ul.navigation,
 ol.navigation {
   list-style: none;
@@ -309,13 +305,22 @@ ol.navigation a[href] {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
   }
+  @breakpoint (extrasmall) {
+    main {
+      background-color: red !important;
+    }
+  }
+  @breakpoint (small) {
+    main {
+      background-color: green !important;
+    }
+  }
 }
 
 @media screen and (max-width: 767px) {
   .navigation li {
     background-color: rgba(255, 255, 255, 0.2);
   }
-
   .navigation li a[href] {
     color: #e6e6e6;
   }
@@ -323,12 +328,10 @@ ol.navigation a[href] {
 
 @media screen and (min-width: 768px) {
   .navigation li {
-    background-color: rgba(0, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.2);
   }
-
   .navigation li a[href] {
-    color: white;
+    color: #e6e6e6;
   }
 }
-
 /*# sourceMappingURL=style.css.map */
