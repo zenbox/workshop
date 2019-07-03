@@ -1,7 +1,36 @@
 @import 'variables';
 
+// a simple mixin
 @mixin box-shadow ($x, $y, $blur, $color) {
     -moz-box-shadow: $x $y $blur $color;
     -webkit-box-shadow: $x $y $blur $color;
     box-shadow: $x $y $blur $color;
+}
+
+// breakpoints in a mixin
+// use as:
+//.navigation {
+//     width: $default-width;
+//     @include breakpoint(small) {
+//       width: 100%;
+//     }
+//   }
+@mixin breakpoint($point) {
+    @if $point==small {
+        @media (min-width: $small) {
+            @content;
+        }
+    }
+
+    @else if $point==medium {
+        @media (min-width: $medium) {
+            @content;
+        }
+    }
+
+    @else if $point==large {
+        @media (min-width: $large) {
+            @content;
+        }
+    }
 }
