@@ -305,16 +305,6 @@ ol.navigation a[href] {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
   }
-  @breakpoint (extrasmall) {
-    main {
-      background-color: red !important;
-    }
-  }
-  @breakpoint (small) {
-    main {
-      background-color: green !important;
-    }
-  }
 }
 
 @media screen and (max-width: 767px) {
