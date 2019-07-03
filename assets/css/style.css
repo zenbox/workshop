@@ -146,10 +146,10 @@ header {
   height: 100%;
   overflow-y: scroll;
   overflow-x: visible;
-  -webkit-transition: left 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: left 0.3s ease, -webkit-box-shadow 0.3s ease;
-  transition: left 0.3s ease, box-shadow 0.3s ease;
-  transition: left 0.3s ease, box-shadow 0.3s ease, -webkit-box-shadow 0.3s ease;
+  -webkit-transition: left 1s ease, -webkit-box-shadow 1s ease;
+  transition: left 1s ease, -webkit-box-shadow 1s ease;
+  transition: left 1s ease, box-shadow 1s ease;
+  transition: left 1s ease, box-shadow 1s ease, -webkit-box-shadow 1s ease;
   z-index: 999;
 }
 
@@ -159,7 +159,7 @@ header {
   padding: 2.5em 0 0;
   /* Hide shadow w/ -8px while 'closed' */
   -webkit-box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
-  box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
+          box-shadow: -8px 0 8px rgba(0, 0, 0, 0.5);
   min-height: 100%;
   width: 200px;
   background: #1a1a1a;
@@ -204,7 +204,7 @@ header {
   left: 0;
   outline: none;
   -webkit-box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
-  box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
+          box-shadow: 3px 0 12px rgba(0, 0, 0, 0.25);
 }
 
 .main-menu:target .menu-close,
@@ -322,6 +322,68 @@ ol.navigation a[href] {
   }
   .navigation li a[href] {
     color: #e6e6e6;
+  }
+}
+
+#box.left {
+  margin-left: 0;
+  color: red;
+}
+
+#box:hover {
+  margin-left: 80vw;
+  color: green;
+}
+
+#box {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  background-color: white;
+  -webkit-transition-delay: 1;
+          transition-delay: 1;
+}
+
+#box {
+  -webkit-animation: myAnimation 10s infinite;
+          animation: myAnimation 10s infinite;
+  -webkit-transition: margin-left 1s ease-in-out, color 4s ease-out;
+  transition: margin-left 1s ease-in-out, color 4s ease-out;
+}
+
+@-webkit-keyframes myAnimation {
+  0% {
+    background-color: black;
+  }
+  25% {
+    background-color: red;
+  }
+  50% {
+    background-color: green;
+  }
+  75% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: black;
+  }
+}
+
+@keyframes myAnimation {
+  0% {
+    background-color: black;
+  }
+  25% {
+    background-color: red;
+  }
+  50% {
+    background-color: green;
+  }
+  75% {
+    background-color: yellow;
+  }
+  100% {
+    background-color: black;
   }
 }
 /*# sourceMappingURL=style.css.map */
