@@ -39,8 +39,8 @@ header {
     height: 100%;
     overflow-y: scroll;
     overflow-x: visible;
-    transition: left 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: left 1s ease,
+        box-shadow 1s ease;
     z-index: 999;
 }
 
@@ -49,9 +49,9 @@ header {
     margin: 0;
     padding: 2.5em 0 0;
     /* Hide shadow w/ -8px while 'closed' */
-    -webkit-box-shadow: -8px 0 8px rgba(0, 0, 0, .5);
-    -moz-box-shadow: -8px 0 8px rgba(0, 0, 0, .5);
+
     box-shadow: -8px 0 8px rgba(0, 0, 0, .5);
+
     min-height: 100%;
     width: 200px;
     background: #1a1a1a;
@@ -95,8 +95,6 @@ header {
     display: block;
     left: 0;
     outline: none;
-    -moz-box-shadow: 3px 0 12px rgba(0, 0, 0, .25);
-    -webkit-box-shadow: 3px 0 12px rgba(0, 0, 0, .25);
     box-shadow: 3px 0 12px rgba(0, 0, 0, .25);
 }
 
