@@ -1,11 +1,11 @@
 .page-navigation {
-    background-color: hsla(0, 100%, 50%, 0.7);
+    background-color: $hilightColor;
 }
 
 .page-main {
-    background-color: hsla(60, 100%, 50%, 0.7);
+    background-color: $hilightColor;
 }
 
 .page-aside {
-    background-color: hsla(120, 100%, 50%, 0.7);
+    background-color: $hilightColor;
 }
