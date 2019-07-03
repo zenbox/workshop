@@ -21,8 +21,9 @@ ol.navigation {
 // layout
 // default, mobile-first
 // - - - -
-// fallback, default
 @media screen {
+
+    // screen fallback, default
     .navigation li {
         display: block;
         width: 100%;
@@ -30,14 +31,12 @@ ol.navigation {
         padding-bottom: $defaultPadding;
     }
 
-    @include breakpoint(small) {}
-
-    @include breakpoint(medium) {}
-
-    // - - - - - - - - - -
-    // theme
-    // - - - - - - - - - -
     @include breakpoint(small) {
+
+        // default
+        // layout
+        // theme
+        // states
         .navigation li {
             background-color: $hilightColor;
 
@@ -48,6 +47,11 @@ ol.navigation {
     }
 
     @include breakpoint(medium) {
+
+        // default
+        // layout
+        // theme
+        // states
         .navigation li {
             background-color: $hilightColor;
 
@@ -56,9 +60,5 @@ ol.navigation {
             }
         }
     }
-
-    // - - - - - - - - - -
-    // states
-    // - - - - - - - - - -
 
 }
