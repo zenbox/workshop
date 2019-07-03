@@ -16,14 +16,8 @@
 //     }
 //   }
 @mixin breakpoint($point) {
-    @if $point==extrasmall {
-        @media (max-width: ($small - 1)) {
-            @content;
-        }
-    }
-
     @if $point==small {
-        @media (min-width: $small) {
+        @media (max-width: $medium - 1) {
             @content;
         }
     }

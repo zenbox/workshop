@@ -30,49 +30,35 @@ ol.navigation {
         padding-bottom: $defaultPadding;
     }
 
-    @breakpoint(extrasmall) {
-        main {
-            background-color: red !important;
+    @include breakpoint(small) {}
+
+    @include breakpoint(medium) {}
+
+    // - - - - - - - - - -
+    // theme
+    // - - - - - - - - - -
+    @include breakpoint(small) {
+        .navigation li {
+            background-color: $hilightColor;
+
+            a[href] {
+                color: $textColor;
+            }
         }
     }
 
-    @breakpoint(small) {
-        main {
-            background-color: green !important;
+    @include breakpoint(medium) {
+        .navigation li {
+            background-color: $hilightColor;
+
+            a[href] {
+                color: $textColor;
+            }
         }
     }
+
+    // - - - - - - - - - -
+    // states
+    // - - - - - - - - - -
+
 }
-
-
-// - - - -
-// layout
-// larger devices
-// - - - -
-@include breakpoint(large) {}
-
-// - - - - - - - - - -
-// theme
-// - - - - - - - - - -
-@media screen and (max-width:767px) {
-    .navigation li {
-        background-color: $hilightColor;
-
-        a[href] {
-            color: $textColor;
-        }
-    }
-}
-
-@media screen and (min-width:768px) {
-    .navigation li {
-        background-color: $hilightColor;
-
-        a[href] {
-            color: $textColor;
-        }
-    }
-}
-
-// - - - - - - - - - -
-// states
-// - - - - - - - - - -
