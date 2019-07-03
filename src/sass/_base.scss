@@ -1,6 +1,8 @@
 @import 'variables';
 @import 'mixins';
 
+/* BASE */
+
 // - - - - - - - - - -
 // Screen reader only
 // - - - - - - - - - -
@@ -16,8 +18,35 @@
 }
 
 // - - - - - - - - - -
+// Resets
+// - - - - - - - - - -
+html,
+body {
+    width: 100vw; //      viewport width
+    min-height: 100vh; // viewport height
+}
+
+html,
+html * {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 5px;
+}
+
+// - - - - - - - - - -
 // Typography
 // - - - - - - - - - -
 html {
-    font-family: Roboto;
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    line-height: $lineHeight;
+    color: $color;
+    background-color: $backgroundColor;
+}
+
+* {
+    padding-left: $defaultPadding;
+    padding-right: $defaultPadding;
 }
