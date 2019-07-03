@@ -32,7 +32,7 @@
 - https://necolas.github.io/normalize.css/
 - https://meyerweb.com/eric/tools/css/reset/
 - https://codepen.io/markcaron/pen/pPZVWO
-
+- https://alistapart.com/article/responsive-web-design/
 
 ## VS Code Extensions
 - **Auto Rename Tag**, formulahendry.auto-rename-tag
