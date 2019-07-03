@@ -33,6 +33,13 @@
 - https://meyerweb.com/eric/tools/css/reset/
 - https://codepen.io/markcaron/pen/pPZVWO
 - https://alistapart.com/article/responsive-web-design/
+- https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance
+- http://getbem.com/introduction/
+- https://codepen.io/collection/AKkZro/2/
+- https://davidwalsh.name/demo/css-cube.php
+- https://easings.net
+- https://2012.beercamp.nclud.com/
+- https://material.io/design/
 
 ## VS Code Extensions
 - **Auto Rename Tag**, formulahendry.auto-rename-tag
