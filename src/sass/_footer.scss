@@ -1,0 +1,49 @@
+#box.left {
+    margin-left: 0;
+    color: red;
+}
+
+#box:hover {
+    margin-left: 80vw;
+    color: green;
+}
+
+#box {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    background-color: white;
+    //     transition-property: all;
+    //     transition-duration: 1s;
+    //     transition-timing-function: ease-in-out;
+    transition-delay: 1;
+}
+
+#box {
+    animation: myAnimation 10s infinite;
+    transition:
+        margin-left 1s ease-in-out,
+        color 4s ease-out;
+}
+
+@keyframes myAnimation {
+    0% {
+        background-color: black;
+    }
+
+    25% {
+        background-color: red;
+    }
+
+    50% {
+        background-color: green;
+    }
+
+    75% {
+        background-color: yellow;
+    }
+
+    100% {
+        background-color: black;
+    }
+}
