@@ -11,39 +11,61 @@
 </head>
 
 <body>
-    <section>
-        <div class="page">
-            <header class="page-header">
-                header
-            </header>
-            <div class="page-content">
-                <nav class="page-navigation">
-                    <ul>
-                        <li><a href="#">link 1</a></li>
-                        <li><a href="#">link 2</a></li>
-                        <li><a href="#">link 3</a></li>
-                    </ul>
-                </nav>
-                <main class="page-main">
-                    <article>
-                        <h2>Lorem ipsum dolor sit amet.</h2>
-                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate voluptas labore sequi
-                            sit,
-                            iste
-                            necessitatibus nostrum saepe? Et magni quos beatae in voluptatibus totam molestias quaerat
-                            ad
-                            saepe
-                            assumenda, mollitia sunt? Quo temporibus libero blanditiis odit sapiente itaque, consectetur
-                            quae,
-                            aut,
-                            atque voluptate vitae! Reprehenderit itaque blanditiis facere fuga illo.</p>
-                    </article>
-                </main>
-                <aside class="page-aside"><h3>aside</h3></aside>
-            </div>
-            <footer class="page-footer">footer</footer>
-        </div>
-    </section>
+    <div class="page">
+        <header class="page-header">
+                <a href="#main-menu"
+                id="main-menu-toggle"
+                class="menu-toggle"
+                aria-label="Open main menu">
+               <span class="sr-only">Open main menu</span>
+               <span class="fa fa-bars" aria-hidden="true"></span>
+             </a>
+             
+             <h1 class="logo">hamburgers</h1>
+             
+             <nav id="main-menu" class="main-menu" aria-label="Main menu">
+               <a href="#main-menu-toggle"
+                  id="main-menu-close"
+                  class="menu-close"
+                  aria-label="Close main menu">
+                 <span class="sr-only">Close main menu</span>
+                 <span class="fa fa-close" aria-hidden="true"></span>
+               </a>
+               <ul>
+                 <li><a href="#">Products</a></li>
+                 <li><a href="#">About</a></li>
+                 <li><a href="#">Contact</a></li>
+               </ul>
+             </nav>
+             <a href="#main-menu-toggle"
+                class="backdrop"
+                tabindex="-1"
+                aria-hidden="true" hidden></a>
+        </header>
+
+        <nav class="page-navigation">
+            <ul class="navigation">
+                <li><a href="#">Lorem ipsum dolor sit amet consectetur adipisicing elit.</a></li>
+                <li><a href="#">link 2</a></li>
+                <li><a href="#">link 3</a></li>
+            </ul>
+        </nav>
+
+        <main class="page-main">
+            <article>
+                <h2>Lorem ipsum dolor sit amet.</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate voluptas labore sequi
+                    sit, iste necessitatibus nostrum saepe? Et magni quos beatae in voluptatibus totam molestias quaerat
+                    ad saepe assumenda, mollitia sunt? Quo temporibus libero blanditiis odit sapiente itaque,
+                    consectetur
+                    quae, aut, atque voluptate vitae! Reprehenderit itaque blanditiis facere fuga illo.</p>
+            </article>
+        </main>
+
+        <aside class="page-aside">aside</aside>
+
+        <footer class="page-footer">footer</footer>
+    </div>
 </body>
 
 </html>
