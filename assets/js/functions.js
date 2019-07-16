@@ -93,6 +93,7 @@ console.log('add(1, false, 7): ', add(1, false, 7));
  * @return {number}
  */
 function calculateSum(n1, n2, n3) {
+
     var
         _sum = 0,
         _n1 = n1 || 0,
