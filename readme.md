@@ -8,7 +8,7 @@ Lorem **ipsum** dolor sit *amet*.
 
 # Code Snippets
 
-```json
+```javascript
 {
 	"page documention block": {
 		"prefix": "docblock",
