@@ -23,9 +23,19 @@ console.log(window);
 
 !(function () {
     'use strict';
+    // - - - - - - - - - -
+    // DECLARATION
+    // -> ES 5:
+    var
+        a = 42,
+        b = 108;
 
+    // -> ES 6+
+    let c = 512;
 
-
+    // METHODS
+    // CONTROL
+    // - - - - - - - - - -
 })()
 
 
