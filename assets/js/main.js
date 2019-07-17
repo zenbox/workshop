@@ -25,16 +25,37 @@ console.log(window);
     'use strict';
     // - - - - - - - - - -
     // DECLARATION
-    // -> ES 5:
-    var
-        a = 42,
-        b = 108;
+    let
+        formLogin = document.querySelector('#form-login'),
+        loginEmail = document.querySelector('#login-email');
 
-    // -> ES 6+
-    let c = 512;
+    console.dir(formLogin);
 
-    // METHODS
-    // CONTROL
+    // METHODS;
+    function log(m = undefined) {
+        let _m = m;
+
+        if (_m === undefined) return false;
+
+        console.log(_m);
+        return true;
+    }
+
+    function onFormLoginSubmit(event) {
+        event.preventDefault();
+        log('form submitted!')
+    }
+
+    // EVENT-CONTROL
+    formLogin.addEventListener('submit', onFormLoginSubmit);
+    window.addEventListener('load', function () {
+        log('window loaded!');
+    });
+
+    console.dir(window);
+    console.dir(document);
+
+
     // - - - - - - - - - -
 })()
 
