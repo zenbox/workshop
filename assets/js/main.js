@@ -1,12 +1,12 @@
 /**
  * A Main Application
- * 
- * @desc Cum sociis natoque penatibus et magnis dis parturient montes, 
- *       nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis 
- *       parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada 
- *       magna mollis euismod. Duis mollis, est non commodo luctus, 
+ *
+ * @desc Cum sociis natoque penatibus et magnis dis parturient montes,
+ *       nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis
+ *       parturient montes, nascetur ridiculus mus. Etiam porta sem malesuada
+ *       magna mollis euismod. Duis mollis, est non commodo luctus,
  *       nisi erat porttitor ligula, eget lacinia odio sem nec elit.
- * 
+ *
  * @package ApplicationName
  * @module Main
  * @see /other/modules
@@ -19,52 +19,58 @@
  * @copyright 2019 Michael Reichart
  */
 
-console.log(window);
+!(function() {
+  "use strict";
+  // - - - - - - - - - -
+  // DECLARATION
+  // - - - - -
+  let formLogin = document.querySelector("#form-login"),
+    loginEmail = document.querySelector("#login-email");
 
-!(function () {
-    'use strict';
-    // - - - - - - - - - -
-    // DECLARATION
-    let
-        formLogin = document.querySelector('#form-login'),
-        loginEmail = document.querySelector('#login-email');
+  console.dir(formLogin);
 
-    console.dir(formLogin);
+  // - - - - -
+  // METHODS
+  // - - - - -
+  /**
+   * A shorter log function
+   * @param {any} m
+   */
+  function log(m = undefined) {
+    let _m = m;
 
-    // METHODS;
-    function log(m = undefined) {
-        let _m = m;
+    if (_m === undefined) return false;
 
-        if (_m === undefined) return false;
+    console.log(_m);
+    return true;
+  }
 
-        console.log(_m);
-        return true;
-    }
+  /**
+   * The magic event object
+   * @param {Event} event the event facts collection
+   */
+  function onFormLoginSubmit(event) {
+    event.preventDefault();
+    log("form submitted!");
+  }
+  /**
+   * main process
+   */
+  function main() {}
 
-    function onFormLoginSubmit(event) {
-        event.preventDefault();
-        log('form submitted!')
-    }
+  // - - - - -
+  // MAIN-CONTROL
+  // - - - - -
+  window.addEventListener("load", main);
 
-    // EVENT-CONTROL
-    formLogin.addEventListener('submit', onFormLoginSubmit);
-    window.addEventListener('load', function () {
-        log('window loaded!');
-    });
+  // - - - - -
+  // EVENT-CONTROL
+  // - - - - -
+  formLogin.addEventListener("submit", onFormLoginSubmit);
 
-    console.dir(window);
-    console.dir(document);
-
-
-    // - - - - - - - - - -
-})()
-
+  // - - - - - - - - - -
+})();
 
 // Select something from DOM
-document
-    .querySelector('h1')
-    .innerText = 'A New Text';
-
-document
-    .querySelector('p')
-    .innerText = 'A New Text with some more stuff';
+// document.querySelector("h1").innerText = "A New Text";
+// document.querySelector("p").innerText = "A New Text with some more stuff";
