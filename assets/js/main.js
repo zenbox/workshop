@@ -161,14 +161,3 @@
     }
     // - - - - - - - - - -
 })();
-
-// Select something from DOM
-// document.querySelector("h1").innerText = "A New Text";
-// document.querySelector("p").innerText = "A New Text with some more stuff";
-
-
-
-
-
-
-// $('nav').on('click', 'a[href]', onClick)
