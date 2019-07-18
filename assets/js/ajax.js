@@ -15,7 +15,9 @@
     // - - - - - - - - - -
     // DECLARATION
     let
-        url = 'content.html',
+        path = 'assets/snippets/',
+        filename = 'content.html',
+        url = path + filename,
         request = new XMLHttpRequest(),
         data = JSON.stringify({
             email: 'michael.reichart@gfu.net',
@@ -24,19 +26,33 @@
 
     // METHODS
     function onRequestReadyStateChange(event) {
-        //console.log(event);
+        // console.log(event);
 
         switch (request.readyState) {
             default:
                 console.log('no idea what happened...');
-
                 break;
             case 1:
                 console.log('request opened.');
-
                 break;
             case 2:
                 console.log('request sent.');
+                break;
+            case 3:
+                console.log('response is coming.');
+                console.log(request.status)
+                console.log(request.statusText)
+                break;
+            case 4:
+                console.log('response is ready.');
+                console.dir(request.responseText);
+
+                console.clear();
+                console.log(request);
+
+                document
+                    .querySelector('#content')
+                    .innerHTML += request.responseText;
 
                 break;
         }
@@ -46,7 +62,7 @@
 
 
     // CONTROL
-    request.open('POST', url);
+    request.open('GET', url);
     request.send(data);
 
     request.addEventListener('readystatechange', onRequestReadyStateChange);
