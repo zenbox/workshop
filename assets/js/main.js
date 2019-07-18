@@ -120,6 +120,19 @@
                 break
         }
     }
+    /** check the email value before sending to the server
+     * 
+     * @param {Event} event 
+     */
+    function onFormLoginEmailChange(event) {
+        let
+            _pattern = /[a-z]/,
+            _value = event.target.value;
+
+        console.log(_pattern.test(_value));
+
+        // ...
+    }
 
     /** Main process
      * @param none
@@ -153,6 +166,7 @@
     // EVENT-CONTROL
     // - - - - -
     formLogin.addEventListener("submit", onFormLoginSubmit);
+    loginEmail.addEventListener('change', onFormLoginEmailChange);
 
     // event delegation,
     // using querySelectorall
