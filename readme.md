@@ -4,6 +4,8 @@
 - http://html5test.com/
 - https://caniuse.com/
 - https://modernizr.com/
+- https://eloquentjavascript.net/
+- https://github.com/getify/You-Dont-Know-JS
 
 
 # Code Snippets
