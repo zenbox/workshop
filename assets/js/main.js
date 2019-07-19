@@ -24,7 +24,8 @@
     // - - - - - - - - - -
     // DECLARATION
     // - - - - -
-    let formLogin = document.querySelector("#form-login"),
+    let messageIndex = 0,
+        formLogin = document.querySelector("#form-login"),
         loginEmail = document.querySelector("#login-email"),
         navigationGroups = document.querySelectorAll('nav');
 
@@ -54,9 +55,6 @@
             _text = txt || undefined,
             _context = ctx || undefined,
             _textNode = undefined;
-
-        console.log('text');
-
 
         if (_text === undefined || _context === undefined) return false;
 
@@ -93,6 +91,36 @@
         return true;
     }
 
+    /** build a notification
+     * @param {string} m a message string
+     * @param {string} t the message type (as default, error, warning or success)
+     */
+    function setNotification(m, t) {
+        let
+            _message = m || undefined,
+            _type = t || 'message-default';
+
+        if (_message === undefined) return false;
+        messageIndex++;
+
+        setElement('p', {
+            class: _type,
+            id: 'm' + messageIndex
+        }, '.message-container');
+
+        setText(_message, '#m' + messageIndex);
+
+        document.querySelectorAll('[class*=message-]').forEach(
+            function (item, index) {
+                setTimeout(function () {
+                    item.remove()
+                }, 5000);
+            }
+        )
+
+        return true;
+    }
+
     /** The magic event object
      * @param {Event} event the event facts collection
      */
@@ -100,6 +128,30 @@
         // shut up, browser!
         event.preventDefault();
         log("form submitted!");
+
+        // ajax
+        let request = new XMLHttpRequest();
+        request.addEventListener('readystatechange', function () {
+            switch (request.readyState) {
+                default:
+                    setNotification('no idea, what happens');
+                    break;
+                case 1:
+                    setNotification('request opened');
+                    break;
+                case 2:
+                    setNotification('request sent');
+                    break;
+                case 3:
+                    setNotification('response started');
+                    break;
+                case 4:
+                    setNotification('response ready');
+                    break;
+            }
+        });
+        request.open('GET', 'server/server.app.json' + '?email=michael.reichart@gfu.net&password=pommes');
+        request.send();
 
     }
 
@@ -120,6 +172,7 @@
                 break
         }
     }
+
     /** check the email value before sending to the server
      * 
      * @param {Event} event 
