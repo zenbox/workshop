@@ -6,6 +6,9 @@
 - https://modernizr.com/
 - https://eloquentjavascript.net/
 - https://github.com/getify/You-Dont-Know-JS
+- https://www.destroyallsoftware.com/talks/wat
+- https://www.youtube.com/watch?v=gvicrj31JOM
+- http://www.icndb.com/
 
 
 # Code Snippets
