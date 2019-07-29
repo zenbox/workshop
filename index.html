@@ -6,23 +6,24 @@
 </head>
 
 <body>
-    <h1>My First Webpage</h1>
-    <p>Lorem ipsum dolor
-        sit, amet consectetur adipisicing elit.
-        Voluptatem aperiam explicabo quisquam veniam
-        dolorum commodi harum accusamus deserunt?</p>
+    <article>
+        <h1>My First Webpage</h1>
+        <p>Lorem ipsum dolor
+            sit, amet consectetur adipisicing elit.
+            Voluptatem aperiam explicabo quisquam veniam
+            dolorum commodi harum accusamus deserunt?</p>
 
-    <code>
-        <pre>10 REM my first programm
+        <code>
+            <pre>10 REM my first programm
 20 GOTO 30
 30 END</pre></code>
 
-    <h2>An Article Headling</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Laborum, veniam, voluptate ullam omnis minus atque in
-        error incidunt architecto quod sed similique harum
-        reprehenderit?</p>
-
+        <h2>An Article Headling</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Laborum, veniam, voluptate ullam omnis minus atque in
+            error incidunt architecto quod sed similique harum
+            reprehenderit?</p>
+    </article>
     <!--
         using emmet snippets:
         ul>li*3>a[href] 
@@ -41,42 +42,38 @@
         <li>Terzius Lorem ipsum dolor sit.</li>
     </ol>
 
-    <img src="assets/figures/bacon-eggs-320-200.jpg" alt="Roasty bacon with scrumbled eggs. Hm, tasty!"
-        title="Hm, tasty">
-
-    <table>
+    <!-- 
+        table>thead>tr>th*3^^tfoot>tr>td*3^^tbody>tr*3>td*3
+    -->
+    <table border="1">
+        <caption>Table Headline</caption>
         <thead>
             <tr>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td colspan="3">foot</td>
             </tr>
         </tfoot>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Consectetur.</td>
+                <td>Consectetur.</td>
+                <td>Consectetur.</td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>Lorem ipsum.</td>
+                <td>Dolor sit</td>
+                <td>Amet consectetur</td>
             </tr>
         </tbody>
     </table>
+
+    <img src="https://placebear.com/300/200" alt="Roasty bacon with scrumbled eggs. Hm, tasty!" title="Hm, tasty">
 </body>
 
 </html>
