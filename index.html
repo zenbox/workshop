@@ -7,7 +7,38 @@
 
 <body>
     <aside>
+        <!-- login form -->
+        <form action="login.php" method="get">
 
+            <fieldset>
+                <legend>login</legend>
+
+                <label for="login-email">E-Mail</label>
+                <input id="login-email" type="email" name="email" value="michael.reichart@gfu.net" accesskey="e"
+                    tabindex="1" autofocus>
+
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" name="password" value="geheim" accesskey="p" tabindex="2">
+
+                <label>
+                    <input type="checkbox" name="keep" value="true">
+                    keep password
+                </label>
+
+                <label for="login-os">operating system</label>
+                <select id="login-os" name="os">
+                    <option>-- choose from ...</option>
+                    <option value="MacOS">Mac OS</option>
+                    <option value="Windows">Windows</option>
+                    <option value="Unix">Unix/Linux</option>
+                </select>
+
+                <button type="submit">log in</button>
+
+            </fieldset>
+
+        </form>
+        <!-- /login form -->
     </aside>
 
     <main>
@@ -50,7 +81,7 @@
 
         <!-- 
         table>thead>tr>th*3^^tfoot>tr>td*3^^tbody>tr*3>td*3
-    -->
+        -->
         <table border="1">
             <caption>Table Headline</caption>
             <thead>
@@ -79,7 +110,7 @@
             </tbody>
         </table>
 
-        <img src="https://placebear.com/300/200" alt="Roasty bacon with scrumbled eggs. Hm, tasty!" title="Hm, tasty">
+        <img src="https://placekitten.com/500/140" alt="Roasty bacon with scrumbled eggs. Hm, tasty!" title="Hm, tasty">
     </main>
 </body>
 
