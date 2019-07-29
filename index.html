@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" dir="ltr">
+<!-- de-DE, de-AT, de-CH -->
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="max 256 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quo, reprehenderit ea autem fuga dolorem nobis porro magni explicabo, delectus officia quos culpa debitis facilis veniam? Veritatis rem perferendis dolorem.">
+    <meta name="keywords" content="lorem, ipsum, dolor sit, amet, consecetur, consecteturis">
+
     <title>My First Webpage</title>
 </head>
 
@@ -13,27 +20,38 @@
             <fieldset>
                 <legend>login</legend>
 
-                <label for="login-email">E-Mail</label>
-                <input id="login-email" type="email" name="email" value="michael.reichart@gfu.net" accesskey="e"
-                    tabindex="1" autofocus>
+                <div style="display:block;background-color:lightsteelblue">
+                    <label for="login-email">E-Mail</label>
+                    <input id="login-email" type="email" name="email" value="michael.reichart@gfu.net" accesskey="e"
+                        tabindex="1" autofocus>
+                </div>
 
-                <label for="login-password">Password</label>
-                <input id="login-password" type="password" name="password" value="geheim" accesskey="p" tabindex="2">
+                <div style="display:block;background-color:steelblue">
+                    <label for="login-password">Password</label>
+                    <input id="login-password" type="password" name="password" value="geheim" accesskey="p"
+                        tabindex="2">
+                </div>
 
-                <label>
-                    <input type="checkbox" name="keep" value="true">
-                    keep password
-                </label>
+                <div>
+                    <label>
+                        <input type="checkbox" name="keep" value="true">
+                        keep password
+                    </label>
+                </div>
 
-                <label for="login-os">operating system</label>
-                <select id="login-os" name="os">
-                    <option>-- choose from ...</option>
-                    <option value="MacOS">Mac OS</option>
-                    <option value="Windows">Windows</option>
-                    <option value="Unix">Unix/Linux</option>
-                </select>
+                <div>
+                    <label for="login-os">operating system</label>
+                    <select id="login-os" name="os">
+                        <option>-- choose from ...</option>
+                        <option value="MacOS">Mac OS</option>
+                        <option value="Windows">Windows</option>
+                        <option value="Unix">Unix/Linux</option>
+                    </select>
+                </div>
 
-                <button type="submit">log in</button>
+                <div>
+                    <button type="submit">log in</button>
+                </div>
 
             </fieldset>
 
@@ -43,7 +61,7 @@
 
     <main>
         <article>
-            <h1>My First Webpage</h1>
+            <h1 lang="he" dir="rtl">עברית</h1>
             <p>Lorem ipsum dolor
                 sit, amet consectetur adipisicing elit.
                 Voluptatem aperiam explicabo quisquam veniam
