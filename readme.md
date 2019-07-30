@@ -15,7 +15,7 @@
 - https://www.uni-weimar.de/kunst-und-gestaltung/wiki/Farbe
 - https://fonts.google.com
 
-### CSS Selectors
+### CSS Selektoren
 ```css
 body {...}                   -> Elementeselektor
 .my-class {...}              -> Klassenselektor
@@ -24,6 +24,10 @@ a[href] {...}                -> Attributselektor (minified)
 input[type=email] {...}      -> Attributselektor
 [data-my-attr="value"] {...} -> Attributselektor
 
-section#data {...}              <section id="data></section>
+body {}                         <body>
 div.bar {...}                   <div class="bar"></div>
+section#data {...}              <section id="data></section>
+a[href] {...}                   <a href=""></a>
+input[type=email] {...}         <input type="email>
+[data-my-attr="value"] {...}    <p data-my-attr="value"></p>
 ```
