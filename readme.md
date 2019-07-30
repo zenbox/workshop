@@ -16,13 +16,13 @@
 - https://fonts.google.com
 
 ```css
-body {} 				-> Elementeselektor
-.my-class {}			-> Klassenselektor
-#my-id {} 			    -> ID-Selektor
-a[href] 				-> Attributselektor (minified)
-input[type=email] 	    -> Attributselektor
-[data-my-attr="value"]  -> Attributselektor
+body {...}                   -> Elementeselektor
+.my-class {...}              -> Klassenselektor
+#my-id {...}                 -> ID-Selektor
+a[href] {...}                -> Attributselektor (minified)
+input[type=email] {...}      -> Attributselektor
+[data-my-attr="value"] {...} -> Attributselektor
 
-section#data {}  <section id="data></section>
+section#data {}           <section id="data></section>
 div.bar {}
 ```
