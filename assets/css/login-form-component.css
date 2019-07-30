@@ -1,0 +1,23 @@
+/**
+ * LOGIN FORM COMPONENT
+ */
+
+@media screen and (min-width:768px) {
+
+    /* base */
+    .login-form {}
+
+    .login-form fieldset {
+        border: 0;
+    }
+
+    /* layout */
+    .login-form label,
+    .login-form input {
+        display: inline-block;
+        width: 45%;
+    }
+
+    /* states */
+    .login-form input:focus {}
+}
