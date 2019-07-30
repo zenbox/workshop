@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
- @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
 
 /* theme 1 css */
 
@@ -24,6 +24,30 @@ html {
     /* 400 -> regular */
     font-weight: 400;
 }
-h1, h2, h3 {
+
+h1,
+h2,
+h3 {
     font-weight: 100;
+}
+
+/* temp colors */
+.page {
+    background-color: hsla(0, 100%, 50%, 0.5);
+}
+
+.page-header {
+    background-color: hsla(0, 100%, 50%, 0.5);
+}
+
+.page-navigation {
+    background-color: hsla(180, 100%, 50%, 0.5);
+}
+
+.page-content {
+    background-color: hsla(60, 100%, 50%, 0.5);
+}
+
+.page-footer {
+    background-color: hsla(210, 100%, 50%, 0.5);
 }
