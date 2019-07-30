@@ -33,21 +33,21 @@ h3 {
 
 /* temp colors */
 .page {
-    background-color: hsla(0, 100%, 50%, 0.5);
+    background-color: hsla(90, 100%, 50%, 0.05);
 }
 
 .page-header {
-    background-color: hsla(0, 100%, 50%, 0.5);
+    background-color: hsla(0, 100%, 50%, 0.05);
 }
 
 .page-navigation {
-    background-color: hsla(180, 100%, 50%, 0.5);
+    background-color: hsla(180, 100%, 50%, 0.05);
 }
 
 .page-content {
-    background-color: hsla(60, 100%, 50%, 0.5);
+    background-color: hsla(60, 100%, 50%, 0.05);
 }
 
 .page-footer {
-    background-color: hsla(210, 100%, 50%, 0.5);
+    background-color: hsla(210, 100%, 50%, 0.05);
 }
