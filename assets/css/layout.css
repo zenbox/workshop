@@ -6,12 +6,43 @@
  * @version 1.0.0
  */
 
-.page {}
+/* small devices */
+@media screen and (max-width:767px) {
+    .page {
+        display: flex;
+        flex-direction: column;
+    }
 
-.page-header {}
+    .page-navigation {
+        display: none;
+    }
+}
 
-.page-navigation {}
+/* medium devices */
+@media screen and (min-width:768px) {
+    .page {
+        display: flex;
+        flex-direction: column;
+    }
 
-.page-content {}
+    .page-main {
+        display: flex;
+        flex-direction: row;
+    }
 
-.page-footer {}
+    .page-header {
+        width: 100%;
+    }
+
+    .page-navigation {
+        flex-basis: 30%;
+    }
+
+    .page-content {
+        flex-basis: 70%;
+    }
+
+    .page-footer {
+        width: 100%;
+    }
+}
