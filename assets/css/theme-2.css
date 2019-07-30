@@ -1,0 +1,14 @@
+/*
+ * Theme 2
+ *
+ * @author Michael
+ * @since 2019/07/30
+ * @version 1.0.0
+ */
+
+
+/* theme 2 css */
+html {
+    background-color: hsl(90, 20%, 40%);
+    color: white;
+}

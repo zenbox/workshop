@@ -1,0 +1,13 @@
+/*
+ * Theme 1
+ *
+ * @author Michael
+ * @since 2019/07/30
+ * @version 1.0.0
+ */
+
+/* theme 1 css */
+html {
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+}
