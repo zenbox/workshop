@@ -24,6 +24,6 @@ a[href] {...}                -> Attributselektor (minified)
 input[type=email] {...}      -> Attributselektor
 [data-my-attr="value"] {...} -> Attributselektor
 
-section#data {}           <section id="data></section>
-div.bar {}
+section#data {...}              <section id="data></section>
+div.bar {...}                   <div class="bar"></div>
 ```
