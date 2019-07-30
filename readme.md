@@ -11,3 +11,5 @@
 - http://www.csszengarden.com
 - https://placebear.com/
 - https://docs.emmet.io/cheat-sheet/
+
+- https://www.uni-weimar.de/kunst-und-gestaltung/wiki/Farbe
