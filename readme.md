@@ -15,6 +15,7 @@
 - https://www.uni-weimar.de/kunst-und-gestaltung/wiki/Farbe
 - https://fonts.google.com
 
+### CSS Selectors
 ```css
 body {...}                   -> Elementeselektor
 .my-class {...}              -> Klassenselektor
