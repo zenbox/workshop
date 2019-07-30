@@ -16,7 +16,7 @@
 - https://fonts.google.com
 
 ### CSS Selektoren
-```css
+```html
 body {...}                   -> Elementeselektor
 .my-class {...}              -> Klassenselektor
 #my-id {...}                 -> ID-Selektor
