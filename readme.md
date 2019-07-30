@@ -15,8 +15,13 @@
 - https://www.uni-weimar.de/kunst-und-gestaltung/wiki/Farbe
 - https://fonts.google.com
 
+- http://getbem.com
+- http://smacss.com
+- https://material.io
+- https://getbootstrap.com
+
 ### CSS Selektoren
-```html
+```css
 body {...}                   -> Elementeselektor
 .my-class {...}              -> Klassenselektor
 #my-id {...}                 -> ID-Selektor
