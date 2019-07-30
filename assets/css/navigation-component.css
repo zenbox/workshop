@@ -6,10 +6,27 @@
  * @version 1.0.0
  */
 
+@media screen and (max-width:767px) {
+    .small-devices-only {
+        display: inline;
+    }
+}
+
+
+@media screen and (min-width:768px) {
+    .small-devices-only {
+        display: none;
+    }
+}
+
+
 /* base */
 /* <ul class="nav"> */
 
 .nav a[href] {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
     color: white;
     text-decoration: none;
 }
