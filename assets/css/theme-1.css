@@ -6,8 +6,24 @@
  * @version 1.0.0
  */
 
+ @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
+
 /* theme 1 css */
+
+/* colors */
 html {
     background-color: hsl(0, 0%, 20%);
-    color: white;
+    color: whitesmoke;
+}
+
+/* typography */
+html {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    /* 400 -> regular */
+    font-weight: 400;
+}
+h1, h2, h3 {
+    font-weight: 100;
 }
