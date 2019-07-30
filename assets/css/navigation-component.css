@@ -1,0 +1,48 @@
+/*
+ * Navigation Component
+ *
+ * @author Michael
+ * @since 2019/07/30
+ * @version 1.0.0
+ */
+
+/* base */
+/* <ul class="nav"> */
+
+.nav a[href] {
+    color: white;
+    text-decoration: none;
+}
+
+.nav {
+    list-style-type: none;
+    margin-top: 0;
+    padding-left: 0;
+}
+
+
+/* layout */
+.nav li {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}
+
+
+
+/* states */
+/* default state color*/
+.nav li {
+    background-color: hsla(210, 90%, 70%, 0.5);
+}
+
+/* mouseover state color*/
+.nav li:hover {
+    background-color: hsla(220, 90%, 90%, 0.5);
+}
+
+/* click state color*/
+.nav li:active {
+    background-color: hsla(20, 80%, 80%, 0.5);
+}
