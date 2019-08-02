@@ -1,0 +1,48 @@
+/** COMMON THEME
+  *
+  *  @desc common theme styles
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart
+  * @since 2019/08/02
+  * @version 1.0.0
+  * @see i.e. inspired by ...
+  * @license MIT [https://opensource.org/licenses/MIT]
+  */
+
+/** COMPONENT BASE */
+
+/** COMPONENT LAYOUT */
+@media screen {
+    body {
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width:768px) {
+    body {
+        overflow: hidden;
+    }
+}
+
+/** COMPONENT THEME */
+
+html {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+body {
+    background: gray;
+    background-image: url(https://picsum.photos/1024/768);
+    background-size: cover;
+    background-blend-mode: multiply;
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
