@@ -46,7 +46,8 @@
     padding-bottom: 0.25rem;
 }
 
-
+.nav-vertical   li {display : block;}
+.nav-horizontal li {display: inline-block;}
 
 /* states */
 /* default state color*/

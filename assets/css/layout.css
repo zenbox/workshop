@@ -1,48 +1,27 @@
-/*
- * The Page Layout
- *
- * @author Michael
- * @since 2019/07/30
+/**
+ * layout styles for theme
+ * @desc 
+ * @author Michael <michael.reichart@gfu.net> 
  * @version 1.0.0
+ * @since 2019/09/24
  */
 
-/* small devices */
-@media screen and (max-width:767px) {
-    .page {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .page-navigation {
-        display: none;
-    }
+.page {
+    display: flex;
+    flex-direction: column;
 }
 
-/* medium devices */
-@media screen and (min-width:768px) {
-    .page {
-        display: flex;
-        flex-direction: column;
-    }
+.content {
+    display: flex;
+    flex-direction: row;
+}
 
-    .page-main {
-        display: flex;
-        flex-direction: row;
-    }
+.content nav {
+    display: block;
+    width: 33%;
+}
 
-    .page-header {
-        width: 100%;
-    }
-
-    .page-navigation {
-        flex-basis: 30%;
-    }
-
-    .page-content {
-        flex-basis: 70%;
-    }
-
-    .page-footer {
-        width: 100%;
-    }
+.content main {
+    display: block;
+    width: 67%;
 }

@@ -1,14 +1,13 @@
-/*
- * a CSS comment
- *
- * @author Michael
- * @since 2019/07/30
+/**
+ * typographics
+ * @desc 
+ * @author Michael <michael.reichart@gfu.net> 
  * @version 1.0.0
+ * @since 2019/09/24
  */
 
-/* element selector */
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap');
 
-/* base css */
 html,
 html * {
     box-sizing: border-box;
@@ -16,41 +15,22 @@ html * {
 
 html {
     font-family: sans-serif;
-    font-size: 14px;
-    /* 1rem */
-    line-height: 1.5;
+    font-size: 16px;
+    line-height: 1.2;
 }
 
-
-pre {
-    font-family: 'Courier New', Courier, monospace;
+html {
+    font-family: Roboto, Arial, sans-serif;
 }
 
-
-h1 {
-    font-size: 2rem;
-}
-
-h2 {
-    font-size: 1.8rem;
-}
-
+h1,
+h2,
 h3 {
-    font-size: 1.6rem;
+    font-weight: 100;
 }
 
-h4 {
-    font-size: 1.4rem;
-}
-
-h5 {
-    font-size: 1.2rem;
-}
-
+h4,
+h5,
 h6 {
-    font-size: 1.0rem;
-}
-
-p {
-    font-size: 1rem;
+    font-weight: 700
 }

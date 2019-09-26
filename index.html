@@ -1,169 +1,52 @@
 <!DOCTYPE html>
-<html lang="en-US" dir="ltr">
-<!-- de-DE, de-AT, de-CH -->
+<html lang="de-DE">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index, follow">
-    <meta name="description"
-        content="max 256 - Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum quo, reprehenderit ea autem fuga dolorem nobis porro magni explicabo, delectus officia quos culpa debitis facilis veniam? Veritatis rem perferendis dolorem.">
-    <meta name="keywords" content="lorem, ipsum, dolor sit, amet, consecetur, consecteturis">
-
-    <title>My First Webpage</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/layout.css">
-
-    <link rel="stylesheet" href="assets/css/navigation-component.css">
-    <link rel="stylesheet" href="assets/css/login-form-component.css">
-
-    <link rel="stylesheet" href="assets/css/theme-1.css">
+    <link rel="stylesheet" href="assets/css/skin.css">
 </head>
 
 <body>
-
     <div class="page">
+        <header>
+            <p>my company</p>
+        </header>
+        <div class="content">
+            <nav>
+                <ul>
+                    <li>page 1</li>
+                    <li>page 2</li>
+                    <li>page 3</li>
+                </ul>
+            </nav>
 
-        <div class="page-header">
-            <nav class="small-devices-only"><span class="fa fa-bars fa-2x"></span></nav>
-            <p>company name</p>
+            <main>
+                <article>
+                    <h1>Lorem headline ipsum dolor sit</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, ipsum. Quibusdam saepe
+                        recusandae
+                        dolorum consequuntur illum?
+                    </p>
+                </article>
+            </main>
         </div>
 
-        <div class="page-main">
-            <div class="page-navigation">
-                <!-- - - - - -->
-                <aside>
-                    <!-- login form -->
-                    <form action="login.php" method="get" class="login-form">
+        <footer class="page-footer">
+            <p>&copy; <time datetime="2019">2019</time></p>
+            <nav>
+                <ul>
+                    <li>Imprint</li>
+                    <li>DSGVO</li>
+                    <li>Print</li>
+                </ul>
+            </nav>
 
-                        <fieldset>
-                            <legend>login</legend>
-
-                            <div>
-                                <label for="login-email">E-Mail</label>
-                                <input id="login-email" type="email" name="email" value="michael.reichart@gfu.net"
-                                    accesskey="e" tabindex="1" autofocus>
-                            </div>
-
-                            <div>
-                                <label for="login-password">Password</label>
-                                <input id="login-password" type="password" name="password" value="geheim" accesskey="p"
-                                    tabindex="2">
-                            </div>
-
-                            <div>
-                                <label>
-                                    <input type="checkbox" name="keep" value="true">
-                                    keep password
-                                </label>
-                            </div>
-
-                            <div>
-                                <label for="login-os">operating system</label>
-                                <select id="login-os" name="os">
-                                    <option>-- choose from ...</option>
-                                    <option value="MacOS">Mac OS</option>
-                                    <option value="Windows">Windows</option>
-                                    <option value="Unix">Unix/Linux</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <button type="submit">log in</button>
-                            </div>
-
-                        </fieldset>
-
-                    </form>
-                    <!-- /login form -->
-                </aside>
-                <!-- - - - - -->
-                <!--
-        using emmet snippets:
-        ul>li*3>a[href] 
-        @see https://docs.emmet.io/cheat-sheet/
-        -->
-                <nav>
-                    <!-- navigation component -->
-                    <ul class="nav">
-                        <li><a href="https://www.w3.org/TR/html53/">W3 HTML5 Spezifikation</a></li>
-                        <li><a href="http://html5test.com">HTML5 Test</a></li>
-                        <li><a href="http://caniuse.com">Can i use?</a></li>
-                    </ul>
-                    <!-- /navigation component -->
-                </nav>
-
-                <!-- - - - - -->
-            </div>
-            <div class="page-content">
-                <!-- - - - - - -->
-                <main>
-                    <article>
-                        <h1 style="font-size: 3rem;">Headline ipsum dolor sit</h1>
-                        <p id="my-id" class="bigger">Lorem ipsum dolor
-                            sit, amet consectetur adipisicing elit.
-                            Voluptatem aperiam explicabo quisquam veniam
-                            dolorum commodi harum accusamus deserunt?</p>
-
-                        <code>
-                            <pre>10 REM my first programm
-            20 GOTO 30
-            30 END</pre></code>
-
-                        <h2>An Article Heading</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Laborum, veniam, voluptate ullam omnis minus atque in
-                            error incidunt architecto quod sed similique harum
-                            reprehenderit?</p>
-                    </article>
-
-                    <ol type="A">
-                        <li>Primus Lorem, ipsum dolor.</li>
-                        <li>Secundus, Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Terzius Lorem ipsum dolor sit.</li>
-                    </ol>
-
-                    <!-- 
-                    table>thead>tr>th*3^^tfoot>tr>td*3^^tbody>tr*3>td*3
-                    -->
-                    <table border="1">
-                        <caption>Table Headline</caption>
-                        <thead>
-                            <tr>
-                                <th>Column 1</th>
-                                <th>Column 2</th>
-                                <th>Column 3</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <td colspan="3">foot</td>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            <tr>
-                                <td>Consectetur.</td>
-                                <td>Consectetur.</td>
-                                <td>Consectetur.</td>
-                            </tr>
-                            <tr>
-                                <td>Lorem ipsum.</td>
-                                <td>Dolor sit</td>
-                                <td>Amet consectetur</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <img src="https://placekitten.com/500/140" alt="Roasty bacon with scrumbled eggs. Hm, tasty!"
-                        title="Hm, tasty">
-                </main>
-                <!-- - - - - - -->
-            </div>
-        </div>
-
-        <div class="page-footer">FOOTER</div>
-
+        </footer>
     </div>
 </body>
 
