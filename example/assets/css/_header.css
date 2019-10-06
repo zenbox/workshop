@@ -1,0 +1,38 @@
+/** HEADER STYLES
+  *
+  *  @desc the page header element 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart
+  * @since 2019/08/02
+  * @version 1.0.0
+  * @license MIT [https://opensource.org/licenses/MIT]
+  */
+
+/** COMONENT BASE */
+
+/** COMPONTENT LAYOUT */
+.logo {
+    width: 50%;
+}
+
+/** COMPONTEN THEME */
+.logo {
+    color: rgb(240, 240, 240);
+
+    font-weight: 900;
+    font-size: 22px;
+
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
