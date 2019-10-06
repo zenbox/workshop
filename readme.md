@@ -5,7 +5,7 @@
 - Auf Xing und LinkedIn unter Michael Reichart
 
 ## Foliensatz
-Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **Javascript kompakt.pdf**. Dort finden Sie zum Nachlesen, was im des Seminars erläutert wird. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf**, **CSS - kompakt.pdf**, **Javascript kompakt.pdf** und **jQuery Basics.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
 ## Links zu CSS
 - https://meyerweb.com/eric/tools/css/reset/
