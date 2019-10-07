@@ -17,12 +17,31 @@
   * @license MIT [https://opensource.org/licenses/MIT]
   */
 
-/** COMPONENT BASE */
+/** THEME BASE */
+@media screen {
 
-/** COMPONENT LAYOUT */
+    html,
+    html * {
+        box-sizing: border-box;
+    }
+}
+
+/** THEME LAYOUT */
 @media screen {
     body {
         height: 100vh;
+
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main header,
+    main article {
+        max-width: 980px;
     }
 }
 
@@ -32,10 +51,15 @@
     }
 }
 
-/** COMPONENT THEME */
+/** THEME COLOR AND FONT */
 
 html {
-    font-family: 'Noto Sans JP', sans-serif;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    letter-spacing: 0.025rem;
+    line-height: 1.38;
+    color: black;
 }
 
 body {
@@ -45,4 +69,50 @@ body {
     background-blend-mode: multiply;
 }
 
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+/* THEME TYPOGRAPHY */
+@media screen {
+    main {
+        max-width: 980px;
+        /* background */
+        background-color: hsla(0, 100%, 100%, 0.65);
+    }
+
+    main header {
+        /* paddings */
+        padding: 1rem;
+    }
+
+    main article,
+    .two-columns {
+        /* columns */
+        column-count: 2;
+        column-width: 16rem;
+        column-gap: 1rem;
+
+        /* paddings */
+        padding: 1rem;
+    }
+
+    .single-column {
+        /* columns */
+        column-count: 1;
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 100;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:768px) {}
+
+/** THEME CHANGING STATES (BEHAVIOUR) */
+article:hover,
+h1:hover,
+p:hover {
+    background-color: hsla(210, 50%, 50%, 0.15);
+}

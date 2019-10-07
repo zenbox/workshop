@@ -20,6 +20,10 @@
     .navbar li {
         list-style-type: none;
     }
+
+    .navbar-parent {
+        font-family: 'Noto Sans JP', sans-serif;
+    }
 }
 
 @media screen and (max-width:768px) {
