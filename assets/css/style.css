@@ -1,4 +1,19 @@
-html {
-    background-color: black;
-    color : white;
+/* element selector */
+#myId {
+    background-color: red;
+}
+
+
+html,
+html * {
+    box-sizing: border-box;
+}
+
+/* class selector */
+.nav-horizontal li {
+    display: inline;
+}
+
+body {
+    background-color: green !important;
 }
