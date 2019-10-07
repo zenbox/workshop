@@ -6,48 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Documenttitle - Company</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <h1>Headline ipsum dolor sit</h1>
-    <h2>Second Headline </h2>
-    <p>Lorem <strong>ipsum dolor</strong> sit amet consectetur, adipisicing elit. Ab dicta sint voluptatem veniam error
-        magnam excepturi quam eveniet?</p>
-    <p>Lorem <em>ipsum dolor</em> sit amet consectetur, adipisicing elit. Ab dicta sint voluptatem veniam error magnam
-        excepturi quam eveniet?</p>
-    <p>Lorem <code>ipsum dolor</code> sit amet consectetur, adipisicing elit. Ab dicta sint voluptatem veniam error
-        magnam excepturi quam eveniet?</p>
 
-    <img src="https://picsum.photos/980/90" alt=" ">
-    <a href="http://google.de" target="_new">Google</a>
+    <div class="page-header">
+        <header>
+            <!-- -->
+            <nav>
+                <ul class="nav-horizontal">
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="../subdir/work.html">Work</a></li>
+                    <li><a href="contact">Contact</a></li>
+                    <li><a href="imprint.html">Imprint</a></li>
+                </ul>
+            </nav>
+            <!-- -->
+        </header>
+    </div>
+    <div class="page-content">
+        <main>
+            <!-- -->
+            <article id="teaser">
+                <h1>Headline ipsum dolor sit</h1>
+                <h2>Second Headline </h2>
+                <p>Lorem <strong>ipsum dolor</strong> sit amet <span>consectetur</span>, adipisicing elit. Ab dicta sint
+                    voluptatem
+                    veniam error
+                    magnam excepturi quam eveniet?</p>
+                <p>Lorem <em>ipsum dolor</em> sit amet consectetur, adipisicing elit. Ab dicta sint voluptatem veniam
+                    error magnam
+                    excepturi quam eveniet?</p>
+                <p>Lorem <code>ipsum dolor</code> sit amet consectetur, adipisicing elit. Ab dicta sint voluptatem
+                    veniam error
+                    magnam excepturi quam eveniet?</p>
 
-    <ol>
-        <li>list point 1</li>
-        <li>list point 2</li>
-        <li>list point 3</li>
-    </ol>
-    <!-- 
-    comment, multiline
-    if good 
--->
+                <img src="https://picsum.photos/980/90" alt=" ">
+                <a href="http://google.de" target="_new">Google</a>
 
-    <table>
-        <tr>
-            <td>Lorem ipsum dolor sit.</td>
-            <td>Lorem ipsum dolor sit.</td>
-            <td>Lorem ipsum dolor sit.</td>
-        </tr>
-        <tr>
-            <td>Lorem ipsum dolor sit.</td>
-            <td>Lorem ipsum dolor sit.</td>
-            <td>Lorem ipsum dolor sit.</td>
-        </tr>
-        <tr>
-            <td>Lorem ipsum dolor sit.</td>
-            <td>Lorem ipsum dolor sit.</td>
-            <td>Lorem ipsum dolor sit.</td>
-        </tr>
-    </table>
+                <ol>
+                    <li>list point 1</li>
+                    <li>list point 2</li>
+                    <li>list point 3</li>
+                </ol>
+                <!-- 
+                    comment, multiline
+                    if good 
+                -->
+
+                <table>
+                    <tr>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                    </tr>
+                    <tr>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                    </tr>
+                    <tr>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                    </tr>
+                </table>
+            </article>
+
+            <article id="news">
+                <h2>Another headline ipsum dolor</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officiis a cum minima nostrum amet!</p>
+            </article>
+            <!-- -->
+        </main>
+        <aside>aside content</aside>
+    </div>
+    <div class="page-footer">
+        <footer>footer content</footer>
+    </div>
 </body>
 
 </html>
