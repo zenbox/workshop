@@ -5,25 +5,25 @@
   *        Small devices:        @media screen and (max-width:768px) {}
   *
   * @package Webapplication
-  * @module i.e. header
+  * @module common
   * @author Michael Reichart
   * @since 2019/08/02
   * @version 1.0.0
   * @license MIT [https://opensource.org/licenses/MIT]
   */
 
-/** COMONENT BASE */
+/** COMMON BASE */
 
-/** COMPONTENT LAYOUT */
+/** COMMON LAYOUT */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/** COMPONTEN THEME */
+/** COMMON THEME */
 html {
   font-size: 14px;
 }
 
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+/** COMMON CHANGING STATES (BEHAVIOUR) */

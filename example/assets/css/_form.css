@@ -1,6 +1,6 @@
-/** HEADER STYLES
+/** FORM STYLES
   *
-  *  @desc the page header element 
+  *  @desc any forms 
   *        All devices fallback: @media screen {}
   *        Small devices:        @media screen and (max-width:768px) {}
   *
@@ -9,7 +9,7 @@
   *        i.e. SUB COMPONENT
   *
   * @package Webapplication
-  * @module i.e. header
+  * @module  content
   * @author Michael Reichart
   * @since 2019/08/02
   * @version 1.0.0

@@ -16,14 +16,23 @@
   * @license MIT [https://opensource.org/licenses/MIT]
   */
 
-/** FIGURE BASE */
+/** COMONENT BASE */
 
-/** FIGURE LAYOUT */
-article figure img {
-  width: calc(100%);
-
+/** COMPONTENT LAYOUT */
+.logo {
+  width: 50%;
 }
 
-/** FIGURE THEME */
+/** COMPONTEN THEME */
+.logo {
+  color: rgb(240, 240, 240);
 
-/** FIGURE CHANGING STATES (BEHAVIOUR) */
+  font-weight: 900;
+  font-size: 22px;
+
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
