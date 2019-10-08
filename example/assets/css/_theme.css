@@ -41,6 +41,7 @@
 
     main header,
     main article {
+        width: 100%;
         max-width: 980px;
     }
 }
@@ -72,6 +73,7 @@ body {
 /* THEME TYPOGRAPHY */
 @media screen {
     main {
+        width: 100%;
         max-width: 980px;
         /* background */
         background-color: hsla(0, 100%, 100%, 0.65);
