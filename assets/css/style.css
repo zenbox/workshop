@@ -1,19 +1,17 @@
-/* element selector */
-#myId {
-    background-color: red;
-}
+/* normalize by Nicolas Gallagher*/
+@import url(_normalize.css);
 
+/* common base */
+@import url(_base.css);
 
-html,
-html * {
-    box-sizing: border-box;
-}
+/* header component */
+@import url(_header.css);
+/* navigation component */
+@import url(_navbar.css);
+/* loginform component */
+@import url(_form.css);
+/* figure component */
+@import url(_figures.css);
 
-/* class selector */
-.nav-horizontal li {
-    display: inline;
-}
-
-body {
-    background-color: green !important;
-}
+/* theme */
+@import url(_theme.css);

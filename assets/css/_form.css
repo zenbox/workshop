@@ -1,0 +1,53 @@
+/** FORM STYLES
+  *
+  *  @desc any forms 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module  content
+  * @author Michael Reichart
+  * @since 2019/08/02
+  * @version 1.0.0
+  * @license MIT [https://opensource.org/licenses/MIT]
+  */
+
+/** COMONENT BASE */
+
+/** COMPONTENT LAYOUT */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+fieldset {
+    padding: 1rem;
+    max-width: 850px;
+    background-color: hsla(0, 0%, 80%, 0.6)
+}
+
+legend {
+    display: none;
+}
+
+label,
+input {
+    display: block;
+}
+
+input,
+button {
+    height: 2rem;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+
+/** COMPONTEN THEME */
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
