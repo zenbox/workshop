@@ -39,7 +39,6 @@
     }
 
     function loadData(url, target) {
-
         // AJAX:
         let request = new XMLHttpRequest();
 
@@ -82,7 +81,7 @@
     //     myAnchors[i].addEventListener('click', onAnchorClick);
     // }
     // Delegated Event
-    myNavBar.addEventListener('click', onAnchorClick);
+    // myNavBar.addEventListener('click', onAnchorClick);
     // - - - - - - - - - -
 }())
 
@@ -94,6 +93,21 @@ jQuery('a[href]').on('click', function (event) {
 
 // Delegated Event
 jQuery('.navbar').on('click', 'a[href]', function (event) {
+    // DECLARATION
+    let request = undefined;
+    let url = event.target.href;
+    let target = event.target.dataset.target;
+
+    // CONTROL
     event.preventDefault();
-    console.dir(event);
+    request = jQuery.ajax(url);
+    request.done(function (response) {
+        console.log('done');
+        jQuery(target).html(response);
+    }).fail(function () {
+        console.log('fail');
+    }).always(function () {
+        console.log('always');
+    });
+
 });
