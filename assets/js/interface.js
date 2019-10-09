@@ -38,8 +38,7 @@
         }
     }
 
-    function loadData(url) {
-        console.log('loading ...');
+    function loadData(url, target) {
 
         // AJAX:
         let request = new XMLHttpRequest();
@@ -63,7 +62,7 @@
                 case 4:
                     console.dir(request);
                     console.log('response next data + ok.');
-                    changeContent(request.responseText);
+                    changeContent(request.responseText, target);
                     break;
             }
 
@@ -74,8 +73,8 @@
         request.send();
     }
 
-    function changeContent(content) {
-        document.querySelector(contentTargetSelector).innerHTML = content;
+    function changeContent(content, target) {
+        document.querySelector(target).innerHTML = content;
     }
 
     // EVENT LISTENER (CONTROL)
