@@ -11,18 +11,34 @@
  * @license MIT {https://opensource.org/licenses/MIT}
  * @copyright (c) 2019 Michael Reichart, Cologne
  */
-(! function () {
+!(function () {
     'use strict';
     // - - - - - - - - - -
+    // DECLARATION, INITIALISATION
+    let myAnchors = document.querySelectorAll('a[href]');
 
-
-    // EVENT LISTENER (CONTROL)
-    document.querySelector('a[href]').addEventListener('click', function (event) {
+    // FUNCTIONS
+    function onAnchorClick(event) {
         // stop the browser action
         event.preventDefault();
-
         console.dir(event);
+    }
 
-    });
+    // EVENT LISTENER (CONTROL)
+    for (let i = 0; i < myAnchors.length; i += 1) {
+        myAnchors[i].addEventListener('click', onAnchorClick);
+    }
     // - - - - - - - - - -
 }())
+
+// jQuery Code
+jQuery('a[href]').on('click', function (event) {
+    event.preventDefault();
+    console.dir(event);
+});
+
+// Delegated Event
+jQuery('.navbar').on('click', 'a[href]', function (event) {
+    event.preventDefault();
+    console.dir(event);
+});
