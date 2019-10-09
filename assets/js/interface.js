@@ -16,18 +16,27 @@
     // - - - - - - - - - -
     // DECLARATION, INITIALISATION
     let myAnchors = document.querySelectorAll('a[href]');
+    let myNavBar = document.querySelector('.navbar');
 
     // FUNCTIONS
     function onAnchorClick(event) {
         // stop the browser action
         event.preventDefault();
-        console.dir(event);
+        switch (event.target.tagName) {
+            case 'A':
+                console.dir(event.target);
+                break;
+            default:
+                break;
+        }
     }
 
     // EVENT LISTENER (CONTROL)
     for (let i = 0; i < myAnchors.length; i += 1) {
         myAnchors[i].addEventListener('click', onAnchorClick);
     }
+    // Delegated Event
+    myNavBar.addEventListener('click', onAnchorClick);
     // - - - - - - - - - -
 }())
 
