@@ -1,0 +1,145 @@
+/**
+ * Grundlagen für Stylesheets
+ * @author Michael
+ * @since 2019/10/31
+ * @version 1.0.0
+ * ...
+ */
+
+/* Import eines Iconzeichensatzes */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css);
+
+/* Selektoren, Regeln, Deklarationen */
+
+/* Elemente Selektor */
+html {
+    font-family: sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    color: black;
+    /* font: serif 12px/15px green; */
+
+    background-color: white;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+p::before,
+p::after {
+    content: "*";
+}
+
+/* besser  Fontawesome importieren */
+.fas {
+    font-family: "FontAwesome Solid";
+}
+
+.fa-search::before {
+    content: "0xc4";
+}
+
+/* responsiv mit Media Queries */
+/* from mobile until tablet */
+@media screen and (min-width:480px) and (max-width:767px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+
+
+
+/* Weitere Selektoren 
+ * Klassen, Attribute, Pseudoklassen
+ */
+.my-class {
+    color: steelblue;
+}
+
+a[href] {
+    color: orange;
+}
+
+input[type=search] {
+    border-width: 2px;
+    border-style: solid;
+    border-color: steelblue;
+    border-radius: 11px;
+    width: 150px;
+    height: 20px;
+}
+
+a[href]:visited {
+    color: grey;
+}
+
+a[href]:hover {
+    color: coral;
+}
+
+a[href]:active {
+    color: red;
+}
+
+/* ID Selektor */
+#my-id {}
+
+
+
+/* Selektorenketten */
+/* Child und Descendant Selektor: 
+    
+    nav
+      
+        ul (child of div)
+          li (child of ul, descendant of nav)
+            a[href]
+          li
+            a[href]
+          li
+            ul
+             li submenu
+             ...
+
+
+*/
+
+.my-li-class {}
+
+nav ul ul>li {
+    border: 2px dashed blue;
+    margin-bottom: 0.25rem;
+}
+
+nav>ul,
+nav>ol {}
+
+/* Genereller Selektor */
+nav>* {}
+
+/* Sibling Selektoren */
+/*
+  nav
+    ul
+      li 
+      li (ist ein immediate following sibling des ersten li)
+      li (ist sibling vom andern li)
+      li (ist sibling vom andern li)
+*/
+/* immediate following sibling */
+ul li+li {}
+
+/* Erster Absatz nach der Überschrift */
+h1+p {}
+
+/* general following sibling */
+/* Alle nachfolgenden Absätze einer h1 auf gleicher Ebene */
+h1~p {
+    background-color : lightsteelblue;
+}

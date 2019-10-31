@@ -1,101 +1,89 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="de-DE">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Documenttitle - Company</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <title>CSS Einführung</title>
+
+    <link rel="stylesheet" href="assets/css/basics.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/navigation.css">
 </head>
 
-<body id="myId">
-    <div class=" page-header">
-        <!-- a navbar component -->
-        <header class="navbar-parent">
-            <div class="logo">
-                <h4>Logo</h4>
+<body>
+    <section>
+        <div class="page">
+            <div class="page-header">
+                <header>
+                    <p>meine Firma</p>
+                </header>
             </div>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="work.html" data-target="#teaser">Work</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="imprint.html">Imprint</a></li>
-                </ul>
-                <div class="burger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
+
+            <div class="page-content">
+                <div class="content-navigation">
+
+                    <!-- a navigation component -->
+                    <nav id="my-id">
+                        <ul class="nav-vertical">
+                            <li><a href="#">Link 1</a></li>
+                            <li><a href="#">Link 2</a></li>
+                            <li><a href="#">Link 3</a></li>
+                        </ul>
+                    </nav>
+                    <!-- /a navigation component -->
+
                 </div>
-            </nav>
-        </header>
-        <!-- /a navbar component -->
-    </div>
-    <div class="page-content">
-        <main>
-            <!-- -->
-            <article id="teaser">
-                <h1>Headline ipsum dolor sit</h1>
-                <h2>Second Headline </h2>
-                <p>Lorem <strong>ipsum dolor</strong> sit amet <span>consectetur</span>, adipisicing elit. Ab dicta sint
-                    voluptatem
-                    veniam error
-                    magnam excepturi quam eveniet?</p>
-                <p>Lorem <em>ipsum dolor</em> sit amet consectetur, adipisicing elit. Ab dicta sint voluptatem veniam
-                    error magnam
-                    excepturi quam eveniet?</p>
-                <p>Lorem <code>ipsum dolor</code> sit amet consectetur, adipisicing elit. Ab dicta sint voluptatem
-                    veniam error
-                    magnam excepturi quam eveniet?</p>
 
-                <img src="https://picsum.photos/948/90" alt=" ">
-                <a href="http://google.de" target="_new">Google</a>
+                <div class="content-main">
+                    <main>
+                        <a name="content"></a>
+                        <p>pretext</p>
+                        <h1>CSS Einführung</h1>
+                        <p class="my-class">Lorem neuer Text ipsum dolor sit amet, consectetur adipisicing elit. Minima
+                            maxime
+                            exercitationem officia dolorum
+                            fugiat dicta nostrum tempore cupiditate.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim libero non consectetur?</p>
 
-                <ol>
-                    <li>list point 1</li>
-                    <li>list point 2</li>
-                    <li>list point 3</li>
-                </ol>
-                <!-- 
-                    comment, multiline
-                    if good 
-                -->
+                        <ul>
+                            <li>Eine Zeile</li>
+                            <li>Zwei Zeilen</li>
+                            <li>Dritte Zeile</li>
+                        </ul>
 
-                <table>
-                    <tr>
-                        <td>Lorem ipsum dolor sit.</td>
-                        <td>Lorem ipsum dolor sit.</td>
-                        <td>Lorem ipsum dolor sit.</td>
-                    </tr>
-                    <tr>
-                        <td>Lorem ipsum dolor sit.</td>
-                        <td>Lorem ipsum dolor sit.</td>
-                        <td>Lorem ipsum dolor sit.</td>
-                    </tr>
-                    <tr>
-                        <td>Lorem ipsum dolor sit.</td>
-                        <td>Lorem ipsum dolor sit.</td>
-                        <td>Lorem ipsum dolor sit.</td>
-                    </tr>
-                </table>
-            </article>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates laudantium nihil vero
+                            ipsa culpa et esse
+                            pariatur. Cum fuga atque omnis culpa. Consequatur, non!</p>
 
-            <article id="news">
-                <h2>Another headline ipsum dolor</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id officiis a cum minima nostrum amet!</p>
-            </article>
-            <!-- -->
-        </main>
-        <aside>aside content</aside>
-    </div>
-    <div class="page-footer">
-        <footer>footer content</footer>
-    </div>
+                    </main>
+                </div>
 
-    <script src="lib/jquery-3.4.1.js"></script>
-    <script src="assets/js/interface.js"></script>
+                <div class="content-aside">
+                    <aside>
+                        <form action="" method="get">
+                            <fieldset>
+                                <legend>Suchen auf dieser Seite</legend>
+                                <label for="search">search</label>
+                                <i class="fas fa-search"></i><input type="search" type="search" name="search"
+                                    id="search">
+                                <button type="submit">suchen</button>
+                            </fieldset>
+                        </form>
+                    </aside>
+                </div>
+            </div>
+            <div class="page-footer">
+                <footer>
+                    <address>
+                        &copy; 2019 Michael
+                    </address>
+                </footer>
+            </div>
+        </div>
+    </section>
 
 </body>
 
