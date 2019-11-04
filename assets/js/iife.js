@@ -37,18 +37,16 @@
         return _a + _b + _c;
     }
 
-    function main() {
+    function _main() {
         // publish the add function
-        if (!window.Autark) window.Autark = {} || window.Autark;
+        window.Autark = {} || window.Autark;
         window.Autark.add = _add;
     }
 
     // - - - - -
     // CONTROL
     // - - - - -
-    main();
+    _main();
 
     // - - - - - - - - - -
 }());
-
-console.log(window.Autark.add(13, 27));
