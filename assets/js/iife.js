@@ -1,6 +1,7 @@
-/** Immediate Invoked Function Expression
+/** Module-Block Pattern
  *
- *  @desc Scoped programming
+ *  @desc Scoped programming with an 
+ *        Immediate Invoked Function Expression
  *
  * @package Webapplication
  * @module 
@@ -15,8 +16,39 @@
 !(function () {
     'use strict';
     // - - - - - - - - - -
+    // - - - - -
+    // DECLARATION
+    // - - - - -
     var m = 42; // non declared variables to upper scope!
+
+    // - - - - -
+    // FUNCTIONS
+    // - - - - -
+    function _add(a, b) {
+        // ES5:  using a default operator for default values
+        var _a = a || 0;
+        var _b = b || 0;
+        var _c = c || 0;
+
+        if (typeof (_a) !== 'number') return NaN;
+        if (typeof (_b) !== 'number') return NaN;
+        if (typeof (_c) !== 'number') return NaN;
+
+        return _a + _b + _c;
+    }
+
+    function main() {
+        // publish the add function
+        if (!window.Autark) window.Autark = {} || window.Autark;
+        window.Autark.add = _add;
+    }
+
+    // - - - - -
+    // CONTROL
+    // - - - - -
+    main();
+
     // - - - - - - - - - -
 }());
 
-console.log(window.m);
+console.log(window.Autark.add(13, 27));
