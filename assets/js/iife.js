@@ -19,13 +19,12 @@
     // - - - - -
     // DECLARATION
     // - - - - -
-    var m = 42; // non declared variables to upper scope!
+    var _m = 42; // non declared variables to upper scope!
 
     // - - - - -
     // FUNCTIONS
     // - - - - -
-    function _add(a, b) {
-        // ES5:  using a default operator for default values
+    function _add(a, b, c) {
         var _a = a || 0;
         var _b = b || 0;
         var _c = c || 0;
@@ -38,9 +37,10 @@
     }
 
     function _main() {
-        // publish the add function
-        window.Autark = {} || window.Autark;
-        window.Autark.add = _add;
+        // publish a module
+        window.newModule = {} || window.newModule;
+        // publish functions
+        window.newModule.add = _add;
     }
 
     // - - - - -
@@ -48,5 +48,11 @@
     // - - - - -
     _main();
 
+
     // - - - - - - - - - -
 }());
+
+// windows controls the main 
+window.onload = function () {
+    console.log(window.newModule.add(5, 5));
+}
