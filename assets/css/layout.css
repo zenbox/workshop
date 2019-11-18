@@ -1,0 +1,90 @@
+/**
+ * My Template CSS
+ *
+ * @author Michael
+ * @sinsce 2019-11-09
+ * @version 1.0.0
+ */
+
+/* base styles for the layout*/
+html,
+html * {
+    box-sizing: border-box;
+}
+
+/* layout styles */
+/* fallback for all devices */
+@media all {
+    body {
+        display: block;
+    }
+
+    .container {
+        display: block;
+    }
+
+    header {
+        display: block;
+    }
+
+    nav {
+        display: block;
+    }
+
+    main {
+        display: block;
+    }
+
+    aside {
+        display: block;
+    }
+
+    footer {
+        display: block;
+    }
+}
+
+
+/* medium devices or larger */
+@media screen and (min-width:800px) {
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+header {}
+
+nav {}
+
+main {}
+
+aside {}
+
+footer {}
+
+/* theme styles */
+header {
+    background-color: hsla(0, 100%, 50%, 0.2);
+}
+
+nav {
+    background-color: hsla(30, 100%, 50%, 0.2);
+}
+
+main {
+    background-color: hsla(60, 100%, 50%, 0.2);
+}
+
+aside {
+    background-color: hsla(90, 100%, 50%, 0.2);
+}
+
+footer {
+    background-color: hsla(120, 100%, 50%, 0.2);
+}
