@@ -17,7 +17,7 @@
     'use strict';
     // - - - - - - - - - -
     // - - - - -
-    // DECLARATION
+    // DECLARATION Wenn ich also hier nun start mit dem Schreiben, dann geht was in der Aufnahme
     // - - - - -
     var _m = 42; // non declared variables to upper scope!
 
@@ -54,5 +54,5 @@
 
 // windows controls the main 
 window.onload = function () {
-    console.log(window.newModule.add(5, 5));
+    console.log(window.newModule.add(5, 5)); // if i write here ...
 }
