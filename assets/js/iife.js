@@ -12,6 +12,7 @@
  * @license MIT {https://opensource.org/licenses/MIT}
  * @copyright (c) 2019 Michael Reichart, Cologne
  */
+( function () { } () );
 
 !(function () {
     'use strict';
