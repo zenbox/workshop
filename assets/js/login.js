@@ -16,78 +16,82 @@
   'use strict';
   // - - - - - - - - - -
   // DECLARATION
-  let componentElementsList = [{
-      element: 'form',
-      context: 'aside',
-      attributes: {
-        id: 'form-login',
-        method: 'get',
-        action: 'login.php'
+  let
+    form,
+
+    componentElementsList = [{
+        element: 'form',
+        context: 'aside',
+        attributes: {
+          id: 'form-login',
+          method: 'get',
+          action: 'login.php'
+        }
+      }, {
+        element: 'fieldset',
+        context: 'form'
+      }, {
+        element: 'legend',
+        content: 'enter your account',
+        context: 'fieldset'
+      }, {
+        element: 'label',
+        content: 'Email',
+        context: 'fieldset',
+        attributes: {
+          for: 'login-email'
+        }
+      }, {
+        element: 'input',
+        context: 'fieldset',
+        attributes: {
+          type: 'email',
+          id: 'login-email'
+        }
+      },
+      {
+        element: 'label',
+        context: 'fieldset',
+        content: 'Password',
+        attributes: {
+          for: 'login-password'
+        }
+      },
+      {
+        element: 'input',
+        context: 'fieldset',
+        attributes: {
+          type: 'password',
+          id: 'login-password'
+        }
+      },
+      {
+        element: 'input',
+        context: 'fieldset',
+        attributes: {
+          type: 'checkbox',
+          id: 'login-keep-password',
+          class: 'checkbox'
+        }
+      },
+      {
+        element: 'label',
+        content: 'keep password',
+        context: 'fieldset',
+        attributes: {
+          for: 'login-keep-password'
+        }
+      },
+      {
+        context: 'fieldset',
+        element: 'button',
+        content: 'log in',
+        attributes: {
+          type: 'submit'
+        }
       }
-    }, {
-      element: 'fieldset',
-      context: 'form'
-    }, {
-      element: 'legend',
-      content: 'enter your account',
-      context: 'fieldset'
-    }, {
-      element: 'label',
-      content: 'Email',
-      context: 'fieldset',
-      attributes: {
-        for: 'login-email'
-      }
-    }, {
-      element: 'input',
-      context: 'fieldset',
-      attributes: {
-        type: 'email',
-        id: 'login-email'
-      }
-    },
-    {
-      element: 'label',
-      context: 'fieldset',
-      content: 'Password',
-      attributes: {
-        for: 'login-password'
-      }
-    },
-    {
-      element: 'input',
-      context: 'fieldset',
-      attributes: {
-        type: 'password',
-        id: 'login-password'
-      }
-    },
-    {
-      element: 'input',
-      context: 'fieldset',
-      attributes: {
-        type: 'checkbox',
-        id: 'login-keep-password',
-        class: 'checkbox'
-      }
-    },
-    {
-      element: 'label',
-      content: 'keep password',
-      context: 'fieldset',
-      attributes: {
-        for: 'login-keep-password'
-      }
-    },
-    {
-      context: 'fieldset',
-      element: 'button',
-      content: 'log in',
-      attributes: {
-        type: 'submit'
-      }
-    }
-  ];
+    ];
+
 
   // METHODS
   function createElement(element) {
@@ -159,8 +163,19 @@
     }
   };
 
+  function onSubmitLoginForm(event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    console.log('submit');
+
+  }
+
   function main() {
     createComponent();
+
+    form = document.querySelector('#form-login');
+    form.addEventListener('submit', onSubmitLoginForm);
   };
 
   // CONTROL
