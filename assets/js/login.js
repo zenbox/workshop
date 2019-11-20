@@ -182,7 +182,7 @@
   function main() {
     createComponent();
 
-    notification.show('hello world');
+    notification.show('lalala');
 
     // EVENT CONTROL
     let
