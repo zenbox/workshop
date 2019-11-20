@@ -16,9 +16,10 @@
     //- - - - - - - - - -
     // DECLARATION
     let
-        url = 'login.php',
+        proxy = 'https://cors-anywhere.herokuapp.com/',
+        url = 'http://michaelreichart.de/api/login.php?email=michael@zenbox.de&password=topsecret&flag=true&method=get',
         method = 'get', // post, delete, update, put
-        data = '?email=michael@zenbox.de&password=geheim',
+        data = 'email=michael@zenbox.de&password=topsecret&flag=true&method=post',
         request = new XMLHttpRequest() || new ActiveXObject('');
 
     // FUNCTIONS
@@ -39,14 +40,18 @@
                 break;
             case 4:
                 console.log(request);
+                console.log(request.response);
+                console.dir(JSON.parse(request.response));
                 break;
         }
     }
 
     // CONTROLS
     request.addEventListener('readystatechange', onReadyStateChange);
-    request.open(method, url);
-    request.send(data);
+    request.open(method, proxy + url);
+    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    request.send(JSON.stringify(data)); // sending data with post requests only
+
 
 
     //- - - - - - - - - -
