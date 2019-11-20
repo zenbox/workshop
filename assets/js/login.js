@@ -182,7 +182,6 @@
   function main() {
     createComponent();
 
-    console.dir(window);
     notification.show('hello world');
 
     // EVENT CONTROL
