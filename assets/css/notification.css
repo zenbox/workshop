@@ -1,6 +1,17 @@
 /**
  * Notification classes
  */
- .success { background-color : hsla(150, 100%, 50%, 0.5); color: hsla(150, 100%, 20%, 0.5); }
- .error   { background-color : hsla(0, 100%, 50%, 0.5); color: hsla(0, 100%, 20%, 0.5); }
- .default { background-color : hsla(240, 100%, 50%, 0.5); color: hsla(240, 100%, 20%, 0.5); }
+.success {
+    background-color: hsla(150, 100%, 50%, 0.5);
+    color: hsla(150, 100%, 20%, 0.5);
+}
+
+.error {
+    background-color: hsla(0, 100%, 50%, 0.5);
+    color: hsla(0, 100%, 20%, 0.5);
+}
+
+.default {
+    background-color: hsla(240, 100%, 50%, 0.5);
+    color: hsla(240, 100%, 20%, 0.5);
+}
