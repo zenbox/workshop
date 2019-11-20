@@ -24,7 +24,8 @@ Es gibt zwei Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`:
 - Touch Events - https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches
 - Formular versenden - https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata
 - Async or sync functions - https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous
-
+- https://eloquentjavascript.net/
+- https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/objects-classes/ch2.md
 
 ## Other
 - https://opensource.org/licenses/MIT
