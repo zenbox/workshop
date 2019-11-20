@@ -4,9 +4,10 @@
     // DECLARATION
     // - - - - -
     let
-        notificationElement, notificationText, notificationState,
+        notificationContext, notificationId, notificationElement, notificationText, notificationState,
         config = {
             defaultTagName: 'div',
+            defaultId: 'notification',
             defaultState: 'default',
             defaultContext: 'body',
             defaultContent: 'hello World'
@@ -33,17 +34,27 @@
 
     function _appendNotificationElement(context) {
         let _context = context || config.defaultContext;
-        _context = document.querySelector(_context);
-        _context.appendChild(notificationElement);
+        notificationContext = document.querySelector(_context);
+        notificationContext.appendChild(notificationElement);
 
         return true;
     }
 
     function _setNotificationState(state) {
-        let _state = state || config.defaultState;
-
-        notificationElement.classList.add(_state);
+        notificationState = state || config.defaultState;
+        notificationElement.classList.add(notificationState);
         return true;
+    }
+
+    function _setNotificationId(id) {
+        notificationId = id || config.defaultId;
+        notificationElement.setAttribute('id', notificationId);
+        return true;
+    }
+
+    function _autoRemoveNotification() {
+        let _element = document.querySelector('#' + notificationId);
+        //setTimeout(_element.parentElement.remove(_element), 3000);
     }
 
     function _show(content) {
@@ -54,7 +65,8 @@
         _createNotificationText();
         _appendNotificationElement();
         _setNotificationState();
-        // _autoRemoveNotification();
+        _setNotificationId();
+        _autoRemoveNotification();
 
         return true;
     };
