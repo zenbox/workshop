@@ -17,15 +17,13 @@
   // - - - - - - - - - -
   // DECLARATION
   let
-    form,
-
     componentElementsList = [{
         element: 'form',
         context: 'aside',
         attributes: {
           id: 'form-login',
           method: 'get',
-          action: 'login.php'
+          action: 'http://michaelreichart.de/api/login.php'
         }
       }, {
         element: 'fieldset',
@@ -168,17 +166,45 @@
     event.stopImmediatePropagation();
 
     console.log('submit');
+  }
 
+  function onChangeLoginFormEmail(event, data) {
+    let _value = event.target.value;
+    if (validateEmailInput(_value) === true) console.log('it is a valid email address');
+    else console.log('Oups, it is NOT a valid email address');
+  };
+
+  function validateEmailInput(value) {
+    let reg = /^w+((-w+)|(.w+))*@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+)*.[A-Za-z0-9]+$/;
+    return reg.test(value);
   }
 
   function main() {
     createComponent();
 
-    form = document.querySelector('#form-login');
-    form.addEventListener('submit', onSubmitLoginForm);
+    notification.show('hello world');
+
+    // EVENT CONTROL
+    let
+      formLogin = document.querySelector('#form-login'),
+      formLoginEmail = document.querySelector('#login-email'),
+      data = {
+        data: "data"
+      };
+
+
+    formLogin.addEventListener('submit', onSubmitLoginForm);
+
+    formLoginEmail.addEventListener('change', function (event) {
+      let _data = data;
+      onChangeLoginFormEmail(event, _data);
+    });
+    // formLoginEmail.addEventListener('focus', onKeyupLoginFormEmail);
+    // formLoginEmail.addEventListener('blur', onKeyupLoginFormEmail);
+
   };
 
-  // CONTROL
+  // MAIN CONTROL
   // window.onload = function () {}
   window.addEventListener('load', main);
   // - - - - - - - - - -
