@@ -4,21 +4,17 @@
     // DECLARATION
     // - - - - -
     let
-        notificationElement,
+        notificationElement, notificationText,
         config = {
-            defaulttagName: 'div',
+            defaultTagName: 'div',
             defaultState: 'default',
-            defaultContext: 'body'
+            defaultContext: 'body',
+            defaultContent: 'hello World'
         };
 
     // - - - - -
     // FUNCTIONS
     // - - - - -
-    function _show(content) {
-        var _content = content || 0;
-        if (typeof (_content) !== 'string') return false;
-        return _content;
-    };
 
     function _createNotificationElement(tagName) {
         let _tagName = tagName || config.defaultTagName;
@@ -27,19 +23,40 @@
         return true;
     }
 
-    function _appendNotificationElement(context) {
-        let _context = context || config.default.context;
+    function _createNotificationText(content) {
+        let _content = content || config.defaultContent;
 
+        notificationText = document.createTextNode(_content);
+        notificationElement.appendChild(notificationText);
+        return true;
+    }
+
+    function _appendNotificationElement(context) {
+        let _context = context || config.defaultContext;
+        _context = document.querySelector(_context);
         _context.appendChild(notificationElement);
+
         return true;
     }
 
     function _setNotificationState(state) {
         let _state = state || config.defaultState;
 
-        notificationElement.classlist.addClass(_state);
+        notificationElement.classList.add(_state);
         return true;
     }
+
+    function _show(content) {
+        var _content = content || 0;
+        if (typeof (_content) !== 'string') return false;
+
+        _createNotificationElement();
+        _createNotificationText();
+        _appendNotificationElement();
+        _setNotificationState();
+
+        return true;
+    };
 
     function _main() {
         // publish module and a function
