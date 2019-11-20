@@ -4,7 +4,7 @@
     // DECLARATION
     // - - - - -
     let
-        notificationElement, notificationText,
+        notificationElement, notificationText, notificationState,
         config = {
             defaultTagName: 'div',
             defaultState: 'default',
@@ -54,6 +54,7 @@
         _createNotificationText();
         _appendNotificationElement();
         _setNotificationState();
+        // _autoRemoveNotification();
 
         return true;
     };
