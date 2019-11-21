@@ -25,7 +25,7 @@ function createServerCallback(request, response) {
     console.log('connection established.');
 
     response.writeHead(200, {
-        "Content-type": "text/html",
+        "Content-type": "multitexttext/html",
         "Connection": "keep-alive"
     });
 
