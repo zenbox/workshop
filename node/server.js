@@ -21,8 +21,18 @@ let
     server = undefined;
 
 // FUNCTIONS
-function createServerCallback() {
-    console.log('server created.');
+function createServerCallback(request, response) {
+    console.log('connection established.');
+
+    response.writeHead(200, {
+        "Content-type": "text/html",
+        "Connection": "keep-alive"
+    });
+
+    response.write('<h1>Hello World</h1>');
+    response.write('<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>');
+    response.write('<a href="http://google.de">Google</a>');
+    response.end('<hr>&copy; 2019 Michael');
 }
 
 function onServerConnection() {
