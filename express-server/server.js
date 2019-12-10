@@ -9,11 +9,30 @@
  * @license MIT {https://opensource.org/licenses/MIT}
  * @copyright (c) 2019 Michael Reichart, Cologne
  */
+"use strict";
 
-let
-    // node modules
-    http = require('http'),
-    path = require('path'),
+// Declaration
+// node modules
+const http = require("http");
+const path = require("path");
 
-    // npm modules
-    express = require('express');
+// npm modules
+const express = require("express");
+//const bodyParser = require('body-parser');
+const expressServer = express();
+
+let port = 3000,
+  indexRoute = require(path.join(__dirname, "/routes/index.js"));
+
+// set template engine
+expressServer.set("view engine", "ejs");
+expressServer.set("views", path.join(__dirname, "views"));
+
+// dynamic routing
+expressServer.use("/", indexRoute);
+expressServer.use("/index.html", indexRoute);
+
+// Control
+expressServer.listen(port, function() {
+  console.log(`express server runs on port ${port}`);
+});
