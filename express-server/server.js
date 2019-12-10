@@ -36,12 +36,15 @@ expressServer.use(
   })
 );
 
+// static routing
+expressServer.use(express.static(path.join(__dirname, 'public')));
+
 // dynamic routing
 expressServer.use("/", indexRoute);
 expressServer.use("/index.html", indexRoute);
 expressServer.use("/search.html", searchRoute);
 
 // Control
-expressServer.listen(port, function() {
+expressServer.listen(port, function () {
   console.log(`express server runs on port ${port}`);
 });
