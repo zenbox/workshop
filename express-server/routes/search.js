@@ -17,10 +17,21 @@ const express = require("express");
 const router = express.Router();
 
 // Control
-router.get("/", function (request, response) {
-    response.render("search", {
-        result: "Magna Commodo"
-    });
+// Just call the search
+router.get("/", function(request, response) {
+  response.render("search", {
+    search: "",
+    check: ""
+  });
+});
+
+// form post request
+router.post("/", function(request, response) {
+  response.render("search", {
+    search: request.body.search, // request.query.search,
+    check: request.body.check, //request.query.check,
+    result: "Magna Commodo"
+  });
 });
 
 module.exports = router;
