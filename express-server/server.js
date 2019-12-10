@@ -18,11 +18,11 @@ const path = require("path");
 
 // npm modules
 const express = require("express");
-//const bodyParser = require('body-parser');
 const expressServer = express();
 
 let port = 3000,
-  indexRoute = require(path.join(__dirname, "/routes/index.js"));
+    indexRoute = require(path.join(__dirname, "/routes/index.js")),
+    searchRoute = require(path.join(__dirname, "/routes/search.js"));
 
 // set template engine
 expressServer.set("view engine", "ejs");
@@ -31,8 +31,9 @@ expressServer.set("views", path.join(__dirname, "views"));
 // dynamic routing
 expressServer.use("/", indexRoute);
 expressServer.use("/index.html", indexRoute);
+expressServer.use("/search.html", searchRoute);
 
 // Control
-expressServer.listen(port, function() {
-  console.log(`express server runs on port ${port}`);
+expressServer.listen(port, function () {
+    console.log(`express server runs on port ${port}`);
 });
