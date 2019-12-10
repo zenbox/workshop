@@ -19,14 +19,22 @@ const path = require("path");
 // npm modules
 const express = require("express");
 const expressServer = express();
+const bodyParser = require("body-parser");
 
 let port = 3000,
-    indexRoute = require(path.join(__dirname, "/routes/index.js")),
-    searchRoute = require(path.join(__dirname, "/routes/search.js"));
+  indexRoute = require(path.join(__dirname, "/routes/index.js")),
+  searchRoute = require(path.join(__dirname, "/routes/search.js"));
 
 // set template engine
 expressServer.set("view engine", "ejs");
 expressServer.set("views", path.join(__dirname, "views"));
+
+expressServer.use(bodyParser.json());
+expressServer.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 
 // dynamic routing
 expressServer.use("/", indexRoute);
@@ -34,6 +42,6 @@ expressServer.use("/index.html", indexRoute);
 expressServer.use("/search.html", searchRoute);
 
 // Control
-expressServer.listen(port, function () {
-    console.log(`express server runs on port ${port}`);
+expressServer.listen(port, function() {
+  console.log(`express server runs on port ${port}`);
 });
