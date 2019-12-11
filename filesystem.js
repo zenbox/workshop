@@ -14,7 +14,9 @@
 
 'use strict';
 
-// Declaration
+// - - - - - - - - - -
+// Declarations
+// - - - - - - - - - -
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
@@ -23,13 +25,24 @@ let
     filename = 'readme.md',
     logfile = 'log.txt';
 
-// Functions  
+// - - - - - - - - - -
+// Functions
+// - - - - - - - - - -
 function onFileOpen(error, fileData) {
 
     if (error) throw error;
 
     console.log(fileData);
     console.log(fileData.toString())
+};
+
+function onFileWatch(currentTime, previousTime) {
+    // currentTime.atime -> access time
+    // currentTime.mtime -> modify time
+    // currentTime.ctime -> current/create time
+
+    console.log(`current time: ${currentTime.mtime}`);
+    console.log(`previous time: ${previousTime.mtime}`);
 };
 
 function writeFile() {
@@ -41,7 +54,8 @@ function writeFile() {
 
         let
             fileData = 'Lorem ipsum dolor sit amet ...\n',
-            fileBuffer = new Buffer(fileData);
+            logFileLine = getDateString() + ' ' + fileData,
+            fileBuffer = new Buffer(logFileLine);
 
         fs.write(fileHandle, fileBuffer, 0, fileBuffer.length, null, function () {
             fs.close(fileHandle, function () {
@@ -53,6 +67,31 @@ function writeFile() {
 
 }
 
-// Control
+function getDateString() {
+    let now = new Date();
+
+    console.log(now);
+
+    // format the da as you like
+    return util.format('log entry: %s-%s-%s, %s:%s:%s',
+        now.getFullYear(),
+        (now.getMonth() + 1), // index of month plus 1 = month's number
+        now.getDate(),
+        now.getHours(),
+        now.getMinutes(),
+        now.getSeconds()
+    );
+}
+
+// - - - - - - - - - -
+// Controls
+// - - - - - - - - - -
 fs.readFile(filename, onFileOpen);
+fs.watchFile(logfile, onFileWatch);
+
 writeFile();
+
+// write to log every 3 seconds
+setInterval(function () {
+    writeFile();
+}, 3000);
