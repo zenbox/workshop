@@ -1,0 +1,10 @@
+{
+  "host": "localhost",
+  "user": "root",
+  "password": "root",
+
+  "more": {
+    "database": "application",
+    "table": "user"
+  }
+}
