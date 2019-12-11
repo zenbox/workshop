@@ -57,5 +57,16 @@ expressServer.listen(port, function () {
   socketServer.on('connection',
     function (socket) {
       console.log(' A socket client has connected');
+
+      socket.on('clientMessage', function (data) {
+        console.log(data);
+
+        // talk to a client
+        socket.emit('serverMessage', 'hello client!')
+
+        // talk to all clients
+        socketServer.emit('serverBroadcastMessage', 'hello to all clients"')
+      })
+
     });
 });
