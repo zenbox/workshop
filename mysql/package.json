@@ -1,0 +1,25 @@
+{
+  "name": "mysql-application",
+  "version": "1.0.0",
+  "description": "Lorem ipsum dolor sit amet.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenbox/workshop.git"
+  },
+  "contributors": [
+    {
+      "name": "Michael",
+      "email": "michael@zenbox.de",
+      "url": "http://michaelreichart.de"
+    }
+  ],
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "*",
+    "ejs": "*",
+    "express": "^4.17.1",
+    "mysql": "^2.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
