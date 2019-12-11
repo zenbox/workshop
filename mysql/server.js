@@ -10,25 +10,24 @@
  * @license MIT License [https://opensource.org/licenses/MIT]
  */
 
-'use strict';
+"use strict";
 // - - - - - - - - - -
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
 
 let port = 3000,
   expressServer = express(),
-  usersRoute = require(path.join(__dirname, 'routes/users.js'));
+  usersRoute = require(path.join(__dirname, "routes/users.js"));
 
 // express configuration
-expressServer.set('view engine', 'ejs');
-expressServer.set('views', path.join(__dirname, 'views'));
+expressServer.set("view engine", "ejs");
+expressServer.set("views", path.join(__dirname, "views"));
 
-expressServer.use('/', usersRoute);
-expressServer.use('/users.html', usersRoute);
+expressServer.use("/", usersRoute);
+expressServer.use("/users.html", usersRoute);
 
-
-expressServer.listen(port, function () {
-  console.log('- - - - - - - - - -');
-  console.log('webserver runs on port ' + port);
-  console.log('- - - - - - - - - -');
+expressServer.listen(port, function() {
+  console.log("- - - - - - - - - -");
+  console.log("webserver runs on port " + port);
+  console.log("- - - - - - - - - -");
 });

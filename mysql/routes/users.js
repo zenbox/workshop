@@ -13,13 +13,15 @@
 (function () {
   'use strict';
   // - - - - - - - - - - -
+  const DEBUG = true;
   const express = require('express');
   const router = express.Router();
   const mysql = require('mysql');
 
-  let dbConfig = require('../db-config.json'),
-    db = null,
-    query = null;
+  let
+    dbConfig = require('../db-config.json'),
+    db = undefined,
+    query = undefined;
 
   // connect the database service
   dbConfig.database = dbConfig.more.database;
@@ -27,20 +29,23 @@
 
   // the users route app
   router.get('/', function (request, response) {
+
+    // database transactions ...
     query = 'SELECT * FROM user WHERE 1;';
-    db.query(query, function (error, result) {
+    db.query(query, function (error, rows) {
 
       if (error) {
         console.dir(error);
         process.exit(0);
       }
 
-      console.dir(result);
+      if (DEBUG) console.dir(rows);
+      // if (DEBUG) debugger;
 
       response.render(
         'users', {
           title: ' a mysql result',
-          result: result
+          result: rows
         }
       );
 
