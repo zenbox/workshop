@@ -22,7 +22,7 @@
     "('Michael', 'michael@zenbox.de', 'geheim')," +
     "('Paula', 'paula@zenbox.de', 'geheim')," +
 	"('Klaus', 'klaus@zenbox.de', 'geheim');";
-	```
+```
 
 ## VS Code Snippets
 ```json
