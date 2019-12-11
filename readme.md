@@ -1,5 +1,30 @@
 # node js basics
 
+## SQL Dump via nodejs
+```javascript
+  db.query('CREATE DATABASE IF NOT EXISTS application;');
+  db.query('USE application;');
+
+  // Tabelle anlegen
+  db.query('DROP TABLE IF EXISTS user;');
+
+  sql = "CREATE TABLE user ( " +
+    "userId INT(11) AUTO_INCREMENT, " +
+    "username VARCHAR(50), " +
+    "email VARCHAR(50), " +
+    "password VARCHAR(50), " +
+    "PRIMARY KEY (userId) );";
+  db.query(sql);
+
+  sql = "INSERT INTO user " +
+    "(username, email, password) " +
+    "VALUES " +
+    "('Michael', 'michael@zenbox.de', 'geheim')," +
+    "('Paula', 'paula@zenbox.de', 'geheim')," +
+	"('Klaus', 'klaus@zenbox.de', 'geheim');";
+	```
+
+## VS Code Snippets
 ```json
 {
 	"page documention block": {
