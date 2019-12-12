@@ -18,10 +18,10 @@ const path = require('path');
 
 // npm modules
 const express = require('express');
-const socketio = require('socket.io');
 const expressServer = express();
-const httpServer = http.createServer(expressServer);
-const socketServer = socketio(httpServer);
+const httpServer = require('http').createServer(expressServer);
+const socketServer = require('socket.io')(httpServer);
+
 const bodyParser = require('body-parser');
 
 let port = 3000,
