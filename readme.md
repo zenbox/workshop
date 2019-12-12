@@ -6,7 +6,7 @@ Es gibt ein funktionierendes Socketbeispiel in ```socketio-chat```.
 Es verwendet dieselben Bibliotheken wie ```express-socket-server``` und ist gleich aufgabaut.
 ```express-socket-server``` läuft allerdings immer noch nicht, der Fehler ist mir unklar.
 
-Wenn sich jemand die Mühe des suchens machen möchte und den Fehler gefunden hat, freue ich mich über eine kurze Info.
+Wenn sich jemand die Mühe des Suchens machen möchte und den Fehler gefunden hat, freue ich mich über eine kurze Info.
 
 
 ## SQL Dump via nodejs
