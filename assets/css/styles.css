@@ -32,7 +32,7 @@ svg.chart {
 /* STATES */
 
 /* THEME */
-svg.chart {
+svg, svg.chart {
     background-color: lightgrey;
 }
 
