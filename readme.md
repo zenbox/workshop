@@ -1,40 +1,16 @@
-# node js basics
+# D3 Datavisualization
 
-## Das Socket Beispiel
-Es gibt ein funktionierendes Socketbeispiel in ```socketio-chat```. 
+## Links
+- https://caniuse.com/#search=box-sizing
+- http://html5test.com/results/desktop.html
+- https://www.w3schools.com/graphics/svg_reference.asp
+- http://bl.ocks.org/alansmithy/e984477a741bc56db5a5
+- https://neo4j.com/resources/
+- https://shiny.rstudio.com/articles/html-ui.html
 
-Es verwendet dieselben Bibliotheken wie ```express-socket-server``` und ist gleich aufgabaut.
-```express-socket-server``` läuft allerdings immer noch nicht, der Fehler ist mir unklar.
+## Code Snippets
 
-Wenn sich jemand die Mühe des Suchens machen möchte und den Fehler gefunden hat, freue ich mich über eine kurze Info.
-
-
-## SQL Dump via nodejs
 ```javascript
-  db.query('CREATE DATABASE IF NOT EXISTS application;');
-  db.query('USE application;');
-
-  // Tabelle anlegen
-  db.query('DROP TABLE IF EXISTS user;');
-
-  sql = "CREATE TABLE user ( " +
-    "userId INT(11) AUTO_INCREMENT, " +
-    "username VARCHAR(50), " +
-    "email VARCHAR(50), " +
-    "password VARCHAR(50), " +
-    "PRIMARY KEY (userId) );";
-  db.query(sql);
-
-  sql = "INSERT INTO user " +
-    "(username, email, password) " +
-    "VALUES " +
-    "('Michael', 'michael@zenbox.de', 'geheim')," +
-    "('Paula', 'paula@zenbox.de', 'geheim')," +
-	"('Klaus', 'klaus@zenbox.de', 'geheim');";
-```
-
-## VS Code Snippets
-```json
 {
 	"page documention block": {
 		"prefix": "docblock",
@@ -113,7 +89,7 @@ Wenn sich jemand die Mühe des Suchens machen möchte und den Fehler gefunden ha
 			"$2"
 		],
 		"description": "Three simple comment lines"
-	}
+	},
 	"Comments and object literal": {
 		"prefix": "segment",
 		"body": [
