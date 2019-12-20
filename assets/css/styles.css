@@ -59,3 +59,17 @@ line {
 circle {
     fill: hsla(0, 0%, 0%, 0.5);
 }
+
+output {
+    display: block;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    font-family: monospace;
+    color: white;
+}
+
+.output {
+    font-family: 'Font Awesome 5 Free';
+    font-size: 3rem;
+}
