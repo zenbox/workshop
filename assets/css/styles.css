@@ -34,7 +34,7 @@ svg.chart {
 /* THEME */
 svg,
 svg.chart {
-    background-color: lightgrey;
+    background-color: grey;
 }
 
 .circle {
@@ -53,7 +53,7 @@ svg.chart {
 
 
 line {
-    stroke: hsla(0, 0%, 0%, 0.5);
+    stroke: hsla(180, 80%, 80%, 0.25);
 }
 
 circle {
