@@ -13,9 +13,17 @@
 !(function () {
     'use strict';
     //- - - - - - - - - -
+    document.querySelector('body').addEventListener('contextmenu', function (event) {
+        console.log('CM');
+        event.preventDefault();
+    })
+    //- - - - - - - - - -
     // Declaration
     let
-        canvas, svg, group, link, nodes, simulation;
+        canvas, svg, group, link, nodes, simulation, color;
+
+    // ! Adding a color scheme
+    color = d3.scaleOrdinal(d3.schemeCategory10);
 
     // Settings
     canvas = {
@@ -63,21 +71,36 @@
     }
 
     function createGraph(data) {
-        let dataLinksBySource;
+        let dataLinksBySource, dataLinksCount;
 
+        // - - - - - - - - - -
         // Aggregate data
-        // sort links by name
+        // - - - - - - - - - -
+        // links by source
+        // ! .entries() builds an array!
         dataLinksBySource = d3.nest()
-            .key(function (d, i) {
-                return d.source
+            .key(function (d) {
+                return d.source;
+            })
+            .entries(data.links);
+        // - - - - -
+        console.log(dataLinksBySource);
+        // - - - - -
+
+        // count links per name
+        // ! .object() builds an object!
+
+        dataLinksCount = d3.nest()
+            .key(function (d) {
+                return d.source;
             })
             .rollup(function (v) {
                 return v.length;
             })
             .object(data.links);
-
-        // console.log(dataLinksBySource);
-        // console.log(data.links);
+        // - - - - -
+        console.log(dataLinksCount);
+        // - - - - - - - - - -
 
         // Set the force direction params
         simulation = d3.forceSimulation()
@@ -100,10 +123,11 @@
             .enter()
             .append('line')
             .attr('style', function (d, i) {
-                return 'stroke-width:' + d.value + ';';
+                // ! Line thickness
+                return 'stroke-width:' + Math.sqrt(d.value) + ';';
             })
         // - - - - - - - - - -
-        // only to see something
+        // just to see something
         // - - - - - - - - - -
         // .attr('x1', function (d, i) {
         //     return canvas.padding.left;
@@ -127,19 +151,31 @@
             .classed('nodes', true)
             .attr('transform', 'scale(1,1) rotate(0) translate(0,0)')
             .append('circle')
-            .attr('r', function (d, i) {
-                return Math.floor(d.group * 3);
+            .attr('style', function (d) {
+                // ! Use the color scheme
+                return 'fill:' + color(d.group) + ';';
             })
-            .on('click', function () {
-                console.log('click!');
+            .attr('r', function (d) {
+                let r;
+                if (dataLinksCount[d.id]) {
+                    r = dataLinksCount[d.id] * 3;
+                } else {
+                    r = 0;
+                }
+                if (r < 5) r = 5;
+                return r;
             })
+            // .attr('r', function (d, i) {
+            //     return Math.floor(d.group * 3);
+            // })
+            .on('click', onClick)
             .call(d3.drag()
                 .on('start', onDragStart)
                 .on('drag', onDrag)
                 .on('end', onDragStop)
             )
         // - - - - - - - - - -
-        // only to see something
+        // just to see something
         // - - - - - - - - - -
         // .attr('cx', function (d, i) {
         //     return i * 10;
@@ -184,6 +220,13 @@
         }
     }
 
+    // ! Add a click event handler
+    function onClick(data) {
+        console.dir(d3.event);
+        console.dir(data);
+        console.log(this);
+    }
+
     function onDragStart(node) {
         if (!d3.event.active) simulation
             .alphaTarget(0.5)
@@ -207,14 +250,15 @@
         switch (which) {
             default:
             case 1:
-                console.log('left mouse button');
-                console.log(meta);
+                // console.log('left mouse button');
+                // console.log(meta);
+                // console.log(alt);
                 break;
             case 2:
-                console.log('middle mouse button');
+                // console.log('middle mouse button');
                 break;
             case 3:
-                console.log('right mouse button');
+                // console.log('right mouse button');
                 break;
 
         }
