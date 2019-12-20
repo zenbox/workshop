@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enter Exit Update</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        circle {
+            fill: hsla(360, 100%, 20%, 0.5);
+            stroke: hsla(180, 70%, 5%, 0.5);
+            stroke-width: 1px;
+        }
+
+        button {
+            display: block;
+            position: absolute;
+            left: 2rem;
+            top: 2rem;
+            padding: 0.25rem;
+            background-color: hsla(180, 70%, 5%, 0.8);
+            box-shadow: 5px 5px 2px hsla(180, 70%, 5%, 0.5);
+            color: white;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v5.js"></script>
+</head>
+
+<body>
+    <script>
+        !(function () {
+            'use strict';
+            // - - - - - - - - - -
+            let width = 400;
+
+            const svg = d3.select('body')
+                .append("svg")
+                .attr("width", width)
+                .attr("height", 33)
+                .attr("viewBox", '0 -20 ' + width + ' 33');
+
+            const t = svg.transition()
+                .duration(750);
+
+            setInterval(function () {
+                // - - - - - - - - - -
+                svg.selectAll("text")
+                    .data(randomLetters(), function (d) {
+                        return d;
+                    }) // as arrow function d => d
+                    .join(
+                        function (enter) {
+                            return enter
+                                .append("text")
+                                .attr("fill", "green")
+                                .attr("x", (d, i) => i * 16)
+                                .attr("y", -30)
+                                .text(function (d) {
+                                    return d;
+                                })
+                                .call(function (enter) {
+                                    return enter.transition(t).attr("y", 0);
+                                })
+                        },
+
+                        function (update) {
+                            return update
+                                .attr("fill", "black")
+                                .attr("y", 0)
+                                .call(function (update) {
+                                    return update.transition(t)
+                                        .attr("x", function (d, i) {
+                                            return i * 16;
+                                        })
+                                })
+                        },
+
+                        function (exit) {
+                            return exit
+                                .attr("fill", "brown")
+                                .call(function (exit) {
+                                    return exit.transition(t)
+                                        .attr("y", 30)
+                                        .remove();
+                                })
+                        }
+                    );
+                // - - - - - - - - - -
+            }, 500);
+
+            // - - - - - - - - - -
+            function randomLetters() {
+                return d3.shuffle("abcdefghijklmnopqrstuvwxyz".split(""))
+                    .slice(0, Math.floor(6 + Math.random() * 20))
+                    .sort();
+            }
+            // - - - - - - - - - -
+        }());
+    </script>
+
+</body>
+
+</html>
