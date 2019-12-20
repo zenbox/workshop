@@ -20,44 +20,18 @@
         group = undefined;
 
     // Functions
-    function onButtonAddClick(event) {
-        group
-            .exit()
-            .remove();
-        group
-            .enter()
-            .append('div')
-            .classed('circle', true)
-            .text(function (d, i) {
-                return d;
-            })
-    }
 
     function onButtonUpdateClick(event) {
-
         group
             .data(data)
             .enter();
+
         // Remove unneeded circles
         group
             .exit()
             .remove();
-        group
-            // .enter()
-            .append('div')
-            .merge(group) // ! 
-            .classed('circle', true)
-            .text(function (d, i) {
-                return d;
-            })
-    }
 
-    function onButtonChangeClick(event) {
         group
-            .exit()
-            .remove();
-        group
-            .data(data_1)
             .enter()
             .append('div')
             .merge(group) // ! 
@@ -80,13 +54,7 @@
 
 
     // Event control
-    d3.select('button#add')
-        .on('click', onButtonAddClick);
-
     d3.select('button#update')
         .on('click', onButtonUpdateClick);
-
-    d3.select('button#change')
-        .on('click', onButtonChangeClick);
     // - - - - - - - - - -
 }())
