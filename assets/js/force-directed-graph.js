@@ -20,14 +20,14 @@
     //- - - - - - - - - -
     // Declaration
     let
-        canvas, svg, group, link, nodes, simulation, color;
+        canvas, svg, group, link, nodes, simulation, color, globalData, circles;
 
     // ! Adding a color scheme
     color = d3.scaleOrdinal(d3.schemeCategory10);
 
     // Settings
     canvas = {
-        width: 630,
+        width: 870,
         height: 600,
         viewbox: {
             x: 0,
@@ -73,6 +73,18 @@
     function createGraph(data) {
         let dataLinksBySource, dataLinksCount;
 
+        globalData = data;
+
+        // globalData.nodes.push({
+        //     "id": "Michael",
+        //     "group": 4
+        // });
+        // globalData.links.push({
+        //     "source": "Valjean",
+        //     "target": "Michael",
+        //     "value": 50
+        // });
+
         // - - - - - - - - - -
         // Aggregate data
         // - - - - - - - - - -
@@ -84,7 +96,7 @@
             })
             .entries(data.links);
         // - - - - -
-        console.log(dataLinksBySource);
+        // console.log(dataLinksBySource);
         // - - - - -
 
         // count links per name
@@ -99,7 +111,7 @@
             })
             .object(data.links);
         // - - - - -
-        console.log(dataLinksCount);
+        // console.log(dataLinksCount);
         // - - - - - - - - - -
 
         // Set the force direction params
@@ -126,31 +138,17 @@
                 // ! Line thickness
                 return 'stroke-width:' + Math.sqrt(d.value) + ';';
             })
-        // - - - - - - - - - -
-        // just to see something
-        // - - - - - - - - - -
-        // .attr('x1', function (d, i) {
-        //     return canvas.padding.left;
-        // })
-        // .attr('y1', function (d, i) {
-        //     return i * 2;
-        // })
-        // .attr('x2', function (d, i) {
-        //     return canvas.width - canvas.padding.right;
-        // })
-        // .attr('y2', function (d, i) {
-        //     return i * 2;
-        // })
-        // - - - - - - - - - -
 
-        // Build the nodes
-        nodes = group.selectAll('circle')
+        // Build the nodes  
+        nodes = group.selectAll('image')
             .data(data.nodes)
             .enter()
             .append('g')
             .classed('nodes', true)
             .attr('transform', 'scale(1,1) rotate(0) translate(0,0)')
             .append('circle')
+            // .append('image')
+            // .attr('xlink:href', 'assets/figures/full-moon.svg')
             .attr('style', function (d) {
                 // ! Use the color scheme
                 return 'fill:' + color(d.group) + ';';
@@ -165,25 +163,24 @@
                 if (r < 5) r = 5;
                 return r;
             })
-            // .attr('r', function (d, i) {
-            //     return Math.floor(d.group * 3);
-            // })
             .on('click', onClick)
             .call(d3.drag()
                 .on('start', onDragStart)
                 .on('drag', onDrag)
                 .on('end', onDragStop)
             )
-        // - - - - - - - - - -
-        // just to see something
-        // - - - - - - - - - -
-        // .attr('cx', function (d, i) {
-        //     return i * 10;
-        // })
-        // .attr('cy', function (d, i) {
-        //     return i * 10;
-        // });
-        // - - - - - - - - - -
+
+        // building title and text attributes
+        nodes.append('title')
+            .text(function (d) {
+                return d.id;
+            });
+
+        nodes.append('text')
+            .attr('transform', 'translate(5, 0) rotate(0)')
+            .text(function (d, i) {
+                return d.id;
+            });
 
         // Realtime engine
         simulation
@@ -221,10 +218,165 @@
     }
 
     // ! Add a click event handler
-    function onClick(data) {
-        console.dir(d3.event);
-        console.dir(data);
-        console.log(this);
+    function onClick(node) {
+        // console.dir(d3.event);
+        // console.dir(node);
+        // console.log(this);
+
+        let addData, onDataEnter, onDataUpdate, onDataExit;
+
+        // Add data
+        addData = function () {
+            globalData.nodes.push({
+                "id": "Michael",
+                "group": 4
+            });
+            globalData.links.push({
+                "source": "Valjean",
+                "target": "Michael",
+                "value": 18
+            });
+            return globalData;
+        };
+
+        onDataEnter = function (enter) {
+            return enter
+                .append('circle')
+                .transition()
+                .duration(10)
+                .attr('style', 'fill:red;')
+                .attr('cx', d3.event.x)
+                .attr('cy', d3.event.y)
+                .attr('r', 50)
+                .call(function (enter) {
+                    return enter
+                        .transition()
+                        .duration(250)
+                        .attr('stroke-weight', '5');
+                });
+        };
+
+        onDataUpdate = function (update) {
+            return update
+                .transition()
+                .duration(10)
+                .attr('cx', d3.event.x)
+                .attr('cy', d3.event.y)
+                .attr('style', 'fill:black;')
+                .call(function (update) {
+                    return update
+                        .transition()
+                        .duration(250)
+                        .attr('stroke-weight', '5');
+                });
+        };
+
+        onDataExit = function (exit) {
+            return exit
+                .transition()
+                .duration(10)
+                .attr('style', 'fill:green;')
+                .call(function (exit) {
+                    return exit
+                        .transition()
+                        .duration(250)
+                        .attr('cy', canvas.height / 2)
+                        .remove()
+                })
+        };
+
+        // console.log(addData().nodes);
+        // console.log(addData().links);
+
+        // svg.selectAll('circle')
+        //     .data(addData().nodes, function (d) {
+        //         return d;
+        //     })
+        //     .join(onDataEnter, onDataUpdate, onDataExit);
+        // nodes = group.selectAll('circle')
+        //     .data(data.nodes)
+        //     .enter()
+        //     .append('g')
+        //     .classed('nodes', true)
+        //     .append('circle')
+        //     .attr('r', function (d) {
+        //         let r;
+        //         if (dataLinksCount[d.id]) {
+        //             r = dataLinksCount[d.id] * 3;
+        //         } else {
+        //             r = 0;
+        //         }
+        //         if (r < 5) r = 5;
+        //         return r;
+        //     });
+        //let data = addData();
+        let
+            data = globalData,
+            enter;
+
+        // group.selectAll('circle')
+        //     .data(data.nodes)
+        //     .enter()
+        //     .append('g')
+        //     .classed('nodes', true)
+        //     .append('circle')
+        //     .attr('r', function (d) {
+        //         let r;
+        //         if (dataLinksCount[d.id]) {
+        //             r = dataLinksCount[d.id] * 3;
+        //         } else {
+        //             r = 0;
+        //         }
+        //         if (r < 5) r = 5;
+        //         return r;
+        //     });
+
+        // group
+        //     .append('image')
+        //     .attr('id', 'plane')
+        //     .attr('x', width - margin.right - 150)
+        //     .attr('y', margin.top + 130)
+        //     .attr('width', '150')
+        //     .attr('transform', 'scale(1, 0.8)')
+        //     .attr('xlink:href', 'assets/figures/plane-2.svg');
+
+        // <image xlink:href="assets/figures/plane-2.svg"> </image>
+
+        d3
+            .json('assets/data/miserables.json')
+            .then(function (data) {
+                // - - - - -
+                data = addData();
+
+                document.querySelector('output').innerText =
+                    '(' + data.nodes.length + ', ' + data.links.length + ')';
+
+                circles = group.selectAll('circle')
+                    .data(data);
+
+                group.exit().remove();
+
+                enter = circles.enter()
+                    .append('g');
+
+                enter.append('circle')
+                    .attr('cx', canvas.width / 2)
+                    .attr('cy', canvas.height / 2)
+                    .attr('r', 100);
+
+                circles = circles.merge(enter); // Update
+                // - - - - -
+                // Realtime engine
+                simulation.force('link')
+                    .links(data.links);
+
+                simulation
+                    .nodes(data.nodes)
+                    .restart();
+                //     .on('tick', ticked)
+
+                // - - - - -
+            });
     }
 
     function onDragStart(node) {
@@ -237,7 +389,7 @@
 
     function onDrag(node) {
 
-        console.dir(d3.event);
+        // console.dir(d3.event);
 
         let
             type = d3.event.sourceEvent.type,
