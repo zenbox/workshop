@@ -8,6 +8,8 @@
 - https://neo4j.com/resources/
 - https://shiny.rstudio.com/articles/html-ui.html
 - https://bl.ocks.org/pstuffa/3393ff2711a53975040077b7453781a9
+- https://github.com/d3
+- https://wiki.selfhtml.org/wiki/JavaScript/Objekte/Array/push
 
 ## Code Snippets
 
