@@ -140,13 +140,13 @@
             })
 
         // Build the nodes  
-        nodes = group.selectAll('image')
+        nodes = group.selectAll('circle')
             .data(data.nodes)
             .enter()
             .append('g')
             .classed('nodes', true)
             .attr('transform', 'scale(1,1) rotate(0) translate(0,0)')
-            .append('circle')
+            .insert('circle')
             // .append('image')
             // .attr('xlink:href', 'assets/figures/full-moon.svg')
             .attr('style', function (d) {
@@ -359,7 +359,7 @@
                 enter = circles.enter()
                     .append('g');
 
-                enter.append('circle')
+                enter.insert('circle')
                     .attr('cx', canvas.width / 2)
                     .attr('cy', canvas.height / 2)
                     .attr('r', 100);
