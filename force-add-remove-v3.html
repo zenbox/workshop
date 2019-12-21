@@ -24,7 +24,8 @@
 <body>
     <script src="https://d3js.org/d3.v3.min.js"></script>
     <script>
-        var width = 960,
+        var i = false,
+            width = 960,
             height = 500;
 
         var fill = d3.scale.category20();
@@ -96,6 +97,9 @@
         }
 
         function tick() {
+
+
+
             link.attr("x1", function (d) {
                     return d.source.x;
                 })
@@ -110,6 +114,11 @@
                 });
 
             node.attr("cx", function (d) {
+                    if (i === false) {
+                        console.log(typeof node);
+                        console.log(typeof d);
+                        i = true;
+                    }
                     return d.x;
                 })
                 .attr("cy", function (d) {
