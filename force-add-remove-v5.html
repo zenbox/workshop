@@ -1,3 +1,4 @@
+<!-- thorsten.gomann@generali.com -->
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
@@ -24,33 +25,19 @@
 <body>
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script>
-        var width = 960,
-            height = 500,
-            nodes = [],
-            links = [];
+        var i = false,
+            width = 960,
+            height = 500;
 
         var fill = d3.scaleOrdinal(d3.schemeCategory10);
 
         simulation = d3.forceSimulation()
             // .force('size', forceSize([width, height]))
             .nodes([{}]) // initialize with a single node
-            .force('link', d3.forceLink()
-                .id(function (d, i) {
-                    return d.id;
-                })
-                .distance(30)
-            )
-            .force('charge', d3.forceManyBody()
-                .strength(-60))
-            .force('center', d3.forceCenter(width / 2, height / 2))
+            .force('link', d3.forceLink().distance(30))
+            .force('charge', d3.forceManyBody().strength(-60))
+            //.force('center', d3.forceCenter(width / 2, height / 2))
             .on('tick', tick);
-
-        // var force = d3.forceSimulation().force()
-        //     .size([width, height])
-        //     .nodes([{}]) // initialize with a single node
-        //     .linkDistance(30)
-        //     .charge(-60)
-        //     .on("tick", tick);
 
         var svg = d3.select("body").append("svg")
             .attr("width", width)
@@ -62,13 +49,14 @@
             .attr("width", width)
             .attr("height", height);
 
-
-        // Realtime engine
         var
             nodes = simulation.nodes(),
-            links = [],
+            links = [], // simulation.links(),
             node = svg.selectAll(".node"),
             link = svg.selectAll(".link");
+
+        console.log(node)
+        console.log(link)
 
         var cursor = svg.append("circle")
             .attr("r", 30)
@@ -84,24 +72,30 @@
         function mousedownCanvas() {
             var point = d3.mouse(this),
                 node = {
-                    // x: point[0],
-                    // y: point[1]
-                    x: d3.event.x,
-                    y: d3.event.y
+                    x: parseInt(point[0]),
+                    y: parseInt(point[1])
                 },
                 n = nodes.push(node);
 
             // add links to any nearby nodes
             nodes.forEach(function (target) {
-                var x = target.x - node.x,
-                    y = target.y - node.y;
-                if (Math.sqrt(x * x + y * y) < 30) {
-                    links.push({
-                        source: node,
-                        target: target
-                    });
-                }
+
+                var x = parseInt(target.x) - parseInt(node.x),
+                    y = parseInt(target.y) - parseInt(node.y);
+
+                // if (Math.sqrt(x * x + y * y) < 30) {
+                links.push({
+                    source: node,
+                    target: target
+                });
+                // }
+                // console.log(links.length);
+                // console.log(links[links.length - 1].source.x);
+                // console.log(links[links.length - 1].source.y);
             });
+
+            // console.log(nodes);
+            // console.log(links);
 
             restart();
         }
@@ -143,16 +137,21 @@
         }
 
         function restart() {
+
+            node.exit().remove();
+
             node = node.data(nodes);
 
             node.enter()
                 .append("circle", ".cursor")
                 .attr("class", "node")
-                .attr("r", 5)
+                .attr("r", 7)
+                .attr('cx', 100)
+                .attr('cx', 100)
+                .attr('cy', 100)
                 .on("mousedown", mousedownNode);
 
-            node.exit()
-                .remove();
+            link.exit().remove();
 
             link = link.data(links);
 
@@ -160,9 +159,6 @@
                 .append("line", ".node")
                 .attr("class", "link");
 
-            link.exit()
-                .remove();
-
-            simulation.restart();
+            simulation.alphaTarget(0.5).restart();
         }
     </script>
