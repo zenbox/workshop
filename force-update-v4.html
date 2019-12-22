@@ -5,10 +5,18 @@
         background-color: black;
     }
 
+    html,
+    html * {
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
     svg {
-        background-color: hsla(0, 80%, 50%, 0.1);
-
-
+        background-color: hsla(0, 0%, 100%, 0.1);
     }
 
     text {
@@ -17,42 +25,54 @@
     }
 
     .link {
-        /* 	  stroke: #c1c1c1; */
-        stroke-width: 2px;
+        /* stroke: #c1c1c1; */
+        /* stroke-width: 2px; */
         pointer-events: all;
+    }
+
+    .node {
+        opacity: 0.8;
+    }
+
+    .link {
+        opacity: 0.4;
     }
 
     .node circle {
         pointer-events: all;
-        stroke: #777;
-        stroke-width: 1px;
     }
 
     path {
         fill: none;
-        stroke-width: 3;
     }
 
     div.tooltip {
+        font-family: Menlo, monospace;
         position: absolute;
         background-color: white;
         max-width: 200px;
         height: auto;
-        padding: 1px;
+        padding: 0.25rem;
         border-style: solid;
         border-radius: 4px;
         border-width: 1px;
         box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
         pointer-events: none;
     }
+
+    div.option {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 </style>
 
 <body>
-    <div id="option">
+    <div class="option">
         <input name="updateButton" type="button" value="Update" onclick="updateData()" />
     </div>
-    <br>
-    <div id="option">
+    <div class="option">
         <input name="resetButton" type="button" value="Reset" onclick="resetData()" />
     </div>
 </body>
@@ -66,7 +86,7 @@
      *  @desc written in d3.v4
      *        - nodes are updating, see updateData(), resetData()
      *        - nodes can be fixed by a click
-     *        - nodes can be released by doubleclick
+     *        - fixed nodes can be released by doubleclick
      *
      * @package D3 Datavisualization
      * @module force_directed_graph
@@ -84,22 +104,45 @@
         // Global declarations
         // - - - - - - - - - -
         let
-            colorScale, color, tooltip, svg, canvas, sequentialScale, simulation, currNodes, currLinks, maxSame,
-            same, sameAlt, sameAll, link, node, dataFrame,
-            linkedByIndex = {},
-            temp = [],
-            R = 8;
+            canvas,
+            colorScale,
+            color,
+            currNodes,
+            currLinks,
 
+            dataFrame,
+            dataLinksCount,
+            dataLinksBySource,
+
+            legendSequential,
+            link,
+            linkedByIndex = {},
+
+            maxSame,
+
+            node,
+
+            same,
+            sameAll,
+            sameAlt,
+            sequentialScale,
+            simulation,
+            svg,
+
+            temp = [],
+            tooltip;
 
         // - - - - - - - - - -
         function loadData() {
-            d3.json("assets/data/dataframe.json", function (error, dataFrame) {
+            d3.json("assets/data/miserables.json", function (error, dataFrame) {
                 if (error) throw error;
 
                 setCurrentData(dataFrame);
 
+                aggregate();
+
                 setLinksStatistics(currLinks);
-                setMaxSame(currLinks);
+                // setMaxSame(currLinks);
 
                 setSimulation();
 
@@ -117,15 +160,75 @@
             });
         }
 
+        // - - - - - - - - - -
+        // Event handler
+        // - - - - - - - - - -
+        function onDragstarted(d) {
+            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function onDragged(d) {
+            d.fx = d3.event.x;
+            d.fy = d3.event.y;
+        }
+
+        function onDragEnded(d) {
+            if (!d3.event.active) simulation.alphaTarget(0);
+            //d.fx = null;
+            //d.fy = null;
+        }
+
+        function onReleaseNode(d) {
+            d.fx = null;
+            d.fy = null;
+        }
+
+        function tooltip_onMouseOut() {
+            tooltip
+                .transition()
+                .duration(100)
+                .style("opacity", 0);
+        }
+
+        function onMouseMove() {
+            tooltip
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY + 10) + "px");
+        }
+
+        function tooltip_onMouseOver(d, i) {
+            tooltip
+                .transition()
+                .duration(300)
+                .style("opacity", .8);
+
+            tooltip
+                .html(d.id + "<br/>group:" + d.group)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY + 10) + "px");
+        }
+
+        function fade_onMouseOver() {
+            fade(0.1);
+        }
+
+        function fade_onMouseOut() {
+            fade(1);
+        }
+
+        // - - - - - - - - - -
+        // Setter
+        // - - - - - - - - - -
         function setCanvas() {
             canvas = {
-                width: 500,
-                height: 400
+                width: screen.width,
+                height: screen.height
             }
         }
 
         function setSvg() {
-            console.log('lala');
             svg = d3.select('body')
                 .append('svg')
                 .attr('width', canvas.width)
@@ -134,22 +237,83 @@
 
         function setLegend() {
             sequentialScale = d3.scaleOrdinal(colorScale)
-                .domain(['Am',
-                    'An',
-                    'Ar',
-                    'As',
-                    'Ba',
-                    'Br',
-                    'Ch',
-                    'Cn',
-                    'Cy',
-                    'Gl',
-                    'Gy',
-                    'Li',
-                    'Os',
-                    'Pr',
-                    'Vi',
-                    'Zy'
+                .domain(['Myriel',
+                    'Napoleon',
+                    'Mlle.Baptistine',
+                    'Mme.Magloire',
+                    'CountessdeLo',
+                    'Geborand',
+                    'Champtercier',
+                    'Cravatte',
+                    'Count',
+                    'OldMan',
+                    'Labarre',
+                    'Valjean',
+                    'Marguerite',
+                    'Mme.deR',
+                    'Isabeau',
+                    'Gervais',
+                    'Tholomyes',
+                    'Listolier',
+                    'Fameuil',
+                    'Blacheville',
+                    'Favourite',
+                    'Dahlia',
+                    'Zephine',
+                    'Fantine',
+                    'Mme.Thenardier',
+                    'Thenardier',
+                    'Cosette',
+                    'Javert',
+                    'Fauchelevent',
+                    'Bamatabois',
+                    'Perpetue',
+                    'Simplice',
+                    'Scaufflaire',
+                    'Woman1',
+                    'Judge',
+                    'Champmathieu',
+                    'Brevet',
+                    'Chenildieu',
+                    'Cochepaille',
+                    'Pontmercy',
+                    'Boulatruelle',
+                    'Eponine',
+                    'Anzelma',
+                    'Woman2',
+                    'MotherInnocent',
+                    'Gribier',
+                    'Jondrette',
+                    'Mme.Burgon',
+                    'Gavroche',
+                    'Gillenormand',
+                    'Magnon',
+                    'Mlle.Gillenormand',
+                    'Mme.Pontmercy',
+                    'Mlle.Vaubois',
+                    'Lt.Gillenormand',
+                    'Marius',
+                    'BaronessT',
+                    'Mabeuf',
+                    'Enjolras',
+                    'Combeferre',
+                    'Prouvaire',
+                    'Feuilly',
+                    'Courfeyrac',
+                    'Bahorel',
+                    'Bossuet',
+                    'Joly',
+                    'Grantaire',
+                    'MotherPlutarch',
+                    'Gueulemer',
+                    'Babet',
+                    'Claquesous',
+                    'Montparnasse',
+                    'Toussaint',
+                    'Child1',
+                    'Child2',
+                    'Brujon',
+                    'Mme.Hucheloup'
                 ]);
 
             svg.append("g")
@@ -157,7 +321,7 @@
                 .attr("transform", "translate(" + (canvas.width - 140) + "," + (canvas.height - 400) +
                     ")");
 
-            var legendSequential = d3.legendColor()
+            legendSequential = d3.legendColor()
                 .shapeWidth(30)
                 .cells(11)
                 .orient("vertical")
@@ -184,24 +348,12 @@
         function setTooltip() {
             tooltip = d3.select("body")
                 .append("div")
-                .attr("class", "tooltip")
+                .classed("tooltip", true)
                 .style("opacity", 0);
         }
 
-        function updateData() {
-            temp[0] = currLinks.pop();
-            temp[1] = currLinks.pop();
-            temp[2] = currLinks.pop();
-        }
-
-        function resetData() {
-            currLinks.push(temp[0]);
-            currLinks.push(temp[1]);
-            currLinks.push(temp[2]);
-        }
-
         function setLinksStatistics(links) {
-            _.each(currLinks, function (link) {
+            currLinks.forEach(function (link) {
                 // find other links with same target+source or source+target
                 same = _.where(currLinks, {
                     'source': link.source,
@@ -213,7 +365,7 @@
                 });
                 sameAll = same.concat(sameAlt);
 
-                _.each(sameAll, function (s, i) {
+                sameAll.forEach(function (s, i) {
                     s.sameIndex = (i + 1);
                     s.sameTotal = sameAll.length;
                     s.sameTotalHalf = (s.sameTotal / 2);
@@ -253,7 +405,7 @@
                 .nodes(currNodes)
                 .force('link', d3.forceLink().id(d => d.id))
                 .force('charge', d3.forceManyBody().strength(5))
-                .force('center', d3.forceCenter(canvas.width / 2, canvas.height / 2))
+                .force('center', d3.forceCenter(canvas.width / 4, canvas.height / 4))
                 .force('collide', d3.forceCollide(25))
                 .on('tick', ticked);
 
@@ -261,6 +413,22 @@
                 .links(currLinks);
         }
 
+        function setUpdateIntervals() {
+            d3.interval(function () {
+                updateData();
+                restart();
+                console.log(currLinks.length)
+            }, 4000, d3.now());
+
+            d3.interval(function () {
+                resetData();
+                restart();
+            }, 4000, d3.now() + 2000);
+        }
+
+        // - - - - - - - - - -
+        // Draw nodes and links
+        // - - - - - - - - - -
         function addNodeBehaviour() {
             node = svg.selectAll('.node')
                 .data(currNodes)
@@ -276,11 +444,26 @@
 
         function drawNodes() {
             // Draw notes without mouse event listeners
-            node.append('circle')
-                .attr('r', R)
-                .attr("fill", function (d) {
-                    return "#CCC";
+            node
+                .append('circle')
+                .classed('node', true)
+                .attr('r', function (d, i) {
+                    let r;
+                    if (dataLinksCount && dataLinksCount[d.id]) {
+                        r = dataLinksCount[d.id] * 3;
+                    } else {
+                        r = 0;
+                    }
+                    if (r < 5) r = 5;
+                    return r;
                 })
+                .attr("style", function (d, i) {
+                    return 'fill:' +
+                        color(d.group) +
+                        ';'
+                });
+
+            node
                 .on('mouseover.fade', fade_onMouseOver)
                 .on('mouseout.fade', fade_onMouseOut)
 
@@ -292,18 +475,122 @@
 
         }
 
+        function addLinkBehaviour(link) {
+            //Add mouseover events to links
+            link.attr('class', 'link')
+                .on('mouseover.fade', fade_onMouseOut)
+                .on('mouseout.fade', fade_onMouseOut)
+
+                .on('mouseover.tooltip', tooltip_onMouseOver)
+                .on("mouseout.tooltip", tooltip_onMouseOut)
+
+                .on("mousemove", onMouseMove);
+        }
+
+        function drawLinks() {
+            link = svg.selectAll('.link')
+                .data(currLinks)
+                .enter()
+                .append('path')
+                .classed('link', true)
+                .attr('style', function (d, i) {
+                    return 'stroke:' +
+                        color(d.value) +
+                        ';' +
+                        'stroke-width:' +
+                        (Math.sqrt(d.value) * 2) + ';';
+                });
+
+            addLinkBehaviour(link);
+        }
+
+        // - - - - - - - - - -
+        // Update and reset Data
+        // - - - - - - - - - -
+        function updateData() {
+            temp[0] = currLinks.pop();
+            temp[1] = currLinks.pop();
+            temp[2] = currLinks.pop();
+        }
+
+        function resetData() {
+            currLinks.push(temp[0]);
+            currLinks.push(temp[1]);
+            currLinks.push(temp[2]);
+        }
+
+        function aggregate() {
+            // - - - - - - - - - -
+            // Aggregate data
+            // - - - - - - - - - -
+            // links by source
+            // ! .entries() builds an array!
+            dataLinksBySource = d3.nest()
+                .key(function (d, i) {
+                    return d.source;
+                })
+                .entries(currLinks);
+            // - - - - -
+            // console.log(dataLinksBySource);
+            // - - - - -
+
+            // count links per name
+            // ! .object() builds an object!
+
+            dataLinksCount = d3.nest()
+                .key(function (d, i) {
+                    return d.source;
+                })
+                .rollup(function (v) {
+                    return v.length;
+                })
+                .object(currLinks);
+            // - - - - -
+            // console.log(dataLinksCount);
+            // - - - - - - - - - -
+        }
+
+        // - - - - - - - - - -
+        // Simulation
+        // - - - - - - - - - -
+        function ticked() {
+            //     link
+            //       .attr('x1', d => d.source.x)
+            //       .attr('y1', d => d.source.y)
+            //       .attr('x2', d => d.target.x)
+            //       .attr('y2', d => d.target.y);
+            link.attr("d", linkArc)
+            node.attr('transform', d => `translate(${d.x},${d.y})`);
+        }
+
         function restart() {
 
             link = link.data(currLinks);
 
             link.exit().transition()
                 .attr("stroke-opacity", 0)
-                //.attrTween("d", linkArc)
-                .remove();
-            //     	.attrTween("x1", function(d) { return function() { return d.source.x; }; })
-            //       .attrTween("x2", function(d) { return function() { return d.target.x; }; })
-            //       .attrTween("y1", function(d) { return function() { return d.source.y; }; })
-            //       .attrTween("y2", function(d) { return function() { return d.target.y; }; })
+                // .attrTween("d", linkArc)
+                .remove()
+                .attrTween("x1", function (d) {
+                    return function () {
+                        return d.source.x;
+                    };
+                })
+                .attrTween("x2", function (d) {
+                    return function () {
+                        return d.target.x;
+                    };
+                })
+                .attrTween("y1", function (d) {
+                    return function () {
+                        return d.source.y;
+                    };
+                })
+                .attrTween("y2", function (d) {
+                    return function () {
+                        return d.target.y;
+                    };
+                })
 
 
             link = link.enter().append('path')
@@ -326,62 +613,9 @@
 
         }
 
-        function addLinkBehaviour(link) {
-            //Add mouseover events to links
-            link.attr('class', 'link')
-                .on('mouseover.fade', fade_onMouseOut)
-                .on('mouseout.fade', fade_onMouseOut)
-
-                .on('mouseover.tooltip', tooltip_onMouseOver)
-                .on("mouseout.tooltip", tooltip_onMouseOut)
-
-                .on("mousemove", onMouseMove);
-        }
-
-        function drawLinks() {
-            //Draw links colored by T 
-            link = svg.selectAll('.link')
-                .data(currLinks)
-                .enter().append('path')
-                .attr('stroke', function (d) {
-                    return color(d.T);
-                });
-
-            addLinkBehaviour(link);
-        }
-
-        function ticked() {
-            //     link
-            //       .attr('x1', d => d.source.x)
-            //       .attr('y1', d => d.source.y)
-            //       .attr('x2', d => d.target.x)
-            //       .attr('y2', d => d.target.y);
-            link.attr("d", linkArc)
-            node.attr('transform', d => `translate(${d.x},${d.y})`);
-        }
-
-        function onDragstarted(d) {
-            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-        }
-
-        function onDragged(d) {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
-        }
-
-        function onDragEnded(d) {
-            if (!d3.event.active) simulation.alphaTarget(0);
-            //d.fx = null;
-            //d.fy = null;
-        }
-
-        function onReleaseNode(d) {
-            d.fx = null;
-            d.fy = null;
-        }
-
+        // - - - - - - - - - -
+        // Other
+        // - - - - - - - - - -
         function linkArc(d) {
             var dx = (d.target.x - d.source.x),
                 dy = (d.target.y - d.source.y),
@@ -421,51 +655,6 @@
             };
         }
 
-        function tooltip_onMouseOut() {
-            tooltip
-                .transition()
-                .duration(100)
-                .style("opacity", 0);
-        }
-
-        function onMouseMove() {
-            tooltip
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY + 10) + "px");
-        }
-
-        function tooltip_onMouseOver(d) {
-            tooltip
-                .transition()
-                .duration(300)
-                .style("opacity", .8);
-
-            tooltip
-                .html("Project:" + d.id + "<p/>T:" + d.T)
-                .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY + 10) + "px");
-        }
-
-        function fade_onMouseOver() {
-            fade(0.1);
-        }
-
-        function fade_onMouseOut() {
-            fade(1);
-        }
-
-        function setUpdateIntervals() {
-            d3.interval(function () {
-                updateData();
-                restart();
-                console.log(currLinks.length)
-            }, 4000, d3.now());
-
-            d3.interval(function () {
-                resetData();
-                restart();
-            }, 4000, d3.now() + 2000);
-        }
         // - - - - - - - - - -
         function init() {
             setCanvas();
