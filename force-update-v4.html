@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    html {
+        background-color: black;
+    }
+
+    svg {
+        background-color: hsla(0, 80%, 50%, 0.1);
+
+
+    }
+
+    text {
+        font-family: monospace;
+        fill: white;
+    }
+
+    .link {
+        /* 	  stroke: #c1c1c1; */
+        stroke-width: 2px;
+        pointer-events: all;
+    }
+
+    .node circle {
+        pointer-events: all;
+        stroke: #777;
+        stroke-width: 1px;
+    }
+
+    path {
+        fill: none;
+        stroke-width: 3;
+    }
+
+    div.tooltip {
+        position: absolute;
+        background-color: white;
+        max-width: 200px;
+        height: auto;
+        padding: 1px;
+        border-style: solid;
+        border-radius: 4px;
+        border-width: 1px;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, .5);
+        pointer-events: none;
+    }
+</style>
+
+<body>
+    <div id="option">
+        <input name="updateButton" type="button" value="Update" onclick="updateData()" />
+    </div>
+    <br>
+    <div id="option">
+        <input name="resetButton" type="button" value="Reset" onclick="resetData()" />
+    </div>
+</body>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.min.js"></script>
+<!-- <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js"></script>
+<script>
+    /** Force Direction Graph
+     *
+     *  @desc written in d3.v4
+     *        - nodes are updating, see updateData(), resetData()
+     *        - nodes can be fixed by a click
+     *        - nodes can be released by doubleclick
+     *
+     * @package D3 Datavisualization
+     * @module force_directed_graph
+     * @author Michael <michael.reichart@gfu.net>
+     * @version v1.0.0
+     * @since 2019-12-22
+     * @see i.e. inspired by Alejandro Suarez {https://bl.ocks.org/almsuarez/295c4ceb007e85e311b09208b342c444}
+     * @license MIT {https://opensource.org/licenses/MIT}
+     * @copyright (c) 2019 Michael Reichart, Cologne
+     */
+
+    !(function () {
+        'use strict';
+        // - - - - - - - - - -
+        // Global declarations
+        // - - - - - - - - - -
+        let
+            colorScale, color, tooltip, svg, canvas, sequentialScale, simulation, currNodes, currLinks, maxSame,
+            same, sameAlt, sameAll, link, node, dataFrame,
+            linkedByIndex = {},
+            temp = [],
+            R = 8;
+
+
+        // - - - - - - - - - -
+        function loadData() {
+            d3.json("assets/data/dataframe.json", function (error, dataFrame) {
+                if (error) throw error;
+
+                setCurrentData(dataFrame);
+
+                setLinksStatistics(currLinks);
+                setMaxSame(currLinks);
+
+                setSimulation();
+
+                drawLinks()
+
+                addNodeBehaviour();
+                drawNodes();
+
+                setUpdateIntervals();
+
+                // currLinks.forEach(d => {
+                //     linkedByIndex[`${d.source.index},${d.target.index}`] = 1;
+                // });
+
+            });
+        }
+
+        function setCanvas() {
+            canvas = {
+                width: 500,
+                height: 400
+            }
+        }
+
+        function setSvg() {
+            console.log('lala');
+            svg = d3.select('body')
+                .append('svg')
+                .attr('width', canvas.width)
+                .attr('height', canvas.height)
+        }
+
+        function setLegend() {
+            sequentialScale = d3.scaleOrdinal(colorScale)
+                .domain(['Am',
+                    'An',
+                    'Ar',
+                    'As',
+                    'Ba',
+                    'Br',
+                    'Ch',
+                    'Cn',
+                    'Cy',
+                    'Gl',
+                    'Gy',
+                    'Li',
+                    'Os',
+                    'Pr',
+                    'Vi',
+                    'Zy'
+                ]);
+
+            svg.append("g")
+                .attr("class", "legendSequential")
+                .attr("transform", "translate(" + (canvas.width - 140) + "," + (canvas.height - 400) +
+                    ")");
+
+            var legendSequential = d3.legendColor()
+                .shapeWidth(30)
+                .cells(11)
+                .orient("vertical")
+                .title("Link legend:")
+                .titleWidth(100)
+                .scale(sequentialScale)
+
+            svg.select(".legendSequential")
+                .call(legendSequential);
+        }
+
+        function setColorScale() {
+            colorScale = d3.schemeCategory20;
+        }
+
+        function setColor() {
+            color = d3.scaleOrdinal(colorScale)
+                .domain(['Am', 'An', 'Ar', 'As', 'Ba', 'Br', 'Ch', 'Cn', 'Cy', 'Gl', 'Gy', 'Li', 'Os',
+                    'Pr', 'Vi',
+                    'Zy'
+                ]);;
+        }
+
+        function setTooltip() {
+            tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
+        }
+
+        function updateData() {
+            temp[0] = currLinks.pop();
+            temp[1] = currLinks.pop();
+            temp[2] = currLinks.pop();
+        }
+
+        function resetData() {
+            currLinks.push(temp[0]);
+            currLinks.push(temp[1]);
+            currLinks.push(temp[2]);
+        }
+
+        function setLinksStatistics(links) {
+            _.each(currLinks, function (link) {
+                // find other links with same target+source or source+target
+                same = _.where(currLinks, {
+                    'source': link.source,
+                    'target': link.target
+                });
+                sameAlt = _.where(currLinks, {
+                    'source': link.target,
+                    'target': link.source
+                });
+                sameAll = same.concat(sameAlt);
+
+                _.each(sameAll, function (s, i) {
+                    s.sameIndex = (i + 1);
+                    s.sameTotal = sameAll.length;
+                    s.sameTotalHalf = (s.sameTotal / 2);
+                    s.sameUneven = ((s.sameTotal % 2) !== 0);
+                    s.sameMiddleLink = ((s.sameUneven === true) &&
+                        (Math.ceil(s.sameTotalHalf) === s.sameIndex));
+                    s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
+                    s.sameArcDirection = s.sameLowerHalf ? 0 : 1;
+                    s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s
+                        .sameIndex -
+                        Math.ceil(
+                            s.sameTotalHalf));
+                });
+            });
+        }
+
+        function setCurrentData(data) {
+            currNodes = data.nodes;
+            currLinks = data.links;
+        }
+
+        function setMaxSame() {
+            maxSame = _.chain(currLinks)
+                .sortBy(function (x) {
+                    return x.sameTotal;
+                })
+                .last()
+                .value().sameTotal;
+
+            _.each(currLinks, function (link) {
+                link.maxSameHalf = Math.round(maxSame / 2);
+            });
+        }
+
+        function setSimulation() {
+            simulation = d3.forceSimulation()
+                .nodes(currNodes)
+                .force('link', d3.forceLink().id(d => d.id))
+                .force('charge', d3.forceManyBody().strength(5))
+                .force('center', d3.forceCenter(canvas.width / 2, canvas.height / 2))
+                .force('collide', d3.forceCollide(25))
+                .on('tick', ticked);
+
+            simulation.force('link')
+                .links(currLinks);
+        }
+
+        function addNodeBehaviour() {
+            node = svg.selectAll('.node')
+                .data(currNodes)
+                .enter()
+                .append('g')
+                .attr('class', 'node')
+                .call(d3.drag()
+                    .on("start", onDragstarted)
+                    .on("drag", onDragged)
+                    .on("end", onDragEnded));;
+
+        }
+
+        function drawNodes() {
+            // Draw notes without mouse event listeners
+            node.append('circle')
+                .attr('r', R)
+                .attr("fill", function (d) {
+                    return "#CCC";
+                })
+                .on('mouseover.fade', fade_onMouseOver)
+                .on('mouseout.fade', fade_onMouseOut)
+
+                .on('mouseover.tooltip', tooltip_onMouseOver)
+                .on("mouseout.tooltip", tooltip_onMouseOut)
+
+                .on("mousemove", onMouseMove)
+                .on('dblclick', onReleaseNode);
+
+        }
+
+        function restart() {
+
+            link = link.data(currLinks);
+
+            link.exit().transition()
+                .attr("stroke-opacity", 0)
+                //.attrTween("d", linkArc)
+                .remove();
+            //     	.attrTween("x1", function(d) { return function() { return d.source.x; }; })
+            //       .attrTween("x2", function(d) { return function() { return d.target.x; }; })
+            //       .attrTween("y1", function(d) { return function() { return d.source.y; }; })
+            //       .attrTween("y2", function(d) { return function() { return d.target.y; }; })
+
+
+            link = link.enter().append('path')
+                .call(function (link) {
+                    link.transition().attr("stroke-opacity", 1);
+                })
+                .call(function (link) {
+                    link.transition().attr("d", linkArc)
+                })
+                .call(function (link) {
+                    link.transition().attr('stroke', function (d) {
+                        return color(d.T);
+                    })
+                })
+                .merge(link);
+
+            simulation.nodes(currNodes);
+            simulation.force("link").links(currLinks);
+            simulation.alpha(1).restart();
+
+        }
+
+        function addLinkBehaviour(link) {
+            //Add mouseover events to links
+            link.attr('class', 'link')
+                .on('mouseover.fade', fade_onMouseOut)
+                .on('mouseout.fade', fade_onMouseOut)
+
+                .on('mouseover.tooltip', tooltip_onMouseOver)
+                .on("mouseout.tooltip", tooltip_onMouseOut)
+
+                .on("mousemove", onMouseMove);
+        }
+
+        function drawLinks() {
+            //Draw links colored by T 
+            link = svg.selectAll('.link')
+                .data(currLinks)
+                .enter().append('path')
+                .attr('stroke', function (d) {
+                    return color(d.T);
+                });
+
+            addLinkBehaviour(link);
+        }
+
+        function ticked() {
+            //     link
+            //       .attr('x1', d => d.source.x)
+            //       .attr('y1', d => d.source.y)
+            //       .attr('x2', d => d.target.x)
+            //       .attr('y2', d => d.target.y);
+            link.attr("d", linkArc)
+            node.attr('transform', d => `translate(${d.x},${d.y})`);
+        }
+
+        function onDragstarted(d) {
+            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function onDragged(d) {
+            d.fx = d3.event.x;
+            d.fy = d3.event.y;
+        }
+
+        function onDragEnded(d) {
+            if (!d3.event.active) simulation.alphaTarget(0);
+            //d.fx = null;
+            //d.fy = null;
+        }
+
+        function onReleaseNode(d) {
+            d.fx = null;
+            d.fy = null;
+        }
+
+        function linkArc(d) {
+            var dx = (d.target.x - d.source.x),
+                dy = (d.target.y - d.source.y),
+                dr = Math.sqrt(dx * dx + dy * dy),
+                unevenCorrection = (d.sameUneven ? 0 : 0.5);
+            // curvature term defines how tight the arcs are (lower number = tigher curve)
+            var curvature = 2,
+                arc = (1.0 / curvature) * ((dr * d.maxSameHalf) / (d.sameIndexCorrected -
+                    unevenCorrection));
+
+            //console.log(d.maxSameHalf)
+            //d.maxSameHalf always showing zero...
+            if (d.sameMiddleLink) {
+                arc = 0;
+            }
+
+            return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + arc + " 0 0," + d
+                .sameArcDirection +
+                " " + d.target.x + "," + d.target.y;
+        }
+
+        function isConnected(a, b) {
+            return linkedByIndex[`${a.index},${b.index}`] || linkedByIndex[`${b.index},${a.index}`] || a
+                .index === b.index;
+        }
+
+        function fade(opacity) {
+            return d => {
+                node.style('stroke-opacity', function (o) {
+                    const thisOpacity = isConnected(d, o) ? 1 : opacity;
+                    this.setAttribute('fill-opacity', thisOpacity);
+                    return thisOpacity;
+                });
+
+                link.style('stroke-opacity', o => (o.source === d || o.target === d ? 1 : opacity));
+
+            };
+        }
+
+        function tooltip_onMouseOut() {
+            tooltip
+                .transition()
+                .duration(100)
+                .style("opacity", 0);
+        }
+
+        function onMouseMove() {
+            tooltip
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY + 10) + "px");
+        }
+
+        function tooltip_onMouseOver(d) {
+            tooltip
+                .transition()
+                .duration(300)
+                .style("opacity", .8);
+
+            tooltip
+                .html("Project:" + d.id + "<p/>T:" + d.T)
+                .style("left", (d3.event.pageX) + "px")
+                .style("top", (d3.event.pageY + 10) + "px");
+        }
+
+        function fade_onMouseOver() {
+            fade(0.1);
+        }
+
+        function fade_onMouseOut() {
+            fade(1);
+        }
+
+        function setUpdateIntervals() {
+            d3.interval(function () {
+                updateData();
+                restart();
+                console.log(currLinks.length)
+            }, 4000, d3.now());
+
+            d3.interval(function () {
+                resetData();
+                restart();
+            }, 4000, d3.now() + 2000);
+        }
+        // - - - - - - - - - -
+        function init() {
+            setCanvas();
+            setSvg();
+            setColorScale();
+            setColor();
+            setTooltip();
+            setLegend();
+            loadData();
+        }
+
+        function main() {
+            init();
+
+        }
+
+        // - - - - - - - - - -
+        // Main control
+        // - - - - - - - - - -
+        window.addEventListener('load', init);
+        // - - - - - - - - - -
+    }());
+</script>

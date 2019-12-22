@@ -1,0 +1,193 @@
+{
+    "nodes": [
+
+        {
+            "T": ["Ba", "Ar"],
+            "Q": ["sp", "sp"],
+            "id": 0
+        },
+        {
+            "T": ["As", "Zy", "Gy"],
+            "Q": ["sp", "fu", "la"],
+            "id": 1
+        },
+        {
+            "T": ["Ch"],
+            "Q": ["nu", "ni", "tr"],
+            "id": 2
+        }, {
+            "T": ["An", "Gy"],
+            "Q": ["fu", "va", "ec", "cl", "la", "pl"],
+            "id": 3
+        }, {
+            "T": ["As", "Gl", "An"],
+            "Q": ["sp", "fu", "va", "cl", "la"],
+            "id": 4
+        }, {
+            "T": ["Ba", "Ar"],
+            "Q": ["me", "fu", "ec", "sp", "sp"],
+            "id": 5
+        }, {
+            "T": ["As", "Li", "Br", "An", "Gy"],
+            "Q": ["sp", "fu", "va", "sp", "la"],
+            "id": 6
+        }, {
+            "T": ["Pr", "Cy", "Ch"],
+            "Q": ["nu", "sp", "fu", "va", "pl"],
+            "id": 7
+        }, {
+            "T": ["Ba", "Ar"],
+            "Q": ["sp", "fu", "va", "di", "ge"],
+            "id": 8
+        }, {
+            "T": ["Ar", "Os", "Am"],
+            "Q": ["sp", "va", "ec", "ec", "cl", "tr", "la"],
+            "id": 9
+        }, {
+            "T": ["Vi", "Cn"],
+            "Q": ["sp", "fu", "di", "sp", "ge"],
+            "id": 10
+        }, {
+            "T": ["An"],
+            "Q": ["sp", "ni", "fu", "va", "cl", "di", "tr"],
+            "id": 11
+        }, {
+            "T": ["Ar", "Ch"],
+            "Q": ["me", "nu", "sp", "va", "sp"],
+            "id": 12
+        }, {
+            "T": ["Vi", "Ar", "Pr"],
+            "Q": ["sp", "fu", "sp"],
+            "id": 13
+        }, {
+            "T": ["An", "Gy"],
+            "Q": ["sp", "ni", "va", "cl", "tr", "la", "sp", "na"],
+            "id": 14
+        }, {
+            "T": ["Ba", "Am"],
+            "Q": ["sp", "fu", "sp", "di", "ge"],
+            "id": 15
+        }, {
+            "T": ["Vi", "Ar", "Ba", "Cy", "Ch", "Ch"],
+            "Q": ["nu", "sp", "fu", "va", "di"],
+            "id": 16
+        }, {
+            "T": ["An", "Gy"],
+            "Q": ["sp", "di"],
+            "id": 17
+        }, {
+            "T": ["An", "Ar"],
+            "Q": ["sp", "sp", "tr", "ad"],
+            "id": 18
+        }, {
+            "T": ["Ch", "Ar"],
+            "Q": ["ni", "fu", "va", "cl", "sp", "la"],
+            "id": 19
+        }
+
+    ],
+
+    "links": [
+
+        {
+            "source": 0.0,
+            "target": 5.0,
+            "T": "Ba"
+        }, {
+            "source": 5.0,
+            "target": 5.0,
+            "T": "Ba"
+        }, {
+            "source": 5.0,
+            "target": 5.0,
+            "T": "Ba"
+        }, {
+            "source": 5.0,
+            "target": 5.0,
+            "T": "Ba"
+        }, {
+            "source": 8.0,
+            "target": 15.0,
+            "T": "Ba"
+        }, {
+            "source": 8.0,
+            "target": 16.0,
+            "T": "Ba"
+        }, {
+            "source": 15.0,
+            "target": 5.0,
+            "T": "Ba"
+        }, {
+            "source": 1.0,
+            "target": 3.0,
+            "T": "Gy"
+        }, {
+            "source": 1.0,
+            "target": 6.0,
+            "T": "Gy"
+        }, {
+            "source": 1.0,
+            "target": 14.0,
+            "T": "Gy"
+        }, {
+            "source": 1.0,
+            "target": 17.0,
+            "T": "Gy"
+        }, {
+            "source": 3.0,
+            "target": 6.0,
+            "T": "Gy"
+        }, {
+            "source": 3.0,
+            "target": 14.0,
+            "T": "Gy"
+        }, {
+            "source": 3.0,
+            "target": 17.0,
+            "T": "Gy"
+        }, {
+            "source": 6.0,
+            "target": 14.0,
+            "T": "Gy"
+        }, {
+            "source": 6.0,
+            "target": 17.0,
+            "T": "Gy"
+        }, {
+            "source": 14.0,
+            "target": 17.0,
+            "T": "Gy"
+        }, {
+            "source": 7.0,
+            "target": 13.0,
+            "T": "Pr"
+        }, {
+            "source": 0,
+            "target": 5.0,
+            "T": "Ch"
+        }, {
+            "source": 2.0,
+            "target": 12.0,
+            "T": "Ch"
+        }, {
+            "source": 2.0,
+            "target": 12.0,
+            "T": "Ch"
+        },
+        {
+            "source": 0.0,
+            "target": 5.0,
+            "T": "Ba"
+        }, {
+            "source": 0.0,
+            "target": 5.0,
+            "T": "Gy"
+        }, {
+            "source": 0.0,
+            "target": 5.0,
+            "T": "Br"
+        }
+    ]
+
+
+}
