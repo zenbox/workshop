@@ -142,7 +142,7 @@
                 aggregate();
 
                 setLinksStatistics(currLinks);
-                // setMaxSame(currLinks);
+                setMaxSame(currLinks);
 
                 setSimulation();
 
@@ -152,11 +152,6 @@
                 drawNodes();
 
                 setUpdateIntervals();
-
-                // currLinks.forEach(d => {
-                //     linkedByIndex[`${d.source.index},${d.target.index}`] = 1;
-                // });
-
             });
         }
 
@@ -668,7 +663,6 @@
 
         function main() {
             init();
-
         }
 
         // - - - - - - - - - -
