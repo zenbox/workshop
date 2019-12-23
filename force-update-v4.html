@@ -66,9 +66,21 @@
         left: 0;
         top: 0;
     }
+
+    output {
+        display: block;
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        color: hsla(0, 0%, 100%, 0.4);
+        font-family: Menlo, monospace;
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
 </style>
 
 <body>
+    <output id="log"></output>
     <div class="option">
         <input name="updateButton" type="button" value="Update" onclick="updateData()" />
     </div>
@@ -119,6 +131,7 @@
             linkedByIndex = {},
 
             maxSame,
+            messages = ['> ready ...'],
 
             node,
 
@@ -218,8 +231,8 @@
         // - - - - - - - - - -
         function setCanvas() {
             canvas = {
-                width: screen.width,
-                height: screen.height
+                width: window.outerWidth,
+                height: window.outerHeight
             }
         }
 
@@ -231,6 +244,16 @@
         }
 
         function setLegend() {
+
+            let x, y, w, h, c, r, t, p;
+
+            w = canvas.width / 2;
+            h = 25;
+            c = 1;
+            p = 16;
+            t = (0 - canvas.height);
+            r = (canvas.width - w);
+
             sequentialScale = d3.scaleOrdinal(colorScale)
                 .domain(['Myriel',
                     'Napoleon',
@@ -313,8 +336,18 @@
 
             svg.append("g")
                 .attr("class", "legendSequential")
-                .attr("transform", "translate(" + (canvas.width - canvas.width/8) + "," + (0-canvas.height+canvas.height/1) +
-                    ")");
+                .attr("transform", function (d, i) {
+
+                    x = p + (r * c);
+                    y = p + (t + (i * h));
+                    log(x, y);
+                    // if (y > canvas.height) {
+                    //     c += 1;
+                    // }
+
+                    if (typeof x === 'number' && typeof y == 'number')
+                        return "translate(" + x + "," + y + ")"
+                });
 
             legendSequential = d3.legendColor()
                 .shapeWidth(30)
@@ -650,6 +683,28 @@
             };
         }
 
+        /** In-page logging
+         * @desc uses an output element to log
+         *       strings within the svg graph
+         * @param {any} _arguments to handle one or more values
+         * @returns none
+         */
+        function log() {
+            let string = '';
+
+            for (let i = 0; i < arguments.length; i += 1) {
+                string += arguments[i] + ', ';
+            }
+            string = string.substring(0, string.length - 2);
+            messages.push(string);
+
+            if (messages.length > 8) messages.shift();
+
+            for (let i = 0; i < messages.length; i += 1) {
+                document.querySelector('#log').innerHTML += messages[i] + '<br />&gt; ';
+            }
+
+        }
         // - - - - - - - - - -
         function init() {
             setCanvas();
