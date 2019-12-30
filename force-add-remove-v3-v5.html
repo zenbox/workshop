@@ -45,14 +45,17 @@
             // - - - - - - - - - -
             let
                 fill, simulation, svg, nodes, links, node, link, cursor,
+                nodeElements, linkElements,
                 i = false,
                 canvas = {},
-                myNodes = [{}],
-                myLinks = [{}];
+                dataset = {};
+
+            dataset.nodes = [];
+            dataset.links = [];
 
             canvas = {
-                width: 480,
-                height: 500
+                width: 800,
+                height: 400
             };
 
             // - - - - - - - - - -
@@ -66,40 +69,50 @@
             }
 
             function onCanvasMousedown() {
-                let point = d3.mouse(this),
+                let
+                    point = d3.mouse(this),
                     node = {
+                        id: String.fromCharCode(Math.floor(Math.random() * 24) + 65),
                         x: point[0],
                         y: point[1]
-                    },
-                    n = nodes.push(node);
+                    };
+
+                dataset.nodes.push(node);
 
                 // add links to any nearby nodes
-                nodes
+                dataset.nodes
                     .forEach(function (target) {
                         let x = target.x - node.x,
                             y = target.y - node.y;
                         if (Math.sqrt(x * x + y * y) < 30) {
-                            links.push({
+                            dataset.links.push({
                                 source: node,
                                 target: target
                             });
                         }
                     });
-                restartSimulation();
+
+                startSimulation();
             }
 
             function onNodeMousedown(d, i) {
-                nodes.splice(i, 1);
-                links = links.filter(function (l) {
+                dataset.nodes.splice(i, 1);
+
+                dataset.links = dataset.links.filter(function (l) {
                     return l.source !==
                         d && l.target !== d;
                 });
+
                 d3.event.stopPropagation();
-                restartSimulation();
+
+                startSimulation();
             }
 
             function onTicked() {
-                link
+                let nodeElements = svg.selectAll('.node');
+                let linkElements = svg.selectAll('.link');
+
+                linkElements
                     .attr("x1", function (d) {
                         return d.source.x;
                     }).attr("y1", function (d) {
@@ -111,7 +124,7 @@
                         return d.target.y;
                     });
 
-                node
+                nodeElements
                     .attr("cx", function (d) {
                         if (i === false) {
                             console.log(typeof node);
@@ -124,6 +137,9 @@
                     });
             }
 
+            // - - - - - - - - - - 
+            // 2.2 Setter functions 
+            // - - - - - - - - - - 
             function setSvg() {
                 svg = d3.select("body")
                     .append("svg")
@@ -136,9 +152,15 @@
                     .attr("width", canvas.width)
                     .attr("height", canvas.height);
             }
-            // - - - - - - - - - - 
-            // 2.2 Setter functions 
-            // - - - - - - - - - - 
+
+            function setCursor() {
+                // create the cursor 
+                cursor = svg.append("circle")
+                    .attr("r", 30)
+                    .attr("transform", "translate(-100,-100)")
+                    .attr("class", "cursor");
+            }
+
             function setColorScheme() {
                 switch (version) {
                     case 3:
@@ -150,73 +172,112 @@
                 }
             }
 
+            /** Create the force direction graph
+             */
             function setSimulation() {
-                // Create the force direction graph
                 switch (version) {
                     case 3:
                         simulation = d3.layout
                             .force()
                             .size([canvas.width, canvas.height])
-                            .nodes(
-                                myNodes
-                            ) // initialize with a single node 
+                            .nodes(dataset.nodes) // ! data, initialize with a single node 
                             .linkDistance(30)
                             .charge(-60)
                             .on("tick", onTicked);
-
-                        links = simulation.links();
-                        nodes = simulation.nodes();
                         break;
                     case 4:
                     case 5:
                         simulation = d3.forceSimulation()
-                            .nodes([{}])
-                            .force('link', d3.forceLink().distance(30))
+                            // .nodes(dataset.nodes)
+                            .force('link', d3.forceLink()
+                                .distance(200)
+                                .strength(0.6)
+                            )
                             .force('charge',
                                 d3.forceManyBody()
-                                .strength(-60))
-                            .force('center', d3.forceCenter(canvas.width / 2, canvas.height / 2))
+                                .strength(-60)
+                            )
+                            .force("x", d3.forceX(canvas.width / 2))
+                            .force("y", d3.forceY(canvas.height / 2))
+                            // .force('center', d3.forceCenter(canvas.width / 2, canvas.height / 2))
                             .on('tick', onTicked);
-
-                        nodes = simulation.nodes();
-                        links = []; // simulation.links(),
                         break;
                 }
 
-
-                node = svg.selectAll(".node");
-                link = svg.selectAll(".link");
-
-                restartSimulation();
+                startSimulation();
             }
 
-            function setCursor() {
-                // create the cursor 
-                cursor = svg.append("circle").attr("r", 30)
-                    .attr("transform", "translate(-100,-100)")
-                    .attr("class", "cursor");
-            }
+            function startSimulation() {
+                // - - - - - - - - - -
+                // NODES
+                // - - - - - - - - - -
+                switch (version) {
+                    case 3:
+                        nodeElements = svg.selectAll('.node');
+                        dataset.nodes = simulation.nodes();
+                        node = nodeElements.data(dataset.nodes);
 
-            function restartSimulation() {
-                node = node.data(nodes);
+                        node.exit().remove();
 
-                node.enter()
-                    .insert("circle", ".cursor")
-                    .attr("class", "node")
-                    .attr("r", 5)
-                    .on("mousedown", onNodeMousedown);
+                        node.enter()
+                            .insert("circle", ".cursor")
+                            .attr("class", "node")
+                            .attr("r", 5)
+                            .on("mousedown", onNodeMousedown);
+                        break;
+                    case 4:
+                    case 5:
+                        nodeElements = svg.selectAll(".node")
+                            .data(dataset.nodes, function (d) {
+                                return d.id
+                            });
 
-                node.exit()
-                    .remove();
+                        nodeElements.enter()
+                            .append("circle")
+                            .attr("class", function (d) {
+                                return "node " + d.id;
+                            })
+                            .attr("r", 8)
+                            .on("mousedown", onNodeMousedown);
 
-                link = link.data(links);
+                        nodeElements.exit().remove();
 
-                link.enter()
-                    .insert("line", ".node")
-                    .attr("class", "link");
+                        simulation.nodes(dataset.nodes)
+                        simulation.force("link").links(dataset.links)
+                        simulation.restart();
 
-                link.exit()
-                    .remove();
+                        break;
+                }
+
+                // - - - - - - - - - -
+                // LINKS
+                // - - - - - - - - - -
+                switch (version) {
+                    case 3:
+                        link = svg.selectAll('.link');
+                        links = simulation.links();
+                        link = link.data(links);
+
+                        link.exit().remove();
+
+                        link.enter()
+                            .insert("line", ".node")
+                            .attr("class", "link")
+
+                        break;
+                    case 4:
+                    case 5:
+                        linkElements = svg
+                            .selectAll('.link')
+                            .data(dataset.links);
+
+                        linkElements.exit().remove();
+
+                        linkElements.enter()
+                            .append("line", ".node")
+                            .attr("class", "link");
+                        break;
+                }
 
                 switch (version) {
                     case
@@ -224,7 +285,7 @@
                         simulation.start();
                         break;
                     case 5:
-                        simulation.restart();
+                        simulation.alphaTarget(0.3).restart();
                         break;
                 }
             }
