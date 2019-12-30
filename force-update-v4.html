@@ -24,18 +24,13 @@
         fill: white;
     }
 
-    .link {
-        /* stroke: #c1c1c1; */
-        /* stroke-width: 2px; */
-        pointer-events: all;
-    }
-
     .node {
-        opacity: 0.8;
+        opacity: 0.3;
     }
 
     .link {
-        opacity: 0.4;
+        pointer-events: all;
+        opacity: 0.2;
     }
 
     .node circle {
@@ -67,26 +62,28 @@
         top: 0;
     }
 
-    output {
+    output#log {
         display: block;
         position: absolute;
-        left: 1rem;
+        right: 1rem;
         top: 1rem;
         color: hsla(0, 0%, 100%, 0.4);
         font-family: Menlo, monospace;
         font-size: 0.8rem;
         line-height: 1.5;
     }
+
+    .cell,
+    .swatch,
+    .label {
+        font-family: Menlo, monospace;
+        font-size: 0.6rem;
+        opacity: 0.4;
+    }
 </style>
 
 <body>
     <output id="log"></output>
-    <div class="option">
-        <input name="updateButton" type="button" value="Update" onclick="updateData()" />
-    </div>
-    <div class="option">
-        <input name="resetButton" type="button" value="Reset" onclick="resetData()" />
-    </div>
 </body>
 <script src="libs/d3/d3.v4.min.js"></script>
 <script src="libs/d3/d3-legend/2.24.0/d3-legend.min.js"></script>
@@ -130,15 +127,10 @@
             link,
             linkedByIndex = {},
 
-            maxSame,
-            messages = ['> ready ...'],
+            messages = ['ready.'],
 
             node,
 
-            same,
-            sameAll,
-            sameAlt,
-            sequentialScale,
             simulation,
             svg,
 
@@ -147,15 +139,10 @@
 
         // - - - - - - - - - -
         function loadData() {
-            d3.json("assets/data/miserables.json", function (error, dataFrame) {
+            d3.json("assets/data/little_dataframe.json", function (error, dataFrame) {
                 if (error) throw error;
-
                 setCurrentData(dataFrame);
-
                 aggregate();
-
-                setLinksStatistics(currLinks);
-                setMaxSame(currLinks);
 
                 setSimulation();
 
@@ -231,8 +218,8 @@
         // - - - - - - - - - -
         function setCanvas() {
             canvas = {
-                width: window.outerWidth,
-                height: window.outerHeight
+                width: window.innerWidth,
+                height: window.innerHeight
             }
         }
 
@@ -241,124 +228,6 @@
                 .append('svg')
                 .attr('width', canvas.width)
                 .attr('height', canvas.height)
-        }
-
-        function setLegend() {
-
-            let x, y, w, h, c, r, t, p;
-
-            w = canvas.width / 2;
-            h = 25;
-            c = 1;
-            p = 16;
-            t = (0 - canvas.height);
-            r = (canvas.width - w);
-
-            sequentialScale = d3.scaleOrdinal(colorScale)
-                .domain(['Myriel',
-                    'Napoleon',
-                    'Mlle.Baptistine',
-                    'Mme.Magloire',
-                    'CountessdeLo',
-                    'Geborand',
-                    'Champtercier',
-                    'Cravatte',
-                    'Count',
-                    'OldMan',
-                    'Labarre',
-                    'Valjean',
-                    'Marguerite',
-                    'Mme.deR',
-                    'Isabeau',
-                    'Gervais',
-                    'Tholomyes',
-                    'Listolier',
-                    'Fameuil',
-                    'Blacheville',
-                    'Favourite',
-                    'Dahlia',
-                    'Zephine',
-                    'Fantine',
-                    'Mme.Thenardier',
-                    'Thenardier',
-                    'Cosette',
-                    'Javert',
-                    'Fauchelevent',
-                    'Bamatabois',
-                    'Perpetue',
-                    'Simplice',
-                    'Scaufflaire',
-                    'Woman1',
-                    'Judge',
-                    'Champmathieu',
-                    'Brevet',
-                    'Chenildieu',
-                    'Cochepaille',
-                    'Pontmercy',
-                    'Boulatruelle',
-                    'Eponine',
-                    'Anzelma',
-                    'Woman2',
-                    'MotherInnocent',
-                    'Gribier',
-                    'Jondrette',
-                    'Mme.Burgon',
-                    'Gavroche',
-                    'Gillenormand',
-                    'Magnon',
-                    'Mlle.Gillenormand',
-                    'Mme.Pontmercy',
-                    'Mlle.Vaubois',
-                    'Lt.Gillenormand',
-                    'Marius',
-                    'BaronessT',
-                    'Mabeuf',
-                    'Enjolras',
-                    'Combeferre',
-                    'Prouvaire',
-                    'Feuilly',
-                    'Courfeyrac',
-                    'Bahorel',
-                    'Bossuet',
-                    'Joly',
-                    'Grantaire',
-                    'MotherPlutarch',
-                    'Gueulemer',
-                    'Babet',
-                    'Claquesous',
-                    'Montparnasse',
-                    'Toussaint',
-                    'Child1',
-                    'Child2',
-                    'Brujon',
-                    'Mme.Hucheloup'
-                ]);
-
-            svg.append("g")
-                .attr("class", "legendSequential")
-                .attr("transform", function (d, i) {
-
-                    x = p + (r * c);
-                    y = p + (t + (i * h));
-                    log(x, y);
-                    // if (y > canvas.height) {
-                    //     c += 1;
-                    // }
-
-                    if (typeof x === 'number' && typeof y == 'number')
-                        return "translate(" + x + "," + y + ")"
-                });
-
-            legendSequential = d3.legendColor()
-                .shapeWidth(30)
-                .cells(11)
-                .orient("vertical")
-                .title("Link legend:")
-                .titleWidth(100)
-                .scale(sequentialScale)
-
-            svg.select(".legendSequential")
-                .call(legendSequential);
         }
 
         function setColorScale() {
@@ -380,52 +249,9 @@
                 .style("opacity", 0);
         }
 
-        function setLinksStatistics(links) {
-            currLinks.forEach(function (link) {
-                // find other links with same target+source or source+target
-                same = _.where(currLinks, {
-                    'source': link.source,
-                    'target': link.target
-                });
-                sameAlt = _.where(currLinks, {
-                    'source': link.target,
-                    'target': link.source
-                });
-                sameAll = same.concat(sameAlt);
-
-                sameAll.forEach(function (s, i) {
-                    s.sameIndex = (i + 1);
-                    s.sameTotal = sameAll.length;
-                    s.sameTotalHalf = (s.sameTotal / 2);
-                    s.sameUneven = ((s.sameTotal % 2) !== 0);
-                    s.sameMiddleLink = ((s.sameUneven === true) &&
-                        (Math.ceil(s.sameTotalHalf) === s.sameIndex));
-                    s.sameLowerHalf = (s.sameIndex <= s.sameTotalHalf);
-                    s.sameArcDirection = s.sameLowerHalf ? 0 : 1;
-                    s.sameIndexCorrected = s.sameLowerHalf ? s.sameIndex : (s
-                        .sameIndex -
-                        Math.ceil(
-                            s.sameTotalHalf));
-                });
-            });
-        }
-
         function setCurrentData(data) {
             currNodes = data.nodes;
             currLinks = data.links;
-        }
-
-        function setMaxSame() {
-            maxSame = _.chain(currLinks)
-                .sortBy(function (x) {
-                    return x.sameTotal;
-                })
-                .last()
-                .value().sameTotal;
-
-            _.each(currLinks, function (link) {
-                link.maxSameHalf = Math.round(maxSame / 2);
-            });
         }
 
         function setSimulation() {
@@ -445,7 +271,7 @@
             d3.interval(function () {
                 updateData();
                 restart();
-                console.log(currLinks.length)
+                log(currLinks.length)
             }, 4000, d3.now());
 
             d3.interval(function () {
@@ -458,49 +284,62 @@
         // Draw nodes and links
         // - - - - - - - - - -
         function addNodeBehaviour() {
-            node = svg.selectAll('.node')
-                .data(currNodes)
-                .enter()
-                .append('g')
-                .attr('class', 'node')
-                .call(d3.drag()
-                    .on("start", onDragstarted)
-                    .on("drag", onDragged)
-                    .on("end", onDragEnded));;
-
+            try {
+                node = svg.selectAll('.node')
+                    .data(currNodes)
+                    .enter()
+                    .append('g')
+                    .attr('class', 'node')
+                    .call(d3.drag()
+                        .on("start", onDragstarted)
+                        .on("drag", onDragged)
+                        .on("end", onDragEnded)
+                    );
+            } catch (error) {
+                log('a addNodeBehaviour error occured ...');
+            }
         }
 
         function drawNodes() {
-            // Draw notes without mouse event listeners
-            node
-                .append('circle')
-                .classed('node', true)
-                .attr('r', function (d, i) {
-                    let r;
-                    if (dataLinksCount && dataLinksCount[d.id]) {
-                        r = dataLinksCount[d.id] * 3;
-                    } else {
-                        r = 0;
-                    }
-                    if (r < 5) r = 5;
-                    return r;
-                })
-                .attr("style", function (d, i) {
-                    return 'fill:' +
-                        color(d.group) +
-                        ';'
-                });
+            try {
+                // Draw notes without mouse event listeners
+                node
+                    .append('circle')
+                    .classed('node', true)
+                    .attr('data-id', function (d, i) {
+                        return d.id;
+                    })
+                    .attr('r', function (d, i) {
+                        let r;
+                        if (dataLinksCount && dataLinksCount[d.id]) {
+                            r = dataLinksCount[d.id] * 3;
+                        } else {
+                            r = 0;
+                        }
+                        if (r < 5) r = 5;
+                        return r;
+                    })
+                    .attr("style", function (d, i) {
+                        return 'fill:' +
+                            color(d.group) +
+                            ';'
+                    })
+                    .append('text')
+                    .attr('fill', 'white')
+                    .text('hey');
 
-            node
-                .on('mouseover.fade', fade_onMouseOver)
-                .on('mouseout.fade', fade_onMouseOut)
+                node
+                    .on('mouseover.fade', fade_onMouseOver)
+                    .on('mouseout.fade', fade_onMouseOut)
 
-                .on('mouseover.tooltip', tooltip_onMouseOver)
-                .on("mouseout.tooltip", tooltip_onMouseOut)
+                    .on('mouseover.tooltip', tooltip_onMouseOver)
+                    .on("mouseout.tooltip", tooltip_onMouseOut)
 
-                .on("mousemove", onMouseMove)
-                .on('dblclick', onReleaseNode);
-
+                    .on("mousemove", onMouseMove)
+                    .on('dblclick', onReleaseNode);
+            } catch (error) {
+                log('a drawNodes error occured ...');
+            }
         }
 
         function addLinkBehaviour(link) {
@@ -516,7 +355,10 @@
         }
 
         function drawLinks() {
-            link = svg.selectAll('.link')
+            link = svg
+                .selectAll('.link')
+                .exit()
+                .remove()
                 .data(currLinks)
                 .enter()
                 .append('path')
@@ -532,19 +374,44 @@
             addLinkBehaviour(link);
         }
 
+        function addNodes() {
+            currNodes.push({
+                "T": ["Mi", "Ch"],
+                "Q": ["sp", "sp", "tr", "ad"],
+                "id": currNodes.length,
+                "class": 'nodeNew'
+            });
+
+            currLinks = [];
+            for (let i = 0; i < currNodes.length; i += 1) {
+                let
+                    source = Math.floor(Math.random() * (currNodes.length - 1)),
+                    target = currNodes.length - 1;
+
+                currLinks.push({
+                    "source": source,
+                    "target": target,
+                    T: "Mi"
+                });
+
+                console.log(source, target, currNodes.length, currLinks.length);
+            };
+
+        }
         // - - - - - - - - - -
         // Update and reset Data
         // - - - - - - - - - -
         function updateData() {
-            temp[0] = currLinks.pop();
-            temp[1] = currLinks.pop();
-            temp[2] = currLinks.pop();
+            try {
+                addNodes();
+                temp[0] = currLinks.pop();
+            } catch (error) {
+                log('error', 'in updataData');
+            }
         }
 
         function resetData() {
             currLinks.push(temp[0]);
-            currLinks.push(temp[1]);
-            currLinks.push(temp[2]);
         }
 
         function aggregate() {
@@ -582,92 +449,102 @@
         // Simulation
         // - - - - - - - - - -
         function ticked() {
-            //     link
-            //       .attr('x1', d => d.source.x)
-            //       .attr('y1', d => d.source.y)
-            //       .attr('x2', d => d.target.x)
-            //       .attr('y2', d => d.target.y);
-            link.attr("d", linkArc)
-            node.attr('transform', d => `translate(${d.x},${d.y})`);
+            try {
+                // link
+                //     .attr('x1', d => d.source.x)
+                //     .attr('y1', d => d.source.y)
+                //     .attr('x2', d => d.target.x)
+                //     .attr('y2', d => d.target.y);
+                link.attr("d", linkPath)
+                node.attr('transform', d => `translate(${d.x},${d.y})`)
+            } catch (error) {
+                console.log(error);
+                log('error', 'in ticked');
+            }
         }
 
         function restart() {
+            try {
+                node = node.data(currNodes);
 
-            link = link.data(currLinks);
-
-            link.exit().transition()
-                .attr("stroke-opacity", 0)
-                // .attrTween("d", linkArc)
-                .remove()
-                .attrTween("x1", function (d) {
-                    return function () {
-                        return d.source.x;
-                    };
-                })
-                .attrTween("x2", function (d) {
-                    return function () {
-                        return d.target.x;
-                    };
-                })
-                .attrTween("y1", function (d) {
-                    return function () {
-                        return d.source.y;
-                    };
-                })
-                .attrTween("y2", function (d) {
-                    return function () {
-                        return d.target.y;
-                    };
-                })
-
-
-            link = link.enter().append('path')
-                .call(function (link) {
-                    link.transition().attr("stroke-opacity", 1);
-                })
-                .call(function (link) {
-                    link.transition().attr("d", linkArc)
-                })
-                .call(function (link) {
-                    link.transition().attr('stroke', function (d) {
-                        return color(d.T);
+                node.enter()
+                    .insert('circle')
+                    .attr('r', 5)
+                    .classed('node', true)
+                    .attr('cx', function (d, i) {
+                        return Math.random() * canvas.width;
                     })
-                })
-                .merge(link);
+                    .attr('cy', function (d, i) {
+                        return Math.random() * canvas.height;
+                    })
+                    .attr("style", function (d, i) {
+                        return 'fill:' +
+                            color(d.group) +
+                            ';'
+                    });
 
-            simulation.nodes(currNodes);
-            simulation.force("link").links(currLinks);
-            simulation.alpha(1).restart();
+                node.exit().remove();
 
+                link = link.data(currLinks);
+
+                link.exit().remove();
+
+                link = link.enter()
+                    .append('path')
+                    .call(function (link) {
+                        link
+                            .transition()
+                            .attr("stroke-opacity", 1)
+                            .attr("d", linkPath)
+                            .attr('stroke', function (d) {
+                                return color(d.T);
+                            })
+                    })
+                    .merge(link);
+
+                simulation.nodes(currNodes);
+                simulation.force("link").links(currLinks);
+                simulation.alpha(1).restart();
+
+            } catch (error) {
+                log('error', 'in restart');
+            }
         }
 
         // - - - - - - - - - -
         // Other
         // - - - - - - - - - -
-        function linkArc(d) {
-            var dx = (d.target.x - d.source.x),
-                dy = (d.target.y - d.source.y),
-                dr = Math.sqrt(dx * dx + dy * dy),
-                unevenCorrection = (d.sameUneven ? 0 : 0.5);
-            // curvature term defines how tight the arcs are (lower number = tigher curve)
-            var curvature = 2,
-                arc = (1.0 / curvature) * ((dr * d.maxSameHalf) / (d.sameIndexCorrected -
-                    unevenCorrection));
+        function linkPath(d) {
+            try {
+                let string,
+                    dx = (d.target.x - d.source.x),
+                    dy = (d.target.y - d.source.y);
 
-            //console.log(d.maxSameHalf)
-            //d.maxSameHalf always showing zero...
-            if (d.sameMiddleLink) {
-                arc = 0;
+                if (!d.source.x) d.source.x = canvas.width / 2;
+                if (!d.source.y) d.source.y = canvas.height / 2;
+                if (!d.target.x) d.target.x = canvas.width / 2 + 10;
+                if (!d.target.y) d.target.y = canvas.height / 2 + 10;
+
+                string = "M" +
+                    Math.round(d.source.x) +
+                    "," +
+                    Math.round(d.source.y) +
+                    "L" +
+                    Math.round(d.target.x) +
+                    "," +
+                    Math.round(d.target.y);
+
+                return string
+
+            } catch (error) {
+                log('error', 'in linkPath', '<br/>' + error.message);
             }
-
-            return "M" + d.source.x + "," + d.source.y + "A" + arc + "," + arc + " 0 0," + d
-                .sameArcDirection +
-                " " + d.target.x + "," + d.target.y;
         }
 
         function isConnected(a, b) {
-            return linkedByIndex[`${a.index},${b.index}`] || linkedByIndex[`${b.index},${a.index}`] || a
-                .index === b.index;
+            return linkedByIndex[`${a.index},${b.index}`] ||
+                linkedByIndex[`${b.index},${a.index}`] ||
+                a.index === b.index;
         }
 
         function fade(opacity) {
@@ -694,21 +571,46 @@
          * @returns none
          */
         function log() {
-            let string = '';
+            let string = '',
+                style = '',
+                prefix = '',
+                suffix = '';
 
             for (let i = 0; i < arguments.length; i += 1) {
-                string += arguments[i] + ', ';
+
+                switch (arguments[i]) {
+                    case 'error':
+                        prefix = '<i style="color:red;opacity:0.5;">';
+                        suffix = '</i>';
+                        string += prefix + arguments[i] + ' ';
+                        break;
+                    case 'warning':
+                        prefix = '<i style="color:yellow;">';
+                        suffix = '</i>';
+                        string += prefix + arguments[i] + ' ';
+                        break;
+                    default:
+                        string += arguments[i] + ', ';
+                        suffix = '';
+                        break;
+                }
             }
-            string = string.substring(0, string.length - 2);
+            string = string.substring(0, string.length - 2) + suffix;
+
             messages.push(string);
 
-            if (messages.length > 8) messages.shift();
+            if (messages.length >= 8) messages.shift();
+            document.querySelector('#log').innerHTML = '';
 
             for (let i = 0; i < messages.length; i += 1) {
-                document.querySelector('#log').innerHTML += messages[i] + '<br />&gt; ';
+                document.querySelector('#log').innerHTML +=
+                    '&gt; ' +
+                    messages[i] +
+                    '<br />';
             }
 
         }
+
         // - - - - - - - - - -
         function init() {
             setCanvas();
@@ -716,7 +618,6 @@
             setColorScale();
             setColor();
             setTooltip();
-            setLegend();
             loadData();
         }
 
