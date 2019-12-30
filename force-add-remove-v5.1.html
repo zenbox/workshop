@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Modifying a force layout v4</title>
+
+<style>
+    .link {
+        stroke: #000;
+        stroke-width: 1.5px;
+    }
+
+    .node {
+        fill: #000;
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+
+
+    .node.a {
+        fill: #1f77b4;
+    }
+
+    .node.b {
+        fill: #ff7f0e;
+    }
+
+    .node.c {
+        fill: #2ca02c;
+    }
+
+    .node.d {
+        fill: #9c760d;
+    }
+</style>
+
+<body>
+    <script src="//d3js.org/d3.v5.js"></script>
+    <script>
+        var width = 960,
+            height = 500;
+
+        var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+        var dataset = {};
+
+        dataset.nodes = [];
+        dataset.links = [];
+
+        var simulation = d3.forceSimulation()
+            .force("link", d3.forceLink().distance(200).strength(.6))
+            .force("charge", d3.forceManyBody())
+            // use forceX and forceY instead to change the relative positioning
+            // .force("centering", d3.forceCenter(width/2, height/2))
+            .force("x", d3.forceX(width / 2))
+            .force("y", d3.forceY(height / 2))
+            .on("tick", tick);
+
+
+        var svg = d3.select("body").append("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        var a = createNode("a");
+        var b = createNode("b");
+        var c = createNode("c");
+
+        dataset.nodes = [a];
+        start();
+
+        // 1. add the links
+        setTimeout(function () {
+            dataset.nodes = [a, b, c];
+            dataset.links.push({
+                source: a,
+                target: b
+            }, {
+                source: a,
+                target: c
+            }, {
+                source: b,
+                target: c
+            });
+            start();
+        }, 1000);
+
+        // 2. Remove node B and associated links.
+        setTimeout(function () {
+            // remove b
+            dataset.nodes = [a, c];
+            // remove a-b
+            dataset.links = [dataset.links[1]];
+            start();
+        }, 2000);
+
+        // Add node B back.
+        setTimeout(function () {
+            b = createNode("b")
+            dataset.nodes.push(b);
+            dataset.links.push({
+                source: a,
+                target: b
+            }, {
+                source: b,
+                target: c
+            });
+            start();
+        }, 3000);
+
+        function createNode(id, x, y) {
+            let
+                _x = x || Math.random() * width,
+                _y = y || Math.random() * height;
+
+            return {
+                id: id,
+                x: _x,
+                y: _y
+            }
+        }
+
+        d3.select('svg').on('click', function () {
+            let
+                letter = String.fromCharCode(Math.floor(Math.random() * 24) + 65),
+                n = createNode(letter, d3.mouse(this)[0], d3.mouse(this)[1]);
+
+            console.log(letter, d3.mouse(this)[0], d3.mouse(this)[1]);
+
+            dataset.nodes.push(n);
+
+            dataset.links.push({
+                source: Math.floor(Math.random() * (dataset.nodes.length - 1)),
+                target: n
+            }, {
+                source: n,
+                target: Math.floor(Math.random() * (dataset.nodes.length - 1))
+            });
+
+            start();
+        });
+
+        function start() {
+
+            var nodeElements = svg.selectAll(".node").data(dataset.nodes, function (d) {
+                return d.id
+            });
+            var linkElements = svg.selectAll(".link").data(dataset.links);
+
+            nodeElements.enter().append("circle").attr("class", function (d) {
+                return "node " + d.id;
+            }).attr("r", 8);
+            linkElements.enter().insert("line", ".node").attr("class", "link");
+
+            nodeElements.exit().remove();
+            linkElements.exit().remove();
+
+            simulation.nodes(dataset.nodes)
+            simulation.force("link").links(dataset.links)
+            simulation.restart();
+        }
+
+        function tick() {
+            var nodeElements = svg.selectAll(".node");
+            var linkElements = svg.selectAll(".link");
+
+            nodeElements.attr("cx", function (d, i) {
+                    return d.x;
+                })
+                .attr("cy", function (d) {
+                    return d.y;
+                })
+
+            linkElements.attr("x1", function (d) {
+                    return d.source.x;
+                })
+                .attr("y1", function (d) {
+                    return d.source.y;
+                })
+                .attr("x2", function (d) {
+                    return d.target.x;
+                })
+                .attr("y2", function (d) {
+                    return d.target.y;
+                });
+
+
+        }
+    </script>
