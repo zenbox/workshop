@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        html,
+        body {
+            background-color: black;
+            margin: 0;
+        }
+
+        svg {
+            background-color: black;
+        }
+
+        rect {
+            fill: hsla(210, 87%, 18%, 0.5);
+            pointer-events: all;
+        }
+
+        .node-group {
+            fill: hsla(0, 88%, 38%, 0.5);
+        }
+
+        .node {
+            fill: hsla(0, 0%, 90%, 0.5);
+        }
+
+        text {
+            font-family: Menlo, monospace;
+            font-size: 12px;
+            text-align: center;
+            fill: hsla(0, 0%, 90%, 0.5);
+        }
+
+        .cursor {
+            fill: none;
+            stroke: hsla(0, 0%, 50%, 0.5);
+            pointer-events: none;
+        }
+
+        .link {
+            stroke: hsla(0, 0%, 50%, 0.5);
+        }
+
+        .a {
+            fill: hsla(13, 50%, 50%, 0.5);
+        }
+
+        .b {
+            fill: hsla(27, 50%, 50%, 0.5);
+        }
+
+        .c {
+            fill: hsla(41, 50%, 50%, 0.5);
+        }
+
+        .d {
+            fill: hsla(55, 50%, 50%, 0.5);
+        }
+
+        .e {
+            fill: hsla(69, 50%, 50%, 0.5);
+        }
+
+        .f {
+            fill: hsla(83, 50%, 50%, 0.5);
+        }
+
+        .g {
+            fill: hsla(96, 50%, 50%, 0.5);
+        }
+
+        .h {
+            fill: hsla(110, 50%, 50%, 0.5);
+        }
+
+        .i {
+            fill: hsla(124, 50%, 50%, 0.5);
+        }
+
+        .j {
+            fill: hsla(138, 50%, 50%, 0.5);
+        }
+
+        .k {
+            fill: hsla(152, 50%, 50%, 0.5);
+        }
+
+        .l {
+            fill: hsla(166, 50%, 50%, 0.5);
+        }
+
+        .m {
+            fill: hsla(180, 50%, 50%, 0.5);
+        }
+
+        .n {
+            fill: hsla(193, 50%, 50%, 0.5);
+        }
+
+        .o {
+            fill: hsla(207, 50%, 50%, 0.5);
+        }
+
+        .p {
+            fill: hsla(221, 50%, 50%, 0.5);
+        }
+
+        .q {
+            fill: hsla(235, 50%, 50%, 0.5);
+        }
+
+        .r {
+            fill: hsla(249, 50%, 50%, 0.5);
+        }
+
+        .s {
+            fill: hsla(263, 50%, 50%, 0.5);
+        }
+
+        .t {
+            fill: hsla(276, 50%, 50%, 0.5);
+        }
+
+        .u {
+            fill: hsla(290, 50%, 50%, 0.5);
+        }
+
+        .v {
+            fill: hsla(304, 50%, 50%, 0.5);
+        }
+
+        .w {
+            fill: hsla(318, 50%, 50%, 0.5);
+        }
+
+        .x {
+            fill: hsla(332, 50%, 50%, 0.5);
+        }
+
+        .y {
+            fill: hsla(346, 50%, 50%, 0.5);
+        }
+
+        .z {
+            fill: hsla(360, 50%, 50%, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="assets/js/inpage-log.js"></script>
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script>
+        !(function () {
+            'use strict';
+            // - - - - - - - - - -
+            // 1. Global declaration
+            // - - - - - - - - - -
+            let
+                area = 50,
+                radius = 5,
+                quantity = 4,
+                strength = 0.2,
+                distance = 100,
+                charge = -100,
+                fill, simulation, svg, nodes, links, node, link, cursor,
+                nodeElements, linkElements, nodeGroup,
+                i = false,
+                canvas = {},
+                dataset = {};
+
+            dataset.nodes = [];
+            dataset.links = [];
+
+            canvas = {
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+
+            // - - - - - - - - - -
+            // 2. Functions
+            // - - - - - - - - - -
+            // 2.1. Eventhandler functions
+            // - - - - - - - - - -
+            function onCanvasMouseMove() {
+                cursor
+                    .attr("transform", "translate(" + d3.mouse(this) + ")");
+            }
+
+            function onCanvasMouseDown() {
+                let point, node;
+
+                for (let i = 0; i < quantity; i++) {
+                    point = d3.mouse(this),
+                        node = {
+                            id: String.fromCharCode(Math.floor(Math.random() * 24) + 97),
+                            x: point[0],
+                            y: point[1]
+                        };
+
+                    dataset.nodes.push(node);
+                }
+                // add links to any nearby nodes
+                dataset.nodes
+                    .forEach(function (target) {
+                        let x = target.x - node.x,
+                            y = target.y - node.y;
+                        if (Math.sqrt(x * x + y * y) < area) {
+                            dataset.links.push({
+                                source: node,
+                                target: target
+                            });
+                        }
+                    });
+
+                startSimulation();
+            }
+
+            function onNodeMouseDown(d, i) {
+                dataset.nodes.splice(i, 1);
+
+                dataset.links = dataset.links.filter(function (l) {
+                    return l.source !==
+                        d && l.target !== d;
+                });
+
+                d3.event.stopPropagation();
+
+                startSimulation();
+            }
+
+            function onNodeMouseEnter(d, i) {
+                log('default', d.id, i, this);
+                this.attr('r', 20);
+            }
+
+            function onTick() {
+                let nodeElements = svg.selectAll('.node');
+                let linkElements = svg.selectAll('.link');
+
+                linkElements
+                    .attr("x1", function (d) {
+                        return d.source.x;
+                    }).attr("y1", function (d) {
+                        return d.source.y;
+                    })
+                    .attr("x2", function (d) {
+                        return d.target.x;
+                    }).attr("y2", function (d) {
+                        return d.target.y;
+                    });
+
+                nodeElements
+                    .attr("cx", function (d) {
+                        if (i === false) {
+                            console.log(typeof node);
+                            console.log(typeof d);
+                            i = true;
+                        }
+                        return d.x;
+                    }).attr("cy", function (d) {
+                        return d.y;
+                    });
+            }
+
+            // - - - - - - - - - - 
+            // 2.2 Setter functions 
+            // - - - - - - - - - - 
+            function setSvg() {
+                svg = d3.select("body")
+                    .append("svg")
+                    .attr("width", canvas.width)
+                    .attr("height", canvas.height)
+                    .on("mousemove", onCanvasMouseMove)
+                    .on("mousedown", onCanvasMouseDown);
+
+                svg.append("rect")
+                    .attr("width", canvas.width)
+                    .attr("height", canvas.height);
+            }
+
+            function setCursor() {
+                // create the cursor 
+                cursor = svg.append("circle")
+                    .attr("r", area)
+                    .attr("transform", "translate(-100,-100)")
+                    .attr("class", "cursor");
+            }
+
+            function setColorScheme() {
+                d3.scaleOrdinal(d3.schemeCategory10);
+            }
+
+            function setSimulation() {
+                simulation = d3.forceSimulation()
+                    // .nodes(dataset.nodes)
+                    .force('link', d3.forceLink()
+                        .distance(distance)
+                        .strength(strength)
+                    )
+                    .force('charge',
+                        d3.forceManyBody()
+                        .strength(charge)
+                    )
+                    .force("x", d3.forceX(canvas.width / 2))
+                    .force("y", d3.forceY(canvas.height / 2))
+                    // .force('center', d3.forceCenter(canvas.width / 2, canvas.height / 2))
+                    .on('tick', onTick);
+
+                startSimulation();
+            }
+
+            function startSimulation() {
+                // - - - - - - - - - -
+                // NODES
+                // - - - - - - - - - -
+                nodeElements = svg.selectAll(".node")
+                    .data(dataset.nodes, function (d) {
+                        return d.id
+                    });
+
+                // Adding a group for node and text
+                nodeElements.enter()
+                    .append("circle")
+                    .attr('class', function (d) {
+                        return "node " + d.id;
+                    }, true)
+                    .classed('node', true)
+                    .attr("r", radius)
+                    .on("mousedown", onNodeMouseDown)
+                    .on('mouseenter', onNodeMouseEnter);
+
+                nodeElements.exit().remove();
+
+                simulation.nodes(dataset.nodes)
+                simulation.force("link").links(dataset.links)
+                simulation.restart();
+
+                // - - - - - - - - - -
+                // LINKS
+                // - - - - - - - - - -
+                linkElements = svg
+                    .selectAll('.link')
+                    .data(dataset.links);
+
+                linkElements.exit().remove();
+
+                linkElements.enter()
+                    .append("line", ".node")
+                    .attr("class", "link");
+
+                simulation.alphaTarget(0.3).restart();
+            }
+            // - - - - - - - - - - 
+            // 2.3 Control functions 
+            // - - - - - - - - - - 
+            function main() {
+                setSvg();
+                setSimulation();
+                setCursor();
+                setColorScheme();
+            }
+
+            function init() {
+                main();
+            };
+            // - - - - - - - - - - 
+            // 3. Main control 
+            // - - - - - - - - - -
+            window.addEventListener('load', init);
+            // - - - - - - - - - - 
+        }())
+    </script>
