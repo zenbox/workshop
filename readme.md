@@ -11,6 +11,8 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - https://meyerweb.com/eric/tools/css/reset/
 - https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss
 - https://necolas.github.io/normalize.css/
+- http://smacss.com/book/categorizing
+- http://getbem.com/introduction/
 
 ## Links zu HTML
 - https://github.com/scottjehl/picturefill
