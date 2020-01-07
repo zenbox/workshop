@@ -1,0 +1,73 @@
+/** 
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-01-06
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700&display=swap&subset=greek,latin-ext');
+
+/* Base */
+html,
+html * {
+    box-sizing: border-box;
+}
+
+/* default, fallback */
+html {
+    font-family: "Noto Sans", sans-serif;
+    font-size: 18px;
+}
+
+/* Layout */
+body {
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Typography */
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
