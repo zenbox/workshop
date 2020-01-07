@@ -22,27 +22,45 @@
 
 /** COMPONENT LAYOUT */
 .page-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;    ;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  ;
 }
 
 
 /** COMPONENT THEME */
+.page-header .brand {
+  display: inline-block;
+  width: 6rem;
+  height: 4rem;
+  background-image: url(../figures/skull-solid.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.brand b.sr-only {
+  display: block;
+  position: absolute;
+  left:-10000;
+  height:1px;
+  overflow:hidden;
+  clip: rect(0,0,1,1);
+}
 
 /** COMPONENT CHANGING STATES (BEHAVIOUR) */
 
 @keyframes animationName {
-    from {
-        opacity: 0;
-        transform: translateX(50%);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /** SUB COMPONENT
