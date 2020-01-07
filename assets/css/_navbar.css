@@ -1,0 +1,152 @@
+/** Navigationbar styles
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:767px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-01-07
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+
+/** COMPONENT BASE */
+/* Fallback */
+@media screen {
+
+    ul,
+    li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+@media only screen and (max-width:767px) {}
+
+/** COMPONENT LAYOUT */
+/* Fallback */
+@media only screen {
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        justify-items: flex-end;
+        align-items: center;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        position: absolute;
+        right: 0;
+        top: 10vh;
+        height: 90vh;
+        width: 200px;
+    }
+
+    .navbar {}
+}
+
+/** COMPONENT THEME */
+@media screen {
+    .navbar a[href] {
+        text-decoration: none;
+        color: hsla(0, 0%, 0%, 1);
+    }
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+@media screen {
+    .navbar a[href]:visited {
+        color: hsla(0, 0%, 50%, 1);
+    }
+
+    .navbar a[href]:hover {
+        color: hsla(210, 70%, 50%, 1);
+    }
+
+    .navbar a[href]:active {
+        color: hsla(30, 70%, 50%, 1);
+    }
+}
+
+@media screen and (max-width:767px) {
+
+    /* <ul class="navbar toggle">*/
+    .navbar,
+    .navbar+div>div {
+        transition: all 0.2s ease-in;
+    }
+
+    .navbar {
+        transform: translateX(100%);
+        background-color: transparent;
+    }
+
+    .navbar.toggle {
+        transform: translateX(0%);
+        background-color: hsla(0, 0%, 0%, 0.8);
+    }
+
+    .navbar.toggle+div>div:nth-child(1) {
+        transform: rotateZ(-45deg) translate(1px, 1px);
+    }
+}
+
+/** SUB COMPONENT
+  * @desc type any description here ...
+  *       1. all devices fallback
+  *       2. small devices
+  */
+
+/** SUB COMPONENT BASE */
+@media screen {
+    .burger {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .burger {
+        display: block;
+    }
+}
+
+/** SUB COMPONENT LAYOUT */
+@media screen {}
+
+@media screen and (max-width:767px) {
+    .burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 20px;
+    }
+
+    .burger div {
+        width: 20px;
+        height: 4px;
+        margin-right: 2rem;
+    }
+}
+
+/** SUB COMPONENT THEME */
+@media screen {
+    .burger div {
+        background-color: black;
+    }
+}
+
+/** SUB COMPONENT CHANGING STATES */
