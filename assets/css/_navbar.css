@@ -58,11 +58,11 @@
 
     .navbar li,
     .navbar a[href] {
-        display: block;
-        width: 100%;
+
         padding-top: 0.25rem;
         padding-bottom: 0.25rem;
-        background-color: hsla(0, 0%, 0%, 0.25);
+        background-color: hsla(0, 0%, 0%, 0.05);
+        text-align: center;
     }
 }
 
@@ -118,8 +118,14 @@
     .navbar.toggle+div>div:nth-child(3) {
         transform: rotateZ(45deg) translate(0, -13.5px);
     }
-    .burger {height:23px;}
-    .burger div {width:23px;}
+
+    .burger {
+        height: 24px;
+    }
+
+    .burger div {
+        width: 24px;
+    }
 }
 
 /** SUB COMPONENT
