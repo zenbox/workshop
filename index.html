@@ -20,10 +20,10 @@
                 <!-- navigation component -->
                 <nav>
                     <ul class="navbar">
-                        <li><a href="">page 1</a></li>
-                        <li><a href="">page 2</a></li>
-                        <li><a href="">page 3</a></li>
-                        <li><a href="">page 4</a></li>
+                        <li><a href="assets/content/page-1.html">page 1</a></li>
+                        <li><a href="assets/content/page-2.html">page 2</a></li>
+                        <li><a href="assets/content/page-3.html">page 3</a></li>
+                        <li><a href="assets/content/page-4.html">page 4</a></li>
                     </ul>
                     <div class="burger">
                         <div></div>
@@ -63,10 +63,10 @@
                     <legend>your login</legend>
 
                     <label for="login-email">Email</label>
-                    <input type="email" name="email" id="login-email" />
+                    <input type="email" name="email" value="any value 1" id="login-email" />
 
                     <label for="login-password">Password</label>
-                    <input type="password" name="password" id="login-password" />
+                    <input type="password" name="password" value="any value 2" id="login-password" />
 
                     <label><input type="checkbox" name="agree" id="login-agree"> agree</label>
 
@@ -76,7 +76,10 @@
         </aside>
 
     </section>
+    <script src="libs/jquery-3.4.1.js"></script>
+    <script src="assets/js/events.js"></script>
     <script>
+        var a = 43;
         !(function () {
             'use strict';
             document
