@@ -34,7 +34,7 @@
 .page-header .brand {
   display: inline-block;
   width: 6rem;
-  height: 4rem;
+  height: 7vh;
   background-image: url(../figures/skull-solid.svg);
   background-repeat: no-repeat;
   background-size: contain;
