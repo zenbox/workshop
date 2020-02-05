@@ -1,0 +1,70 @@
+/** layout css
+ * @desc the template ...
+ * @since 2020/02/04
+ * @author Michael
+ * ...
+ */
+
+/* Fallback for really old browser ... */
+@media all {
+    header {
+        display: block;
+        width: 100%;
+        clear: left;
+    }
+
+    aside {
+        display: block;
+        width: 33%;
+        float: left;
+    }
+
+    main {
+        display: block;
+        width: 67%;
+        float: left;
+    }
+
+    footer {
+        display: block;
+        width: 100%;
+        clear: left;
+    }
+}
+
+/* medium devices */
+@media only screen and (min-width:768px) {
+
+    header,
+    aside,
+    main,
+    footer {
+        display: block;
+        width: 100%;
+        float: none;
+        clear: none;
+    }
+
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .content-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    aside {
+        flex-basis: 33%;
+    }
+
+    main {
+        flex-basis: 67%;
+    }
+
+}

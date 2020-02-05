@@ -1,108 +1,46 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>title of this page - owner</title>
     <link rel="stylesheet" href="assets/css/styles.css">
+
 </head>
 
 <body>
-    <section class="page">
-        <header class="page-header">
-            <p class="brand"><b class="sr-only">My Company</b></p>
+    <div class="page-container">
+        <!-- - - - - - -->
+        <header>logo</header>
 
-            <div>
-                <!-- navigation component -->
+        <div class="content-container">
+            <!-- - - - - - -->
+            <aside>
                 <nav>
-                    <ul class="navbar">
-                        <li><a href="assets/content/page-1.html">page 1</a></li>
-                        <li><a href="assets/content/page-2.html">page 2</a></li>
-                        <li><a href="assets/content/page-3.html">page 3</a></li>
-                        <li><a href="assets/content/page-4.html">page 4</a></li>
+                    <ul>
+                        <li><a href="">page 1</a></li>
+                        <li><a href="">page 2</a></li>
+                        <li><a href="">page 3</a></li>
                     </ul>
-                    <div class="burger">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
                 </nav>
-                <!-- /navigation component -->
-            </div>
+            </aside>
 
-        </header>
-
-        <main>
-            <article>
-                <picture>
-                    <source media="(min-width:1280px)" srcset="https://picsum.photos/1280/640" />
-                    <source media="(min-width:1024px)" srcset="https://picsum.photos/1024/512" />
-                    <source media="(min-width:768px)" srcset="https://picsum.photos/768/384" />
-                    <source media="(min-width:480px)" srcset="https://picsum.photos/480/240" />
-                    <img src="https://picsum.photos/980/490" alt="">
-                </picture>
-                <h1>lorem headline ipsum dolor sit amet consectetur</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quo provident reiciendis natus
-                    laboriosam
-                    amet
-                    iste consequatur, expedita distinctio similique dolorem accusamus doloribus eius, praesentium
-                    aperiam
-                    aliquid
-                    velit?</p>
-            </article>
-            <article></article>
-        </main>
-
-        <aside>
-            <form method="get" action="login.php">
-                <fieldset>
-                    <legend>your login</legend>
-
-                    <label for="login-email">Email</label>
-                    <input type="email" name="email" value="any value 1" id="login-email" />
-
-                    <label for="login-password">Password</label>
-                    <input type="password" name="password" value="any value 2" id="login-password" />
-
-                    <label><input type="checkbox" name="agree" id="login-agree"> agree</label>
-
-                    <button type="submit">log in</button>
-                </fieldset>
-            </form>
-        </aside>
-
-    </section>
-    <script src="libs/jquery-3.4.1.js"></script>
-    <script src="assets/js/events.js"></script>
-    <script>
-        var a = 43;
-        !(function () {
-            'use strict';
-            document
-                .querySelector('.burger')
-                .addEventListener('click', function (event) {
-                    console.log('click');
-
-                    document
-                        .querySelector('.navbar')
-                        .classList.toggle('toggle');
-
-                })
-        }())
-    </script>
+            <main>
+                <article class="teaser">
+                    <h1>Lorem headline ipsum dolor sit</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum reiciendis id nostrum, maiores
+                        aperiam
+                        dolores unde hic doloribus?</p>
+                </article>
+            </main>
+            <!-- - - - - - -->
+        </div>
+        <footer>&copy; 2020 Michael</footer>
+        <!-- - - - - - -->
+    </div>
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-<!---->

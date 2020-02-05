@@ -1,0 +1,12 @@
+/** my fancy theme
+ * @desc some base configs ...
+ * @since 2020/02/04
+ * @author Michael
+ * ...
+ */
+
+
+ header {background-color:rgba(0, 0, 0, 0.25);}
+ aside  {background-color:hsla(0,0%,0%,0.25);}
+ main   {background-color:hsla(0,0%,0%,0.25);}
+ footer {background-color:hsla(0,0%,0%,0.25);}
