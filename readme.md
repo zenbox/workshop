@@ -1,4 +1,4 @@
-# Wilkommen beim Seminar CSS Grundlagen?
+# Wilkommen beim Seminar CSS Grundlagen
 
 ## Michael Reichart
 - michael.reichart@gfu.net
