@@ -2,6 +2,7 @@
 .gitattributes
 .gitignore
 composer.phar
+/stuff/
 /.vscode/settings.json
 /vendor/
 /node_modules/
