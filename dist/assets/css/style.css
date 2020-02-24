@@ -1,0 +1,70 @@
+html,
+html * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+/** Navigation Component Styles
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-02-24
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+/** COMPONENT BASE */
+.nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+/** COMPONENT LAYOUT */
+.nav-list li {
+  display: inline-block;
+}
+
+.nav-stack li {
+  display: block;
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.nav a[href]:link {
+  color: blue;
+}
+
+.nav a[href]:visited {
+  color: #8000ff;
+}
+
+.nav a[href]:hover {
+  color: #a32929;
+}
+
+.nav a[href]:active {
+  color: #ff6666;
+}
+/*# sourceMappingURL=style.css.map */
