@@ -6,6 +6,12 @@
 ## Foliensatz
 Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **Accessability for Web.pdf**, **CSS - kompakt.pdf**, **Javascript kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
+## Whiteboards
+![Lorem ipsum dolor](static/assets/figures/2020-02-24&#32;10.39.31.jpg)
+![Lorem ipsum dolor](static/assets/figures/2020-02-24&#32;14.19.30.jpg)
+![Lorem ipsum dolor](static/assets/figures/2020-02-24&#32;15.03.55.jpg)
+
+
 ## Content Table
 ### Projektentwicklungsumgebung 
 - Visual Studio Code, nodejs, und Webpack. 
