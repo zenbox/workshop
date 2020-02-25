@@ -1,3 +1,20 @@
+///** The Font Styles
+// *
+// * @package Webapplication
+// * @module common
+// * @author Michael Reichart <michael.reichart@gfu.net>
+// * @since 2020-02-25
+// * @version 1.0.0
+// * @license MIT {https://opensource.org/licenses/MIT}
+// * @copyright (c) 2020 Michael Reichart, Cologne
+// */
+ @font-face {
+       font-family: 'Roboto';
+       src:  url('./../fonts/Roboto-Regular.ttf') format('ttf');
+       font-weight: 400;
+       font-style: normal;
+     }
+
 html {
     font-family: Roboto, sans-serif;
     font-size: 16px;
