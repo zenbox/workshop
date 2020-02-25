@@ -27,7 +27,7 @@ module.exports = {
     // ENTRY
     // - - - - -
     entry: {
-        main: './src/index.js'
+        app: './src/app.js'
     },
 
     // - - - - -
@@ -44,17 +44,25 @@ module.exports = {
     // - - - - -
     target: 'node', // update from 23.12.2018
     externals: [nodeExternals()], // update from 23.12.2018
+
     // - - - - -
     // MODULES
     // - - - - -
     module: {
-        rules: [{
-                // Javascript Settings
+        rules: [
+            // - - - - - - - - - -
+            // Javascript Settings
+            // - - - - - - - - - -
+            {
                 test: /\.jsx?$/,
                 exclude: /node_modules/
             },
+            // - - - - - - - - - -
+
+            // - - - - - - - - - -
+            // SASS Settings
+            // - - - - - - - - - -
             {
-                // SASS Settings
                 test: /\.scss$/,
                 use: [{
                         loader: MiniCssExtractPlugin.loader,
@@ -71,22 +79,42 @@ module.exports = {
                     }
                 ]
             },
+            // - - - - - - - - - -
+
+            // - - - - - - - - - -
+            // File loader, i.e. images
+            // - - - - - - - - - -
             {
-                // File loader, i.e. images or fonts
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
                     'file-loader',
                 ],
-            }
+            },
+            // - - - - - - - - - -
+
+            // - - - - - - - - - -
+            // File loader, i.e. fonts
+            // - - - - - - - - - -
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    'file-loader',
+                ],
+            },
+            // - - - - - - - - - -
         ]
     },
 
     resolve: {
+        // - - - - - - - - - -
+        // Configure the filetypes to compile
+        // - - - - - - - - - -
         extensions: [
             '.js',
             '.jsx',
             '.scss'
         ]
+        // - - - - - - - - - -
     },
 
 
@@ -95,12 +123,22 @@ module.exports = {
     },
 
     plugins: [
+        // - - - - - - - - - -
+        // Configure the HTML output
+        // - - - - - - - - - -
         new HtmlWebpackPlugin({
-            template: './src/index.html'
+            template: './src/views/index.html'
         }),
+        // - - - - - - - - - -
+
+        // - - - - - - - - - -
+        // Configure the CSS output
+        // [name] calls the entry key from above
+        // - - - - - - - - - -
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css'
         })
+        // - - - - - - - - - -
     ]
 };
