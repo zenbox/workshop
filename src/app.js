@@ -1,24 +1,28 @@
-/**
- * DOM Manipulation via JS
+/** Building Components
  *
+ * @desc Adding some components, like, paragraphs 
+ *       or images to the document. The idea is to
+ *       encapsulate interface components.
  * @package webapp
  * @module example
  * @version 1.0.0
- * @since 1.0.0
+ * @since 2020/02/25
  * @author Michael <michael.reichart@gfu.net>
- * @copyright Michael Reichart 2019
+ * @copyright Michael Reichart 2020
  * @license MIT
  */
 
+// import the components assets
 import "./assets/scss/style.scss";
 import Icon from "./assets/figures/skull.svg";
 
-/**
- * This is a function
+/** A Paragraph Component
  *
- * @param {string} e a sample element tagname
- * @param {string} t a sample text
- * @return {object}
+ * @version v1.0.0
+ * @since 2020-02-25
+ * @param {type} _e element name for a DOM element
+ * @param {type} _t text for a textnode
+ * @returns {HTMLObject}
  */
 function paragraph(_e, _t) {
   const node = document.createElement(_e);
@@ -30,14 +34,19 @@ function paragraph(_e, _t) {
   return node;
 }
 
+/** An Image As Component
+ *
+ * @version v1.0.0
+ * @since 2020-02-25
+ * @param none
+ * @returns {void}
+ */
 function component() {
   const element = document.createElement('div');
 
-  // Lodash, now imported by this script
-  element.innerHTML = 'Hello webpack ';
+  element.innerHTML = 'Oh, an image component ... ';
   element.classList.add('withBackground');
 
-  // Add the image to our existing div.
   const myIcon = new Image();
   myIcon.src = Icon;
   myIcon.classList.add('medium');
@@ -47,13 +56,17 @@ function component() {
   return element;
 }
 
+// Extend the DOM by this component
 document.body.appendChild(component());
+// - - - - - - - - - -
 
+// Crazy and dirty way to just append stuff
+// bääh!
 document
   .querySelector("main>article")
   .appendChild(
     paragraph(
       "p",
-      "Cras nice and crazy beautiful Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod."
+      "Crazy ans dirty Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod."
     )
   );
