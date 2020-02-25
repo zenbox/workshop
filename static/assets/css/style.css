@@ -1,15 +1,23 @@
-/** Collection of all Styles
-  *
-  * @package Webapplication
-  * @module i.e. header
-  * @author Michael Reichart <michael@zenbox.de>
-  * @since 2020-02-24
-  * @version 1.0.0
-  * @see i.e. inspired by ... {link to}
-  * @license MIT {https://opensource.org/licenses/MIT}
-  * @copyright (c) 2020 Michael Reichart, Cologne
-  */
-@import url(base.css);
-@import url(layout.css);
-@import url(navigation.css);
-@import url(theme.css);
+/**
+ * The Styles
+ *
+ * @author Michael
+ * @version 1.0.0
+ * @copyright (c) 2020 Michael Reichart, Cologne 
+ */
+html,
+html * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+h1 {
+  font-size: 2rem;
+}
+/*# sourceMappingURL=style.css.map */
