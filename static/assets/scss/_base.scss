@@ -17,12 +17,18 @@ html * {
 }
 
 html {
-    font-family: sans-serif;
-    font-size: 16px;
-    line-height: 1.4;
+    font-family: $default-font;
+    font-size: $default-font-size;
+    line-height: $default-line-height;
 }
 
 // Some typography
 h1 {
     font-size: 2rem;
+}
+
+// Base colors
+body {
+    background-color: $background-color;
+    color: $text-color;
 }
