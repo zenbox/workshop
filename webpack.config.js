@@ -34,8 +34,9 @@ module.exports = {
     // OUTPUT
     // - - - - -
     output: {
+        // path: path.resolve(__dirname, 'dist'),
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: 'script.js',
     },
 
     // - - - - -
@@ -69,6 +70,13 @@ module.exports = {
                         loader: 'sass-loader', // compiles Sass to CSS, using Node Sass by default
                     }
                 ]
+            },
+            {
+                // File loader, i.e. images or fonts
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader',
+                ],
             }
         ]
     },
