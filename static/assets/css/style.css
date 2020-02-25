@@ -20,4 +20,13 @@ html {
 h1 {
   font-size: 2rem;
 }
-/*# sourceMappingURL=style.css.map */
+
+body {
+  background-color: white;
+  color: gray;
+}
+
+.theme body {
+  color: maroon;
+  background-color: lightcoral;
+}
