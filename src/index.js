@@ -10,7 +10,8 @@
  * @license MIT
  */
 
-import "./sass/style.scss";
+import "./assets/scss/style.scss";
+import Icon from "./assets/figures/skull.svg";
 
 /**
  * This is a function
@@ -34,6 +35,6 @@ document
   .appendChild(
     paragraph(
       "p",
-      "Cras nice and crazy Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod."
+      "Cras nice and crazy beautiful Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod."
     )
   );
