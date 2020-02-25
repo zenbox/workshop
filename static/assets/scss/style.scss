@@ -8,13 +8,16 @@
 
 // presets
 @import 'variables';
+@import 'mixins';
 
 // base css
 @import 'base';
 
 // layout
+@import 'layout';
 
 // modules
+@import 'modules/navigation';
 
 // themes
 @import 'theme';
