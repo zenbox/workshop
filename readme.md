@@ -88,7 +88,7 @@ Gespräche und Austausch
 {
 	"SCSS Doc Block and main comments": {
 		"prefix": "docblock",
-		"description": " Doc Block Comment for SCSS Fiels",
+		"description": " Docblock comment for SCSS files",
 		"body": [
 			"///** $1",
 			"// *",
@@ -112,7 +112,7 @@ Gespräche und Austausch
 {
 		"CSS Doc Block and main comments": {
 			"prefix": "docblock",
-			"description": " structure for components",
+			"description": "The docblock comment and the structure for components",
 			"body": [
 				"/** $1",
 				"  *",
@@ -169,7 +169,7 @@ Gespräche und Austausch
 {
 	"function documentation block": {
 		"prefix": "function comment",
-		"description": "print the function comment block",
+		"description": "A comment block for functions",
 		"body": [
 			"/** $1",
 			" *",
@@ -184,7 +184,7 @@ Gespräche und Austausch
 	},
 	"page documention block": {
 		"prefix": "docblock",
-		"description": "print the page doc block",
+		"description": "The docblock comment for Javascript",
 		"body": [
 			"/** $1",
 			"  *",
@@ -216,7 +216,7 @@ Gespräche und Austausch
 	},
 	"Module Block Pattern": {
         "prefix": "module block pattern",
-        "description": "Immediate invoked function expression",
+        "description": "Immediate invoked function expression with publishing in window",
 		"body": [
 			"!(function () {",
 			"'use strict';",
