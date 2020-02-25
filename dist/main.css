@@ -1,11 +1,13 @@
 /* Hm Hm*/
 .default {
-  color: #bdbddb;
-  background-color: #242442; }
+  color: black;
+  background-color: white; }
 
 body {
-  background-color: lightcoral; }
+  background-color: white; }
 
 html {
-  font-family: Roboto, sans-serif; }
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.4; }
 
