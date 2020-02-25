@@ -81,10 +81,22 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/app.js");
 /******/ })
 /************************************************************************/
 /******/ ({
+
+/***/ "./src/app.js":
+/*!********************!*\
+  !*** ./src/app.js ***!
+  \********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/scss/style.scss */ \"./src/assets/scss/style.scss\");\n/* harmony import */ var _assets_scss_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _assets_figures_skull_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/figures/skull.svg */ \"./src/assets/figures/skull.svg\");\n/* harmony import */ var _assets_figures_skull_svg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_figures_skull_svg__WEBPACK_IMPORTED_MODULE_1__);\n/**\n * DOM Manipulation via JS\n *\n * @package webapp\n * @module example\n * @version 1.0.0\n * @since 1.0.0\n * @author Michael <michael.reichart@gfu.net>\n * @copyright Michael Reichart 2019\n * @license MIT\n */\n\n\n\n\n/**\n * This is a function\n *\n * @param {string} e a sample element tagname\n * @param {string} t a sample text\n * @return {object}\n */\nfunction paragraph(_e, _t) {\n  const node = document.createElement(_e);\n  const text = document.createTextNode(_t);\n\n  node.appendChild(text);\n  node.classList.add(\"default\");\n\n  return node;\n}\n\nfunction component() {\n  const element = document.createElement('div');\n\n  // Lodash, now imported by this script\n  element.innerHTML = 'Hello webpack ';\n  element.classList.add('withBackground');\n\n  // Add the image to our existing div.\n  const myIcon = new Image();\n  myIcon.src = _assets_figures_skull_svg__WEBPACK_IMPORTED_MODULE_1___default.a;\n  myIcon.classList.add('medium');\n\n  element.appendChild(myIcon);\n\n  return element;\n}\n\ndocument.body.appendChild(component());\n\ndocument\n  .querySelector(\"main>article\")\n  .appendChild(\n    paragraph(\n      \"p\",\n      \"Cras nice and crazy beautiful Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod.\"\n    )\n  );\n\n//# sourceURL=webpack:///./src/app.js?");
+
+/***/ }),
 
 /***/ "./src/assets/figures/skull.svg":
 /*!**************************************!*\
@@ -105,18 +117,6 @@ eval("module.exports = __webpack_require__.p + \"63c8b224de7461baae1f47576a460de
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/assets/scss/style.scss?");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _assets_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/scss/style.scss */ \"./src/assets/scss/style.scss\");\n/* harmony import */ var _assets_scss_style_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_assets_scss_style_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _assets_figures_skull_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/figures/skull.svg */ \"./src/assets/figures/skull.svg\");\n/* harmony import */ var _assets_figures_skull_svg__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_assets_figures_skull_svg__WEBPACK_IMPORTED_MODULE_1__);\n/**\n * DOM Manipulation via JS\n *\n * @package webapp\n * @module example\n * @version 1.0.0\n * @since 1.0.0\n * @author Michael <michael.reichart@gfu.net>\n * @copyright Michael Reichart 2019\n * @license MIT\n */\n\n\n\n\n/**\n * This is a function\n *\n * @param {string} e a sample element tagname\n * @param {string} t a sample text\n * @return {object}\n */\nfunction paragraph(_e, _t) {\n  const node = document.createElement(_e);\n  const text = document.createTextNode(_t);\n\n  node.appendChild(text);\n  node.classList.add(\"default\");\n\n  return node;\n}\n\ndocument\n  .querySelector(\"main>article\")\n  .appendChild(\n    paragraph(\n      \"p\",\n      \"Cras nice and crazy beautiful Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod.\"\n    )\n  );\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
