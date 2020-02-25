@@ -14,12 +14,13 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 
 ## Content Table
 ### Projektentwicklungsumgebung 
-- Visual Studio Code, nodejs, und Webpack. 
+- :+1: Visual Studio Code, 
+- nodejs, und Webpack. 
 - Einrichten von Projekten, Konfigurationsmöglichkeiten,
 - Buildprozess und clientseitiges Debugging,
 - Kompilierung und Source Maps.
 
-- Extensions: Beautify (HookyQR), Live Server und Live Sass (Ritwick Dey)
+:+1: - Extensions: Beautify (HookyQR), Live Server und Live Sass (Ritwick Dey)
 
 ### Javascript
 - Neuerungen in Javascript ES5 und ES6+
@@ -29,13 +30,13 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - Kommunikation mit dem Server
 
 ### Generisches CSS
-- LESS und/oder SASS im Workflow*, 
-- praktische Beispiele in SASS/SCSS. 
-- Aufbau einer CSS Architektur.
+- :+1: LESS und/oder SASS im Workflow, 
+- :+1: praktische Beispiele in SASS/SCSS. 
+- :+1: Aufbau einer CSS Architektur.
 
 ### CSS Flexboxes und CSS Grids
-- Bauen von Seitentemplates
-- Bauen von Contentmodulen.
+- :+1: Bauen von Seitentemplates
+- :+1: Bauen von Contentmodulen.
 
 ### HTML Accessability
 - Umsetzung der WAI-ARIA mit Schwerpunkt auf Erfüllung der AA-Kriterien, die sich auf HTML und ARIA-Eigenschaften beziehen.
