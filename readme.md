@@ -80,3 +80,175 @@ Gespräche und Austausch
 - http://thklein.com/de_DE/cost-of-defect/
 - https://modernizr.com/
 - https://docs.emmet.io/cheat-sheet/
+
+## Visual Studio Code Snippets
+
+### SCSS Doc Block Comment Snippet
+```json
+{
+	"SCSS Doc Block and main comments": {
+		"prefix": "docblock",
+		"description": " Doc Block Comment for SCSS Fiels",
+		"body": [
+			"///** $1",
+			"// *",
+			"// * @package Webapplication",
+			"// * @module $2",
+			"// * @author Michael Reichart <michael.reichart@gfu.net>",
+			"// * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			"// * @version 1.0.0",
+			"// * @see i.e. inspired by ... {link to}",
+			"// * @license MIT {https://opensource.org/licenses/MIT}",
+			"// * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
+			"// */",
+			"",
+			"$3"
+		],
+	},
+}
+```
+### CSS Doc Block Comment Snippet
+```json
+{
+		"CSS Doc Block and main comments": {
+			"prefix": "docblock",
+			"description": " structure for components",
+			"body": [
+				"/** $1",
+				"  *",
+				"  *  @desc $2",
+				"  *        All devices fallback: @media screen {}",
+				"  *        Small devices:        @media screen and (max-width:768px) {}",
+				"  *",
+				"  * ",
+				"  *  @toc  i.e. COMPONENT",
+				"  *        i.e. SUB COMPONENT",
+				"  *",
+				"  * @package Webapplication",
+				"  * @module i.e. header",
+				"  * @author Michael Reichart <michael@zenbox.de>",
+				"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+				"  * @version 1.0.0",
+				"  * @see i.e. inspired by ... {link to}",
+				"  * @license MIT {https://opensource.org/licenses/MIT}",
+				"  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
+				"  */",
+				"",
+				"/** COMPONENT BASE */",
+				"$3",
+				"/** COMPONENT LAYOUT */",
+				"  ",
+				"/** COMPONENT THEME */",
+				"",
+				"/** COMPONENT CHANGING STATES (BEHAVIOUR) */",
+				"",
+				"",
+				"/** SUB COMPONENT",
+				"  * @desc type any description here ...",
+				"  *       1. all devices fallback",
+				"  *       2. small devices",
+				"  */",
+				"",
+				"/** SUB COMPONENT BASE */",
+				"/** SUB COMPONENT LAYOUT */",
+				"/** SUB COMPONENT THEME */",
+				"/** SUB COMPONENT CHANGING STATES */",
+			],
+		},
+	}
+```
+
+### Javascript Snippets
+
+- The Function Comment
+- The JS Docblock Comment
+- The IIFE Pattern
+- The Module Block Pattern
+  
+```json
+{
+	"function documentation block": {
+		"prefix": "function comment",
+		"description": "print the function comment block",
+		"body": [
+			"/** $1",
+			" *",
+			" * @version v1.0.0",
+			" * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" * @callback namepath",
+			" * @param {type} desc",
+			" * @returns {void}",
+			" */",
+			"$2"
+		]
+	},
+	"page documention block": {
+		"prefix": "docblock",
+		"description": "print the page doc block",
+		"body": [
+			"/** $1",
+			"  *",
+			"  *  @desc $2",
+			"  *",
+			"  * @package Webapplication",
+			"  * @module $3",
+			"  * @author Michael <michael.reichart@gfu.net>",
+			"  * @version v1.0.0",
+			"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			"  * @see i.e. inspired by ... {link to}",
+			"  * @license MIT {https://opensource.org/licenses/MIT}",
+			"  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
+			"  */",
+			"$4"
+		]
+	},
+	"IIFE Pattern": {
+        "prefix": "iife",
+        "description": "Immediate invoked function expression",
+		"body": [
+			"!(function () {",
+			"'use strict';",
+			"//- - - - - - - - - -",
+			"$1",
+			"//- - - - - - - - - -",
+			"}());"
+		]
+	},
+	"Module Block Pattern": {
+        "prefix": "module block pattern",
+        "description": "Immediate invoked function expression",
+		"body": [
+			"!(function () {",
+			"'use strict';",
+			"// - - - - - - - - - -",
+			"// DECLARATION",
+			"// - - - - -",
+			"$1",
+			"",
+			"// - - - - -",
+			"// FUNCTIONS",
+			"// - - - - -",
+			"function _double(a) {",
+			"   var _a = a || 0;",
+			"",
+			"   if (typeof (_a) !== 'number') return NaN;",
+			"",
+			"   return _a + _a;",
+			"};",
+			"",
+			"function _main() {",
+			"   // publish module and a function",
+			"   window.module = {} || window.module;",
+			"   window.module.double = _double;",
+			"}",
+			"",
+			"// - - - - -",
+			"// CONTROL",
+			"// - - - - -",
+			"_main();",
+			"// - - - - - - - - - -",
+			"}())"
+		]
+    }
+}
+```
