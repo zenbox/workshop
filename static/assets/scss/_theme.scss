@@ -1,0 +1,17 @@
+///** Theming the styles
+// *
+// * @package Webapplication
+// * @module 
+// * @author Michael Reichart <michael.reichart@gfu.net>
+// * @since 2020-02-25
+// * @version 1.0.0
+// * @see i.e. inspired by ... {link to}
+// * @license MIT {https://opensource.org/licenses/MIT}
+// * @copyright (c) 2020 Michael Reichart, Cologne
+// */
+
+// base
+.theme body {
+    color: $theme-text-color;
+    background-color: $theme-background-color;
+}
