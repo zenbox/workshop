@@ -10,9 +10,9 @@
 // */
 
 // Colors
-$text-color: gray;
+$text-color: hsla(0, 0%, 10%, 1);
 $text-color-lighter:lighten($text-color, 20);
-$background-color: white;
+$background-color: hsla(0, 0%, 90%, 1);
 
 // Fonts
 $default_font: sans-serif;
@@ -24,5 +24,5 @@ $default_line-height:1.4;
 // ...
 
 // Theme
-$theme-text-color:maroon;
-$theme-background-color: lightcoral;
+$theme-text-color:hsla(0, 0%, 10%, 1);
+$theme-background-color: hsla(0, 0%, 90%, 1);
