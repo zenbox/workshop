@@ -10,8 +10,8 @@ module.exports = {
     // - - - - -
     // MODE
     // - - - - -
-    mode: 'development',
-    // mode: 'production',
+    // mode: 'development',
+    mode: 'production',
 
     // - - - - -
     // WATCH
