@@ -53,3 +53,37 @@
     _main();
     // - - - - - - - - - -
 }())
+
+
+
+
+
+
+addItem(title) {
+    this.store.insert({
+        id: Date.now(),
+        title,
+        completed: false
+    }, () => {
+        this.view.clearNewTodo();
+        this._filter(true);
+    });
+}
+
+
+
+function addItem(title){ 
+    this.store.insert({}, function (this) { let that = this; ... } )
+}
+
+
+
+let a = 42;
+"\"text\""
+1 + 2 + 'text ' + a + ' <p class="' + className + '">mehr text</p>' // 3text 42 mehr text
+    
+`${1+2} text ${a} mehr text `
+
+
+
+import {$on} from './helpers';
