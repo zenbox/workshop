@@ -12,10 +12,15 @@
  * @license MIT
  */
 
-// import the components assets
-import "./assets/scss/style.scss";
-import Icon from "./assets/figures/skull.svg";
+ // ! NODEJS CODE
+ // import the components assets
+ // import "./assets/scss/style.scss";
+ import Icon from "./assets/figures/brain.svg";
+ // ! /NODEJS CODE
 
+
+ // ! BROWSER CODE
+ // 
 /** A Paragraph Component
  *
  * @version v1.0.0
@@ -48,9 +53,10 @@ function component() {
   element.classList.add('withBackground');
 
   const myIcon = new Image();
+  
+
   myIcon.src = Icon;
   myIcon.classList.add('medium');
-
   element.appendChild(myIcon);
 
   return element;
@@ -67,6 +73,6 @@ document
   .appendChild(
     paragraph(
       "p",
-      "Crazy ans dirty Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod."
+      "Crazy, dirty cool Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod."
     )
   );
