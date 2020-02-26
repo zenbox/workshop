@@ -239,7 +239,7 @@ Gespräche und Austausch
 			"",
 			"function _main() {",
 			"   // publish module and a function",
-			"   window.module = {} || window.module;",
+			"   window.module = window.module || {};",
 			"   window.module.double = _double;",
 			"}",
 			"",
