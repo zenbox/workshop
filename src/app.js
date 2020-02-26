@@ -12,15 +12,14 @@
  * @license MIT
  */
 
- // ! NODEJS CODE
- // import the components assets
- // import "./assets/scss/style.scss";
- import Icon from "./assets/figures/brain.svg";
- // ! /NODEJS CODE
+// ! NODEJS CODE
+// import the components assets
+import "./assets/scss/style.scss";
+import Icon from "./assets/figures/brain.svg";
+// ! /NODEJS CODE
 
 
- // ! BROWSER CODE
- // 
+// ! BROWSER CODE
 /** A Paragraph Component
  *
  * @version v1.0.0
@@ -53,7 +52,7 @@ function component() {
   element.classList.add('withBackground');
 
   const myIcon = new Image();
-  
+
 
   myIcon.src = Icon;
   myIcon.classList.add('medium');
