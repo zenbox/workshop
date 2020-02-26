@@ -15,8 +15,8 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 ## Content Table
 ### Projektentwicklungsumgebung 
 - :+1: Visual Studio Code, 
-- nodejs, und Webpack. 
-- Einrichten von Projekten, Konfigurationsmöglichkeiten,
+- :+1: nodejs, und Webpack. 
+- :+1: Einrichten von Projekten, Konfigurationsmöglichkeiten,
 - Buildprozess und clientseitiges Debugging,
 - Kompilierung und Source Maps.
 
@@ -24,8 +24,8 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 
 ### Javascript
 - Neuerungen in Javascript ES5 und ES6+
-- 'use strict', getters/setters, JSON object 
-- Funktionales Programmieren
+- :+1: 'use strict', getters/setters, JSON object 
+- :+1: Funktionales Programmieren
 - DOM Manipulation, Event Handling
 - Kommunikation mit dem Server
 
