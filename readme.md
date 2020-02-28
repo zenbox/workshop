@@ -26,7 +26,7 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - Neuerungen in Javascript ES5 und ES6+
 - :+1: 'use strict', getters/setters, JSON object 
 - :+1: Funktionales Programmieren
-- DOM Manipulation, Event Handling
+- :+1: DOM Manipulation, Event Handling
 - Kommunikation mit dem Server
 
 ### Generisches CSS
@@ -47,6 +47,25 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 Gespräche und Austausch
 
 ## Links
+### Links zu WAI ARIA
+https://www.w3.org/TR/html-aria/
+https://www.w3.org/WAI/PF/aria-1.1/states_and_properties
+https://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-live
+https://www.barrierefreies-webdesign.de/
+https://www.einfach-fuer-alle.de/
+https://developer.mozilla.org/en-US/docs/Web/Accessibility#https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-text-equiv-all
+https://studienwahl-deutschland.de/iap/barrierefreie-formulare-erstellen-2/
+https://www.w3.org/WAI/WCAG21/Techniques/#techniques
+https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html
+https://www.w3.org/TR/?title=web%20content%20Accessibility
+
+### Listbox and ARIA
+https://selectize.github.io/selectize.js/
+https://github.com/selectize/selectize.js/issues/798
+https://dev.to/link2twenty/accessibility-first-dropdown-select-3ji5
+https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html
+https://www.w3.org/TR/wai-aria-practices/#listbox_kbd_interaction
+
 ### Links zu CSS
 - https://meyerweb.com/eric/tools/css/reset/
 - https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss
