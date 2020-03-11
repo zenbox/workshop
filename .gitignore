@@ -4,6 +4,7 @@
 composer.phar
 /stuff/
 /.vscode/settings.json
+/.vscode/
 /vendor/
 /node_modules/
 **/node_modules/
