@@ -1,82 +1,66 @@
-# Willkommen zu Web Technologien
+# Willkommen zu Javascript für Fortgeschrittene
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
 
 ## Foliensatz
-Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **Accessability for Web.pdf**, **CSS - kompakt.pdf**, **Javascript kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
-
-## Whiteboards
-![Lorem ipsum dolor](static/assets/figures/2020-02-24&#32;10.39.31.jpg)
-![Lorem ipsum dolor](static/assets/figures/2020-02-24&#32;14.19.30.jpg)
-![Lorem ipsum dolor](static/assets/figures/2020-02-24&#32;15.03.55.jpg)
-
+Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf**, **CSS - kompakt.pdf**, **Javascript kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
 ## Content Table
-### Projektentwicklungsumgebung 
-- :+1: Visual Studio Code, 
-- :+1: nodejs, und Webpack. 
-- :+1: Einrichten von Projekten, Konfigurationsmöglichkeiten,
-- Buildprozess und clientseitiges Debugging,
-- Kompilierung und Source Maps.
-
-:+1: - Extensions: Beautify (HookyQR), Live Server und Live Sass (Ritwick Dey)
-
-### Javascript
-- Neuerungen in Javascript ES5 und ES6+
-- :+1: 'use strict', getters/setters, JSON object 
-- :+1: Funktionales Programmieren
-- :+1: DOM Manipulation, Event Handling
-- Kommunikation mit dem Server
-
-### Generisches CSS
-- :+1: LESS und/oder SASS im Workflow, 
-- :+1: praktische Beispiele in SASS/SCSS. 
-- :+1: Aufbau einer CSS Architektur.
-
-### CSS Flexboxes und CSS Grids
-- :+1: Bauen von Seitentemplates
-- :+1: Bauen von Contentmodulen.
-
-### HTML Accessability
-- Umsetzung der WAI-ARIA mit Schwerpunkt auf Erfüllung der AA-Kriterien, die sich auf HTML und ARIA-Eigenschaften beziehen.
-- Ggf. inhaltliche oder gestalterische Aufarbeitungen 
-
-*Donnerstags*
-### Real life
-Gespräche und Austausch
+### JavaScript Roundup -  Der richtige Start
+- Datentypen und Operatoren
+- Scoping und Context
+- Hoisting vermeiden
+- Closures erkennen
+- Code Kapselung mit IIFE
+- Funktionsweise der JS-Interpreter
+### Besseren JavaScript-Code entwerfen
+- Debugging im Browser (Chrome Developer Tools, Mozilla Developer Tools)
+- Konventionen einhalten mit JSLint und ESLint
+- Dokumentieren mit JSDoc
+- Einführung in Unit Tests
+- Automatisieren von Aufgaben
+### Objekt Orientiertes JavaScript (OOJS)
+- Factory Pattern
+- Constructor Pattern
+- Methoden hinzufügen mit dem Protoype Pattern
+- Method-Chaining
+- Vererbung durch Combination Inheritance
+### ECMAScript 5 - neue Möglichkeiten
+- Erstellen von Objekten mit Object.create()
+- Absichern von Objekten und Properties
+- Neue Array-Methoden
+### ES 6/7 bzw. ECMAScript 2015/2016
+- Sichtbarkeit von Variablen in ES6
+- Arrow-Function
+- Class-Begriff
+- Import und Export und die Umsetzung für ältere Browser
+### Asynchrones JavaScript
+- Promises
+- Observables mit ReactiveX
+### Moderne Architektur für JavaScript Applikationen
+- Modul erstellen 
+- Singleton richtig erstellen
+- Observer-Pattern verstehen
+### Modulare JavaScript Patterns
+- Projekt-Initialisierung mit npm und Yarn
+- Cross-Browser-Applikationen mit Polyfills
+- Modernes JavaScript in älteren Browsern mit Babel und TypeScript
+- Packaging und Deployment mit npm, Grunt und Webpack
 
 ## Links
-### Links zu WAI ARIA
-https://www.w3.org/TR/html-aria/
-https://www.w3.org/WAI/PF/aria-1.1/states_and_properties
-https://www.w3.org/WAI/PF/aria-1.1/states_and_properties#aria-live
-https://www.barrierefreies-webdesign.de/
-https://www.einfach-fuer-alle.de/
-https://developer.mozilla.org/en-US/docs/Web/Accessibility#https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-text-equiv-all
-https://studienwahl-deutschland.de/iap/barrierefreie-formulare-erstellen-2/
-https://www.w3.org/WAI/WCAG21/Techniques/#techniques
-https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html
-https://www.w3.org/TR/?title=web%20content%20Accessibility
 
-### Listbox and ARIA
-https://selectize.github.io/selectize.js/
-https://github.com/selectize/selectize.js/issues/798
-https://dev.to/link2twenty/accessibility-first-dropdown-select-3ji5
-https://www.w3.org/TR/wai-aria-practices/examples/listbox/listbox-collapsible.html
-https://www.w3.org/TR/wai-aria-practices/#listbox_kbd_interaction
-
+### Links zu HTML
+- https://github.com/scottjehl/picturefill
+- https://github.com/scottjehl/Respond
+- https://github.com/aFarkas/html5shiv
+  
 ### Links zu CSS
 - https://meyerweb.com/eric/tools/css/reset/
 - https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss
 - https://necolas.github.io/normalize.css/
 - http://smacss.com/book/categorizing
 - http://getbem.com/introduction/
-
-### Links zu HTML
-- https://github.com/scottjehl/picturefill
-- https://github.com/scottjehl/Respond
-- https://github.com/aFarkas/html5shiv
 
 ### Links zu Javascript
 - https://developer.mozilla.org/de/docs/Web/JavaScript/Reference
@@ -102,82 +86,6 @@ https://www.w3.org/TR/wai-aria-practices/#listbox_kbd_interaction
 - https://docs.emmet.io/cheat-sheet/
 
 ## Visual Studio Code Snippets
-
-### SCSS Doc Block Comment Snippet
-```json
-{
-	"SCSS Doc Block and main comments": {
-		"prefix": "docblock",
-		"description": " Docblock comment for SCSS files",
-		"body": [
-			"///** $1",
-			"// *",
-			"// * @package Webapplication",
-			"// * @module $2",
-			"// * @author Michael Reichart <michael.reichart@gfu.net>",
-			"// * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-			"// * @version 1.0.0",
-			"// * @see i.e. inspired by ... {link to}",
-			"// * @license MIT {https://opensource.org/licenses/MIT}",
-			"// * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
-			"// */",
-			"",
-			"$3"
-		],
-	},
-}
-```
-### CSS Doc Block Comment Snippet
-```json
-{
-		"CSS Doc Block and main comments": {
-			"prefix": "docblock",
-			"description": "The docblock comment and the structure for components",
-			"body": [
-				"/** $1",
-				"  *",
-				"  *  @desc $2",
-				"  *        All devices fallback: @media screen {}",
-				"  *        Small devices:        @media screen and (max-width:768px) {}",
-				"  *",
-				"  * ",
-				"  *  @toc  i.e. COMPONENT",
-				"  *        i.e. SUB COMPONENT",
-				"  *",
-				"  * @package Webapplication",
-				"  * @module i.e. header",
-				"  * @author Michael Reichart <michael@zenbox.de>",
-				"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-				"  * @version 1.0.0",
-				"  * @see i.e. inspired by ... {link to}",
-				"  * @license MIT {https://opensource.org/licenses/MIT}",
-				"  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
-				"  */",
-				"",
-				"/** COMPONENT BASE */",
-				"$3",
-				"/** COMPONENT LAYOUT */",
-				"  ",
-				"/** COMPONENT THEME */",
-				"",
-				"/** COMPONENT CHANGING STATES (BEHAVIOUR) */",
-				"",
-				"",
-				"/** SUB COMPONENT",
-				"  * @desc type any description here ...",
-				"  *       1. all devices fallback",
-				"  *       2. small devices",
-				"  */",
-				"",
-				"/** SUB COMPONENT BASE */",
-				"/** SUB COMPONENT LAYOUT */",
-				"/** SUB COMPONENT THEME */",
-				"/** SUB COMPONENT CHANGING STATES */",
-			],
-		},
-	}
-```
-
 ### Javascript Snippets
 
 - The Function Comment
