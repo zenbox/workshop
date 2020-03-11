@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="">
+        <fieldset>
+            <legend>login</legend>
+            <label for="">email</label>
+            <input type="email">
+            <button>log in</button>
+        </fieldset>
+    </form>
+
+
+    <script>
+
+
+    </script>
+    <script>
+        // function () {
+        //     var a = 43;
+        //     console.log(a);
+        // }
+
+
+        // IIFE - Immediate Invoked Function Expression
+        // Scopes bilden
+        // Variablendeklarationen erzwingen!
+        (function () {
+            'use strict';
+            // - - - - - - - - - -
+            // Single var declarations
+            // @see D. Crockford; The Good Parts
+            // let instead of var seit ES6+
+            let
+                a = 41,
+                b, c, d;
+
+            const PI = Math.PI;
+            console.log(typeof PI);
+
+            let arr = [true, 2, 'drei'];
+            arr.push('banana');
+
+            // const http = require('http');
+            console.log(a);
+
+            // let for control scopes
+            for (let i = 0; i < 10; i++) {};
+
+            // Semicolon after objects, but not after control structures
+            var obj = {
+                key: 'value'
+            };
+
+            c = a + d;
+            b = 108;
+            // - - - - - - - - - -
+        }());
+        console.clear();
+        // truthy, falsy?
+        console.log(typeof true);
+        console.log(true === 1);
+
+        console.log(true == 1);
+        // ! only two, because ...
+        console.log(false == 0);
+
+        console.log('empty string:', false == '');
+        console.log('only spaces string:', false == '       ');
+
+        console.log('string 1', true == '1');
+
+
+        // null, undefined
+        console.log('null:', false == null);
+        console.log('undefined:', false == undefined);
+
+        let g = undefined; // undefined
+
+        if (g) {
+            console.log('g exists')
+
+        } else {
+            console.log('exists not');
+            console.log(g);
+            console.log(typeof g);
+        }
+
+        let h = null;
+
+        if (h) {
+            console.log('g exists')
+
+        } else {
+            console.log('exists not');
+            console.log(h);
+            console.log(typeof h);
+        }
+
+
+        // if () g === undefined) {
+
+        if (typeof g !== 'undefined') {
+            console.log('is defined');
+        } else {
+            console.log('is undefined');
+        }
+
+
+        if (typeof x !== 'undefined') {
+            console.log('x:', 'is defined');
+        } else {
+            console.log('x:', 'is undefined');
+        }
+
+        console.clear();
+
+        // Types of objects
+        let o = {
+            key: 'value'
+        };
+        console.log('o:', typeof o)
+        console.log('o:', o.length)
+
+        // Types of arrays
+        let arr = [1, 2, 3];
+        console.log('arr:', typeof arr)
+        console.log('arr:', arr.length)
+        console.log(Array.isArray(arr));
+
+        for (let i = 0, len = arr.length; i < len; i += 1) {
+            arr.push('new');
+        }
+
+
+
+        // form as object or array?
+        let f = document.querySelector('form');
+        console.log(Array.isArray(f))
+
+        // console.dir(f);
+
+        // for (let i = 0; i < f.length; i += 1) {
+        //     console.log(f[i]);
+        // }
+
+        // for (let key in f) {
+        //     console.log(f[key]);
+        // }
+
+
+        // truthy false?
+        console.clear();
+        if (g) {}
+
+        console.log(0.1 + 0.2 < Number.EPSILON);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // document.addEventListener('readystatechange', function (event) {
+        //     console.log(document.readyState)
+        // });
+
+        // window.onload = function () {};
+
+        // $(document).ready(
+        //     function () {
+        // 'use strict'
+        //         // - - - - - - - - - -
+
+        //         // - - - - - - - - - -
+        //     }
+        // )
+    </script>
+</body>
+
+</html>
