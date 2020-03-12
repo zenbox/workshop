@@ -8,22 +8,22 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 
 ## Content Table
 ### JavaScript Roundup -  Der richtige Start
-- Datentypen und Operatoren
-- Scoping und Context
-- Hoisting vermeiden
+- :white_check_mark: Datentypen und Operatoren
+- :white_check_mark: Scoping und Context
+- :white_check_mark: Hoisting vermeiden
 - Closures erkennen
-- Code Kapselung mit IIFE
+- :white_check_mark: Code Kapselung mit IIFE
 - Funktionsweise der JS-Interpreter
 ### Besseren JavaScript-Code entwerfen
 - Debugging im Browser (Chrome Developer Tools, Mozilla Developer Tools)
 - Konventionen einhalten mit JSLint und ESLint
-- Dokumentieren mit JSDoc
+- :white_check_mark: Dokumentieren mit JSDoc
 - Einführung in Unit Tests
 - Automatisieren von Aufgaben
 ### Objekt Orientiertes JavaScript (OOJS)
 - Factory Pattern
-- Constructor Pattern
-- Methoden hinzufügen mit dem Protoype Pattern
+- :white_check_mark: Constructor Pattern
+- :white_check_mark: Methoden hinzufügen mit dem Protoype Pattern
 - Method-Chaining
 - Vererbung durch Combination Inheritance
 ### ECMAScript 5 - neue Möglichkeiten
@@ -31,9 +31,9 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - Absichern von Objekten und Properties
 - Neue Array-Methoden
 ### ES 6/7 bzw. ECMAScript 2015/2016
-- Sichtbarkeit von Variablen in ES6
+- :white_check_mark: Sichtbarkeit von Variablen in ES6
 - Arrow-Function
-- Class-Begriff
+- :white_check_mark: Class-Begriff
 - Import und Export und die Umsetzung für ältere Browser
 ### Asynchrones JavaScript
 - Promises
