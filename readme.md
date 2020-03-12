@@ -16,16 +16,16 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - Funktionsweise der JS-Interpreter
 ### Besseren JavaScript-Code entwerfen
 - Debugging im Browser (Chrome Developer Tools, Mozilla Developer Tools)
-- Konventionen einhalten mit JSLint und ESLint
+- :white_check_mark: Konventionen einhalten mit JSLint und ESLint
 - :white_check_mark: Dokumentieren mit JSDoc
-- Einführung in Unit Tests
+- :white_check_mark: Einführung in Unit Tests
 - Automatisieren von Aufgaben
 ### Objekt Orientiertes JavaScript (OOJS)
 - Factory Pattern
 - :white_check_mark: Constructor Pattern
 - :white_check_mark: Methoden hinzufügen mit dem Protoype Pattern
 - Method-Chaining
-- Vererbung durch Combination Inheritance
+- :white_check_mark: Vererbung durch Combination Inheritance
 ### ECMAScript 5 - neue Möglichkeiten
 - Erstellen von Objekten mit Object.create()
 - Absichern von Objekten und Properties
@@ -39,13 +39,13 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - Promises
 - Observables mit ReactiveX
 ### Moderne Architektur für JavaScript Applikationen
-- Modul erstellen 
+- :white_check_mark: Modul erstellen 
 - Singleton richtig erstellen
 - Observer-Pattern verstehen
 ### Modulare JavaScript Patterns
 - Projekt-Initialisierung mit npm und Yarn
 - Cross-Browser-Applikationen mit Polyfills
-- Modernes JavaScript in älteren Browsern mit Babel und TypeScript
+- :white_check_mark: Modernes JavaScript in älteren Browsern mit Babel und TypeScript
 - Packaging und Deployment mit npm, Grunt und Webpack
 
 ## Links
