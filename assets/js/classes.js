@@ -41,6 +41,14 @@
         }
     }
 
+    // Propagation
+    window.app = window.app || {};
+    window.app._classes = {
+        Person: Person,
+        Female: Female
+    }
+
+    // control
     let john = new Person('John');
     let mary = new Female('mary');
 
