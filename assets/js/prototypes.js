@@ -11,42 +11,57 @@
  */
 !(function () {
     'use strict';
-    //- - - - - - - - - -
+    // - - - - - - - - - -
 
     // Parent class
+    // - - - - - - - - - -
     function Shape(w, h) {
+
         this.width = w;
         this.height = h;
-    }
 
-    Shape.prototype.resize = function (w, h) {
-        this.width = w;
-        this.height = h;
-    }
+        // Method that will be inherited
+        this.move = function (x, y) {
+            this.x = x;
+            this.y = y;
 
-    // Child class
-    function Cube() {}
-    Cube.prototype = new Shape();
-
-    let shape = new Shape(10, 10);
-    shape.resize(25, 25);
-
-    let cube = new Cube(15, 15);
-
-    console.log(shape.width);
-    // console.log(cube.width);
-    //- - - - - - - - - -
-
-
-    // ES6+
-    class Person {
-        constructor(n) {
-            this.name = n;
+            console.log('moving: ', x, y)
         }
     }
 
-    let john = new Person('John');
+    // Child class
+    // - - - - - - - - - -
+    function Cube(w, h) {
+        // Call the parent constructor
+        // and set parent properties
+        Shape.call(this, w, h);
+    }
 
-    console.log(john.name);
+    // Append the parent class as prototype
+    // - - - - - - - - - -
+    Cube.prototype = new Shape();
+
+    // Method that will notbe inherited
+    Shape.prototype.resize = function (w, h) {
+        this.width = w;
+        this.height = h;
+
+        console.log('resizing: ', this, w, h)
+    }
+
+    // Instaces of ...
+    let shape = new Shape(10, 10);
+    let cube = new Cube(15, 15);
+
+    console.log('shape: ', shape);
+    console.log('cube: ', cube);
+    console.log('cube width:', cube.width);
+
+    // Do some stuff
+    shape.move(5, 5);
+    shape.resize(25, 25);
+
+    cube.move(30, 3); // works!
+    cube.resize(50, 50); // doesn't work 'cause of late binding
     //- - - - - - - - - -
 }());
