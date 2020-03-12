@@ -50,40 +50,30 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 
 ## Links
 
-### Links zu HTML
-- https://github.com/scottjehl/picturefill
-- https://github.com/scottjehl/Respond
-- https://github.com/aFarkas/html5shiv
-  
-### Links zu CSS
-- https://meyerweb.com/eric/tools/css/reset/
-- https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss
-- https://necolas.github.io/normalize.css/
-- http://smacss.com/book/categorizing
-- http://getbem.com/introduction/
-
 ### Links zu Javascript
-- https://developer.mozilla.org/de/docs/Web/JavaScript/Reference
-- https://kangax.github.io/compat-table/es6/
-- https://tc39.es/ecma262/
-- https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata
-- https://eloquentjavascript.net/
-- https://github.com/getify/You-Dont-Know-JS
-- https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises
-- https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous
+- [Javascript Referenz von Mozilla](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference)
+- [Kompatibilitätsliste für ES6](https://kangax.github.io/compat-table/es6/)
+- [ES Spezifikation](https://tc39.es/ecma262/)
+- [AJAX mit formData](https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata)
+- [Eloquent JS](https://eloquentjavascript.net/)
+- [You don't know JS](https://github.com/getify/You-Dont-Know-JS)
+- [Promises verwenden](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises)
+- [Syncron oder asyncron?](https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous)
+- [require.js](https://requirejs.org/)
+- [Immutable](https://dev.to/glebec/four-ways-to-immutability-in-javascript-3b3l)
+- [this, bind, call, apply](https://www.digitalocean.com/community/conceptual_articles/understanding-this-bind-call-and-apply-in-javascript)
 
 ### Events
-- https://hammerjs.github.io/
-- https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches
-- https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events
+- [Touch Events mit hammer.js](https://hammerjs.github.io/)
+- [Touch events mit JS](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
+- [Ambient Light API](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events)
 
 ### Weiteres
-- http://html5test.com/index.html
-- https://caniuse.com/#search=addevent
-- https://opensource.org/licenses/MIT
-- http://thklein.com/de_DE/cost-of-defect/
-- https://modernizr.com/
-- https://docs.emmet.io/cheat-sheet/
+- [html5Test.com](http://html5test.com/index.html)
+- [Can i Use?](https://caniuse.com/)
+- [MIT License](https://opensource.org/licenses/MIT)
+- [Cost of Defect](http://thklein.com/de_DE/cost-of-defect/)
+- [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
 
 ## Visual Studio Code Snippets
 ### Javascript Snippets
