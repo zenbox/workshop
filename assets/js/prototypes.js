@@ -40,12 +40,12 @@
     // Append the parent class as prototype
     // - - - - - - - - - -
     Cube.prototype = new Shape();
-
+    
     // Method that will notbe inherited
     Shape.prototype.resize = function (w, h) {
         this.width = w;
         this.height = h;
-
+        
         console.log('resizing: ', this, w, h)
     }
 
