@@ -21,7 +21,7 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - Factory Pattern (@see links)
 - Singleton richtig erstellen (@see links)
 - Observer-Pattern verstehen (@see links)
-- 
+
 ### Meta
 - Projekt-Initialisierung mit npm
 - Module: import / export
