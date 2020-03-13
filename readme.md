@@ -6,64 +6,84 @@
 ## Foliensatz
 Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf**, **CSS - kompakt.pdf**, **Javascript kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
+## Inhalte für heute
+### Details
+- this
+- immutables, Absichern von Objekten und Properties
+- Arrow-Function
+- indexDb (@see links)
+- Erstellen von Objekten mit Object.create()
+- Neue Array-Methoden
+
+### Patterns
+- Method-Chaining
+- Closures (@see links)
+- Factory Pattern (@see links)
+- Singleton richtig erstellen (@see links)
+- Observer-Pattern verstehen (@see links)
+- 
+### Meta
+- Projekt-Initialisierung mit npm
+- Module: import / export
+- Packaging und Deployment mit npm und Webpack
+- Debugging im Browser
+- Wiederverwendbarkeit
+- Cross-Browser-Applikationen mit Polyfills
+- Automatisieren von Aufgaben (Grunt)
+  
 ## Content Table
 ### JavaScript Roundup -  Der richtige Start
 - :white_check_mark: Datentypen und Operatoren
 - :white_check_mark: Scoping und Context
 - :white_check_mark: Hoisting vermeiden
-- Closures erkennen
 - :white_check_mark: Code Kapselung mit IIFE
-- Funktionsweise der JS-Interpreter
+- :white_check_mark: Funktionsweise der JS-Interpreter
 ### Besseren JavaScript-Code entwerfen
-- Debugging im Browser (Chrome Developer Tools, Mozilla Developer Tools)
 - :white_check_mark: Konventionen einhalten mit JSLint und ESLint
 - :white_check_mark: Dokumentieren mit JSDoc
 - :white_check_mark: Einführung in Unit Tests
-- Automatisieren von Aufgaben
 ### Objekt Orientiertes JavaScript (OOJS)
-- Factory Pattern
 - :white_check_mark: Constructor Pattern
 - :white_check_mark: Methoden hinzufügen mit dem Protoype Pattern
-- Method-Chaining
 - :white_check_mark: Vererbung durch Combination Inheritance
 ### ECMAScript 5 - neue Möglichkeiten
-- Erstellen von Objekten mit Object.create()
-- Absichern von Objekten und Properties
-- Neue Array-Methoden
 ### ES 6/7 bzw. ECMAScript 2015/2016
 - :white_check_mark: Sichtbarkeit von Variablen in ES6
-- Arrow-Function
 - :white_check_mark: Class-Begriff
-- Import und Export und die Umsetzung für ältere Browser
 ### Asynchrones JavaScript
-- Promises
-- Observables mit ReactiveX
+- :white_check_mark: Promises
+- ~~Observables mit ReactiveX~~
 ### Moderne Architektur für JavaScript Applikationen
 - :white_check_mark: Modul erstellen 
-- Singleton richtig erstellen
-- Observer-Pattern verstehen
 ### Modulare JavaScript Patterns
-- Projekt-Initialisierung mit npm und Yarn
-- Cross-Browser-Applikationen mit Polyfills
 - :white_check_mark: Modernes JavaScript in älteren Browsern mit Babel und TypeScript
-- Packaging und Deployment mit npm, Grunt und Webpack
 
 ## Links
 
 ### Links zu Javascript
+#### Allgemein
 - [Javascript Referenz von Mozilla](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference)
-- [Kompatibilitätsliste für ES6](https://kangax.github.io/compat-table/es6/)
 - [ES Spezifikation](https://tc39.es/ecma262/)
-- [AJAX mit formData](https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata)
 - [Eloquent JS](https://eloquentjavascript.net/)
 - [You don't know JS](https://github.com/getify/You-Dont-Know-JS)
+
+#### Tools
+- [Kompatibilitätsliste für ES6](https://kangax.github.io/compat-table/es6/)
+- [require.js](https://requirejs.org/)
+
+#### Spotlights
+- [indexDb](https://javascript.info/indexeddb)
+- [AJAX mit formData](https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata)
 - [Promises verwenden](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises)
 - [Syncron oder asyncron?](https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous)
-- [require.js](https://requirejs.org/)
 - [Immutable](https://dev.to/glebec/four-ways-to-immutability-in-javascript-3b3l)
 - [this, bind, call, apply](https://www.digitalocean.com/community/conceptual_articles/understanding-this-bind-call-and-apply-in-javascript)
+- [singleton](https://www.sitepoint.com/javascript-design-patterns-singleton/)
+- [factory pattern](https://medium.com/@SntsDev/the-factory-pattern-in-js-es6-78f0afad17e9)
+- [observer pattern](https://www.sitepoint.com/javascript-design-patterns-observer-pattern/)
+- [closures](https://developer.mozilla.org/de/docs/Web/JavaScript/Closures)
 
-### Events
+#### Events
 - [Touch Events mit hammer.js](https://hammerjs.github.io/)
 - [Touch events mit JS](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
 - [Ambient Light API](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events)
