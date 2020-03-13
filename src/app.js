@@ -1,6 +1,6 @@
 /** Building Components
  *
- * @desc Adding some components, like, paragraphs 
+ * @desc Adding some components, like, paragraphs
  *       or images to the document. The idea is to
  *       encapsulate interface components.
  * @package webapp
@@ -17,7 +17,6 @@
 import "./assets/scss/style.scss";
 import Icon from "./assets/figures/brain.svg";
 // ! /NODEJS CODE
-
 
 // ! BROWSER CODE
 /** A Paragraph Component
@@ -46,16 +45,15 @@ function paragraph(_e, _t) {
  * @returns {void}
  */
 function component() {
-  const element = document.createElement('div');
+  const element = document.createElement("div");
 
-  element.innerHTML = 'Oh, an image component ... ';
-  element.classList.add('withBackground');
+  element.innerHTML = "Oh, an image component ... ";
+  element.classList.add("withBackground");
 
   const myIcon = new Image();
 
-
   myIcon.src = Icon;
-  myIcon.classList.add('medium');
+  myIcon.classList.add("medium");
   element.appendChild(myIcon);
 
   return element;
@@ -72,6 +70,6 @@ document
   .appendChild(
     paragraph(
       "p",
-      "Crazy, dirty cool Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod."
+      "Cool Javascript justo odio, dapibus ac facilisis in, egestas eget quam. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum. Etiam porta sem malesuada magna mollis euismod."
     )
   );
