@@ -1,64 +1,63 @@
-# Willkommen zu Javascript für Fortgeschrittene
+# Willkommen zu Das neue JavaScript ES6 / ES2015/2016/2017
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
 
 ## Foliensatz
-Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf**, **CSS - kompakt.pdf**, **Javascript kompakt.pdf**, **ECMAScript 6+.pdf** (wip-Version), **QUnit.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **ECMAScript 6+.pdf** (wip-Version), **Javascript kompakt.pdf**, **Javascript Pattern.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
 "wip" bezeichnet eine work-in-progress Version der Folien.
 
-## Inhalte für heute
-### Details
-- this
-- immutables, Absichern von Objekten und Properties
-- Arrow-Function
-- indexDb (@see links)
-- Erstellen von Objekten mit Object.create()
-- Neue Array-Methoden
-
-### Patterns
-- Method-Chaining
-- Closures (@see links)
-- Factory Pattern (@see links)
-- Singleton richtig erstellen (@see links)
-- Observer-Pattern verstehen (@see links)
-
-### Meta
-- Projekt-Initialisierung mit npm
-- Module: import / export
-- Packaging und Deployment mit npm und Webpack
-- Debugging im Browser
-- Wiederverwendbarkeit
-- Cross-Browser-Applikationen mit Polyfills
-- Automatisieren von Aufgaben (Grunt)
-  
 ## Content Table
-### JavaScript Roundup -  Der richtige Start
-- :white_check_mark: Datentypen und Operatoren
-- :white_check_mark: Scoping und Context
-- :white_check_mark: Hoisting vermeiden
-- :white_check_mark: Code Kapselung mit IIFE
-- :white_check_mark: Funktionsweise der JS-Interpreter
-### Besseren JavaScript-Code entwerfen
-- :white_check_mark: Konventionen einhalten mit JSLint und ESLint
-- :white_check_mark: Dokumentieren mit JSDoc
-- :white_check_mark: Einführung in Unit Tests
-### Objekt Orientiertes JavaScript (OOJS)
-- :white_check_mark: Constructor Pattern
-- :white_check_mark: Methoden hinzufügen mit dem Protoype Pattern
-- :white_check_mark: Vererbung durch Combination Inheritance
-### ECMAScript 5 - neue Möglichkeiten
-### ES 6/7 bzw. ECMAScript 2015/2016
-- :white_check_mark: Sichtbarkeit von Variablen in ES6
-- :white_check_mark: Class-Begriff
-### Asynchrones JavaScript
-- :white_check_mark: Promises
-- ~~Observables mit ReactiveX~~
-### Moderne Architektur für JavaScript Applikationen
-- :white_check_mark: Modul erstellen 
-### Modulare JavaScript Patterns
-- :white_check_mark: Modernes JavaScript in älteren Browsern mit Babel und TypeScript
+Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir werden gemeinsam Prioritäten setzen:
+
+### Blockscopevariablen und Konstanten 
+- let, const
+### Spread- und Restoperator
+- ... als Spreadoperator
+- ... als Restoperator
+### Destructuring von Arrays und Objekten 
+- Destructuring von Arrays 
+- Destructuring von Objekten
+### Themenblock Funktionen 
+- Defaultparameter in Funktionen
+- Funktionsparameter, Rest-Parameter
+- Arrow Funktionen vs. Function-Funktionen
+### Neue Methoden für Standardobjekte in ES2015
+- Neue Methoden von Array
+- Neue Methoden von Object
+- Neue Methoden von String, Number etc.
+### Iteratoren 
+- for-of-Schleife 
+- Bildung und Einsatz von Iteratoren
+### Collections 
+- Maps und Weak-Maps
+- Sets und Weak-Sets
+### Generatoren
+- Generatorfunction und Generatorobject
+- yield-Keyword und next-Methode
+### Object-Shorthanddefinitionen 
+- Definition von Properties 
+- Definition von Methoden
+### Symbols
+- Bildung und Einsatz von Symbols
+### Klassen und Vererbung 
+- Definition von Klassen 
+- Methoden in Klassen
+- constructor-Method
+- Vererbung mit extend
+- Das super-Keyword
+### Proxies 
+- Zugriffsreglementierung mit Proxies
+- Handler-Object, Target-Object
+### Promises 
+- Bildung und Einsatz von Promises
+- Methoden then(), catch()
+### Module 
+- Module in ECMA2015
+- Named Export, Default Export
+- Named Import, Aliasing von Ex- und Import
+- Wildcardimport
 
 ## Links
 
