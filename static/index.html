@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES 6</title>
+</head>
+
+<body>
+    <nav>
+    </nav>
+    <script src="tools.js"></script>
+    <script src="scopes.js"></script>
+    <style>
+        html,
+        html * {
+            box-sizing: border-box;
+            font-family: Menlo, monospace;
+            font-size: 14px;
+        }
+
+        body {
+            background-color: #222;
+            color: #bbb;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            column-width: 18rem;
+        }
+    </style>
+    <script>
+        !(function () {
+            'use strict';
+            //- - - - - - - - - -
+            let
+                body = document.querySelector('body'),
+                nav = document.createElement('nav'),
+                ul = document.createElement('ul');
+
+            // iterate over themes
+            for (let theme in themes) {
+                let
+                    li = document.createElement('li'),
+                    input = document.createElement('input'),
+                    text = document.createTextNode(theme);
+
+                input.setAttribute('type', 'checkbox');
+                if (localStorage.getItem(theme) === 'true') {
+                    input.setAttribute('checked', 'checked');
+                }
+
+                li.appendChild(input);
+                li.appendChild(text);
+                ul.appendChild(li);
+            }
+
+            nav.appendChild(ul);
+            body.appendChild(nav);
+
+            document.querySelector('ul').addEventListener('click', (event => {
+                let
+                    theme,
+                    state = event.target.checked;
+
+                if (event.target.nextSibling.wholeText) {
+                    theme = event.target.nextSibling.wholeText.trim();
+                }
+
+                localStorage.setItem(theme, state);
+                location.reload();
+
+                // is[theme] = 
+            }));
+            //- - - - - - - - - -
+        }());
+    </script>
+</body>
+
+</html>
