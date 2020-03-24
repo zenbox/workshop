@@ -14,15 +14,13 @@ let themes = {};
 
 
 // - - - - - - - - - -
-setTheme(title = 'scopes');
+setTheme(title = 'Begrüßung');
 // - - - - - - - - - -
 if (eval(themes[title])) {
     // - - - - - - - - - -
-    var a = 42;
-    let b = 108;
-
+    
+    let a = "Guten Morgen";
     log(a);
-    log(b);
 
     // - - - - - - - - - -
 }
