@@ -17,6 +17,9 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - Zugriffsreglementierung mit Proxies
 - Handler-Object, Target-Object
   
+### Rest Parameter in Funktionen
+- Rest-Parameter
+  
 ### Spread- und Restoperator
 - ... als Spreadoperator
 - ... als Restoperator
@@ -25,7 +28,10 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - Destructuring von Arrays 
 - Destructuring von Objekten
 
-### Neue Methoden für Standardobjekte in ES2015
+### Symbols
+- Bildung und Einsatz von Symbols
+  
+### Neue Methoden für Standardobjekte
 - Neue Methoden von Array
 - Neue Methoden von Object
 - Neue Methoden von String, Number etc.
@@ -42,19 +48,18 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - Generatorfunction und Generatorobject
 - yield-Keyword und next-Methode
 
-### Object-Shorthanddefinitionen 
+### Object-Shorthand Definitionen 
 - Definition von Properties 
 - Definition von Methoden
 
-### Symbols
-- Bildung und Einsatz von Symbols
+---
 
 ### Blockscopevariablen und Konstanten 
 - :heavy_check_mark: let, const
   
 ### Themenblock Funktionen 
+- :heavy_check_mark: Funktionsparameter
 - :heavy_check_mark: Defaultparameter in Funktionen
-- :heavy_check_mark: Funktionsparameter, Rest-Parameter
 - :heavy_check_mark: Arrow Funktionen vs. Function-Funktionen
   
 ### Klassen und Vererbung 
