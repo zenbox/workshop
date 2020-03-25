@@ -7,18 +7,23 @@ if (eval(themes[title])) {
     // Parent class
     class User {
         constructor(n, p, e) {
-            this.setName(n);
-            this.setPrename(p);
-            this.setEmail(e);
+            this._name = n;
+            this._prename = p;
+            this._email= e;
         }
 
         move() {
             console.log('1 step');
         }
 
-        setName(n = 'no name') {
-            this.name = n;
+        set name(n = 'no name') {
+            this._name = n;
         }
+
+        get name() {
+            return this._name;
+        }
+
         setPrename(p) {
             this.prename = p;
         }
@@ -26,9 +31,7 @@ if (eval(themes[title])) {
             this.email = e;
         }
 
-        getName() {
-            return this.name;
-        }
+
         getPrename() {
             return this.prename;
         }
@@ -39,9 +42,9 @@ if (eval(themes[title])) {
 
     let john = new User('doe', 'john', 'john@doe.org')
 
-    john.name = 'Mary'
+    // john.name = 'Mary'
 
-    log(john.getName());
+    log(john.name);
     log(john.getEmail());
 
     john.move();
