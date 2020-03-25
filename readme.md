@@ -17,7 +17,7 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - Zugriffsreglementierung mit Proxies
 - Handler-Object, Target-Object
   
-- ### Spread- und Restoperator
+### Spread- und Restoperator
 - ... als Spreadoperator
 - ... als Restoperator
 
