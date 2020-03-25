@@ -8,57 +8,73 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 
 "wip" bezeichnet eine work-in-progress Version der Folien.
 
+
+
 ## Content Table
 Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir werden gemeinsam Prioritäten setzen:
 
-### :heavy_check_mark: Blockscopevariablen und Konstanten 
-- let, const
-### Spread- und Restoperator
+### Proxies 
+- Zugriffsreglementierung mit Proxies
+- Handler-Object, Target-Object
+- 
+- ### Spread- und Restoperator
 - ... als Spreadoperator
 - ... als Restoperator
+
 ### Destructuring von Arrays und Objekten 
 - Destructuring von Arrays 
 - Destructuring von Objekten
-### :heavy_check_mark: Themenblock Funktionen 
-- Defaultparameter in Funktionen
-- Funktionsparameter, Rest-Parameter
-- Arrow Funktionen vs. Function-Funktionen
+
 ### Neue Methoden für Standardobjekte in ES2015
 - Neue Methoden von Array
 - Neue Methoden von Object
 - Neue Methoden von String, Number etc.
+
 ### Iteratoren 
 - for-of-Schleife 
 - Bildung und Einsatz von Iteratoren
+
 ### Collections 
 - Maps und Weak-Maps
 - Sets und Weak-Sets
+
 ### Generatoren
 - Generatorfunction und Generatorobject
 - yield-Keyword und next-Methode
+
 ### Object-Shorthanddefinitionen 
 - Definition von Properties 
 - Definition von Methoden
+
 ### Symbols
 - Bildung und Einsatz von Symbols
+
+### :heavy_check_mark: Blockscopevariablen und Konstanten 
+- let, const
+- 
+### :heavy_check_mark: Themenblock Funktionen 
+- Defaultparameter in Funktionen
+- Funktionsparameter, Rest-Parameter
+- Arrow Funktionen vs. Function-Funktionen
+  
 ### :heavy_check_mark: Klassen und Vererbung 
 - Definition von Klassen 
 - Methoden in Klassen
 - constructor-Method
 - Vererbung mit extend
 - Das super-Keyword
-### Proxies 
-- Zugriffsreglementierung mit Proxies
-- Handler-Object, Target-Object
-### :heavy_check_mark: Promises 
-- Bildung und Einsatz von Promises
-- Methoden then(), catch()
+
 ### :heavy_check_mark: Module 
 - Module in ECMA2015
 - Named Export, Default Export
 - Named Import, Aliasing von Ex- und Import
 - Wildcardimport
 
+### :heavy_check_mark: Promises 
+- fetch()
+- Bildung und Einsatz von Promises
+- Methoden then(), catch()
+  
 ## Links
 
 ### Links zu Javascript
