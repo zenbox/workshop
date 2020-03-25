@@ -11,7 +11,7 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 ## Content Table
 Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir werden gemeinsam Prioritäten setzen:
 
-### Blockscopevariablen und Konstanten 
+### :+1: Blockscopevariablen und Konstanten 
 - let, const
 ### Spread- und Restoperator
 - ... als Spreadoperator
@@ -19,7 +19,7 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 ### Destructuring von Arrays und Objekten 
 - Destructuring von Arrays 
 - Destructuring von Objekten
-### Themenblock Funktionen 
+### :+1: Themenblock Funktionen 
 - Defaultparameter in Funktionen
 - Funktionsparameter, Rest-Parameter
 - Arrow Funktionen vs. Function-Funktionen
@@ -41,7 +41,7 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - Definition von Methoden
 ### Symbols
 - Bildung und Einsatz von Symbols
-### Klassen und Vererbung 
+### :+1: Klassen und Vererbung 
 - Definition von Klassen 
 - Methoden in Klassen
 - constructor-Method
@@ -50,10 +50,10 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 ### Proxies 
 - Zugriffsreglementierung mit Proxies
 - Handler-Object, Target-Object
-### Promises 
+### :+1: Promises 
 - Bildung und Einsatz von Promises
 - Methoden then(), catch()
-### Module 
+### :+1: Module 
 - Module in ECMA2015
 - Named Export, Default Export
 - Named Import, Aliasing von Ex- und Import
