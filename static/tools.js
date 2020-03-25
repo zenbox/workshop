@@ -60,11 +60,20 @@
         // for (let i = 0; i < message.length; i += 1) {
         //     console.log(message[i]);
         // }
+        let i = 1;
+        if (Array.isArray(message[i])) {
+            let m = 'arr -> ';
+
+            for (let j = 0; j < message[i].length; j++) {
+                m += message[i][j] + ' ';
+            }
+            console.log(m)
+        } else { 
         
         for (let key in message) {
                 console.log(`${message[key]}`);
         }
-
+}
         // } else if (typeof message === 'object') {
         // } else {
         //     console.log(typeof message);
