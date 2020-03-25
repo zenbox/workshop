@@ -54,7 +54,7 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
   
 ### Themenblock Funktionen 
 - :heavy_check_mark: Defaultparameter in Funktionen
-- Funktionsparameter, Rest-Parameter
+- :heavy_check_mark: Funktionsparameter, Rest-Parameter
 - :heavy_check_mark: Arrow Funktionen vs. Function-Funktionen
   
 ### Klassen und Vererbung 
