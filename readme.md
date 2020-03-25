@@ -16,7 +16,7 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 ### Proxies 
 - Zugriffsreglementierung mit Proxies
 - Handler-Object, Target-Object
-- 
+  
 - ### Spread- und Restoperator
 - ... als Spreadoperator
 - ... als Restoperator
@@ -49,31 +49,31 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 ### Symbols
 - Bildung und Einsatz von Symbols
 
-### :heavy_check_mark: Blockscopevariablen und Konstanten 
-- let, const
-- 
-### :heavy_check_mark: Themenblock Funktionen 
-- Defaultparameter in Funktionen
-- Funktionsparameter, Rest-Parameter
-- Arrow Funktionen vs. Function-Funktionen
+### Blockscopevariablen und Konstanten 
+- :heavy_check_mark: let, const
   
-### :heavy_check_mark: Klassen und Vererbung 
-- Definition von Klassen 
-- Methoden in Klassen
-- constructor-Method
-- Vererbung mit extend
-- Das super-Keyword
+### Themenblock Funktionen 
+- :heavy_check_mark: Defaultparameter in Funktionen
+- Funktionsparameter, Rest-Parameter
+- :heavy_check_mark: Arrow Funktionen vs. Function-Funktionen
+  
+### Klassen und Vererbung 
+- :heavy_check_mark: Definition von Klassen 
+- :heavy_check_mark: Methoden in Klassen
+- :heavy_check_mark: constructor-Method
+- :heavy_check_mark: Vererbung mit extend
+- :heavy_check_mark: Das super-Keyword
 
-### :heavy_check_mark: Module 
-- Module in ECMA2015
-- Named Export, Default Export
-- Named Import, Aliasing von Ex- und Import
-- Wildcardimport
+### Module 
+- :heavy_check_mark: Module in ECMA2015
+- :heavy_check_mark: Named Export, Default Export
+- :heavy_check_mark: Named Import, Aliasing von Ex- und Import
+- :heavy_check_mark: Wildcardimport
 
-### :heavy_check_mark: Promises 
-- fetch()
-- Bildung und Einsatz von Promises
-- Methoden then(), catch()
+### Promises 
+- :heavy_check_mark: fetch()
+- :heavy_check_mark: Bildung und Einsatz von Promises
+- :heavy_check_mark: Methoden then(), catch()
   
 ## Links
 
