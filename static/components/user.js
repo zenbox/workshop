@@ -12,7 +12,7 @@
 'use strict';
 // - - - - - - - - - -
 // Parent class
-class User {
+export default class User {
     constructor(n, p, e) {
         this._name = n;
         this._prename = p;
@@ -67,5 +67,5 @@ export class Female extends User {
 }
 
 // - - - - - - - - - -
-export default User;
+// export default User;
 // - - - - - - - - - -
