@@ -5,12 +5,12 @@
     'use strict';
     var assert = (assertion = undefined, description = undefined) => {
         var
-            line = '',
-            prefix = 'assert for';
+        line = '',
+        prefix = 'assert for';
         if (typeof assertion === 'undefined') return false;
         if (title) {
             line = '-'.repeat(title.length + prefix.length);
-
+            
             console.log('');
             console.log(prefix, title);
             console.log(description);
@@ -18,12 +18,13 @@
         console.log(assertion);
         console.log(line);
     };
-
+    
     window.assert = assert;
 }
 
 {
     'use strict';
+    let count = 1;
 
     var log = (...message) => {
         let line = '',
@@ -49,7 +50,7 @@
             line = '-'.repeat(title.length);
 
             console.log('');
-            console.log(`%c${title.toUpperCase()}`, style);
+            console.log(`%c${title.toUpperCase()} ${count++}`, style);
             // console.log(`%c${line}`, style);
         }
         // console.log('is array:', Array.isArray(message));
