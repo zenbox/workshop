@@ -13,21 +13,6 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 ## Content Table
 Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir werden gemeinsam Prioritäten setzen:
 
-### Proxies 
-- Zugriffsreglementierung mit Proxies
-- Handler-Object, Target-Object
-  
-### Rest Parameter in Funktionen
-- Rest-Parameter
-  
-### Spread- und Restoperator
-- ... als Spreadoperator
-- ... als Restoperator
-
-### Destructuring von Arrays und Objekten 
-- Destructuring von Arrays 
-- Destructuring von Objekten
-
 ### Symbols
 - Bildung und Einsatz von Symbols
   
@@ -79,6 +64,21 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - :heavy_check_mark: fetch()
 - :heavy_check_mark: Bildung und Einsatz von Promises
 - :heavy_check_mark: Methoden then(), catch()
+
+### Proxies 
+- :heavy_check_mark: Zugriffsreglementierung mit Proxies
+- :heavy_check_mark: Handler-Object, Target-Object
+  
+### Rest Parameter in Funktionen
+- :heavy_check_mark: Rest-Parameter
+  
+### Spread- und Restoperator
+- :heavy_check_mark: ... als Spreadoperator
+- :heavy_check_mark: ... als Restoperator
+
+### Destructuring von Arrays und Objekten 
+- :heavy_check_mark: Destructuring von Arrays 
+- :heavy_check_mark: Destructuring von Objekten
   
 ## Links
 
