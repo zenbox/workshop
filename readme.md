@@ -13,32 +13,6 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 ## Content Table
 Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir werden gemeinsam Prioritäten setzen:
 
-### Symbols
-- Bildung und Einsatz von Symbols
-  
-### Neue Methoden für Standardobjekte
-- Neue Methoden von Array
-- Neue Methoden von Object
-- Neue Methoden von String, Number etc.
-
-### Iteratoren 
-- for-of-Schleife 
-- Bildung und Einsatz von Iteratoren
-
-### Collections 
-- Maps und Weak-Maps
-- Sets und Weak-Sets
-
-### Generatoren
-- Generatorfunction und Generatorobject
-- yield-Keyword und next-Methode
-
-### Object-Shorthand Definitionen 
-- Definition von Properties 
-- Definition von Methoden
-
----
-
 ### Blockscopevariablen und Konstanten 
 - :heavy_check_mark: let, const
   
@@ -79,6 +53,30 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 ### Destructuring von Arrays und Objekten 
 - :heavy_check_mark: Destructuring von Arrays 
 - :heavy_check_mark: Destructuring von Objekten
+
+### Symbols
+- :heavy_check_mark: Bildung und Einsatz von Symbols
+  
+### Neue Methoden für Standardobjekte
+- :heavy_check_mark: Neue Methoden von Array
+- :heavy_check_mark: Neue Methoden von Object
+- :heavy_check_mark: Neue Methoden von String, Number etc.
+
+### Iteratoren 
+- :heavy_check_mark: for-of-Schleife 
+- :heavy_check_mark: Bildung und Einsatz von Iteratoren
+
+### Collections 
+- :heavy_check_mark: Maps und Weak-Maps
+- :heavy_check_mark: Sets und Weak-Sets
+
+### Generatoren
+- :heavy_check_mark: Generatorfunction und Generatorobject
+- :heavy_check_mark: yield-Keyword und next-Methode
+
+### Object-Shorthand Definitionen 
+- Definition von Properties 
+- Definition von Methoden
   
 ## Links
 
