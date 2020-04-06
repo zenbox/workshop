@@ -1,212 +1,77 @@
-# Willkommen zu Das neue JavaScript ES6 / ES2015/2016/2017
+# Willkommen beim Seminar HTML5, CSS, Javascript, jQuery
+
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
 
 ## Foliensatz
-Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **ECMAScript 6+.pdf** (wip-Version), **Javascript kompakt.pdf**, **Javascript Pattern.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf**, **CSS - kompakt.pdf**, **Javascript kompakt.pdf** und **jQuery Basics.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
-"wip" bezeichnet eine work-in-progress Version der Folien.
+## Topics
+### HTML 4 und HTML5
+*Tag 1*
+- Doctypes, Zeichensätze und Codierung
+- Die wichtigsten HTML Tags, semantisches HTML und Einhaltung von XHTML Standards
+- Neue Tags in HTML5 und deren Anwendung
+- Steuerung des Flows mit Inline und Blocktags
+- Semantischer Aufbau von Layout und Inhalt (Best Practise)
+- Praktischer Einsatz von HTML 5
+- Migration bestehender Seiten nach HTML 4 und HTML5
+### CSS - Vorgehensweisen
+*Tag 1 und Tag 2*
+- Alle Regeln, Selektoren und Kaskadierung
+- Aufbau einer skalierbaren CSS-Architektur
+- normalize - Browserkompatibilität, Crossbrowser CSS
+- Seitenlayouts mit CSS - Grids
+- Komponenten- und Zustandsklassen für Navigation und Formulare
+- Designthemes umsetzen
+### CSS 3 Erweiterungen
+*Tag 1 und Tag 2*
+- Media Queries - CSS für verschiedene Ausgabegeräte
+- Flexboxen
+- Einbetten von individuellen Schriften
+- Transitions, Bilder, Imageprocessing
+### JavaScript und jQuery
+*Tag 2 und Tag 3*
+- Neue Selektoren, Data Attribute, Element.classList
+- Eventsteuerung
+- Kurze Einführung in jQuery und jQuery's Ajax Befehle Content nachladen
+- Wenn die Zeit reicht: Blick auf HTML5-Erweiterungen: Offlineapplications, Storage, Echtzeit Client-/Server.
 
+# Linkliste
+## Links zu HTML
+- https://github.com/scottjehl/picturefill
+- https://github.com/scottjehl/Respond
+- https://github.com/aFarkas/html5shiv
+## Links zu CSS
+- [Reset CSS](https://meyerweb.com/eric/tools/css/reset/)
+- [Reboot CSS](https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss)
+- [Normalize CSS](https://necolas.github.io/normalize.css/)
+- [Scalable and Modular CSS](http://smacss.com/book/categorizing)
+- [Block-Element-Modifier](http://getbem.com/introduction/)
 
-
-## Content Table
-Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir werden gemeinsam Prioritäten setzen:
-
-### Blockscopevariablen und Konstanten 
-- :heavy_check_mark: let, const
-  
-### Themenblock Funktionen 
-- :heavy_check_mark: Funktionsparameter
-- :heavy_check_mark: Defaultparameter in Funktionen
-- :heavy_check_mark: Arrow Funktionen vs. Function-Funktionen
-  
-### Klassen und Vererbung 
-- :heavy_check_mark: Definition von Klassen 
-- :heavy_check_mark: Methoden in Klassen
-- :heavy_check_mark: constructor-Method
-- :heavy_check_mark: Vererbung mit extend
-- :heavy_check_mark: Das super-Keyword
-
-### Module 
-- :heavy_check_mark: Module in ECMA2015
-- :heavy_check_mark: Named Export, Default Export
-- :heavy_check_mark: Named Import, Aliasing von Ex- und Import
-- :heavy_check_mark: Wildcardimport
-
-### Promises 
-- :heavy_check_mark: fetch()
-- :heavy_check_mark: Bildung und Einsatz von Promises
-- :heavy_check_mark: Methoden then(), catch()
-
-### Proxies 
-- :heavy_check_mark: Zugriffsreglementierung mit Proxies
-- :heavy_check_mark: Handler-Object, Target-Object
-  
-### Rest Parameter in Funktionen
-- :heavy_check_mark: Rest-Parameter
-  
-### Spread- und Restoperator
-- :heavy_check_mark: ... als Spreadoperator
-- :heavy_check_mark: ... als Restoperator
-
-### Destructuring von Arrays und Objekten 
-- :heavy_check_mark: Destructuring von Arrays 
-- :heavy_check_mark: Destructuring von Objekten
-
-### Symbols
-- :heavy_check_mark: Bildung und Einsatz von Symbols
-  
-### Neue Methoden für Standardobjekte
-- :heavy_check_mark: Neue Methoden von Array
-- :heavy_check_mark: Neue Methoden von Object
-- :heavy_check_mark: Neue Methoden von String, Number etc.
-
-### Iteratoren 
-- :heavy_check_mark: for-of-Schleife 
-- :heavy_check_mark: Bildung und Einsatz von Iteratoren
-
-### Collections 
-- :heavy_check_mark: Maps und Weak-Maps
-- :heavy_check_mark: Sets und Weak-Sets
-
-### Generatoren
-- :heavy_check_mark: Generatorfunction und Generatorobject
-- :heavy_check_mark: yield-Keyword und next-Methode
-
-### Object-Shorthand Definitionen 
-- Definition von Properties 
-- Definition von Methoden
-  
-## Links
-
-### Links zu Javascript
-#### Allgemein
-- [Javascript Referenz von Mozilla](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference)
-- [ES Spezifikation](https://tc39.es/ecma262/)
+## Links zu Javascript
+- [Form Data](https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata)
+- [Javascript Referenz](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference)
 - [Eloquent JS](https://eloquentjavascript.net/)
 - [You don't know JS](https://github.com/getify/You-Dont-Know-JS)
+- [Asynchron or not](https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous)
+- [ES6 Spezifikation](https://tc39.es/ecma262/)
+- [ES6+ Kompatibilität](https://kangax.github.io/compat-table/es6/)
+- [ES6+ Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises)
 
-#### Tools
-- [Kompatibilitätsliste für ES6](https://kangax.github.io/compat-table/es6/)
-- [require.js](https://requirejs.org/)
-
-#### Spotlights
-- [indexDb](https://javascript.info/indexeddb)
-- [AJAX mit formData](https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata)
-- [Promises verwenden](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises)
-- [Syncron oder asyncron?](https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous)
-- [Immutable](https://dev.to/glebec/four-ways-to-immutability-in-javascript-3b3l)
-- [this, bind, call, apply](https://www.digitalocean.com/community/conceptual_articles/understanding-this-bind-call-and-apply-in-javascript)
-- [singleton](https://www.sitepoint.com/javascript-design-patterns-singleton/)
-- [factory pattern](https://medium.com/@SntsDev/the-factory-pattern-in-js-es6-78f0afad17e9)
-- [observer pattern](https://www.sitepoint.com/javascript-design-patterns-observer-pattern/)
-- [closures](https://developer.mozilla.org/de/docs/Web/JavaScript/Closures)
-
-#### Events
+## Events
+- [JS Touch Ecents](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
 - [Touch Events mit hammer.js](https://hammerjs.github.io/)
-- [Touch events mit JS](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
 - [Ambient Light API](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events)
 
-### Weiteres
-- [html5Test.com](http://html5test.com/index.html)
-- [Can i Use?](https://caniuse.com/)
-- [MIT License](https://opensource.org/licenses/MIT)
-- [Cost of Defect](http://thklein.com/de_DE/cost-of-defect/)
+## Weiteres
+- [HTML5 Test](http://html5test.com/index.html)
+- [Can I Use](https://caniuse.com/#search=addevent)
+- [MIT Lizenz](https://opensource.org/licenses/MIT)
+- [Fehlerkosten](http://thklein.com/de_DE/cost-of-defect/)
+- [Modernizr](https://modernizr.com/)
 - [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
+- [Fonts bei Google](https://fonts.google.com/)
 
-## Visual Studio Code Snippets
-### Javascript Snippets
 
-- The Function Comment
-- The JS Docblock Comment
-- The IIFE Pattern
-- The Module Block Pattern
-  
-```json
-{
-	"function documentation block": {
-		"prefix": "function comment",
-		"description": "A comment block for functions",
-		"body": [
-			"/** $1",
-			" *",
-			" * @version v1.0.0",
-			" * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-			" * @callback namepath",
-			" * @param {type} desc",
-			" * @returns {void}",
-			" */",
-			"$2"
-		]
-	},
-	"page documention block": {
-		"prefix": "docblock",
-		"description": "The docblock comment for Javascript",
-		"body": [
-			"/** $1",
-			"  *",
-			"  *  @desc $2",
-			"  *",
-			"  * @package Webapplication",
-			"  * @module $3",
-			"  * @author Michael <michael.reichart@gfu.net>",
-			"  * @version v1.0.0",
-			"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-			"  * @see i.e. inspired by ... {link to}",
-			"  * @license MIT {https://opensource.org/licenses/MIT}",
-			"  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
-			"  */",
-			"$4"
-		]
-	},
-	"IIFE Pattern": {
-        "prefix": "iife",
-        "description": "Immediate invoked function expression",
-		"body": [
-			"!(function () {",
-			"'use strict';",
-			"//- - - - - - - - - -",
-			"$1",
-			"//- - - - - - - - - -",
-			"}());"
-		]
-	},
-	"Module Block Pattern": {
-        "prefix": "module block pattern",
-        "description": "Immediate invoked function expression with publishing in window",
-		"body": [
-			"!(function () {",
-			"'use strict';",
-			"// - - - - - - - - - -",
-			"// DECLARATION",
-			"// - - - - -",
-			"$1",
-			"",
-			"// - - - - -",
-			"// FUNCTIONS",
-			"// - - - - -",
-			"function _double(a) {",
-			"   var _a = a || 0;",
-			"",
-			"   if (typeof (_a) !== 'number') return NaN;",
-			"",
-			"   return _a + _a;",
-			"};",
-			"",
-			"function _main() {",
-			"   // publish module and a function",
-			"   window.module = window.module || {};",
-			"   window.module.double = _double;",
-			"}",
-			"",
-			"// - - - - -",
-			"// CONTROL",
-			"// - - - - -",
-			"_main();",
-			"// - - - - - - - - - -",
-			"}())"
-		]
-    }
-}
-```
