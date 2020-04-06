@@ -1,0 +1,38 @@
+/** Navigation Component Style
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-04-06
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+
+/* base */
+.nav {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*
+1. alle li's [li,li,li,li, ...]
+2. welche stehen in ul? 
+3. ...
+4. ...
+*/
+/* ul>li>ul>li {
+    color: orange;
+} */
+
+/* layout */
+.nav li {
+    display: inline;
+}
+
+li.nav-stacked {
+    display: block;
+}
