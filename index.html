@@ -1,20 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="assets/css/base.css">
+
+    <link rel="stylesheet" href="assets/css/form-login.css">
+    <link rel="stylesheet" href="assets/css/navigation.css">
+
+    <link rel="stylesheet" href="assets/css/theme.css">
 </head>
 
 <body>
 
-    <h1>Lorem headline ipsum dolor sit</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque aliquam quaerat deleniti nisi voluptate mollitia
+    <img src="https://picsum.photos/seed/picsum/600/300" title="Leute" alt="Leute in einer schönen Bar">
+    <h1 lang="lt">Lorem headline ipsum dolor sit</h1>
+    <p class="teaser" lang="lt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque aliquam quaerat
+        deleniti nisi
+        voluptate mollitia
         iste odit quo? Ex quam dolore aspernatur quidem numquam quis magnam, officia soluta?</p>
+    <p style="color:yellow">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-    <img src="" alt="">
     <hr>
+
+    <nav>
+        <!-- Navigation Component -->
+        <ul class="nav">
+            <li class="nav-stacked"><a href="">page 1</a></li>
+            <li class="nav-stacked"><a href="">page 2</a></li>
+            <li class="nav-stacked"><a href="">page 3</a></li>
+            <li>
+                <ul>
+                    <li>sub page 1</li>
+                    <li>sub page 2</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <form class="form-login" id="form-login" action="login.php">
+        <fieldset>
+            <legend>your login</legend>
+
+            <label for="login-email">Email</label>
+            <input type="email" name="email" id="login-email">
+
+            <label for="login-password">Password</label>
+            <input type="password" name="password" id="login-password">
+
+            <input type="checkbox" name="keep" id="login-keep-password">
+            <label for="login-keep-password">keep password in mind</label>
+
+            <button type="submit">log in</button>
+
+        </fieldset>
+    </form>
+
+    <form action="">
+        <label for="">label text</label>
+        <input type="email" name="" id="">
+    </form>
+
 </body>
 
 </html>
