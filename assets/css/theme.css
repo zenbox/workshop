@@ -1,0 +1,19 @@
+header {
+    background-color: hsla(90, 80%, 50%, 0.5);
+}
+
+main {
+    background-color: hsla(60, 80%, 50%, 0.5);
+}
+
+aside {
+    background-color: hsla(30, 80%, 50%, 0.5);
+}
+
+footer {
+    background-color: hsla(0, 80%, 50%, 0.5);
+}
+
+div {
+    background-color: hsla(240, 80%, 50%, 0.5);
+}
