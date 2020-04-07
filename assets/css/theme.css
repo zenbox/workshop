@@ -1,19 +1,26 @@
 header {
-    background-color: hsla(90, 80%, 50%, 0.5);
+    background-color: hsla(90, 80%, 50%, 0.05);
 }
 
 main {
-    background-color: hsla(60, 80%, 50%, 0.5);
+    background-color: hsla(60, 80%, 50%, 1);
+}
+
+@media screen and (max-width:767px) {
+    main {
+        background-color: hsla(200, 80%, 50%, 1);
+    }
+
 }
 
 aside {
-    background-color: hsla(30, 80%, 50%, 0.5);
+    background-color: hsla(30, 80%, 50%, 0.05);
 }
 
 footer {
-    background-color: hsla(0, 80%, 50%, 0.5);
+    background-color: hsla(0, 80%, 50%, 0.05);
 }
 
 div {
-    background-color: hsla(240, 80%, 50%, 0.5);
+    background-color: hsla(240, 80%, 50%, 0.05);
 }
