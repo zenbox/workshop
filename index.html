@@ -22,13 +22,65 @@
         <header><span></span>header</header>
 
         <div class="page-content">
-            <aside>aside</aside>
+            <aside>
+                <nav>
+                    <!-- Navigation Component -->
+                    <ul class="nav">
+                        <li class="nav-stacked"><a href="">page 1</a></li>
+                        <li class="nav-stacked"><a href="">page 2</a></li>
+                        <li class="nav-stacked"><a href="">page 3</a></li>
+                        <li>
+                            <ul>
+                                <li>sub page 1</li>
+                                <li>sub page 2</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+
+                <form class="form-login" id="form-login" action="login.php">
+                    <fieldset>
+                        <legend>your login</legend>
+
+                        <label for="login-email">Email</label>
+                        <input type="email" name="email" id="login-email">
+
+                        <label for="login-password">Password</label>
+                        <input type="password" name="password" id="login-password">
+
+                        <input type="checkbox" name="keep" id="login-keep-password">
+                        <label for="login-keep-password">keep password in mind</label>
+
+                        <button type="submit">log in</button>
+
+                    </fieldset>
+                </form>
+            </aside>
             <main>
-                main
+                <img src="https://picsum.photos/seed/picsum/600/300" width="100%" title="Leute"
+                    alt="Leute in einer schönen Bar">
+                <h1 lang="lt">Lorem headline ipsum dolor sit</h1>
+                <p class="teaser" lang="lt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque aliquam
+                    quaerat deleniti nisi voluptate mollitia iste odit quo? Ex quam dolore aspernatur quidem numquam quis magnam, officia soluta?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
+                <hr>
             </main>
         </div>
 
-        <footer>footer</footer>
+        <footer>
+            <ul>
+                <li>One</li>
+                <li>Two</li>
+                <li>Three</li>
+            </ul>
+        </footer>
+
+        <script>
+            document.querySelector('header').addEventListener('click', function () {
+                document.querySelector('.page-content').classList.toggle('page-content-active');
+            })
+        </script>
     </div>
 
 
@@ -53,53 +105,10 @@
 
 
 
-    <img src="https://picsum.photos/seed/picsum/600/300" title="Leute" alt="Leute in einer schönen Bar">
-    <h1 lang="lt">Lorem headline ipsum dolor sit</h1>
-    <p class="teaser" lang="lt">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque aliquam quaerat
-        deleniti nisi
-        voluptate mollitia
-        iste odit quo? Ex quam dolore aspernatur quidem numquam quis magnam, officia soluta?</p>
-    <p style="color:yellow">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-    <hr>
 
-    <nav>
-        <!-- Navigation Component -->
-        <ul class="nav">
-            <li class="nav-stacked"><a href="">page 1</a></li>
-            <li class="nav-stacked"><a href="">page 2</a></li>
-            <li class="nav-stacked"><a href="">page 3</a></li>
-            <li>
-                <ul>
-                    <li>sub page 1</li>
-                    <li>sub page 2</li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
 
-    <form class="form-login" id="form-login" action="login.php">
-        <fieldset>
-            <legend>your login</legend>
 
-            <label for="login-email">Email</label>
-            <input type="email" name="email" id="login-email">
-
-            <label for="login-password">Password</label>
-            <input type="password" name="password" id="login-password">
-
-            <input type="checkbox" name="keep" id="login-keep-password">
-            <label for="login-keep-password">keep password in mind</label>
-
-            <button type="submit">log in</button>
-
-        </fieldset>
-    </form>
-
-    <form action="">
-        <label for="">label text</label>
-        <input type="email" name="" id="">
-    </form>
 
 </body>
 
