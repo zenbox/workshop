@@ -77,5 +77,6 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - [Modernizr](https://modernizr.com/)
 - [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
 - [Fonts bei Google](https://fonts.google.com/)
-
-
+- [beercamp 2012](https://2012.beercamp.nclud.com/)
+- [transition events](https://www.w3schools.com/jsref/event_transitionend.asp)
+- https://wiki.selfhtml.org/wiki/Schnell-Index/CSS#.40
