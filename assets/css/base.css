@@ -10,15 +10,72 @@
   * @copyright (c) 2020 Michael Reichart, Cologne
   */
 
-/* Gewichtung = 1! */
+/* Gewichtung = 0 0 0 0 1! */
 
-html, html * {
-    box-sizing: border-box;
+html,
+html * {
+  box-sizing: border-box;
 }
 
+:root,
 html {
-    font-family: sans-serif;
+  font-family: sans-serif;
+  /* Basis für "rem" */
+  font-size: 16px;
+  line-height: 1.2;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+* {
+  transition: none;
+
+  transition-property: all;
+  transition-duration: 120ms;
+  transition-delay: 0;
+  transition-timing-function: ease-in-out;
+
+}
+
+@keyframes my-animation {
+  0% {
+    background-color: hsla(0, 50%, 50%, 0.75);
+  }
+
+  25% {
+    background-color: hsla(60, 50%, 50%, 0.75);
+  }
+
+  50% {
+    background-color: hsla(120, 50%, 50%, 0.75);
+  }
+
+  75% {
+    background-color: hsla(180, 50%, 50%, 0.75);
+  }
+
+  100% {
+    background-color: hsla(210, 50%, 50%, 0.75);
+  }
+}
+
+body {
+  animation-name: my-animation;
+  animation-timing-function: ease-in-out;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+footer li {
+  display: inline-block;
+  width: 200px;
+}
 
 @import url('layout.css');
