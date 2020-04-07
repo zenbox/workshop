@@ -10,7 +10,8 @@
   * @copyright (c) 2020 Michael Reichart, Cologne
   */
 
-/* floating layout*/
+/* Floating layout
+- - - - - - - - - - */
 
 .page,
 .page-content {
@@ -30,15 +31,14 @@
     width: 100%;
 }
 
-/* */
 .page-content aside {
     float: left;
-    width: 25%
+    width: 25%;
 }
 
 .page-content main {
     float: right;
-    width: 75%
+    width: 75%;
 }
 
 .page header,
@@ -46,10 +46,91 @@
     clear: both;
 }
 
-/* Micro Clearfix */
+/* Micro Clearfix for floating layouts
+- - - - - - - - - - */
 .page-content::before,
 .page-content::after {
     content: " ";
     display: block;
     clear: both;
 }
+
+/* RESET the floating properties 
+- - - - - - - -  - - */
+.page,
+.page-content {
+    display: block;
+    width: 100%;
+    float: none;
+    clear: none;
+}
+
+.page-content aside,
+.page-content main {
+    display: block;
+    width: 100%;
+    float: none;
+}
+
+.page-content::before,
+.page-content::after {
+    content: none;
+}
+
+/* The flex box layout 
+- - - - - - - - - - */
+
+/* Fallback for all devices */
+@media screen {
+    .page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .page-content aside,
+    .page-conent main,
+    .page header,
+    .page footer {
+        padding:0.5rem;
+    }
+}
+
+/* Small devices */
+@media screen and (max-width:767px) {
+    .page-content {
+        display: flex;
+        width: 190%;
+        margin-left: -90%;
+        overflow-x: hidden;
+    }
+
+    .page-content-active {
+        margin-left: 0%;
+    }
+
+    .page-content aside {
+        width: 90%;
+    }
+
+    .page-content main {
+        width: 100%;
+    }
+}
+
+/* Large devices */
+@media screen and (min-width:768px) {
+    .page-content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .page-content aside {
+        flex-basis: 25%;
+    }
+
+    .page-content main {
+        flex-basis: 75%;
+    }
+}
+
+@media print and () {}
