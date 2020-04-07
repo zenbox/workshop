@@ -43,12 +43,16 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - https://github.com/scottjehl/picturefill
 - https://github.com/scottjehl/Respond
 - https://github.com/aFarkas/html5shiv
+- 
 ## Links zu CSS
 - [Reset CSS](https://meyerweb.com/eric/tools/css/reset/)
 - [Reboot CSS](https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss)
 - [Normalize CSS](https://necolas.github.io/normalize.css/)
 - [Scalable and Modular CSS](http://smacss.com/book/categorizing)
 - [Block-Element-Modifier](http://getbem.com/introduction/)
+- [CSS Tricks](https://css-tricks.com/)
+- [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+
 
 ## Links zu Javascript
 - [Form Data](https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata)
