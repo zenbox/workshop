@@ -81,3 +81,4 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - [transition events](https://www.w3schools.com/jsref/event_transitionend.asp)
 - https://wiki.selfhtml.org/wiki/Schnell-Index/CSS#.40
 - https://entwickler.de/online/javascript/deno-node-js-vergleich-579917258.html
+- https://jslint.com/
