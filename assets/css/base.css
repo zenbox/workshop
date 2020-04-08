@@ -37,40 +37,10 @@ p {
   transition: none;
 
   transition-property: all;
-  transition-duration: 120ms;
+  transition-duration: 250ms;
   transition-delay: 0;
   transition-timing-function: ease-in-out;
 
-}
-
-@keyframes my-animation {
-  0% {
-    background-color: hsla(0, 50%, 50%, 0.75);
-  }
-
-  25% {
-    background-color: hsla(60, 50%, 50%, 0.75);
-  }
-
-  50% {
-    background-color: hsla(120, 50%, 50%, 0.75);
-  }
-
-  75% {
-    background-color: hsla(180, 50%, 50%, 0.75);
-  }
-
-  100% {
-    background-color: hsla(210, 50%, 50%, 0.75);
-  }
-}
-
-body {
-  animation-name: my-animation;
-  animation-timing-function: ease-in-out;
-  animation-duration: 4s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }
 
 footer li {
