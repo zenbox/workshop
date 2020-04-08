@@ -1,26 +1,56 @@
 header {
-    background-color: hsla(90, 80%, 50%, 0.05);
+    background-color: hsla(90, 0%, 100%, 1);
 }
 
 main {
-    background-color: hsla(60, 80%, 50%, 1);
+    background-color: hsla(60, 0%, 100%, 1);
 }
 
 @media screen and (max-width:767px) {
     main {
-        background-color: hsla(200, 80%, 50%, 1);
+        background-color: hsla(200, 0%, 100%, 1);
     }
 
 }
 
 aside {
-    background-color: hsla(30, 80%, 50%, 0.05);
+    background-color: hsla(30, 0%, 100%, 1);
 }
 
 footer {
-    background-color: hsla(0, 80%, 50%, 0.05);
+    background-color: hsla(0, 0%, 100%, 1);
 }
 
 div {
-    background-color: hsla(240, 80%, 50%, 0.05);
+    background-color: hsla(240, 0%, 100%, 1);
+}
+
+@keyframes my-animation {
+    0% {
+        background-color: hsla(0, 0%, 100%, 1);
+    }
+
+    25% {
+        background-color: hsla(60, 0%, 100%, 1);
+    }
+
+    50% {
+        background-color: hsla(120, 0%, 100%, 1);
+    }
+
+    75% {
+        background-color: hsla(180, 0%, 100%, 1);
+    }
+
+    100% {
+        background-color: hsla(210, 0%, 100%, 1);
+    }
+}
+
+body {
+    animation-name: my-animation;
+    animation-timing-function: ease-in-out;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
