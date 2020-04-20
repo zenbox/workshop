@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barrierefreiheit mit HTML 5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="https://picsum.photos/id/237/50" alt="">
+
+        <nav>
+            <ul>
+                <li><a href=""><i class="fas fa-home"></i><span class="sr-only">Kontrast</span></a></li>
+                <li><a href="#" id="font-size"><i class="fas fa-home"></i><span class="sr-only">Schriftgrösse</span></a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <main>
+        <h1>Barrierefreiheit mit HTML5</h1>
+        <p>Hunde sind schöne Tiere. Sowohl als Haustier, als auch freilebend.</p>
+
+        <p lang="la">Lorem ipsum dolor sit amet consectetur adipisicing elit. In unde enim consequatur aperiam ab
+            delectus commodi
+            earum, perferendis tempore et sunt voluptate perspiciatis consectetur blanditiis sequi alias sint nisi
+            libero numquam incidunt deleniti, voluptates eos quidem. Vero, ipsa debitis voluptates adipisci accusantium
+            blanditiis alias nisi consectetur exercitationem unde sint quas ut cumque rerum! Architecto consequuntur
+            nisi, officia iste commodi quae, voluptatem voluptate nam soluta quod quidem? Odit blanditiis accusantium
+            aperiam sunt earum quisquam sit cumque labore a fugiat minus, maiores illum deleniti distinctio, ex illo,
+            quaerat consectetur laborum libero placeat incidunt! Blanditiis tempore quibusdam nostrum quis, deserunt
+            quisquam necessitatibus laborum inventore in architecto incidunt fuga. Veniam maxime libero voluptatibus ea
+            earum beatae provident quo odit nihil eius doloribus molestiae nesciunt, ipsum aspernatur! Adipisci
+            aspernatur voluptates aut inventore quos animi libero ea velit, quisquam, aperiam, in vitae eveniet soluta.
+            Delectus magni officia sunt rerum laudantium quam aut deleniti vero porro unde perferendis nisi minus,
+            minima similique placeat dolorum corporis, quia quaerat optio dignissimos pariatur ullam atque illum
+            reprehenderit? Rem, laboriosam pariatur nulla, neque excepturi voluptatum nesciunt totam nihil consequatur
+            soluta fuga numquam atque, similique consequuntur culpa tempore? Minima exercitationem accusantium optio
+            consequuntur culpa, illum, natus explicabo tempore, repudiandae aperiam eaque provident.</p>
+
+        <!-- <figure>
+            <picture>
+                <source media="(min-width:1200px)" srcset="https://picsum.photos/id/237/300">
+                <source media="(min-width:768px)" srcset="https://picsum.photos/id/237/300">
+                <img src="https://picsum.photos/id/237/300" alt="Foto: kleiner schwarzer Hund, der hungrig schaut."
+                    longdesc="Auf dem Fußboden sitzt ein kleiner schwarzer Welpe, der mit traurigen Augen ...">
+            </picture>
+
+            <img src="https://picsum.photos/id/238/300" alt="Foto: Große Stadt" longdesc="Grosse Stadt ......">
+            <figcaption>
+                Auf dem Fußboden sitzt ein kleiner schwarzer Welpe, der mit traurigen Augen ....
+                Besonders in großen Städten ... <a href="longdesc.html">zur Beschreibung</a>
+            </figcaption>
+        </figure> -->
+    </main>
+
+    <footer>
+        <address>&copy; 2020 Michael</address>
+    </footer>
+
+
+
+    <!-- no semantic meaning -->
+    <span class="fas fa-skull"></span>
+    <div></div>
+    <u></u>,<s></s>,<i></i>,<b></b>
+    <font bgcolor=""></font>
+    <!-- /no semantic meaning -->
+
+    <aside>
+        <form action="" method="get"></form>
+        <!-- Navigation as menu (aka. select box) -->
+        <nav>
+            <h2>Überschrift der Navigation</h2>
+            <ul role="menu" class="dropdownmenu">
+                <li role="menuitem"><a href="#">Listeneintrag 1</a></li>
+                <li role="menuitem"><a href="#">Listeneintrag 2</a></li>
+                <li role="menuitem"><a href="#">Listeneintrag 3</a></li>
+            </ul>
+        </nav>
+        <!-- /Navigation as menu (aka. select box) -->
+
+        <!-- Navigation pattern -->
+        <nav>
+            <h2>Überschrift der Navigation</h2>
+            <ul>
+                <li><a href="#">zur Seite 1</a></li>
+                <li><a href="#">zur Seite 2</a></li>
+                <li><a href="#">zur Seite 3</a></li>
+            </ul>
+        </nav>
+        <!-- /Navigation pattern -->
+    </aside>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
