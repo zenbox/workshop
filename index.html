@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de-DE">
+<html lang="de-DE" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -9,23 +9,28 @@
 </head>
 
 <body>
+
+    <a class="sr-only sr-only-focusable" tabindex="1" href="#main"><dfn>1.</dfn> zum Inhalt</a>
+    <a class="sr-only sr-only-focusable" tabindex="1" href="#accessibility"><dfn>1.</dfn> Hilfen zur
+        Barrierefreiheit</a>
+    <a class="sr-only sr-only-focusable" tabindex="1" href="#navigation"><dfn>3.</dfn> zur Navigation</a>
+    <a class="sr-only sr-only-focusable" tabindex="1" href="#form-role"><dfn>2.</dfn> zur Anmeldung als Benutzer</a>
+
     <header>
 
-        <h1><img src="skull.svg" alt="" width="10%">
-            <span class="sr-only sr-only-focusable" tabindex="1"><span lang="en">Black Skull</span> AG</span>
+        <h1><img src="skull.svg" alt="Logo ..." width="10%" aria-hidden="true">
+            <span class="sr-only sr-only-focusable"><span lang="en">Black Skull</span> AG</span>
         </h1>
-
-        <nav>
-            <ul class="upper">
-                <li><dfn class="sr-only">1 </dfn><a href="#">Kontrast</dfna>
-                </li>
-                <li><dfn class="sr-only">2 </dfn><a href="#" id="font-size">Schriftgrösse</a></li>
-            </ul>
+        <ul class="upper" id="accessibility" accesskey="2">
+            <li><dfn class="sr-only">1 </dfn><a href="#">Kontrast</dfna>
+            </li>
+            <li><dfn class="sr-only">2 </dfn><a href="#" id="font-size">Schriftgrösse</a></li>
+        </ul>
         </nav>
     </header>
 
     <aside>
-        <form id="form-role">
+        <form id="form-role" aria-live="assertive">
 
             <fieldset>
                 <legend>
@@ -36,12 +41,63 @@
 
                 <span class="group-as-row">
                     <label for="role-prename">Vorname</label>
-                    <input type="text" name="" id="role-prename">
-                    <p or="role-prename" class="sr-only">Der Vorname muss wenigstens 3 Zeichen haben.</p>
+                    <input type="text" name="" id="role-prename" required autocomplete="off"
+                        oninvalid="this.setCustomValidity('Vorname stimmt nicht oder fehlt ...')">
+
+                    <button for="role-prename" data-container="body" data-toggle="popover" data-placement="top"
+                        data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">?</button>
+                    <style>
+                        .popover {
+                            display: block;
+                            position: absolute;
+
+                            background-color: orange;
+                        }
+
+                        .popover:focus {
+                            background-color: green;
+                        }
+                    </style>
+                    <script>
+                        document
+                            .querySelector('[data-toggle=popover]')
+                            .addEventListener('click', (event) => {
+                                event.preventDefault();
+
+                                console.log('pop over!');
+
+
+                                let
+                                    context = event.target.attributes[0].value,
+                                    text = document.createTextNode(
+                                        'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.'),
+                                    element = document.createElement('div');
+
+                                console.dir(event.target);
+
+                                element.setAttribute('id', 'popover');
+                                element.setAttribute('tabindex', '1');
+                                element.classList.add('popover');
+
+                                element.appendChild(text);
+
+                                document
+                                    .querySelector('form')
+                                    .appendChild(element);
+
+                                document
+                                    .querySelector('#popover').focus();
+
+                                document.querySelector(`#${context}`).focus();
+                            })
+                    </script>
+
+
+                    <p for="role-prename" class="sr-only">Der Vorname muss wenigstens 3 Zeichen haben.</p>
                 </span>
 
                 <label for="role-surname">Nachname</label>
-                <input type="text" name="" id="role-surname">
+                <input type="text" name="" id="role-surname" required autocomplete="off">
 
                 <input type="checkbox" name="" id="role-accept-terms">
                 <label for="role-accept-terms">AGB's akzeptieren</label>
@@ -59,7 +115,7 @@
                 </select>
 
                 <button type="submit">
-                    <p>Abschicken</p>
+                    Abschicken
                 </button>
 
             </fieldset>
@@ -67,7 +123,7 @@
         </form>
     </aside>
 
-    <main>
+    <main id="main" accesskey="1">
         <h1>Barrierefreiheit mit HTML5</h1>
         <p>Hunde sind schöne Tiere. Sowohl als Haustier, als auch freilebend.</p>
 
@@ -120,10 +176,10 @@
     <aside>
         <form action="" method="get"></form>
         <!-- Navigation as menu (aka. select box) -->
-        <nav>
+        <nav id="navigation" accesskey="3">
             <h2>Überschrift der Navigation</h2>
             <ul role="menu" class="dropdownmenu">
-                <li role="menuitem"><a href="#">Listeneintrag 1</a></li>
+                <li role="menuitem"><a class="selected" aria-selected="true" href="#">Listeneintrag 1</a></li>
                 <li role="menuitem"><a href="#">Listeneintrag 2</a></li>
                 <li role="menuitem"><a href="#">Listeneintrag 3</a></li>
             </ul>
@@ -134,7 +190,7 @@
         <nav>
             <h2>Überschrift der Navigation</h2>
             <ul>
-                <li><a href="#">zur Seite 1</a></li>
+                <li><a href="#" aria-current="true">zur Seite 1</a></li>
                 <li><a href="#">zur Seite 2</a></li>
                 <li><a href="#">zur Seite 3</a></li>
             </ul>
