@@ -12,27 +12,68 @@
     <header>
 
         <h1><img src="skull.svg" alt="" width="10%">
-            <span class="sr-only sr-only-focusable" tabindex="1">Black Skull AG</span>
+            <span class="sr-only sr-only-focusable" tabindex="1"><span lang="en">Black Skull</span> AG</span>
         </h1>
 
         <nav>
-            <ul>
-                <li><a href=""><i class="fas fa-home"></i>Kontrast</a></li>
-                <li><a href="#" id="font-size"><i class="fas fa-home"></i>Schriftgrösse</a>
+            <ul class="upper">
+                <li><dfn class="sr-only">1 </dfn><a href="#">Kontrast</dfna>
                 </li>
+                <li><dfn class="sr-only">2 </dfn><a href="#" id="font-size">Schriftgrösse</a></li>
             </ul>
         </nav>
     </header>
 
+    <aside>
+        <form id="form-role">
 
+            <fieldset>
+                <legend>
+                    <dfn class="sr-only">Formular:</dfn>
+                    Gib deine jetzt Rolle an
+                </legend>
+
+
+                <span class="group-as-row">
+                    <label for="role-prename">Vorname</label>
+                    <input type="text" name="" id="role-prename">
+                    <p or="role-prename" class="sr-only">Der Vorname muss wenigstens 3 Zeichen haben.</p>
+                </span>
+
+                <label for="role-surname">Nachname</label>
+                <input type="text" name="" id="role-surname">
+
+                <input type="checkbox" name="" id="role-accept-terms">
+                <label for="role-accept-terms">AGB's akzeptieren</label>
+
+                <select name="" id="">
+                    <option>Bitte auswählen:</option>
+                    <optgroup label="Administratoren">
+                        <option value="" lang="en">Superuser</option>
+                        <option value="" lang="en">Hardware Hero</option>
+                    </optgroup>
+                    <optgroup label="Benutzer">
+                        <option value="">Redakteur</option>
+                        <option value="">Lektor</option>
+                    </optgroup>
+                </select>
+
+                <button type="submit">
+                    <p>Abschicken</p>
+                </button>
+
+            </fieldset>
+
+        </form>
+    </aside>
 
     <main>
         <h1>Barrierefreiheit mit HTML5</h1>
         <p>Hunde sind schöne Tiere. Sowohl als Haustier, als auch freilebend.</p>
 
-        <p lang="la">Lorem ipsum dolor sit amet consectetur adipisicing elit. In unde enim consequatur aperiam ab
-            delectus commodi
-            earum, perferendis tempore et sunt voluptate perspiciatis consectetur blanditiis sequi alias sint nisi
+        <p lang="la"><abbr title="Aktiengesellschaft">AG</abbr> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            In unde enim consequatur aperiam ab delectus commodi earum, perferendis tempore et sunt voluptate
+            perspiciatis consectetur blanditiis sequi alias sint nisi
             libero numquam incidunt deleniti, voluptates eos quidem. Vero, ipsa debitis voluptates adipisci accusantium
             blanditiis alias nisi consectetur exercitationem unde sint quas ut cumque rerum! Architecto consequuntur
             nisi, officia iste commodi quae, voluptatem voluptate nam soluta quod quidem? Odit blanditiis accusantium
