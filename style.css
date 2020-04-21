@@ -70,6 +70,9 @@ p {
 /**  LAYOUT */
 
 /**  THEME */
+.upper{
+    text-transform: uppercase;
+}
 
 /**  CHANGING STATES (BEHAVIOUR) */
 .sr-only-focusable:active,
