@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <title>Klassischer Tabpanel mit einer Linkliste - Registernavigationen mit ARIA - [barrierefreies-webdesign.de]
+    </title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description"
+        content="Demo eines klassischen Tabpanels mit Beschreibung der Anforderungen der Barrierefreiheit.">
+    <meta name="author" content="Jan Eric Hellbusch, Accessibility-Beratung, Tests und Gutachten">
+    <link rel="start" href="http://www.barrierefreies-webdesign.de" title="Startseite [0]">
+    <link rel="next" href="http://www.barrierefreies-webdesign.de/knowhow/tablist/tabpanel-fieldsets-tabindex.html"
+        title="N&auml;chste Seite [2]">
+    <link rel="prev" href="http://www.barrierefreies-webdesign.de/knowhow/tablist/" title="Vorherige Seite [3]">
+    <link rel="glossary" href="http://www.barrierefreies-webdesign.de/glossar/" title="Glossar [4]">
+    <link rel="index" href="http://www.barrierefreies-webdesign.de/suche/sitemap.html" title="Gesamt&uuml;bersicht [6]">
+    <link rel="search" href="http://www.barrierefreies-webdesign.de/suche/" title="Suche [7]">
+    <link rel="contents" href="http://www.barrierefreies-webdesign.de/knowhow/tablist/" title="Inhalts?bersicht [8]">
+    <link rel="copyright" href="http://www.barrierefreies-webdesign.de/kontakt/impressum.html" title="Impressum">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/lib/img/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/lib/img/apple-touch-icon-precomposed.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/lib/img/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/lib/img/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/lib/img/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/lib/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="/lib/img/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/lib/img/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/lib/img/apple-touch-icon-152x152.png">
+    <link rel="stylesheet" media="screen,projection,print" type="text/css"
+        href="http://www.barrierefreies-webdesign.de/lib/css/standard.css" />
+    <style type="text/css" media="all">
+        #kopf,
+        #navigation,
+        #info,
+        #fussleiste,
+        #werbung,
+        #text-anzeige,
+        #hilfe,
+        .google-quer,
+        #artikel-uebersicht {
+            visibility: hidden;
+        }
+
+        /*<![CDATA[*/
+        .register {
+            width: 100%;
+            background: #fff;
+
+        }
+
+        .register [role=tablist] {
+            display: block;
+            width: 100%;
+        }
+
+        .register [role=tab] {
+            border-color: #6fbed6;
+            border-style: solid;
+            border-width: 1px 1px 0;
+            border-top-right-radius: 3px;
+            border-top-left-radius: 3px;
+            margin-right: .4em;
+            display: block;
+            float: left;
+            width: 15%;
+            color: #fff;
+            background: #005f87;
+            text-align: center;
+            cursor: pointer;
+            padding: 10px 2px;
+            font-weight: bold;
+            font-size: .9em;
+        }
+
+        .register [role=tab]:focus {
+            outline: 2px dotted #000;
+        }
+
+        .register [role=tab]:hover,
+        .register [role=tab]:focus {
+            padding-bottom: 8px;
+            border-bottom: 2px dotted #005f87;
+        }
+
+        .register [role=tab][aria-selected=true] {
+            background: #ddf0fa;
+            color: #000;
+            cursor: default;
+            padding-bottom: 7px;
+            border-bottom: 3px solid #ddf0fa;
+            font-size: 1em;
+        }
+
+        .register [role=tab][aria-selected=true]:hover {
+            text-decoration: none;
+        }
+
+        .register [role=tabpanel] {
+            clear: left;
+            padding: 0;
+            border-top-right-radius: 3px;
+            border-width: 0 1px 1px;
+            border-color: #005f87;
+            background: #ddf0fa;
+            color: #000;
+        }
+
+        .register [role=tabpanel]:focus {
+            border-width: 0 1px 1px;
+            border-style: dashed;
+            border-color: #000;
+        }
+
+        .register [role=tabpanel][aria-hidden=true] {
+            display: none;
+        }
+
+        /*]]>*/
+    </style>
+    <!--[if (IE 6)|(IE 7)]>
+        <link rel="stylesheet" media="screen,projection,print" type="text/css" href="http://www.barrierefreies-webdesign.de/lib/css/ie6-7.css" />
+        <![endif]-->
+    <!--[if (IE)]>
+        <link rel="stylesheet" media="screen,projection,print" type="text/css" href="http://www.barrierefreies-webdesign.de/lib/css/ie.css" />
+        <![endif]-->
+    <script type="text/javascript" src="http://www.barrierefreies-webdesign.de/lib/js/jquery-1.11.0.min.js"
+        charset="utf-8"></script>
+    <script type="text/javascript" src="http://www.barrierefreies-webdesign.de/lib/js/funktionen.js" charset="utf-8">
+    </script>
+    <script type="text/javascript" src="http://www.barrierefreies-webdesign.de/lib/js/textresizedetector.js"
+        charset="utf-8"></script>
+</head>
+
+<body class="wissen">
+    <nav role="navigation" aria-label="Sprunglinks">
+        <ul id="sprungmarken">
+            <li><a class="unsichtbar" href="#inhalt">Inhalt anspringen</a></li>
+            <li><a class="unsichtbar" href="#service">Ergänzende Seitenregionen anspringen</a></li>
+        </ul>
+    </nav>
+    <div id="kopf">
+        <div id="logobox">
+            <nav role="navigation" aria-label="Pfadangabe">
+                <div id="pfad">
+                    <p>Sie sind hier:</p>
+                    <ul>
+                        <li><a
+                                href="http://www.barrierefreies-webdesign.de/http://www.barrierefreies-webdesign.de/">Startseite</a>
+                        </li>
+                        <li><a
+                                href="http://www.barrierefreies-webdesign.de/http://www.barrierefreies-webdesign.de/knowhow/">Wissen</a>
+                        </li>
+                        <li><a
+                                href="http://www.barrierefreies-webdesign.de/http://www.barrierefreies-webdesign.de/knowhow/komponenten/">Widgets</a>
+                        </li>
+                        <li><a accesskey="8"
+                                href="http://www.barrierefreies-webdesign.de/http://www.barrierefreies-webdesign.de/knowhow/tablist/">Registernavigationen</a>
+                        </li>
+                        <li><strong>Beispiel mit Linkliste</strong></li>
+                    </ul>
+                </div>
+            </nav>
+            <header role="banner">
+                <p id="logo"><img src="http://www.barrierefreies-webdesign.de/lib/img/logo.png"
+                        alt="Logo von www.barrierefreies-webdesign.de" /></p>
+                <p id="slogan">Barrierefreies Webdesign <span class="unsichtbar">&mdash;</span> <span>ein zugängliches
+                        und nutzbares Internet gestalten</span></p>
+            </header>
+        </div>
+        <div id="kopfbox">
+            <nav role="navigation" aria-labelledby="kopfboxlink">
+                <p id="kopfboxlink"><a
+                        href="http://www.barrierefreies-webdesign.de/kontakt/impressum.html">Impressum</a></p>
+            </nav>
+            <div id="suchbox" role="search">
+                <label accesskey="7" for="gsc-i-id1">Webauftritt durchsuchen nach:</label>
+                <script type="text/javascript">
+                    (function () {
+                        var cx = '003546240063520721798:s_okjem6lis';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                            '//www.google.com/cse/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                    })();
+                </script>
+                <gcse:search></gcse:search>
+            </div>
+        </div>
+    </div>
+    <nav role="navigation">
+        <div id="navigation">
+            <ul>
+                <li class="startseite"><a accesskey="0" href="/http://www.barrierefreies-webdesign.de/">Startseite</a>
+                </li>
+                <li class="services"><a href="/http://www.barrierefreies-webdesign.de/services/">Beratung</a></li>
+                <li class="aktiv wissen"><a href="http://www.barrierefreies-webdesign.de/knowhow/"><span
+                            class="unsichtbar">Aktueller Bereich: </span> Wissen</a>
+                    <nav role="navigation" aria-label="Untermenü Wissen">
+                        <div id="unter-nav" style="min-height:51.19em;">
+                            <h2 aria-hidden="true">Übersicht Wissen</h2>
+                            <ul>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/grundlage.html"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Einführung</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/html-und-css/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Webstandards</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/rich-media/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Rich Media</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/stoerfaktoren/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Störfaktoren</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/nutzerfuehrung/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Nutzerführung</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/alternative-version/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Alternative Versionen</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/verstaendliche-inhalte/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Verständliche Inhalte</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/redaktionsbilder/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Redaktionsbilder</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/inhalte/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Zugänglichkeit von Inhalten</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/rich-media/pdf.html"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> <span lang="en">Portable Document Format</span></a></li>
+                                <li class="aktiv"><a
+                                        href="http://www.barrierefreies-webdesign.de/knowhow/komponenten/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Geöffnet: " /> Widgets</a>
+                                    <ul>
+                                        <li>
+                                            <a href="http://www.barrierefreies-webdesign.de/knowhow/tablist/"><img
+                                                    src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                                    alt="Geöffnet: " /> Registernavigationen</a>
+                                            <ul>
+                                                <li><img src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-pfeil_wissen.png"
+                                                        alt="Aktuelle Seite: " class="pfeil" /><strong>Beispiel mit
+                                                        Linkliste</strong></li>
+                                                <li><a
+                                                        href="http://www.barrierefreies-webdesign.de/knowhow/tablist/tabpanel-fieldsets-tabindex.html">Beispiel
+                                                        mit <code>FIELDSET</code></a></li>
+                                                <li><a
+                                                        href="http://www.barrierefreies-webdesign.de/knowhow/tablist/tabpanel-definitionslisten-tabindex.html">Beispiel
+                                                        mit Definitionslisten</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="http://www.barrierefreies-webdesign.de/knowhow/tooltip/"><img
+                                                    src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                                    alt="Öffnen: " /> Tooltips</a></li>
+                                        <li><a href="http://www.barrierefreies-webdesign.de/knowhow/checkbox/"><img
+                                                    src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                                    alt="Öffnen: " /> Tri-State-Checkbox</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/formulare/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Formulare</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/geraeteunabhaengigkeit/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Geräteunabhängigkeit</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/flexible-darstellung/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Flexible Darstellung</a></li>
+                                <li><a href="http://www.barrierefreies-webdesign.de/knowhow/screendesign/"><img
+                                            src="http://www.barrierefreies-webdesign.de/lib/img/nav/subnav-icon-plus.png"
+                                            alt="Öffnen: " /> Screendesign</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                </li>
+                <li class="buecher"><a href="/http://www.barrierefreies-webdesign.de/buecher/">Bücher</a></li>
+                <li class="richtlinien"><a href="/http://www.barrierefreies-webdesign.de/richtlinien/">Richtlinien</a>
+                </li>
+                <li class="kontakt"><a accesskey="9" href="/http://www.barrierefreies-webdesign.de/kontakt/">Kontakt</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="floater" style="min-height:51.19em;"></div>
+    <script type="text/javascript">
+        setFloaterHeight();
+    </script>
+
+    <main role="main">
+        <div id="inhalt">
+            <h1><a id="content"></a>Registernavigationen mit ARIA <img
+                    src="http://vg02.met.vgwort.de/na/f3b2a5a0283d44388a281af25d4f9109" width="1" height="1" alt=""
+                    class="unsichtbar" /> <strong class="autor">veröffentlicht in 2015</strong></h1>
+            <h2>Klassischer Tabpanel mit einer Linkliste</h2>
+
+            <div class="register beispiel">
+                <ul class="registerleiste">
+                    <li id="beschriftung-aufgabe" class="reiter"><a href="#aufgabe" class="komponente">Aufgabe</a></li>
+                    <li id="beschriftung-html" class="reiter"><a href="#html" class="komponente">HTML</a></li>
+                    <li id="beschriftung-aria" class="reiter"><a href="#aria" class="komponente">ARIA</a></li>
+                    <li id="beschriftung-tastatur" class="reiter"><a href="#tastatur" class="komponente">Tastatur</a>
+                    </li>
+                </ul>
+                <div id="aufgabe" class="registerseite">
+                    <p>Registernavigationen müssen für Hilfsmittel wie Screenreader zugänglich gestaltet werden. Hierzu
+                        zählt:</p>
+
+                    <ol>
+                        <li>Nur der aktive Reiter steht in der Fokus-Reihenfolge. Innerhalb der Registerleiste wird der
+                            Fokus <span aria-label="unter anderem">u.a.</span> per Pfeiltasten bewegt.</li>
+                        <li>Die Reiterleiste und die Reiter benötigen eine Rolle (<code>tablist</code> <span
+                                aria-label="beziehungsweise">bzw.</span> <code>tab</code>), die Browser in den <span
+                                lang="en">Accessibility</span>-<span lang="en">Tree</span> ablegen können. Darüber
+                            hinaus benötigt der aktive Reiter eine semantische Kennzeichnung
+                            (<code>aria-selected</code>).</li>
+                        <li>Ein Reiter wird aktiviert (und der Inhalt der Registerseite ausgetauscht), wenn die Leer-
+                            oder Eingabetaste gedrückt wird. Die Aktivierung darf nicht durch bloßes Fokussieren
+                            stattfinden.</li>
+                        <li>Die Registerseiten benötigen eine Rolle (<code>tabpanel</code>) und eine Beschriftung. Wenn
+                            die Beschriftung durch den Reiter erfolgt, dann muss der Text des Reiters mit der
+                            Registerseite verknüpft werden.</li>
+                    </ol>
+                </div>
+                <div id="html" class="registerseite">
+                    <p>Registernavigationen können im HTML unterschiedlich aufgebaut werden. Diese Variante setzt
+                        folgenden HTML-Aufbau und -Attribute voraus:</p>
+                    <div class="beispiel">
+                        <p><code>&lt;div class="register"><br />
+                                &nbsp;&nbsp;&lt;ul class="registerleiste"><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;li id="beschriftung-id1" class="reiter">&lt;a href="#id1"
+                                class="komponente">Beschriftung 1&lt;/a>&lt;/li><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;li id="beschriftung-id2" class="reiter">&lt;a href="#id2"
+                                class="komponente">Beschriftung 2&lt;/a>&lt;/li><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;li id="beschriftung-id3" class="reiter">&lt;a href="#id3"
+                                class="komponente">Beschriftung 3&lt;/a>&lt;/li><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;...<br />
+                                &nbsp;&nbsp;&lt;/ul><br />
+                                &nbsp;&nbsp;&lt;div id="id1" class="registerseite"><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 1.&lt;/p><br />
+                                &nbsp;&nbsp;&lt;/div><br />
+                                &nbsp;&nbsp;&lt;div id="id2" class="registerseite"><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 2.&lt;/p><br />
+                                &nbsp;&nbsp;&lt;/div><br />
+                                &nbsp;&nbsp;&lt;div id="id3" class="registerseite"><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 3.&lt;/p><br />
+                                &nbsp;&nbsp;&lt;/div><br />
+                                &nbsp;&nbsp;...<br />
+                                &lt;/div></code></p>
+                    </div>
+                </div>
+                <div id="aria" class="registerseite">
+                    <p>Durch die Zuweisung von Rollen wird die Bedeutung der ursprünglichen HTML-Elemente vollständig
+                        verändert. Nachdem die HTML-Struktur mit JavaScript verarbeitet wird, muss die
+                        Registernavigation folgende Attribute aufweisen:</p>
+
+                    <div class="beispiel">
+                        <p><code>&lt;div class="register"><br />
+                                &nbsp;&nbsp;&lt;element role="tablist"><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;element role="tab" aria-selected="true" aria-controls="id1"
+                                tabindex="0" id="beschriftung-id1">Beschriftung 1&lt;/element><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;element role="tab" aria-controls="id2" tabindex="-1"
+                                id="beschriftung-id2">Beschriftung 2&lt;/element><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;element role="tab" aria-controls="id3" tabindex="-1"
+                                id="beschriftung-id3">Beschriftung 3&lt;/element><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;...<br />
+                                &nbsp;&nbsp;&lt;/element><br />
+                                &nbsp;&nbsp;&lt;element role="tabpanel" aria-labelledby="beschriftung-id1"
+                                id="id1"><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 1.&lt;/p><br />
+                                &nbsp;&nbsp;&lt;/element><br />
+                                &nbsp;&nbsp;&lt;element role="tabpanel" aria-hidden="true"
+                                aria-labelledby="beschriftung-id2" id="id2"><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 2.&lt;/p><br />
+                                &nbsp;&nbsp;&lt;/element><br />
+                                &nbsp;&nbsp;&lt;element role="tabpanel" aria-hidden="true"
+                                aria-labelledby="beschriftung-id3" id="id3"><br />
+                                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 3.&lt;/p><br />
+                                &nbsp;&nbsp;&lt;/element><br />
+                                &nbsp;&nbsp;...<br />
+                                &lt;/div></code></p>
+                    </div>
+
+                    <p>Die ARIA-Attribute haben folgende Bedeutung:</p>
+
+                    <ul>
+                        <li>Die <code>role</code>-Attribute definieren die Semantik der Elemente neu. Damit können die
+                            Reiter und die Registerseiten semantisch identifiziert werden.</li>
+                        <li>Mit <code>aria-selected="true"</code> wird das Element als aktives Element im <span
+                                lang="en">Accessibility</span>-<span lang="en">Tree</span> gekennzeichnet.</li>
+                        <li>Das Attribut <code>aria-controls</code> mit der ID der zugehörigen Reiterseite als Wert
+                            erlaubt es Screenreadern, mit einem Tastenbefehl zur zugehörigen Registerseite zu springen.
+                        </li>
+                        <li>Hat das <code>tabindex</code>-Attribut einen Wert von 0, so steht das Element in der
+                            Fokus-Reihenfolge. Ist hingegen der Wert -1, so kann das Element nur per JavaScript
+                            fokussiert werden. Damit kann gewährleistet werden, dass in der Reiterleiste nur das aktive
+                            Element in der Fokus-Reihenfolge steht. die Veränderung des Fokus erfolgt beispielsweise
+                            durch Pfeiltasten.</li>
+                        <li>Mit dem <code>aria-labelledby</code>-Attribut wird ein Text als Beschriftung für die
+                            Registerseite herangezogen.</li>
+                        <li>Mit <code>aria-hidden="true"</code> wird ein Element und alle seiner Kindknoten
+                            <strong>nicht</strong> an den <a class="link-symbol"
+                                href="http://www.barrierefreies-webdesign.de/knowhow/msaa/"><img
+                                    src="http://www.barrierefreies-webdesign.de/lib/img/intern.png"
+                                    alt="Intern: " /><span lang="en">Accessibility</span>-<span
+                                    lang="en">Tree</span></a> des Betriebssystems übertragen, <abbr
+                                title="das heißt"><span aria-label="das heißt">d.h.</span></abbr> die Inhalte sind zwar
+                            sichtbar, können aber nicht von Screenreadern erfasst werden (siehe dazu die Hinweise unten.
+                        </li>
+                    </ul>
+                </div>
+                <div id="tastatur" class="registerseite">
+                    <p>Fokus-Reihenfolge der Reiterleiste:</p>
+
+                    <ul>
+                        <li>Wenn der Fokus in die Reiterleiste per <kbd>Tab</kbd>-Taste gesetzt wird, wird das aktive
+                            Element fokussiert. Ein erneutes Drücken der <kbd>Tab</kbd>-Taste führt zum nächsten
+                            interaktiven Element hinter der Reiterleiste.</li>
+                        <li>Gleiches gilt, wenn mit <kbd>Umschalt</kbd>+<kbd>Tab</kbd> der Fokus in die Reiterleiste
+                            gesetzt wird, nur wird beim erneuten Drücken der Tastenkombination das nächste interaktive
+                            Element vor der Reiterleiste fokussiert.</li>
+                    </ul>
+
+                    <p>Tastaturbedienung, wenn der Fokus in der Reiterleiste gesetzt ist:</p>
+
+                    <ul>
+                        <li>Die Leertaste oder Eingabetaste aktiviert den fokussierten Reiter und ersetzt die
+                            Registerseite mit der zum Reiter zugehörigen Registerseite, ohne dabei den Fokus zu
+                            verändern.</li>
+                        <li>Pfeiltaste nach rechts oder nach unten setzt den Fokus auf den nächsten Reiter. Ist der
+                            Fokus bereits auf den letzten Reiter, wird der Fokus auf den ersten Reiter gesetzt</li>
+                        <li>Pfeiltaste nach links oder nach oben setzt den Fokus auf den vorherigen Reiter. Ist der
+                            Fokus bereits auf den ersten Reiter, wird der Fokus auf den letzten Reiter gesetzt</li>
+                        <li>Die <kbd>Pos1</kbd>-Taste setzt den Fokus auf den ersten Reiter.</li>
+                        <li>Die <kbd>Ende</kbd>-Taste setzt den Fokus auf den letzten Reiter.</li>
+                    </ul>
+
+                    <p>Tastaturbedienung, wenn der Fokus in der Registerseite gesetzt ist:</p>
+
+                    <ul>
+                        <li><kbd>Strg</kbd>+Pfeil nach oben oder <kbd>Strg</kbd>+Pfeil nach links setzt den Fokus auf
+                            den zur Registerseite zugehörigen Reiter.</li>
+                        <li><kbd>Strg</kbd>+<kbd>SeiteAuf</kbd> setzt den Fokus auf den vorherigen Reiter und aktiviert
+                            sie. Wird die erste Registerseite bereits angezeigt, wird der letzte Reiter fokussiert und
+                            aktiviert.</li>
+                        <li><kbd>Strg</kbd>+<kbd>SeiteAb</kbd> setzt den Fokus auf den nächsten Reiter und aktiviert
+                            sie. Wird die letzte Registerseite bereits angezeigt, wird der erste Reiter fokussiert und
+                            aktiviert.</li>
+                    </ul>
+                    <p role="note"><strong>Hinweis</strong>: Die Tastenkombinationen für die Registerseite funktionieren
+                        nicht in Screenreadern (siehe dazu den einleitenden Beitrag <a class="link-symbol"
+                            href="http://www.barrierefreies-webdesign.de/knowhow/tablist/"><img
+                                src="http://www.barrierefreies-webdesign.de/lib/img/intern.png"
+                                alt="Intern: " />Registernavigation für das Web</a>).</p>
+                </div>
+            </div>
+
+            <h2>Hinweise</h2>
+
+            <p>Das CSS für dieses Widget muss für andere Webseiten angepasst werden. Zwei Aspekte dürfen dabei nicht
+                vernachlässigt werden:</p>
+
+            <ol>
+                <li>Der Tastaturfokus muss sichtbar sein, was auch für den Kontrastmodus gilt. Für den Kontrastmodus
+                    wurde ein <code>border-bottom</code> für die Visualisierung in der Reiterleiste gewählt.</li>
+                <li>Es gibt eine CSS-Eigenschaft, die in jedem Fall übernommen werden sollte:
+                    <code>.registerseite[aria-hidden=true] {display:none;}</code>.</li>
+            </ol>
+
+            <p>Einzelne Reiter sollten mit ihren zugehörigen Registerseiten verknüpft werden. Die ARIA-Spezifikation
+                gibt 2 alternative Möglichkeiten vor, die beide berücksichtigt wurden:</p>
+
+            <ul>
+                <li>Wenn ein Reiter ein <code>aria-controls</code>-Attribut mit dem ID-Wert der zugehörigen
+                    Registerseite erhält, sollten Screenreadernutzer erfahren, mit welcher Tastenkombination sie direkt
+                    zur zugehörigen Registerseite wechseln können. Eine nennenswerte Unterstützung dieses Attributs kann
+                    derzeit allerdings nicht festgestellt werden. Das JavaScript für dieses Widget verwendet jedoch
+                    dieses Attribut; deswegen darf es nicht entfernt werden.</li>
+                <li>Die Registerseite sollte mit dem <code>aria-labelledby</code>-Attribut beschriftet werden. Die
+                    Beschriftung referenziert dabei den zugehörigen Reiter.</li>
+            </ul>
+
+            <p>Dieses Beispiel verwendet eine Linkliste gefolgt von den Inhalten der Registerseiten. Andere Beispiele
+                stehen zur Verfügung mit einem anderen Aufbau im HTML:</p>
+
+            <ul>
+                <li><a class="link-symbol"
+                        href="http://www.barrierefreies-webdesign.de/knowhow/tablist/tabpanel-fieldsets-tabindex.html"><img
+                            src="http://www.barrierefreies-webdesign.de/lib/img/intern.png" alt="Intern: " />Tabpanel
+                        mit <code>FIELDSET</code> und <code>LEGEND</code></a></li>
+                <li><a class="link-symbol"
+                        href="http://www.barrierefreies-webdesign.de/knowhow/tablist/tabpanel-definitionslisten-tabindex.html"><img
+                            src="http://www.barrierefreies-webdesign.de/lib/img/intern.png" alt="Intern: " />Tabpanel
+                        mit einer Definitionsliste</a></li>
+            </ul>
+
+            <h2>HTML</h2>
+
+            <div class="beispiel">
+                <p><code>&lt;div class="register"><br />
+                        &nbsp;&nbsp;&lt;ul class="registerleiste"><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;li id="beschriftung-id1" class="reiter">&lt;a href="#id1"
+                        class="komponente">Beschriftung 1&lt;/a>&lt;/li><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;li id="beschriftung-id2" class="reiter">&lt;a href="#id2"
+                        class="komponente">Beschriftung 2&lt;/a>&lt;/li><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;li id="beschriftung-id3" class="reiter">&lt;a href="#id3"
+                        class="komponente">Beschriftung 3&lt;/a>&lt;/li><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;...<br />
+                        &nbsp;&nbsp;&lt;/ul><br />
+                        &nbsp;&nbsp;&lt;div id="id1" class="registerseite"><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 1.&lt;/p><br />
+                        &nbsp;&nbsp;&lt;/div><br />
+                        &nbsp;&nbsp;&lt;div id="id2" class="registerseite"><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 2.&lt;/p><br />
+                        &nbsp;&nbsp;&lt;/div><br />
+                        &nbsp;&nbsp;&lt;div id="id3" class="registerseite"><br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;p>Inhalt für Registerseite 3.&lt;/p><br />
+                        &nbsp;&nbsp;&lt;/div><br />
+                        &nbsp;&nbsp;...<br />
+                        &lt;/div></code></p>
+            </div>
+
+            <h2>JavaScript (jQuery)</h2>
+
+            <div class="beispiel">
+                <p><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function tabpanelInitialisieren( containerClass,
+                        tablistClass, tabClass, linkClass, tabpanelClass, tabpanelLabelPrefix ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tabNavigationErstellen( containerClass,
+                        tablistClass, tabClass, linkClass, tabpanelClass, tabpanelLabelPrefix );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$( '.' + tablistClass ) .children(
+                        '[role="tab"]' ) .each( function() {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var reiterID = $( this ) .attr( 'id'
+                        );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reiterEvents( reiterID );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;registerseiteEvents( reiterID,
+                        tabpanelLabelPrefix );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reiterAktualisierung( $( '.' + tablistClass )
+                        .children( '[role="tab"]' ) .first() .attr( 'id' ) );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function tabNavigationErstellen( containerClass,
+                        tablistClass, tabClass, linkClass, tabpanelClass, tabpanelLabelPrefix ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$( '.' + containerClass ) .each( function()
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var $registerleiste = $( this )
+                        .children( '.' + tablistClass ), $registerseiten = $( this ) .children( '.' + tabpanelClass
+                        );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$registerleiste .attr( 'role',
+                        'tablist' )<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.children( '.' + tabClass ) .each(
+                        function() {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var $reiter = $( this ),
+                        reiterID = $reiter .attr( 'id' ), $sprunglink = $reiter .find( '.' + linkClass ), seitenID =
+                        $sprunglink .attr( 'href' ) .replace( '#', '' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$reiter .attr({<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'role':
+                        'tab',<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'aria-controls':
+                        seitenID<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.append( $sprunglink
+                        .contents() );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$sprunglink
+                        .remove();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$registerseiten .each( function()
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var $seite = $( this ),
+                        reiterID = tabpanelLabelPrefix + $seite .attr( 'id' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$seite .attr({<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'role':
+                        'tabpanel',<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'tabindex':
+                        -1,<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'aria-labelledby':
+                        reiterID<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function reiterAktualisierung( reiterID ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var $reiter = $( '#' + reiterID ), $alleReiter =
+                        $reiter .closest( '[role="tablist"]' ) .children( '[role="tab"]' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$alleReiter .attr({<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'aria-selected': 'false',<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'tabindex': -1<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.removeAttr( 'accesskey' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$reiter .attr({<br />
+                        &nbsp;&nbsp;'accesskey': 5,<br />
+                        &nbsp;&nbsp;'aria-selected': 'true',<br />
+                        &nbsp;&nbsp;'tabindex': 0<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$alleReiter .each(function() {<br />
+                        &nbsp;&nbsp;var seitenID = $( this ) .attr( 'aria-controls' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( $( this ) .attr(
+                        'aria-selected' ) == 'true' ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$( '#' + seitenID )
+                        .attr( 'aria-hidden', 'false' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$( '#' + seitenID )
+                        .attr( 'aria-hidden', 'true' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function reiterEvents( reiterID ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$( '#' + reiterID ) .click( function( event )
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reiterAktualisierung( reiterID
+                        );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.keydown( function( event ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var $aktuellerReiter = $( '#' +
+                        reiterID ), $alleReiter = $aktuellerReiter .closest( '[role="tablist"]' ) .children(
+                        '[role="tab"]' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (event.keyCode == 13 ||
+                        event.keyCode == 32 ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$aktuellerReiter
+                        .click() .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event
+                        .preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (event.keyCode ==
+                        9&nbsp;&nbsp;&& !event.shiftKey) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var seitenID = $( '#' +
+                        reiterID) .closest( '[role="tablist"]' ) .find( '[aria-selected="true"]' ) .attr(
+                        'aria-controls' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$( '#' + seitenID )
+                        .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event
+                        .preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if ( event.keyCode == 35 )
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$alleReiter .last()
+                        .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event
+                        .preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if ( event.keyCode == 36 )
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$alleReiter .first()
+                        .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event
+                        .preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (event.keyCode == 37 ||
+                        event.keyCode == 38 ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( $aktuellerReiter
+                        .is ( $alleReiter .first() ) ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$alleReiter .last()
+                        .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event
+                        .preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$aktuellerReiter
+                        .prev() .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event
+                        .preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (event.keyCode == 39 ||
+                        event.keyCode == 40 ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( $aktuellerReiter
+                        .is ( $alleReiter .last() ) ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$alleReiter .first()
+                        .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$aktuellerReiter
+                        .next() .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function registerseiteEvents( reiterID, tabpanelLabelPrefix
+                        ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var registerseiteID = reiterID .replace(
+                        tabpanelLabelPrefix, '' ), $registerseite = $( '#' + registerseiteID ), $aktuellerReiter = $(
+                        '#' + reiterID ), $alleReiter = $aktuellerReiter .closest( '[role="tablist"]' ) .children(
+                        '[role="tab"]' );<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$registerseite .keydown( function( event )
+                        {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ((event.ctrlKey) &&
+                        ((event.keyCode == 37 || event.keyCode == 38))) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$aktuellerReiter
+                        .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event.preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (event.ctrlKey &&
+                        event.keyCode == 33) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event
+                        .preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( $aktuellerReiter
+                        .is( $alleReiter .first() ) ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$alleReiter
+                        .last() .click() .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$aktuellerReiter
+                        .prev() .click() .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else if (event.ctrlKey &&
+                        event.keyCode == 34) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;event
+                        .preventDefault();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if ( $aktuellerReiter
+                        .is( $alleReiter .last() ) ) {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$alleReiter
+                        .first() .click() .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else {<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$aktuellerReiter
+                        .next() .click() .focus();<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;})<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tabpanelInitialisieren(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        'register', 'registerleiste', 'reiter', 'komponente', 'registerseite', 'beschriftung-' );</code>
+                </p>
+            </div>
+
+            <h2>CSS</h2>
+
+            <div class="beispiel">
+                <p><code>.register {<br />
+                        &nbsp;&nbsp;width: 100%;<br />
+                        &nbsp;&nbsp;background: #fff;<br />
+                        }<br />
+                        .register [role=tablist] {<br />
+                        &nbsp;&nbsp;display: block;<br />
+                        &nbsp;&nbsp;width: 100%;<br />
+                        }<br />
+                        .register [role=tab] {<br />
+                        &nbsp;&nbsp;border-color: #6fbed6;<br />
+                        &nbsp;&nbsp;border-style: solid;<br />
+                        &nbsp;&nbsp;border-width: 1px 1px 0;<br />
+                        &nbsp;&nbsp;border-top-right-radius: 3px;<br />
+                        &nbsp;&nbsp;border-top-left-radius: 3px;<br />
+                        &nbsp;&nbsp;margin-right: .4em;<br />
+                        &nbsp;&nbsp;display:block;<br />
+                        &nbsp;&nbsp;float:left;<br />
+                        &nbsp;&nbsp;width:15%;<br />
+                        &nbsp;&nbsp;color: #fff;<br />
+                        &nbsp;&nbsp;background: #005f87;<br />
+                        &nbsp;&nbsp;text-align:center;<br />
+                        &nbsp;&nbsp;cursor: pointer;<br />
+                        &nbsp;&nbsp;padding: 10px 2px;<br />
+                        &nbsp;&nbsp;font-weight: bold;<br />
+                        &nbsp;&nbsp;font-size: .9em;<br />
+                        }<br />
+                        .register [role=tab]:focus {<br />
+                        &nbsp;&nbsp;outline: 2px dotted #000;<br />
+                        }<br />
+                        .register [role=tab]:hover,<br />
+                        .register [role=tab]:focus {<br />
+                        &nbsp;&nbsp;padding-bottom: 8px;<br />
+                        &nbsp;&nbsp;border-bottom: 2px dotted #005f87;<br />
+                        }<br />
+                        .register [role=tab][aria-selected=true] {<br />
+                        &nbsp;&nbsp;background: #ddf0fa;<br />
+                        &nbsp;&nbsp;color:#000;<br />
+                        &nbsp;&nbsp;cursor: default;<br />
+                        &nbsp;&nbsp;padding-bottom: 7px;<br />
+                        &nbsp;&nbsp;border-bottom: 3px solid #ddf0fa;<br />
+                        &nbsp;&nbsp;font-size: 1em;<br />
+                        }<br />
+                        .register [role=tab][aria-selected=true]:hover {<br />
+                        &nbsp;&nbsp;text-decoration:none;<br />
+                        }<br />
+                        .register [role=tabpanel] {<br />
+                        &nbsp;&nbsp;clear:left;<br />
+                        &nbsp;&nbsp;padding: 0;<br />
+                        &nbsp;&nbsp;border-top-right-radius: 3px;<br />
+                        &nbsp;&nbsp;border-width: 0 1px 1px;<br />
+                        &nbsp;&nbsp;border-color: #005f87;<br />
+                        &nbsp;&nbsp;background: #ddf0fa;<br />
+                        &nbsp;&nbsp;color: #000;<br />
+                        }<br />
+                        .register [role=tabpanel]:focus {<br />
+                        &nbsp;&nbsp;border-width: 0 1px 1px;<br />
+                        &nbsp;&nbsp;border-style:dashed;<br />
+                        &nbsp;&nbsp;border-color:#000;<br />
+                        }<br />
+                        .register [role=tabpanel][aria-hidden=true] {<br />
+                        &nbsp;&nbsp;display: none;<br />
+                        &nbsp;&nbsp;}</code></p>
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    function tabpanelInitialisieren(containerClass, tablistClass, tabClass, linkClass,
+                        tabpanelClass, tabpanelLabelPrefix) {
+                        tabNavigationErstellen(containerClass, tablistClass, tabClass, linkClass, tabpanelClass,
+                            tabpanelLabelPrefix);
+                        $('.' + tablistClass).children('[role="tab"]').each(function () {
+                            var reiterID = $(this).attr('id');
+                            reiterEvents(reiterID);
+                            registerseiteEvents(reiterID, tabpanelLabelPrefix);
+                        });
+                        reiterAktualisierung($('.' + tablistClass).children('[role="tab"]').first().attr('id'));
+                    }
+
+                    function tabNavigationErstellen(containerClass, tablistClass, tabClass, linkClass,
+                        tabpanelClass, tabpanelLabelPrefix) {
+                        $('.' + containerClass).each(function () {
+                            var $registerleiste = $(this).children('.' + tablistClass),
+                                $registerseiten = $(this).children('.' + tabpanelClass);
+                            $registerleiste.attr('role', 'tablist')
+                                .children('.' + tabClass).each(function () {
+                                    var $reiter = $(this),
+                                        reiterID = $reiter.attr('id'),
+                                        $sprunglink = $reiter.find('.' + linkClass),
+                                        seitenID = $sprunglink.attr('href').replace('#', '');
+                                    $reiter.attr({
+                                            'role': 'tab',
+                                            'aria-controls': seitenID
+                                        })
+                                        .append($sprunglink.contents());
+                                    $sprunglink.remove();
+                                });
+                            $registerseiten.each(function () {
+                                var $seite = $(this),
+                                    reiterID = tabpanelLabelPrefix + $seite.attr('id');
+                                $seite.attr({
+                                    'role': 'tabpanel',
+                                    'tabindex': -1,
+                                    'aria-labelledby': reiterID
+                                });
+
+                            });
+                        })
+                    }
+
+                    function reiterAktualisierung(reiterID) {
+                        var $reiter = $('#' + reiterID),
+                            $alleReiter = $reiter.closest('[role="tablist"]').children('[role="tab"]');
+                        $alleReiter.attr({
+                                'aria-selected': 'false',
+                                'tabindex': -1
+                            })
+                            .removeAttr('accesskey');
+                        $reiter.attr({
+                            'accesskey': 5,
+                            'aria-selected': 'true',
+                            'tabindex': 0
+                        });
+                        $alleReiter.each(function () {
+                            var seitenID = $(this).attr('aria-controls');
+                            if ($(this).attr('aria-selected') == 'true') {
+                                $('#' + seitenID).attr('aria-hidden', 'false');
+                            } else {
+                                $('#' + seitenID).attr('aria-hidden', 'true');
+                            }
+                        })
+                    }
+
+                    function reiterEvents(reiterID) {
+                        $('#' + reiterID).click(function (event) {
+                                reiterAktualisierung(reiterID);
+                            })
+                            .keydown(function (event) {
+                                var $aktuellerReiter = $('#' + reiterID),
+                                    $alleReiter = $aktuellerReiter.closest('[role="tablist"]').children(
+                                        '[role="tab"]');
+                                if (event.keyCode == 13 || event.keyCode == 32) {
+                                    $aktuellerReiter.click().focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode == 9 && !event.shiftKey) {
+                                    var seitenID = $('#' + reiterID).closest('[role="tablist"]').find(
+                                        '[aria-selected="true"]').attr('aria-controls');
+                                    $('#' + seitenID).focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode == 35) {
+                                    $alleReiter.last().focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode == 36) {
+                                    $alleReiter.first().focus();
+                                    event.preventDefault();
+                                } else if (event.keyCode == 37 || event.keyCode == 38) {
+                                    if ($aktuellerReiter.is($alleReiter.first())) {
+                                        $alleReiter.last().focus();
+                                        event.preventDefault();
+                                    } else {
+                                        $aktuellerReiter.prev().focus();
+                                        event.preventDefault();
+                                    }
+                                } else if (event.keyCode == 39 || event.keyCode == 40) {
+                                    if ($aktuellerReiter.is($alleReiter.last())) {
+                                        $alleReiter.first().focus();
+                                    } else {
+                                        $aktuellerReiter.next().focus();
+                                    }
+                                }
+                                return false;
+                            })
+                    }
+
+                    function registerseiteEvents(reiterID, tabpanelLabelPrefix) {
+                        var registerseiteID = reiterID.replace(tabpanelLabelPrefix, ''),
+                            $registerseite = $('#' + registerseiteID),
+                            $aktuellerReiter = $('#' + reiterID),
+                            $alleReiter = $aktuellerReiter.closest('[role="tablist"]').children('[role="tab"]');
+                        $registerseite.keydown(function (event) {
+                            if ((event.ctrlKey) && ((event.keyCode == 37 || event.keyCode == 38))) {
+                                $aktuellerReiter.focus();
+                                event.preventDefault();
+                            } else if (event.ctrlKey && event.keyCode == 33) {
+                                event.preventDefault();
+                                if ($aktuellerReiter.is($alleReiter.first())) {
+                                    $alleReiter.last().click().focus();
+                                } else {
+                                    $aktuellerReiter.prev().click().focus();
+                                }
+                            } else if (event.ctrlKey && event.keyCode == 34) {
+                                event.preventDefault();
+                                if ($aktuellerReiter.is($alleReiter.last())) {
+                                    $alleReiter.first().click().focus();
+                                } else {
+                                    $aktuellerReiter.next().click().focus();
+                                }
+                            }
+                        })
+                    }
+
+                    tabpanelInitialisieren('register', 'registerleiste', 'reiter', 'komponente',
+                        'registerseite', 'beschriftung-');
+                })
+            </script>
+
+
+
+    </main>
+
+</body>
+
+</html>
