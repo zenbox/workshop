@@ -97,7 +97,7 @@ Auf Xing und LinkedIn unter Michael Reichart
 4. [Install Beautify Extension](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
 5. [Install Better Comments Extension](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments)
 
-### SASS Settings in VS Code
+### Live SASS Compiler Settings in VS Code
 ```
 ...
 "liveSassCompile.settings.formats": [
