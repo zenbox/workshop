@@ -1,65 +1,174 @@
-# HTML5 Barrierefreiheit
+# Willkommen zum Seminar Bootstrap 4
 
-Unterlagen und Codes zum Workshop Barrierefreie Webseiten mit HTML5.
-In "Docs" findet ihr die Folien aus dem Workshop.
+*23./24. April 2020*<br>
+michael.reichart@gfu.net<br>
+Auf Xing und LinkedIn unter Michael Reichart
 
-Rückfragen gerne per Mail an michael.reichart@gfu.net.
+## Agenda
+### Einstieg in Bootstrap 4
+- Ressourcen und Download
+- Quellen für Themes
+- Browser-Kompatibilität
+- Layout mit CSS Klassen
+- Erweiterungen und Plugins
+### Umgang mit dem Grid-System
+- Gestaltungsprinzipien und 12er-Raster
+- Zwischenräume
+- Automatisches Layout
+- Responsive Klassen
+- Ausrichtung und Sortierung
+- Verschachtelte Darstellungen
+- Flexbox horizontal und vertikal
+- Suchmaschinen optimierter HTML-Code
+### Typografie
+- Größen einstellen
+- Farbschemata anwenden
+- Abstände
+- Textausrichtung
+- Schatten und Rahmen
+- Sichtbarkeit und Textersetzung
+### Typische Inhalte verwenden
+- Texte und Überschriften 
+- Bilder und Medien-Elemente
+- Formulare und Tabellen
+- Icon Sets verwenden
+### Navigationen erstellen
+- Responsive Navbars 
+- Menüpunkte als Dropdown
+- Tabbed Navigation
+### Komponenten verwenden
+- Alerts, Badges und Buttons
+- Listen
+- Cards und Jumbotron
+### Interaktive Komponenten
+- Pagination
+- Progress
+- Scroll Spy
+- Modal Boxen, Popup-Fenster
+- Karussell, Slider
+- Akkordeon
+- Tool-Tipps
+### Bootstrap und JavaScript
+- jQuery und popper.js 
+- Data Attribute, data-toggle
+- Events und asynchrone Funktionen
+- Defaults überschreiben
+- Methoden der Komponenten
+### Theming
+- Überschreiben der CSS-Klassen
+- Eigenes Bootstrap-CSS erstellen mit Online-Tools
 
-## Links
-Alles drin! Die Links sind mit den Folien und dem Chatverlauf synchronisiert. 
+---
 
-## Hintergrundinformationen
-- [Dokument: Behindertenhilfe in DeutschlandZahlen - Daten - Fakten](https://www.bgw-online.de/SharedDocs/Downloads/DE/Medientypen/Wissenschaft-Forschung/BGW55-83-140-Trendbericht-Behindertenhilfe.pdf?__blob=publicationFile)
-- [Artikel: Chancengleichheit - Behinderte in der digitalen Welt](https://www.heise.de/ct/artikel/Chancengleichheit-288680.html)
-- [Artikel: Behinderte Menschen auf dem Arbeitsmarkt](https://www.berliner-zeitung.de/wirtschaft/--23288526)
-- [Zahlen und Gesetze](https://leidmedien.de/startseite/behinderte-menschen-in-deutschland-zahlen-und-gesetze/)
+### Einführung
+- Übersicht über die Projektstruktur 
+- npm Befehle einsetzen
+- Einen eigenen Build erstellen
+- Dateigrößen optimieren
+- QUnit Test ausführen
+### SCSS Einführung
+- Umwandlung von SCSS in CSS
+- Verwendung von Variablen
+- Verschachtelte Klassen
+- Stile auslagern und importieren
+- Mixins erstellen
+- Erweitern und erben von Eigenschaften
+- Operatoren anwenden
+- @Rules und Direktiven
+- Bedingte Stile
+- Maps und Schleifen
+### Bootstrap und SCSS
+- Variablen für Farben und Grautöne
+- Variablen für Media Queries
+- Wichtige SCSS Funktionen
+- Bootstrap Optionen ändern
+### Anwendungsfälle
+- Eigene Farben verwenden
+- Default Variablen überschreiben
+- Spaltenanzahl und Abstände im Grid ändern
+- Media Queries ändern
+- Eigene Komponenten erstellen
 
-## Beispielseiten
-- [Webseite des Blinden- und Sehbehindertenverband Nordrhein e.V.](https://www.bsv-nordrhein.de/)
-- [W3C Beispiele für Text-Alternativen](https://www.w3.org/WAI/WCAG21/Techniques/general/G196.html#examples)
-- [Tabpanel Beispiel](https://www.barrierefreies-webdesign.de/knowhow/tablist/tabpanel-links-tabindex.html)
+# Installing
+## Visual Studio Code Including Extensions 
+1. [Download Visual Studio Code](https://code.visualstudio.com/download)
+2. [Install Live Server Extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+3. [Install Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass)
+4. [Install Beautify Extension](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
+5. [Install Better Comments Extension](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments)
 
-## ARIA
-- [W3C ARIA Spezifikation](https://www.w3.org/TR/html-aria/)
-- [ARIA States and Properties](https://www.w3.org/WAI/PF/aria-1.1/states_and_properties)
-- [ARIA in einer Navigation](https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html)
-- [ARIA - Application Role](https://www.hellbusch.de/role-application-ist-jetzt-teil-der-dokumentenstruktur/) 
+### SASS Settings in VS Code
+```
+...
+"liveSassCompile.settings.formats": [
+    {
+        "extensionName": ".css",
+        "format": "expanded",
+        "savePath": "/assets/css/"
+    }
+],
+"liveSassCompile.settings.generateMap": false,
+"liveSassCompile.settings.autoprefix": [],
+...
+```
 
-## WCAG
-- [W3C User Agent Accessability Guidelines](https://www.w3.org/TR/UAAG10/)
-- [WCAG 2.0 - Deutsche Übersetzung 1](https://www.einfach-fuer-alle.de/wcag2.0/uebersetzungen/WCAG20-de/)
-- [WCAG 2.0 - Deutsche Übersetzung 2](https://www.einfach-fuer-alle.de/wcag2.0/uebersetzungen/Understanding-WCAG-2.0/conformance/)
-- [WCAG 2.0 - Konformitätsstufen](https://www.zweiterblick.at/index.php?site=konformitaetsstufen)
-- [Artikel: WCAG 2.1 - 17 neue Kriterien](https://www.hellbusch.de/neuer-webstandard-fuer-digitale-barrierefreiheit-die-wcag-2-1-ergaenzt-die-wcag-2-0-um-17-neue-erfolgskriterien/)
-- [WCAG Quickref](https://www.w3.org/WAI/WCAG21/quickref/)
-- [BITV vs. WCAG](https://www.hellbusch.de/stand-der-technik/#more-2524)
+## Prepare a Project Folder
+1. Create a project folder, i.e. "workshop"
+2. Create a subfolder "assets"
+3. Create index.html
 
-## Simulation von Barrieren
-- [Demonstration für Farbenfehlsichtigkeiten](https://www.toptal.com/designers/colorfilter)
-- [Kontrastrechner](https://www.leserlich.info/werkzeuge/kontrastrechner/)
-- [Voiceover Beispiel auf iOS](https://youtu.be/LuCrG0wXJ3w)
-- [Desktop Screenreader im Vergleich](https://youtu.be/MHGJna9GcTM)
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-## Tools
-- [Leicht-Lesbar](http://leichtlesbar.ch/html/)
-- [Farbkombinationen inkl. VarianteN für Menschen mit Protanopia, Deuteranopia, usw. ￼ ](https://coolors.co/)
-- [Kontrastrechner](https://www.leserlich.info/werkzeuge/kontrastrechner/index.php ￼ )
-- [Timed Text Tracks]( ￼ https://html.spec.whatwg.org/multipage/media.html#timed-text-tracks ￼ )
-- [WHATWG Multipage Spec](https://html.spec.whatwg.org/multipage/media.html#the-track-element ￼ )
-- [ ￼ Ein Tool für Farben](https://learnui.design/tools/accessible-color-generator.html ￼ )
-- [Hiding Content](https://snook.ca/archives/html_and_css/hiding-content-for-accessibility ￼ )
-- [Worauf bei ARIA zu achten ist](https://www.barrierefreies-webdesign.de/knowhow/msaa/checkpunkte.html)
-- [How to Review Accessability](https://developers.google.com/web/fundamentals/accessibility/how-to-review)
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theming Bootstrap 4</title>
+</head>
 
-## Bootstrap
-- [Bootstrap Screenreader Klassen](https://getbootstrap.com/docs/3.4/css/#helper-classes-screen-readers )
-- [Bootstrap Screenreader Support](https://getbootstrap.com/docs/4.0/utilities/screenreaders/ ￼ )
-- [Bootstrap Popover](https://getbootstrap.com/docs/4.1/components/popovers/ ￼ )
+<body>
+    <h1>Theming Bootstrap 4</h1>
+    <p>hello world</p>
+</body>
 
-## Darkmode
-- [Darkmode in Chrome](chrome-extension://kgejglhpjiefppelpmljglcjbhoiplfn/chromevox/background/options.html)
-- [Dark Mode]( ￼ https://www.howtogeek.com/446198/how-to-force-dark-mode-on-every-website-in-google-chrome/ ￼ )
-- [Dark Mode Color Adjust](https://drafts.csswg.org/css-color-adjust-1/ ￼ )
-- [Dark Mode CSS](https://blog.thomaspuppe.de/dark-mode-css )
-- [Dark Mode Media Attribut](https://developer.mozilla.org/en-US/docs/Web/CSS/@media ￼ )
-- [focus Methode](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus ￼ )
+</html>
+```
+
+## Install Bootstrap
+1. Open a VS terminal and type ```npm init``` to create a new node project.
+
+```
+{
+  "name": "bootstrap-theming",
+  "version": "1.0.0",
+  "description": "Basics of Bootstrap 4 Theming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael",
+  "license": "MIT"
+}
+```
+2. Type ```install bootstrap --save```
+
+You should get an nodes_modules subfolder. Inside you'll find a bootstrap folder.
+
+```
+workshop/
+├── node_modules/
+│   └── bootstrap
+│       ├── dist
+│       ├── js
+│       └── scss
+├── assets
+│   ├── css
+│   └── scss
+│       └── main.scss
+├── index.html
+├── package-lock.json
+└── package.json
+```
+
+Let's go ...
