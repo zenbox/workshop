@@ -1,3 +1,46 @@
+.fa-skull::before {
+  content: "@";
+  font-family: serif;
+  color: red;
+}
+
+.skull-as-background {
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  border: 1px dotted black;
+  background-image: url(../figures/trash.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.skull-as-background:hover {
+  background-image: url(../figures/trash-2.svg);
+}
+
+.icon {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin: 0.25rem;
+}
+
+.icon path:hover {
+  fill: red;
+}
+
+.nav {
+  flex-direction: column;
+}
+
+.table th {
+  background-color: red;
+}
+
+.table .thead-dark th {
+  background-color: green;
+}
+
 /*!
  * Bootstrap v4.4.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -54,7 +97,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Roboto;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -5755,7 +5798,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Roboto;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -5868,7 +5911,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Roboto;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5;
@@ -9626,21 +9669,4 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit;
     border-color: #dee2e6;
   }
-}
-
-.sample {
-  color: #6610f2;
-  padding-left: 0.5rem;
-}
-
-.sample {
-  color: orange;
-}
-
-.sample:hover {
-  color: #007bff !important;
-}
-
-.nav {
-  flex-direction: column;
 }
