@@ -1,0 +1,13 @@
+/* My styles */
+.sample {
+    color: $indigo;
+    padding-left: $spacer/2;
+}
+
+.sample {
+    color: orange;
+}
+
+.sample:hover {
+    color: $blue !important;
+}
