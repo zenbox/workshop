@@ -1,0 +1,14 @@
+{
+  "name": "bootstrap-theming",
+  "version": "1.0.0",
+  "description": "Basics of Bootstrap 4 Theming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.4.1"
+  }
+}
