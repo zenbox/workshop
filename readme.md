@@ -162,7 +162,7 @@ Auf Xing und LinkedIn unter Michael Reichart
   "license": "MIT"
 }
 ```
-2. Type ```install bootstrap --save```
+2. Type ```npm install bootstrap --save```
 
 You should get an nodes_modules subfolder. Inside you'll find a bootstrap folder.
 
@@ -183,3 +183,8 @@ workshop/
 ```
 
 Let's go ...
+
+
+# Collection
+- [HTML5 Test](http://html5test.com/)
+- [Bootstrap](https://getbootstrap.com/)
