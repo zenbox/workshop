@@ -1,20 +1,14 @@
 @import "variables";
+@import "mixins";
+
+@import "base";
+@import "template";
+@import "icons";
+
+@import "components/nav";
+// @import "components/sample";
+@import "components/tables";
+
+@import "theme";
 
 @import "../../node_modules/bootstrap/scss/bootstrap.scss";
-
-.sample {
-    color: $indigo;
-    padding-left: $spacer/2;
-}
-
-.sample {
-    color: orange;
-}
-
-.sample:hover {
-    color: $blue !important;
-}
-
-.nav {
-    flex-direction: column;
-}
