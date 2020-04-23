@@ -4,6 +4,10 @@
 michael.reichart@gfu.net<br>
 Auf Xing und LinkedIn unter Michael Reichart
 
+## Zeiten
+9:00 bis 10:25 Uhr, 10:40 bis 12:00 Uhr<br>
+13:00 bis 14:25 Uhr, 14:40 bis 16:00 Uhr
+
 ## Agenda
 ### Einstieg in Bootstrap 4
 - Ressourcen und Download
@@ -51,23 +55,23 @@ Auf Xing und LinkedIn unter Michael Reichart
 ### Bootstrap und JavaScript
 - jQuery und popper.js 
 - Data Attribute, data-toggle
-- Events und asynchrone Funktionen
+- :x: Events und asynchrone Funktionen
 - Defaults überschreiben
 - Methoden der Komponenten
 ### Theming
-- Überschreiben der CSS-Klassen
-- Eigenes Bootstrap-CSS erstellen mit Online-Tools
+- :x: Überschreiben der CSS-Klassen
+- :x: Eigenes Bootstrap-CSS erstellen mit Online-Tools
 
 ---
 
 ### Einführung
-- Übersicht über die Projektstruktur 
+- :x: Übersicht über die Projektstruktur 
 - npm Befehle einsetzen
 - Einen eigenen Build erstellen
 - Dateigrößen optimieren
 - QUnit Test ausführen
 ### SCSS Einführung
-- Umwandlung von SCSS in CSS
+- :x: Umwandlung von SCSS in CSS
 - Verwendung von Variablen
 - Verschachtelte Klassen
 - Stile auslagern und importieren
@@ -86,8 +90,12 @@ Auf Xing und LinkedIn unter Michael Reichart
 - Eigene Farben verwenden
 - Default Variablen überschreiben
 - Spaltenanzahl und Abstände im Grid ändern
-- Media Queries ändern
+- :x: Media Queries ändern
 - Eigene Komponenten erstellen
+
+### CSS
+- Media Queries
+- CSS Gewichtungen und Selektoren
 
 # Installing
 ## Visual Studio Code Including Extensions 
@@ -99,7 +107,10 @@ Auf Xing und LinkedIn unter Michael Reichart
 
 ### Live SASS Compiler Settings in VS Code
 ```
+
+
 ...
+,
 "liveSassCompile.settings.formats": [
     {
         "extensionName": ".css",
@@ -108,7 +119,7 @@ Auf Xing und LinkedIn unter Michael Reichart
     }
 ],
 "liveSassCompile.settings.generateMap": false,
-"liveSassCompile.settings.autoprefix": [],
+"liveSassCompile.settings.autoprefix": []
 ...
 ```
 
