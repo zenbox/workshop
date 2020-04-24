@@ -1,5 +1,24 @@
-
 // My Own Variables
+// Grid changes
+$grid-columns: 12;
+$grid-gutter-width: 30px;
+$grid-row-columns: 6;
+
+$grid-breakpoints: (xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1920px);
+
+$container-max-widths: (sm: 540px,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1860px);
+
+
+// Stuff
 $theme-colors: ("primary":gold);
 $font-family-base: Roboto;
 $cyan: #1cac58 !default;
