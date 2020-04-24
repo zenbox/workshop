@@ -1,15 +1,19 @@
-
+// 1. Own variables to pre-overwrite bootstrap map variables
 @import "variables";
 @import "mixins";
 
+// 2. Bootstrap or bootstrap files
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+// 3. Own theme files
 @import "base";
 @import "template";
-@import "icons";
 
+@import "components/icons";
 @import "components/nav";
-// @import "components/sample";
+@import "components/sample";
 @import "components/tables";
 
-@import "theme";
-
-@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+td {
+    background-color: $cyan;
+}
