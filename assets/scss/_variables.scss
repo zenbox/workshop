@@ -18,7 +18,15 @@ $container-max-widths: (sm: 540px,
     xxl: 1860px);
 
 
+// Override font variables
+$font-family-sans-serif: Menlo,
+Roboto,
+sans-serif;
+$font-family-monospace: Menlo,
+monospace;
+$font-size-base: 1rem;
+$font-size-lg: $font-size-base*1.25;
+
 // Stuff
 $theme-colors: ("primary":gold);
-$font-family-base: Roboto;
 $cyan: #1cac58 !default;
