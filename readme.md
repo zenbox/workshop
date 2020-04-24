@@ -194,3 +194,5 @@ Let's go ...
 - [First Grid Framework](https://960.gs/)
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [Google Schriften](https://fonts.google.com/)
+- [v-cloak](https://medium.com/vuejs-tips/v-cloak-45a05da28dc4)
+- [Emmet](https://docs.emmet.io/cheat-sheet/)
