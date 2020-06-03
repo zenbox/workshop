@@ -1,16 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de" class="print active-nav">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responsive Layout</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <h1>Responsive headline ipsum dolor sit.</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatem numquam saepe alias impedit rerum,
-        laboriosam molestiae eum.</p>
+
+    <div class="page">
+        <header>header
+
+            <!-- Navigation compoonent -->
+            <ul class="nav nav-horizontal">
+                <li><a href="#">page 1</a></li>
+                <li><a href="#">page 2</a></li>
+                <li><a href="#">page 3</a></li>
+            </ul>
+            <!-- /Navigation compoonent -->
+        </header>
+
+        <div class="page-content">
+            <nav>
+                <!-- Navigation compoonent -->
+                <ul class="nav nav-vertical">
+                    <li><a href="#">page 1</a></li>
+                    <li><a href="#">page 2</a></li>
+                    <li><a href="#">page 3</a></li>
+                </ul>
+                <!-- /Navigation compoonent -->
+            </nav>
+            <main>
+                <article>
+                    <h1>Responsive headline ipsum dolor sit.</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam voluptatem numquam saepe alias
+                        impedit rerum,
+                        laboriosam molestiae eum.</p>
+                </article>
+            </main>
+            <aside>aside</aside>
+        </div>
+
+        <footer>footer</footer>
+    </div>
+
 </body>
 
 </html>
