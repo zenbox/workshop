@@ -1,0 +1,89 @@
+/**
+ * Responsive approach: mobile first,
+ * Fallback for all and old browser
+ *
+ * All devices
+ */
+
+@media screen {
+
+    .page,
+    .page-content {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media print and (color) {}
+
+/* Small devices */
+@media only screen and (max-width:767px) {
+
+    .page-content nav,
+    .page-content aside {
+        transition-property: margin;
+        transition-duration: 250ms;
+        transition-delay: 0;
+        transition-timing-function: ease-in;
+    }
+
+    .page-content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /* Default position*/
+    .page-content nav {
+        flex-basis: 25vw;
+        margin-left: -25vw;
+    }
+
+    .page-content main {
+        flex-basis: 100vw;
+        margin-left: 0vw;
+    }
+
+    .page-content aside {
+        flex-basis: 80vw;
+        margin-right: -80vw;
+    }
+
+
+    /* Navigation */
+    .active-nav .page-content nav {
+        margin-left: 0vw;
+    }
+
+    /* Aside */
+    .active-aside .page-content aside {
+        margin-right: 0vw;
+    }
+}
+
+/* Medium decvice */
+@media only screen and (min-width:768px) {
+    .page {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .page-content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .page-content nav {
+        flex-basis: 25vw;
+        flex-grow: 1;
+    }
+
+    .page-content main {
+        flex-basis: 50vw;
+        flex-grow: 1;
+    }
+
+    .page-content aside {
+        flex-basis: 25vw;
+        flex-grow: 1;
+    }
+}
