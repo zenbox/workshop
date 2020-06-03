@@ -83,7 +83,7 @@ Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: 
 - [ES6+ Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises)
 
 ## Events
-- [JS Touch Ecents](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
+- [JS Touch Events](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
 - [Touch Events mit hammer.js](https://hammerjs.github.io/)
 - [Ambient Light API](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events)
 
