@@ -100,3 +100,7 @@ Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: 
 - https://wiki.selfhtml.org/wiki/Schnell-Index/CSS#.40
 - https://entwickler.de/online/javascript/deno-node-js-vergleich-579917258.html
 - https://jslint.com/
+
+
+## Wilde Liste
+- [Ethan Marcotte](https://alistapart.com/article/responsive-web-design/)
