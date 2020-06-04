@@ -1,0 +1,36 @@
+/* Template Styles (float style) */
+nav,
+main,
+aside {
+    display: block;
+    float: left;
+}
+
+nav {
+    width: 25%;
+}
+
+main {
+    width: 50%;
+}
+
+aside {
+    width: 25%;
+}
+
+header,
+footer {
+    display: block;
+    width: 100%;
+
+    clear: both;
+}
+
+/* Microclearfix; N. Gallagher */
+header,
+footer,
+.clearfix::before,
+.clearfix::after {
+    content: "";
+    clear: both;
+}
