@@ -84,3 +84,60 @@
 .nav a[href]:active {
     color: hsla(0, 100%, 50%, 1);
 }
+
+
+/* Variables in CSS 4: */
+:root {
+    --breakpoint-small: 767px;
+    --breakpoint-medium: 768px;
+}
+
+@media screen and (max-width:767px) {
+
+
+    /* SUBCOMPONENT */
+    /* SUBCOMPONENT BASE */
+    .hamburger {
+        display: inline-flex;
+        width: 2rem;
+        height: 2rem;
+
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: space-between;
+
+    }
+
+    /* SUBCOMPONENT LAYOUT */
+    .hamburger .bar-1,
+    .hamburger .bar-2,
+    .hamburger .bar-3 {
+        display: block;
+        width: 100%;
+        height: 20%;
+
+        background-color: white;
+    }
+
+    /* SUBCOMPONENT STATES */
+    .hamburger-close {
+        transform: translateX(0.5rem);
+    }
+
+    .hamburger-close .bar-1 {
+        transform: rotateZ(45deg) translateY(0.5rem);
+    }
+
+    .hamburger-close .bar-2 {
+        transform: rotateZ(-45deg) translateY(-0.5rem);
+    }
+
+    .hamburger-close .bar-3 {
+        opacity: 0;
+    }
+
+    .active-nav .hamburger {}
+
+    .active-aside .hamburger {}
+
+}
