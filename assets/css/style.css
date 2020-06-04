@@ -13,7 +13,7 @@ html * {
   box-sizing: border-box;
   transition-property: all;
   transition-delay: 0;
-  transition-duration: 250ms;
+  transition-duration: 50ms;
   transition-timing-function: ease-in;
 }
 
@@ -44,6 +44,38 @@ body {
   }
   h6 {
     font-size: 1rem;
+  }
+  header,
+  nav,
+  main,
+  aside,
+  footer {
+    box-sizing: border-box;
+    padding: 0.5rem;
+  }
+  article {
+    column-width: 18rem;
+    column-gap: 2rem;
+    column-rule-style: dotted;
+    column-rule-width: 1px;
+    column-rule-color: rgba(0, 0, 0, 0.25);
+  }
+  article h2,
+  article h3,
+  article h4,
+  article h5,
+  article h6 {
+    break-after: avoid-column;
+    break-inside: avoid-column;
+  }
+  article p {
+    -khtml-hyphens: auto;
+    -o-hyphens: auto;
+    hyphens: none;
+  }
+  article[lang] p {
+    text-align: left;
+    hyphens: auto;
   }
 }
 
