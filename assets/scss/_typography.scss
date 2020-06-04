@@ -30,6 +30,49 @@
     h6 {
         font-size: 1rem;
     }
+
+    header,
+    nav,
+    main,
+    aside,
+    footer {
+        box-sizing: border-box;
+        padding: 0.5rem;
+    }
+
+    article {
+        column-width: 18rem;
+
+        column-gap:2rem;
+        column-rule-style: dotted;
+        column-rule-width: 1px;
+        column-rule-color: hsla(0,0%,0%,0.25);
+
+    }
+
+    article h2,
+    article h3,
+    article h4,
+    article h5,
+    article h6 {
+        break-after: avoid-column;
+        break-inside: avoid-column;
+    }
+
+    article p {
+        -khtml-hyphens:auto;
+        -o-hyphens:auto;
+        -moz-hyphens:auto;
+        -ms-hyphens:auto;
+        -webkit-hyphens:auto;
+
+        hyphens: none;
+    }
+
+    article[lang] p {
+        text-align:left;
+        hyphens:auto;
+    }
 }
 
 @media screen and (max-width: ($breakpoint-medium-device - 1)) {
@@ -37,11 +80,14 @@
         font-size: 18px;
         line-height: 1.3841;
     }
+
 }
 
 @media screen and (min-width: $breakpoint-medium-device) {
-        html {
-            font-size: 15px;
-            line-height: 1.3;
-        }
+    html {
+        font-size: 15px;
+        line-height: 1.3;
+    }
+
+
 }
