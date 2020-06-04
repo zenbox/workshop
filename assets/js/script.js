@@ -14,12 +14,13 @@
 (function () {
     'use strict';
     // - - - - - - - - - -
-
+    // DECLARATIONS
     let
         hamburgerState = 'inactive',
         hamburgerButton = document.querySelector('#hamburger'),
         htmlDocument = document.querySelector('html');
 
+    // METHODS
     function onHamburgerButtonClick(event) {
 
         // Setting states:
@@ -40,6 +41,7 @@
 
     }
 
+    // EVENT CONTROL
     hamburgerButton.addEventListener('click', onHamburgerButtonClick);
     // - - - - - - - - - -
 }())
