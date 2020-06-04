@@ -1,7 +1,223 @@
-@import url("_base.css");
+@charset "UTF-8";
+/* Variables */
+/* Mixins */
+/* Base Styles */
+:root,
+html {
+  font-family: sans-serif;
+  /* root em (M-Höhe des :root Elements)*/
+  font-size: 16px;
+}
 
-@import url("_template-flex.css");
+html,
+html * {
+  box-sizing: border-box;
+  transition-property: all;
+  transition-delay: 0;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in;
+}
 
-@import url("_navigation.css");
+body {
+  margin: 0;
+}
 
-@import url("_theme.css");
+/**
+ * Responsive approach: mobile first,
+ * Fallback for all and old browser
+ *
+ * All devices
+ */
+@media screen {
+  .page,
+  .page-content {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Small devices */
+@media only screen and (max-width: 767px) {
+  .page-content nav,
+  .page-content aside {
+    transition-property: margin;
+    transition-duration: 250ms;
+    transition-delay: 0;
+    transition-timing-function: ease-in;
+  }
+  .page-content {
+    display: flex;
+    flex-direction: row;
+  }
+  /* Default position*/
+  .page-content nav {
+    flex-basis: 25vw;
+    margin-left: -25vw;
+  }
+  .page-content main {
+    flex-basis: 100vw;
+    margin-left: 0vw;
+  }
+  .page-content aside {
+    flex-basis: 80vw;
+    margin-right: -80vw;
+  }
+  /* Navigation */
+  .active-nav .page-content nav {
+    margin-left: 0vw;
+  }
+  /* Aside */
+  .active-aside .page-content aside {
+    margin-right: 0vw;
+  }
+}
+
+/* Medium decvice */
+@media only screen and (min-width: 768px) {
+  .page {
+    display: flex;
+    flex-direction: column;
+  }
+  .page-content {
+    display: flex;
+    flex-direction: row;
+  }
+  .page-content nav {
+    flex-basis: 25vw;
+    flex-grow: 1;
+  }
+  .page-content main {
+    flex-basis: 50vw;
+    flex-grow: 1;
+  }
+  .page-content aside {
+    flex-basis: 25vw;
+    flex-grow: 1;
+  }
+}
+
+/** Navigation Component
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:$breakpoint-medium-device ) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-06-03
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+/** COMPONENT BASE */
+@media screen {
+  .nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav a[href] {
+    text-decoration: none;
+  }
+}
+
+/** COMPONENT LAYOUT */
+@media screen {
+  .nav-horizontal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .nav-vertical {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  /* resize elements to full width ... */
+  .nav li,
+  .nav a[href] {
+    display: block;
+    flex-grow: 1;
+  }
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.nav a[href] {
+  color: blue;
+}
+
+.nav a[href]:visited {
+  color: #8000ff;
+}
+
+.nav a[href]:hover {
+  color: #ff8000;
+}
+
+.nav a[href]:active {
+  color: red;
+}
+
+@media screen and (max-width: 767px) {
+  /* SUBCOMPONENT */
+  /* SUBCOMPONENT BASE */
+  .hamburger {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+  }
+  /* SUBCOMPONENT LAYOUT */
+  .hamburger .bar-1,
+  .hamburger .bar-2,
+  .hamburger .bar-3 {
+    display: block;
+    width: 100%;
+    height: 20%;
+    background-color: white;
+  }
+  /* SUBCOMPONENT STATES */
+  .hamburger-close {
+    transform: translateX(0.5rem);
+  }
+  .hamburger-close .bar-1 {
+    transform: rotateZ(45deg) translateY(0.5rem);
+  }
+  .hamburger-close .bar-2 {
+    transform: rotateZ(-45deg) translateY(-0.5rem);
+  }
+  .hamburger-close .bar-3 {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+/* Theme Styles */
+header,
+nav,
+main,
+aside,
+footer {
+  background-color: rgba(0, 0, 0, 0.25);
+}
