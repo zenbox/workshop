@@ -1,0 +1,47 @@
+// Baselines, Fontsize, Font
+
+@media screen {
+    html {
+        font-family: sans-serif;
+        font-size: 16px; // base of rem (root em)
+        line-height: 1.2;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    h6 {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: ($breakpoint-medium-device - 1)) {
+    html {
+        font-size: 18px;
+        line-height: 1.3841;
+    }
+}
+
+@media screen and (min-width: $breakpoint-medium-device) {
+        html {
+            font-size: 15px;
+            line-height: 1.3;
+        }
+}
