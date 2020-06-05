@@ -98,16 +98,65 @@ body {
   margin-right: 0;
 }
 
+.logo {
+  display: inline-block;
+  background-image: url(../figures/chameleon.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.logo > * {
+  position: absolute;
+  left: -10000px;
+}
+
+.logo-responsive {
+  background-size: contain;
+}
+
+@media screen and (max-width: 767px) {
+  .logo {
+    width: 40rem;
+    height: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 60rem;
+    height: 8rem;
+  }
+}
+
 .figure-responsive {
   display: block;
   width: 100%;
   outline: 2px dotted cyan;
 }
 
-.figure-responsive img {
+.figure-responsive img,
+.figure-responsive video {
   max-width: 100%;
   height: auto;
   outline: 2px dotted cyan;
+}
+
+.brand-responsive {
+  max-width: 8rem;
+  height: auto;
+}
+
+svg {
+  width: 10rem;
+  height: auto;
+}
+
+path {
+  fill: black;
+}
+
+path:hover {
+  fill: #6d4804;
 }
 
 /**
