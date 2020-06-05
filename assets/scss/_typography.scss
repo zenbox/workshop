@@ -43,10 +43,10 @@
     article {
         column-width: 18rem;
 
-        column-gap:2rem;
+        column-gap: 2rem;
         column-rule-style: dotted;
         column-rule-width: 1px;
-        column-rule-color: hsla(0,0%,0%,0.25);
+        column-rule-color: hsla(0, 0%, 0%, 0.25);
 
     }
 
@@ -60,18 +60,18 @@
     }
 
     article p {
-        -khtml-hyphens:auto;
-        -o-hyphens:auto;
-        -moz-hyphens:auto;
-        -ms-hyphens:auto;
-        -webkit-hyphens:auto;
+        -khtml-hyphens: auto;
+        -o-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        -webkit-hyphens: auto;
 
         hyphens: none;
     }
 
     article[lang] p {
-        text-align:left;
-        hyphens:auto;
+        text-align: left;
+        hyphens: auto;
     }
 }
 
