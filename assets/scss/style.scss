@@ -5,10 +5,13 @@
 // own common styles
 @import "base";
 @import "typography";
-@import "figures";
 // @import "outlines";
+
+// Components/modules
 @import "template-flex";
 @import "navigation";
+@import "figures";
+@import "form";
 
 // theme
 @import "theme";
