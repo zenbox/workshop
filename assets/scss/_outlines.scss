@@ -10,12 +10,12 @@ h1 {
     outline-offset: 15px;
     -webkit-font-smoothing: subpixel-antialiased;
     background-color: green;
+    border: 2px dotted orange;
 }
 
 h2 {
-
-    -webkit-text-stroke: 2px hsla(0, 0%, 0%, 0.8);
-    -webkit-font-smoothing: none;
+    -webkit-text-stroke: 1px hsla(0, 0%, 0%, 0.8);
+    -webkit-font-smoothing: subpixel-antialiased;
     color: transparent;
 }
 
@@ -28,7 +28,7 @@ text {
 }
 
 h1 {
-    text-shadow: 1px 1px 1px white, 1px -1px 1px white, -1px 1px 1px white, -1px -1px 1px white;
+    text-shadow: 1px 1px 0px white, 1px -1px 1px white, -1px 1px 0px white, -1px -1px 0px white;
     -webkit-font-smoothing: subpixel-antialiased;
     color: green;
     padding: 0.25rem;
