@@ -93,72 +93,6 @@ body {
   }
 }
 
-.figure {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.logo {
-  display: inline-block;
-  background-image: url(../figures/chameleon.svg);
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.logo > * {
-  position: absolute;
-  left: -10000px;
-}
-
-.logo-responsive {
-  background-size: contain;
-}
-
-@media screen and (max-width: 767px) {
-  .logo {
-    width: 40rem;
-    height: 2rem;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .logo {
-    width: 60rem;
-    height: 8rem;
-  }
-}
-
-.figure-responsive {
-  display: block;
-  width: 100%;
-  outline: 2px dotted cyan;
-}
-
-.figure-responsive img,
-.figure-responsive video {
-  max-width: 100%;
-  height: auto;
-  outline: 2px dotted cyan;
-}
-
-.brand-responsive {
-  max-width: 8rem;
-  height: auto;
-}
-
-svg {
-  width: 10rem;
-  height: auto;
-}
-
-path {
-  fill: black;
-}
-
-path:hover {
-  fill: #6d4804;
-}
-
 /**
  * Responsive approach: mobile first,
  * Fallback for all and old browser
@@ -348,6 +282,124 @@ path:hover {
   .hamburger {
     display: none;
   }
+}
+
+.figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.logo {
+  display: inline-block;
+  background-image: url(../figures/chameleon.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.logo > * {
+  position: absolute;
+  left: -10000px;
+}
+
+.logo-responsive {
+  background-size: contain;
+}
+
+@media screen and (max-width: 767px) {
+  .logo {
+    width: 40rem;
+    height: 2rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    width: 60rem;
+    height: 8rem;
+  }
+}
+
+.figure-responsive {
+  display: block;
+  width: 100%;
+  outline: 2px dotted cyan;
+}
+
+.figure-responsive img,
+.figure-responsive video {
+  max-width: 100%;
+  height: auto;
+  outline: 2px dotted cyan;
+}
+
+.brand-responsive {
+  max-width: 8rem;
+  height: auto;
+}
+
+svg {
+  width: 10rem;
+  height: auto;
+}
+
+path {
+  fill: black;
+}
+
+path:hover {
+  fill: #6d4804;
+}
+
+.fieldset-responsive h4,
+.fieldset-responsive p {
+  display: block;
+  margin: 0;
+}
+
+.fieldset-responsive p {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+@media screen {
+  .fieldset {
+    display: flex;
+    flex-direction: row;
+    outline: 1px dotted red;
+  }
+  .fieldset > * {
+    background-color: lightcoral;
+    display: inline-block;
+  }
+}
+
+@media screen {
+  .group-responsive {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  .group-responsive.group-radio {
+    flex-direction: row;
+  }
+  .group-responsive label,
+  .group-responsive input {
+    display: inline;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .group-responsive {
+    flex-direction: row;
+  }
+}
+
+.group-responsive label {
+  outline: 1px solid green;
+}
+
+.group-responsive input {
+  outline: 1px solid orange;
 }
 
 /* Theme Styles */
