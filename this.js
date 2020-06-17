@@ -27,7 +27,7 @@
             this.name = name;
         };
     }
-
+x^
     let john = new Person('john');
     console.log(john instanceof Person)
 
