@@ -1,106 +1,210 @@
-# Willkommen beim Seminar Responsive Webdesign
-
-- 3 Tage, jeweils 9:00 bis 16:00 Uhr
-
-
+# Willkommen zu Das neue JavaScript ES6 / ES Next
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
 
 ## Foliensatz
-Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **CSS Responsive kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **ECMAScript 6+.pdf** (wip-Version), **Javascript kompakt.pdf**, **Javascript Pattern.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
-## Topics
-## Allgemeine Grundlagen responsiver Layouts
-- Ausgaben auf mobilen Geräten und Desktopbrowsern
-- Vergleich der Gerätetypen
-- Geräteabhängige Designaspekte
-- Responsive, Fluid, Adaptive?
-## Layouts entwerfen
-- Entwurfsraster (Grids) einsetzen
-- Grids schreiben, Gridframeworks
-- Beispiele für Yaml und Bootstrap
-- Festbreiten-Layouts, flexible Layouts
-- Anforderungen und Entwurf eines flexiblen Layouts
-## Einsatz von Medienqueries
-- Medientypen und Attribute abfragen
-- Breakpoints zur Unterscheidung verschiedener Geräteklassen
-- Gerätespezifische Anpassungen des Entwurfsrasters
-- Browserkompatibilität für Internet Explorer 8 und kleiner
-## HTML für mobile Geräte
-- Viewport
-- Touchicons
-- Conditional Comments
-## Umgang mit Bildern und anderen Medien
-- Responsive Medieninhalte
-- srcset, ``<picture>`` und andere Konzepte
-- Anpassen von Bildern, Video
-## Typographie für Desktop und mobile Geräte
-- Umgang mit Schriften und Schriftgrößen
-- Lesbarkeit: das optimale Layout für jedes Gerät
-## Geräteoptimierte Content- und Navigationskonzepte
-- Content first, Mobile first
-- Graceful degration, progressive Enhancement
-- Über die Bedienbarkeit Mauszeiger vs. Touchscreen
-- Gerätetypische Schaltflächen, Navigationslisten, Eingabeelemente
-## Performance
-- Optimierung der Ladezeit und des Ladeverhaltens
-- Geräteangepasste Inhalte ausliefern
-## Frameworks
-- Adaptive Bilder (adaptive images)
-- Skalierbare Icons (awesome fonts)
-- Medienerkennung (responds.js)
-## Google Ranking-Faktoren für Mobile Webseiten
-- Content
-- Ladezeiten
-- Backlinks
-- Social Signals 
+"wip" bezeichnet eine work-in-progress Version der Folien.
 
-# Linkliste
-## Links zu HTML
-- https://github.com/scottjehl/picturefill
-- https://github.com/scottjehl/Respond
-- https://github.com/aFarkas/html5shiv
-- 
-## Links zu CSS
-- [Reset CSS](https://meyerweb.com/eric/tools/css/reset/)
-- [Reboot CSS](https://scotch.io/tutorials/a-look-at-bootstrap-4s-new-reset-rebootcss)
-- [Normalize CSS](https://necolas.github.io/normalize.css/)
-- [Scalable and Modular CSS](http://smacss.com/book/categorizing)
-- [Block-Element-Modifier](http://getbem.com/introduction/)
-- [CSS Tricks](https://css-tricks.com/)
-- [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+## Content Table
+Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir werden gemeinsam Prioritäten setzen:
 
+### Blockscopevariablen und Konstanten 
+- let, const
+  
+### Themenblock Funktionen 
+- Funktionsparameter
+- Defaultparameter in Funktionen
+- Arrow Funktionen vs. Function-Funktionen
+  
+### Klassen und Vererbung 
+- Definition von Klassen 
+- Methoden in Klassen
+- constructor-Method
+- Vererbung mit extend
+- Das super-Keyword
 
-## Links zu Javascript
-- [Form Data](https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata)
-- [Javascript Referenz](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference)
+### Module 
+- Module in ECMA2015
+- Named Export, Default Export
+- Named Import, Aliasing von Ex- und Import
+- Wildcardimport
+
+### Promises 
+- fetch()
+- Bildung und Einsatz von Promises
+- Methoden then(), catch()
+
+### Proxies 
+- Zugriffsreglementierung mit Proxies
+- Handler-Object, Target-Object
+  
+### Rest Parameter in Funktionen
+- Rest-Parameter
+  
+### Spread- und Restoperator
+- ... als Spreadoperator
+- ... als Restoperator
+
+### Destructuring von Arrays und Objekten 
+- Destructuring von Arrays 
+- Destructuring von Objekten
+
+### Symbols
+- Bildung und Einsatz von Symbols
+  
+### Neue Methoden für Standardobjekte
+- Neue Methoden von Array
+- Neue Methoden von Object
+- Neue Methoden von String, Number etc.
+
+### Iteratoren 
+- for-of-Schleife 
+- Bildung und Einsatz von Iteratoren
+
+### Collections 
+  Maps und Weak-Maps
+- Sets und Weak-Sets
+
+### Generatoren
+- Generatorfunction und Generatorobject
+- yield-Keyword und next-Methode
+
+### Object-Shorthand Definitionen 
+- Definition von Properties 
+- Definition von Methoden
+  
+## Links
+
+### Links zu Javascript
+#### Allgemein
+- [Javascript Referenz von Mozilla](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference)
+- [ES Spezifikation](https://tc39.es/ecma262/)
 - [Eloquent JS](https://eloquentjavascript.net/)
 - [You don't know JS](https://github.com/getify/You-Dont-Know-JS)
-- [Asynchron or not](https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous)
-- [ES6 Spezifikation](https://tc39.es/ecma262/)
-- [ES6+ Kompatibilität](https://kangax.github.io/compat-table/es6/)
-- [ES6+ Promises](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises)
 
-## Events
-- [JS Touch Events](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
+#### Tools
+- [Kompatibilitätsliste für ES6](https://kangax.github.io/compat-table/es6/)
+- [require.js](https://requirejs.org/)
+
+#### Spotlights
+- [indexDb](https://javascript.info/indexeddb)
+- [AJAX mit formData](https://thoughtbot.com/blog/ridiculously-simple-ajax-uploads-with-formdata)
+- [Promises verwenden](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Using_promises)
+- [Syncron oder asyncron?](https://stackoverflow.com/questions/15141118/are-javascript-functions-asynchronous)
+- [Immutable](https://dev.to/glebec/four-ways-to-immutability-in-javascript-3b3l)
+- [this, bind, call, apply](https://www.digitalocean.com/community/conceptual_articles/understanding-this-bind-call-and-apply-in-javascript)
+- [singleton](https://www.sitepoint.com/javascript-design-patterns-singleton/)
+- [factory pattern](https://medium.com/@SntsDev/the-factory-pattern-in-js-es6-78f0afad17e9)
+- [observer pattern](https://www.sitepoint.com/javascript-design-patterns-observer-pattern/)
+- [closures](https://developer.mozilla.org/de/docs/Web/JavaScript/Closures)
+
+#### Events
 - [Touch Events mit hammer.js](https://hammerjs.github.io/)
+- [Touch events mit JS](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches)
 - [Ambient Light API](https://developer.mozilla.org/en-US/docs/Web/API/Ambient_Light_Events)
 
-## Weiteres
-- [HTML5 Test](http://html5test.com/index.html)
-- [Can I Use](https://caniuse.com/#search=addevent)
-- [MIT Lizenz](https://opensource.org/licenses/MIT)
-- [Fehlerkosten](http://thklein.com/de_DE/cost-of-defect/)
-- [Modernizr](https://modernizr.com/)
+### Weiteres
+- [html5Test.com](http://html5test.com/index.html)
+- [Can i Use?](https://caniuse.com/)
+- [MIT License](https://opensource.org/licenses/MIT)
+- [Cost of Defect](http://thklein.com/de_DE/cost-of-defect/)
 - [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
-- [Fonts bei Google](https://fonts.google.com/)
-- [beercamp 2012](https://2012.beercamp.nclud.com/)
-- [transition events](https://www.w3schools.com/jsref/event_transitionend.asp)
-- https://wiki.selfhtml.org/wiki/Schnell-Index/CSS#.40
-- https://entwickler.de/online/javascript/deno-node-js-vergleich-579917258.html
-- https://jslint.com/
 
+## Visual Studio Code Snippets
+### Javascript Snippets
 
-## Wilde Liste
-- [Ethan Marcotte](https://alistapart.com/article/responsive-web-design/)
+- The Function Comment
+- The JS Docblock Comment
+- The IIFE Pattern
+- The Module Block Pattern
+  
+```json
+{
+	"function documentation block": {
+		"prefix": "function comment",
+		"description": "A comment block for functions",
+		"body": [
+			"/** $1",
+			" *",
+			" * @version v1.0.0",
+			" * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" * @callback namepath",
+			" * @param {type} desc",
+			" * @returns {void}",
+			" */",
+			"$2"
+		]
+	},
+	"page documention block": {
+		"prefix": "docblock",
+		"description": "The docblock comment for Javascript",
+		"body": [
+			"/** $1",
+			"  *",
+			"  *  @desc $2",
+			"  *",
+			"  * @package Webapplication",
+			"  * @module $3",
+			"  * @author Michael <michael.reichart@gfu.net>",
+			"  * @version v1.0.0",
+			"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			"  * @see i.e. inspired by ... {link to}",
+			"  * @license MIT {https://opensource.org/licenses/MIT}",
+			"  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
+			"  */",
+			"$4"
+		]
+	},
+	"IIFE Pattern": {
+        "prefix": "iife",
+        "description": "Immediate invoked function expression",
+		"body": [
+			"!(function () {",
+			"'use strict';",
+			"//- - - - - - - - - -",
+			"$1",
+			"//- - - - - - - - - -",
+			"}());"
+		]
+	},
+	"Module Block Pattern": {
+        "prefix": "module block pattern",
+        "description": "Immediate invoked function expression with publishing in window",
+		"body": [
+			"!(function () {",
+			"'use strict';",
+			"// - - - - - - - - - -",
+			"// DECLARATION",
+			"// - - - - -",
+			"$1",
+			"",
+			"// - - - - -",
+			"// FUNCTIONS",
+			"// - - - - -",
+			"function _double(a) {",
+			"   var _a = a || 0;",
+			"",
+			"   if (typeof (_a) !== 'number') return NaN;",
+			"",
+			"   return _a + _a;",
+			"};",
+			"",
+			"function _main() {",
+			"   // publish module and a function",
+			"   window.module = window.module || {};",
+			"   window.module.double = _double;",
+			"}",
+			"",
+			"// - - - - -",
+			"// CONTROL",
+			"// - - - - -",
+			"_main();",
+			"// - - - - - - - - - -",
+			"}())"
+		]
+    }
+}
+```
