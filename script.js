@@ -3,11 +3,12 @@ setTheme(title = 'scopes');
 // - - - - - - - - - -
 if (eval(themes[title])) {
     // - - - - - - - - - -
-    var a = 42.3, i;
+    var a = 42.3,
+        i;
     let b = 108;
 
     const PI = 3.1415;
-  
+
     const obj = {};
     const arr = [];
     const fn = function () {};
@@ -21,10 +22,10 @@ if (eval(themes[title])) {
 
     log(21 - '1');
 
-  
+
 
     obj.member = 512;
-console.log(obj)
+    console.log(obj)
 
 
     log('window.a:', window.a);
@@ -55,17 +56,25 @@ setTheme(title = 'functions');
 // - - - - - - - - - -
 if (eval(themes[title])) {
     // - - - - - - - - - -
-    
+    'use strict';
 
-    function fnName() { 
-        log('fnName');
+    function fnName() {
+        log('fnName', this);
     }
-    
-    let fn = function () { 
-        log('fn');
+
+    let fn = function () {
+        log('fn', this);
     };
 
-    let arrFn = () => { log('arrow function'); }
+    let arrFn = () => {
+        log('arrow function', this);
+    }
+
+    let obj = {
+        fn: function () { log('obj fn', this)}
+    }
+
+    obj.fn();
 
     fnName();
     fn();
@@ -73,5 +82,21 @@ if (eval(themes[title])) {
 
 
     log(this)
+
+    // function () { return result; }
+
+    // (arg) => { return arg * 2 }
+
+    // arg => arg * 2;
+
+    // data = { ... };
+    // d3.select('svg').append('rect').attr('width', function (d, i) {
+    //     return d.width;
+    // })
+    // d3.select('svg').append('rect').attr('width', (d, i) => d.width * i)
+
+    document.querySelector('body').addEventListener('click',  (event) => {
+        log( this );
+    })
     // - - - - - - - - - -
 }
