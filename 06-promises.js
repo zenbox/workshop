@@ -6,18 +6,30 @@ if (eval(themes[title])) {
 
     // FETCH
     // fetch uses promises
+
+    // let request = new XMLHttpRequest();
+    // request.open()
+    // request.send()
+    // request.onreadystatechange(function () { 
+    //     switch (readyState) { 
+    //         case 0:
+    //         case 1:
+    //         case 2:
+    //         case 3:
+    //         case 4:
+    //             console.log('success')
+    //     }
+    // })
+
+    let returnJson = response => response.json();
+    let showData = data => {
+        log(`${data.who} ${data.what} ${data.where}`);
+    }
+
     fetch('data/data-john.json')
         .then(returnJson)
         .then(showData)
         .catch(showError);
-
-    function returnJson(response) {
-        return response.json();
-    }
-
-    function showData(data) {
-        log(`${data.who} ${data.what} ${data.where}`);
-    }
 
     function showError(error) {
         log(error);
@@ -78,7 +90,7 @@ if (eval(themes[title])) {
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve('Jane');
-            }, 200);
+            }, 1000);
         });
     }
 
@@ -86,7 +98,7 @@ if (eval(themes[title])) {
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve('lurks');
-            }, 300);
+            }, 100);
         });
     }
 
@@ -94,7 +106,7 @@ if (eval(themes[title])) {
         return new Promise(resolve => {
             setTimeout(() => {
                 resolve('in the shadows');
-            }, 500);
+            }, 100);
         });
     }
 
@@ -107,8 +119,21 @@ if (eval(themes[title])) {
 
         console.log(`${a} ${b} ${c}`);
         console.timeEnd('await');
+        console.timeEnd('await');
     }
 
     msg(); // 🤡 lurks in the shadows <-- after 1 second
+
+
+    // Async promises 
+    console.time('all');
+    Promise
+        .all([who(), what(), where()])
+        .then(() => {
+            console.timeEnd('all');
+        })
+        .catch((error) => {
+            error
+        })
     // - - - - - - - - - -
 }
