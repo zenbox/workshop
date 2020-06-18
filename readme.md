@@ -89,6 +89,7 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 -  String Padding
 -  ``Object.getOwnPropertyDescriptors()``
 -  Trailing commas in function parameter lists and calls
+  
 @see https://2ality.com/2016/02/ecmascript-2017.html
   
 ### ES 9 (2018)
