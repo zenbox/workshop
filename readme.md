@@ -76,6 +76,55 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - Definition von Properties 
 - Definition von Methoden
   
+
+## ES Feature History
+### ES 7 (2016)
+- ``Array.prototype.includes``
+- Exponentiation Operator
+
+### ES 8 (2017)
+- async/await
+- Shared Memory and Atomics
+- ``Object.values/Object.entries``
+-  String Padding
+-  ``Object.getOwnPropertyDescriptors()``
+-  Trailing commas in function parameter lists and calls
+@see https://2ality.com/2016/02/ecmascript-2017.html
+  
+### ES 9 (2018)
+- Asynchronous Iterators
+- Rest/Spread Properties.
+- ``Promise.prototype.finally``
+- RegExp: dotAll mode (the s flag)
+- RegExp: Lookbehind assertions
+- RegExp: Named capture groups
+- RegExp: Unicode property escapes
+ 
+### ES 10 (2019)
+- Array#{flat,flatMap}
+➡️ Object.fromEntries
+➡️ String#{trimStart,trimEnd}
+➡️ Symbol#description
+➡️ try { } catch {} // optional binding
+➡️ JSON ⊂ ECMAScript
+➡️ well-formed JSON.stringify
+➡️ stable Array#sort
+➡️ revised Function#toString
+
+### ES 11 (2020)
+- ``String.prototype.matchAll``
+- ``import()``
+- ``BigInt``
+- ``Promise.allSettled``
+- ``globalThis``
+- ``for-in-Mechanics``
+- ``Optional Chaining``
+- ``Nullish Coalescing Operator ``
+- ``import.meta``
+- 
+### ES 12 (2021)
+- ``String.prototype.replaceAll``
+
 ## Links
 
 ### Links zu Javascript
