@@ -10,6 +10,12 @@ if (eval(themes[title])) {
 
     // Unique!
     let symbol2 = Symbol('sym1');
+
+    const id = Symbol({a:1});
+
+    console.log(id.a)
+
+
     log(symbol === symbol2);
     log(symbol == symbol2);
 
