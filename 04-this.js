@@ -1,16 +1,8 @@
-/** This
- *
- * @package Webapplication
- * @module App
- * @author Michael <michael.reichart@gfu.net>
- * @version v1.0.0
- * @since 2020-03-13
- * @see i.e. inspired by ... {link to}
- * @license MIT {https://opensource.org/licenses/MIT}
- * @copyright (c) 2020 Michael Reichart, Cologne
- */
-!(function () {
-    //- - - - - - - - - -
+// - - - - - - - - - -
+setTheme(title = 'this');
+// - - - - - - - - - -
+if (eval(themes[title])) {
+    // - - - - - - - - - -
     console.clear();
 
     // four thises
@@ -27,7 +19,7 @@
             this.name = name;
         };
     }
-x^
+
     let john = new Person('john');
     console.log(john instanceof Person)
 
@@ -44,7 +36,7 @@ x^
     const person = {
         name: 'mary',
         describe: function () {
-            console.log('object method', `my name is ${ this.name}`);
+            console.log('object method', `my name is ${this.name}`);
         }
     };
     person.describe();
@@ -109,4 +101,5 @@ x^
 
     // - - - - - - - - - -
     //- - - - - - - - - -
-}());
+    // - - - - - - - - - -
+}
