@@ -5,10 +5,16 @@ if (eval(themes[title])) {
     // - - - - - - - - - -
 
     let tuple = {
-        x: 11,
+        x: {v:21},
         y: 12,
         z: 13
     }
+
+    // Old way
+    // let x = tuple.x;
+    // let y = tuple.y;
+    // let z = tuple.z;
+
 
     // - - -
     {
@@ -32,12 +38,17 @@ if (eval(themes[title])) {
 
     // use aliases
     let {
-        x: a,
+        x: x,
+        x: u,
         y: b,
         z: c,
         d = 14
     } = tuple;
-    log(a, b, c, d);
+
+    tuple.x.v = 42;
+    // x = 108;
+
+    log('aliases', x.v, u.v, b, c, d);
     // - - - - - - - - - -
 
     // Example
@@ -59,7 +70,7 @@ if (eval(themes[title])) {
     log(`You can send me an Email to ${email}`);
     log(`The best time would be ${bestTime}`);
 
-    // Array destructure
+    // ARRAY destructure
     let rgb = [255, 20, 100];
     let [red, green, blue] = rgb;
     log(red, green, blue);
@@ -81,7 +92,7 @@ if (eval(themes[title])) {
     // Example
     function add(...rest) {
         let result = 0;
-        
+
         // for (i = 0; i < rest.length; i++) {
         //     result += rest[i];
         // };
