@@ -41,10 +41,8 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - Zugriffsreglementierung mit Proxies
 - Handler-Object, Target-Object
   
-### Rest Parameter in Funktionen
+### Rest Parameter, Spread- und Restoperator
 - Rest-Parameter
-  
-### Spread- und Restoperator
 - ... als Spreadoperator
 - ... als Restoperator
 
@@ -134,6 +132,9 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
 - [ES Spezifikation](https://tc39.es/ecma262/)
 - [Eloquent JS](https://eloquentjavascript.net/)
 - [You don't know JS](https://github.com/getify/You-Dont-Know-JS)
+
+### Weakmap
+- [WeakMap Example](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Keyed_collections)
 
 #### Tools
 - [Kompatibilitätsliste für ES6](https://kangax.github.io/compat-table/es6/)
