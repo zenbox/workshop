@@ -5,7 +5,7 @@
 - Auf Xing und LinkedIn unter Michael Reichart
 
 ## Foliensatz
-Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **MeidaWiki.pdf** (wip-Version), **HTML kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus einiges an Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **MediaWiki.pdf** (wip-Version), **HTML kompakt.pdf**, **CSS kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus einiges an Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
 ## Inhalte
 
@@ -35,4 +35,12 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 
 ## Sammlung der Links
 - [MediaWiki](https://mediawiki.org)
-- 
+- [Can I Use](https://caniuse.com/)
+- [Flexboxes](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Blindtext Generator](https://loremipsum.de/)
+- [Wiki: Erweiterungen in der Übersicht](https://www.mediawiki.org/wiki/Special:ExtensionDistributor)
+- [Wiki: Erweiterungen installieren](https://www.mediawiki.org/wiki/Manual:Extensions)
+
+### Wichtige MediaWiki Seiten
+- [Konfiguration der seitlichen Menüs](MediaWiki:Sidebar)
+- [Der WYSIWYG Editor](https://www.mediawiki.org/wiki/WYSIWYG_editor)
