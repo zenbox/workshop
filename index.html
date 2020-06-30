@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meine erste Seite</title>
     <style>
+        @import url(my-styles.css);
+
+
         body {
             background-color: white;
             color: black;
@@ -30,7 +33,7 @@
         :root,
         html {
             font-family: Calibri, Arial, Helvetica, sans-serif;
-            font-size: 24px;
+            font-size: 18px;
             line-height: 1.1;
         }
 
@@ -49,28 +52,77 @@
         h4 {
             font-family: Cambria, serif;
         }
+
+        /* Klasse für die Tabelle*/
+        .my-table {
+            border-style: solid;
+            border-color: steelblue;
+            border-width: 2px;
+
+            border-collapse: collapse;
+            box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.5)
+        }
+
+        .my-table td,
+        .my-table th {
+            border-style: dotted;
+            border-color: lightsteelblue;
+            border-width: 1px;
+
+            text-align: left;
+            /* center | right */
+
+            padding: 0.25rem;
+        }
+
+        .my-table th {
+            background-color: lightsteelblue;
+        }
+
+        /* Mehrspaltigkeit ohe Tabellen */
+        .multicolumn p {
+            column-width: 12rem;
+        }
+
+        /* Mehrspaltige Layouts */
+        nav ul {
+            display: flex;
+            flex-direction: row;
+
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            padding: 0.25rem;
+            margin: 0.1rem;
+            background-color: lightcoral;
+        }
     </style>
 </head>
 
 <body>
     <header></header>
 
+
+
     <aside>
         <nav>
             <ul>
-                <li><a href="">Seite 1</a></li>
-                <li><a href="">Seite 2</a></li>
-                <li><a href="">Seite 3</a></li>
+                <li><a href="https://google.de">Google</a></li>
+                <li><a href="http://127.0.0.1:5502/page2.html">Seite 2</a></li>
+                <li><a href="#bottom">Seite 3</a></li>
             </ul>
         </nav>
     </aside>
 
-    <main id="content" class="main-content">
+    <main id="content" class="main-content multicolumn">
         <h1>Erstellen von "Benutzer:Schulungen002"</h1>
-        <h2>Meine Überschrift</h2>
-        <p>Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. Vivamus sagittis lacus
-            vel
-            augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Integer
+        <h2>Meine &Uuml;berschrift &euro;</h2>
+        <p>Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.
+            Vivamus sagittis lacus
+            vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Integer
             posuere
             erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus.</p>
         <p>Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis
@@ -82,10 +134,36 @@
         <ol>
             <li>Lorem ipsum</li>
             <li>Dolor sit amet</li>
-            <li>Consectetur ad piscit</li>
+            <li>Consectetur ad piscit</<li>
         </ol>
     </main>
 
+    <aside>
+        <table class="my-table">
+            <caption>Tabellenüberschrift</caption>
+            <thead>
+                <tr>
+                    <th>Feldname</th>
+                    <th>Feldname</th>
+                </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                    <td colspan="2">Inhalt</td>
+                </tr>
+            </tfoot>
+            <tbody>
+                <tr>
+                    <td>Inhalt</td>
+                    <td>Inhalt</td>
+                </tr>
+            </tbody>
+        </table>
+    </aside>
+
+    <footer id="bottom">
+        <a name="bottom">Unten</a>
+    </footer>
 </body>
 
 </html>
