@@ -35,3 +35,4 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 
 ## Sammlung der Links
 - [MediaWiki](https://mediawiki.org)
+- 
