@@ -52,3 +52,5 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - ``Spezial:Benutzer`` listet alle Benutzer auf.Spezial:Gruppenrechte zeigt die Rechte, die Gruppen zugeordnet sind.
 - ``Spezial:Benutzerrechte`` zeigt die Rechte, die einzelnen Benutzern zugeordnet sind. Dort können sie auch geändert werden.
 - ``Manual:CreateAndPromote.php`` beschreibt, wie (ohne Anmeldung) neue Benutzer angelegt werden können.
+- [Einige Tutorials bei WikiMedia](https://www.mediawiki.org/wiki/Category:Tutorials/)
+- [MediaWiki erweitern?](https://www.mediawiki.org/wiki/How_to_become_a_MediaWiki_hacker/de)
