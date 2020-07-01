@@ -38,9 +38,17 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - [Can I Use](https://caniuse.com/)
 - [Flexboxes](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
 - [Blindtext Generator](https://loremipsum.de/)
+- [Lesbarkeit bewerten](http://leichtlesbar.ch/html/)
+- 
+
+### Relevante MediaWiki Seiten
 - [Wiki: Erweiterungen in der Übersicht](https://www.mediawiki.org/wiki/Special:ExtensionDistributor)
 - [Wiki: Erweiterungen installieren](https://www.mediawiki.org/wiki/Manual:Extensions)
-
-### Wichtige MediaWiki Seiten
 - [Konfiguration der seitlichen Menüs](MediaWiki:Sidebar)
 - [Der WYSIWYG Editor](https://www.mediawiki.org/wiki/WYSIWYG_editor)
+- [Übersicht der Magischen Worte](https://www.mediawiki.org/wiki/Help:Magic_words/de)
+- [Kategorien einrichten und verwenden](https://www.mediawiki.org/wiki/Help:Categories)
+- [Benutzer und Gruppen](https://www.mediawiki.org/wiki/Help:User_rights_and_groups/)
+- ``Spezial:Benutzer`` listet alle Benutzer auf.Spezial:Gruppenrechte zeigt die Rechte, die Gruppen zugeordnet sind.
+- ``Spezial:Benutzerrechte`` zeigt die Rechte, die einzelnen Benutzern zugeordnet sind. Dort können sie auch geändert werden.
+- ``Manual:CreateAndPromote.php`` beschreibt, wie (ohne Anmeldung) neue Benutzer angelegt werden können.
