@@ -10,23 +10,23 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 ## Inhalte
 
 **Inhalte schreiben und redigieren**
-- :thumbsup: Textgestaltung, Formatierung
-- :thumbsup: Seiten bearbeiten 
-- :thumbsup: Benutzung des WYSIWYG Editors
-- :thumbsup: Inhalte barrierefrei gestalten
-- :thumbsup: Versionierung
+- :white_check_mark: Textgestaltung, Formatierung
+- :white_check_mark: Seiten bearbeiten 
+- :white_check_mark: Benutzung des WYSIWYG Editors
+- :white_check_mark: Inhalte barrierefrei gestalten
+- :white_check_mark: Versionierung
 - Dynamische Generierung mit Makros
 
 **Erweiterungen**
-- :thumbsup: Suchen und installieren
+- :white_check_mark: Suchen und installieren
 - Benutzerverwaltung
 - Erstellen, Löschen und Ändern von Benutzern/Rechtevergabe
 
 **Wünsche**
-- :thumbsup:? Tabellen A-Z 
+- :white_check_mark:? Tabellen A-Z 
 (z.B. automatische Aktualisierung von Tabellen, Filtern in Tabellen usw.)
-- :thumbsup: CSS-Vorlagen
-- :thumbsup: Oberflächenkonfiguration
+- :white_check_mark: CSS-Vorlagen
+- :white_check_mark: Oberflächenkonfiguration
 - Headtabs
 - Semantische Suche
 - Dynamic Page List
