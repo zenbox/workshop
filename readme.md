@@ -54,3 +54,4 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - ``Manual:CreateAndPromote.php`` beschreibt, wie (ohne Anmeldung) neue Benutzer angelegt werden können.
 - [Einige Tutorials bei WikiMedia](https://www.mediawiki.org/wiki/Category:Tutorials/)
 - [MediaWiki erweitern?](https://www.mediawiki.org/wiki/How_to_become_a_MediaWiki_hacker/de)
+- [WikiText (WikiMarkup) erweitern](https://www.mediawiki.org/wiki/Manual:Extending_wiki_markup/de)
