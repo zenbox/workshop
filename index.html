@@ -4,177 +4,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine erste Seite</title>
-    <style>
-        @import url(my-styles.css);
-
-
-        body {
-            background-color: white;
-            color: black;
-        }
-
-        h1,
-        h2 {
-            text-decoration: underline;
-        }
-
-        /* 
-        #content {
-            background-color: steelblue;
-        } */
-
-        .main-content h2 {
-            background-color: white !important;
-            color: black;
-        }
-
-        /* Base Styles */
-        :root,
-        html {
-            font-family: Calibri, Arial, Helvetica, sans-serif;
-            font-size: 18px;
-            line-height: 1.1;
-        }
-
-        h1 {
-            font-size: 2.4rem;
-        }
-
-        /* Refactoring the common.css*/
-        html {
-            font-size: 16px;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            font-family: Cambria, serif;
-        }
-
-        /* Klasse für die Tabelle*/
-        .my-table {
-            border-style: solid;
-            border-color: steelblue;
-            border-width: 2px;
-
-            border-collapse: collapse;
-            box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.5)
-        }
-
-        .my-table td,
-        .my-table th {
-            border-style: dotted;
-            border-color: lightsteelblue;
-            border-width: 1px;
-
-            text-align: left;
-            /* center | right */
-
-            padding: 0.25rem;
-        }
-
-        .my-table th {
-            background-color: lightsteelblue;
-        }
-
-        /* Mehrspaltigkeit ohe Tabellen */
-        .multicolumn p {
-            column-width: 12rem;
-        }
-
-        /* Mehrspaltige Layouts */
-        nav ul {
-            display: flex;
-            flex-direction: row;
-
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav li {
-            padding: 0.25rem;
-            margin: 0.1rem;
-            background-color: lightcoral;
-        }
-    </style>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES 6</title>
 </head>
 
 <body>
-    <header></header>
+    <nav>
+    </nav>
+    <script src="tools.js"></script>
 
-    <form action="">
-        <label>Benutzername</label>
-        <input type="text" name="username" value="michael">
+    <script src="00-how-to.js"></script>
+    <!-- <script src="01-scopes.js"></script> -->
+    <!-- <script src="02-functions.js"></script> -->
+    <!-- <script src="03-classes.js"></script> -->
+    <!-- <script src="04-this.js"></script> -->
+    <!-- <script type="module" src="05-modules.js"></script> -->
+    <!-- <script src="06-promises.js"></script> -->
+    <!-- - - - - --->
+    <!-- <script src="07-proxy.js"></script> -->
+    <!-- <script src="08-destructuring.js"></script> -->
+    <!-- <script src="09-reflections.js"></script> -->
+    <!-- <script src="10-sets.js"></script> -->
+    <!-- <script src="11-maps.js"></script> -->
+    <!-- <script src="12-symbols.js"></script> -->
+    <!-- <script src="13-generator.js"></script> -->
+    <!-- <script src="14-iterator.js"></script> -->
+    <!-- <script src="15-array-methods.js"></script> -->
+    <!-- <script src="16-object-methods.js"></script> -->
+    <!-- <script src="17-other-methods.js"></script> -->
+    <!-- <script src="18-chaining.js"></script> -->
+    <!-- <script src="19a-worker.js"></script> -->
 
-        <label>passwort</label>
-        <input type="password" name="">
+    <style>
+        html,
+        html * {
+            box-sizing: border-box;
+            font-family: Menlo, monospace;
+            font-size: 14px;
+        }
 
-<input type="checkbox" name="accept" value="yes"id="">
-<label for="">akzeptieren</label>
+        body {
+            background-color: #222;
+            color: #bbb;
+        }
 
-        <button type="submit">Login</button>
-    </form>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            column-count: 2;
+        }
+    </style>
+    <script>
+        !(function () {
+            'use strict';
+            //- - - - - - - - - -
+            let
+                body = document.querySelector('body'),
+                nav = document.createElement('nav'),
+                ul = document.createElement('ul');
 
-    <aside>
-        <nav>
-            <ul>
-                <li><a href="https://google.de">Google</a></li>
-                <li><a href="http://127.0.0.1:5502/page2.html">Seite 2</a></li>
-                <li><a href="#bottom">Seite 3</a></li>
-            </ul>
-        </nav>
-    </aside>
+            // iterate over themes
+            for (let theme in themes) {
+                let
+                    li = document.createElement('li'),
+                    input = document.createElement('input'),
+                    text = document.createTextNode(theme);
 
-    <main id="content" class="main-content multicolumn">
-        <h1>Erstellen von "Benutzer:Schulungen002"</h1>
-        <h2>Meine &Uuml;berschrift &euro;</h2>
-        <p>Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor.
-            Vivamus sagittis lacus
-            vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Integer
-            posuere
-            erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus.</p>
-        <p>Nulla vitae elit libero, a pharetra augue. Nullam id dolor id nibh ultricies vehicula ut id elit. Nullam quis
-            risus
-            eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis. Donec sed odio dui. Nullam quis
-            risus
-            eget urna mollis ornare vel eu leo. Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                input.setAttribute('type', 'checkbox');
+                if (localStorage.getItem(theme) === 'true') {
+                    input.setAttribute('checked', 'checked');
+                }
 
-        <ol>
-            <li>Lorem ipsum</li>
-            <li>Dolor sit amet</li>
-            <li>Consectetur ad piscit</<li>
-        </ol>
-    </main>
+                li.appendChild(input);
+                li.appendChild(text);
+                ul.appendChild(li);
+            }
 
-    <aside>
-        <table class="my-table">
-            <caption>Tabellenüberschrift</caption>
-            <thead>
-                <tr>
-                    <th>Feldname</th>
-                    <th>Feldname</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <td colspan="2">Inhalt</td>
-                </tr>
-            </tfoot>
-            <tbody>
-                <tr>
-                    <td>Inhalt</td>
-                    <td>Inhalt</td>
-                </tr>
-            </tbody>
-        </table>
-    </aside>
+            nav.appendChild(ul);
+            body.appendChild(nav);
 
-    <footer id="bottom">
-        <a name="bottom">Unten</a>
-    </footer>
+            document.querySelector('ul').addEventListener('click', (event => {
+                let
+                    theme,
+                    state = event.target.checked;
+
+                if (event.target.nextSibling.wholeText) {
+                    theme = event.target.nextSibling.wholeText.trim();
+                }
+
+                localStorage.setItem(theme, state);
+                location.reload();
+
+                // is[theme] = 
+            }));
+            //- - - - - - - - - -
+        }());
+    </script>
 </body>
 
 </html>
