@@ -7,7 +7,7 @@
   * @param {string} e Email of a person
   * @returns {Person}
   */
- class Person {
+ export class Person {
      constructor(n, p, e) {
          this.name = n; // Use a setter
 
@@ -99,7 +99,7 @@
   * @param {string} e Email of a person
   * @returns {Male}
   */
- class Male extends Person {
+ export class Male extends Person {
      constructor(n, p, e) {
          super(n, p, e);
      }
@@ -121,7 +121,7 @@
   * @param {string} e Email of a person
   * @returns {Female}
   */
- class Female extends Person {
+ export class Female extends Person {
      constructor(n, p, e) {
          super(n, p, e);
      }
