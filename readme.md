@@ -101,14 +101,14 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
  
 ### ES 10 (2019)
 - Array#{flat,flatMap}
-➡️ Object.fromEntries
-➡️ String#{trimStart,trimEnd}
-➡️ Symbol#description
-➡️ try { } catch {} // optional binding
-➡️ JSON ⊂ ECMAScript
-➡️ well-formed JSON.stringify
-➡️ stable Array#sort
-➡️ revised Function#toString
+- Object.fromEntries
+- String#{trimStart,trimEnd}
+- Symbol#description
+- try { } catch {} // optional binding
+- JSON ⊂ ECMAScript
+- well-formed JSON.stringify
+- stable Array#sort
+- revised Function#toString
 
 ### ES 11 (2020)
 - ``String.prototype.matchAll``
