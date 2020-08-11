@@ -1,0 +1,39 @@
+body,
+button {
+    background: radial-gradient(ellipse at center,
+            hsla(0, 0%, 100%, 0.3) 0%,
+            hsla(0, 0%, 80%, 0.3) 50%);
+}
+
+
+
+@keyframes my-animation {
+    0% {
+        background-color: black;
+        transform: scale(1,1);
+    }
+
+    25% {
+        background-color: red;
+        transform: scale(1,1);
+    }
+
+    50% {
+        background-color: green;
+        transform: scale(2,2);
+    }
+
+    75% {
+        background-color: yellow;
+        transform: scale(1,1);
+    }
+
+    100% {
+        background-color: black;
+        transform: scale(1,1);
+    }
+}
+
+button {
+    animation: my-animation 1s 3;
+}
