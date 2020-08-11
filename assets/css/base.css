@@ -1,0 +1,29 @@
+/* Base values for html */
+html {
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+html,
+html * {
+    box-sizing: border-box;
+}
+
+table {
+    border-style: solid;
+    border-width: 1px;
+    border-color: steelblue;
+
+    border-collapse: separate;
+    border-spacing: 0.25rem;
+}
+
+td,
+th {
+    border-style: solid;
+    border-width: 1px;
+    border-color: steelblue;
+
+    padding: 0.5rem;
+}
