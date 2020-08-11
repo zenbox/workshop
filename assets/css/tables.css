@@ -70,3 +70,64 @@
 */
 
 /** TABLE CHANGING STATES (BEHAVIOUR) */
+
+
+
+
+table.issues {
+    border: 2px dotted lightcoral;
+    width: 100%;
+}
+
+.issues-container {
+    border: 2px dotted rgb(15, 211, 211);
+
+    display: block;
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+
+    overflow: scroll;
+}
+
+.issues tbody td:nth-child(1) {
+    text-align: left;
+    /* too long words can break: */
+    word-break: break-word;
+
+    /* cut the too long ...*/
+    /* text-overflow: clip;
+   overflow: hidden; */
+}
+
+[data-indent="1"] {
+    padding-left: 1rem;
+}
+
+[data-indent="2"] {
+    padding-left: 2rem;
+}
+
+[data-indent="3"] {
+    padding-left: 3rem;
+}
+
+.issues tbody td:nth-child(2) {
+    text-align: left;
+}
+
+.issues tbody td:nth-child(3) {
+    text-align: left;
+}
+
+.issues tbody td:nth-child(4) {
+    text-align: left;
+}
+
+.issues tbody td:nth-child(5) {
+    text-align: right;
+}
+
+.issues tbody td:nth-child(6) {
+    text-align: right;
+}
