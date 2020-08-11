@@ -1,0 +1,32 @@
+/** Forms Styles 
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-08-10
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+
+/** COMPONENT BASE */
+
+/** COMPONENT LAYOUT */
+
+/** COMPONENT THEME */
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.form input[type=text]:focus {}
+
+.form input[type=text]:blur {}
+
+.form input[type=email]:valid {
+    background-color: hsla(151, 100%, 50%, 0.5);
+    color: hsla(150, 20%, 20%, 0.5);
+}
+
+.form input[type=email]:invalid {
+    background-color: hsla(0, 100%, 50%, 0.5);
+    color: hsla(0, 20%, 20%, 0.5);
+}
