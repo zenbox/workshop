@@ -1,3 +1,8 @@
+/* LAYOUT BASE */
+body {
+    margin: 0.5rem;
+}
+
 /* Classes for layouts */
 .layout {
     display: block;
@@ -73,29 +78,55 @@
     padding: 0.5rem;
 }
 
+.safari-flex-container {
+    display: box; 
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-box-align: stretch;
+}
+.safari-flex-item{
+    -webkit-box-flex: 1;
+}
+
+
 .flex-item:nth-child(1) {
     order: 1;
-    width: 15%;
+    /* width: 15%; */
+    flex-basis:15%;
+    flex-grow:1;
+    flex-shrink:1;
 }
 
 .flex-item:nth-child(2) {
     order: 2;
-    width: 15%;
+    /* width: 15%; */
+    flex-basis:15%;
+    flex-grow:1;
+    flex-shrink:1;
 }
 
 .flex-item:nth-child(3) {
     order: 3;
-    width: 40%;
+    /* width: 40%; */
+    flex-basis:15%;
+    flex-grow:10;
+    flex-shrink:1;
 }
 
 .flex-item:nth-child(4) {
     order: 4;
-    width: 15%;
+    /* width: 15%; */
+    flex-basis:15%;
+    flex-grow:1;
+    flex-shrink:1;
 }
 
 .flex-item:nth-child(5) {
     order: 5;
-    width: 15%;
+    /* width: 15%; */
+    flex-basis:15%;
+    flex-grow:1;
+    flex-shrink:1;
 }
 
 
