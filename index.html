@@ -17,7 +17,9 @@
 </head>
 
 <body>
+    <h1>CSS Layouts</h1>
 
+    <h2>A flexbox fayout example</h2>
     <div class="flex-container">
         <div class="flex-item">Lorem 1 ipsum dolor sit amet.</div>
         <div class="flex-item">Lorem 2 ipsum dolor sit amet.</div>
@@ -26,17 +28,27 @@
         <div class="flex-item">Lorem 5 ipsum dolor sit amet.</div>
     </div>
 
+    <!-- -->
+
+    <h2>A form element with valid/invalid</h2>
     <form class="form">
-        <input type="email" pattern="/[a-zA-ZäöüßÄÖÜ]*/" minlength="3" maxlength="10" required>
+        <label for="form-email">Enter your email adress</label>
+        <input id="form-email" type="email" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" minlength="3"
+            maxlength="100">
+        <button type="submit">send</button>
+        <p class="invalid-message"> <span class="fas fa-bomb"></span> Please enter a valid email</p>
     </form>
 
+    <!-- -->
+
+    <h2>A layout with float, clear, and clearfix</h2>
     <div class="row">
         <div class="column column-25">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, quidem eos.</p>
+            <p>(25% layout box:) Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, quidem eos.</p>
         </div>
         <div class="column column-75">
             <table class="table">
-                <caption>A Table Example</caption>
+                <caption>A table example (in a 75% layout box)</caption>
                 <thead>
                     <tr>
                         <th>Lorem, ipsum.</th>
@@ -51,31 +63,38 @@
                 </tfoot>
                 <tbody>
                     <tr>
-                        <td>Lorem, ipsum.</td>
-                        <td>Lorem ipsum dolor Asperiores, in doloremque?</td>
-                        <td>Lorem ipsum dolor sit </td>
+                        <td>Vehicula Mollis Tortor Consectetur</td>
+                        <td>Porta Nullam Inceptos Dapibus</td>
+                        <td>Egestas Condimentum Ultricies Bibendum</td>
                     </tr>
                     <tr>
-                        <td>Lorem, ipsum.</td>
-                        <td>Lorem ipsum dolor. Asperiores, in doloremque?</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, in doloremque?</td>
+                        <td>Justo Ultricies Fusce Vulputate</td>
+                        <td>Magna Venenatis Sem Etiam</td>
+                        <td>Quam Tellus Porta Vestibulum</td>
                     </tr>
                     <tr>
-                        <td>Lorem, ipsum.</td>
-                        <td>Lorem ipsum dolor sit amet , in doloremque?</td>
-                        <td>Lorem ipsum dolor sit amet consectetur </td>
+                        <td>Consectetur Ullamcorper Mattis Commodo</td>
+                        <td>Ornare Elit Sollicitudin Cras</td>
+                        <td>Risus Tellus Ligula Elit</td>
                     </tr>
                     <tr>
-                        <td>Lorem, ipsum.</td>
-                        <td>Lorem ipsum dolor sit</td>
-                        <td>Lorem ipsum dolor sit lit. Asperiores, in doloremque?</td>
+                        <td>Justo Vulputate Risus Ullamcorper</td>
+                        <td>Fermentum Ullamcorper Quam Ridiculus</td>
+                        <td>Vestibulum Tortor Inceptos Dolor</td>
                     </tr>
-
+                    <tr>
+                        <td>Sit Inceptos Magna Etiam</td>
+                        <td>Ligula Ridiculus Pharetra Elit</td>
+                        <td>Malesuada Tristique Risus Inceptos</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
+    <!-- -->
+
+    <h2>A summary element to expand/collapse</h2>
     <details>
         <summary>Summary sit amet</summary>
         <h2>Lorem ipsum dolor</h2>
@@ -95,4 +114,4 @@
 
 </body>
 
-</>
+</html>

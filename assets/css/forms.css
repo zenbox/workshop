@@ -10,23 +10,60 @@
   * @copyright (c) 2020 Michael Reichart, Cologne
   */
 
-/** COMPONENT BASE */
+/** FORM BASE */
 
-/** COMPONENT LAYOUT */
-
-/** COMPONENT THEME */
-
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
-.form input[type=text]:focus {}
-
-.form input[type=text]:blur {}
-
-.form input[type=email]:valid {
-    background-color: hsla(151, 100%, 50%, 0.5);
-    color: hsla(150, 20%, 20%, 0.5);
+/** FORM LAYOUT */
+.form>* {
+  display: inline-block;
 }
 
+/** FORM THEME */
+.form input[type=email] {
+  border: 0;
+  border-style: solid;
+  border-color: black;
+  border-bottom-width: 1px;
+  font-size: 1.2rem;
+  padding: 0.25rem;
+}
+
+.form button {
+  padding-top: 0.25rem;
+  padding-right: 1rem;
+  padding-bottom: 0.25rem;
+  padding-left: 1rem;
+
+  border-width: 1px;
+  border-style: solid;
+  border-color: hsla(0, 0%, 0%, 0.1);
+
+}
+
+/** FORM CHANGING STATES (BEHAVIOUR) */
+.form input[type=email]:focus {
+  background-color: hsla(0, 0%, 80%, 0.25);
+  outline: none;
+}
+
+.form input[type=email]:blur {}
+
+
+/* Valid/invalid input */
+/* .form input[type=email]:valid {
+    background-color: hsla(151, 100%, 90%, 0.25);
+    color: hsla(150, 20%, 20%, 0.5);
+  } */
+
 .form input[type=email]:invalid {
-    background-color: hsla(0, 100%, 50%, 0.5);
-    color: hsla(0, 20%, 20%, 0.5);
+  background-color: hsla(0, 100%, 50%, 0.5);
+  color: hsla(0, 20%, 20%, 0.5);
+}
+
+.form input[type=email]:valid~button+p {
+  display: none;
+}
+
+.form input[type=email]:invalid~button+p {
+  display: inline;
+  color: hsla(0, 100%, 20%, 1);
 }
