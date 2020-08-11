@@ -1,4 +1,4 @@
-# Willkommen zu Das neue JavaScript ES6 / ES Next
+# Willkommen zu HTML, CSS, Javascript, jQuery
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
@@ -259,3 +259,13 @@ Die geplanten Inhalte sind ... nicht unbedingt in dieser Reihenfolge und wir wer
     }
 }
 ```
+
+
+
+## Links
+- https://docs.emmet.io/cheat-sheet/
+- https://caniuse.com/
+- https://html5test.com
+- http://smacss.com/
+- http://html5pattern.com/
+- https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6
