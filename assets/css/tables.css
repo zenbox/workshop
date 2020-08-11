@@ -1,0 +1,34 @@
+/** Tables Component
+  *
+  * @package Webapplication
+  * @module table
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-08-10
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+
+/** COMPONENT BASE */
+.table {}
+
+/** COMPONENT LAYOUT */
+.table {}
+
+/** COMPONENT THEME 
+    Themes mostly consists of colors, dimension, paddings, and fonts
+*/
+.table tr:nth-of-type(odd) {
+    background-color: lightsteelblue;
+}
+
+.table tr:nth-of-type(even) {
+    background-color: steelblue;
+}
+
+.table tr:nth-of-type(3n) {
+    background-color: blueviolet;
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
