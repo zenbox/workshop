@@ -1,0 +1,113 @@
+/* Classes for layouts */
+.layout {
+    display: block;
+    width: 50%;
+    height: auto;
+
+    /* margin: 1rem; */
+    padding: 1rem;
+
+    /* TRBL */
+    /* margin: 1rem 1rem 1rem 1rem; */
+
+    /* margin-top: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem; */
+
+}
+
+/* Just to see */
+.layout {
+    background-color: lightblue;
+}
+
+
+
+
+/* Floating layout */
+.column {
+    float: left;
+}
+
+.row {
+    clear: both;
+}
+
+.column-25 {
+    width: 25%;
+}
+
+.column-50 {
+    width: 50%;
+}
+
+.column-75 {
+    width: 75%;
+}
+
+/* Micro Clearfix (N. Gallagher) */
+.clearfix::after,
+.clearfix::before,
+.row::after,
+.row::before {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+.row {
+    background-color: blue;
+}
+
+.column {
+    background-color: orange;
+}
+
+
+/* Flexbox layout */
+
+.flex-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: stretch;
+
+
+    gap: 0.25rem;
+    padding: 0.5rem;
+}
+
+.flex-item:nth-child(1) {
+    order: 1;
+    width: 15%;
+}
+.flex-item:nth-child(2) {
+    order: 2;
+    width: 15%;
+}
+
+.flex-item:nth-child(3) {
+    order: 3;
+    width: 40%;
+}
+.flex-item:nth-child(4) {
+    order: 4;
+    width: 15%;
+}
+
+.flex-item:nth-child(5) {
+    order: 5;
+    width: 15%;
+}
+
+
+
+.flex-container {
+    background-color: hsla(300, 100%, 30%, 1);
+}
+
+.flex-item {
+    background-color: hsla(30, 100%, 50%, 1)
+}
