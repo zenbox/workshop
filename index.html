@@ -17,6 +17,54 @@
 </head>
 
 <body>
+    <h1>Table with issues</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>head 1</th>
+                <th>head 2</th>
+                <th>head 3</th>
+                <th>head 4</th>
+                <th>head 5</th>
+                <th>head 6</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="6">foot</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>cell 1</td>
+                <td>cell 2</td>
+                <td>cell 3</td>
+                <td>cell 4</td>
+                <td>cell 5</td>
+                <td>cell 6</td>
+            </tr>
+            <tr>
+                <td>cell 7</td>
+                <td>cell 8</td>
+                <td>cell 9</td>
+                <td>cell 10</td>
+                <td>cell 11</td>
+                <td>cell 12</td>
+            </tr>
+            <tr>
+                <td>cell 13</td>
+                <td>cell 14</td>
+                <td>cell 15</td>
+                <td>cell 16</td>
+                <td>cell 17</td>
+                <td>cell 18</td>
+            </tr>
+        </tbody>
+
+
+    </table>
+
+
     <h1>CSS Layouts</h1>
 
     <h2>A flexbox fayout example</h2>
@@ -32,11 +80,22 @@
 
     <h2>A form element with valid/invalid</h2>
     <form class="form">
+
+        <!-- <labe>File</labe>
+        <input type="file" name="" id=""> -->
+
+        <input type="email" id="contacts" list="contactList">
+
+        <datalist id="contactList">
+            <option value="michael@zenbox.de" label="Michael">
+            <option value="peter@zenbox.de" label="Peter">
+        </datalist>
+
         <label for="form-email">Enter your email adress</label>
-        <input id="form-email" type="email" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" minlength="3"
+        <input id="form-email" type="email" required pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" minlength="3"
             maxlength="100">
         <button type="submit">send</button>
-        <p class="invalid-message"> <span class="fas fa-bomb"></span> Please enter a valid email</p>
+        <p class="invalid-message"> <span class="fas fa-exclamation"></span> Please enter a valid email</p>
     </form>
 
     <!-- -->
