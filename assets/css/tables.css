@@ -31,7 +31,7 @@
 
 /** TABLE LAYOUT 
  * Layouts stuff mostly consists of dimensions and paddings
- * i.e. width, height, padding
+ * i.e. width, height, padding, display
  */
 .table td,
 .table th {
@@ -44,10 +44,10 @@
  */
 .table td,
 .table th {
-    border-style: none;
-    border-bottom-style: solid;
+    border: none;
     border-width: 1px;
     border-color: black;
+    border-bottom-style: solid;
 }
 
 .table thead tr,
