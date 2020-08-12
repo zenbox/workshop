@@ -69,37 +69,34 @@
 }
 */
 
-/** TABLE CHANGING STATES (BEHAVIOUR) */
-
-
-
-
+/* TABLE WITH ISSUES */
+/* - - - - - - - - - - */
 table.issues {
-    border: 2px dotted lightcoral;
+    border: 2px dotted hsla(0, 80%, 70%, 1);
+
     width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 .issues-container {
-    border: 2px dotted rgb(15, 211, 211);
+    border: 2px dotted hsla(180, 90%, 40%, 1);
 
     display: block;
-    width: 400px;
-    height: 300px;
+    width: 650px;
+    height: 650px;
     margin: 0 auto;
 
     overflow: scroll;
 }
 
+/* Too long words in column 1 can break: */
 .issues tbody td:nth-child(1) {
     text-align: left;
-    /* too long words can break: */
     word-break: break-word;
-
-    /* cut the too long ...*/
-    /* text-overflow: clip;
-   overflow: hidden; */
 }
 
+/* First columns indent */
 [data-indent="1"] {
     padding-left: 1rem;
 }
@@ -112,6 +109,7 @@ table.issues {
     padding-left: 3rem;
 }
 
+/* Text aligments*/
 .issues tbody td:nth-child(2) {
     text-align: left;
 }
@@ -130,4 +128,61 @@ table.issues {
 
 .issues tbody td:nth-child(6) {
     text-align: right;
+}
+
+/* Resize the columns width by dragging the table heads */
+.issues thead th {
+    width: 16.66666667%;
+}
+
+.issues thead th>div {
+    border: 2px dashed hsla(140, 90%, 30%, 0.25);
+
+    resize: horizontal;
+    width: 100%;
+    min-width: 50%;
+
+    overflow: auto;
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    display: block;
+
+}
+
+/* first column states */
+.issues tbody td:first-child .fas.clicked {
+    color: hsla(0, 90%, 40%, 0.75);
+}
+
+.issues tbody td:first-child {
+    white-space: nowrap;
+}
+
+.issues tbody tr.hidden * {
+    display: none;
+    text-decoration: line-through;
+}
+
+/* Zebra tables */
+.issues tr:not(.hidden):nth-of-type(odd) {
+    background-color: lightgrey;
+    color: black;
+}
+
+
+.issues tr.even {
+    background-color: white !important;
+    color: black !important;
+}
+
+.issues tr.odd {
+    background-color: lightgrey !important;
+    color: black !important;
+}
+
+#issues thead>tr,
+#issues tfoot>tr {
+    background-color: black !important;
+    color: white !important;
 }
