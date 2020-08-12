@@ -18,10 +18,13 @@
 
 <body>
     <div class="issues-container">
-        <h1>Table with issues</h1>
+        <h1>Table with more issues</h1>
         <table id="issues" class="issues">
             <thead>
                 <tr>
+                    <th>
+                        <div>&nbsp;</div>
+                    </th>
                     <th>
                         <div>head 1</div>
                     </th>
@@ -44,13 +47,16 @@
             </thead>
             <tfoot>
                 <tr>
-                    <td colspan="6">foot</td>
+                    <td colspan="7">foot</td>
                 </tr>
             </tfoot>
             <tbody data-section="1">
-                <tr>
-                    <td data-indent="1">
-                        <span class="fas fa-angle-down"></span>
+                <tr data-indent="1">
+                    <th class="vertical" rowspan="3">
+                        <p>description fo the row section 1</p>
+                    </th>
+                    <td>
+                        <span class="fas fa-angle-down"> </span>
                         cell_1.1.1_Lorem<wbr>Ipsum<wbr>Dolor<wbr>Sit<wbr>Amet
                     </td>
                     <td>
@@ -68,9 +74,10 @@
                     <td>
                         cell 1.1.6
                     </td>
-                </tr>
-                <tr>
-                    <td data-indent="2">
+                    </trdata-indent="1">
+                <tr data-indent="2">
+                    <td>
+                        <span class="fas fa-angle-down"></span>
                         1.2.1_Lorem<wbr>Ipsum<wbr>Dolor<wbr>Sit<wbr>Amet
                     </td>
                     <td>
@@ -89,8 +96,8 @@
                         cell 1.2.6
                     </td>
                 </tr>
-                <tr>
-                    <td data-indent="3">
+                <tr data-indent="3">
+                    <td>
                         1.3.1_Lorem<wbr>Ipsum<wbr>Dolor<wbr>Sit<wbr>Amet
                     </td>
                     <td>
@@ -111,8 +118,11 @@
                 </tr>
             </tbody>
             <tbody data-section="2">
-                <tr>
-                    <td data-indent="1">
+                <tr data-indent="1">
+                    <th class="vertical" rowspan="3">
+                        <p>description fo the row section 2</p>
+                    </th>
+                    <td>
                         <span class="fas fa-angle-down"></span>
                         cell_2.1.1_Lorem<wbr>Ipsum<wbr>Dolor<wbr>Sit<wbr>Amet
                     </td>
@@ -132,8 +142,9 @@
                         cell 2.1.6
                     </td>
                 </tr>
-                <tr>
-                    <td data-indent="2">
+                <tr data-indent="2">
+                    <td>
+                        <span class="fas fa-angle-down"></span>
                         2.2.1_Lorem<wbr>Ipsum<wbr>Dolor<wbr>Sit<wbr>Amet
                     </td>
                     <td>
@@ -152,8 +163,8 @@
                         cell 2.2.6
                     </td>
                 </tr>
-                <tr>
-                    <td data-indent="3">
+                <tr data-indent="3">
+                    <td>
                         2.3.1_Lorem<wbr>Ipsum<wbr>Dolor<wbr>Sit<wbr>Amet
                     </td>
                     <td>
@@ -262,6 +273,25 @@
         </div>
     </div>
 
+    <h2>SVG Text</h2>
+    <style>
+        svg {
+            border: 1px dotted red;
+        }
+
+        svg text {
+            text-anchor: start;
+            fill:green;
+            font-family: Menlo;
+            font-size: 1rem;
+        }
+    </style>
+    <svg width="1rem" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(0,250) rotate(270)">
+            <text>Lorem ipsum dolor sit</text>
+        </g>
+    </svg>
+    <script>console.dir(document.querySelector('svg g'))</script>
     <!-- -->
 
     <h2>A summary element to expand/collapse</h2>
@@ -283,6 +313,9 @@
 
     </details>
 
+    <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    <!-- <script src="assets/js/basics.js"></script> -->
     <script src="assets/js/table.js"></script>
 
 </body>

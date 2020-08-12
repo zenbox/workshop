@@ -154,3 +154,4 @@ Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `doc
 - http://html5pattern.com/
 - https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6
 - https://necolas.github.io/normalize.cs
+- https://datatables.net/
