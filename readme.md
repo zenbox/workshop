@@ -29,6 +29,9 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am 
 - [MIT License](https://opensource.org/licenses/MIT)
 - [Cost of Defect](http://thklein.com/de_DE/cost-of-defect/)
 - [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
-
+- [HTML Dokumentation I](https://www.w3schools.com/)
+- [HTML Dokumentation II](https://wiki.selfhtml.org/)
+- [HTML Dokumentation III](http://html5doctor.com/)
+- [CSS Tricks](https://css-tricks.com/)
 
 
