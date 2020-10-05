@@ -1,16 +1,54 @@
+/* All devices fallback */
 
 html {
     font-family: sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.5;
+    /* line grid 24px */
 }
 
-h1, h2 {
+/* Reset ... 
+- - - - - - 
+*/
+h1,
+h2 {
     font-size: 1rem;
+    /* root em */
     font-weight: 400;
 }
 
-h1, h2, p  {
-    margin-top:0;
-    margin-bottom:0;
+h1,
+h2,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+/* - - - - - */
+
+/* Typography */
+p {
+    font-size: 1rem
+}
+
+h1 {
+    /* 36/48px */
+    font-size: 2rem;
+    line-height: 1.333334;
+}
+
+
+/* ipad portrait mode*/
+@media screen and (min-width:768px) {
+    html {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+}
+
+/* ipad landscape mode*/
+@media screen and (min-width:992px) {
+    html {
+        font-size: 18px;
+        line-height: 1.5;
+    }
 }
