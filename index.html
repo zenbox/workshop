@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="utf-8">
@@ -23,6 +23,90 @@
 
     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam officiis aut officia corrupti distinctio
         quibusdam! Perspiciatis, alias unde!</p>
+
+    <!-- Navigation Component Code -->
+    <nav>
+        <ul>
+            <li><a href="http://google.com">Google</a></li>
+            <li><a href="">Seite 2</a></li>
+            <li><a href="">Seite 3</a>
+                <ul>
+                    <li>Text 1</li>
+                    <li>Text 2</li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <!-- /Navigation Component Code -->
+
+    <!-- 
+    Tabellen
+    table>tr*3>td{data $}*3
+-->
+    <table>
+        <tr>
+            <th>head 1</th>
+            <th>head 2</th>
+            <th>head 3</th>
+        </tr>
+        <tr>
+            <td>Lorem ipsum, dolor sit.</td>
+            <td>data 2</td>
+            <td>data 3</td>
+        </tr>
+        <tr>
+            <td>data 1</td>
+            <td>data 2</td>
+            <td>data 3</td>
+        </tr>
+    </table>
+
+
+    <!-- Tabellen mit allem
+         table>thead>tr>th{head $}*3^^tfoot>tr>td{foot $}*3^^tbody>tr*2>td{data $}*3
+    -->
+    <table>
+        <caption>Table Caption</caption>
+        <thead>
+            <tr>
+                <th>head 1</th>
+                <th>head 2</th>
+                <th>head 3</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="3">*notes foot 1</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td>data 1</td>
+                <td>data 2</td>
+                <td>data 3</td>
+            </tr>
+            <tr>
+                <td>data 1</td>
+                <td>data 2</td>
+                <td>data 3</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--
+    Forms
+    form#form-login>fieldset>legend{login form}^^label{email}+input+button{login}
+-->
+    <form action="" id="form-login">
+        <fieldset>
+            <legend>login form</legend>
+
+            <label for="login-email">Email</label>
+            <input id="login-email" type="email">
+
+            <button>login</button>
+        </fieldset>
+    </form>
 
 </body>
 
