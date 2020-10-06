@@ -1,0 +1,19 @@
+div.container {
+    display: block;
+    width: 768px;
+}
+
+header {
+    display: block;
+    width: 100%;
+}
+
+main {
+    display: block;
+    width: 100%;
+}
+
+footer {
+    display: block;
+    width: 100%;
+}
