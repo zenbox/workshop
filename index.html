@@ -3,15 +3,26 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="viewport" content="width=device-width; initial-scale=1;">
+
     <title>Homepage - DVAG</title>
+
+    <!-- 6 Requests à 20 - 100ms ~ 600ms-->
 
     <!-- Reset und base css -->
     <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
     <link rel="stylesheet" href="assets/css/base.css">
 
-    <!-- Component css -->-->
+    <!-- Component css -->
     <link rel="stylesheet" href="assets/css/form-login.css">
+    <link rel="stylesheet" href="assets/css/navigation.css">
+    <link rel="stylesheet" href="assets/css/button.css">
+
+
+    <!-- 1 Request à 20ms-->
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
 </head>
 
 <body>
@@ -31,9 +42,9 @@
     <!-- Navigation Component Code -->
     <nav>
         <ul class="nav nav-horizontal">
-            <li><a href="http://google.com">Google</a></li>
-            <li><a href="">Seite 2</a></li>
-            <li><a href="">Seite 3</a></li>
+            <li><a target="second-window" href="http://google.com">Google</a></li>
+            <li><a target="second-window" href="">Seite 2</a></li>
+            <li><a target="_blank" href="">Seite 3</a></li>
         </ul>
     </nav>
     <!-- /Navigation Component Code -->
@@ -118,15 +129,16 @@
             </div>
 
 
-            <button type="submit">login</button>
+            <button class="button button-primary" type="submit">login</button>
+         
         </fieldset>
     </form>
 
-<div>division</div>
-<div>division</div>
+    <div>division</div>
+    <div>division</div>
 
-<span>span</span>
-<span>span</span>
+    <span>span</span>
+    <span>span</span>
 </body>
 
 </html>
