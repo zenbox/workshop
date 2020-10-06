@@ -1,0 +1,91 @@
+/** Button Styles
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-10-06
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+p {
+        margin-top:1rem;
+}
+/** BUTTON BASE 
+ *  all properties
+ */
+.button {
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+
+/** BUTTON LAYOUT 
+ * display, width, height, padding, margin,
+ * font-size, line-height
+ */
+
+/* RESPONSIVE MOBILE FIRST APPROACH:
+ Fallback all devices */
+@media screen {
+    .button-block {
+        display: block;
+    }
+
+    .button {
+        min-width: 100%;
+        font-size: 1rem;
+        line-height: 3rem;
+    }
+}
+
+/* Small devices */
+@media screen and (min-width:768px) {
+    .button {
+        min-width: 100%;
+        font-size: 1rem;
+        line-height: 3rem;
+    }
+}
+
+/* Medium devices */
+@media screen and (min-width:992px) {
+    .button {
+        margin-top:calc(1*1rem);
+        margin-bottom:calc(2*1rem);
+        min-width: 12rem;
+        font-size: 1rem;
+        line-height: 3rem;
+    }
+}
+
+/** BUTTON THEME 
+ * color, background, border ...
+ */
+.button-primary {
+    border: none;
+}
+
+.button-secondary {
+    border-width: 1px;
+    border-style: solid;
+    border-color:#a7893d;
+}
+
+.button-other-theme {}
+
+/** BUTTON CHANGING STATES (BEHAVIOUR) */
+.button {
+    color: white;
+    background-color: #a7893d;
+}
+
+.button:hover {
+    background-color: #957b36;
+}
+
+.button:active {
+    background-color: #856d30;
+}
