@@ -1,5 +1,33 @@
 /* base */
+.nav {
+    list-style-type: none;
+    padding:0;
+}
+.nav a[href] {
+    display:inline-block;
+    width: 100%;
+}
 
 /* layout */
+.nav-horizontal li {
+    display: inline-block;
+    width: 120px;
+
+    padding: 0;
+    margin: 0;
+}
 
 /* state */
+.nav a[href] {
+    background-color: hsla(120, 100%, 50%, 1);
+}
+
+
+/* theme */
+.nav-horizontal li {
+    border-width: 2px;
+    border-style: dotted;
+    border-color: red;
+
+
+}
