@@ -33,5 +33,6 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am 
 - [HTML Dokumentation II](https://wiki.selfhtml.org/)
 - [HTML Dokumentation III](http://html5doctor.com/)
 - [CSS Tricks](https://css-tricks.com/)
+- [Blind-Bild-Generator](https://picsum.photos/)
 
 
