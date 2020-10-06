@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage - DVAG</title>
 
+    <!-- Reset und base css -->
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/base.css">
+
+    <!-- Component css -->-->
+    <link rel="stylesheet" href="assets/css/form-login.css">
 </head>
 
 <body>
@@ -26,15 +30,10 @@
 
     <!-- Navigation Component Code -->
     <nav>
-        <ul>
+        <ul class="nav nav-horizontal">
             <li><a href="http://google.com">Google</a></li>
             <li><a href="">Seite 2</a></li>
-            <li><a href="">Seite 3</a>
-                <ul>
-                    <li>Text 1</li>
-                    <li>Text 2</li>
-                </ul>
-            </li>
+            <li><a href="">Seite 3</a></li>
         </ul>
     </nav>
     <!-- /Navigation Component Code -->
@@ -97,17 +96,37 @@
     Forms
     form#form-login>fieldset>legend{login form}^^label{email}+input+button{login}
 -->
-    <form action="" id="form-login">
+    <form action="login.php" method="GET" id="form-login">
         <fieldset>
             <legend>login form</legend>
 
-            <label for="login-email">Email</label>
-            <input id="login-email" type="email">
+            <div class="form-element-group form-element-group-vertical">
+                <label for="login-email">Email</label>
+                <input id="login-email" type="email" name="login-email" value="">
+            </div>
 
-            <button>login</button>
+            <div class="form-element-group form-element-group-vertical">
+                <label for="login-password">Password</label>
+                <input id="login-password" type="password" name="login-password" value="">
+            </div>
+
+            <div class="form-element-group form-element-group-vertical">
+                <label>
+                    <input type="checkbox" name="login-terms" value="agreed">
+                    agree terms
+                </label>
+            </div>
+
+
+            <button type="submit">login</button>
         </fieldset>
     </form>
 
+<div>division</div>
+<div>division</div>
+
+<span>span</span>
+<span>span</span>
 </body>
 
 </html>
