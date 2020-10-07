@@ -22,21 +22,23 @@ Es gibt zwei Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`:
 wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am Ende des Seminars hier heruntergeladen werden.
 
 ## Links zu HTML und CSS
-- [CSS Architektur](http://smacss.com/)
-- [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
 - [html5Test.com](http://html5test.com/index.html)
 - [Can i Use?](https://caniuse.com/)
 - [MIT License](https://opensource.org/licenses/MIT)
 - [Cost of Defect](http://thklein.com/de_DE/cost-of-defect/)
 - [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
+
 - [HTML Dokumentation I](https://www.w3schools.com/)
 - [HTML Dokumentation II](https://wiki.selfhtml.org/)
 - [HTML Dokumentation III](http://html5doctor.com/)
+ 
 - [CSS Tricks](https://css-tricks.com/)
-- [Blind-Bild-Generator](https://picsum.photos/)
-- [Alle Web Spezifikationen beim W3C](https://www.w3.org/TR)
 - [CSS Nomenklatur - Block Element Modifier](http://getbem.com/introduction/)
 - [CSS Architektur - skalierbar und modular](http://smacss.com/)
+- [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
+ 
+- [Blind-Bild-Generator](https://picsum.photos/)
+- [Alle Web Spezifikationen beim W3C](https://www.w3.org/TR)
 - [Generative Gestaltung](http://www.generative-gestaltung.de/)
 - [The Nature of Code - programming course](https://natureofcode.com/)
 - [Grafical programming IDE for artists](https://processing.org/)
