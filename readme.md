@@ -34,5 +34,9 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am 
 - [HTML Dokumentation III](http://html5doctor.com/)
 - [CSS Tricks](https://css-tricks.com/)
 - [Blind-Bild-Generator](https://picsum.photos/)
-
-
+- [Alle Web Spezifikationen beim W3C](https://www.w3.org/TR)
+- [CSS Nomenklatur - Block Element Modifier](http://getbem.com/introduction/)
+- [CSS Architektur - skalierbar und modular](http://smacss.com/)
+- [Generative Gestaltung](http://www.generative-gestaltung.de/)
+- [The Nature of Code - programming course](https://natureofcode.com/)
+- [Grafical programming IDE for artists](https://processing.org/)
