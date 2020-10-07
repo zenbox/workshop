@@ -46,7 +46,7 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am 
 - [The Nature of Code - programming course](https://natureofcode.com/)
 - [Grafical programming IDE for artists](https://processing.org/)
 
-
+## settings.json - Anpassungen für VS Code für den Live Sass Compiler
 ```json
   "liveSassCompile.settings.formats": [
     {
