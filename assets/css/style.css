@@ -513,6 +513,11 @@ ul.nav-flex {
   padding-left: 0;
 }
 
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
 div.container {
   display: block;
   width: 768px;
