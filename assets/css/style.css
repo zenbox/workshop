@@ -453,6 +453,66 @@ h1 {
   border-color: red;
 }
 
+/* old way centered */
+ul.nav-flex {
+  display: block;
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+}
+
+/* Flexbox Navigation */
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+ul.nav-flex {
+  width: 80%;
+  height: 4rem;
+  border: 1px dashed gray;
+}
+
+ul.nav-flex li {
+  background-color: lightsteelblue;
+  flex-basis: 15%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+ul.nav-flex li:nth-child(1) {
+  order: 999;
+}
+
+ul.nav-flex li:nth-child(2) {
+  order: 1;
+}
+
+ul.nav-flex li:nth-child(3) {
+  order: -1;
+}
+
+ul.nav-flex li:nth-child(4) {
+  order: 1;
+  align-self: flex-end;
+}
+
+ul.nav-flex li:nth-child(5) {
+  order: 1;
+}
+
+ul.nav-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-content: flex-start;
+  list-style-type: none;
+  padding-left: 0;
+}
+
 div.container {
   display: block;
   width: 768px;
