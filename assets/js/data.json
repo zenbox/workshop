@@ -1,0 +1,11 @@
+{
+    "key": "value",
+    "JSON": "Javascript Object Notation",
+    "number": 42,
+    "decision": true,
+    "properties": {
+        "key": "value",
+        "otherkey": "1234"
+    },
+    "xml": "<my-element><key type=\"attribute value\">value</key></my-element>"
+}
