@@ -10,8 +10,9 @@
   * @copyright (c) 2020 Michael Reichart, Cologne
   */
 p {
-        margin-top:1rem;
+    margin-top: 1rem;
 }
+
 /** BUTTON BASE 
  *  all properties
  */
@@ -53,8 +54,8 @@ p {
 /* Medium devices */
 @media screen and (min-width:992px) {
     .button {
-        margin-top:calc(1*1rem);
-        margin-bottom:calc(2*1rem);
+        margin-top: calc(1*1rem);
+        margin-bottom: calc(2*1rem);
         min-width: 12rem;
         font-size: 1rem;
         line-height: 3rem;
@@ -71,21 +72,46 @@ p {
 .button-secondary {
     border-width: 1px;
     border-style: solid;
-    border-color:#a7893d;
+    border-color: #a7893d;
 }
 
 .button-other-theme {}
 
 /** BUTTON CHANGING STATES (BEHAVIOUR) */
 .button {
+    transition-property: transform box-shadow background-color;
+    transition-duration: 200ms;
+    transition-delay: 0.25s;
+    transition-timing-function: ease-in-out;
+
+
+}
+
+.button {
     color: white;
     background-color: #a7893d;
+    box-shadow: 1px 1px 8px hsla(0, 0%, 0%, 0.5);
+
+    transform: scale(1, 1);
+    perspective: 1000px;
+    -ms-interpolation-mode: bicubic;
+    image-rendering: optimizeQuality;
 }
 
 .button:hover {
     background-color: #957b36;
+    transform: scale(1.05, 1.05);
+    box-shadow: 10px 10px 8px hsla(0, 0%, 0%, 0.25);
+    filter: blur(4px);
+
 }
 
 .button:active {
     background-color: #856d30;
+    transform: scale(0.9, 0.9);
+    box-shadow: 10px 10px 8px hsla(0, 0%, 0%, 0.5);
+}
+
+.button.hover{
+    background-color: lightcoral;
 }
