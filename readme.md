@@ -39,9 +39,33 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am 
 - [CSS Architektur - skalierbar und modular](http://smacss.com/)
 - [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
  
- 
+
 - [Blind-Bild-Generator](https://picsum.photos/)
 - [Alle Web Spezifikationen beim W3C](https://www.w3.org/TR)
 - [Generative Gestaltung](http://www.generative-gestaltung.de/)
 - [The Nature of Code - programming course](https://natureofcode.com/)
 - [Grafical programming IDE for artists](https://processing.org/)
+
+
+```json
+  "liveSassCompile.settings.formats": [
+    {
+      "extensionName": ".css",
+      "format": "expanded",
+      "savePath": "/assets/css/"
+    }
+  ],
+
+  "liveSassCompile.settings.generateMap": false,
+
+  "liveSassCompile.settings.autoprefix": [],
+
+  "liveServer.settings.donotShowInfoMsg": true,
+
+  "liveServer.settings.donotVerifyTags": true,
+
+  "liveSassCompile.settings.excludeList": [
+    "**/node_modules/**",
+    ".vscode/**"
+  ],
+  ```
