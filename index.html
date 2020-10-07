@@ -15,14 +15,55 @@
 
 <body>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-12"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-10"></div>
+            <div class="col-md-4 col-lg-2"></div>
+        </div>
+       <div class="row">
+           <div class="col-md-6 col-lg-6"></div>
+           <div class="col-md-6 col-lg-6"></div>
+       </div>
     </div>
-</div>
 
-    <img src="./assets/figures/mountains.jpg" width="100%" title="schneebedeckte hohe Berge vor wolkigem Himmel"
-        alt="Foto: schneebedeckte hohe Berge vor wolkigem Himmel">
+    <img class="img-responsive" src="./assets/figures/mountains.jpg"
+        title="schneebedeckte hohe Berge vor wolkigem Himmel" alt="Foto: schneebedeckte hohe Berge vor wolkigem Himmel">
+
+    <!--Responsive image -->
+    <figure>
+        <picture>
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/1440/180">
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/1280/180">
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/1024/180">
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/800/180">
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/640/180">
+            <source media="(min-width: 481px)" srcset="https://picsum.photos/481/320">
+            <source media="(max-width: 480px)" srcset="https://picsum.photos/480/160">
+            <img src="https://picsum.photos/600/200" alt="">
+        </picture>
+
+        <picture>
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/1440/170">
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/1280/170">
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/1024/170">
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/800/170">
+            <source media="(min-width: 640px)" srcset="https://picsum.photos/640/170">
+            <source media="(min-width: 481px)" srcset="https://picsum.photos/481/310">
+            <source media="(max-width: 480px)" srcset="https://picsum.photos/480/150">
+            <img src="https://picsum.photos/600/200" alt="">
+        </picture>
+
+        <figcaption>
+            <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel ipsam perferendis voluptatum explicabo
+                vitae, nisi dolorum! Placeat animi ipsam esse nostrum atque modi, maiores porro? Expedita, sint hic!</p>
+        </figcaption>
+    </figure>
+
+<video>
+    <source media="(min-width: 640px)">
+</video>
+
     <h1>hello world!</h1>
 
     <h2>Lorem ipsum dolor<br /> sit amet.</h2>
