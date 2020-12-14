@@ -1,0 +1,11 @@
+/* Selektor; Eigenschaften, samt Wertezuweisung */
+h1 {
+    font-family: Arial;
+    font-size: 42px;
+    color: white;
+    background-color: black;
+}
+
+/* Layout */
+
+/* Verhalten */
