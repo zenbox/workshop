@@ -28,7 +28,7 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am 
 - [Cost of Defect](http://thklein.com/de_DE/cost-of-defect/)
 - [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
 
-
+- [W3C](https://www.w3.org/TR/)
 - [HTML Dokumentation I](https://www.w3schools.com/)
 - [HTML Dokumentation II](https://wiki.selfhtml.org/)
 - [HTML Dokumentation III](http://html5doctor.com/)
@@ -44,4 +44,4 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am 
 - [Alle Web Spezifikationen beim W3C](https://www.w3.org/TR)
 - [Generative Gestaltung](http://www.generative-gestaltung.de/)
 - [The Nature of Code - programming course](https://natureofcode.com/)
-- [Grafical programming IDE for artists](https://processing.org/)
+- [Graphical programming IDE for artists](https://processing.org/)
