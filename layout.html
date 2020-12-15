@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout mit Header, Content und Footer</title>
+</head>
+
+<body>
+    <div class="container-vertical">
+        <div>
+            <nav>
+                <ul class="navigation-horizontal">
+                    <li>Linktext 1</li>
+                    <li>Linktext 2</li>
+                    <li>Linktext 3</li>
+                    <li>Linktext 4</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container-horizontal">
+            <div class="navigation">
+
+                <nav>
+                    <ul class="navigation-vertical">
+                        <li>Linktext 1</li>
+                        <li>Linktext 2</li>
+                        <li>Linktext 3</li>
+                        <li>Linktext 4</li>
+                    </ul>
+                </nav>
+
+
+            </div>
+            <div class="content">b2</div>
+        </div>
+        <div>c</div>
+    </div>
+
+    <style>
+        .navigation-vertical {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navigation-horizontal {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .container-vertical {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container-horizontal {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .navigation {
+            width: 25%;
+        }
+
+        .content {
+            width: 75%;
+        }
+
+        div {
+            background-color: hsla(0, 0%, 0%, 0.25);
+            margin: 0.125rem;
+        }
+    </style>
+</body>
+
+</html>
