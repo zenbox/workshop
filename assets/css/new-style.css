@@ -6,11 +6,35 @@
     padding-left:0;
 }
 
+.nav a[href] {
+    text-decoration: none;
+}
+
+/* Verhalten (behaviour) */
+.nav-vertical>li>a[href] {
+    display: block;
+    width: 100%;
+    background-color: hsla(50, 100%, 50%, 0.5);
+}
+
+.nav-vertical li a[href]:visited {
+    background-color: hsla(120, 100%, 50%, 0.5);
+}
+
+.nav-vertical li a[href]:active {
+    background-color: hsla(0, 100%, 50%, 0.5);
+}
+
+.nav-vertical li a[href]:hover {
+    background-color: hsla(90, 100%, 50%, 0.5);
+}
+
 /* Layout */
 .nav-vertical li {
     width: 100%;
-    background-color: red;
+    background-color: hsla(0, 100%, 50%, 0.5);
 }
+
 
 .nav-vertical {
      display: flex;
