@@ -1,3 +1,25 @@
+/* Grundlagen (base) des gesamten Projektes */
+@import url('https://fonts.googleapis.com/css2?family=Langar&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css');
+
+html, html * {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    line-height:1.4;
+}
+
+h1 {
+    font-family: Langar, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
 
 /* Navigation */
 /* Grundlagen (base) */
@@ -67,6 +89,6 @@
 
  /* Thema */
  div {
-     background-color: hsla(0, 0%, 0%, 0.25);
+     background-color: hsla(0, 0%, 0%, 0.125);
      margin: 0.125rem;
  }
