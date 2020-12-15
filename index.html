@@ -24,14 +24,32 @@
 
     <!-- Textabsatz -->
     <p class="teaser">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Ea praesentium omnis recusandae!</p>
+        <span>Ea praesentium omnis</span> recusandae!</p>
 
     <!-- Verlinkungen -->
-    <a data-tooltip="Consectetur ad tooltip" href="https://www.gfu.net" target="_blank">Zur GFU Seite</a>
-    <a href="#top">zum Seitenanfang</a>
-    <a href="seite2.html">Zur Seite 2</a>
-    <a href="seite2.html#top">Zur Seite 2 (oben)</a>
+    <a data-tooltip="Consectetur ad tooltip" href="https://www.gfu.net" target="_blank">Zur GFU Seite<span
+            class="tooltip">Tooltip: Lorem ipsum dolor sit.</span></a>
+    <a href="#top">zum Seitenanfang<span class="tooltip">Tooltip: Lorem ipsum dolor sit.</span></a>
+    <a href="seite2.html">Zur Seite 2<span class="tooltip">Tooltip: Lorem ipsum dolor sit.</span></a>
+    <a href="seite2.html#top">Zur Seite 2 (oben)
+        <span class="tooltip">Tooltip: Lorem ipsum dolor sit.</span></a>
+    <style>
+        a[href]>.tooltip {
+            display: none;
+        }
 
+        a[href]:hover>span {
+            display: block;
+
+            position: absolute;
+            left: 340px;
+
+            background-color: hsla(0, 100%, 100%, 0.9);
+            border-radius: 5px;
+            box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.5);
+            padding: 0.5rem;
+        }
+    </style>
     <!-- Bilder -->
     <!-- alternate text, WebP, PNG, JPEG, GIF -->
     <img src="https://picsum.photos/800/200" alt="">
@@ -124,7 +142,7 @@
 
         <fieldset>
             <legend>Deine Anmeldung</legend>
-            
+
             <label for="login-email">Emailadresse</label>
             <input id="login-email" type="email">
 
