@@ -14,7 +14,7 @@ h2 {
    .teaser {
        background-color: red;
    }
-   
+
 /* Attributselektor */
 a[href] {
     color: gray;
@@ -47,3 +47,5 @@ html {
 /* Layout */
 
 /* Verhalten */
+
+
