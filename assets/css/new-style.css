@@ -1,0 +1,48 @@
+
+/* Navigation */
+/* Grundlagen (base) */
+.nav {
+    list-style-type: none;
+    padding-left:0;
+}
+
+/* Layout */
+.nav-vertical li {
+    width: 100%;
+    background-color: red;
+}
+
+.nav-vertical {
+     display: flex;
+     flex-direction: column;
+ }
+
+ .nav-horizontal {
+     display: flex;
+     flex-direction: row;
+ }
+
+ /* Seitenlayout */
+ .container-vertical {
+     display: flex;
+     flex-direction: column;
+ }
+
+ .container-horizontal {
+     display: flex;
+     flex-direction: row;
+ }
+
+ .navigation {
+     width: 25%;
+ }
+
+ .content {
+     width: 75%;
+ }
+
+ /* Thema */
+ div {
+     background-color: hsla(0, 0%, 0%, 0.25);
+     margin: 0.125rem;
+ }
