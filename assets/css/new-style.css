@@ -10,6 +10,7 @@ html {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 18px;
     line-height:1.4;
+    color: black;
 }
 
 h1 {
@@ -85,10 +86,80 @@ h2 {
 
  .content {
      width: 75%;
+     /* Mehrspaltensatz */
+     column-width:18rem;
+     /* Silbentrennung */
+     hyphens: auto;
  }
 
  /* Thema */
+ html {
+     min-height: 100%;
+ }
+
+body {
+
+   min-height: 100%;
+   background: linear-gradient(
+       30deg,
+       white 0%, 
+       lightgrey 100%
+   ); 
+}
+button{
+    transition-property: all;
+    transition-duration: 5s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0;
+}
+button:hover{
+    filter:blur(0);
+}
+button {
+    filter: blur(3px);
+    color: white;
+    border-radius:0.25rem;
+    padding: 0.5rem;
+    min-width: 10rem;
+    background: rgb(76, 76, 76);
+    background: -moz-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(89, 89, 89, 1) 12%, rgba(102, 102, 102, 1) 25%, rgba(71, 71, 71, 1) 39%, rgba(44, 44, 44, 1) 50%, rgba(0, 0, 0, 1) 51%, rgba(17, 17, 17, 1) 60%, rgba(43, 43, 43, 1) 76%, rgba(28, 28, 28, 1) 91%, rgba(19, 19, 19, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(76, 76, 76, 1) 0%, rgba(89, 89, 89, 1) 12%, rgba(102, 102, 102, 1) 25%, rgba(71, 71, 71, 1) 39%, rgba(44, 44, 44, 1) 50%, rgba(0, 0, 0, 1) 51%, rgba(17, 17, 17, 1) 60%, rgba(43, 43, 43, 1) 76%, rgba(28, 28, 28, 1) 91%, rgba(19, 19, 19, 1) 100%);
+    background: linear-gradient(to bottom, rgba(76, 76, 76, 1) 0%, rgba(89, 89, 89, 1) 12%, rgba(102, 102, 102, 1) 25%, rgba(71, 71, 71, 1) 39%, rgba(44, 44, 44, 1) 50%, rgba(0, 0, 0, 1) 51%, rgba(17, 17, 17, 1) 60%, rgba(43, 43, 43, 1) 76%, rgba(28, 28, 28, 1) 91%, rgba(19, 19, 19, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0);
+} 
+
  div {
-     background-color: hsla(0, 0%, 0%, 0.125);
+     background-color: hsla(0, 0%, 0%, 0.025);
      margin: 0.125rem;
+ }
+
+ @keyframes my-animation {
+     0% {
+         background-color: black;
+         width: 50%;
+     }
+
+     25% {
+         background-color: red;
+         width: 60%;
+     }
+
+     50% {
+         background-color: green;
+         width: 80%;
+     }
+
+     75% {
+         background-color: yellow;
+         width: 50%;
+     }
+
+     100% {
+         background-color: black;
+         width: 50%;
+     }
+ }
+
+ .background {
+     animation: my-animation 4s infinite;
  }
