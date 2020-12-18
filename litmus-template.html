@@ -15,12 +15,14 @@
         table,
         td,
         a {
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%; /* Chrome, Safari, Opera, Edge > 12 */
+            -ms-text-size-adjust: 100%; /* Microsoft Browser (IE >=9, Edge) */
+            
         }
 
         table,
         td {
+            /* Reset */
             mso-table-lspace: 0pt;
             mso-table-rspace: 0pt;
         }
@@ -44,6 +46,7 @@
 
         body {
             height: 100% !important;
+            min-height: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
             width: 100% !important;
@@ -57,6 +60,9 @@
             font-family: inherit !important;
             font-weight: inherit !important;
             line-height: inherit !important;
+
+            outline: inherit !important;
+            font-variant: inherit !important;
         }
 
         /* MEDIA QUERIES */
