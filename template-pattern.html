@@ -3,6 +3,12 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
     <title>Email Template</title>
 </head>
 
@@ -11,23 +17,68 @@
         <style>
             /* All devices & fallback*/
             @media screen {
-
-                #inx,
-                #inx * {
+                #inx {
                     font-family: Verdana, Arial, sans-serif;
-                    font-size: 14px;
+                    font-size: 16px;
                     color: white;
                 }
 
                 #inx.inx-container {
                     background-color: hsla(0, 0%, 100%, 0.25);
-                    width: 650px;
                     margin: 0 auto;
+
+                    width: 650px;
                 }
             }
 
             /* Small mobiles */
-            @media only screen and (max-width:767px) {}
+            @media only screen and (max-width:767px) {
+                body {
+                    margin: 0;
+                }
+
+                #inx {
+                    font-size: 14px;
+                }
+
+                
+                #inx, #inx * {
+                     box-sizing: border-box;
+                }
+
+                #inx>p:nth-of-type(1) {
+                    margin-top: 0;
+                    padding: 7px;
+                }
+
+                /* Layoutcontainer anpassen */
+                #inx.inx-container {
+                    width: 100%;
+                }
+
+                /* Bilder anpassen */
+                #inx img {
+                    width: 100%;
+                    height: auto;
+                    border: 0;
+                    outline: none;
+                    text-decoration: none;
+                }
+
+                /* Tabellenlayout anpassen */
+                #inx>table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                }
+
+                #inx>table td {
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                }
+
+            }
 
             /* Bigger mobiles & desktops */
             @media only screen and (min-width:768px) {}
