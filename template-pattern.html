@@ -41,9 +41,10 @@
                     font-size: 14px;
                 }
 
-                
-                #inx, #inx * {
-                     box-sizing: border-box;
+
+                #inx,
+                #inx * {
+                    box-sizing: border-box;
                 }
 
                 #inx>p:nth-of-type(1) {
@@ -89,9 +90,16 @@
             consectetur adipisicing elit. Temporibus maxime consequuntur
             nemo!</p>
         <!-- - - - - - -->
-        <!-- Layout mit Tabellen -->
-        <img src="https://picsum.photos/id/109/650/120" alt="" width="650" height="120">
 
+        <!-- Responsives Bild -->
+        <picture>
+            <source media="(max-width:480px)" srcset="https://picsum.photos/id/108/480/120">
+            <source media="(max-width:768px)" srcset="https://picsum.photos/id/107/768/120">
+            <source media="(max-width:768px and min-device-resolution:192dpi)" srcset="https://picsum.photos/id/106/1532/240">
+            <img src="https://picsum.photos/id/109/650/120" alt="" width="650" height="120">
+        </picture>
+
+        <!-- Layout mit Tabellen -->
         <table width="650" border="0" cellspacing="0" cellpadding="10">
             <tr>
                 <td colspan="4">Kopfzeile</td>
