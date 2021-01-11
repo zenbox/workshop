@@ -43,8 +43,10 @@ body {
 }
 
 // Typography
+html {--my-css-variable:24rem;}
 p {
     font-size: 1rem;
+    width: calc(100% - var(--my-css-variable));
 }
 
 code,

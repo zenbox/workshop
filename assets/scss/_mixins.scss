@@ -1,0 +1,15 @@
+// Global functions
+
+
+@mixin borderRounded($radius:5px, $style:dotted, $width:2px) {
+
+    border-style:$style;
+    border-width: $width;
+
+    -webkit-border-radius: $radius;
+    -o-border-radius: $radius;
+    -khtml-border-radius: $radius;
+    -moz-border-radius: $radius;
+    
+    border-radius: $radius;
+}

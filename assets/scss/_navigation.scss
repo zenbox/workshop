@@ -16,6 +16,7 @@
 
     a[href] {
         text-decoration: none;
+         @include borderRounded(4px);
     }
 
 }
@@ -34,3 +35,6 @@
 // COMPONENT DEFAULT THEME
 
 // COMPONENT CHANGING STATES (BEHAVIOUR)
+.nav a[href]:visited{}
+.nav a[href]:active{}
+.nav a[href]:hover{}

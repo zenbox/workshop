@@ -26,8 +26,13 @@ body {
   background-color: white;
 }
 
+html {
+  --my-css-variable:24rem;
+}
+
 p {
   font-size: 1rem;
+  width: calc(100% - var(--my-css-variable));
 }
 
 code,
@@ -66,6 +71,9 @@ h6 {
 
 .nav a[href] {
   text-decoration: none;
+  border-style: dotted;
+  border-width: 2px;
+  border-radius: 4px;
 }
 
 .nav-column li {
