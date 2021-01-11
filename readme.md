@@ -38,3 +38,6 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 - [CSS Nomenklatur - Block Element Modifier](http://getbem.com/introduction/)
 - [Scalable and Modular CSS](http://smacss.com/)
 - [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
+- [Normalize CSS](https://necolas.github.io/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Material IO](https://material.io/)
