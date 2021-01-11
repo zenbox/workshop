@@ -41,3 +41,22 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 - [Normalize CSS](https://necolas.github.io/)
 - [Bootstrap](https://getbootstrap.com/)
 - [Material IO](https://material.io/)
+
+
+
+```JSON
+
+  "liveSassCompile.settings.formats": [
+    {
+      "extensionName": ".css",
+      "format": "expanded",
+      "savePath": "/assets/css/"
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.autoprefix": [],
+    "liveSassCompile.settings.excludeList": [
+      "**/node_modules/**",
+      ".vscode/**"
+    ],
+```
