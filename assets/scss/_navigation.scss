@@ -1,28 +1,26 @@
-/** 
-  *
-  *
-  * @package Webapplication
-  * @module NAVIGATION
-  * @author Michael Reichart <michael@zenbox.de>
-  * @since 2021-01-11
-  * @version 1.0.0
-  * @see i.e. inspired by ... {link to}
-  * @license MIT {https://opensource.org/licenses/MIT}
-  * @copyright (c) 2021 Michael Reichart, Cologne
-  */
+//**
+// @package Webapplication
+// @module NAVIGATION
+// @author Michael Reichart <michael@zenbox.de>
+// @since 2021-01-11
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2021 Michael Reichart, Cologne
+//   */
 
-/** COMPONENT BASE */
+// COMPONENT BASE
 .nav {
     list-style-type: none;
     padding: 0;
 
+    a[href] {
+        text-decoration: none;
+    }
+
 }
 
-.nav a[href] {
-    text-decoration: none;
-}
-
-/** COMPONENT LAYOUT */
+// COMPONENT LAYOUT
 .nav-column li {
     display: block;
 }
@@ -31,6 +29,8 @@
     display: inline-block;
 }
 
-/** COMPONENT DEFAULT THEME */
 
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+
+// COMPONENT DEFAULT THEME
+
+// COMPONENT CHANGING STATES (BEHAVIOUR)
