@@ -64,6 +64,48 @@ h6 {
   font-size: 1rem;
 }
 
+.section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-container > main {
+  display: flex;
+}
+
+.card {
+  border: 1ps solid lightgrey;
+  margin: 0.25rem;
+  padding: 0.25rem;
+  background-color: rgba(230, 230, 230, 0.75);
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
+}
+
+.section-container > *:nth-child(1) {
+  background-color: rgba(153, 255, 255, 0.5);
+}
+
+.section-container > *:nth-child(2) {
+  background-color: rgba(153, 187, 255, 0.5);
+}
+
+.section-container > *:nth-child(3) {
+  background-color: rgba(187, 153, 255, 0.5);
+}
+
+.main-container > *:nth-child(2) {
+  background-color: rgba(255, 153, 255, 0.5);
+}
+
+.main-container > *:nth-child(3) {
+  background-color: rgba(255, 153, 187, 0.5);
+}
+
 .nav {
   list-style-type: none;
   padding: 0;
