@@ -96,4 +96,5 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 				"  ",
 			],
 		},
-	}```
+  }
+  ```
