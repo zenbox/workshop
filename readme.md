@@ -43,9 +43,8 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 - [Material IO](https://material.io/)
 
 
-
+## Code Snippets
 ```JSON
-
   "liveSassCompile.settings.formats": [
     {
       "extensionName": ".css",
@@ -60,3 +59,41 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
       ".vscode/**"
     ],
 ```
+
+```JSON
+	{
+		"CSS Doc Block and main comments": {
+			"prefix": "docblock",
+			"description": " structure for components",
+			"body": [
+				"/** $1",
+				"  *",
+				"  *  @desc $2",
+				"  *        All devices fallback: @media screen {}",
+				"  *        Small devices:        @media screen and (max-width:768px) {}",
+				"  *",
+				"  * ",
+				"  *  @toc  i.e. COMPONENT",
+				"  *        i.e. SUB COMPONENT",
+				"  *",
+				"  * @package Webapplication",
+				"  * @module i.e. header",
+				"  * @author Michael Reichart <michael@zenbox.de>",
+				"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+				"  * @version 1.0.0",
+				"  * @see i.e. inspired by ... {link to}",
+				"  * @license MIT {https://opensource.org/licenses/MIT}",
+				"  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
+				"  */",
+				"",
+				"/** COMPONENT BASE */",
+				"",
+				"/** COMPONENT LAYOUT */",
+				"  ",
+				"/** COMPONENT THEME */",
+				"",
+				"/** COMPONENT CHANGING STATES (BEHAVIOUR) */",
+				"  ",
+			],
+		},
+	}```
