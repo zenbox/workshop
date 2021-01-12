@@ -25,15 +25,31 @@
 
 .main-container>main {
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: stretch;
 }
 
 // Excerpt from cards.css
+
+.card:nth-child(3){
+    order:5;
+}
+
+.card:nth-child(even) {
+    flex-grow: 5;
+}
+
+.card:nth-child(odd) {
+    flex-grow: 1;
+}
+
 .card {
-    flex-basis: 45%;
-    min-height: 40vh;
+
+    flex-basis: 40%;
+
+
+    min-height: 8rem;
 
     border-width: 0;
     border-radius: 5px;
