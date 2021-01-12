@@ -44,6 +44,7 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 
 
 ## Code Snippets
+### Live Sass Compiler Setting
 ```JSON
   "liveSassCompile.settings.formats": [
     {
@@ -60,6 +61,7 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
     ],
 ```
 
+### CSS Doc Block
 ```JSON
 	{
 		"CSS Doc Block and main comments": {
@@ -97,4 +99,29 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 			],
 		},
   }
+  ```
+
+  ### SCSS Doc Block
+  ```JSON
+  {
+	"SCSS Doc Block and main comments": {
+		"prefix": "docblock",
+		"description": " Docblock Comment for SCSS Files",
+		"body": [
+			"///** $1",
+			"// *",
+			"// * @package Webapplication",
+			"// * @module $2",
+			"// * @author Michael Reichart <michael.reichart@gfu.net>",
+			"// * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			"// * @version 1.0.0",
+			"// * @see i.e. inspired by ... {link to}",
+			"// * @license MIT {https://opensource.org/licenses/MIT}",
+			"// * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
+			"// */",
+			"",
+			"$3"
+		],
+	},
+}
   ```
