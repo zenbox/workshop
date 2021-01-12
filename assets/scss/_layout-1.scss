@@ -25,36 +25,44 @@
 
 .main-container>main {
     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: stretch;
 }
 
 // Excerpt from cards.css
 .card {
-    border: 1ps solid lightgrey;
-    margin: 0.25rem;
-    padding: 0.25rem;
-    background-color: hsla(0, 0%, 90%, 0.75);
+    flex-basis: 45%;
+    min-height: 40vh;
+
+    border-width: 0;
+    border-radius: 5px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    color: grey;
+    background-color: hsla(0, 0%, 95%, 0.95);
     box-shadow: 5px 5px 8px hsla(0, 0%, 0%, 0.25);
 }
 
 // theming
 .section-container>*:nth-child(1) {
-    background-color: hsla(180, 100%, 80%, 0.5);
+    background-color: hsla(180, 30%, 10%, 0.25);
 }
 
 .section-container>*:nth-child(2) {
-    background-color: hsla(220, 100%, 80%, 0.5);
+    background-color: hsla(200, 30%, 10%, 0.25);
 }
 
 .section-container>*:nth-child(3) {
-    background-color: hsla(260, 100%, 80%, 0.5);
+    background-color: hsla(220, 30%, 10%, 0.25);
 }
 
 .main-container>*:nth-child(2) {
-    background-color: hsla(300, 100%, 80%, 0.5);
+    background-color: hsla(150, 50%, 50%, 0.15);
 }
 
 .main-container>*:nth-child(3) {
-    background-color: hsla(340, 100%, 80%, 0.5);
+    background-color: hsla(170, 50%, 50%, 0.5);
 }
 
 // changing states

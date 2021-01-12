@@ -76,34 +76,41 @@ h6 {
 
 .main-container > main {
   display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: stretch;
 }
 
 .card {
-  border: 1ps solid lightgrey;
-  margin: 0.25rem;
-  padding: 0.25rem;
-  background-color: rgba(230, 230, 230, 0.75);
+  flex-basis: 45%;
+  min-height: 40vh;
+  border-width: 0;
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  color: grey;
+  background-color: rgba(242, 242, 242, 0.95);
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
 }
 
 .section-container > *:nth-child(1) {
-  background-color: rgba(153, 255, 255, 0.5);
+  background-color: rgba(18, 33, 33, 0.25);
 }
 
 .section-container > *:nth-child(2) {
-  background-color: rgba(153, 187, 255, 0.5);
+  background-color: rgba(18, 28, 33, 0.25);
 }
 
 .section-container > *:nth-child(3) {
-  background-color: rgba(187, 153, 255, 0.5);
+  background-color: rgba(18, 23, 33, 0.25);
 }
 
 .main-container > *:nth-child(2) {
-  background-color: rgba(255, 153, 255, 0.5);
+  background-color: rgba(64, 191, 128, 0.15);
 }
 
 .main-container > *:nth-child(3) {
-  background-color: rgba(255, 153, 187, 0.5);
+  background-color: rgba(64, 191, 170, 0.5);
 }
 
 .nav {
