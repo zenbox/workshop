@@ -63,43 +63,103 @@ h6 {
   font-size: 1rem;
 }
 
-.section-container {
-  display: flex;
-  flex-direction: column;
+/** Responsive Layout two columns ...
+  *
+  *  @desc 
+  *        MOBILE FIRST APPROACH:
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *        Medium devices::      @media screen and (min-width:992px) {}
+  *        Large devices:        @media screen and (min-width:1200px) {}
+  *
+  * 
+  *  @toc  TEMPLATE BASE
+  *        TEMPLATE LAYOUT
+  *        TEMPLATE CHANGING STATES
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-01-13
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+/** TEMPLATE BASE */
+@media print {
+  .sidebar-navigation {
+    display: none;
+  }
 }
 
-.main-container {
-  display: flex;
-  flex-direction: row;
+/** TEMPLATE LAYOUT */
+@media screen {
+  section,
+  header,
+  main,
+  nav,
+  footer {
+    display: block;
+    width: 100%;
+  }
+  .page__container,
+  .content__container,
+  .content__sidebar-navigation,
+  .content {
+    display: block;
+    width: 100%;
+  }
 }
 
-.main-container > main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: stretch;
+@media screen and (max-width: 767px) {
+  .content__container {
+    display: flex;
+    flex-direction: row;
+    width: 180vw;
+  }
+  .content__sidebar {
+    width: 80vw;
+    order: 2;
+  }
+  .content {
+    width: 100vw;
+    order: 1;
+  }
+  .page__container header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  .content__container {
+    transition-property: margin-left;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+  }
+  .content__container--sidebar-opened {
+    margin-left: -80vw;
+  }
+  .content__container--sidebar-closed {
+    margin-left: 0;
+  }
 }
 
-.section-container > *:nth-child(1) {
-  background-color: rgba(18, 33, 33, 0.25);
+@media screen and (min-width: 768px) {
+  .content__container {
+    display: flex;
+  }
+  .content__container nav {
+    order: 1;
+    flex-basis: 25vw;
+  }
+  .content__container main {
+    order: 2;
+    flex-basis: 75vw;
+  }
 }
 
-.section-container > *:nth-child(2) {
-  background-color: rgba(18, 28, 33, 0.25);
-}
-
-.section-container > *:nth-child(3) {
-  background-color: rgba(18, 23, 33, 0.25);
-}
-
-.main-container > *:nth-child(2) {
-  background-color: rgba(64, 191, 128, 0.15);
-}
-
-.main-container > *:nth-child(3) {
-  background-color: rgba(64, 191, 170, 0.5);
-}
-
+/** TEMPLATE CHANGING STATES (BEHAVIOUR) */
 .nav {
   list-style-type: none;
   padding: 0;
@@ -107,9 +167,6 @@ h6 {
 
 .nav a[href] {
   text-decoration: none;
-  border-style: dotted;
-  border-width: 2px;
-  border-radius: 4px;
 }
 
 .nav-column li {
@@ -121,8 +178,7 @@ h6 {
 }
 
 .sidebar-navigation {
-  background-color: black;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.25);
   white-space: nowrap;
 }
 
@@ -153,7 +209,47 @@ h6 {
   box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
 }
 
+@media screen {
+  .hamburger {
+    --size: 20px;
+    --divisor: 4.75;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: calc(50vw - var(--size)/2);
+    width: calc(var(--size) * 1);
+    height: var(--size);
+  }
+  .hamburger > * {
+    display: block;
+    width: 80%;
+    height: 4px;
+    margin: 1px;
+    background-color: black;
+    transition: all 100ms ease-in-out;
+  }
+  .hamburger--close > *:nth-child(1) {
+    transform: rotateZ(45deg) translateY(calc(var(--size) / var(--divisor))) translateX(calc(var(--size) / var(--divisor)));
+  }
+  .hamburger--close > *:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger--close > *:nth-child(3) {
+    transform: rotateZ(-45deg) translateY(calc(var(--size) / var(--divisor) * -1)) translateX(calc(var(--size) / var(--divisor)));
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
 .customer body {
-  margin: 1rem;
   background-color: white;
+}
+
+header * {
+  border: 0px dotted black;
 }

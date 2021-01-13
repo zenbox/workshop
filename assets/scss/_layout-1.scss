@@ -16,6 +16,10 @@
 .section-container {
     display: flex;
     flex-direction: column;
+
+    width: 100vw;
+    max-width:100vw;
+    min-width: 75vw;
 }
 
 .main-container {
@@ -29,6 +33,25 @@
     flex-wrap: wrap;
     align-items: stretch;
 }
+@media (min-width: 768px) {
+    .main-container nav {
+        width: 20vw;
+    }
+
+    .main-container main {
+        width: 80vw;
+    }
+}
+@media (min-width: 1024px) {
+.main-container nav {
+    width: 33.33333334vw;
+}
+
+.main-container main {
+    width: 66.66666666vw;
+}
+}
+
 
 // theming
 .section-container>*:nth-child(1) {

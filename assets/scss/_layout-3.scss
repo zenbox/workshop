@@ -1,0 +1,126 @@
+/** Responsive Layout two columns ...
+  *
+  *  @desc 
+  *        MOBILE FIRST APPROACH:
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *        Medium devices::      @media screen and (min-width:992px) {}
+  *        Large devices:        @media screen and (min-width:1200px) {}
+  *
+  * 
+  *  @toc  TEMPLATE BASE
+  *        TEMPLATE LAYOUT
+  *        TEMPLATE CHANGING STATES
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-01-13
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+
+
+/** TEMPLATE BASE */
+@media print {
+  .sidebar-navigation {
+    display: none;
+  }
+
+}
+
+@media screen {}
+
+// @media screen and (max-width:768px) {}
+// @media screen and (min-width:992px) {}
+// @media screen and (min-width:1200px) {}
+
+/** TEMPLATE LAYOUT */
+// All Devices Fallback
+@media screen {
+
+  section,
+  header,
+  main,
+  nav,
+  footer {
+    display: block;
+    width: 100%;
+  }
+
+  .page__container,
+  .content__container,
+  .content__sidebar-navigation,
+  .content {
+    display: block;
+    width: 100%;
+  }
+}
+
+// Tiny devices
+@media screen and (max-width:767px) {
+  .content__container {
+    display: flex;
+    flex-direction: row;
+    width: 180vw;
+  }
+
+  .content__sidebar {
+    width: 80vw;
+    order: 2;
+  }
+
+  .content {
+    width: 100vw;
+    order: 1;
+  }
+
+  .page__container header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  .content__container {
+    transition-property: margin-left;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  .content__container--sidebar-opened {
+    margin-left: -80vw;
+  }
+
+  .content__container--sidebar-closed {
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width:768px) {
+
+  .content__container {
+    display: flex;
+  }
+
+  .content__container nav {
+    order: 1;
+    flex-basis: 25vw;
+  }
+
+  .content__container main {
+    order: 2;
+    flex-basis: 75vw;
+  }
+}
+
+// @media screen and (min-width:1200px) {}
+
+/** TEMPLATE CHANGING STATES (BEHAVIOUR) */
+@media screen {}
+
+// @media screen and (max-width:768px) {}
+// @media screen and (min-width:992px) {}
+// @media screen and (min-width:1200px) {}

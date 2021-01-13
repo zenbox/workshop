@@ -27,7 +27,7 @@
             transition: all 2s ease-in-out;
         }
 
-        .right {
+        .box--position-right {
             left: calc(100vw - 1rem - 5rem);
             background-color: hsla(160, 50%, 40%, 1);
             transform: scale(2, 2);
@@ -60,33 +60,33 @@
             transition: all 100ms ease-in-out;
         }
 
-        .close>*:nth-child(1) {
+        .hamburger--close>*:nth-child(1) {
             transform: rotateZ(45deg) translateY(calc(var(--size) / var(--divisor))) translateX(calc(var(--size) / var(--divisor)));
         }
 
-        .close>*:nth-child(2) {
+        .hamburger--close>*:nth-child(2) {
             opacity: 0;
         }
 
-        .close>*:nth-child(3) {
+        .hamburger--close>*:nth-child(3) {
             transform: rotateZ(-45deg) translateY(calc(var(--size) / var(--divisor) * -1)) translateX(calc(var(--size) / var(--divisor)));
         }
 
         circle {
-            fill:red;
+            fill: red;
         }
     </style>
     <script>
         (function () {
             setInterval(function () {
-                document.querySelector('.box').classList.toggle('right');
-                document.querySelector('.hamburger').classList.toggle('close');
+                document.querySelector('.box').classList.toggle('box--position-right');
+                document.querySelector('.hamburger').classList.toggle('hamburger--close');
             }, 2000);
         }())
     </script>
     <div class="box"></div>
 
-<a href="#"><span class="fas fa-bars"></span></a>
+    <a href="#"><span class="fas fa-bars"></span></a>
 
     <div class="hamburger">
         <div></div>
@@ -96,7 +96,7 @@
 
     <svg width="100" height="100">
         <g>
-            <circle fill="white" d="10 10" r="10"></circle>
+            <circle fill="white" cx="10" cy="10" r="10"></circle>
         </g>
     </svg>
 

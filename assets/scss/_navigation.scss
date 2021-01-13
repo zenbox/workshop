@@ -16,10 +16,16 @@
 
     a[href] {
         text-decoration: none;
-         @include borderRounded(4px);
+         // @include borderRounded(4px);
     }
 
 }
+
+// Excerpt aus form.scss
+.form {} // <form ...>
+
+// Excerpt aus cards.scss
+.card {} // <div class="card">
 
 // COMPONENT LAYOUT
 .nav-column li {
@@ -29,8 +35,6 @@
 .nav-row li {
     display: inline-block;
 }
-
-
 
 // COMPONENT DEFAULT THEME
 
@@ -42,7 +46,6 @@
 
 // SUBCOMPONENT SIDEBAR
 .sidebar-navigation {
-    background-color: black;
-    color: white;
+    background-color: hsla(0, 0%, 0%, 0.25);
     white-space: nowrap;
 }
