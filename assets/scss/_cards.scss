@@ -1,0 +1,43 @@
+///** Cards
+// *
+// * @package Webapplication
+// * @module Content
+// * @author Michael Reichart <michael.reichart@gfu.net>
+// * @since 2021-01-12
+// * @version 1.0.0
+// * @see i.e. inspired by ... {link to}
+// * @license MIT {https://opensource.org/licenses/MIT}
+// * @copyright (c) 2021 Michael Reichart, Cologne
+// */
+
+// base
+.card {
+    flex-basis: 40%;
+    min-height: 8rem;
+}
+
+// layout
+.card:nth-child(3) {
+    order: 5;
+}
+
+.card:nth-child(even) {
+    flex-grow: 5;
+}
+
+.card:nth-child(odd) {
+    flex-grow: 1;
+}
+
+// theming
+.card {
+    border-width: 0;
+    border-radius: 5px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    color: grey;
+    background-color: hsla(0, 0%, 95%, 0.95);
+    box-shadow: 5px 5px 8px hsla(0, 0%, 0%, 0.25);
+}
+
+// changing states

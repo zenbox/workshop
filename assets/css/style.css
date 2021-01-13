@@ -80,30 +80,6 @@ h6 {
   align-items: stretch;
 }
 
-.card:nth-child(3) {
-  order: 5;
-}
-
-.card:nth-child(even) {
-  flex-grow: 5;
-}
-
-.card:nth-child(odd) {
-  flex-grow: 1;
-}
-
-.card {
-  flex-basis: 40%;
-  min-height: 8rem;
-  border-width: 0;
-  border-radius: 5px;
-  margin: 0.5rem;
-  padding: 0.5rem;
-  color: grey;
-  background-color: rgba(242, 242, 242, 0.95);
-  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
-}
-
 .section-container > *:nth-child(1) {
   background-color: rgba(18, 33, 33, 0.25);
 }
@@ -142,6 +118,39 @@ h6 {
 
 .nav-row li {
   display: inline-block;
+}
+
+.sidebar-navigation {
+  background-color: black;
+  color: white;
+  white-space: nowrap;
+}
+
+.card {
+  flex-basis: 40%;
+  min-height: 8rem;
+}
+
+.card:nth-child(3) {
+  order: 5;
+}
+
+.card:nth-child(even) {
+  flex-grow: 5;
+}
+
+.card:nth-child(odd) {
+  flex-grow: 1;
+}
+
+.card {
+  border-width: 0;
+  border-radius: 5px;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  color: grey;
+  background-color: rgba(242, 242, 242, 0.95);
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.25);
 }
 
 .customer body {

@@ -38,3 +38,11 @@
 .nav a[href]:visited{}
 .nav a[href]:active{}
 .nav a[href]:hover{}
+
+
+// SUBCOMPONENT SIDEBAR
+.sidebar-navigation {
+    background-color: black;
+    color: white;
+    white-space: nowrap;
+}
