@@ -75,13 +75,38 @@
         circle {
             fill: red;
         }
+
+        .filter {
+            display: flex;
+            justify-content: center;
+            color: white;
+
+        }
+
+        @media screen {
+            .filter {
+                /* background-image: url(http://picsum.photos/id/17/600/200); */
+
+                filter: blur(0px) hue-rotate(90deg) grayscale(50%);
+                transition: all 500ms ease-in-out;
+            }
+
+            .filter h2 {
+                position: absolute;
+                mix-blend-mode: exclusion;
+            }
+        }
+
+        .filter:hover {
+            filter: blur(0px) hue-rotate(0deg) grayscale(0%);
+        }
     </style>
     <script>
         (function () {
             setInterval(function () {
                 document.querySelector('.box').classList.toggle('box--position-right');
                 document.querySelector('.hamburger').classList.toggle('hamburger--close');
-            }, 2000);
+            }, 20000);
         }())
     </script>
     <div class="box"></div>
@@ -99,6 +124,11 @@
             <circle fill="white" cx="10" cy="10" r="10"></circle>
         </g>
     </svg>
+
+    <div class="filter">
+        <h2>Lorem ipsum dolor</h2>
+        <img src="http://picsum.photos/id/17/600/200" alt="">
+    </div>
 
 </body>
 
