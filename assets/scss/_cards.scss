@@ -16,6 +16,10 @@
     min-height: 8rem;
 }
 
+.card{
+    column-width:8rem;
+}
+
 // layout
 .card:nth-child(3) {
     order: 5;

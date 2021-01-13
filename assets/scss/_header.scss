@@ -1,0 +1,21 @@
+///** Header
+// *
+// * @package Webapplication
+// * @module Header
+// * @author Michael Reichart <michael.reichart@gfu.net>
+// * @since 2021-01-13
+// * @version 1.0.0
+// * @see i.e. inspired by ... {link to}
+// * @license MIT {https://opensource.org/licenses/MIT}
+// * @copyright (c) 2021 Michael Reichart, Cologne
+// */
+
+// COMPONENT BASE
+.header {}
+
+// COMPONENT LAYOUT
+.header {
+    padding: $defaultPadding;
+}
+
+// COMPONENT CHANGING STATES

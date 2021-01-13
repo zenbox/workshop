@@ -23,6 +23,7 @@
   */
 
 
+
 /** TEMPLATE BASE */
 @media print {
   .sidebar-navigation {
@@ -38,6 +39,9 @@
 // @media screen and (min-width:1200px) {}
 
 /** TEMPLATE LAYOUT */
+// display, position, width, height, row, column ... 
+// margin, (border, padding at box-sizing:content-box)
+
 // All Devices Fallback
 @media screen {
 
@@ -81,7 +85,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1rem;
   }
 
   .content__container {
@@ -90,6 +93,8 @@
     transition-timing-function: ease-in-out;
   }
 
+
+  // TEMPLATE CHANGING STATES
   .content__container--sidebar-opened {
     margin-left: -80vw;
   }

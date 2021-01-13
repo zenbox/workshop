@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Imbue:wght@900&display=swap");
 html,
 html * {
   box-sizing: border-box;
@@ -130,7 +131,6 @@ h6 {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1rem;
   }
   .content__container {
     transition-property: margin-left;
@@ -185,6 +185,10 @@ h6 {
 .card {
   flex-basis: 40%;
   min-height: 8rem;
+}
+
+.card {
+  column-width: 8rem;
 }
 
 .card:nth-child(3) {
@@ -244,6 +248,15 @@ h6 {
   .hamburger {
     display: none;
   }
+}
+
+.header {
+  padding: 1rem;
+}
+
+html, :root {
+  font-family: Roboto, monospace;
+  font-size: 18px;
 }
 
 .customer body {
