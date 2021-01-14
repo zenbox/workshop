@@ -1,4 +1,17 @@
-body {
-    background-color: hsla(0, 0%, 0%, 0.8);
-    color:  hsla(0, 0%, 90%, 1);
-}
+// reset, normalizer, reboot
+@import "normalize-8.0.1";
+
+// global import of variables and mixins
+@import "variables";
+
+// own base setting
+@import "base";
+
+// components (modules)
+@import "template-two-columns-with-head-and-foot";
+@import "navigation";
+@import "card";
+// more components here ...
+
+// theme
+@import "customer-theme"
