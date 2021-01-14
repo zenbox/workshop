@@ -1,0 +1,15 @@
+
+// typography
+html {
+    font-family: sans-serif;
+    font-size:16px;
+    line-height:1.4;
+}
+
+// colors
+body {
+    background-color: $defaultBackgroundColor;
+    color: $defaultTextColor;
+}
+
+// element {}, :pseudo-class; ::pseudo-element, a[href]
