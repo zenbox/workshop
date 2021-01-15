@@ -9,27 +9,68 @@
 </head>
 
 <body>
-    <div class="card">
-        <h1>lorem live headline ipsum dolor sit</h1>
-        <p>Lorem ipsum dolor <code>consectezur ad piscit</code>sit amet consectetur adipisicing elit. At ratione animi
-            deleniti.</p>
-    </div>
-    
-    <nav>
-        <ul class="nav">
-            <li><a href="#">link 1</a></li>
-            <li><a href="#">link 2</a></li>
-            <li><a href="#">link 3</a></li>
-        </ul>
-    </nav>
-
-    <pre>
+    <div class="template template__grid">
+        <header class="template__header">header</header>
+        <section class="template__content template__grid-row">
+            <aside class="template__grid-column-2">aside</aside>
+            <main class="template__grid-column-5">
+                <!-- content -->
+                <div class="card">
+                    <h1>lorem live headline ipsum dolor sit</h1>
+                    <p>Lorem ipsum dolor <code>consectezur ad piscit</code>sit amet consectetur adipisicing elit. At
+                        ratione animi
+                        deleniti.</p>
+                    <div class="list list-horizontal">
+                        <h2>list of colors</h2>
+                        <ul>
+                            <li>
+                                <div class="colorfield color-primary"></div>
+                            </li>
+                            <li>
+                                <div class="colorfield color-primary-light"></div>
+                            </li>
+                            <li>
+                                <div class="colorfield color-secondary"></div>
+                            </li>
+                            <li>
+                                <div class="colorfield color-secondary-light"></div>
+                            </li>
+                            <li>
+                                <div class="colorfield color-secondary-lighter"></div>
+                            </li>
+                            <li>
+                                <div class="colorfield color-info"></div>
+                            </li>
+                            <li>
+                                <div class="colorfield color-success"></div>
+                            </li>
+                            <li>
+                                <div class="colorfield color-warning"></div>
+                            </li>
+                            <li>
+                                <div class="colorfield color-danger"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="nav">
+                        <li><a href="#">link 1</a></li>
+                        <li><a href="#">link 2</a></li>
+                        <li><a href="#">link 3</a></li>
+                    </ul>
+                </nav>
+                <pre>
          line 1
           line 2
            line 3
             line 4
     </pre>
-
+                <!-- /content -->
+            </main>
+        </section>
+        <footer>footer</footer>
+    </div>
 
 </body>
 

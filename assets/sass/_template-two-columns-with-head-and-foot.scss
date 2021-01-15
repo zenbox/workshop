@@ -18,8 +18,54 @@
   */
 
 /** COMPONENT BASE */
+.template {
+  width: calc(100vw - 2 * $defaultMargin);
+  min-height: calc(100vh - 2 * $defaultMargin);
+  margin: $defaultMargin;
+}
 
 /** COMPONENT LAYOUT */
+.template {
+  display: flex;
+  flex-direction: column;
+}
+
+.template__content {
+  display: flex;
+  flex-direction: row;
+}
+
+// nav>ul>li>a[href] {}
+// 1: href?  [href, href, href, href, href, href, href, href, href, href, href]
+// 2: a?     [href, href, href, href, href, href, href, href]
+// 3: li?
+// 4: ul?
+// 5: nav?   []
+
+// Own grid
+.template__grid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.template__grid-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.template__grid-column {}
+
+.template__grid-column-2 {
+  width: 100% / 7 * 2;
+}
+
+.template__grid-column-5 {
+  width: 100% / 7 * 5;
+}
+
+
+
+
 
 /** COMPONENT THEME */
 

@@ -4,9 +4,29 @@
 $defaultBackgroundColor:hsla(0, 0%, 0%, 0.8);
 $defaultTextColor:hsla(0, 0%, 90%, 1);
 
-$primaryColor: #2E8CBF; // #6BC3F2
-$secondaryColor: #C28434; // #DBA660; #FFCC8A
+$primaryColor: hsla(201, 61%, 46%, 1); // #6BC3F2
+$lightPrimaryColor: lighten($primaryColor, 20%);
+
+$secondaryColor: hsla(34, 58%, 48%, 1); // #DBA660; #FFCC8A
+$lightSecondaryColor: lighten($secondaryColor, 15%);
+$lighterSecondaryColor: lighten($secondaryColor, 30%);
+
+$dangerColor: hsla(0, 61%, 46%, 1);
+$warningColor: hsla(50, 61%, 46%, 1);
+$successColor: hsla(150, 61%, 36%, 1);
+
+$infoColor: $primaryColor;
 
 
-$dangerColor: $successColor: $warningColor: $infoColor: // Typography
-$defaultFontFamily: $defaultFontSize: $defaultLineHeight: $defaultFontSizeAdjustment:
+// Typography
+$defaultFontFamily: Roboto,
+Helvetica,
+Arial,
+sans-serif;
+$defaultFontWeight: 400; // regular
+$defaultFontSize: 16px; // base for rem
+$defaultLineHeight: 1.4;
+$defaultFontSizeAdjustment: 100%;
+
+$defaultMargin:2rem;
+$defaultPadding:0.5rem;

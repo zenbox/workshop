@@ -5,6 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 html {
   line-height: 1.15;
   /* 1 */
@@ -338,14 +339,99 @@ template {
 }
 
 html {
-  font-family: sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.4;
+  font-size-adjust: 100%;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 28.8px;
+}
+
+h4 {
+  font-size: 25.6px;
+}
+
+h5 {
+  font-size: 22.4px;
+}
+
+h6 {
+  font-size: 19.2px;
+}
+
+p,
+li,
+td,
+th,
+dd,
+dl {
+  font-size: 16px;
 }
 
 body {
   background-color: rgba(0, 0, 0, 0.8);
   color: #e6e6e6;
+}
+
+html, html * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.colorfield {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+}
+
+.color-primary {
+  background-color: #2e8bbd;
+}
+
+.color-primary-light {
+  background-color: #73b8dd;
+}
+
+.color-secondary {
+  background-color: #c18433;
+}
+
+.color-secondary-light {
+  background-color: #d7a86a;
+}
+
+.color-secondary-lighter {
+  background-color: #e7cba6;
+}
+
+.color-danger {
+  background-color: #bd2e2e;
+}
+
+.color-warning {
+  background-color: #bda52e;
+}
+
+.color-success {
+  background-color: #24945c;
+}
+
+.color-info {
+  background-color: #2e8bbd;
 }
 
 /** Template width two columns, head and foot
@@ -367,7 +453,41 @@ body {
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
 /** COMPONENT BASE */
+.template {
+  width: calc(100vw - 2 * $defaultMargin);
+  min-height: calc(100vh - 2 * $defaultMargin);
+  margin: 2rem;
+}
+
 /** COMPONENT LAYOUT */
+.template {
+  display: flex;
+  flex-direction: column;
+}
+
+.template__content {
+  display: flex;
+  flex-direction: row;
+}
+
+.template__grid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.template__grid-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.template__grid-column-2 {
+  width: 28.57143%;
+}
+
+.template__grid-column-5 {
+  width: 71.42857%;
+}
+
 /** COMPONENT THEME */
 /** COMPONENT CHANGING STATES (BEHAVIOUR) */
 /** Navigation Component stylesheet
@@ -395,4 +515,16 @@ body {
 /** COMPONENT CHANGING STATES (BEHAVIOUR) */
 .nav {
   /* multiline comments (not rendered in compressed) */
+}
+
+.list ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.list-horizontal ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
