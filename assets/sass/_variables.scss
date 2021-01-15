@@ -31,6 +31,12 @@ $defaultFontSizeAdjustment: 100%;
 $defaultMargin:2rem;
 $defaultPadding:0.5rem;
 
+// Common design attributes
+$defaultBorderRadius: 0;
+$defaultBorderWidth: 1px;
+$defaultBorderStyle: solid;
+$defaultBorderColor: $lightPrimaryColor;
+
 // Grid
 $gridColumns: 7;
 $gridColumnGap: $defaultPadding;
@@ -41,3 +47,9 @@ $mediaSizes: 480px,
 768px,
 1024px;
 $mediaSizes-2: ("tiny":480px, "small":768px, "medium":1024px);
+
+// Forms
+$formBorderStyle: dotted;
+$formBorderColor: $lightPrimaryColor;
+$formBorderWidth: $defaultBorderWidth;
+$formBorderRadius: $defaultBorderRadius;

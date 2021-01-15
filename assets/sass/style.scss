@@ -4,6 +4,7 @@
 
 // global import of variables and mixins
 @import "variables";
+@import "mixins";
 
 // own base setting
 @import "base";
@@ -14,6 +15,7 @@
 @import "navigation";
 @import "card";
 @import "list";
+@import "form";
 // more components here ...
 
 // theme

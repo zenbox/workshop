@@ -566,6 +566,20 @@ body {
   background-color: #e7cba6;
 }
 
+.card {
+  --width: 400px;
+  --height: 400px;
+  position: absolute;
+  background-color: rgba(26, 26, 26, 0.9);
+  min-width: var(--width);
+  min-height: var(--height);
+  border-radius: 10px;
+  padding: 2rem;
+  left: calc(50vw - var(--width) / 2);
+  top: calc(50vh - var(--height) / 2);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
+}
+
 .list ul {
   margin: 0;
   padding: 0;
@@ -576,4 +590,84 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+/** Login Form
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT BASE, LAYOUT, THEME, STATES
+  *
+  * @package Webapplication
+  * @module forms
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-01-15
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+/** COMPONENT BASE */
+.form fieldset {
+  border-style: dotted;
+  border-color: #73b8dd;
+  border-width: 1px;
+  border-radius: 0;
+}
+
+.form legend {
+  margin: 0 auto;
+}
+
+/** COMPONENT LAYOUT */
+.form__input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /** COMPONENT THEME */
+}
+
+.form__input label {
+  text-align: center;
+}
+
+.form__input input {
+  text-align: center;
+}
+
+.form__input input[type=email], .form__input input[type=password] {
+  background-color: transparent;
+  border-color: #73b8dd;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 1rem;
+}
+
+legend,
+input,
+label {
+  color: #73b8dd;
+  padding: 0.5rem;
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.form__input input:focus {
+  outline: none;
+  transform: scale(1.2, 1.2);
+  transition-property: transform border-color;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+.form__input input:valid {
+  border-color: #24945c;
+}
+
+.form__input input:invalid {
+  border-color: #bd2e2e;
 }
