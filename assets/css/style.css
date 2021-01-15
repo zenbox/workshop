@@ -612,7 +612,7 @@ body {
   */
 /** COMPONENT BASE */
 .form fieldset {
-  border-style: dotted;
+  border-style: none;
   border-color: #73b8dd;
   border-width: 1px;
   border-radius: 0;
@@ -623,6 +623,12 @@ body {
 }
 
 /** COMPONENT LAYOUT */
+.form fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .form__input {
   display: flex;
   flex-direction: column;
@@ -670,4 +676,44 @@ label {
 
 .form__input input:invalid {
   border-color: #bd2e2e;
+}
+
+/** Buttons
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module Form
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-01-15
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+/** COMPONENT BASE */
+/** COMPONENT LAYOUT */
+/** COMPONENT THEME */
+.button {
+  border: none;
+  background: transparent;
+  color: #e6e6e6;
+  background-color: #1f5e7f;
+  padding: 0.5rem;
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.button--disabled {
+  filter: grayscale(80%);
+  color: gray;
+}
+
+.button--enabled {
+  background-color: #155636;
 }

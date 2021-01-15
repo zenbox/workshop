@@ -34,21 +34,34 @@
 
                             <div class="form__input">
                                 <label for="login-email">Email</label>
-                                <input id="login-email" type="email" name="">
+                                <input id="login-email" type="email" name="" required minlength="4">
                             </div>
 
                             <div class="form__input">
                                 <label for="login-password">Password</label>
-                                <input id="login-password" type="password" name="">
+                                <input id="login-password" type="password" name="" required minlength="10">
                             </div>
 
                             <div class="form__input">
                                 <label><input type="checkbox" name="" id=""> agree terms</label>
                             </div>
 
-                            <button type="submit">enter</button>
+                            <button class="button button--disabled" type="submit">enter</button>
                         </fieldset>
+                        <script>
+                            let
+                                form = document.querySelector('#form-login'),
+                                button = document.querySelector('#form-login button'),
+                                email = document.querySelector('#login-email'),
+                                password = document.querySelector('#login-password');
 
+                            form.addEventListener('keyup', () => {
+                                if (email.validity.valid && password.validity.valid) {
+                                    button.classList.toggle('button--enabled');
+                                    console.log('true');
+                                } else console.log("false");
+                            })
+                        </script>
                     </form>
                     <!-- /Login form component -->
                 </div>
@@ -58,7 +71,7 @@
                 <!-- content -->
                 <div>
                     <h1>lorem live headline ipsum dolor sit</h1>
-                    <p>Lorem ipsum dolor <code>consectezur ad piscit</code>sit amet consectetur adipisicing elit. At
+                    <p>Lorem ipsum dolor <code>consectetur ad piscit</code>sit amet consectetur adipisicing elit. At
                         ratione animi
                         deleniti.</p>
                     <div class="list list-horizontal">

@@ -49,7 +49,7 @@ $mediaSizes: 480px,
 $mediaSizes-2: ("tiny":480px, "small":768px, "medium":1024px);
 
 // Forms
-$formBorderStyle: dotted;
+$formBorderStyle: none;
 $formBorderColor: $lightPrimaryColor;
 $formBorderWidth: $defaultBorderWidth;
 $formBorderRadius: $defaultBorderRadius;

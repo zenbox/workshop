@@ -35,6 +35,13 @@
 /** COMPONENT LAYOUT */
 // display, width, height, flex-basis, -grow, -shrink, position, margin ...
 // (bei content-box: padding, border)
+.form {
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
 
 .form__input {
   display: flex;
