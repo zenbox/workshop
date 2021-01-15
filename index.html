@@ -10,7 +10,27 @@
 
 <body>
     <div class="template template__grid">
-        <header class="template__header">header</header>
+        <header class="template__header header">
+            <div>logo</div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+                <script>
+                    window.onload = () => {
+                        let
+                            hamburger = document.querySelector('.hamburger'),
+                            contentContainer = document.querySelector('.template__content ');
+
+                        hamburger.addEventListener('click', function (e) {
+                            this.classList.toggle('hamburger--closed');
+                            contentContainer.classList.toggle('template__content--closed');
+                        })
+                    }
+                </script>
+            </div>
+            <script></script>
+        </header>
         <section class="template__content template__grid-row">
             <aside class="template__grid-column-2">
 

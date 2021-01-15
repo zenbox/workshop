@@ -17,6 +17,24 @@ $successColor: hsla(150, 61%, 36%, 1);
 
 $infoColor: $primaryColor;
 
+// Common design attributes
+$defaultBorderRadius: 0;
+$defaultBorderWidth: 1px;
+$defaultBorderStyle: solid;
+$defaultBorderColor: $lightPrimaryColor;
+
+// Media sizes @each
+// $mediaSizes: 480px, 640px, 768px, 1024px;
+$mediaSizes: ("tiny":480px, "small":768px, "medium":1024px);
+
+$breakpointSmall: 767px;
+$breakpointMedium: 768px;
+
+// Forms
+$formBorderStyle: none;
+$formBorderColor: $lightPrimaryColor;
+$formBorderWidth: $defaultBorderWidth;
+$formBorderRadius: $defaultBorderRadius;
 
 // Typography
 $defaultFontFamily: Roboto,
@@ -31,25 +49,10 @@ $defaultFontSizeAdjustment: 100%;
 $defaultMargin:2rem;
 $defaultPadding:0.5rem;
 
-// Common design attributes
-$defaultBorderRadius: 0;
-$defaultBorderWidth: 1px;
-$defaultBorderStyle: solid;
-$defaultBorderColor: $lightPrimaryColor;
+@media screen and (max-width: 767px) {
+    $defaultFontSize: 14px;
+}
 
 // Grid
 $gridColumns: 7;
 $gridColumnGap: $defaultPadding;
-
-// Media sizes @each
-$mediaSizes: 480px,
-640px,
-768px,
-1024px;
-$mediaSizes-2: ("tiny":480px, "small":768px, "medium":1024px);
-
-// Forms
-$formBorderStyle: none;
-$formBorderColor: $lightPrimaryColor;
-$formBorderWidth: $defaultBorderWidth;
-$formBorderRadius: $defaultBorderRadius;

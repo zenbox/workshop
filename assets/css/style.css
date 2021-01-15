@@ -452,64 +452,100 @@ body {
   * @license MIT {https://opensource.org/licenses/MIT}
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
-/** COMPONENT BASE */
-.template {
-  width: calc(100vw - 2 * 2rem);
-  min-height: calc(100vh - 2 * 2rem);
-  margin: 2rem;
+@media screen {
+  body {
+    margin: 0.5em;
+  }
+  div,
+  header,
+  aside,
+  nav,
+  main,
+  footer {
+    display: block;
+    width: 100%;
+  }
 }
 
-/** COMPONENT LAYOUT */
-.template {
-  display: flex;
-  flex-direction: column;
+@media only screen and (max-width: 767px) {
+  /** COMPONENT BASE */
+  /** COMPONENT LAYOUT */
+  .template {
+    display: flex;
+    flex-direction: column;
+  }
+  .template__content {
+    display: flex;
+    flex-direction: row;
+    width: 180vw;
+    transition: margin-left 250ms ease-in-out;
+  }
+  .template__content aside {
+    order: 2;
+    flex-basis: 80vw;
+    flex-grow: 1;
+  }
+  .template__content main {
+    order: 1;
+    flex-basis: 100vw;
+    flex-grow: 2;
+  }
+  /** COMPONENT THEME */
+  /** COMPONENT CHANGING STATES (BEHAVIOUR) */
+  .template__content--closed {
+    margin-left: -80vw;
+  }
 }
 
-.template__content {
-  display: flex;
-  flex-direction: row;
+@media only screen and (min-width: 768px) {
+  /** COMPONENT BASE */
+  .template {
+    width: calc(100vw - 2 * 2rem);
+    min-height: calc(100vh - 2 * 2rem);
+    margin: 2rem;
+  }
+  /** COMPONENT LAYOUT */
+  .template {
+    display: flex;
+    flex-direction: column;
+  }
+  .template__content {
+    display: flex;
+    flex-direction: row;
+  }
+  .template__grid-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .template__grid-row {
+    display: flex;
+    flex-direction: row;
+  }
+  .template__grid-column-1 {
+    width: 14.28571%;
+  }
+  .template__grid-column-2 {
+    width: 28.57143%;
+  }
+  .template__grid-column-3 {
+    width: 42.85714%;
+  }
+  .template__grid-column-4 {
+    width: 57.14286%;
+  }
+  .template__grid-column-5 {
+    width: 71.42857%;
+  }
+  .template__grid-column-6 {
+    width: 85.71429%;
+  }
+  .template__grid-column-7 {
+    width: 100%;
+  }
+  /** COMPONENT THEME */
+  /** COMPONENT CHANGING STATES (BEHAVIOUR) */
 }
 
-.template__grid-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.template__grid-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.template__grid-column-1 {
-  width: 14.28571%;
-}
-
-.template__grid-column-2 {
-  width: 28.57143%;
-}
-
-.template__grid-column-3 {
-  width: 42.85714%;
-}
-
-.template__grid-column-4 {
-  width: 57.14286%;
-}
-
-.template__grid-column-5 {
-  width: 71.42857%;
-}
-
-.template__grid-column-6 {
-  width: 85.71429%;
-}
-
-.template__grid-column-7 {
-  width: 100%;
-}
-
-/** COMPONENT THEME */
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
 /** Navigation Component stylesheet
   *
   *  @desc 
@@ -566,6 +602,35 @@ body {
   background-color: #e7cba6;
 }
 
+/** Header
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module  header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-01-15
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+/** COMPONENT BASE */
+/** COMPONENT LAYOUT */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/** COMPONENT THEME */
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
 .card {
   --width: 400px;
   --height: 400px;
@@ -578,6 +643,7 @@ body {
   left: calc(50vw - var(--width) / 2);
   top: calc(50vh - var(--height) / 2);
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9);
+  display: none;
 }
 
 .list ul {
@@ -589,7 +655,8 @@ body {
 .list-horizontal ul {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 /** Login Form
@@ -716,4 +783,57 @@ label {
 
 .button--enabled {
   background-color: #1f7f4f;
+}
+
+/** Hamburger Menu button
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module navigation
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-01-15
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+/** USING LOCAL VARIABLES */
+/** COMPONENT BASE */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.hamburger > * {
+  background-color: #e7cba6;
+  width: 1.2rem;
+  height: 4px;
+  margin: 1px;
+  transition: all 250ms ease-in-out;
+}
+
+/** COMPONENT LAYOUT */
+/** COMPONENT THEME */
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.hamburger--closed > *:nth-child(1) {
+  transform: rotateZ(45deg) translateY(4.21053px) translateX(4.21053px);
+}
+
+.hamburger--closed > *:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger--closed > *:nth-child(3) {
+  transform: rotateZ(-45deg) translateY(-4.21053px) translateX(4.21053px);
 }
