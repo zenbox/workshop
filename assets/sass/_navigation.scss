@@ -18,19 +18,40 @@
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
 
-/** COMPONENT BASE */
-
-/** COMPONENT LAYOUT */
-
-/** COMPONENT THEME */
-
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
-
-
 .nav {
-    // single line comments (never rendered)
-    /* multiline comments (not rendered in compressed) */
+  /** COMPONENT BASE */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 
+  a {
+    text-decoration: none;
+  }
 
+  /** COMPONENT LAYOUT */
+  a {
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  /** COMPONENT CHANGING STATES (BEHAVIOUR) */
+  a:link {
+    color: $primaryColor;
+  }
+
+  a:visited {
+    color: $lightPrimaryColor;
+  }
+
+  a:hover {
+    color: $secondaryColor;
+    background-color: $lighterSecondaryColor;
+  }
+
+  a:active {
+    color: $lightSecondaryColor;
+    background-color: $lighterSecondaryColor;
+  }
 
 }

@@ -529,12 +529,41 @@ body {
   * @license MIT {https://opensource.org/licenses/MIT}
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
-/** COMPONENT BASE */
-/** COMPONENT LAYOUT */
-/** COMPONENT THEME */
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
 .nav {
-  /* multiline comments (not rendered in compressed) */
+  /** COMPONENT BASE */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /** COMPONENT LAYOUT */
+  /** COMPONENT CHANGING STATES (BEHAVIOUR) */
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav a {
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.nav a:link {
+  color: #2e8bbd;
+}
+
+.nav a:visited {
+  color: #73b8dd;
+}
+
+.nav a:hover {
+  color: #c18433;
+  background-color: #e7cba6;
+}
+
+.nav a:active {
+  color: #d7a86a;
+  background-color: #e7cba6;
 }
 
 .list ul {
