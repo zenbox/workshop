@@ -57,9 +57,10 @@
 
                             form.addEventListener('keyup', () => {
                                 if (email.validity.valid && password.validity.valid) {
-                                    button.classList.toggle('button--enabled');
-                                    console.log('true');
-                                } else console.log("false");
+                                    button.classList.replace('button--disabled', 'button--enabled');
+                                } else {
+                                    button.classList.replace('button--enabled', 'button--disabled');
+                                }
                             })
                         </script>
                     </form>
