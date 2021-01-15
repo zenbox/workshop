@@ -454,8 +454,8 @@ body {
   */
 /** COMPONENT BASE */
 .template {
-  width: calc(100vw - 2 * $defaultMargin);
-  min-height: calc(100vh - 2 * $defaultMargin);
+  width: calc(100vw - 2 * 2rem);
+  min-height: calc(100vh - 2 * 2rem);
   margin: 2rem;
 }
 
@@ -480,12 +480,32 @@ body {
   flex-direction: row;
 }
 
+.template__grid-column-1 {
+  width: 14.28571%;
+}
+
 .template__grid-column-2 {
   width: 28.57143%;
 }
 
+.template__grid-column-3 {
+  width: 42.85714%;
+}
+
+.template__grid-column-4 {
+  width: 57.14286%;
+}
+
 .template__grid-column-5 {
   width: 71.42857%;
+}
+
+.template__grid-column-6 {
+  width: 85.71429%;
+}
+
+.template__grid-column-7 {
+  width: 100%;
 }
 
 /** COMPONENT THEME */

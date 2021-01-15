@@ -19,8 +19,8 @@
 
 /** COMPONENT BASE */
 .template {
-  width: calc(100vw - 2 * $defaultMargin);
-  min-height: calc(100vh - 2 * $defaultMargin);
+  width: calc(100vw - 2 * #{$defaultMargin});
+  min-height: calc(100vh - 2 * #{$defaultMargin});
   margin: $defaultMargin;
 }
 
@@ -55,14 +55,11 @@
 
 .template__grid-column {}
 
-.template__grid-column-2 {
-  width: 100% / 7 * 2;
+@for $i from 1 through $gridColumns {
+  .template__grid-column-#{$i} {
+    width: 100% / $gridColumns * $i;
+  }
 }
-
-.template__grid-column-5 {
-  width: 100% / 7 * 5;
-}
-
 
 
 

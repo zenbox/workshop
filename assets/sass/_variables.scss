@@ -30,3 +30,14 @@ $defaultFontSizeAdjustment: 100%;
 
 $defaultMargin:2rem;
 $defaultPadding:0.5rem;
+
+// Grid
+$gridColumns: 7;
+$gridColumnGap: $defaultPadding;
+
+// Media sizes @each
+$mediaSizes: 480px,
+640px,
+768px,
+1024px;
+$mediaSizes-2: ("tiny":480px, "small":768px, "medium":1024px);
