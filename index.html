@@ -13,10 +13,10 @@
 
     <pre id="messages">no news so far ...</pre>
 
-    <form action="#">
-        <input type="text" id="messageBox">
-        <button id="sendButton" type="submit">send</button>
-    </form>
+
+    <input type="text" id="messageBox">
+    <button id="sendButton">send</button>
+
 
     <script>
         // Wait for DOM loading
@@ -41,14 +41,17 @@
             }
 
             function init() {
-                // kill any existing socket connection
+
+                // kill any existing socket connection, reset
                 if (ws) {
                     ws.onerror = ws.onopen = ws.onclose = null;
                     ws.close();
                 }
-                // Establish a new socket connection
-                ws = new WebSocket('ws://localhost:5502');
 
+                // Establish a new socket connection
+                ws = new WebSocket('wss://localhost:5502/ws');
+                // ows = new WebSocket('wss://otherhost:5503/ws');
+                
                 // Confirm open in console
                 ws.onopen = () => {
                     console.log('Connection opened!');
@@ -56,9 +59,9 @@
                 }
 
                 // if there's a message, show it
-                ws.onmessage = ({
-                    data
-                }) => showMessage(data);
+                ws.onmessage = ({data}) => {showMessage(data)};
+
+                // Closing
                 ws.onclose = function () {
                     ws = null;
                 }
@@ -67,6 +70,7 @@
             // Send messages on click
             sendButton.onclick = function (e) {
                 e.preventDefault();
+
                 if (!ws) {
                     showMessage("No WebSocket connection :(");
                     return;
@@ -74,6 +78,7 @@
 
                 ws.send(messageBox.value);
                 showMessage(messageBox.value);
+
                 setCursor();
             }
 
