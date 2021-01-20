@@ -1,7 +1,7 @@
 
 onmessage = function (event) { 
 
-    console.log('worker runs ...');
+    console.log('yes i\'m running');
     console.dir(event);
 
     console.dir(self);

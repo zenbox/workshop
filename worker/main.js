@@ -2,21 +2,19 @@
 
     let worker = new Worker('task.js');
 
-    worker.onerror = () => {};
+    worker.onerror = () => {console.log('something went wrong.')};
 
     worker.onmessage = function (event) {
-        console.log('runs ...');
+        console.log('worker started ...');
         console.dir(event.data.message);
     };
 
-    worker.onclose = () => {};
+    worker.onclose = () => { console.log('worker closed!')};
 
-    setInterval(function () {
         worker.postMessage({
             "message": "hello worker"
         });
 
         worker.terminate();
-    }, 3000);
 
 }())
