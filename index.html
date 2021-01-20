@@ -49,9 +49,9 @@
                 }
 
                 // Establish a new socket connection
-                ws = new WebSocket('wss://localhost:5502/ws');
+                ws = new WebSocket('ws://localhost:3000');
                 // ows = new WebSocket('wss://otherhost:5503/ws');
-                
+
                 // Confirm open in console
                 ws.onopen = () => {
                     console.log('Connection opened!');
@@ -59,7 +59,11 @@
                 }
 
                 // if there's a message, show it
-                ws.onmessage = ({data}) => {showMessage(data)};
+                ws.onmessage = ({
+                    data
+                }) => {
+                    showMessage(data)
+                };
 
                 // Closing
                 ws.onclose = function () {
