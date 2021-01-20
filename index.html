@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Websocket Chat</title>
+</head>
+
+<body>
+    <!-- <img src="https://picsum.photos/id/106/400/200" alt=""> -->
+    <h1>Simple Chat</h1>
+
+    <pre id="messages">no news so far ...</pre>
+
+    <form action="#">
+        <input type="text" id="messageBox">
+        <button id="sendButton" type="submit">send</button>
+    </form>
+
+    <script>
+        // Wait for DOM loading
+        window.onload = function () {
+
+            const sendButton = document.querySelector('#sendButton');
+            const messages = document.querySelector('#messages');
+            const messageBox = document.querySelector('#messageBox');
+
+            let ws;
+
+            // Show messages within the message box and scrool to top
+            function showMessage(message) {
+                messages.textContent += `\n\n${message}`;
+                messages.scrollTop = messages.scrollHeight;
+                messageBox.value = '';
+            }
+
+            // Set the cursor into the input field
+            function setCursor() {
+                document.querySelector('input').focus();
+            }
+
+            function init() {
+                // kill any existing socket connection
+                if (ws) {
+                    ws.onerror = ws.onopen = ws.onclose = null;
+                    ws.close();
+                }
+                // Establish a new socket connection
+                ws = new WebSocket('ws://localhost:5502');
+
+                // Confirm open in console
+                ws.onopen = () => {
+                    console.log('Connection opened!');
+                    setCursor();
+                }
+
+                // if there's a message, show it
+                ws.onmessage = ({
+                    data
+                }) => showMessage(data);
+                ws.onclose = function () {
+                    ws = null;
+                }
+            }
+
+            // Send messages on click
+            sendButton.onclick = function (e) {
+                e.preventDefault();
+                if (!ws) {
+                    showMessage("No WebSocket connection :(");
+                    return;
+                }
+
+                ws.send(messageBox.value);
+                showMessage(messageBox.value);
+                setCursor();
+            }
+
+            // go
+            init();
+        }
+    </script>
+
+
+</body>
+
+</html>
