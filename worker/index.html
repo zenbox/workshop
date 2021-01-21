@@ -5,12 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Worker Example</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
     <script src="main.js"></script>
 </head>
 
 <body>
     <h1>Worker Lorem ipsum dolor sit.</h1>
+    <p>
+        Do a prime number search from
+        <input class="input-number" id="from" type="text" value="1">
+        to
+        <input class="input-number" id="to" type="text" value="2000">
+    </p>
+    <button class="button" onclick="doSearch()" id="searchButton">Start Searching</button>
+    <button class="button" onclick="cancelSearch()">Cancel</button>
+    <span class="status" id="statusDisplay">no news so far.</span>
 
+    <div class="prime-container" id="prime-container"></div>
 </body>
 
 </html>

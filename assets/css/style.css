@@ -1,0 +1,63 @@
+        @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap");
+
+        html {
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 17px;
+            line-height: 1.4;
+            color: white;
+            background-color: hsla(0, 0%, 0%, 0.85);
+        }
+
+        html,
+        html * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 3rem;
+        }
+
+        .prime-container,
+        .input-number,
+        .button {
+            font-family: "Roboto Condensed", sans-serif;
+            font-size: 1rem;
+
+            background-color: transparent;
+            border: 1px solid white;
+            outline: none;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .button,
+        .input-number {
+            padding: 0.25rem;
+            min-width: 4rem;
+            text-align: center;
+        }
+
+        .input-number:focus {
+            border: 1px solid green;
+        }
+
+        .prime-container {
+            height: 16rem;
+            width: 32.5rem;
+            overflow: scroll;
+            overflow-x: hidden;
+
+        }
+
+        .status {
+            color: hsla(0, 85%, 50%, 0.85);
+        }
+
+        .data {
+            color: hsla(0, 0%, 100%, 0.5);
+        }
+
+        .log p {
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+        }

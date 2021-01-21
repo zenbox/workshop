@@ -19,8 +19,8 @@ Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: 
 ## Dateien zum Download
 wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können während und am Ende des Seminars von https://github.com/zenbox/workshop heruntergeladen werden.
 
-## Gemeinsame Fundstücke
-- ...
+## Fundstücke
+- [The Chat Example Original ist von Brad Traversy Thanks!.](https://www.youtube.com/watch?v=jD7FnbI76Hg&t=2128s)
 ## Links zu HTML5
 - [html5Test.com](http://html5test.com/index.html)
 - [Can i Use?](https://caniuse.com/)
