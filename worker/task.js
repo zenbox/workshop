@@ -8,9 +8,6 @@ onmessage = function (event) {
 
     // close();
 
-
-    console.log(event.data.from, event.data.to)
-
     let primes = findPrimes(event.data.from, event.data.to);
 
     postMessage({

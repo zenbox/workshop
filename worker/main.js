@@ -23,6 +23,19 @@
 
     }
 
+    worker.onmessage = function (event) {
+        console.dir(event.data);
+        let messageType = event.data.messageType;
+
+        switch (messageType) {
+            case 'default':
+                break;
+            case 'primelist':
+                break;
+        }
+    };
+
+
     cancelSearch = function () {
         worker.terminate();
         worker = null;
@@ -34,10 +47,6 @@
         console.log('something went wrong.')
     };
 
-    worker.onmessage = function (event) {
-        console.log('worker started ...');
-        console.dir(event.data.message);
-    };
 
     worker.onclose = () => {
         console.log('worker closed!')
