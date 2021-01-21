@@ -2,11 +2,13 @@
 
     let worker = new Worker('task.js'),
         statusDisplay,
-        searchButton;
+        searchButton,
+        displayList;
 
     window.onload = function () {
         statusDisplay = document.querySelector('#statusDisplay');
         searchButton = document.querySelector('#searchButton');
+        displayList = document.querySelector('#prime-container');
     }
 
     doSearch = function () {
@@ -25,12 +27,20 @@
 
     worker.onmessage = function (event) {
         console.dir(event.data);
-        let messageType = event.data.messageType;
+        let messageType = event.data.messageType,
+            message = event.data.data;
+
 
         switch (messageType) {
             case 'default':
                 break;
             case 'primelist':
+                statusDisplay.innerHTML = `The result are ready!`;
+
+                displayList.innerHTML = message.join(', ');
+                break;
+            case 'Progress':
+                statusDisplay.innerHTML = `${message} % done`;
                 break;
         }
     };
@@ -42,17 +52,12 @@
         statusDisplay.innerHTML = `Search cancelled`;
     }
 
-
     worker.onerror = () => {
         console.log('something went wrong.')
     };
 
-
     worker.onclose = () => {
         console.log('worker closed!')
     };
-
-
-
 
 }())
