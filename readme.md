@@ -70,3 +70,20 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
     }
 }
 ```
+
+### VS code settings for the Live Sass Extension
+```json
+"liveSassCompile.settings.formats": [
+    {
+      "extensionName": ".css",
+      "format": "expanded",
+      "savePath": "/public/assets/css/"
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.autoprefix": [],
+  "liveSassCompile.settings.excludeList": [
+    "**/node_modules/**",
+    ".vscode/**"
+  ],
+```
