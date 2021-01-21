@@ -12,6 +12,7 @@
 
 // helper
 const path = require('path');
+const http = require('http');
 const livereload = require("livereload");
 const connectLivereload = require("connect-livereload");
 
@@ -20,15 +21,34 @@ const express = require('express');
 const app = express();
 const PORT = 3002 || process.env.PORT;
 
+// Websocket library
+const socketio = require('socket.io');
+
 // The live server
 const liveReloadServer = livereload.createServer();
 liveReloadServer.watch(path.join(__dirname, 'public'));
 app.use(connectLivereload());
 
+// The websocket server
+const server = http.createServer(app);
+const io = socketio(server);
+
 // A single static route
 app.use(express.static(path.join(__dirname, 'public')));
+// - - - - - - - - - -
+// The socket stuff
+
+// a client connects
+io.on('connection', socket => {
+    console.log('something has connected!')
+
+    socket.emit('message', 'Welcome to the Chat');
+    socket.broadcast.emit('message', 'A use has joined the chat');
+
+    socket.on('disconnect', () => io.emit('message', 'USER has left the chat.'));
+
+})
 
 
-
-
-app.listen(PORT, () => console.log(`service is running on port ${PORT}`));
+// - - - - - - - - - -
+server.listen(PORT, () => console.log(`service is running on port ${PORT}`));
