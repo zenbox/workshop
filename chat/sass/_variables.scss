@@ -9,7 +9,7 @@ $margin: calc(var($font-size) + var($font-size) * 0.25)
 
 /* CSS 4 Variablen */
 :root {
-    _basedark-color-a: hsla(0, 0%, 15%, 1);
+    --dark-color-a: hsla(0, 0%, 15%, 1);
     --dark-color-b: hsla(0, 0%, 25%, 1);
     --light-color: hsla(0, 0%, 85%, 1);
     --success-color: hsla(120, 40%, 50%, 1);
