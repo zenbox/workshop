@@ -13,7 +13,6 @@
 // helper
 const path = require('path');
 const livereload = require("livereload");
-const liveReloadServer = livereload.createServer();
 const connectLivereload = require("connect-livereload");
 
 // A web service
@@ -22,6 +21,7 @@ const app = express();
 const PORT = 3002 || process.env.PORT;
 
 // The live server
+const liveReloadServer = livereload.createServer();
 liveReloadServer.watch(path.join(__dirname, 'public'));
 app.use(connectLivereload());
 
