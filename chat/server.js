@@ -16,6 +16,9 @@ const http = require('http');
 const livereload = require("livereload");
 const connectLivereload = require("connect-livereload");
 
+// Own modules
+const formatMessages = require('./utils/messages');
+
 // A web service
 const express = require('express');
 const app = express();
@@ -42,10 +45,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 io.on('connection', socket => {
     console.log('something has connected!')
 
-    socket.emit('message', 'Welcome to the Chat');
-    socket.broadcast.emit('message', 'A use has joined the chat');
+    socket.emit('message', formatMessages('Welcome to the Chat'));
+    socket.broadcast.emit('message', formatMessages('A user has joined the chat'));
 
-    socket.on('disconnect', () => io.emit('message', 'USER has left the chat.'));
+    // receive a chat message
+    socket.on('chatMessage', msg => {
+        // console.log(msg);
+        // Send to all chat clients
+        io.emit('message', formatMessages(msg));
+    });
+
+
+    socket.on('disconnect', () => io.emit('message', formatMessages('USER has left the chat.')));
 
 })
 
