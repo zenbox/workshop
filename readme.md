@@ -40,3 +40,33 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 - [Normalize CSS](https://necolas.github.io/)
 - [Bootstrap](https://getbootstrap.com/)
 - [Material IO](https://material.io/)
+
+
+
+
+## Snippets
+### Javascript
+```javascript
+{
+    "page documention block": {
+    "prefix": "docblock",
+    "description": "print the page doc block",
+    "body": [
+        "/** $1",
+        "  *",
+        "  *  @desc $2",
+        "  *",
+        "  * @package Webapplication",
+        "  * @module $3",
+        "  * @author your name <your.name@domain.org>",
+        "  * @version v1.0.0",
+        "  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+        "  * @see i.e. inspired by ... {link to}",
+        "  * @license MIT {https://opensource.org/licenses/MIT}",
+        "  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
+        "  */",
+        "$4"
+        ]
+    }
+}
+```
