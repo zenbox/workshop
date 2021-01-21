@@ -1,0 +1,50 @@
+.login-container {
+    max-width: 500px;
+    margin: 80px auto;
+    color: #fff;
+}
+
+.login-header {
+    text-align: center;
+    padding: 20px;
+    background: var(--dark-color-a);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.login-main {
+    padding: 30px 40px;
+    background: var(--dark-color-b);
+}
+
+.login-main p {
+    margin-bottom: 20px;
+}
+
+.login-main .form-control {
+    margin-bottom: 20px;
+}
+
+.login-main label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-main input[type='text'] {
+    font-size: 16px;
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+}
+
+.login-main select {
+    font-size: 16px;
+    padding: 5px;
+    height: 40px;
+    width: 100%;
+}
+
+.login-main .btn {
+    margin-top: 20px;
+    width: 100%;
+}
