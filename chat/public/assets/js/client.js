@@ -54,7 +54,6 @@ window.onload = () => {
 
 
     socket.on('message', message => {
-        // console.log(message);
         outputMessages(message);
         chatMessages.scrollTop = chatMessages.scrollHeight;
     });
