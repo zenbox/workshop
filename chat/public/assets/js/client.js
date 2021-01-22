@@ -2,6 +2,9 @@ window.onload = () => {
     // A Socket Client
     const chatForm = document.querySelector('#chat-form');
     const chatMessages = document.querySelector('.chat-messages');
+    const roomName = document.querySelector('#room-name');
+    const userList = document.querySelector('#user-list');
+
 
     // Get username and room from url
     const {
@@ -22,11 +25,14 @@ window.onload = () => {
 
     // Get room and user data
     socket.on('roomUsers', function ({
-        userList,
+        users,
         room
     }) {
+        console.log(users);
+        console.log(room);
+
         outputRoomName(room);
-        outputUserList(userList);
+        outputUserList(users);
     });
 
     // - - - - - - - - - -
@@ -71,9 +77,18 @@ window.onload = () => {
         chatMessages.appendChild(div);
     }
 
-    function outputUserList(userList) {}
+    function outputUserList(users) {
+        userList.innerHTML = '';
+        users.forEach(user => {
+            const li = document.createElement('li');
+            li.innerText = user.username;
+            userList.appendChild(li);
+        });
+    }
 
-    function outputRoom(roomName) {}
+    function outputRoomName(room) {
+        roomName.innerHTML = room;
+    }
 
     // - - - - - - - - - -
 }
