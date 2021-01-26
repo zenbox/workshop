@@ -1,6 +1,6 @@
 /** Some Simple Stylesheets
   *
-  * @desc 
+  *  @desc 
   *        All devices fallback: @media screen {}
   *        Small devices:        @media screen and (max-width:768px) {}
   *
@@ -18,10 +18,46 @@
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
 
-/** COMPONENT BASE */
+/* Element selectors */
+body {
+    color: white;
+    background-color: hsla(0, 0%, 0%, 0.9);
 
-/** COMPONENT LAYOUT */
-  
-/** COMPONENT THEME */
+    margin: 0;
 
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 2rem;
+}
+
+fieldset {
+    border: 0;
+
+    border-style: dotted;
+    border-color: orange;
+    border-width: 3px;
+}
+
+p {
+    font-size: 1rem;
+}
+
+/* Class selector */
+
+/* BASE */
+.nav {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* LAYOUT */
+.nav-row li {
+    display: inline;
+}
+
+/* STATES */
+
+
+
+/* THEMING */
