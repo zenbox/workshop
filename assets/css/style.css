@@ -49,7 +49,7 @@ body {
     margin-top: 0;
     margin-right: 0;
     margin-bottom: 0;
-    margin-left: 2rem;
+    margin-left: 0;
 }
 
 fieldset {
@@ -82,3 +82,76 @@ p {
 
 
 /* THEMING */
+
+.flex-container>* {
+    /* border: 2px dotted cyan; */
+}
+
+@media print {}
+
+/* PAGE TEMPLATE */
+/* Fallback for all devices*/
+@media screen {}
+
+/** Layout for small devices */
+@media screen and (max-width: 767px) {
+    header>nav {
+        display: none;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: row-reverse;
+
+        width: 180vw;
+        overflow-x: hidden;
+    }
+
+    .flex-container nav{
+        flex-basis: 80vw;
+    }
+    .flex-container main{
+        flex-basis: 100vw;
+    }
+}
+
+/* Layout for medium devices */
+@media screen and (min-width: 768px) {
+
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .flex-container>nav {
+        flex-basis: 25vw;
+        flex-grow: 1;
+        flex-shrink: 9;
+    }
+
+    .flex-container>main {
+        flex-basis: 75vw;
+        flex-grow: 9;
+        flex-shrink: 1;
+    }
+}
+
+/* 
+.flex-container>*:nth-child(1) {
+    background-color: lightcoral
+}
+
+.flex-container>*:nth-child(2) {
+    background-color: green
+} */
+
+
+
+/* HEADER COMPONENT */
+body>header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
