@@ -18,7 +18,26 @@
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+
 /* Element selectors */
+html {
+    font-family: "Roboto Condesed", sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.8rem;
+}
+h3 {
+    font-size: 1.6rem;
+}
+
 body {
     color: white;
     background-color: hsla(0, 0%, 0%, 0.9);
