@@ -1,4 +1,4 @@
-# Willkommen zu Echtzeitapplikationen mit HTML5
+# Willkommen zur Einführung für HTML und CSS
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
@@ -13,15 +13,15 @@ Die Kurstage gehen jeweils von 9:00 bis 16:00 Uhr. Für das Remoteseminar sind f
 ## Präsenz während des Remote
 Ein Remoteseminar funktioniert im Großen und Ganzen wie ein Präsenzseminar auch. Die Teilnahme mit einem Live-Videobild ist dabei sehr wichtig. Das Video vermittelt Präsenz und stützt Fragen und Unterhaltungen. 
 
+Es ist anstrengend, einen ganzen Tag über Kamera und Bildschirm konzentriert zu arbeiten. Man kann keine Unterhaltungen führen wie gewohnt und viele kleine Gesten und Momente fehlen schlicht.
+
 ## Foliensatz
-Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **Echtzeitanwendungen mit Websockets und Webworkern.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+Es gibt zwei Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf** und **CSS kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
 ## Dateien zum Download
-wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können während und am Ende des Seminars von https://github.com/zenbox/workshop heruntergeladen werden.
+wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am Ende des Seminars hier heruntergeladen werden.
 
-## Fundstücke
-- [The Chat Example Original ist von Brad Traversy Thanks!.](https://www.youtube.com/watch?v=jD7FnbI76Hg&t=2128s)
-## Links zu HTML5
+## Links zu HTML und CSS
 - [html5Test.com](http://html5test.com/index.html)
 - [Can i Use?](https://caniuse.com/)
 - [MIT License](https://opensource.org/licenses/MIT)
@@ -32,58 +32,16 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 - [HTML Dokumentation I](https://www.w3schools.com/)
 - [HTML Dokumentation II](https://wiki.selfhtml.org/)
 - [HTML Dokumentation III](http://html5doctor.com/)
+ 
 
 - [CSS Tricks](https://css-tricks.com/)
 - [CSS Nomenklatur - Block Element Modifier](http://getbem.com/introduction/)
-- [Scalable and Modular CSS](http://smacss.com/)
+- [CSS Architektur - skalierbar und modular](http://smacss.com/)
 - [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
-- [Normalize CSS](https://necolas.github.io/)
-- [Bootstrap](https://getbootstrap.com/)
-- [Material IO](https://material.io/)
+ 
 
-
-
-
-## Snippets
-### Javascript
-```javascript
-{
-    "page documention block": {
-    "prefix": "docblock",
-    "description": "print the page doc block",
-    "body": [
-        "/** $1",
-        "  *",
-        "  *  @desc $2",
-        "  *",
-        "  * @package Webapplication",
-        "  * @module $3",
-        "  * @author your name <your.name@domain.org>",
-        "  * @version v1.0.0",
-        "  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-        "  * @see i.e. inspired by ... {link to}",
-        "  * @license MIT {https://opensource.org/licenses/MIT}",
-        "  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
-        "  */",
-        "$4"
-        ]
-    }
-}
-```
-
-### VS code settings for the Live Sass Extension
-```json
-"liveSassCompile.settings.formats": [
-    {
-      "extensionName": ".css",
-      "format": "expanded",
-      "savePath": "/public/assets/css/"
-    }
-  ],
-  "liveSassCompile.settings.generateMap": false,
-  "liveSassCompile.settings.autoprefix": [],
-  "liveSassCompile.settings.excludeList": [
-    "**/node_modules/**",
-    ".vscode/**"
-  ],
-```
+- [Blind-Bild-Generator](https://picsum.photos/)
+- [Alle Web Spezifikationen beim W3C](https://www.w3.org/TR)
+- [Generative Gestaltung](http://www.generative-gestaltung.de/)
+- [The Nature of Code - programming course](https://natureofcode.com/)
+- [Graphical programming IDE for artists](https://processing.org/)
