@@ -22,7 +22,7 @@
 
 /* Element selectors */
 html {
-    font-family: "Roboto Condesed", sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
     font-size: 16px;
     line-height: 1.5em;
     font-weight: normal;
@@ -31,16 +31,18 @@ html {
 h1 {
     font-size: 2rem;
 }
+
 h2 {
     font-size: 1.8rem;
 }
+
 h3 {
     font-size: 1.6rem;
 }
 
 body {
     color: white;
-    background-color: hsla(0, 0%, 0%, 0.9);
+    background-color: hsla(0, 0%, 0%, 0.85);
 
     margin: 0;
 
