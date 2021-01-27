@@ -1,28 +1,27 @@
-/** Some Simple Stylesheets
+/** A Customer Theme
   *
   *  @desc 
   *        All devices fallback: @media screen {}
-  *        Small devices:        @media screen and (max-width:768px) {}
+  *        Small devices:        @media screen and (max-width:767px) {}
+  *        Medium devices:       @media screen and (min-width:768px) {}
   *
   * 
   *  @toc  i.e. COMPONENT
   *        i.e. SUB COMPONENT
   *
   * @package Webapplication
-  * @module i.e. header
+  * @module themes
   * @author Michael Reichart <michael@zenbox.de>
-  * @since 2021-01-26
+  * @since 2021-01-27
   * @version 1.0.0
   * @see i.e. inspired by ... {link to}
   * @license MIT {https://opensource.org/licenses/MIT}
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
+/* THEMING */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap');
+.flex-container>* {
+    /* border: 2px dotted cyan; */
+}
 
-
-@import url(base.css);
-@import url(template.css);
-@import url(header.css);
-@import url(navigation.css);
-@import url(theme.css);
+@media print {}

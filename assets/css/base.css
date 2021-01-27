@@ -1,0 +1,64 @@
+/** The Base Setting
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:767px) {}
+  *        Medium devices:       @media screen and (min-width:768px) {}
+  *
+  * 
+  *  @toc  i.e. COMPONENT
+  *        i.e. SUB COMPONENT
+  *
+  * @package Webapplication
+  * @module base
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-01-27
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+
+/* Element selectors */
+html {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 16px;
+    line-height: 1.5em;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+h3 {
+    font-size: 1.6rem;
+}
+
+body {
+    color: white;
+    background-color: hsla(0, 0%, 0%, 0.85);
+
+    margin: 0;
+
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+fieldset {
+    border: 0;
+
+    border-style: dotted;
+    border-color: orange;
+    border-width: 3px;
+}
+
+p {
+    font-size: 1rem;
+}
