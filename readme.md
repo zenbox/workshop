@@ -46,6 +46,7 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am 
 - [The Nature of Code - programming course](https://natureofcode.com/)
 - [Graphical programming IDE for artists](https://processing.org/)
 
+- [SASS for CSS]{https://sass-lang.com/guide}
 
 
 
