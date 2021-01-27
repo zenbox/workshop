@@ -27,6 +27,10 @@ html {
     font-weight: normal;
 }
 
+html, html, * {
+    box-sizing: border-box;
+}
+
 h1 {
     font-size: 2rem;
 }

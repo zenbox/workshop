@@ -23,7 +23,11 @@
 
 /** TEMPLATE LAYOUT */
 /* Fallback for all devices*/
-@media screen {}
+@media screen {
+    body {
+        padding: 1rem;
+    }
+}
 
 /** Layout for small devices */
 @media screen and (max-width: 767px) {
@@ -37,6 +41,10 @@
 
         width: 180vw;
         overflow-x: hidden;
+
+        transition-property: margin-left;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
     }
 
     .flex-container nav {
@@ -46,6 +54,11 @@
     .flex-container main {
         flex-basis: 100vw;
     }
+
+    .flex-container--opened {
+        margin-left: -80vw;
+    }
+
 }
 
 /* Layout for medium devices */
@@ -64,10 +77,12 @@
     }
 
     .flex-container>main {
-        flex-basis: 75vw;
+        flex-basis: calc(75vw-2rem);
         flex-grow: 9;
         flex-shrink: 1;
     }
+
+
 }
 
 /* 
