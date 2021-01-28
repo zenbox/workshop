@@ -50,7 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // a client connects
 io.on('connection', socket => {
-    console.log('something has connected!')
+    console.log('Somebody has connected!')
 
     // Unique socket ID!
     const user = getCurrentUser(socket.id);
