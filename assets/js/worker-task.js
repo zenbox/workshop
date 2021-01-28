@@ -1,12 +1,22 @@
 //
 self.onmessage = function (event) {
 
-    console.log(event.data)
-
     let from = event.data.from,
         to = event.data.to;
 
+    let primes = findPrimes(from, to);
+
+    self.postMessage({
+        "messageType": "primelist",
+        "data": primes
+    })
+
+    // self.close();
+
 }
+
+self.onerror = function () {};
+
 
 function findPrimes(fromNumber, toNumber) {
     // Create an array containing all integers between the two specified numbers.
