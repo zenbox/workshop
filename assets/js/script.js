@@ -60,8 +60,3 @@ console.log(window
 
 //     callback(event);
 // }
-
-
-
-let do = function (xyz, arg => result )
- {}
