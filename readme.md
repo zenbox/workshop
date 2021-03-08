@@ -1,4 +1,4 @@
-# Willkommen zur Einführung für HTML und CSS
+# Willkommen zu HTML, CSS, Javascript, jQuery
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
@@ -16,10 +16,10 @@ Ein Remoteseminar funktioniert im Großen und Ganzen wie ein Präsenzseminar auc
 Es ist anstrengend, einen ganzen Tag über Kamera und Bildschirm konzentriert zu arbeiten. Man kann keine Unterhaltungen führen wie gewohnt und viele kleine Gesten und Momente fehlen schlicht.
 
 ## Foliensatz
-Es gibt zwei Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf** und **CSS kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf**, **CSS kompakt.pdf** und **Javascript kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Die Foliensätze werden ggf. aktualisiert. Sie stehen Ihnen anschließend unter der MIT Lizenz Verfügung.
 
 ## Dateien zum Download
-wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können am Ende des Seminars hier heruntergeladen werden.
+wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Meine Versionen davon können am Ende des Seminars hier heruntergeladen werden.
 
 ## Links zu HTML und CSS
 - [html5Test.com](http://html5test.com/index.html)
