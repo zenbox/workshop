@@ -27,25 +27,94 @@ html {
 
 
 /** COMPONENT LAYOUT */
-/* using flex boxes */
-.container {
-    display: flex;
-    flex-direction: column;
+/* All devices/all browser fallback */
+@media screen {
+
+    .container,
+    .content,
+    header,
+    aside,
+    main,
+    footer {
+        display: block;
+        width: 100%;
+    }
 }
 
-.content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
+/* Small devices */
+@media screen and (max-width:767px) {
+
+    .container,
+    .content,
+    header,
+    aside,
+    main,
+    footer {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* n'te Element vom Typ ...*/
+    aside:nth-of-type(2) {
+        display: none;
+    }
+
+    .container {
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .content {
+        width: 200%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content aside {
+        order: 2;
+    }
+
+    .content main {
+        order: 1;
+    }
+
+    .content--aside-open {
+        margin-left: -100vw;
+    }
 }
 
-header {}
+/* Medium devices */
+@media screen and (min-width:768px) {
 
-main,
-aside {}
+    /* using flex boxes */
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
 
-footer {}
+    .content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    header {}
+
+    /* viewport width (vw), viewport height (vh) */
+    main {
+        flex-basis: 50vw;
+        flex-grow: 0;
+    }
+
+    aside {
+        flex-grow: 1;
+    }
+
+    footer {}
+}
+
+
 
 /** COMPONENT THEME */
 body {
@@ -77,5 +146,12 @@ header,
 main,
 aside,
 footer {
-    border: 2px dotted cyan;
+    border: 2px dashed hsla(180, 100%, 50%, 0.025);
+}
+
+header,
+main,
+aside,
+footer {
+    background-color: hsla(180, 100%, 50%, 0.025);
 }
