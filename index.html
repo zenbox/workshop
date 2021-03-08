@@ -1,16 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <h1>Hello World 123</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, voluptate.</p>
+    <div class="container">
+
+        <header>
+            <h2 id="logo">logo</h2>
+
+            <a href="#service">to the service section</a>
+        </header>
+
+        <div class="content">
+            <!-- not semantically: div, span, b, i, u -->
+            <aside>
+                <nav>
+                    <!-- Emmet: ul>li*4>a{page $} -->
+                    <ul>
+                        <li><a href="#">page 1</a></li>
+                        <li><a href="#">page 2</a></li>
+                        <li><a href="#">page 3</a></li>
+                        <li><a href="#">page 4</a></li>
+                        <li><a href="#">+</a>
+                            <ul>
+                                <li><a href="#">subpage 1</a></li>
+                                <li><a href="#">subpage 2</a></li>
+                                <li><a href="#">subpage 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main>
+
+                <section id="news">
+
+                    <article>
+                        <img src="https://picsum.photos/id/106/400/400" alt="">
+                        <h1>Hello World 123</h1>
+                        <p lang="la">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, voluptate.
+                        </p>
+                    </article>
+
+                </section>
+
+                <section id="service">
+
+                    <form action="">
+                        <input type="number" required>
+                    </form>
+                </section>
+
+            </main>
+
+            <aside>aside</aside>
+        </div>
+
+            <footer>
+                <address>&copy; 2021 Michael</address>
+            </footer>
+
+    </div>
+
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
