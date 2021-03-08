@@ -18,7 +18,7 @@
             <a href="#service">to the service section</a>
         </header>
 
-        <div class="content">
+        <div class="content content--aside-open">
             <!-- not semantically: div, span, b, i, u -->
             <aside>
                 <nav>
@@ -38,13 +38,19 @@
                     </ul>
                 </nav>
             </aside>
-
+            <!-- 24 000 000  480*200=96 000, 96ppi, 192ppi-->
             <main>
 
                 <section id="news">
 
                     <article>
-                        <img src="https://picsum.photos/id/106/400/400" alt="">
+
+                        <picture>
+                            <source media="(min-width:768px)" srcset="https://picsum.photos/id/106/480/200">
+                            <source media="(max-width:767px)" srcset="https://picsum.photos/id/107/480/200">
+                            <img src="https://picsum.photos/id/108/480/200" alt="">
+                        </picture>
+
                         <h1>Hello World 123</h1>
                         <p lang="la">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, voluptate.
                         </p>
@@ -64,9 +70,9 @@
             <aside>aside</aside>
         </div>
 
-            <footer>
-                <address>&copy; 2021 Michael</address>
-            </footer>
+        <footer>
+            <address>&copy; 2021 Michael</address>
+        </footer>
 
     </div>
 
