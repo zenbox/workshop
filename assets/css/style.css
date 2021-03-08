@@ -1,0 +1,81 @@
+/** ALL STYLES ...
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-03-08
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+
+/** COMPONENT BASE */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 1.3;
+}
+
+
+/** COMPONENT LAYOUT */
+/* using flex boxes */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+header {}
+
+main,
+aside {}
+
+footer {}
+
+/** COMPONENT THEME */
+body {
+    background-color: hsla(0, 100%, 0%, 0.85);
+    /* limegreen, lightsteelblue, magenta, #ff0000, rgb(255,0,0), hsl(0,100%,50%)  hue, saturation, lightness (luminance)*/
+    color: hsla(0, 0%, 100%, 0.85);
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+a[href] {
+    color: hsla(210, 80%, 50%, 1);
+}
+
+a[href]:visited {
+    color: hsla(210, 80%, 65%, 1);
+}
+
+a[href]:hover {
+    color: hsla(180, 80%, 50%, 1);
+}
+
+a[href]:active {
+    color: hsla(0, 80%, 50%, 1);
+}
+
+.container,
+.content,
+header,
+main,
+aside,
+footer {
+    border: 2px dotted cyan;
+}
