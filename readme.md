@@ -45,6 +45,7 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 - [Generative Gestaltung](http://www.generative-gestaltung.de/)
 - [The Nature of Code - programming course](https://natureofcode.com/)
 - [Graphical programming IDE for artists](https://processing.org/)
+- [The origin of responsive webdesign](https://alistapart.com/article/responsive-web-design/)
 
 - [SASS for CSS]{https://sass-lang.com/guide}
 
