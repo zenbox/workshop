@@ -13,8 +13,9 @@
   * @license MIT {https://opensource.org/licenses/MIT}
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
-
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css);
 @import url(hamburger.css);
+@import url(navigation.css);
 
 /** COMPONENT BASE */
 * {
