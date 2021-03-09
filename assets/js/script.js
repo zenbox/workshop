@@ -10,4 +10,40 @@
  * @copyright (c) 2021 Michael Reichart, Cologne
  */
 
+// jQuery!
+$(window.document).ready(function () {
+    // - - - - - - - - - -
+    // DECLARATION
+    let hamburger = $('.hamburger'),
+        content = $('#content'),
+        className = 'content--aside-open';
 
+    // METHODS
+    function onHamburgerClick(event) {
+        content.toggleClass(className);
+    };
+
+    // EVENT CONTROL; CONTROL
+    hamburger.on('click', onHamburgerClick);
+    // - - - - - - - - - -
+});
+
+// Vanilla JS!
+window.addEventListener('load', function () {
+    // - - - - - - - - - -
+    // DECLARATION
+    let
+        hamburgerList = document.querySelectorAll('.hamburger'),
+        hamburger = hamburgerList[0],
+        content = document.querySelector('#content'),
+        className = 'content--aside-open';
+
+    // METHODS
+    function onHamburgerClick(event) {
+        content.classList.toggle(className);
+    };
+
+    // EVENT CONTROL; CONTROL
+    hamburger.addEventListener('click', onHamburgerClick)
+    // - - - - - - - - - -
+});
