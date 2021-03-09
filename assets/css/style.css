@@ -98,7 +98,7 @@ html {
         display: flex;
         flex-direction: column;
     }
-
+/* kebab-case */
     .content {
         display: flex;
         flex-direction: row;

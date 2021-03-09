@@ -36,11 +36,13 @@ window.addEventListener('load', function () {
         hamburgerList = document.querySelectorAll('.hamburger'),
         hamburger = hamburgerList[0],
         content = document.querySelector('#content'),
-        className = 'content--aside-open';
+        contentClassName = 'content--aside-open',
+        hamburgerClassName = 'hamburger--close';
 
     // METHODS
     function onHamburgerClick(event) {
-        content.classList.toggle(className);
+        content.classList.toggle(contentClassName);
+        hamburger.classList.toggle(hamburgerClassName)
     };
 
     // EVENT CONTROL; CONTROL

@@ -20,14 +20,30 @@
 .hamburger {}
 
 .hamburger>div {
-    display: block;
-    width: 3rem; /* root em (em ->  M-height)*/
-    height: 0.5rem;
-    background-color: white;
-    margin:0.5rem;
-    ;
+  display: block;
+  width: 3rem;
+  /* root em (em ->  M-height)*/
+  height: 0.5rem;
+  background-color: white;
+  margin: 0.5rem;
+  ;
 }
 
 /** COMPONENT THEME */
 
 /** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.hamburger>* {
+  transition: all 120ms ease-in-out;
+}
+
+.hamburger--close>*:nth-child(1) {
+  transform: rotateZ(45deg) translateY(1.44rem);
+}
+
+.hamburger--close>*:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger--close>*:nth-child(3) {
+  transform: rotateZ(-45deg) translateY(-1.44rem);
+}
