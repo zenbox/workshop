@@ -21,9 +21,20 @@
         <div class="content content--aside-open">
             <!-- not semantically: div, span, b, i, u -->
             <aside>
+                <!-- nav ul li a[href] -->
                 <nav>
+                    <!-- <style>
+                        .active {
+                            background-color: hsla(60, 50%, 50%, 0.5);
+                        }
+
+                        li {
+                            background-color: hsla(210, 50%, 50%, 0.5);
+                        }
+                    </style> -->
                     <!-- Emmet: ul>li*4>a{page $} -->
-                    <ul>
+
+                    <ul id="this">
                         <li><a href="#">page 1</a></li>
                         <li><a href="#">page 2</a></li>
                         <li><a href="#">page 3</a></li>
@@ -36,6 +47,14 @@
                             </ul>
                         </li>
                     </ul>
+                    <!-- <script>
+                                            const obj = document.querySelector('#this>li');
+                                            console.log(obj);
+                                            obj.classList.add('new-class');
+                                            obj.style.border="1px solid lime";
+
+                                            setTimeout(()=>{obj.removeAttribute('style')}, 5000);
+                                        </script> -->
                 </nav>
             </aside>
             <!-- 24 000 000  480*200=96 000, 96ppi, 192ppi-->
@@ -54,6 +73,23 @@
                         <h1>Hello World 123</h1>
                         <p lang="la">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, voluptate.
                         </p>
+
+                        <ol>
+                            <li>
+                                <div>
+                                    <p>Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <p>lorem5</p>
+                            </li>
+                            <li>
+                                <p>lorem5</p>
+                            </li>
+                            <li>
+                                <p>lorem5</p>
+                            </li>
+                        </ol>
                     </article>
 
                 </section>
