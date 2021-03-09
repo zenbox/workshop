@@ -11,22 +11,22 @@
  */
 
 // jQuery!
-$(window.document).ready(function () {
-    // - - - - - - - - - -
-    // DECLARATION
-    let hamburger = $('.hamburger'),
-        content = $('#content'),
-        className = 'content--aside-open';
+// $(window.document).ready(function () {
+//     // - - - - - - - - - -
+//     // DECLARATION
+//     let hamburger = $('.hamburger'),
+//         content = $('#content'),
+//         className = 'content--aside-open';
 
-    // METHODS
-    function onHamburgerClick(event) {
-        content.toggleClass(className);
-    };
+//     // METHODS
+//     function onHamburgerClick(event) {
+//         content.toggleClass(className);
+//     };
 
-    // EVENT CONTROL; CONTROL
-    hamburger.on('click', onHamburgerClick);
-    // - - - - - - - - - -
-});
+//     // EVENT CONTROL; CONTROL
+//     hamburger.on('click', onHamburgerClick);
+//     // - - - - - - - - - -
+// });
 
 // Vanilla JS!
 window.addEventListener('load', function () {
