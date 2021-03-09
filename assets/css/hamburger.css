@@ -34,16 +34,20 @@
 /** COMPONENT CHANGING STATES (BEHAVIOUR) */
 .hamburger>* {
   transition: all 120ms ease-in-out;
+  perspective: 500px;
 }
 
 .hamburger--close>*:nth-child(1) {
-  transform: rotateZ(45deg) translateY(1.44rem);
+  transform: rotateZ(45deg) translateY(1.6rem) translateX(1.6rem) translateZ(3rem);
 }
 
 .hamburger--close>*:nth-child(2) {
-  opacity: 0;
+  opacity: 0.5;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1.5rem;translateZ(3rem);
 }
 
 .hamburger--close>*:nth-child(3) {
-  transform: rotateZ(-45deg) translateY(-1.44rem);
+  transform: rotateZ(-45deg) translateY(-1.6rem) translateX(1.6rem) translateZ(3rem);
 }
