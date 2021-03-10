@@ -1,3 +1,4 @@
+// PYTHON STYLE!
 /** LOGIN FORM
  *
  *  @desc 
@@ -13,22 +14,22 @@
  */
 
 // DECLARATION
-const login = document.querySelector('#form-login');
+const login = document.querySelector('#form-login')
 
 // METHODS
 function onSubmitLogin(event) {
 
-    let url;
+    let url
 
-    event.preventDefault();
+    event.preventDefault()
 
     try {
-        url = event.target.action;
+        url = event.target.action
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 
-    loadData(url);
+    loadData(url)
 }
 
 function loadData(url) {
@@ -36,21 +37,74 @@ function loadData(url) {
 
         // Promise (ES6)
         fetch(url)
+            // if the server response 
             .then(response => {
-                console.log(response);
+                console.log(response)
+                if (response.ok)
+                    return response.json()
+                else
+                    throw new Error('no data found!')
             })
-        // .then( () => {} )
-        // .catch( () => {} );
+            // if data === json
+            .then((json) => {
+                console.log(json)
+                setLoginMessage(json)
+            })
+            .catch((error) => {
+                console.log(error)
+            });
 
     } catch (error) {
-        console.log(error);
+        console.log(error)
     }
 }
 
-function createContent() {}
+function setLoginMessage(data) {
+    /*
+        document.createElement(),
+        document.createTextNode()
+        el.setAttribute()
+        ctx.appendChild()
+
+        <h4>Welcome Michael</h4>
+        <p>your last login at <time>10.03.2021</time></p>
+        ...
+    */
+
+    // Javascript
+    let
+        ctx = document.querySelector('#form-login fieldset'),
+        h4 = document.createElement('h4'),
+        p = document.createElement('p'),
+        time = document.createElement('time'),
+        username = document.createTextNode(`Welcome, ${data.username}`),
+        timestamp = document.createTextNode(`${data.lastLogin} 10:00:00 h`);
+
+    console.dir(ctx);
+
+
+    h4.appendChild(username);
+    time.setAttribute('datetime', `${data.lastLogin} 10:00:00 h`);
+    time.appendChild(timestamp);
+    ctx.appendChild(h4);
+    ctx.appendChild(time);
+
+    // Shorthand alternate method
+    ctx.innerHTML = `<h4>Welcome, ${data.username}</h4>
+    <p><time date="xyz">${data.lastLogin} 10:00:00 h</time></p>`;
+
+    // jQuery
+    $('<h4>')
+        .appendTo('#form-login fieldset');
+
+    $('<time>')
+        .attr('datetime', `${data.lastLogin} 10:00:00 h`)
+        .text(`${data.lastLogin} 10:00:00 h`)
+        .appendTo('#form-login fieldset');
+}
 
 // EVENT CONTROL
-login.addEventListener('submit', onSubmitLogin);
+login.addEventListener('submit', onSubmitLogin)
 
 
 // - - - - - - - - - -
