@@ -23,7 +23,7 @@
 
         </header>
 
-        <div id="content" class="content">
+        <div id="content" class="content content--aside-open">
             <!-- not semantically: div, span, b, i, u -->
             <aside>
                 <!-- nav ul li a[href] -->
@@ -37,14 +37,15 @@
                             background-color: hsla(210, 50%, 50%, 0.5);
                         }
                     </style> -->
+
                     <!-- Emmet: ul>li*4>a{page $} -->
 
-                    <ul id="this">
-                        <li><a href="#"><span class="fas fa-skull"></span>    page 1</a></li>
-                        <li><a href="#"><span class="fas fa-hamburger"></span>    page 2</a></li>
+                    <ul id="this" class="nav nav-column" role="navigation">
+                        <li><a href="#"><span class="fas fa-skull"></span> page 1</a></li>
+                        <li><a href="#"><span class="fas fa-hamburger"></span> page 2</a></li>
                         <li><a href="#"><span class="fas fa-air-freshener"></span> page 3</a></li>
                         <li><a href="#"><span class="fas fa-archway"></span> page 4</a></li>
-                        <li><a href="#"><span class="fas fa-plus"></span></a>
+                        <li class="dropdown"><a href="#"><span class="fas fa-plus"></span></a>
                             <ul>
                                 <li><a href="#">subpage 1</a></li>
                                 <li><a href="#">subpage 2</a></li>
@@ -52,6 +53,7 @@
                             </ul>
                         </li>
                     </ul>
+<p>lala</p>
                     <!-- <script>
                     const obj = document.querySelector('#this>li');
                     console.log(obj);
@@ -76,7 +78,8 @@
                         </picture>
 
                         <h1>Hello World 123</h1>
-                        <p lang="la">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, voluptate.
+                        <p lang="la">Lorem ipsum dolor sit amet <span class="fas fa-skull"></span> consectetur
+                            adipisicing elit. Odio, voluptate.
                         </p>
 
                         <ol>

@@ -38,6 +38,7 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 - [CSS Nomenklatur - Block Element Modifier](http://getbem.com/introduction/)
 - [CSS Architektur - skalierbar und modular](http://smacss.com/)
 - [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
+- [Dropdown via CSS](https://css-tricks.com/solved-with-css-dropdown-menus/)
  
 
 - [Blind-Bild-Generator](https://picsum.photos/)
