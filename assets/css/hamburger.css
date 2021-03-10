@@ -29,6 +29,12 @@
   ;
 }
 
+@media screen and (min-width:768px) {
+  .hamburger {
+    display: none;
+  }
+}
+
 /** COMPONENT THEME */
 
 /** COMPONENT CHANGING STATES (BEHAVIOUR) */
@@ -45,7 +51,8 @@
   opacity: 0.5;
   width: 3rem;
   height: 3rem;
-  border-radius: 1.5rem;translateZ(3rem);
+  border-radius: 1.5rem;
+  translateZ(3rem);
 }
 
 .hamburger--close>*:nth-child(3) {
