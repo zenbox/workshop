@@ -1,12 +1,53 @@
-# node js basics
+# node js Grundlagen
 
-## Das Socket Beispiel
-Es gibt ein funktionierendes Socketbeispiel in ```socketio-chat```. 
+**Herzlich willkommen zu den nodejs Grundlagen.**
 
-Es verwendet dieselben Bibliotheken wie ```express-socket-server``` und ist gleich aufgabaut.
-```express-socket-server``` läuft allerdings immer noch nicht, der Fehler ist mir unklar.
+Mein Name ist Michael Reichart, wir erarbeiten in den nächsten zwei Tage die Grundlagen für den Umgang mit nodejs.
+Sie können mich unter michael.reichart@gfu.net per Email erreichen.
+## Seminarzeiten
+- 9:00 bis 16:0 Uhr
+- Mittagspause von 1200 Uhr bis 13:00 Uhr
+- kleine Pausen etwa gegen 10:30 Uhr und gegen 14:30 Uhr.
 
-Wenn sich jemand die Mühe des Suchens machen möchte und den Fehler gefunden hat, freue ich mich über eine kurze Info.
+## Die Inhalte
+### Einführung in node.js
+- Über den Autor Ryan Dahl und die Javascript Engine V8 
+- Installation und Konfiguration
+- Non blocking I/O, Event Loops, Single Threads  
+- Beispiel 'Hallo Welt' und andere
+### Beispielimplementierungen
+- Implementierung eines http-Servers
+- Implementierung eines TCP-Servers
+- Ggf. weitere Implementierungen
+### Events registrieren und verarbeiten
+- Serverseitige Events
+- Einrichten der Listener
+- Aufbau einer Control zur Steuerung
+### Module verwenden
+- npm - der node Package Manager
+- Einbindung integrierter und externer Module
+- Übersicht über gängige Module
+- Protokollunterstützung für UDP, DNS, HTTP, HTTPS und TCP
+- Zugriff auf das lokale System 
+- Datenfluß, Kommunkation
+- Arbeiten mit der CommonJS Library
+### Debugging
+- Debugger, Haltepunkte, Überwachung
+- Grundlagen des Testing 
+### Praxisworkshop - Anwendungen
+- Echtzeit mit socket.io
+- Datenbankanbindung mit mySQL
+- Übersicht über weitere Datenbankanbindungen
+- Weitere Anwendungsbeispiele aus der Praxis
+
+
+
+
+
+
+
+
+
 
 
 ## SQL Dump via nodejs
