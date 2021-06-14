@@ -6,7 +6,7 @@ Mein Name ist Michael Reichart, wir erarbeiten in den nächsten zwei Tage die Gr
 Sie können mich unter michael.reichart@gfu.net per Email erreichen.
 ## Seminarzeiten
 - 9:00 bis 16:0 Uhr
-- Mittagspause von 1200 Uhr bis 13:00 Uhr
+- Mittagspause von 12:00 Uhr bis 13:00 Uhr
 - kleine Pausen etwa gegen 10:30 Uhr und gegen 14:30 Uhr.
 
 ## Die Inhalte
