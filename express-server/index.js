@@ -30,8 +30,24 @@ let
   indexRoute = require(path.join(__dirname, '/routes/index.js')),
   searchRoute = require(path.join(__dirname, '/routes/search.js'));
 
+// Express  views configuration
+expressServer.set('view engine', 'ejs');
+expressServer.set('views', path.join(__dirname, 'views'))
 
+// Body parser config
+expressServer.use(bodyParser.json());
+expressServer.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 
+// Express static routing
+expressServer.use(express.static(path.join(__dirname, 'public')));
+
+// Express dynamic routing
+// expressServer.use('/index.html', indexRoute);
+// expressServer.use('/search.html', searchRoute);
 
 // Control
 expressServer.listen(port, () => console.log(`Express server runs on port ${port}.`));
