@@ -18,8 +18,11 @@
   "author": "Michael Reichart",
   "license": "MIT",
   "dependencies": {
-    "express": "4.17.1",
+    "body-parser": "1.19.0",
     "ejs": "3.1.6",
-    "body-parser": "1.19.0"
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "connect-livereload": "^0.6.1"
   }
 }
