@@ -27,8 +27,15 @@ function onGetRequest(request, response) {
 
 function onSearchRequest(request, response) {
     console.clear();
-    console.dir(request.query);
+    console.log(request.query);
 
+    let result = require(path.join(__dirname, '../data/sheeps.json')),
+        data = {
+            search: request.query.search,
+            result: result
+        };
+
+    response.render('templateForSearch', data);
 
 }
 
