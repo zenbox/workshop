@@ -11,6 +11,7 @@
  */
 
 // Declaration
+const path = require('path');
 const express = require('express');
 const router = express.Router();
 
@@ -24,16 +25,20 @@ function onGetRequest(request, response) {
     response.render('templateForSearch', data)
 }
 
-function onPostRequest(request, response) {
+function onSearchRequest(request, response) {
     console.clear();
-    console.dir(request);
+    console.dir(request.query);
+
+
 }
 
 
 // Deliver /search/index.html
 router.get('/index.html', onGetRequest);
 
-// Form post request
-router.get('/search.html', onPostRequest);
+// Form get request to search.html
+router.get('/search.html', onSearchRequest);
 
+
+// Exports
 module.exports = router;
