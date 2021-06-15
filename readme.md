@@ -52,26 +52,38 @@ Sie können mich unter michael.reichart@gfu.net per Email erreichen.
 
 ## SQL Dump via nodejs
 ```javascript
-  db.query('CREATE DATABASE IF NOT EXISTS application;');
-  db.query('USE application;');
+   let
+    db = mysql.createConnection(mysqlConfig),
+    sql = null;
+
+  db.on('error', function (error) {
+    console.log(error);
+  });
+
+  db.query('CREATE DATABASE IF NOT EXISTS animals;');
+  db.query('USE animals;');
 
   // Tabelle anlegen
-  db.query('DROP TABLE IF EXISTS user;');
+  db.query('DROP TABLE IF EXISTS sheeps;');
 
-  sql = "CREATE TABLE user ( " +
-    "userId INT(11) AUTO_INCREMENT, " +
-    "username VARCHAR(50), " +
-    "email VARCHAR(50), " +
-    "password VARCHAR(50), " +
-    "PRIMARY KEY (userId) );";
+  sql = "CREATE TABLE sheeps ( " +
+    "id INT(11) AUTO_INCREMENT, " +
+    "sheep VARCHAR(50), " +
+    "PRIMARY KEY (id) );";
   db.query(sql);
 
-  sql = "INSERT INTO user " +
-    "(username, email, password) " +
+  sql = "INSERT INTO sheeps " +
+    "(sheep) " +
     "VALUES " +
-    "('Michael', 'michael@zenbox.de', 'geheim')," +
-    "('Paula', 'paula@zenbox.de', 'geheim')," +
-	"('Klaus', 'klaus@zenbox.de', 'geheim');";
+    "('Merinoschaf')," +
+    "('Fleischschaf')," +
+    "('Haarschaf');";
+
+  db.query(sql, function () {
+    console.log('Datensätze geschrieben.');
+  });
+
+  db.end();
 ```
 
 ## VS Code Snippets
