@@ -15,6 +15,19 @@ const path = require('path');
 const express = require('express');
 const router = express.Router();
 
+// Database connection
+const mysql = require('mysql');
+const mysqlConfig = require('./../mysql-config');
+const db = mysql.createConnection(mysqlConfig);
+
+let query = null;
+
+db.connect();
+db.on('error', function (error) {
+    console.log(error);
+});
+db.query(`USE ${mysqlConfig.more.database};`);
+
 // Methods
 function onGetRequest(request, response) {
 
@@ -26,16 +39,26 @@ function onGetRequest(request, response) {
 }
 
 function onSearchRequest(request, response) {
-    console.clear();
-    console.log(request.query);
+    let data = null,
+        query = `SELECT * FROM ${mysqlConfig.more.table}`;
 
-    let result = require(path.join(__dirname, '../data/sheeps.json')),
+    db.query(query, (error, result) => {
+        if (error) {
+            console.log(error);
+            process.exit(0);
+        }
+
+        // result = require(path.join(__dirname, '../data/sheeps.json'));
+
         data = {
             search: request.query.search,
             result: result
         };
 
-    response.render('templateForSearch', data);
+        response.render('templateForSearch', data);
+    });
+
+
 
 }
 
