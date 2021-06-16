@@ -48,4 +48,7 @@ expressServer.use('/index.html', indexRoute);
 expressServer.use('/search/', searchRoute);
 
 // Control
-expressServer.listen(port, () => console.log(`Express server runs on port ${port}.`));
+expressServer.listen(port, () => {
+  console.clear();
+  console.log(`Express server runs on port ${port}.`)
+});
