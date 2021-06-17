@@ -37,15 +37,17 @@ expressServer.set('views', path.join(__dirname, 'views'));
 // Express static routing
 expressServer.use(express.static(path.join(__dirname, 'public')));
 
-// live reload
+// Live reload
 expressServer.use(require('connect-livereload')({
   port: 35729
 }));
 
 // Express dynamic routing
+// - - - - - - - - - -
 expressServer.use('/', indexRoute);
 expressServer.use('/index.html', indexRoute);
 expressServer.use('/search/', searchRoute);
+// - - - - - - - - - -
 
 // Control
 expressServer.listen(port, () => {
