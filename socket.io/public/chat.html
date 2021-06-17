@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font: 13px Helvetica, Arial;
+        }
+
+        form {
+            background: #000;
+            padding: 3px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        form input {
+            border: 0;
+            padding: 10px;
+            width: 90%;
+            margin-right: .5%;
+        }
+
+        form button {
+            width: 9%;
+            background: rgb(130, 224, 255);
+            border: none;
+            padding: 10px;
+        }
+
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #messages li {
+            padding: 5px 10px;
+        }
+
+        #messages li:nth-child(odd) {
+            background: #eee;
+        }
+
+        #messages {
+            margin-bottom: 40px
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="messages"></ul>
+
+    <form>
+        <input id="msg" autocomplete="off" type="text">
+        <button>send</button>
+    </form>
+
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <script>
+        (function () {
+
+            let socket = io();
+
+            // Sending messages
+            $('form').submit(() => {
+                // Send chat message over socket to server
+                socket.emit('chat message', $('#msg').val());
+                // Empty the textbox
+                $('#msg').val('');
+
+                return false;
+            })
+
+
+            // Receiving messages
+            socket.on('chat message', (messageData) => {
+                $('#messages').append('<li>').text(messageData);
+                window.scrollTo(0, document.body.scrollHeight);
+            })
+        }())
+    </script>
+
+</body>
+
+</html>
