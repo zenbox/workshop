@@ -64,6 +64,7 @@ function onSearchRequest(request, response) {
 
 
 // Deliver /search/index.html
+router.get('/', onGetRequest);
 router.get('/index.html', onGetRequest);
 
 // Form get request to search.html
