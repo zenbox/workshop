@@ -22,11 +22,13 @@ const db = mysql.createConnection(mysqlConfig);
 
 let query = null;
 
+// - - - - - - - - - -
 db.connect();
 db.on('error', function (error) {
     console.log(error);
 });
 db.query(`USE ${mysqlConfig.more.database};`);
+// - - - - - - - - - -
 
 // Methods
 function onGetRequest(request, response) {
@@ -68,7 +70,7 @@ router.get('/', onGetRequest);
 router.get('/index.html', onGetRequest);
 
 // Form get request to search.html
-router.get('/search.html', onSearchRequest);
+router.get('/search.route', onSearchRequest);
 
 
 // Exports
