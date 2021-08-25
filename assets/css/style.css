@@ -1,0 +1,91 @@
+/* base properties */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.4;
+    /* 22,5px  */
+}
+
+body {
+    color: hsla(0, 0%, 15%, 1);
+    background-color: hsla(0, 0%, 85%, 1)
+}
+
+/* layout */
+.template {
+    display: flex;
+    flex-direction: column;
+}
+
+.template-content {
+    display:flex;
+    flex-direction: row; /* default value! */
+}
+
+.template-content > * {
+    width: 50%;
+}
+
+.cookie {
+    clear:left;
+    display:block;
+    width: 100%;
+}
+
+/* typography */
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+/* states */
+
+/* components ... */
+.cookie {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.cookie h2 {
+    font-size: 1.5em;
+}
+
+
+
+
+/* theme */
+
+header, aside, main, footer {
+    background-color:hsla(0, 0%, 15%, 0.25)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.my-table {
+    border-width: 1px;
+    border-style: dotted;
+    border-color: hsla(180, 50%, 50%, 1);
+}
+
+
+table {
+    /*  Comment  */
+    border: 1px dotted black;
+}
