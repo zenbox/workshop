@@ -136,7 +136,7 @@ header,
 aside,
 main,
 footer {
-    background-color: hsla(0, 0%, 15%, 0.25);
+    background-color: hsla(240, 20%, 45%, 0.125);
     border: 2px dashed hsla(0, 0%, 85%, 0.5);
 }
 
