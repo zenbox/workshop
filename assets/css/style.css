@@ -1,16 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-html {
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+/* Base Typography */
+/* All devices fallback */
+@media screen {
+    html {
+        /* line grid */
+        font-family: Barlow, Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        line-height: 1.2;
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
 }
 
+/* Small device (aka. smartphones) */
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 16px;
+    }
+}
 
-h1, h2, h3 {
-    font-family: "Barlow Condensed", sans-serif;
+/* Medium device ( aka. tablet in portrait mode)*/
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+/* Large device (aka. desktop monitors) */
+@media screen and (min-width: 992px) {
+    html {
+        font-size: 20px;
+    }
 }
 
 body {
     color: hsl(0, 0%, 15%);
     background-color: hsl(0, 0%, 85%);
 }
+
+@media print and (device-width:21cm) {}
+
+
+/* Layout, Template */
