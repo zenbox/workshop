@@ -5,6 +5,12 @@
 /* Base Typography */
 /* All devices fallback */
 @media screen {
+
+    html,
+    html * {
+        box-sizing: border-box;
+    }
+
     html {
         /* line grid */
         font-family: Barlow, Arial, Helvetica, sans-serif;
@@ -57,3 +63,29 @@ body {
 
 
 /* Layout, Template */
+
+.page-template {
+    display: flex;
+    flex-direction: column;
+}
+
+.template-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.content-aside {
+    width: 25vw; /* viewport-width*/
+}
+
+.content-main {
+    width: 75vw;
+}
+
+.page-template>* {
+    border: 2px solid red;
+}
+
+.template-content>* {
+    border: 4px solid blue;
+}
