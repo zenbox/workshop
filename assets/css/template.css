@@ -1,0 +1,101 @@
+/* Small device (aka. smartphones) */
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Medium device ( aka. tablet in portrait mode)*/
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+/* Large device (aka. desktop monitors) */
+@media screen and (min-width: 992px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+body {
+    color: hsl(0, 0%, 15%);
+    background-color: hsl(0, 0%, 85%);
+}
+
+@media print and (device-width:21cm) {}
+
+/* --------------- */
+/* Layout, Template */
+
+/* Layout (reset) fallback for all or older browser/devices */
+@media screen {
+
+    .page-template,
+    .template-content,
+    .content-main,
+    .content-aside {
+        display: block;
+        width: 100%;
+        margin: 0;
+        padding: 0.25rem;
+    }
+}
+
+/* Layout for smaller devices (smartphones) */
+@media screen and (max-width: 767px) {
+
+    /* Set the margin/padding */
+    body,
+    .page-template,
+    .template-content,
+    .content-main,
+    .content-aside {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Adaptive layout via flexbox */
+
+}
+
+/* Layout for larger devices (from tablet to desktop) */
+@media screen and (min-width: 768px) {
+
+    /* Set the margin/padding */
+    body {
+        margin: 0;
+    }
+
+    .page-template,
+    .template-content,
+    .content-main,
+    .content-aside {
+        margin: 0;
+        padding: 0.25rem;
+    }
+
+    /* Adaptive layout via flexbox */
+    .page-template {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .template-content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content-aside {
+        flex-basis: 25vw;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .content-main {
+        flex-basis: 75vw;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+}
