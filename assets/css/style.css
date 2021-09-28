@@ -5,8 +5,7 @@
 /* All devices fallback */
 @media screen {
 
-    html,
-    html * {
+    * {
         box-sizing: border-box;
     }
 
@@ -59,32 +58,50 @@ body {
 
 @media print and (device-width:21cm) {}
 
-
+/* --------------- */
 /* Layout, Template */
 
-.page-template {
-    display: flex;
-    flex-direction: column;
+
+/* Layout for smaller devices (smartphones) */
+@media screen and (max-width: 767px) {}
+
+/* Layout for larger devices (from tablet to desktop) */
+@media screen and (min-width: 768px) {
+    .page-template {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .template-content {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .content-aside {
+        flex-basis: 25vw;
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    .content-main {
+        flex-basis: 75vw;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
 }
 
-.template-content {
-    display: flex;
-    flex-direction: row;
-}
-
-.content-aside {
-    width: 25vw;
-    /* viewport-width*/
-}
-
-.content-main {
-    width: 75vw;
-    /*lalala*/
-}
-
+/* --------------- */
 .page-template>* {
-    background: repeating-linear-gradient(45deg, hsla(190, 20%, 50%, 0.125), hsla(190, 20%, 50%, 0.125) 15px, #f2f2f2 15px, #f2f2f2 20px);
-    border-left: 2px solid white;
+    background: repeating-linear-gradient(45deg,
+            hsla(190, 20%, 50%, 0.125),
+            hsla(190, 20%, 50%, 0.125) 15px,
+            #f2f2f2 15px,
+            #f2f2f2 20px);
+
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: white;
+
     border-right: 2px solid white;
     border-top: 2px solid white;
     border-bottom: 2px solid white;
