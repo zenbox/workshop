@@ -57,6 +57,23 @@ body {
     }
 
     /* Adaptive layout via flexbox */
+    .template-content {
+        display: flex;
+        flex-direction: row-reverse;
+        width: 200vw;
+    }
+
+    .content-main {
+        flex-basis: 100vw;
+    }
+
+    .content-aside {
+        flex-basis: 100vw;
+    }
+
+    .template-content.active {
+        margin-left: -100vw;
+    }
 
 }
 
