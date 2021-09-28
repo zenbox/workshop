@@ -41,6 +41,11 @@ body {
         margin: 0;
         padding: 0.25rem;
     }
+
+    /* hide hamburger button */
+    #hamburger-button {
+        display: none;
+    }
 }
 
 /* Layout for smaller devices (smartphones) */
@@ -71,8 +76,19 @@ body {
         flex-basis: 100vw;
     }
 
+    /* dynamic navigation via hamburger button*/
+    #hamburger-button {
+        display: inline;
+    }
+
     .template-content.active {
         margin-left: -100vw;
+    }
+
+    .template-content {
+        transition-property: margin-left;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
     }
 
 }
