@@ -1,10 +1,10 @@
-# Willkommen zu Resposnive Webseiten
+# Willkommen zu Responsive Webseiten
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
 
  ## Foliensatz
-Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf**, **Cacading Stylesheets.pdf**pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Die Foliensätze werden ggf. aktualisiert. Sie stehen Ihnen anschließend unter der MIT Lizenz Verfügung.
+Es gibt mehrere Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML kompakt.pdf**, **Cacading Stylesheets.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird plus viel Zusatzmaterial. Die Foliensätze werden ggf. aktualisiert. Sie stehen Ihnen anschließend unter der MIT Lizenz Verfügung.
 
 ## Dateien zum Download
 wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Meine Versionen davon können am Ende des Seminars hier heruntergeladen werden.
@@ -32,11 +32,8 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 - [Blind-Bild-Generator](https://picsum.photos/)
 - [Alle Web Spezifikationen beim W3C](https://www.w3.org/TR)
 - [Generative Gestaltung](http://www.generative-gestaltung.de/)
-- [The Nature of Code - programming course](https://natureofcode.com/)
-- [Graphical programming IDE for artists](https://processing.org/)
 - [The origin of responsive webdesign](https://alistapart.com/article/responsive-web-design/)
-
-- [SASS for CSS]{https://sass-lang.com/guide}
+- [SASS for CSS](https://sass-lang.com/guide)
 
 
 
