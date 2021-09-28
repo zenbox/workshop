@@ -1,0 +1,17 @@
+/* Base */
+#hero-banner {
+    border: 3px solid grey;
+    padding: 1rem;
+}
+
+#hero-banner h2 {
+    font-size: 3rem;
+}
+
+#hero-banner p {
+    text-align: right;
+}
+
+/* Layout */
+
+/* States */
