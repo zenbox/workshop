@@ -32,7 +32,7 @@
                     <!-- - - - - - -->
                 </aside>
             </div>
-            <div class="content-main" style="width:400px;">
+            <div class="content-main">
                 <main>
                     <!-- - - - - - -->
                     <h1>hello world</h1>
@@ -56,7 +56,8 @@
                             amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
                             eget lacinia odio sem nec elit. Nullam id dolor id nibh ultricies vehicula ut id
                             elit. Cras mattis consectetur purus sit amet fermentum. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Dolorum quis magni optio? Cras mattis consectetur purus 
+                            consectetur adipisicing elit. Dolorum quis magni optio? Cras mattis consectetur
+                            purus
                             sit amet fermentum. Cras mattis consectetur purus sit
                             amet fermentum. Cum sociis natoque penatibus et magnis dis parturient montes,
                             nascetur ridiculus mus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
@@ -65,7 +66,17 @@
                         </p>
 
                         <figure>
-                            <img src="https://picsum.photos/id/5/300/100" alt="" width="300" height="100">
+
+                            <picture>
+                                <source media="(min-width:1984px), (min-resolution:192dpi)" srcset="https://picsum.photos/id/7/2228/300">
+                                <source media="(min-width:992px)"
+                                    srcset="https://picsum.photos/id/1/1114/300">
+                                <source media="(min-width:768px)" srcset="https://picsum.photos/id/2/708/300">
+                                <source media="(min-width:481px)" srcset="https://picsum.photos/id/3/761/300">
+                                <source media="(max-width:480px)" srcset="https://picsum.photos/id/4/474/300">
+                                <img src="https://picsum.photos/id/5/761/300" class="img-responsive" alt="">
+                            </picture>
+
                             <figcaption>
                                 <p>Bildbeschreibung Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                                 </p>
