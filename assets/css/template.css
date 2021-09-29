@@ -109,6 +109,8 @@ body {
         padding: 0.25rem;
     }
 
+    .page-template { max-width: 1000px;margin:1rem auto;}
+
     /* Adaptive layout via flexbox */
     .page-template {
         display: flex;
