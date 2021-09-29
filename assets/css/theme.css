@@ -1,10 +1,14 @@
+body {
+    background-color: hsla(0, 20%, 20%, 1);
+}
+
 /* --------------- */
 .page-template>* {
     background: repeating-linear-gradient(45deg,
-            hsla(190, 20%, 50%, 0.125),
-            hsla(190, 20%, 50%, 0.125) 15px,
-            #f2f2f2 15px,
-            #f2f2f2 20px);
+            hsla(190, 20%, 50%, 0.05),
+            hsla(190, 20%, 50%, 0.05) 15px,
+            hsla(190, 20%, 95%, 1) 15px,
+            hsla(190, 20%, 95%, 1) 20px);
 
     border-left-width: 2px;
     border-left-style: solid;
@@ -13,10 +17,25 @@
     border-right: 2px solid white;
     border-top: 2px solid white;
     border-bottom: 2px solid white;
+
+    background: white;
+    border: 0;
 }
 
 .template-content>* {
-    background: repeating-linear-gradient(335deg, hsla(10, 20%, 50%, 0.125), hsla(10, 20%, 50%, 0.125) 15px, #f2f2f2 15px, #f2f2f2 20px);
+    background: repeating-linear-gradient(335deg,
+            hsla(190, 20%, 50%, 0.05),
+            hsla(190, 20%, 50%, 0.05) 15px,
+            hsla(190, 20%, 95%, 0.5) 15px,
+            hsla(190, 20%, 95%, 0.5) 20px);
+
+
     border-left: 2px solid white;
     border-right: 2px solid white;
+
+
+    background: white;
+    border: 0;
 }
+
+header, footer { background:hsla(0, 20%, 40%, 1)}
