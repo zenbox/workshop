@@ -3,7 +3,7 @@
 
 /* Layout */
 .multi-column p {
-    column-width: 10rem;
+    column-width: 14rem;
     column-gap: 1rem;
     column-rule-width: 3px;
     column-rule-color: black;
