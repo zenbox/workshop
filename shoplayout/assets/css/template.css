@@ -1,0 +1,44 @@
+/** TEMPLATE STYLES
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  *
+  * @package online shop pages
+  * @module i.e. template
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-10-06
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+
+/** TEMPLATE BASE */
+body {
+    margin: 1rem;
+}
+
+/** TEMPLATE LAYOUT */
+
+@media all {
+    .page-container {
+        width: 100%;
+        margin: 0 auto; /* TB RL*/
+    }
+}
+
+@media screen and (max-width: 767px) {}
+
+@media screen and (min-width:768px) {
+    .page-container {
+        max-width: 800px;
+    }
+}
+
+@media screen and (min-width:1024px) {
+        .page-container {
+            max-width: 1230px;
+        }
+}

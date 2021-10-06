@@ -1,0 +1,58 @@
+/** CONTENT TEMPLATES
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Online Shop
+  * @module content templates
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-10-06
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+
+/** CONTENT TEMPLATE BASE */
+@media all {
+
+    .flex-row,
+    .flex-row * {
+        box-sizing: border-box;
+    }
+
+    /** CONTENT TEMPLATE LAYOUT */
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .one-column>* {
+        flex-basis: 100%;
+    }
+
+    .two-columns>* {
+        flex-basis: 50%;
+    }
+
+    .four-columns>* {
+        flex-basis: 25%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .one-column>*,
+    .two-columns>* {
+        flex-basis: 100%;
+    }
+
+    .four-columns>* {
+        flex-basis: 50%;
+    }
+}
+
+@media screen and (min-width: 768px) {}
+
+@media screen and (min-width: 1024px) {}
