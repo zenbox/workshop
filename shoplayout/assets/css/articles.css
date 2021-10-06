@@ -17,13 +17,13 @@
 /** COMPONENT BASE */
 .article-hero-text h2 {
     font-size: 2rem;
-    margin : 0.25rem;
+    margin: 0.25rem;
 }
 
-    .article-hero-text p {
-        font-size: 1rem;
-        text-transform: uppercase;
-    }
+.article-hero-text p {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
 
 /** COMPONENT LAYOUT */
 
@@ -33,7 +33,6 @@
     align-items: center;
     justify-content: center;
 }
-
 
 /** COMPONENT THEME */
 
