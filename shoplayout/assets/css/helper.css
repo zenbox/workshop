@@ -58,8 +58,16 @@
 /* temp */
 .flex-row>* {
     background-color: hsla(201, 98%, 35%,0.5);
-    border: 1px solid hsla(0, 0%, 0%, 1);
-    margin: 0.5rem;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: hsla(0, 0%, 0%, 1);
+    
+    margin-top: 0.5rem;
+    margin-right:0; 
+    margin-bottom: 0.5rem;
+    margin-left:0;
+
     min-height: 1rem;
     min-width: 1rem;
 }

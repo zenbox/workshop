@@ -43,13 +43,25 @@
 
 @media screen and (max-width: 767px) {
 
+    .one-column,
+    .two-columns {
+        flex-direction: column;
+    }
+
     .one-column>*,
     .two-columns>* {
         flex-basis: 100%;
     }
 
+    .four-columns {
+        flex-wrap: wrap;
+    }
+
     .four-columns>* {
         flex-basis: 50%;
+        flex-grow: 0;
+        flex-shrink: 0;
+
     }
 }
 
