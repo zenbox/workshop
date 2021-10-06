@@ -1,0 +1,45 @@
+/** ARTICLES VARIANTS
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-10-06
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+
+/** COMPONENT BASE */
+.article-hero-text h2 {
+    font-size: 2rem;
+    margin : 0.25rem;
+}
+
+    .article-hero-text p {
+        font-size: 1rem;
+        text-transform: uppercase;
+    }
+
+/** COMPONENT LAYOUT */
+
+.article-hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/** COMPONENT THEME */
+
+.theme-fall {
+    color: white;
+    background-color: rgb(215, 193, 162);
+}
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
