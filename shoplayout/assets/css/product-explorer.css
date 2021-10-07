@@ -27,3 +27,37 @@
 .article-product-prize {
     font-size: 1.2rem
 }
+
+/* Product states */
+.article-product span.fa-heart {
+    /* positioning */
+    display: block;
+    position: absolute;
+    right: 1.3rem;
+    top: 1.3rem;
+}
+
+/* Like states */
+.like {}
+
+.like-default {
+    color: hsla(0, 0%, 70%, 1);
+}
+
+.like-selected {
+    color: hsla(160, 100%, 30%, 0.5);
+}
+
+html[lang="de-DE"] .article-product-prize::after {
+    content: " €";
+}
+
+html[lang="en-US"] .article-product-prize::after {
+    content: " $";
+
+    color: red;
+    font-family: Menlo, monospace;
+    display: inline;
+
+
+}
