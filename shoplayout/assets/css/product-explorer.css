@@ -42,6 +42,7 @@
     transition-property: all;
     transition-timing-function: ease-in-out;
     transition-duration: 250ms;
+    transition-delay: 0s;
 }
 
 .like-default {
@@ -52,6 +53,33 @@
 .like-selected {
     color: hsla(160, 100%, 30%, 0.5);
     font-size: 1.5rem;
+}
+
+
+@keyframes heartbeat {
+    0% {
+        font-size: 1rem;
+        color: red;
+        transform: rotateY(0deg);
+
+    }
+
+    50% {
+        font-size: 2rem;
+        color: maroon;
+        transform: rotateY(180deg) translate3d(0, 0, -1rem);
+    }
+
+    100% {
+        font-size: 1rem;
+        color: red;
+        transform: rotateY(0deg);
+
+    }
+}
+
+.heart-beat {
+    animation: heartbeat 1s infinite;
 }
 
 html[lang="de-DE"] .article-product-prize::after {
