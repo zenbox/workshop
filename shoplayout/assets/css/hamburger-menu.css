@@ -1,16 +1,20 @@
 /** HAMBURGER MENU */
 html {
-    --bar-height: 2rem;
-    --bar-distance: 1rem;
+    --bar-height: 0.5rem;
+    --bar-distance: calc(var(--bar-height)/2);
+    --hamburger-height: calc(calc(var(--bar-height)*3) + calc(var(--bar-distance)*2));
+    --hamburger-width: var(--hamburger-height);
 
-    --default-background-color: hsla(30, 80%, 50%, 1);
+    --factor: 1.05;
+
+    --default-bar-color: hsla(0, 0%, 0%, 1);
 }
 
 /** COMPONENT BASE */
 .hamburger {
     display: block;
-    width: 8rem;
-    height: 8rem;
+    width: var(--hamburger-width);
+    height: var(--hamburger-height);
 }
 
 .hamburger-bar {
@@ -22,15 +26,15 @@ html {
 
 /** COMPONENT LAYOUT */
 .hamburger-bar:nth-child(1) {
-    background: var(--default-background-color);
+    background: var(--default-bar-color);
 }
 
 .hamburger-bar:nth-child(2) {
-    background: var(--default-background-color);
+    background: var(--default-bar-color);
 }
 
 .hamburger-bar:nth-child(3) {
-    background: var(--default-background-color);
+    background: var(--default-bar-color);
 }
 
 /** COMPONENT THEME */
@@ -42,12 +46,8 @@ html {
     transition-timing-function: ease-in-out;
 }
 
-.hamburger:hover {
-    background: cyan;
-}
-
 .hamburger:hover .hamburger-bar:nth-child(1) {
-    transform: rotateZ(45deg) translateY(var(--bar-height)) translateX(var(--bar-height));
+    transform: rotateZ(45deg) translateY(calc(var(--bar-height)*var(--factor))) translateX(calc(var(--bar-height)*var(--factor)));
 }
 
 .hamburger:hover .hamburger-bar:nth-child(2) {
@@ -55,5 +55,5 @@ html {
 }
 
 .hamburger:hover .hamburger-bar:nth-child(3) {
-    transform: rotateZ(-45deg) translateY(  calc( var(--bar-height)*-1 )  ) translateX(var(--bar-height));
+    transform: rotateZ(-45deg) translateY(calc(var(--bar-height)*var(--factor)*-1)) translateX(calc(var(--bar-height)*var(--factor)));
 }
