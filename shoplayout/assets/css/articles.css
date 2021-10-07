@@ -1,4 +1,4 @@
-/** ARTICLES VARIANTS
+/** ARTICLE VARIANTS
   *
   *  @desc 
   *        All devices fallback: @media screen {}
@@ -14,19 +14,15 @@
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
 
-/** COMPONENT BASE */
-.article-hero-text h2 {
-    font-size: 2rem;
-    margin: 0.25rem;
+
+/* HERO COMPONENT */
+/** Hero reset & base */
+.article-hero {
+    margin-bottom: 2rem;
+    line-height: 0;
 }
 
-.article-hero-text p {
-    font-size: 1rem;
-    text-transform: uppercase;
-}
-
-/** COMPONENT LAYOUT */
-
+/* Hero layout */
 .article-hero-text {
     display: flex;
     flex-direction: column;
@@ -34,11 +30,45 @@
     justify-content: center;
 }
 
-/** COMPONENT THEME */
-
-.theme-fall {
-    color: white;
-    background-color: rgb(215, 193, 162);
+/* Hero layout: padding, margin */
+.article-hero-text {
+    padding: 4rem;
 }
 
-/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.article-hero-text h2 {
+    margin: 0.25rem;
+}
+
+/* Hero typografy */
+.article-hero-text {
+    text-align: center;
+    line-height: 1.2;
+}
+
+.article-hero-text * {
+    font-weight: 300;
+}
+
+.article-hero-text h2 {
+    font-size: 2rem;
+}
+
+.article-hero-text p {
+    text-transform: uppercase;
+}
+
+.article-hero-text h2+p {
+    text-transform: none;
+}
+
+/** Article themes */
+.theme-fall {
+    color: white;
+    background-color: hsla(35, 40%, 75%, 1);
+}
+
+.theme-sunny {
+    color: black;
+    background-color: hsl(0, 0%, 100%);
+}
+

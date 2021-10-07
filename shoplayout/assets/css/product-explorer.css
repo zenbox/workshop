@@ -1,0 +1,28 @@
+/* PRODUCT */
+.article-product-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 -1rem;
+}
+
+.article-product {
+    text-align: center;
+}
+
+.article-product {
+    padding: 1rem;
+    position:relative;
+}
+
+.article-product-description {
+    font-size: 1.2rem
+}
+
+.article-product-size {
+    font-size: 0.8rem
+}
+
+.article-product-prize {
+    font-size: 1.2rem
+}
