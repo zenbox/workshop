@@ -1,0 +1,59 @@
+/** HAMBURGER MENU */
+html {
+    --bar-height: 2rem;
+    --bar-distance: 1rem;
+
+    --default-background-color: hsla(30, 80%, 50%, 1);
+}
+
+/** COMPONENT BASE */
+.hamburger {
+    display: block;
+    width: 8rem;
+    height: 8rem;
+}
+
+.hamburger-bar {
+    display: block;
+    width: 100%;
+    height: var(--bar-height);
+    margin-bottom: var(--bar-distance);
+}
+
+/** COMPONENT LAYOUT */
+.hamburger-bar:nth-child(1) {
+    background: var(--default-background-color);
+}
+
+.hamburger-bar:nth-child(2) {
+    background: var(--default-background-color);
+}
+
+.hamburger-bar:nth-child(3) {
+    background: var(--default-background-color);
+}
+
+/** COMPONENT THEME */
+
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.hamburger-bar {
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+}
+
+.hamburger:hover {
+    background: cyan;
+}
+
+.hamburger:hover .hamburger-bar:nth-child(1) {
+    transform: rotateZ(45deg) translateY(var(--bar-height)) translateX(var(--bar-height));
+}
+
+.hamburger:hover .hamburger-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger:hover .hamburger-bar:nth-child(3) {
+    transform: rotateZ(-45deg) translateY(  calc( var(--bar-height)*-1 )  ) translateX(var(--bar-height));
+}

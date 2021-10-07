@@ -35,6 +35,7 @@
     position: absolute;
     right: 1.3rem;
     top: 1.3rem;
+    z-index: 1;
 }
 
 /* Like states */
@@ -61,20 +62,21 @@
         font-size: 1rem;
         color: red;
         transform: rotateY(0deg);
-
+        text-shadow: 0 0 0px hsla(0, 0%, 0%, 0.8);
     }
 
     50% {
         font-size: 2rem;
         color: maroon;
-        transform: rotateY(180deg) translate3d(0, 0, -1rem);
+        transform: rotateY(0deg) translate3d(0, 0, 0rem);
+        text-shadow: -5px 5px 4px hsla(0, 0%, 0%, 0.6);
     }
 
     100% {
         font-size: 1rem;
         color: red;
         transform: rotateY(0deg);
-
+        text-shadow: 0 0 0 hsla(0, 0%, 0%, 0.8);
     }
 }
 
@@ -92,6 +94,17 @@ html[lang="en-US"] .article-product-prize::after {
     color: red;
     font-family: Menlo, monospace;
     display: inline;
+}
 
 
+
+.article-product img {
+    box-shadow: 4px 4px 5px hsla(0, 0%, 0%, 0.4);
+    filter: grayscale(100%) blur(5%);
+    transition: all 50ms ease-in;
+}
+
+.article-product img:hover {
+    filter: grayscale(0) blur(0);
+    transform: translate3d(0, 0, 100px);
 }
