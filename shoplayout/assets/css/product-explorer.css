@@ -12,10 +12,11 @@
 
 .article-product {
     padding: 1rem;
-    position:relative;
+    position: relative;
 }
 
 .article-product-description {
+    font-weight: 300;
     font-size: 1.2rem
 }
 
