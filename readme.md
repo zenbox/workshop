@@ -36,6 +36,8 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 - [SASS for CSS](https://sass-lang.com/guide)
 
 
+- [Popup Book for Beercamp](https://2012.beercamp.nclud.com/)
+- [David Walsh: Spinning Cube](https://davidwalsh.name/css-cube)
 
 ## Code snippets
 
