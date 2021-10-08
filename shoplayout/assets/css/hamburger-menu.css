@@ -1,7 +1,8 @@
 /** HAMBURGER MENU */
-html {
-    --bar-height: 0.5rem;
+:root {
+    --bar-height: 0.2rem;
     --bar-distance: calc(var(--bar-height)/2);
+
     --hamburger-height: calc(calc(var(--bar-height)*3) + calc(var(--bar-distance)*2));
     --hamburger-width: var(--hamburger-height);
 
@@ -47,7 +48,8 @@ html {
 }
 
 .hamburger:hover .hamburger-bar:nth-child(1) {
-    transform: rotateZ(45deg) translateY(calc(var(--bar-height)*var(--factor))) translateX(calc(var(--bar-height)*var(--factor)));
+    transform:
+        rotateZ(45deg) translateY(calc(var(--bar-height)*var(--factor))) translateX(calc(var(--bar-height)*var(--factor)));
 }
 
 .hamburger:hover .hamburger-bar:nth-child(2) {
@@ -55,5 +57,6 @@ html {
 }
 
 .hamburger:hover .hamburger-bar:nth-child(3) {
-    transform: rotateZ(-45deg) translateY(calc(var(--bar-height)*var(--factor)*-1)) translateX(calc(var(--bar-height)*var(--factor)));
+    transform:
+        rotateZ(-45deg) translateY(calc(var(--bar-height)*var(--factor)*-1)) translateX(calc(var(--bar-height)*var(--factor)));
 }
