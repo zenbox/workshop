@@ -57,4 +57,8 @@ body {
     margin-top: calc(var(--header-max-height) + 1rem);
 }
 
+.header-container {
+    display: flex;
+}
+
 /** HEADER CHANGING STATES (BEHAVIOUR) */
