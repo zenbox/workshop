@@ -193,14 +193,54 @@
 
 
     <div class="modal">
-        <form action="">
+        <form class="form" action="">
             <fieldset>
                 <legend>User login</legend>
 
-                <label for="">Username</label>
-                <input type="email" name="" id="">
+                <div class="input-group">
+                    <label for="">Email</label>
+                    <input type="email" name="" value="mail@domain.de" id="">
+                </div>
+
+                <div class="input-group">
+                    <label for="">Password</label>
+                    <input type="password" value="geheim" name="" id="">
+                </div>
 
                 <button type="submit">login</button>
+
+                <div>
+                    <input type="checkbox" name="" id="">
+                    <label for="">agree with ...</label>
+                </div>
+
+                <!-- <div>
+                    <label for="">Mehrzeilig</label>
+                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                </div> -->
+
+                <!-- <div>
+                    <select name="" id="">
+                        <option value="">Auswahl 1</option>
+                        <option value="">Auswahl 2</option>
+                        <option selected value="">Auswahl 3</option>
+                        <option value="">Auswahl 4</option>
+                    </select>
+                </div> -->
+
+
+
+                <div>
+                    <input type="radio" name="agree" id="">
+                    <label for="">agree with ...</label>
+                    <input type="radio" checked name="agree" id="">
+                    <label for="">not agree with ...</label>
+                </div>
+
+                <!-- <input type="color" name="" id="">
+                <input type="date" name="" id=""> -->
+
+
             </fieldset>
         </form>
     </div>
