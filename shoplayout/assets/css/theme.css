@@ -10,16 +10,17 @@
   * @copyright (c) 2021 Michael Reichart, Cologne
   */
 
-  
+
 /* Theme's font */
 html {
-    font-family: Montserrat, sans-serif;
-    font-size: 16px;
-    line-height: 1.2;
-    font-weight: 400;
+  /* font-family: Montserrat, sans-serif; */
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 400;
 }
+
 /* Theme's colors */
 body {
-    background-color: hsla(0, 0%, 88%, 1);
-    color: black;
+  background-color: hsla(0, 0%, 88%, 1);
+  color: black;
 }
