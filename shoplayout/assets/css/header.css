@@ -1,0 +1,60 @@
+/** HEADER STYLES
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Online Shop
+  * @module Header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-10-08
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+
+/** HEADER BASE */
+:root {
+    --header-max-height: 5rem;
+}
+
+.header {}
+
+.header-logo {
+    background-image: url("../figures/logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    display: block;
+    width: 20vw;
+    height: var(--header-max-height);
+    max-height: var(--header-max-height);
+}
+
+/** HEADER LAYOUT */
+.header {
+    display: block;
+    position: fixed;
+
+    left: 0;
+    top: 0;
+
+    width: 100vw;
+
+    /* Fixed Height */
+    /* height: 3rem;
+    overflow: hidden; */
+
+    /* Ranged height */
+    min-height: 3rem;
+    max-height: var(--header-max-height);
+    overflow: hidden;
+}
+
+body {
+    margin-top: calc(var(--header-max-height) + 1rem);
+}
+
+/** HEADER CHANGING STATES (BEHAVIOUR) */

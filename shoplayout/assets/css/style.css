@@ -15,10 +15,11 @@
 @import url(template.css);
 @import url(content-template.css);
 
+@import url(header.css);
 @import url(images.css);
 @import url(articles.css);
 @import url(product-explorer.css);
 @import url(hamburger-menu.css);
 
-@import url(theme.css)
-/*@import url(helper.css);*/
+@import url(theme.css);
+@import url(helper.css);

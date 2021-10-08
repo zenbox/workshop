@@ -10,6 +10,10 @@
         position: absolute;
         bottom: 0.25rem;
     }
+
+    .header {
+        background-color: hsla(201, 98%, 85%,0.5);
+    }
 }
 
 @media screen and (max-width: 767px) {
