@@ -65,6 +65,7 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 ## Links zu Material Design
 - [Material Design](https://material.io)
 - [Webpack](https://webpack.js.org/)
+- [Guide to Typography](https://material.io/develop/web/guides/typography)
 
 ## Links zu HTML und CSS
 - [html5Test.com](http://html5test.com/index.html)
