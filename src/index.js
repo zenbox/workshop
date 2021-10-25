@@ -1,4 +1,4 @@
 // Sass Files
 import "./index.scss";
 
-console.log('Hello World');
+console.log('Hello World 2');
