@@ -9,6 +9,59 @@ Es gibt mehrere begleitende Foliensätze zu unserem Seminar und Workshop im Verz
 ## Dateien zum Download
 wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Meine Versionen davon können am Ende des Seminars hier heruntergeladen werden.
 
+# Inhalt
+## Einführung in das Material System
+- Prinzipien, Komponenten, Themen
+- Themes erstellen
+  ##Vorstellung der Komponenten
+- Hintergrundgestaltung
+- Banner
+- Cards
+- Eingabefelder, Schaltflächen, Checkboxen, Radio buttons, Fortschrittsanzeigen, Schieberegler
+- Chips
+- Tabellen
+- Datepicker
+- Dialoge
+- Bilder
+- Listen und Menus
+- Navigationen
+- Sheets und Snackbars
+- Switches
+- Tabs
+- Time pickers
+- Tooltips
+## Layouts planen und umsetzen
+- Einführung in Spalten und Abstände
+- Das responsive Grid und Anpassungen
+- Breakpoints und Geräte
+- UI Regions: Funktionale Bereiche im Layout
+## Farben richtig einsetzen
+- Ein Farbschema planen und anlegen
+- Die primäre und sekundäre Farbe
+- Typografie und Iconografie, Hintergrund und Kontrast
+- Mit Farben kommunizieren - Zustände und Meldungen
+- Barrierefreier Einsatz von Farben
+## Typografie
+- Das typografische System verstehen
+- Anpassungen
+- Sprachenunterstützung
+## Sound
+- Warum Sound wichtig ist: Einsatz und Wirkung
+- Sound als Feedback
+- Sound zur Gestaltung nutzen
+## Icons und Shapes 
+- Icons richtig einsetzen
+- Shapes zur prägnanten Gestaltung nutzen
+## Bewegung verstehen und einsetzen
+- Geschwindigkeit
+- Einfache und komplexe Bewegungen
+- Transition Pattern
+## Interaktion planen und gestalten
+- Gesten verstehen
+- Zeigen und Auswahl
+- Zustände visualisieren
+
+
 ## Links zu Material Design
 - [Material Design](https://material.io)
 - [Webpack](https://webpack.js.org/)
