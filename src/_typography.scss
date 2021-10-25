@@ -1,0 +1,16 @@
+// Use of material design component
+@use "@material/typography/mdc-typography";
+
+
+// Theming typography
+:root {
+    // Common properties
+    --mdc-typography-font-family: "Barlow", sans-serif;
+    --mdc-typography-font-size: 18px;
+    --mdc-typography-line-height: 1.3;
+
+    // Style-dependent properties
+    --mdc-typography-headline1-font-size: 6rem;
+    --mdc-typography-headline1-font-weight: 200;
+    --mdc-typography-headline1-letter-spacing: 0.2rem;
+}

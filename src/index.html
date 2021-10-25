@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Document</title>
 </head>
 
@@ -16,7 +17,16 @@
         aliquam reprehenderit nostrum dolor eaque recusandae illo saepe culpa facilis a excepturi debitis.
         Repudiandae sint temporibus sed obcaecati?</p>
 
-    <button class="mdc-typography--button">click me!</button>
+    <button class="mdc-button mdc-button--raised mdc-button__leading mdc-typography--button">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
+        <span class="mdc-button__label">click me!</span>
+    </button>
+
+    <button class="mdc-button mdc-button--outlined cancel mdc-button__leading mdc-typography--button">
+        <span class="mdc-button__ripple"></span>
+        <span class="mdc-button__label">cancel</span>
+    </button>
 
 </body>
 
