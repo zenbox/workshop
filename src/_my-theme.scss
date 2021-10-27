@@ -1,0 +1,23 @@
+@use "@material/theme";
+
+:root {
+    // Top navigation bar, Links
+    --mdc-theme-primary: #074763;
+    // Typography, icons on top navigation bar
+    --mdc-theme-on-primary: #fff;
+
+    // May be table titles or GUI elements
+    --mdc-theme-secondary: #656565;
+    --mdc-theme-on-secondary: #fff;
+
+    // Card background
+    --mdc-theme-surface: #fff;
+    --mdc-theme-on-surface: #000;
+
+    // Body background
+    --mdc-theme-background: #ECECEC;
+}
+
+body {
+    background-color: var(--mdc-theme-background);
+}

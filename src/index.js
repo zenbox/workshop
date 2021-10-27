@@ -24,7 +24,6 @@ const ripples = [].map.call(document.querySelectorAll(selector), function (el) {
 
 // App Bar
 // - - - - - - - - - -
-
 import {
     MDCTopAppBar
 } from '@material/top-app-bar';
