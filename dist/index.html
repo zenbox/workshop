@@ -5,28 +5,149 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout with Cards</title>
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <title>Document</title>
 <script defer src="index.js"></script><link href="index.css" rel="stylesheet"></head>
 
 <body>
-    <h2 class="mdc-typography--headline1">Hello World</h2>
-    <p class="mdc-typography--body1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea,
-        exercitationem fuga itaque et explicabo
-        aliquam reprehenderit nostrum dolor eaque recusandae illo saepe culpa facilis a excepturi debitis.
-        Repudiandae sint temporibus sed obcaecati?</p>
 
-    <button class="mdc-button mdc-button--raised mdc-button__leading mdc-typography--button">
-        <span class="mdc-button__ripple"></span>
-        <i class="material-icons mdc-button__icon" aria-hidden="true">bookmark</i>
-        <span class="mdc-button__label">click me!</span>
-    </button>
+    <header class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button"
+                    aria-label="Open navigation menu">menu</button>
+                <span class="mdc-top-app-bar__title">Page title</span>
+            </section>
+            <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                    aria-label="Favorite">favorite</button>
+                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                    aria-label="Search">search</button>
+                <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button"
+                    aria-label="Options">more_vert</button>
+            </section>
+        </div>
+    </header>
 
-        <button class="mdc-button mdc-button--outlined cancel mdc-button__leading mdc-typography--button">
-            <span class="mdc-button__ripple"></span>
-            <span class="mdc-button__label">cancel</span>
-        </button>
+    <aside class="mdc-drawer mdc-drawer--modal">
+        <!-- - - - - - -->
+        <div class="mdc-drawer__content">
+            <div class="mdc-drawer__header">
+                <button class="mdc-icon-button material-icons drawer-close-icon">
+                    close
+                </button>
+            </div>
+            <nav class="mdc-list">
+                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+                    <span class="mdc-list-item__text">Inbox</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+                    <span class="mdc-list-item__text">Outgoing</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                    <span class="mdc-list-item__ripple"></span>
+                    <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+                    <span class="mdc-list-item__text">Drafts</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- The mdc-drawer-scrim next sibling element is required, 
+            to protect the app's UI from interactions while the modal drawer is open.-->
+        <div class="mdc-drawer-scrim"></div>
+        <!-- - - - - - -->
+    </aside>
+
+    <main class="mdc-top-app-bar--fixed-adjust ">
+        <!-- - - - - - -->
+
+        <div class="mdc-layout-grid">
+            <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell">
+                    <!-- - - - -->
+                    <div class="mdc-card my-card-styles">
+                        <div class="mdc-card__primary-action">
+                            <h2>Lorem Headline solor sit</h2>
+                            <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste corrupti
+                                voluptas similique
+                                libero eius facilis possimus perferendis repudiandae.</p> -->
+                            <div class="mdc-card__ripple"></div>
+                        </div>
+                    </div>
+                    <!-- - - - -->
+                </div>
+                <div class="mdc-layout-grid__cell">
+                    <!-- - - - -->
+                    <div class="mdc-card my-card-styles">
+                        <div class="mdc-card__primary-action">
+                            <div class="mdc-card__media mdc-card__media--square">
+                                <div class="mdc-card__media-content">Title</div>
+                            </div>
+                            <h2>Lorem Headline solor sit</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                Iste corrupti
+                                voluptas similique
+                                libero eius facilis possimus perferendis repudiandae.</p>
+                            <div class="mdc-card__ripple"></div>
+                        </div>
+                        <div class="mdc-card__actions">
+                            <div class="mdc-card__action-buttons">
+                                <button class="mdc-button mdc-card__action mdc-card__action--button">
+                                    <div class="mdc-button__ripple"></div>
+                                    <span class="mdc-button__label">Action 1</span>
+                                </button>
+                                <button class="mdc-button mdc-card__action mdc-card__action--button">
+                                    <div class="mdc-button__ripple"></div>
+                                    <span class="mdc-button__label">Action 2</span>
+                                </button>
+                            </div>
+                            <div class="mdc-card__action-icons">
+                                <button
+                                    class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon"
+                                    title="Share">share</button>
+                                <button
+                                    class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon"
+                                    title="More options">more_vert</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- - - - -->
+                </div>
+                <div class="mdc-layout-grid__cell">
+                    <!-- - - - -->C
+                    <!-- - - - -->
+                </div>
+                <div class="mdc-layout-grid__cell">
+                    <!-- - - - -->D
+                    <!-- - - - -->
+                </div>
+                <div class="mdc-layout-grid__cell">
+                    <!-- - - - -->E
+                    <!-- - - - -->
+                </div>
+                <div class="mdc-layout-grid__cell">
+                    <!-- - - - -->F
+                    <!-- - - - -->
+                </div>
+                <div class="mdc-layout-grid__cell">
+                    <!-- - - - -->G
+                    <!-- - - - -->
+                </div>
+            </div>
+        </div>
+
+        <!-- <div style="display:flex; flex-direction: row; justify-content: space-between;">
+            <div style="width: 33.33%">Aaaaaaaa</div>
+            <div style="width: 33.34%">B</div>
+            <div style="width: 33.33%">C</div>
+        </div> -->
+
+    </main>
 
 </body>
 
