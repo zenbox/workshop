@@ -1,0 +1,14 @@
+@use "@material/drawer"as drawer;
+@use "@material/list/mdc-list"as list;
+
+@include drawer.core-styles;
+@include drawer.dismissible-core-styles;
+@include drawer.modal-core-styles;
+
+/** Error & Solution
+ * ! Deprecated:
+ * ! @include list.core-styles;
+ *
+ * TODO: @use "@material/list/mdc-list";
+ * instead of @use "@material/list";
+ */
