@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout with Cards</title>
+    <title>Data Tables</title>
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script defer src="index.js"></script><link href="index.css" rel="stylesheet"></head>
@@ -65,88 +65,72 @@
 
     <main class="mdc-top-app-bar--fixed-adjust ">
         <!-- - - - - - -->
-
-        <div class="mdc-layout-grid">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell">
-                    <!-- - - - -->
-                    <div class="mdc-card my-card-styles">
-                        <div class="mdc-card__primary-action">
-                            <h2>Lorem Headline solor sit</h2>
-                            <!-- <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iste corrupti
-                                voluptas similique
-                                libero eius facilis possimus perferendis repudiandae.</p> -->
-                            <div class="mdc-card__ripple"></div>
-                        </div>
-                    </div>
-                    <!-- - - - -->
-                </div>
-                <div class="mdc-layout-grid__cell">
-                    <!-- - - - -->
-                    <div class="mdc-card my-card-styles">
-                        <div class="mdc-card__primary-action">
-                            <div class="mdc-card__media mdc-card__media--square">
-                                <div class="mdc-card__media-content">Title</div>
-                            </div>
-                            <h2>Lorem Headline solor sit</h2>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                Iste corrupti
-                                voluptas similique
-                                libero eius facilis possimus perferendis repudiandae.</p>
-                            <div class="mdc-card__ripple"></div>
-                        </div>
-                        <div class="mdc-card__actions">
-                            <div class="mdc-card__action-buttons">
-                                <button class="mdc-button mdc-card__action mdc-card__action--button">
-                                    <div class="mdc-button__ripple"></div>
-                                    <span class="mdc-button__label">Action 1</span>
-                                </button>
-                                <button class="mdc-button mdc-card__action mdc-card__action--button">
-                                    <div class="mdc-button__ripple"></div>
-                                    <span class="mdc-button__label">Action 2</span>
-                                </button>
-                            </div>
-                            <div class="mdc-card__action-icons">
-                                <button
-                                    class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon"
-                                    title="Share">share</button>
-                                <button
-                                    class="material-icons mdc-icon-button mdc-card__action mdc-card__action--icon"
-                                    title="More options">more_vert</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- - - - -->
-                </div>
-                <div class="mdc-layout-grid__cell">
-                    <!-- - - - -->C
-                    <!-- - - - -->
-                </div>
-                <div class="mdc-layout-grid__cell">
-                    <!-- - - - -->D
-                    <!-- - - - -->
-                </div>
-                <div class="mdc-layout-grid__cell">
-                    <!-- - - - -->E
-                    <!-- - - - -->
-                </div>
-                <div class="mdc-layout-grid__cell">
-                    <!-- - - - -->F
-                    <!-- - - - -->
-                </div>
-                <div class="mdc-layout-grid__cell">
-                    <!-- - - - -->G
-                    <!-- - - - -->
-                </div>
+        <div class="mdc-data-table my-data-table">
+            <div class="mdc-data-table__table-container">
+                <!-- - - - -->
+                <table class="mdc-data-table__table">
+                    <thead>
+                        <tr class="mdc-data-table__row">
+                            <th role="columnheader" scope="col" class="mdc-data-table__header-cell">Column 1
+                            </th>
+                            <th role="columnheader" scope="col"
+                                class="mdc-data-table__header-cell  mdc-data-table__header-cell--numeric">
+                                Column 2</th>
+                            <th role="columnheader" scope="col" class="mdc-data-table__header-cell">Column 3
+                            </th>
+                            <th role="columnheader" scope="col" class="mdc-data-table__header-cell">Column 4
+                            </th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="mdc-data-table__cell">Footer Lorem ipsum dolor sit amet.
+                            </td>
+                        </tr>
+                    </tfoot>
+                    <tbody class="mdc-data-table__content">
+                        <tr class="mdc-data-table__row">
+                            <td data-state="not ready" role="rowheader" scope="row"
+                                class="mdc-data-table__header-cell"><span class="sr-only">not ready</span>
+                            </td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric">
+                                <img class="balluff-img balluff-img-responsive-in-table-cell"
+                                    src="https://picsum.photos/id/5/120" alt="">
+                            </td>
+                            <td class="mdc-data-table__cell">Lorem ipsum dolor sit amet.</td>
+                            <td class="mdc-data-table__cell">
+                                <span class="material-icons">description</span>
+                                <span class="material-icons">delete_sweep</span></td>
+                        </tr>
+                        <tr class="mdc-data-table__row">
+                            <td data-state="ready" class="mdc-data-table__cell"><span
+                                    class="sr-only">ready</span></td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric"> <img
+                                    class="balluff-img balluff-img-responsive-in-table-cell"
+                                    src="https://picsum.photos/id/6/120" alt="">
+                            </td>
+                            <td class="mdc-data-table__cell">Lorem ipsum dolor sit amet.</td>
+                            <td class="mdc-data-table__cell"> <span class="material-icons">description</span>
+                                <span class="material-icons">delete_sweep</span></td>
+                        </tr>
+                        <tr class="mdc-data-table__row">
+                            <td data-state="in use" class="mdc-data-table__cell"><span class="sr-only">in
+                                    use</span></td>
+                            <td class="mdc-data-table__cell mdc-data-table__cell--numeric"> <img
+                                    class="balluff-img balluff-img-responsive-in-table-cell"
+                                    src="https://picsum.photos/id/7/120" alt="">
+                            </td>
+                            <td class="mdc-data-table__cell">Lorem ipsum dolor sit amet.</td>
+                            <td class="mdc-data-table__cell"> <span class="material-icons">description</span>
+                                <span class="material-icons">delete_sweep</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- - - - -->
             </div>
+            <!-- Pagination goes here ...  -->
         </div>
-
-        <!-- <div style="display:flex; flex-direction: row; justify-content: space-between;">
-            <div style="width: 33.33%">Aaaaaaaa</div>
-            <div style="width: 33.34%">B</div>
-            <div style="width: 33.33%">C</div>
-        </div> -->
-
+        <!-- - - - - - -->
     </main>
 
 </body>
