@@ -11,7 +11,7 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            template: path.resolve(__dirname, "src", "index.html")
+            template: path.resolve(__dirname, "src", "table.html")
         }),
         new MiniCssExtractPlugin()
     ],
@@ -23,6 +23,10 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
+            },
+            {
+                test: /\.svg$/,
+                loader: 'svg-inline-loader'
             }
         ]
     }
