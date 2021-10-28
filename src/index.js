@@ -60,3 +60,12 @@ drawerCloser.addEventListener('click', (event) => {
 document.body.addEventListener('MDCDrawer:closed', () => {
     mainContentEl.querySelector('input, button').focus();
 });
+
+
+// Data Table
+// - - - - - - - - - -
+import {
+    MDCDataTable
+} from '@material/data-table';
+const dataTable = new MDCDataTable(document.querySelector('.mdc-data-table'));
+// - - - - - - - - - -
