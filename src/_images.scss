@@ -1,0 +1,42 @@
+// /** My Own Images Component
+//  *
+//  * @package Webapplication
+//  * @module Images
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2021-10-28
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2021 Michael Reichart, Cologne
+//  */
+
+// Base
+.balluff-img {}
+
+// Layout
+.balluff-img-responsive {
+    width: 100%;
+    height: auto;
+}
+
+.balluff-img-responsive-in-table-cell {
+    height: 100%;
+    max-height: 54px;
+    width: auto;
+}
+
+// States
+.balluff-img:hover {
+    position: relative;
+    transform: translate3d(0, 0, 0) perspective(550px);
+    transform-style: preserve-3d;
+    box-shadow: 0px 0px 0px hsla(0, 0%, 0%, 0);
+    border: 0;
+}
+.balluff-img {
+    position: relative;
+    transform: translate3d(0,0,100px) perspective(550px);
+    transform-style: preserve-3d;
+    box-shadow: 0px 0px 5px hsla(0, 0%, 0%, 0.4);
+    border: 1px solid white;
+}
