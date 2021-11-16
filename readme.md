@@ -11,3 +11,15 @@
  - 3.69.102.4 Kathrin
  - 3.70.139.6 Michael
  - 3.70.81.24
+
+https://prod.liveshare.vsengsaas.visualstudio.com/join?AFB5B1F2EB401B9BBD2D6E96533F6957AFD9
+
+ok, now i'm connected
+
+An i can write too
+
+Tiptop!
+
+ok, now in live, cool!
+
+thats awesome!
