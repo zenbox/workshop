@@ -17,15 +17,19 @@ html {
     font-family: 'Barlow', sans-serif;
 }
 
+/* - - - - - - - - - - */
 /* Colors */
 :root {
     --linie: white;
-    --linienBreite: 5px;
+    --linienBreite: 3px;
 
     --leinwand: lightgrey;
     --loge: lightgrey;
 
-    --freierSitz: green;
+    --freierSitz: hsl(120, 55%, 50%);
+    --freieLoge: hsl(0, 100%, 25%);
+    
+    
     --belegterSitz: lightgrey;
 
     --belegterSitzIcon: var(--linie);
@@ -34,11 +38,15 @@ html {
 
     --rollstuhl: blue;
 
-    --doppelsitz: red;
+    --doppelsitz: hsl(120, 55%, 25%);
 
-    --freieLoge: maroon;
     --belegteLoge: lightgrey;
 }
+/* - - - - - - - - - - */
+
+
+
+
 
 /* Classes */
 .leinwand {
