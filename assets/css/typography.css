@@ -34,7 +34,10 @@ p {
   font-size: 1rem;
 }
 
-td, th, li, code {
+td,
+th,
+li,
+code {
   font-size: 0.8rem;
 }
 
@@ -70,12 +73,47 @@ h1 {
 }
 
 body {
-  background-color: #262626;
-  color: #d9d9d9;
+  background-color: black;
+  color: #ffdb99;
+}
+
+section {
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 
 section.bright {
-  background-color: #d9d9d9;
-  color: #262626;
-  margin: 0.5rem;
+  background-color: #ffdb99;
+  color: #004d00;
+}
+
+section.bright code {
+  background-color: #004d00;
+  color: #ffdb99;
+}
+
+section.bright a:link {
+  color: green;
+}
+
+section.bright a:visited {
+  color: #004d00;
+}
+
+section.bright a:hover {
+  color: #004d00;
+}
+
+section.bright a:active {
+  color: #004d00;
+}
+
+section.dark {
+  color: #ffdb99;
+  background-color: #004d00;
+}
+
+section.dark code {
+  color: #004d00;
+  background-color: #ffdb99;
 }
