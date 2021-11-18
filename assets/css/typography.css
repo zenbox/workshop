@@ -36,21 +36,42 @@ h6 {
 
 /* Small device (i.e. mobile phones) */
 @media screen and (max-width:767px) {
-    p {
-        font-size: 0.5rem;
+    html {
+        font-size: 16px;
     }
 }
 
 /* Medium device (i.e. tablets in portrait mode) */
 @media screen and (min-width:768px) {
-    p {
-        font-size: 0.8rem;
+    html {
+        font-size: 18px;
     }
 }
 
 /* Large device (i.e. desktop monitor) */
 @media screen and (min-width:1024px) {
-    p {
-        font-size: 1rem;
+    html {
+        font-size:20px;
     }
+}
+
+/* Quick layout */
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: hsl(0, 0%, 15%);
+    color: hsl(0, 0%, 100%);
+}
+
+section {
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 0%);
+    margin: 1rem;
 }
