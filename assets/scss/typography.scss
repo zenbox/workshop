@@ -1,7 +1,18 @@
 /* Variablen */
+$black: black;
 
-$dark: hsl(0, 0%, 15%);
-$bright: hsl(0, 0%, 85%);
+$primary: darken(green, 10%);
+$secondary: lighten(orange, 30%);
+
+$dark: $primary;
+$bright: $secondary;
+
+$brighter-dark: lighten($dark, 10%);
+
+$linkColor: $brighter-dark;
+$visitedColor:$dark;
+$hoverColor:$dark;
+$activeColor:$dark;
 
 $baseFontSize : 18px;
 $defaultFontSize: 1rem;
@@ -46,7 +57,10 @@ p {
     font-size: $defaultFontSize;
 }
 
-td, th, li, code {
+td,
+th,
+li,
+code {
     font-size: $defaultFontSize*0.8;
 }
 
@@ -86,13 +100,47 @@ h1 {
 }
 
 body {
-    background-color: $dark;
+    background-color: $black;
     color: $bright;
+}
+
+section {
+    margin: $defaultMargin;
+    padding: $defaultMargin;
 }
 
 section.bright {
     background-color: $bright;
     color: $dark;
 
-    margin: $defaultMargin;
+    code {
+        background-color: $dark;
+        color: $bright;
+    }
+
+    a:link {
+        color: $linkColor;
+    }
+
+    a:visited {
+        color: $visitedColor;
+    }
+
+    a:hover {
+        color: $hoverColor;
+    }
+
+    a:active {
+        color: $activeColor;
+    }
+}
+
+section.dark {
+    color: $bright;
+    background-color: $dark;
+
+    code {
+        color: $dark;
+        background-color: $bright;
+    }
 }
