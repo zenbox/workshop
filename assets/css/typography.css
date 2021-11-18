@@ -3,7 +3,7 @@
 html {
   font-family: Arial, Helvetica, sans-serif;
   /* base for 1rem */
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.2;
 }
 
@@ -28,6 +28,14 @@ h6 {
 
 [role=heading][aria-level="7"] {
   font-weight: bold;
+}
+
+p {
+  font-size: 1rem;
+}
+
+td, th, li, code {
+  font-size: 0.8rem;
 }
 
 /* Small device (i.e. mobile phones) */
@@ -66,8 +74,8 @@ body {
   color: #d9d9d9;
 }
 
-section {
+section.bright {
   background-color: #d9d9d9;
   color: #262626;
-  margin: 1rem;
+  margin: 0.5rem;
 }
