@@ -1,0 +1,84 @@
+
+/* Variablen */
+
+$dark: hsl(0,0%,15%);
+$bright: hsl(0,0%,85%);
+
+
+
+/* Schrift und Typografie Einstellungen */
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* base for 1rem */
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+
+/* Textformate */
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+h4,
+h5,
+h6 {
+    font-size: 1.5rem;
+}
+
+[role=heading][aria-level="7"] {
+    font-weight: bold;
+}
+
+
+/* Small device (i.e. mobile phones) */
+@media screen and (max-width:767px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+/* Medium device (i.e. tablets in portrait mode) */
+@media screen and (min-width:768px) {
+    html {
+        font-size: 18px;
+    }
+}
+
+/* Large device (i.e. desktop monitor) */
+@media screen and (min-width:1024px) {
+    html {
+        font-size:20px;
+    }
+}
+
+/* Quick layout */
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+h1 {
+    text-align: center;
+}
+
+body {
+    background-color: $dark;
+    color: $bright;
+}
+
+section {
+    background-color: $bright;
+    color: $dark;
+    margin: 1rem;
+}
