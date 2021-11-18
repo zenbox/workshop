@@ -1,10 +1,12 @@
-
 /* Variablen */
 
-$dark: hsl(0,0%,15%);
-$bright: hsl(0,0%,85%);
+$dark: hsl(0, 0%, 15%);
+$bright: hsl(0, 0%, 85%);
 
+$baseFontSize : 18px;
+$defaultFontSize: 1rem;
 
+$defaultMargin: 0.5rem;
 
 /* Schrift und Typografie Einstellungen */
 
@@ -12,7 +14,7 @@ html {
     font-family: Arial, Helvetica, sans-serif;
 
     /* base for 1rem */
-    font-size: 16px;
+    font-size: $baseFontSize;
     line-height: 1.2;
 }
 
@@ -40,6 +42,17 @@ h6 {
     font-weight: bold;
 }
 
+p {
+    font-size: $defaultFontSize;
+}
+
+td, th, li, code {
+    font-size: $defaultFontSize*0.8;
+}
+
+
+
+
 
 /* Small device (i.e. mobile phones) */
 @media screen and (max-width:767px) {
@@ -58,7 +71,7 @@ h6 {
 /* Large device (i.e. desktop monitor) */
 @media screen and (min-width:1024px) {
     html {
-        font-size:20px;
+        font-size: 20px;
     }
 }
 
@@ -77,8 +90,9 @@ body {
     color: $bright;
 }
 
-section {
+section.bright {
     background-color: $bright;
     color: $dark;
-    margin: 1rem;
+
+    margin: $defaultMargin;
 }
