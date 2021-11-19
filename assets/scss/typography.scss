@@ -128,10 +128,18 @@ section.bright {
 
     a:hover {
         color: $hoverColor;
+
+        outline: 2px solid red;
+        border: 2px dotted green;
+        box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.5);
     }
 
     a:active {
         color: $activeColor;
+
+        outline: 2px solid red;
+        border: 2px dotted green;
+        box-shadow: 3px 3px 5px hsla(0, 0%, 0%, 0.5);
     }
 }
 
