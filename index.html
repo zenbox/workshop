@@ -32,7 +32,9 @@
 
                 <!-- <b role="heading" aria-level="7">Heading 7</b> -->
 
-                <p>Lorem <strong>als wichtig markiert</strong> ipsum dolor sit, amet consectetur adipisicing
+                <p lang="la">Wir sagen den Lehrer:innen <i lang="en">cringe</i> dazu. Lorem <strong>als
+                        wichtig markiert</strong> ipsum
+                    dolor sit, amet consectetur adipisicing
                     elit.
                     Officiis hic quas rerum nostrum,
                     eligendi tenetur. Minima amet nam unde voluptatibus ratione consequatur laboriosam nemo
@@ -136,6 +138,11 @@
                 </ol>
 
                 <table>
+
+                    <caption class="sr-only" aria-hidden="false">table caption</caption>
+
+
+
                     <thead>
                         <tr>
                             <th>Column 1</th>
@@ -143,15 +150,16 @@
                             <th>Column 3</th>
                         </tr>
                     </thead>
+
                     <tfoot>
                         <tr>
                             <td colspan="3">Footer</td>
                         </tr>
                     </tfoot>
-                    <tbody>
 
+                    <tbody>
                         <tr>
-                            <td>Risus Vulputate Amet</td>
+                            <th scope="row">Risus Vulputate Amet</th>
                             <td>Lorem Euismod Bibendum </td>
                             <td>Ridiculus Dapibus Risus</td>
                         </tr>
@@ -226,6 +234,33 @@
         </figcaption>
     </figure>
 -->
+
+
+    <nav>
+        <h4>navigation heading</h4>
+        <ul role="presentation">
+            <li><a href="page.html" title="Link zur Seite 1 mit neuen Inhalten"> Seite 1</a></li>
+            <li><a href="page.html"> point 2</a></li>
+            <li><a href="page.html"> point 3</a></li>
+        </ul>
+    </nav>
+
+
+    <h4 id="list-heading">list heading</h4>
+    <ul aria-labelledby="list-heading">
+        <li>listpoint 1</li>
+        <li>listpoint 2</li>
+        <li>listpoint 3</li>
+    </ul>
+
+
+
+
+
+
+
+
+
 
 </body>
 
