@@ -102,10 +102,16 @@ section.bright a:visited {
 
 section.bright a:hover {
   color: #004d00;
+  outline: 2px solid red;
+  border: 2px dotted green;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 section.bright a:active {
   color: #004d00;
+  outline: 2px solid red;
+  border: 2px dotted green;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
 section.dark {
