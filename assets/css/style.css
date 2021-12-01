@@ -1,0 +1,101 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html,
+html * {
+  box-sizing: border-box;
+}
+
+nav ul,
+nav ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+body {
+  color: #d9d9d9;
+  background-color: #262626;
+}
+
+main {
+  color: #262626;
+  background-color: #d9d9d9;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.375;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+code {
+  font-size: 1rem;
+}
+
+kbd {
+  font-size: 1rem;
+}
+
+.navigation {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.navigation li a[href]:hover {
+  color: red;
+}
+
+.navigation li a[href]:active {
+  color: green;
+}
+
+.navigation-horizontal li {
+  display: inline-block;
+  width: 100px;
+}
+
+.navigation-vertical li {
+  display: block;
+}
+
+html {
+  font-family: "Barlow", sans-serif;
+}
+
+h1, h2, h3 {
+  font-weight: 300;
+}

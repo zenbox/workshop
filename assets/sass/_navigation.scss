@@ -1,0 +1,31 @@
+// Navigation Class Definition
+.navigation {
+    // Base definition
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+
+    li {
+        a[href] {
+            &:hover {
+                color: red;
+            }
+
+            &:active {
+                color: green;
+            }
+        }
+    }
+
+}
+
+// Layout variations
+.navigation-horizontal li {
+    display: inline-block;
+    width: 100px;
+}
+
+.navigation-vertical li {
+    display: block;
+}

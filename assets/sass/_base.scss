@@ -1,0 +1,39 @@
+// /** 
+//  *
+//  * @package Webapplication
+//  * @module 
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2021-12-01
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2021 Michael Reichart, Cologne
+//  */
+
+$bright :hsla(0, 0%, 85%, 1);
+$dark :hsla(0, 0%, 15%, 1);
+
+
+
+html,
+html * {
+    box-sizing: border-box;
+}
+
+nav ul,
+nav ol {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+body {
+    color: $bright;
+    background-color: $dark;
+}
+
+main {
+    color: $dark;
+    background-color: $bright;
+
+}
