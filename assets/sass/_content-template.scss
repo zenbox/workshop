@@ -1,27 +1,25 @@
-// /** 
+// /** Content Templates
 //  *
 //  * @package Webapplication
-//  * @module 
+//  * @module Content
 //  * @author Michael Reichart <michael.reichart@gfu.net>
-//  * @since 2021-12-01
+//  * @since 2021-12-02
 //  * @version 1.0.0
 //  * @see i.e. inspired by ... {link to}
 //  * @license MIT {https://opensource.org/licenses/MIT}
 //  * @copyright (c) 2021 Michael Reichart, Cologne
 //  */
-html,
-html * {
-    box-sizing: border-box;
+
+.content-template {
+    display: flex;
+    flex-direction: row;
 }
 
-nav ul,
-nav ol {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+.content-template--row {
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-body {
-    color: $dark;
-    background-color: $bright;
+.content-template--column {
+    flex-direction: column;
 }

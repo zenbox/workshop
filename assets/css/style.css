@@ -1,4 +1,14 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css");
+/*
+ * CSS4 Variables:
+ * :root {
+ *     --headerHeight: 1rem;
+ * }
+ * 
+ * .header {
+ *    height: var(--headerHeight);   
+ * }
+ */
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html,
 html * {
@@ -13,11 +23,6 @@ nav ol {
 }
 
 body {
-  color: #d9d9d9;
-  background-color: #262626;
-}
-
-main {
   color: #262626;
   background-color: #d9d9d9;
 }
@@ -67,6 +72,42 @@ code {
 
 kbd {
   font-size: 1rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  position: fixed;
+  width: calc(100vw - 2rem);
+  height: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.header + * {
+  display: block;
+  position: relative;
+  top: 3rem;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.content-template {
+  display: flex;
+  flex-direction: row;
+}
+
+.content-template--row {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.content-template--column {
+  flex-direction: column;
 }
 
 .navigation {
