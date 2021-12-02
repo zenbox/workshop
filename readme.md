@@ -4,7 +4,7 @@
 - Auf Xing und LinkedIn unter Michael Reichart
 
  ## Foliensatz
-Es gibt einen begleitenden Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **Cacading Stylesheets.pdf**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
+Es gibt einen begleitenden Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **Cascading Stylesheets.pdf**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
 
 ## Dateien zum Download
 wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Meine Versionen davon können am Ende des Seminars hier heruntergeladen werden.
