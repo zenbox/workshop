@@ -21,16 +21,16 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 - [HTML Dokumentation II](https://wiki.selfhtml.org/)
 - [HTML Dokumentation III](http://html5doctor.com/)
  
-
-- [CSS Tricks](https://css-tricks.com/)
 - [CSS Nomenklatur - Block Element Modifier](http://getbem.com/introduction/)
 - [CSS Architektur - skalierbar und modular](http://smacss.com/)
+
+
+- [CSS Tricks](https://css-tricks.com/)
 - [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
 - [Dropdown via CSS](https://css-tricks.com/solved-with-css-dropdown-menus/)
  
 
 - [Blind-Bild-Generator](https://picsum.photos/)
-- [Alle Web Spezifikationen beim W3C](https://www.w3.org/TR)
 - [Generative Gestaltung](http://www.generative-gestaltung.de/)
 - [The origin of responsive webdesign](https://alistapart.com/article/responsive-web-design/)
 - [SASS for CSS](https://sass-lang.com/guide)
