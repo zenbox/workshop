@@ -38,3 +38,19 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 
 - [Popup Book for Beercamp](https://2012.beercamp.nclud.com/)
 - [David Walsh: Spinning Cube](https://davidwalsh.name/css-cube)
+
+## Code Snippets
+
+```sass
+// /** 
+//  *
+//  * @package Webapplication
+//  * @module 
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2021-12-02
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2021 Michael Reichart, Cologne
+//  */
+```
