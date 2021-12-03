@@ -1,0 +1,80 @@
+// /** Image Processing
+//  *
+//  * @package Webapplication
+//  * @module Images
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2021-12-03
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2021 Michael Reichart, Cologne
+//  */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+
+.shou-group {
+    fill: hsla(250, 50%, 50%, 1);
+    stroke: hsla(60, 50%, 50%, 1);
+    stroke-width: 60px;
+}
+
+@keyframes my-animation {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    50% {
+        transform: rotateZ(180deg);
+    }
+
+    100% {
+        transform: rotateZ(360deg);
+    }
+}
+
+svg {
+    animation: my-animation 4s infinite;
+}
+
+nav {
+    background-image: url(../figures/shou.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+header h2 {
+    background-image: url(../figures/shou.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+
+.sr-only {
+    display: block;
+    height: 2rem;
+    position: absolute;
+    left: -1000px;
+}
+
+address::after {
+    content: " \f25e";
+    font-weight: 400;
+    font-size: 3rem;
+    font-family: "Font Awesome 6 Brands";
+}
+
+main {
+    background:
+        linear-gradient(to right bottom,
+            hsla(30, 50%, 50%, 0.5) 0%,
+            hsla(160, 50%, 50%, 1) 30%,
+            hsla(100, 50%, 50%, 1) 60%,
+            hsla(120, 50%, 50%, 1) 80%,
+            hsla(160, 50%, 50%, 0.5) 100%),
+            
+        repeating-linear-gradient(45deg,
+            yellow,
+            yellow 10px,
+            red 10px,
+            red 20px)
+}
