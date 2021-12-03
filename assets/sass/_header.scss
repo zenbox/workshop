@@ -45,7 +45,6 @@
         }
 
 
-
         .header__nav--opened ul {
             display: flex;
             flex-direction: column;
@@ -80,7 +79,7 @@
         position: fixed;
         left: 0;
         top: 0;
-        width: calc(100vw - var(--defaultPadding) * 2);
+        width: calc(100vw - #{$defaultPadding} * 2);
         height: $headerHeight;
 
         margin-left: $defaultPadding;
