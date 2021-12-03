@@ -29,3 +29,36 @@ body {
 .marked {
     background-color: hsla(60, 100%, 50%, 0.25);
 }
+
+* {
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-delay: 0;
+    transition-timing-function: ease-in-out;
+}
+
+@keyframes my-animation {
+    0% {
+        background-color: hsla(0, 0%, 0%, 0.065);
+    }
+
+    25% {
+        background-color: hsla(0, 100%, 50%, 0.167);
+    }
+
+    50% {
+        background-color: hsla(120, 100%, 25%, 0.181);
+    }
+
+    75% {
+        background-color: hsla(60, 100%, 50%, 0.208);
+    }
+
+    100% {
+        background-color: hsla(0, 0%, 0%, 0.125);
+    }
+}
+
+.background {
+    animation: my-animation 60s infinite;
+}
