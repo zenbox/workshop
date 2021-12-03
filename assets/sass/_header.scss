@@ -42,6 +42,19 @@
     .header {
         nav {
             display: block;
+            width: 100vw;
+        }
+
+        &__nav {
+            &--opened {
+                max-height:calc(100vh - #{$headerHeight});
+                overflow: visible;
+            }
+
+            &--closed {
+                max-height: 0;
+                overflow: hidden;
+            }
         }
 
         &__hamburger {
@@ -70,9 +83,6 @@
 
 
         }
-
-
-
     }
 }
 

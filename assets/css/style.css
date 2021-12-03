@@ -40,19 +40,19 @@ body {
 
 @keyframes my-animation {
   0% {
-    background-color: rgba(0, 0, 0, 0.065);
+    background-color: rgba(0, 0, 0, 0.25);
   }
   25% {
-    background-color: rgba(255, 0, 0, 0.167);
+    background-color: rgba(64, 96, 32, 0.25);
   }
   50% {
-    background-color: rgba(0, 128, 0, 0.181);
+    background-color: rgba(32, 96, 96, 0.25);
   }
   75% {
-    background-color: rgba(255, 255, 0, 0.208);
+    background-color: rgba(64, 32, 96, 0.25);
   }
   100% {
-    background-color: rgba(0, 0, 0, 0.125);
+    background-color: rgba(0, 0, 0, 0.25);
   }
 }
 
@@ -128,6 +128,15 @@ input {
 @media screen and (max-width: 767px) {
   .header nav {
     display: block;
+    width: 100vw;
+  }
+  .header__nav--opened {
+    max-height: calc(100vh - 3rem);
+    overflow: visible;
+  }
+  .header__nav--closed {
+    max-height: 0;
+    overflow: hidden;
   }
   .header__hamburger {
     display: block;

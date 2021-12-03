@@ -6,4 +6,5 @@ let
 
 hamburger.onclick = (event) => {
     headerNavigation.classList.toggle('header__nav--closed');
+    headerNavigation.classList.toggle('header__nav--opened');
 };
