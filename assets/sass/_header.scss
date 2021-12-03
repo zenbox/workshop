@@ -62,22 +62,22 @@
 
             span {
                 display: block;
-                width: 2.3rem;
+                width: 2rem;
                 height: 0.5rem;
                 margin: 0.25rem;
 
                 background: black;
 
                 &:nth-child(1) {
-                    background: black;
+                    //  transform: rotateZ(45deg) translate(0.25rem,1rem);
                 }
 
                 &:nth-child(2) {
-                    background: gray;
+                    //  opacity: 0;
                 }
 
                 &:nth-child(3) {
-                    background: lightgrey;
+                    // transform: rotateZ(-45deg) translate(0.25rem, -1rem);
                 }
             }
 

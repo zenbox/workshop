@@ -12,10 +12,23 @@
 
 .figure {
     margin-left: 0;
+    margin-right: 0;
 
-    img {float:left;}
+    img {
+        float: left;
+    }
 
     figcaption {
         clear: left;
+    }
+
+    &__img {
+        &--responsive {
+            width: 100%;
+            max-width: 100%;
+            // min-width: 600px;
+
+            height: auto;
+        }
     }
 }
