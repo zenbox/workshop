@@ -10,13 +10,6 @@
 //  * @copyright (c) 2021 Michael Reichart, Cologne
 //  */
 
-* {
-    transition-property: max-height;
-    transition-duration: 120ms;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0;
-}
-
 @media screen {
 
     // Reset while all devices fallback
@@ -26,15 +19,22 @@
         flex-wrap: wrap;
         justify-content: space-between;
 
+
         .navigation {
             display: block;
         }
 
         .navigation-horizontal {
             display: block;
-            width: 100vw;
+        }
+
+        // Hamburger
+        &__hamburger {
+            display: none;
         }
     }
+
+
 
 }
 
@@ -44,21 +44,34 @@
             display: block;
         }
 
+        &__hamburger {
+            display: block;
 
-        .header__nav--opened ul {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: auto;
-            min-height: 8rem;
-            max-height: 10rem;
+            span {
+                display: block;
+                width: 2.3rem;
+                height: 0.5rem;
+                margin: 0.25rem;
+
+                background: black;
+
+                &:nth-child(1) {
+                    background: black;
+                }
+
+                &:nth-child(2) {
+                    background: gray;
+                }
+
+                &:nth-child(3) {
+                    background: lightgrey;
+                }
+            }
+
+
         }
 
-        .header__nav--closed ul {
-            max-height: 0;
-            overflow: hidden;
-        }
+
 
     }
 }
