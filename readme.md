@@ -28,6 +28,7 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 - [CSS Tricks](https://css-tricks.com/)
 - [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
 - [Dropdown via CSS](https://css-tricks.com/solved-with-css-dropdown-menus/)
+- [Shape with CSS](https://css-tricks.com/the-shapes-of-css/)
  
 
 - [Blind-Bild-Generator](https://picsum.photos/)
