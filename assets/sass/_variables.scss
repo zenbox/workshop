@@ -1,8 +1,56 @@
+// Colors
 $bright :hsla(0, 0%, 85%, 1);
 $dark :hsla(0, 0%, 15%, 1);
 
-$headerHeight: 3rem;
+$primary: hsla(270, 50%, 40%, 1);
+$secondary: hsl(169, 79%, 34%);
 
+$success : hsl(90, 90%, 36%);
+$warning: hsl(0, 81%, 42%);
+$info: hsl(196, 78%, 37%);
+
+$brighterPrimary: lighten($primary, 20%);
+$darkerPrimary: darken($primary, 20%);
+$brighterSecondary: lighten($secondary, 20%);
+$darkerSecondary: darken($secondary, 20%);
+
+// Typography
+$baseFontSize : 16px;
+$baseFontFamily: sans-serif;
+$baseLineHeight: 1.375;
+
+// Layout
+$headerHeight: 3rem;
+$defaultPadding: 1rem;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+:root {
+    --defaultPadding: $defaultPadding;
+}
 
 /*
  * CSS4 Variables:

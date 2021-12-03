@@ -1,4 +1,9 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --defaultPadding: $defaultPadding;
+}
+
 /*
  * CSS4 Variables:
  * :root {
@@ -9,7 +14,6 @@
  *    height: var(--headerHeight);   
  * }
  */
-@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html,
 html * {
   box-sizing: border-box;
@@ -25,6 +29,10 @@ nav ol {
 body {
   color: #262626;
   background-color: #d9d9d9;
+}
+
+.marked {
+  background-color: rgba(255, 255, 0, 0.25);
 }
 
 html {
@@ -62,43 +70,84 @@ p {
   margin-bottom: 0.5rem;
 }
 
-p {
+p,
+li,
+code,
+kbd,
+th,
+td,
+legend,
+label,
+input {
   font-size: 1rem;
 }
 
-code {
-  font-size: 1rem;
+* {
+  transition-property: max-height;
+  transition-duration: 120ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0;
 }
 
-kbd {
-  font-size: 1rem;
+@media screen {
+  .header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .header .navigation {
+    display: block;
+  }
+  .header .navigation-horizontal {
+    display: block;
+    width: 100vw;
+  }
 }
 
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: stretch;
-  position: fixed;
-  width: calc(100vw - 2rem);
-  height: 3rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+@media screen and (max-width: 767px) {
+  .header nav {
+    display: block;
+  }
+  .header .header__nav--opened ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    min-height: 8rem;
+    max-height: 10rem;
+  }
+  .header .header__nav--closed ul {
+    max-height: 0;
+    overflow: hidden;
+  }
 }
 
-.header + * {
-  display: block;
-  position: relative;
-  top: 3rem;
-}
-
-.header h2 {
-  margin: 0;
+@media screen and (min-width: 768px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: calc(100vw - var(--defaultPadding) * 2);
+    height: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .header h2 {
+    margin: 0;
+  }
 }
 
 .content-template {
   display: flex;
   flex-direction: row;
+  margin-top: 3rem;
+  min-height: calc(100vh - $headerHeight);
 }
 
 .content-template--row {
@@ -110,18 +159,57 @@ kbd {
   flex-direction: column;
 }
 
+.content-template > nav {
+  flex-basis: 25%;
+  flex-grow: 1;
+  flex-shrink: 2;
+}
+
+.content-template > main {
+  flex-basis: 50%;
+  flex-grow: 2;
+  flex-shrink: 1;
+}
+
+.content-template > aside {
+  flex-basis: 25%;
+  flex-grow: 1;
+  flex-shrink: 2;
+}
+
 .navigation {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 
-.navigation li a[href]:hover {
-  color: red;
+.navigation a:link {
+  text-decoration: none;
 }
 
-.navigation li a[href]:active {
-  color: green;
+.navigation a:link {
+  display: block;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.navigation a:link {
+  color: rebeccapurple;
+}
+
+.navigation a:visited {
+  color: rebeccapurple;
+}
+
+.navigation a:hover {
+  background-color: #9966cc;
+  color: rebeccapurple;
+}
+
+.navigation a:active {
+  color: #9966cc;
+  background-color: #331a4d;
 }
 
 .navigation-horizontal li {
@@ -133,6 +221,18 @@ kbd {
   display: block;
 }
 
+.figure {
+  margin-left: 0;
+}
+
+.figure img {
+  float: left;
+}
+
+.figure figcaption {
+  clear: left;
+}
+
 html {
   font-family: "Barlow", sans-serif;
 }
@@ -140,3 +240,22 @@ html {
 h1, h2, h3 {
   font-weight: 300;
 }
+
+/**
+ * Mobile first: all devices fallback
+ * optimized for small devices!
+ */
+/**
+ * Printer ?
+ */
+@media print {
+  body {
+    background-color: #262626;
+    color: #d9d9d9;
+  }
+}
+
+/**
+ * Progressive enhancement ...
+ * from small to large devices
+ */

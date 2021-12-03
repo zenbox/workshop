@@ -1,9 +1,11 @@
+// Typography base
 html {
-    font-family: sans-serif;
-    font-size: 16px; // base size -> 1 rem
-    line-height: 1.375;
+    font-family: $baseFontFamily;
+    font-size: $baseFontSize; // base size -> 1 rem
+    line-height: $baseLineHeight;
 }
 
+// Element specifications
 h1 {
     font-size: 2.5rem
 }
@@ -33,14 +35,14 @@ p {
     margin-bottom: 0.5rem;
 }
 
-p {
-    font-size: 1rem;
-}
-
-code {
-    font-size: 1rem;
-}
-
-kbd {
+p,
+li,
+code,
+kbd,
+th,
+td,
+legend,
+label,
+input {
     font-size: 1rem;
 }

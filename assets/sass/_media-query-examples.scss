@@ -1,0 +1,52 @@
+
+/**
+ * Mobile first: all devices fallback
+ * optimized for small devices!
+ */
+@media screen {
+    body {
+        // background-color: $bright;
+        // color: $dark
+    }
+}
+/**
+ * Printer ?
+ */
+@media print {
+    body {
+        background-color: $dark;
+        color: $bright
+    }
+}
+
+/**
+ * Progressive enhancement ...
+ * from small to large devices
+ */
+@media screen and (max-width: 576px) {
+    body {
+        // background-color: lighten($dark, 5%);
+        // color: darken($bright, 5%);
+    }
+}
+
+@media screen and (min-width: 577px) {
+    body {
+        // background-color: lighten($dark, 10%);
+        // color: darken($bright, 10%);
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        // background-color: lighten($dark, 50%);
+        // color: darken($bright, 50%);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        // background-color: lighten($dark, 70%);
+        // color: darken($bright, 70%);
+    }
+}

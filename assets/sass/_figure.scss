@@ -1,0 +1,21 @@
+// /** Figures
+//  *
+//  * @package Webapplication
+//  * @module Figures
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2021-12-02
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2021 Michael Reichart, Cologne
+//  */
+
+.figure {
+    margin-left: 0;
+
+    img {float:left;}
+
+    figcaption {
+        clear: left;
+    }
+}

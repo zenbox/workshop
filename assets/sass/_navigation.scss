@@ -5,17 +5,35 @@
     padding: 0;
     list-style-type: none;
 
+    a:link {
+                text-decoration: none;
+    }
 
-    li {
-        a[href] {
-            &:hover {
-                color: red;
-            }
+    // Layout
+    a:link {
+        display: block;
+        padding-left: $defaultPadding;
+        padding-top: $defaultPadding/2;
+        padding-bottom: $defaultPadding/2;
+    }
 
-            &:active {
-                color: green;
-            }
-        }
+    // States
+    a:link {
+        color: $primary;
+    }
+
+    a:visited {
+        color: $primary;
+    }
+
+    a:hover {
+        background-color: $brighterPrimary;
+        color: $primary;
+    }
+
+    a:active {
+        color: $brighterPrimary;
+        background-color: $darkerPrimary;
     }
 
 }

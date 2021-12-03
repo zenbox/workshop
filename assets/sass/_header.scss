@@ -10,33 +10,87 @@
 //  * @copyright (c) 2021 Michael Reichart, Cologne
 //  */
 
-.header {
-    // Base
+* {
+    transition-property: max-height;
+    transition-duration: 120ms;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0;
+}
 
-    // Layout I
-    // Position, dimension, padding, margin
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
+@media screen {
 
-    // Layout II
-    position: fixed;
-    width: calc(100vw - 2rem);
-    height: $headerHeight;
+    // Reset while all devices fallback
+    .header {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
 
-    margin-left: 1rem;
-    margin-right: 1rem;
+        .navigation {
+            display: block;
+        }
 
-    &+* {
-        display: block;
-        position: relative;
-        top: $headerHeight;
+        .navigation-horizontal {
+            display: block;
+            width: 100vw;
+        }
     }
 
-    // States
+}
 
-    h2 {
-        margin: 0;
+@media screen and (max-width:767px) {
+    .header {
+        nav {
+            display: block;
+        }
+
+
+
+        .header__nav--opened ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            min-height: 8rem;
+            max-height: 10rem;
+        }
+
+        .header__nav--closed ul {
+            max-height: 0;
+            overflow: hidden;
+        }
+
     }
+}
+
+@media screen and (min-width:768px) {
+
+    .header {
+        // Base
+
+        // Layout I
+        // Position, dimension, padding, margin
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+
+        // Layout II
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: calc(100vw - var(--defaultPadding) * 2);
+        height: $headerHeight;
+
+        margin-left: $defaultPadding;
+        margin-right: $defaultPadding;
+
+        // States
+
+        h2 {
+            margin: 0;
+        }
+    }
+
 }

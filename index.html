@@ -13,7 +13,11 @@
     <header class="header">
         <h2 class="header__brand">Company</h2>
 
-        <nav class="header__navigation header__navigation--hamburger-close">
+        <p
+            onclick="document.querySelector('header nav').classList.toggle('header__nav--opened');document.querySelector('header nav').classList.toggle('header__nav--closed');">
+            X</p>
+
+        <nav class="header__nav--closed marked">
             <ul class="navigation navigation-horizontal">
                 <li><a href="">first</a></li>
                 <li><a href="">second</a></li>
@@ -36,6 +40,63 @@
         <main>
 
             <h1>Main Content</h1>
+
+            <article>
+                <h2>Article headline</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, fugiat. Saepe quia
+                    aliquam soluta quas eos ipsam quasi!</p>
+
+                <ol class="list">
+                    <li>Lorem, ipsum dolor.</li>
+                    <li>Lorem, ipsum dolor.</li>
+                </ol>
+
+                <figure class="figure">
+                    <img src="https://picsum.photos/id/106/120" alt="">
+                    <img src="https://picsum.photos/id/107/120" alt="">
+                    <img src="https://picsum.photos/id/108/120" alt="">
+                    <figcaption>
+                        <h3>Figure Headline</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quas possimus
+                            dolore!</p>
+                    </figcaption>
+                </figure>
+            </article>
+
+            <article>
+                <h2>A Table Information</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>lorem column head</th>
+                            <th>lorem column head</th>
+                            <th>lorem column head</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Footer content</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        </tr>
+                        <tr>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                            <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
 
         </main>
 

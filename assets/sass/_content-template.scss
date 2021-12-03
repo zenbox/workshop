@@ -13,13 +13,38 @@
 .content-template {
     display: flex;
     flex-direction: row;
-}
 
-.content-template--row {
-    flex-direction: row;
-    justify-content: space-between;
-}
+    margin-top: $headerHeight;
+    min-height: calc(100vh - $headerHeight);
+    
+    &--row {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
-.content-template--column {
-    flex-direction: column;
+    &--column {
+        flex-direction: column;
+    }
+
+    &>nav {
+
+        flex-basis: 25%;
+        flex-grow: 1;
+        flex-shrink: 2;
+        // background: hsla(0, 80%, 50%, 0.5)
+    }
+
+    &>main {
+        flex-basis: 50%;
+        flex-grow: 2;
+        flex-shrink: 1;
+        // background: hsla(30, 80%, 50%, 0.5)
+    }
+
+    &>aside {
+        flex-basis: 25%;
+        flex-grow: 1;
+        flex-shrink: 2;
+        // background: hsla(60, 80%, 50%, 0.5)
+    }
 }

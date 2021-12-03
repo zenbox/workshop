@@ -25,3 +25,7 @@ body {
     color: $dark;
     background-color: $bright;
 }
+
+.marked {
+    background-color: hsla(60, 100%, 50%, 0.25);
+}
