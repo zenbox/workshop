@@ -1,0 +1,562 @@
+/** Some styles
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2020-04-20
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2020 Michael Reichart, Cologne
+  */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css");
+:root {
+  --page: hsl(0, 0%, 15%);
+  --onPage: hsl(0, 0%, 85%);
+  --semanticBox: hsl(0, 70%, 35%);
+  --onSemanticBox: hsl(0, 70%, 85%);
+  --background: hsl(0, 0%, 15%);
+  --onBackground: hsl(0, 0%, 85%);
+  --contentBackground: hsl(0, 0%, 95%);
+  --onContentBackground: hsl(0, 0%, 5%);
+  --primary: hsl(260, 90%, 25%);
+  --onPrimary: hsl(0, 0%, 85%);
+  --secondary: hsl(166, 94%, 25%);
+  --onSecondary: hsl(0, 0%, 85%);
+  --error: hsl(0, 95%, 35%);
+  --warning: hsl(50, 95%, 50%);
+  --valid: hsl(120, 95%, 35%);
+  --onError: hsl(0, 35%, 75%);
+  --onWarning: hsl(55, 95%, 30%);
+  --onValid: hsl(120, 95%, 15%);
+  --red: hsl(0, 100%, 50%);
+  --orange: hsl(30, 100%, 50%);
+  --dotter: hsl(45, 100%, 50%);
+  --yellow: hsl(60, 100%, 50%);
+  --chartreuse-green: hsl(90, 100%, 50%);
+  --lind: hsl(76, 93%, 49%);
+  --green: hsl(120, 100%, 50%);
+  --tuerkis: hsl(160, 78%, 46%);
+  --spring-green: hsl(150, 100%, 50%);
+  --cyan: hsl(180, 100%, 50%);
+  --azure: hsl(210, 100%, 50%);
+  --blue: hsl(240, 100%, 50%);
+  --violet: hsl(270, 100%, 50%);
+  --lila: hsl(280, 64%, 48%);
+  --magenta: hsl(300, 100%, 50%);
+  --rose: hsl(330, 100%, 50%);
+  --white: white;
+  --black: black;
+  --onBright: hsl(0, 0%, 15%);
+  --onDark: hsl(0, 0%, 95%);
+  --onYellow: var(--onBright);
+  --onOrange: var(--onBright);
+  --onRed: var(--onDark);
+  --onMagenta: var(--onDark);
+  --onPurple: var(--onDark);
+  --onBlue: var(--onDark);
+  --onGreen: var(--onDark);
+}
+
+/**  BASE */
+html,
+html * {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: #262626;
+  color: #f2f2f2;
+}
+
+figure {
+  margin: 0;
+}
+
+table,
+fieldset {
+  border: 1px solid gray;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid gray;
+  padding: 0.25rem;
+}
+
+tfoot td {
+  column-span: all;
+}
+
+.chips {
+  display: flex;
+  flex-direction: row;
+}
+
+.chips li {
+  border: 1px solid gray;
+  border-radius: 1rem;
+  min-width: 5rem;
+  text-align: center;
+  margin: 0 0.5rem;
+  padding: 0.25rem 1rem;
+}
+
+.dark-on-bright .chips li {
+  color: #f2f2f2;
+  background-color: #262626;
+}
+
+.bright-on-dark .chips li {
+  color: #262626;
+  background-color: #f2f2f2;
+}
+
+.centered > * {
+  margin: 0 auto;
+}
+
+html {
+  font-family: Barlow, sans-serif;
+  font-size: 12px;
+  line-height: 1.358;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 200;
+}
+
+h1 {
+  font-size: 3rem;
+  /* 48px !*/
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+section[id] {
+  padding: 1rem;
+}
+
+.bright-on-dark {
+  background-color: #262626;
+  color: #f2f2f2;
+}
+
+.dark-on-bright {
+  background-color: #f2f2f2;
+  color: #262626;
+}
+
+/**  CHANGING STATES (BEHAVIOUR) */
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  text-align: center;
+  padding-top: calc(50vh - 2rem);
+  font-size: 3rem;
+  color: var(--onBright);
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  clip-path: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.description-only {
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 300;
+  background-color: var(--warning);
+  color: var(--onWarning);
+}
+
+.font-size-1x {
+  font-size: 12px;
+}
+
+.font-size-2x {
+  font-size: 16.0008px;
+}
+
+.font-size-3x {
+  font-size: 20.0004px;
+}
+
+.font-size-4x {
+  font-size: 24px;
+}
+
+body {
+  padding: 1rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-header header {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-content nav {
+  flex-basis: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.page-content main {
+  flex-basis: 60%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.page-content aside {
+  flex-basis: 40%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
+section {
+  padding: 0.25rem;
+}
+
+.page-header {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6rem;
+}
+
+section[id=teaser],
+.page-content aside {
+  margin-top: 4.37rem;
+}
+
+section[id] {
+  height: calc(100vh - 6rem);
+}
+
+.page-header header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.page-header header #logo {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: var(--contentBackground);
+}
+
+nav ul,
+nav ol {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0.25rem;
+  list-style-type: none;
+}
+
+nav a[href] {
+  display: inline-block;
+  width: 100%;
+  color: var(--primary);
+  text-decoration: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+nav a[href]::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f360";
+  padding-right: 1rem;
+  padding-left: 0.25rem;
+}
+
+nav a[href]:visited {
+  color: var(--secondary);
+}
+
+nav a[href]:hover {
+  color: var(--onSecondary);
+  background-color: var(--secondary);
+  text-decoration: underline;
+}
+
+nav a[href]:active {
+  color: var(--onSecondary);
+}
+
+section[id=teaser] {
+  background-image: url("https://picsum.photos/id/1008/1024");
+  background-size: cover;
+}
+
+section[id=teaser] h1 {
+  padding-top: 50vh;
+}
+
+[id=form-login] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 25vh;
+  background: linear-gradient(to right bottom, #cccccc, #949494);
+}
+
+[id=form-login] fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 0;
+}
+
+[id=form-login] input,
+[id=form-login] select,
+[id=form-login] button {
+  font-family: Barlow;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+[id=form-login] .input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid blue;
+  margin-bottom: 0.25rem;
+}
+
+[id=form-login] .input-group input,
+[id=form-login] .input-group select,
+[id=form-login] .input-group button {
+  align-self: flex-end;
+}
+
+[id=form-login] .input-group input,
+[id=form-login] .input-group select {
+  width: 70%;
+}
+
+[id=form-login] .input-group select {
+  margin-left: -0.4rem;
+}
+
+[id=form-login] .input-group input:active,
+[id=form-login] .input-group input:focus,
+[id=form-login] .input-group input:focus-visible,
+[id=form-login] .input-group select:active,
+[id=form-login] .input-group select:focus,
+[id=form-login] .input-group select:focus-visible {
+  border: 0;
+  outline: 0;
+  padding: 0.25rem;
+  perspective: 1000px;
+  transform: scale(1.2) rotateZ(0);
+  background: white;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+[id=form-login] .input-group label {
+  max-width: 23%;
+  width: 23%;
+  text-overflow: ellipsis;
+}
+
+[id=form-login] .input-group button {
+  width: 7%;
+}
+
+.checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.checkbox * {
+  border: 2px dotted red;
+}
+
+.center {
+  text-align: center;
+}
+
+.reset,
+.reset * {
+  margin: 0;
+  padding: 0;
+}
+
+/* Color circle */
+.color-circle svg {
+  width: 100%;
+  height: 100%;
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 1.5;
+}
+
+.color-circle path {
+  stroke: white;
+  stroke-width: 4px;
+}
+
+.deg-0,
+.red {
+  background-color: var(--red);
+  color: var(--onDark);
+  fill: var(--red);
+}
+
+.deg-30,
+.orange {
+  background-color: var(--orange);
+  color: var(--onDark);
+  fill: var(--orange);
+}
+
+.deg-60,
+.yellow {
+  background-color: var(--yellow);
+  color: var(--onBright);
+  fill: var(--yellow);
+}
+
+.deg-90,
+.chartreuse-green {
+  background-color: var(--chartreuse-green);
+  color: var(--onBright);
+  fill: var(--chartreuse-green);
+}
+
+.deg-120,
+.green {
+  background-color: var(--green);
+  color: var(--onBright);
+  fill: var(--green);
+}
+
+.deg-150,
+.spring-green {
+  background-color: var(--spring-green);
+  color: var(--onBright);
+  fill: var(--spring-green);
+}
+
+.deg-180,
+.cyan {
+  background-color: var(--cyan);
+  color: var(--onBright);
+  fill: var(--cyan);
+}
+
+.deg-210,
+.azure {
+  background-color: var(--azure);
+  color: var(--onDark);
+  fill: var(--azure);
+}
+
+.deg-240,
+.blue {
+  background-color: var(--blue);
+  color: var(--onDark);
+  fill: var(--blue);
+}
+
+.deg-270,
+.violet {
+  background-color: var(--violet);
+  color: var(--onDark);
+  fill: var(--violet);
+}
+
+.deg-300,
+.magenta {
+  background-color: var(--magenta);
+  color: var(--onDark);
+  fill: var(--magenta);
+}
+
+.deg-330,
+.rose {
+  background-color: var(--rose);
+  color: var(--onDark);
+  fill: var(--rose);
+}
+
+.glass {
+  opacity: 95%;
+}
+
+.elevated {
+  transform: perspective(500px) translate3d(0, 0, 0);
+  box-shadow: 3px 3px 3px rgba(38, 38, 38, 0.5);
+}
+
+.elevate:hover {
+  transform: perspective(500px) translate3d(1px, 1px, 2px);
+  box-shadow: 3px 3px 3px rgba(38, 38, 38, 0.5);
+}
+
+section:nth-child(odd) {
+  background-color: var(--primary);
+  color: var(--onPrimary);
+}

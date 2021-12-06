@@ -1,0 +1,64 @@
+/**  BASE */
+html,
+html * {
+    box-sizing: border-box;
+}
+
+body {
+    // Layout
+    min-height: 100vh;
+    min-width: 100vw;
+    margin: 0;
+    padding: 0;
+
+    // Color
+    background-color: $dark;
+    color: $bright;
+}
+
+figure {
+    margin: 0;
+}
+
+table,
+fieldset {
+    border: 1px solid $medium;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border-bottom: 1px solid $medium;
+    padding: 0.25rem;
+}
+
+tfoot td {
+    column-span: all;
+}
+
+.chips {
+    display: flex;
+    flex-direction: row;
+}
+.chips li{
+    border: 1px solid $medium;
+    border-radius: 1rem;
+    min-width: 5rem;
+    text-align:center;
+    margin: 0 0.5rem;
+    padding: 0.25rem 1rem;
+}
+
+.dark-on-bright .chips li {
+    color: $onDark;
+    background-color: $dark;
+}
+.bright-on-dark .chips li {
+    color: $onBright;
+    background-color: $bright;
+}
+
+.centered>*{ margin: 0 auto; }

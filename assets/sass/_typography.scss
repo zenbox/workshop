@@ -1,0 +1,44 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css");
+
+
+html {
+    font-family: Barlow, sans-serif;
+    font-size: $font-size;
+    line-height: 1.358;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 200;
+}
+
+h1 {
+    font-size: 3rem;
+    /* 48px !*/
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+section[id] {
+    padding: 1rem;
+}
+
+.bright-on-dark {
+    background-color: $dark;
+    color: $bright;
+}
+
+.dark-on-bright {
+    background-color: $bright;
+    color: $dark;
+}

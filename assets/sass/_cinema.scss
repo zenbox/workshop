@@ -1,0 +1,109 @@
+// Variables
+$linie: white;
+$linienBreite: 5px;
+
+$leinwand:lightgrey;
+$loge: lightgrey;
+
+$freierSitz: green;
+$belegterSitz: lightgrey;
+
+$belegterSitzIcon: $linie;
+$belegteLogeIcon: $linie;
+$doppelsitzIcon: $linie;
+
+$rollstuhl: blue;
+
+$doppelsitz: red;
+
+$freieLoge: maroon;
+$belegteLoge: lightgrey;
+
+// Cinema
+[id=cinema] {
+    display: flex;
+    height: 80vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.with-margin {
+    margin: 0.5rem;
+}
+
+// Kino
+.leinwand {
+    fill: none;
+    stroke: $leinwand;
+    stroke-width: 50px;
+}
+
+.logen-bereich {
+    fill: none;
+    stroke: $loge;
+    stroke-width: 10px;
+}
+
+// Sitze
+.freier-sitz {
+    fill: $freierSitz;
+    color: $freierSitz;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}
+
+.belegter-sitz-icon {
+    fill: $belegterSitzIcon;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}
+
+.belegter-sitz {
+    fill: $belegterSitz;
+    color: $belegterSitz;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}
+
+.doppelsitz {
+    fill: $doppelsitz;
+    color: $doppelsitz;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}
+
+.doppelsitz-icon {
+    fill: $doppelsitzIcon;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}
+
+// Loge
+.freie-loge {
+    fill: $freieLoge;
+    color: $freieLoge;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}
+
+.belegte-loge {
+    fill: $belegteLoge;
+    color: $belegteLoge;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}
+
+.belegte-loge-icon {
+    fill: $belegteLogeIcon;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}
+
+.freier-rollstuhl {
+    fill: $rollstuhl;
+    color: $rollstuhl;
+    stroke: $linie;
+    stroke-width: $linienBreite;
+}

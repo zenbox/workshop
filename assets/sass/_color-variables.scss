@@ -1,0 +1,32 @@
+$font-size: 12px;
+
+$dark: hsl(0, 0%, 15%);
+$bright: hsl(0, 0%, 95%);
+$medium: hsl(0, 0%, 50%);
+$shadow: hsla(0, 0%, 0%, 0.15);
+
+$onBright: $dark;
+$onDark: $bright;
+$onMedium: $bright;
+
+$page: hsl(0, 0%, 15%);
+$onPage: hsl(0, 0%, 85%);
+
+$background: hsl(0, 0%, 15%);
+$onBackground: hsl(0, 0%, 85%);
+
+$contentBackground: hsl(0, 0%, 95%);
+$onContentBackground: hsl(0, 0%, 5%);
+
+$primary: hsl(212, 89%, 41%);
+$onPrimary: hsl(0, 0%, 85%);
+
+$secondary: hsl(272, 89%, 41%);
+$onSecondary: hsl(0, 0%, 85%);
+
+$error: hsl(0, 95%, 35%);
+$warning: hsl(50, 95%, 50%);
+$valid: hsl(120, 95%, 35%);
+$onError: hsl(0, 35%, 75%);
+$onWarning: hsl(55, 95%, 30%);
+$onValid: hsl(120, 95%, 15%);

@@ -1,0 +1,57 @@
+:root {
+    --page: hsl(0, 0%, 15%);
+    --onPage: hsl(0, 0%, 85%);
+
+    --semanticBox: hsl(0, 70%, 35%);
+    --onSemanticBox: hsl(0, 70%, 85%);
+
+    --background: hsl(0, 0%, 15%);
+    --onBackground: hsl(0, 0%, 85%);
+
+    --contentBackground: hsl(0, 0%, 95%);
+    --onContentBackground: hsl(0, 0%, 5%);
+
+    --primary: hsl(260, 90%, 25%);
+    --onPrimary: hsl(0, 0%, 85%);
+
+    --secondary: hsl(166, 94%, 25%);
+    --onSecondary: hsl(0, 0%, 85%);
+
+    --error: hsl(0, 95%, 35%);
+    --warning: hsl(50, 95%, 50%);
+    --valid: hsl(120, 95%, 35%);
+    --onError: hsl(0, 35%, 75%);
+    --onWarning: hsl(55, 95%, 30%);
+    --onValid: hsl(120, 95%, 15%);
+
+    --red: hsl(0, 100%, 50%); //hsl(5, 88%, 49%);
+    --orange: hsl(30, 100%, 50%); // hsl(30, 100%, 50%);
+    --dotter: hsl(45, 100%, 50%);
+    --yellow: hsl(60, 100%, 50%); // hsl(59, 100%, 50%);
+    --chartreuse-green: hsl(90, 100%, 50%);
+    --lind: hsl(76, 93%, 49%);
+    --green: hsl(120, 100%, 50%); // hsl(112, 99%, 39%);
+    --tuerkis: hsl(160, 78%, 46%);
+    --spring-green: hsl(150, 100%, 50%);
+    --cyan: hsl(180, 100%, 50%); // hsl(199, 86%, 49%);
+    --azure: hsl(210, 100%, 50%);
+    --blue: hsl(240, 100%, 50%); // hsl(229, 100%, 51%);
+    --violet: hsl(270, 100%, 50%); // hsl(273, 69%, 32%);
+    --lila: hsl(280, 64%, 48%);
+    --magenta: hsl(300, 100%, 50%); // hsl(300, 87%, 59%);
+    --rose: hsl(330, 100%, 50%);
+
+    --white: white;
+    --black: black;
+
+    --onBright: hsl(0, 0%, 15%);
+    --onDark: hsl(0, 0%, 95%);
+
+    --onYellow: var(--onBright);
+    --onOrange: var(--onBright);
+    --onRed: var(--onDark);
+    --onMagenta: var(--onDark);
+    --onPurple: var(--onDark);
+    --onBlue: var(--onDark);
+    --onGreen: var(--onDark);
+}

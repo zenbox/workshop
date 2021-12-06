@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Theme</title>
+    <link rel="stylesheet" href="assets/css/page.css">
+</head>
+
+<body>
+    <header>
+        <h1>Color Theme</h1>
+        <nav>
+            <ul>
+                <li><a href="color-theme.html">color theme</a></li>
+                <li><a href="cinema.html">cinema</a></li>
+                <li><a href="typography.html">typography</a></li>
+                <li>
+                    <button>[-]</button>
+                    <button>font</button>
+                    <button>[+]</button>
+                </li>
+            </ul>
+        </nav>
+        <script>
+            let buttons = document.querySelectorAll('nav li button');
+            let html = document.querySelector('html');
+            let fontSize = localStorage.getItem('fontSize') || '1';
+            let fontSizeMin = 1,
+                fontSizeMax = 4;
+
+
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (evt) => {
+                    type = evt.target.innerText;
+                    switch (type) {
+                        default:
+                            fontSize = 1;
+                            html.classList = [];
+                            break;
+                        case '[-]':
+                            html.classList.remove(`font-size-${fontSize}x`);
+                            fontSize--;
+                            if (fontSize < fontSizeMin) fontSize = 1;
+                            html.classList.add(`font-size-${fontSize}x`);
+                            break;
+                        case '[+]':
+                            html.classList.remove(`font-size-${fontSize}x`);
+                            fontSize++;
+                            if (fontSize > fontSizeMax) fontSize = fontSizeMax;
+                            html.classList.add(`font-size-${fontSize}x`);
+                            break;
+                    }
+                    console.log(html.classList);
+                })
+            })
+        </script>
+    </header>
+
+    <main class="as-row centered">
+        <section id="dark-on-bright" class="dark-on-bright">
+            <h2>Dark on Bright</h2>
+            <h1>Heading 1 ipsum dolor sit</h1>
+            <h2>Heading 2 amet consectetur</h2>
+
+            <h3>Heading 3 ad piscit eribus</h3>
+            <p>Paragraph Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium odit
+                adipisci vitae?</p>
+
+            <h3>Lists</h3>
+            <ol>
+                <li>Consectetur Elit Fusce</li>
+                <li>Mattis Ullamcorper Aenean</li>
+                <li>Quam Ullamcorper Justo</li>
+            </ol>
+
+            <h3>Tables</h3>
+            <table>
+                <caption>Table Caption</caption>
+                <thead>
+                    <tr>
+                        <th>Magna 1</th>
+                        <th>Inceptos 2</th>
+                        <th>Sit 3</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td><sup>1</sup> Footer solor ad piscit</td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>Pharetra Vestibulum Fusce</td>
+                        <td>Amet Fusce Quam</td>
+                        <td>Pharetra Risus Amet</td>
+                    </tr>
+                    <tr>
+                        <td>Inceptos Ultricies Amet</td>
+                        <td>Dapibus Euismod Elit</td>
+                        <td>Pharetra Lorem Tristique</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Code Example</h3>
+            <pre><code>
+    10 REM Mein erstes Programm
+    20 GOTO 40
+    30 FOR (i=0; i<3;i++) write i
+    40 END
+</code></pre>
+
+            <h3>Chips</h3>
+            <ul class="chips">
+                <li>Salt</li>
+                <li>Black Pepper</li>
+                <li>Thyme</li>
+            </ul>
+
+            <h3>Login Form</h3>
+            <form action="">
+                <fieldset>
+                    <legend>Login</legend>
+                    <label for="email">Email</label>
+                    <input type="email">
+                    <label for="password">Password</label>
+                    <input type="password">
+                    <button>login</button>
+                    <button>cancel</button>
+                </fieldset>
+            </form>
+
+        </section>
+
+        <section id="bright-on-dark" class="bright-on-dark">
+            <h2>Bright on Dark</h2>
+
+            <h1>Heading 1 ipsum dolor sit</h1>
+            <h2>Heading 2 amet consectetur</h2>
+
+            <h3>Heading 3 ad piscit eribus</h3>
+            <p>Paragraph Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium odit
+                adipisci vitae?</p>
+
+            <h3>Lists</h3>
+            <ol>
+                <li>Consectetur Elit Fusce</li>
+                <li>Mattis Ullamcorper Aenean</li>
+                <li>Quam Ullamcorper Justo</li>
+            </ol>
+
+            <h3>Tables</h3>
+            <table>
+                <caption>Table Caption</caption>
+                <thead>
+                    <tr>
+                        <th>Magna 1</th>
+                        <th>Inceptos 2</th>
+                        <th>Sit 3</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td><sup>1</sup> Footer solor ad piscit</td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr>
+                        <td>Pharetra Vestibulum Fusce</td>
+                        <td>Amet Fusce Quam</td>
+                        <td>Pharetra Risus Amet</td>
+                    </tr>
+                    <tr>
+                        <td>Inceptos Ultricies Amet</td>
+                        <td>Dapibus Euismod Elit</td>
+                        <td>Pharetra Lorem Tristique</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Code Example</h3>
+            <pre><code>
+    10 REM Mein erstes Programm
+    20 GOTO 40
+    30 FOR (i=0; i<3;i++) write i
+    40 END
+</code></pre>
+
+            <h3>Chips</h3>
+            <ul class="chips">
+                <li>Salt</li>
+                <li>Black Pepper</li>
+                <li>Thyme</li>
+            </ul>
+
+            <h3>Login Form</h3>
+            <form action="">
+                <fieldset>
+                    <legend>Login</legend>
+                    <label for="email">Email</label>
+                    <input type="email">
+                    <label for="password">Password</label>
+                    <input type="password">
+                    <button>login</button>
+                    <button>cancel</button>
+                </fieldset>
+            </form>
+
+        </section>
+    </main>
+    </div>
+    <script>
+        window.onload = function () {
+            let R1, G1, B1, R2, G2, B2;
+
+            R1 = document.getElementById('dark-on-bright').style.color;
+            G1 = document.getElementById('dark-on-bright').style.color;
+            B1 = document.getElementById('dark-on-bright').style.color;
+
+            document.querySelector('body').style.backgroundColor = 'rgb(12,12,12)';
+            console.log(document.getElementById('dark-on-bright').style.color);
+            console.log(R1, G1, B1);
+
+            //***********relative Helligkeit von r,g,b bestimmen
+            //neuere Definition nach wcag s. a. https://www.w3.org/WAI/GL/wiki/Relative_luminance
+            function luminescence($r, $g, $b) {
+                $rs = $r / 255;
+                $gs = $g / 255;
+                $bs = $b / 255;
+
+                if ($rs <= 0.03928) {
+                    $R = $rs / 12.92;
+                } else {
+                    $R = (($rs + 0.055) / 1.055) ** 2.4;
+                }
+                if ($gs <= 0.03928) {
+                    $G = $gs / 12.92;
+                } else {
+                    $G = (($gs + 0.055) / 1.055) ** 2.4;
+                }
+                if ($bs <= 0.03928) {
+                    $B = $bs / 12.92;
+                } else {
+                    $B = (($bs + 0.055) / 1.055) ** 2.4;
+                }
+                $Lumi = 0.2126 * $R + 0.7152 * $G + 0.0722 * $B;
+                return $Lumi;
+            }
+
+            let ratio;
+
+            let color1Luminescence = luminescence(R1, G1, B1);
+            let color2Luminescence = luminescence(R2, G2, B2);
+
+            if (color1Luminescence >= color2Luminescence) {
+                ratio = (color1Luminescence + 0.05) / (color2Luminescence + 0.05);
+            } else {
+                ratio = (color2Luminescence + 0.05) / (color1Luminescence + 0.05);
+            }
+
+            document.getElementById("luminescence").innerHTML = ratio;
+
+            if (ratio > 4.5) {
+                document.getElementById("luminescence").classList.remove('invalid');
+                document.getElementById("luminescence").classList.add('valid');
+            } else {
+                document.getElementById("luminescence").classList.remove('valid')
+                document.getElementById("luminescence").classList.add('invalid')
+            }
+        }
+    </script>
+
+    <footer>
+        <p>2021 Michael Reichart, copyleft CC BY-NC-SA</p>
+    </footer>
+
+    <script defer src="assets/js/classes.js"></script>
+    <script defer src="assets/js/color-theme.js"></script>
+</body>
+
+</html>

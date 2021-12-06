@@ -1,0 +1,378 @@
+/**  BASE */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css");
+html,
+html * {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  background-color: #262626;
+  color: #f2f2f2;
+}
+
+figure {
+  margin: 0;
+}
+
+table,
+fieldset {
+  border: 1px solid gray;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border-bottom: 1px solid gray;
+  padding: 0.25rem;
+}
+
+tfoot td {
+  column-span: all;
+}
+
+.chips {
+  display: flex;
+  flex-direction: row;
+}
+
+.chips li {
+  border: 1px solid gray;
+  border-radius: 1rem;
+  min-width: 5rem;
+  text-align: center;
+  margin: 0 0.5rem;
+  padding: 0.25rem 1rem;
+}
+
+.dark-on-bright .chips li {
+  color: #f2f2f2;
+  background-color: #262626;
+}
+
+.bright-on-dark .chips li {
+  color: #262626;
+  background-color: #f2f2f2;
+}
+
+.centered > * {
+  margin: 0 auto;
+}
+
+html {
+  font-family: Barlow, sans-serif;
+  font-size: 12px;
+  line-height: 1.358;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 200;
+}
+
+h1 {
+  font-size: 3rem;
+  /* 48px !*/
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+}
+
+section[id] {
+  padding: 1rem;
+}
+
+.bright-on-dark {
+  background-color: #262626;
+  color: #f2f2f2;
+}
+
+.dark-on-bright {
+  background-color: #f2f2f2;
+  color: #262626;
+}
+
+/**  CHANGING STATES (BEHAVIOUR) */
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  text-align: center;
+  padding-top: calc(50vh - 2rem);
+  font-size: 3rem;
+  color: var(--onBright);
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100vw;
+  height: 100vh;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  clip-path: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.description-only {
+  display: none;
+  font-size: 0.8rem;
+  font-weight: 300;
+  background-color: var(--warning);
+  color: var(--onWarning);
+}
+
+.font-size-1x {
+  font-size: 12px;
+}
+
+.font-size-2x {
+  font-size: 16.0008px;
+}
+
+.font-size-3x {
+  font-size: 20.0004px;
+}
+
+.font-size-4x {
+  font-size: 24px;
+}
+
+/* Theme colors  */
+.background {
+  background-color: #262626;
+  color: #d9d9d9;
+  fill: #262626;
+}
+
+.content {
+  background-color: #f2f2f2;
+  color: #0d0d0d;
+  fill: #f2f2f2;
+}
+
+.primary {
+  color: #d9d9d9;
+  background-color: #0c62c6;
+}
+
+.secondary {
+  color: #d9d9d9;
+  background-color: #6f0cc6;
+}
+
+.error {
+  color: #d6a9a9;
+  background-color: #ae0404;
+}
+
+.warning {
+  color: #958904;
+  background-color: #f9d006;
+}
+
+.valid {
+  color: #024b02;
+  background-color: #04ae04;
+}
+
+.colors ol {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+.big {
+  width: 8rem;
+  height: 8rem;
+}
+
+.small {
+  width: 3rem;
+  height: 3rem;
+}
+
+.default {
+  border: 2px dotted white;
+}
+
+[id=cinema] {
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.with-margin {
+  margin: 0.5rem;
+}
+
+.leinwand {
+  fill: none;
+  stroke: lightgrey;
+  stroke-width: 50px;
+}
+
+.logen-bereich {
+  fill: none;
+  stroke: lightgrey;
+  stroke-width: 10px;
+}
+
+.freier-sitz {
+  fill: green;
+  color: green;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+.belegter-sitz-icon {
+  fill: white;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+.belegter-sitz {
+  fill: lightgrey;
+  color: lightgrey;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+.doppelsitz {
+  fill: red;
+  color: red;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+.doppelsitz-icon {
+  fill: white;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+.freie-loge {
+  fill: maroon;
+  color: maroon;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+.belegte-loge {
+  fill: lightgrey;
+  color: lightgrey;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+.belegte-loge-icon {
+  fill: white;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+.freier-rollstuhl {
+  fill: blue;
+  color: blue;
+  stroke: white;
+  stroke-width: 5px;
+}
+
+li {
+  list-style-type: none;
+}
+
+header {
+  background-color: rgba(38, 38, 38, 0.95);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 4rem;
+}
+
+header * {
+  padding: 0;
+  margin: 0;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+header li {
+  margin: 0.25rem;
+}
+
+header a {
+  color: #f2f2f2 !important;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 4rem;
+}
+
+main.as-row {
+  flex-direction: row;
+}
+
+footer {
+  display: block;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 1rem;
+}
