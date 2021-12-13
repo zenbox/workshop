@@ -1,10 +1,10 @@
-# Willkommen zu CSS Architektur- und Aufbaukurs
+# Willkommen zu HTML, CSS und Javascript
 ## Michael Reichart
 - michael.reichart@gfu.net
 - Auf Xing und LinkedIn unter Michael Reichart
 
  ## Foliensatz
-Es gibt einen begleitenden Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **Cascading Stylesheets.pdf**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
+Es gibt begleitende Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML Einführung**, **Cascading Stylesheets.pdf** und **Javascript Grundlagen**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
 
 ## Dateien zum Download
 wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Meine Versionen davon können am Ende des Seminars hier heruntergeladen werden.
@@ -39,27 +39,3 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 
 - [Popup Book for Beercamp](https://2012.beercamp.nclud.com/)
 - [David Walsh: Spinning Cube](https://davidwalsh.name/css-cube)
-
-## Code Snippets
-
-```json
-"SCSS Doc Block and main comments": {
-    "prefix": "docblock",
-    "description": " Docblock Comment for SCSS Files",
-    "body": [
-        "// /** $1",
-        "//  *",
-        "//  * @package Webapplication",
-        "//  * @module $2",
-        "//  * @author Michael Reichart <michael.reichart@gfu.net>",
-        "//  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-        "//  * @version 1.0.0",
-        "//  * @see i.e. inspired by ... {link to}",
-        "//  * @license MIT {https://opensource.org/licenses/MIT}",
-        "//  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
-        "//  */",
-        "",
-        "$3"
-    ],
-}
-```
