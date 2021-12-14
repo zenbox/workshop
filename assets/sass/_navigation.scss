@@ -1,14 +1,56 @@
-// Base
-.nav {}
+// /** Navigation Styles
+//  *
+//  * @package Webapplication
+//  * @module Navigation
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2021-12-14
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2021 Michael Reichart, Cologne
+//  */
 
+.nav {
+    // Base/reset
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 
-// Template/Layout
-.nav-row li {
-    display: inline;
+    li {
+        display: inline;
+    }
+
+    // Layout/template
+    &-row {
+        li {
+            display: inline;
+        }
+    }
+
+    &-column {
+        li {
+            display: block;
+        }
+    }
+
+    // States
+    &--active {
+        color: red;
+    }
+
+    & a:link {
+        color: blue;
+    }
+
+    & a:visited {
+        color: purple;
+    }
+
+    & a:hover {
+        color: orange;
+    }
+
+    & a:active {
+        color: red;
+    }
 }
-
-.nav-column li {
-    display: block;
-}
-
-// States

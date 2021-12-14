@@ -26,10 +26,40 @@ h1 {
   font-size: 2.5rem;
 }
 
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display: inline;
+}
+
 .nav-row li {
   display: inline;
 }
 
 .nav-column li {
   display: block;
+}
+
+.nav--active {
+  color: red;
+}
+
+.nav a:link {
+  color: blue;
+}
+
+.nav a:visited {
+  color: purple;
+}
+
+.nav a:hover {
+  color: orange;
+}
+
+.nav a:active {
+  color: red;
 }
