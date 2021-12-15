@@ -28,7 +28,7 @@ let app = (function () {
         // AJAX Request
         xhr.addEventListener('readystatechange', onReadyStateChange);
 
-        xhr.open('GET', 'assets/data/data.json');
+        xhr.open('GET', 'rest/x/y/z');
         xhr.send({
             searchValue: searchValue
         });
