@@ -1,3 +1,9 @@
+h1 {
+  font-family: Barlow, sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
 html,
 html * {
   box-sizing: border-box;
@@ -24,6 +30,30 @@ body {
 
 h1 {
   font-size: 2.5rem;
+}
+
+.page-template {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-template header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.page-template footer address ol {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.content-template {
+  display: flex;
+  flex-direction: row;
 }
 
 .nav {
@@ -62,4 +92,12 @@ h1 {
 
 .nav a:active {
   color: red;
+}
+
+.has-sub ul {
+  display: hidden;
+}
+
+.has-sub:focus ul {
+  display: block;
 }

@@ -38,19 +38,28 @@
         color: red;
     }
 
-    & a:link {
+    a:link {
         color: blue;
     }
 
-    & a:visited {
+    a:visited {
         color: purple;
     }
 
-    & a:hover {
+    a:hover {
         color: orange;
     }
 
-    & a:active {
+    a:active {
         color: red;
     }
+
+}
+
+.has-sub ul {
+    display: hidden;
+}
+
+.has-sub:focus ul {
+    display: block;
 }

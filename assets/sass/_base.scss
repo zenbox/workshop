@@ -10,6 +10,31 @@
 //  * @copyright (c) 2021 Michael Reichart, Cologne
 //  */
 
+// @font-face {
+//     font-family: "Barlow";
+
+//     src: url(Barlow.ttf);
+//     font-weight: 400;
+
+//     src: url(Barlow-Light.ttf);
+//     font-weight: 300;
+//     font-style: normal;
+
+//     src: url(Barlow-Light-Italic.ttf);
+//     font-weight: 300;
+//     font-style: italic;
+
+//     src: url(Barlow-Bold.ttf);
+//     font-weight: 700;
+// }
+
+
+h1 {
+    font-family: Barlow, sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
 html,
 html * {
     box-sizing: border-box;
@@ -22,6 +47,7 @@ html * {
         font-size: $defaultFontSize;
     }
 }
+
 @media screen and (min-width:768px) {
 
     html {

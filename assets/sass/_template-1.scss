@@ -1,0 +1,48 @@
+// /** Template 1
+//  *
+//  * @package Webapplication
+//  * @module Templates
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2021-12-14
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2021 Michael Reichart, Cologne
+//  */
+
+.page-template {
+    // Base
+    display: flex;
+    flex-direction: column;
+
+    // Layout
+    header {
+        display: flex;
+        flex-direction: row;
+
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    footer {
+        address ol {
+            display: flex;
+            flex-direction: row;
+
+            justify-content: space-between;
+            align-items: baseline;
+        }
+    }
+
+    // States
+}
+
+.content-template {
+    // Base
+    display: flex;
+    flex-direction: row;
+
+    // Layout
+
+    // States
+}
