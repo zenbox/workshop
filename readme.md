@@ -17,9 +17,9 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 - [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
 
 - [W3C](https://www.w3.org/TR/)
-- [HTML Dokumentation I](https://www.w3schools.com/)
-- [HTML Dokumentation II](https://wiki.selfhtml.org/)
-- [HTML Dokumentation III](http://html5doctor.com/)
+- [W3Schools](https://www.w3schools.com/)
+- [Self HTML](https://wiki.selfhtml.org/)
+- [HTML5 Doctor](http://html5doctor.com/)
  
 - [CSS Nomenklatur - Block Element Modifier](http://getbem.com/introduction/)
 - [CSS Architektur - skalierbar und modular](http://smacss.com/)
