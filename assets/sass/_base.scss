@@ -75,3 +75,17 @@ h4 {}
 h5 {}
 
 h6 {}
+
+// html[lang=en] body::before {
+//     content: "Euro";
+//     font-family: "Font Awesome Solid"
+// }
+
+// html[lang=en-US] body::before {
+//     content: "Dollar";
+//     font-family: "Font Awesome Solid"
+// }
+
+// form *+* {
+//     background-color: red;
+// }

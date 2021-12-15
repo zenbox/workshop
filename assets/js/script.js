@@ -1,96 +1,89 @@
-/** Javascript Examples
- *
- *  @desc 
- *
- * @package Webapplication
- * @module Basics
- * @author Michael <michael.reichart@gfu.net>
- * @version v1.0.0
- * @since 2021-12-14
- * @see i.e. inspired by ... {link to}
- * @license MIT {https://opensource.org/licenses/MIT}
- * @copyright (c) 2021 Michael Reichart, Cologne
- */
-
-window.console.log('hello world');
+// IIFE - Immediate Invoked Function Expression
+let app = (function () {
+    'use strict';
+    // - - - - - - - - - -
+    // Declarations
+    let searchForm = document.querySelector('#form-search');
+    let xhr = new XMLHttpRequest();
 
 
+    // Methods
+    function onFormSearchSubmit(event) {
+        let searchValue = event.target[0].value;
 
-console.dir(window.document);
+        // Avoid browser control
+        event.preventDefault();
 
+        // Call loading data from server
+        loadContentsFromSearch(searchValue);
 
-
-// ECMA Script
-
-// Variables and types
-
-let b = 108; // Control scoped
-let c = 0.0001; // number
-
-const PI = 3.1415;
-
-// parseInt(a);
-// parseFloat(a);
-
-let text = "some text"; // string
-let bool = true; // boolean
-
-
-// Object
-let obj = {
-    "key": "value",
-    "other key": 512,
-    fn: function () {
-        console.log(this['other key'])
-    }
-};
-
-let arr = [true, "zwei", 3];
-
-console.log(obj.key);
-
-obj.fn();
-
-// Functions
-function fn(a, b) {
-    var a = a || 100,
-        b = b || 200;
-
-    for (let i = 0; i < arr.length; i++) {
-        const element = arr[i];
-
-    }
-    return (a + b);
-}
-
-fn(42, 108);
-console.clear()
-
-let d = 1;
-let e = true;
-let f = "1";
-
-console.log(d + f / 10)
-
-console.log("" == 0)
-
-
-
-class  User { 
-    
-    constructor() { 
-        this._property = 42;
+        // console.dir(event);
+        // console.log(document.querySelector('#search').value);
+        // console.log(document.querySelectorAll('.my-class').length);
+        // console.log(document.getElementById('search').value);
+        // console.log(Array.isArray(document.getElementsByClassName('my-class')));
     }
 
-    myMethod() { }
+    function loadContentsFromSearch(searchValue = undefined) {
+        // AJAX Request
+        xhr.addEventListener('readystatechange', onReadyStateChange);
 
-    getProperty() { }
-    setProperty() { }
+        xhr.open('GET', 'assets/data/data.json');
+        xhr.send({
+            searchValue: searchValue
+        });
+    }
 
-}
+    function onReadyStateChange() {
+        let data;
 
-let myUser = new User();
+        switch (xhr.readyState) {
+            case 1:
+                console.log("request opened");
+                break;
+            case 2:
+                console.log("request sent");
+                break;
+            case 3:
+                console.log("response open");
+                break;
+            case 4:
+                console.log("response end");
+                data = JSON.parse(xhr.response);
+                console.log(data);
+                break;
+        }
+    }
 
-myUser.property = "hallo";
+    function createList() {
+        console.log('yes, a list ...');
+        let li = document.createElement('li');
+        li.setAttribute('lang', 'de');
+        let content = document.createTextNode('irgendwas deutsches als Text');
+        li.appendChild(content);
+        let context = document.querySelector('main');
+        context.appendChild(li);
+    }
 
-console.log(myUser.property);
+    function _init() {
+        console.log(new Date());
+    }
+
+    // $('<li>')
+    //     .attr('lang', 'de')
+    //     .text('irgendwas deutsches, aber  mit jQuery eingefügt')
+    //     .appendTo('main');
+
+    // Control
+    // searchForm.addEventListener('submit', onFormSearchSubmit);
+    searchForm.onsubmit = onFormSearchSubmit;
+
+    let _app = {
+        init: _init
+    };
+
+    return _app;
+    // - - - - - - - - - -
+}());
+
+window.addEventListener('DOMContentLoaded', app.init);
