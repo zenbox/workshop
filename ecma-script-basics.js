@@ -105,15 +105,29 @@ for (key in obj) {
 // A function is a first class object!
 console.clear();
 
-function fn () {};
+function fn() {};
 console.log(typeof fn);
 fn();
 
-// Classic callback function syntax
-let emitter;
-emitter.on('connection', function (event) {
-    return event.type;
-});
+// // Classic callback function syntax
+// let emitter;
+// emitter.on('connection', function (event) {
+//     return event.type;
+// });
 
-// ES6+ arrow function syntax
-emitter.on('connection', (event) => {return event.type});
+// // ES6+ arrow function syntax
+// emitter.on('connection', (event) => {
+//     return event.type
+// });
+
+(function () {
+
+    for (let i = 0; i < 10; i++) {
+        console.log(i);
+    }
+
+    // console.log('- - - - -')
+    // console.log(i);
+
+
+}())
