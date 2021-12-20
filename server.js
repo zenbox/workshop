@@ -10,6 +10,10 @@
  * @copyright (c) 2021 Michael Reichart, Cologne
  */
 
+// Development debug flag
+const DEBUG = true;
+
+
 // Loading a node module
 const http = require('http');
 
@@ -18,10 +22,17 @@ let host = 'http://localhost',
     port = 3000,
     server = null;
 
+
 // Functions
 function onRequest(request, response) {
 
-    response.writeHead(200, {"Content-Type":"text/html"});
+    // - - - - -
+    if (DEBUG) console.log('Debug mode is on!');
+    // - - - - -
+
+    response.writeHead(200, {
+        "Content-Type": "text/html"
+    });
     response.write('<h1>Hello World</h1>');
     response.write('<p>Lorem ipsum dolor sit amet consectetur ad piscit.</p>');
     response.end('<p>Fin.</p>');
@@ -30,3 +41,26 @@ function onRequest(request, response) {
 // Control
 server = http.createServer(onRequest);
 server.listen(port);
+
+// - - - - -
+// Template literals!
+if (DEBUG) console.log(`Http service is listening on ${port}`);
+// - - - - -
+
+
+if (DEBUG) { 
+    // Time measurement
+
+    console.log('- - - - -');
+    console.time('time-01');
+    
+    console.warn('Attention!');
+    console.error('An error occured!');
+    console.log('%cA sample text', 'color:red;');
+
+    console.dir({"key":"value"});
+    console.table({"key": "value"});
+
+    console.timeEnd('time-01');
+    console.log('- - - - -');
+}
