@@ -33,6 +33,9 @@ let port = 3000,
 
 // Express settings
 
+// Static route
+expressServer.use( express.static(path.join(__dirname, 'public')) );
+
 // Methods
 
 
