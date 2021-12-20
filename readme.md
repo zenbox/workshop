@@ -166,7 +166,7 @@ Sie können mich unter michael.reichart@gfu.net per Email erreichen.
 			"$2"
 		],
 		"description": "Three simple comment lines"
-	}
+	},
 	"Comments and object literal": {
 		"prefix": "segment",
 		"body": [
