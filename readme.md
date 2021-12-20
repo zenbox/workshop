@@ -2,7 +2,7 @@
 
 **Herzlich willkommen zu den nodejs Grundlagen.**
 
-Mein Name ist Michael Reichart, wir erarbeiten in den nächsten zwei Tage die Grundlagen für den Umgang mit nodejs.
+Mein Name ist Michael Reichart, wir erarbeiten in den nächsten drei Tage die Grundlagen für den Umgang mit nodejs.
 Sie können mich unter michael.reichart@gfu.net per Email erreichen.
 ## Seminarzeiten
 - 9:00 bis 16:0 Uhr
