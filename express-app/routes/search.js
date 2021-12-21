@@ -25,34 +25,52 @@ db.on('error', (error) => {
 });
 
 
-let query = "SELECT * FROM mysql.user;";
-db.query(query, (error, response) => {
-    if (error) {
-        console.log(error);
-        process.exit(0);
+// let query = "SELECT * FROM mysql.user;";
+// db.query(query, (error, response) => {
+//     if (error) {
+//         console.log(error);
+//         process.exit(0);
+//     }
+
+
+//     console.log('- - - - -');
+//     console.log(`${response.length} datasets found.`);
+//     console.log('- - - - -');
+//     console.log(response[0].Host);
+//     console.log(response[0].User);
+//     console.log(response[0].Password);
+//     console.log('- - - - -');
+
+// });
+
+function getSearchData(keyword = undefined) {
+    let data;
+
+    if (keyword) {
+        db.query(`SELECT FROM sheeps WHERE sheep LIKE '%${keyword}%'`, (error, data) => {
+            data = data;
+        });
+        return data;
     }
-
-    
-    console.log('- - - - -');
-    console.log(`${response.length} datasets found.`);
-    console.log('- - - - -');
-    console.log(response[0].Host);
-    console.log(response[0].User);
-    console.log(response[0].Password);
-    console.log('- - - - -');
-
-});
+    return false;
+}
 
 function onGetRequest(request, response) {
+    let data;
 
-    let pseudoData = {
-        "key1": "value",
-        "key2": "value"
-    };
+    if (request.query.keyword) {
+        data = getSearchData(request.query.keyword);
+        console.log('- - - - -')
+        console.log(data);
+        console.log('- - - - -')
+    }
 
     response.render(
         'search', // Template for search
-        pseudoData
+        {
+            keyword: request.query.keyword,
+            data: data
+        }, // Search keyword
     );
 
 }

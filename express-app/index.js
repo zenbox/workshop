@@ -43,6 +43,7 @@ let
     indexRoute = require(path.join(__dirname, '/routes/index.js')),
     searchRoute = require(path.join(__dirname, '/routes/search.js'));
 
+expressServer.use('/', indexRoute);
 expressServer.use('/index.html', indexRoute);
 expressServer.use('/search.html', searchRoute);
 
