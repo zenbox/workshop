@@ -14,6 +14,35 @@
 const express = require('express');
 const router = express.Router();
 
+// Create a database connection
+const mysql = require('mysql');
+const mysqlCredentials = require('../mysqlCredentials.json');
+const db = mysql.createConnection(mysqlCredentials);
+
+db.connect();
+db.on('error', (error) => {
+    console.log(error);
+});
+
+
+let query = "SELECT * FROM mysql.user;";
+db.query(query, (error, response) => {
+    if (error) {
+        console.log(error);
+        process.exit(0);
+    }
+
+    
+    console.log('- - - - -');
+    console.log(`${response.length} datasets found.`);
+    console.log('- - - - -');
+    console.log(response[0].Host);
+    console.log(response[0].User);
+    console.log(response[0].Password);
+    console.log('- - - - -');
+
+});
+
 function onGetRequest(request, response) {
 
     let pseudoData = {
