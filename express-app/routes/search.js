@@ -44,12 +44,16 @@ db.on('error', (error) => {
 // });
 
 function getSearchData(keyword = undefined) {
-    let data;
+    var data;
 
     if (keyword) {
-        db.query(`SELECT FROM sheeps WHERE sheep LIKE '%${keyword}%'`, (error, data) => {
-            data = data;
+        let query = `SELECT sheep FROM animals.sheeps WHERE sheep LIKE '%${keyword}%'`;
+
+        db.query(query, (error, _data) => {
+            data = _data;
         });
+        
+        console.log('57:', data);
         return data;
     }
     return false;
