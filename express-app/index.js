@@ -36,7 +36,7 @@ expressServer.set('views', path.join(__dirname, 'views'));
 
 // Static route
 expressServer.use(express.static(path.join(__dirname, 'public')));
-
+debugger;
 // Dynamic routes
 
 let
