@@ -28,15 +28,22 @@ const bodyParser = require('body-parser');
 // Variables
 const DEBUG = true;
 let port = 3000,
-    indexRoute, // index.html
+    indexRoute = require( path.join(__dirname, '/routes/index.js') ),
     searchRoute; // search.html
 
 // Express settings
+expressServer.set('view engine', 'ejs'); // Template engine!
+expressServer.set('views', path.join(__dirname, 'views'));
 
 // Static route
 expressServer.use( express.static(path.join(__dirname, 'public')) );
 
-// Methods
+// Dynamic routes
+// /index.html
+expressServer.use( '/index.html',  indexRoute);
+
+// /search.html
+
 
 
 // Control
