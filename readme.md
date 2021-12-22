@@ -183,6 +183,14 @@ Sie können mich unter michael.reichart@gfu.net per Email erreichen.
 ```
 
 ```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
     <style>
         * {
             margin: 0;
@@ -191,7 +199,7 @@ Sie können mich unter michael.reichart@gfu.net per Email erreichen.
         }
 
         body {
-            font: 13px Helvetica, Arial;
+            font: 13px monospace;
         }
 
         form {
@@ -205,12 +213,12 @@ Sie können mich unter michael.reichart@gfu.net per Email erreichen.
         form input {
             border: 0;
             padding: 10px;
-            width: 90%;
+            width: 80vw;
             margin-right: .5%;
         }
 
         form button {
-            width: 9%;
+            width: 15vw;
             background: rgb(130, 224, 255);
             border: none;
             padding: 10px;
@@ -234,4 +242,79 @@ Sie können mich unter michael.reichart@gfu.net per Email erreichen.
             margin-bottom: 40px
         }
     </style>
+</head>
+
+<body onload="document.querySelector('#input').focus()">
+
+    <ul id="messages"></ul>
+
+    <form>
+        <input id="input" autocomplete="off" type="text">
+        <button>send</button>
+    </form>
+
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js"></script>
+    <script>
+        (function () {
+
+            let
+                socket = io(),
+                form = document.querySelector('form'),
+                input = document.querySelector('#input'),
+                chat = document.querySelector('#messages'),
+                messagesList = [];
+
+            // Sending messages
+            form.onsubmit = (event) => {
+                event.preventDefault();
+
+                // Send chat message over socket to server
+                socket.emit('clientMessage', input.value);
+
+                // Empty the textbox
+                input.value = random();
+
+                return;
+            };
+
+            function pushMessages() {
+                messages.innerHTML = '';
+
+                while (messagesList.length > 10) messagesList.shift();
+
+                messagesList.forEach(data => {
+                    e = document.createElement('li');
+                    t = document.createTextNode(data);
+                    e.appendChild(t);
+                    messages.appendChild(e)
+                })
+            }
+
+            function random() {
+                var words = ['Duis mollis', 'est non commodo', 'luctus nisi erat', 'porttitor ligula',
+                    'eget lacinia', 'odio sem nec', 'elit donec sed odio'
+                ];
+                var word = words[Math.floor(Math.random() * words.length)];
+                return word;
+            }
+
+            // Receiving messages
+            // socket.on('serverMessage', (data) => {
+            //     messagesList.push(`private: ${data}`);
+            //     pushMessages();
+            // });
+
+            socket.on('broadcastServerMessage', (data) => {
+                messagesList.push(`${data.id}: ${data.message}`);
+                pushMessages();
+            });
+
+            window.scrollTo(0, document.body.scrollHeight);
+            input.value = random();
+        }())
+    </script>
+
+</body>
+
+</html>
 ```
