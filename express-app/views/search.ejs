@@ -23,7 +23,11 @@
     </form>
 
     <h2>Search Results</h2>
-    <ol></ol>
+    <ol>
+        <% for(let i=0; i<data.length; i++){%>
+        <li><%= data[i].sheep %></li>
+        <%}%>
+    </ol>
 
 </body>
 

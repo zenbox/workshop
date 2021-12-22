@@ -50,7 +50,7 @@ expressServer.use('/search.html', searchRoute);
 // Control
 expressServer.listen(port, () => {
     if (DEBUG) {
-        console.clear();
+        // console.clear();
         console.log(`Express server listen on port ${port}`);
     }
 })

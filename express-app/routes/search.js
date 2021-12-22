@@ -19,66 +19,49 @@ const mysql = require('mysql');
 const mysqlCredentials = require('../mysqlCredentials.json');
 const db = mysql.createConnection(mysqlCredentials);
 
+
 db.connect();
 db.on('error', (error) => {
     console.log(error);
 });
 
-
-// let query = "SELECT * FROM mysql.user;";
-// db.query(query, (error, response) => {
-//     if (error) {
-//         console.log(error);
-//         process.exit(0);
-//     }
-
-
-//     console.log('- - - - -');
-//     console.log(`${response.length} datasets found.`);
-//     console.log('- - - - -');
-//     console.log(response[0].Host);
-//     console.log(response[0].User);
-//     console.log(response[0].Password);
-//     console.log('- - - - -');
-
-// });
-
-function getSearchData(keyword = undefined) {
-    var data;
-
-    if (keyword) {
-        let query = `SELECT sheep FROM animals.sheeps WHERE sheep LIKE '%${keyword}%'`;
-
-        db.query(query, (error, _data) => {
-            data = _data;
-        });
-        
-        console.log('57:', data);
-        return data;
-    }
-    return false;
-}
+/** 
+ * let query = "SELECT * FROM mysql.user;";
+ * db.query(query, (error, response) => {
+ *      if (error) {
+ *          console.log(error);
+ *          process.exit(0);
+ *      }
+ *
+ *
+ *      console.log('- - - - -');
+ *      console.log(`${response.length} datasets found.`);
+ *      console.log('- - - - -');
+ *      console.log(response[0].Host);
+ *      console.log(response[0].User);
+ *      console.log(response[0].Password);
+ *      console.log('- - - - -');
+ * 
+ *  });
+ */
 
 function onGetRequest(request, response) {
-    let data;
+    var query, data;
 
-    if (request.query.keyword) {
-        data = getSearchData(request.query.keyword);
-        console.log('- - - - -')
-        console.log(data);
-        console.log('- - - - -')
-    }
+    query = `SELECT sheep FROM animals.sheeps WHERE sheep LIKE '%${request.query.keyword}%'`;
 
-    response.render(
-        'search', // Template for search
-        {
-            keyword: request.query.keyword,
-            data: data
-        }, // Search keyword
-    );
-
+    db.query(query, (error, result) => {
+        response.render(
+            'search', // Template for search
+            {
+                keyword: request.query.keyword,
+                data: result
+            }
+        );
+    });
 }
 
 // Control
 router.get('/', onGetRequest);
+
 module.exports = router;
