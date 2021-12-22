@@ -38,6 +38,21 @@ function writeLogFile() {
     });
 }
 
+function onFileRead(error, fileData) {
+    if (error) throw error;
+
+    // Just Buffer values (hex encoded)
+    console.log(fileData);
+
+    // Convert Buffer values to readable value with encoding
+    console.log(fileData.toString('utf-8'))
+}
+
+function onFileWatch(eventType) {
+    console.log('something changed ...');
+    console.log(eventType);
+}
+
 function getFormattedDate() {
     let now = new Date(),
         formattedDate = util.format('%s-%s-%s %s:%s:%s', now.getFullYear(), now.getMonth() + 1, now.getDate(), now.getHours(), now.getMinutes(), now.getSeconds());
@@ -53,3 +68,9 @@ writeLogFile();
 setInterval(() => {
     writeLogFile();
 }, 20000);
+
+// File reading
+fs.readFile(logFileName, onFileRead);
+
+// File watch
+fs.watch(logFileName, onFileWatch);
