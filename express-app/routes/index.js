@@ -25,7 +25,6 @@ function onGetRequest(request, response) {
             value: 'Lorem ipsum ...'
         }
     );
-
 }
 
 // Control
