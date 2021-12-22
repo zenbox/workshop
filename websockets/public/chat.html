@@ -15,6 +15,7 @@
 
         body {
             font: 13px monospace;
+            background: lightgrey;
         }
 
         form {
@@ -114,10 +115,10 @@
             }
 
             // Receiving messages
-            // socket.on('serverMessage', (data) => {
-            //     messagesList.push(`private: ${data}`);
-            //     pushMessages();
-            // });
+            socket.on('serverMessage', (data) => {
+                messagesList.push(`private: ${data}`);
+                pushMessages();
+            });
 
             socket.on('broadcastServerMessage', (data) => {
                 messagesList.push(`${data.id}: ${data.message}`);
