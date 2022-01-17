@@ -1,0 +1,11 @@
+/* Theme */
+body {
+    background-color: hsla(210, 100%, 50%, 1);
+    color: white;
+
+}
+
+p,
+li {
+    background-color: hsla(210, 100%, 70%, 1);
+}

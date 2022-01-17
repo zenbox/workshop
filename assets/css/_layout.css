@@ -1,0 +1,45 @@
+/** Template XY
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Webapplication
+  * @module i.e. template
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2022-01-17
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2022 Michael Reichart, Cologne
+  */
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.content-container > * {
+
+} 
+
+.content-container > aside {
+    flex-basis: 12vw;
+    flex-grow: 0.5;
+    flex-shrink: 1;
+}
+
+.content-container > main {
+    flex-basis: 50vw;
+    flex-grow: 1;
+    flex-shrink: 1;
+}

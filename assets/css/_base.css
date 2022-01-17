@@ -1,0 +1,15 @@
+/* Base */
+html {
+    font-family: sans-serif;
+    font-size: 18px;
+    /* 1rem == 18px; */
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1rem;
+}
