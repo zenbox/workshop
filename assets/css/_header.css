@@ -16,3 +16,13 @@
 /* States */
 
 /* Appearance */
+.header #brand {
+    background-image: url(../figures/shou.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    display: block;
+    width: 100px;
+    height: 80px;
+}

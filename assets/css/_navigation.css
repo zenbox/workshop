@@ -11,6 +11,10 @@
     flex-direction: row;
 }
 
+.navigation-row li {
+    margin-left: 0.5rem;
+}
+
 .navigation-column {
     display: flex;
     flex-direction: column;
