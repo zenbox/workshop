@@ -1,6 +1,11 @@
 @import url(_reset.css);
 @import url(_base.css);
 
+@import url(_typography.css);
+
 @import url(_layout.css);
+
+@import url(_card.css);
+@import url(_navigation.css);
 
 @import url(_theme.css);
