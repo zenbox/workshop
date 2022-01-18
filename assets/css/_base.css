@@ -1,8 +1,8 @@
 /* Base */
 html {
     font-family: sans-serif;
-    font-size: 18px;
     /* 1rem == 18px; */
+    font-size: 18px;
     line-height: 1.4;
 }
 

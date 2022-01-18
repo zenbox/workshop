@@ -1,0 +1,20 @@
+/* Base */
+.navigation {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout */
+.navigation-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.navigation-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* States */

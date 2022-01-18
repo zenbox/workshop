@@ -7,29 +7,33 @@
 }
 
 
-
 .card {
     padding: 1rem;
+
+    margin: 0;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
+.card figure {
+    margin: 0;
+    padding: 0;
+}
+
+.card img {
+    width: 100%;
+}
 
 /* States */
 
 
-
 /* Theme */
-.card-container,
-.card-container>* {
-    border: 2px dotted orange;
-}
-
-
 .card {
     background-color: hsla(0, 0%, 100%, 0.95);
     color: hsla(0, 0%, 0%, 1);
 
     border-width: 2px;
-    border-color: white;
+    border-color: hsla(201, 99%, 34%, 0.701);
     border-style: solid;
     border-radius: 0.5rem;
 
