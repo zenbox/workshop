@@ -3,10 +3,10 @@ body {
     background-color: hsla(210, 100%, 50%, 1);
     color: white;
 
-    animation-name: my-animation;
+    /* animation-name: my-animation;
     animation-duration: 20s;
     animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+    animation-iteration-count: infinite; */
 
 }
 
