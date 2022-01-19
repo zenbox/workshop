@@ -40,9 +40,23 @@ function calcSum(m, n) {
     let r = n + m;
     return r;
 }
-
 console.log(calcSum(a, b));
-
 result = calcSum(42, 312);
 
+function onLogin(event) {
+    // Stop the browser default behaviour
+    event.preventDefault();
+
+    console.log('on login!');
+
+}
+
 // event control
+let loginForm = document.querySelector('#login');
+
+console.clear();
+console.log(loginForm);
+
+loginForm.addEventListener('submit', onLogin);
+
+window.addEventListener('load', () => console.log('Init! All loaded!'));

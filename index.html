@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
 
+
+
 </head>
 
 <body>
@@ -186,7 +188,19 @@
                 <article> ... </article>
             </main>
             <aside>
-                <form action="" id="login">FORM</form>
+                <form action="login.php" id="login">
+
+                    <label for="login-email">Email</label>
+                    <input id="login-email" type="email" name="login-email" value="michael.reichart@gfu.net"
+                        placeholder="your email here ...">
+
+                    <label for="login-password">Password</label>
+                    <input id="login-password" type="password" name="login-password" value="geheim">
+
+                    <button type="submit">log in</button>
+
+
+                </form>
             </aside>
         </div>
 
@@ -207,8 +221,8 @@
 
     <!-- /modal window -->
 
+    <script defer src="assets/js/login.js"></script>
 
-    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
