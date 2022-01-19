@@ -4,6 +4,7 @@
 console.log("Hello world!");
 
 // WEAK TYPED MEMORY
+// 1. Primitive value types
 // Variables (placeholder for calculated values)
 let a = 42; // number: integer value
 let b = 10.8; // number: floating value
@@ -17,6 +18,37 @@ let squareroot = Math.sqrt(9);
 let d = "its a text!"; // string
 let e = true; // boolean: state "yes"
 let f = false; // boolean: state "no"
+
+
+// 2. variables with multiple values ...
+// JavaScript Object Notation - JSON
+let obj = {
+    "email": "michael.reichart@gfu.net",
+    "password": "geheim",
+    "age":25
+};
+
+console.log('- - -');
+console.log(obj.email);
+console.log(obj.password);
+console.log(obj.age);
+console.log('- - -');
+
+// object iteration
+for (const key in obj) {
+        console.log(key,"=>", obj[key]);
+}
+
+let arr = ["michael.reichart@gfu.net", "geheim", 25];
+console.log( arr[0] );
+console.log( arr[1] );
+console.log(arr[2]);
+
+for (let i = 0; i < arr.length; i++) {
+    console.log("=>", arr[i]);
+}
+
+arr.forEach((elem)=>console.log(elem));
 
 // CONTROL STRUCTURES
 // Iterations
@@ -52,11 +84,27 @@ function onLogin(event) {
 }
 
 // event control
-let loginForm = document.querySelector('#login');
+let loginForm1 = document.querySelector('#login');
 
-console.clear();
-console.log(loginForm);
+//console.clear();
+console.log(loginForm1);
 
-loginForm.addEventListener('submit', onLogin);
+loginForm1.addEventListener('submit', onLogin);
 
 window.addEventListener('load', () => console.log('Init! All loaded!'));
+
+
+
+
+
+
+
+
+
+
+
+
+let fn = function () { };
+console.log(typeof fn);
+
+fn();

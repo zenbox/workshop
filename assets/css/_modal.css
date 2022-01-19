@@ -30,8 +30,8 @@
 
 /* States */
 .modal {
-    transition-property: top;
-    transition-duration: 5000ms;
+    transition-property: all;
+    transition-duration: 250ms;
     transition-timing-function: ease-out;
     transition-delay: 0;
 }
@@ -44,13 +44,13 @@
 }
 
 .modal-visible {
-    opacity: 1;
-    top:0vh;
+    opacity: 1 !important;
+    /* top:0vh; */
 }
 
 .modal-hidden {
     opacity: 0;
-    top:90vh;
+    /* top:90vh; */
 }
 
 
@@ -64,6 +64,6 @@
 }
 
 .modal {
-    perspective: 800px;  
-    transform: rotate(3600deg) scale(2, 2) translate(10px, 100px) ;
+    /* perspective: 800px;   */
+    /* transform: rotate(3600deg) scale(2, 2) translate(10px, 100px) ; */
 }

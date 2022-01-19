@@ -20,5 +20,20 @@
     flex-direction: column;
 }
 
+@media screen and (max-width: 576px) {
+    body {
+        background: steelblue !important;
+    }
+
+    .navigation { display: none;}
+}
+
+@media screen and (min-width: 577px) {
+    body {
+        background: lightsteelblue !important;
+    }
+
+    .fa-hamburger{display:none;}
+}
 
 /* States */
