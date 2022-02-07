@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+
+<body>
+    <h1>Javascript Grundlagen</h1>
+    <script>
+        // - - - - - - - - -
+
+        // Types of Variables
+        // weak types ...
+        // unified number type
+        // float/int 4 byte length
+        var a = 42,
+            b = 3.1425;
+
+        const PI = 3.14159;
+
+        console.log(a, typeof a);
+        console.log(b, typeof b);
+
+        console.log(a + 0.00001);
+
+        // let is the new var!
+        let c = "Any text ...";
+        console.log(c, typeof c);
+
+        // old style: concat with plus
+        console.log(c + ' more text <p class="nice"></p>');
+        // new style: text literals
+        console.log(`${c} more text`);
+
+        console.log(c[0])
+        console.log(c.length);
+
+        let d = true;
+        let e = false;
+        console.log(d, typeof d)
+        console.log(e, typeof e)
+
+        // number, string, boolean are primitive value types!
+
+        // - - - - - -
+        // multiple values in variables
+        console.clear();
+
+        let obj = {};
+        let arr = [];
+
+        // objects
+        obj = {
+            key_1: 'string',
+            key_2: 42,
+            key_3: true,
+            key_4: {
+                key: 'value'
+            },
+            key_5: []
+        };
+        console.log(obj);
+        console.log(obj.length);
+
+        // arrays
+        arr = [true, 2, 'drei', {},
+            []
+        ];
+        console.log(arr);
+        console.log(arr.length);
+
+
+        // iterations
+        // array iteration
+        for (let i = 0; i < arr.length; i++) {
+            console.log(`${i}: `, arr[i]);
+        }
+
+        // arr.forEach();
+
+
+        // object iteration
+        for (let key in obj) {
+            console.log(key, ':', obj[key])
+        }
+
+        // - - - - - - - - -
+    </script>
+</body>
+
+</html>
