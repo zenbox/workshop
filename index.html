@@ -7,28 +7,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+    <style>
+        .hidden {
+            opacity: 0;
+        }
+
+        aside {
+            transition: opacity ease-in-out 1s;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Log In</h1>
+    <header>logo</header>
+    <main>Content</main>
 
-    <form id="form-login" action="" method="get">
-        <fieldset>
+    <aside id="login-container">
 
-            <legend>Log in form</legend>
-
-            <label for="">Email</label>
-            <input id="login-email" type="email" name="loginEmail" value="michael.reichart@gfu.net" required>
-
-            <label for="">Password</label>
-            <input id="login-password" type="password" name="loginPassword" value="geheim" required>
+        <h1>Log In</h1>
 
 
-            <button type="submit">log in</button>
 
-        </fieldset>
-    </form>
+        <form id="form-login" action="" method="get">
+            <fieldset>
 
+                <legend>Log in form</legend>
+
+                <label for="">Email</label>
+                <input id="login-email" type="email" name="loginEmail" value="michael.reichart@gfu.net"
+                    required>
+
+                <label for="">Password</label>
+                <input id="login-password" type="password" name="loginPassword" value="geheim" required>
+
+
+                <button type="submit">log in</button>
+
+            </fieldset>
+        </form>
+
+    </aside>
+    <footer>footer</footer>
     <script src="assets/js/login.js"></script>
 
 </body>
