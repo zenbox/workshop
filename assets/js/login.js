@@ -9,37 +9,73 @@ let loginForm = document.querySelector('form');
 function onLoginFormSubmit(event) {
     // Prevent the browser default behaviour
     event.preventDefault();
-    console.log('login form submit ...');
 
-    // - - - - -
-    console.log(event.target[1].value);
-    console.log(event.target.loginEmail.value);
-    // - - - - -
+    let
+        _loginData = getDataFromLoginForm(),
+        _serverData = undefined;
 
-    let loginData = getDataFromLoginForm();
-    console.dir(loginData);
-    if (loginData) fetchUserDataFromServer();
+    if (_loginData)
+        _serverData = fetchUserDataFromServer(_loginData);
+
+    if (_serverData)
+        createAWelcomeMessage(_serverData);
 }
 
 function getDataFromLoginForm() {
-    console.log('get form data ...');
-
-    let email = document.querySelector('#login-email').value;
-    let password = document.querySelector('#login-password').value;
-
-    return {
-        email: email,
-        password: password
-    };
+    try {
+        let email = document.querySelector('#login-email').value;
+        let password = document.querySelector('#login-password').value;
+        return {
+            email: email,
+            password: password
+        };
+    } catch (error) {
+        console.dir(error);
+        return false;
+    }
 
 }
 
-function fetchUserDataFromServer() {
-    console.log('fetch data from server ...')
+function fetchUserDataFromServer(loginData) {
+    let
+        _email = loginData.email,
+        _password = loginData.password;
+
+    if (!_email) return false;
+    if (!_password) return false;
+
+    // Asyncronous fetch
+    // promise!
+    fetch('data/userData.json', {
+            method: 'GET', // POST!
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            //            body: JSON.stringify(loginData)
+        })
+        .then((response) => {
+            if (response.ok) {
+                // Second promise!
+                return response.json();
+            } else {
+                throw new Error('Could not load data ...');
+            }
+        })
+        .then((serverData) => {
+            return serverData;
+        })
+        .catch((error) => {
+            console.dir(error);
+            return false;
+        });
+
+
 }
 
 // Control, event control
 loginForm.addEventListener('submit', onLoginFormSubmit);
+// loginForm.addEventListener('change', onLoginFormChange);
+
 
 
 
