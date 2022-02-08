@@ -71,6 +71,48 @@ function fetchUserDataFromServer(loginData) {
 
 function createWelcomeMessage(_data) {
     console.log('Welcome');
+    /*
+        <h2>Welcome Michael</h2>
+        <p>Your last login was on 22/02/08</p>
+        <p>Your are logged in as administrator.</p>
+     */
+
+    // DOM Manipulation 
+    // Creating new HTML elements
+    let
+        h2 = document.createElement('h2'),
+        p_1 = document.createElement('p'),
+        p_2 = document.createElement('p'),
+
+        h2Text = document.createTextNode(`Welcome ${_data[0].username}`);
+
+    // Append to document
+    let context = document.querySelector('#login-container');
+
+    h2.appendChild(h2Text);
+    context.appendChild(h2);
+
+    // Remove elements
+    document.querySelector('#form-login').remove();
+
+
+    // Attributes
+    context.setAttribute('class', 'green');
+
+    // Classes
+    context.classList.add('red');
+    context.classList.toggle('hidden');
+    context.classList.remove('green');
+
+    setTimeout(() => {
+        context.classList.toggle('hidden');
+    }, 5000);
+
+    // Shorthand methods
+    document.querySelector('footer').innerText = 'The new <strong>footer</strong> text ...'    
+    document.querySelector('footer').innerHTML = 'The new <strong>footer</strong> text ...'    
+
+
 }
 
 // Control, event control
