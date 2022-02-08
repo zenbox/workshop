@@ -11,14 +11,10 @@ function onLoginFormSubmit(event) {
     event.preventDefault();
 
     let
-        _loginData = getDataFromLoginForm(),
-        _serverData = undefined;
+        _loginData = getDataFromLoginForm();
 
     if (_loginData)
-        _serverData = fetchUserDataFromServer(_loginData);
-
-    if (_serverData)
-        createAWelcomeMessage(_serverData);
+        fetchUserDataFromServer(_loginData);
 }
 
 function getDataFromLoginForm() {
@@ -61,8 +57,9 @@ function fetchUserDataFromServer(loginData) {
                 throw new Error('Could not load data ...');
             }
         })
-        .then((serverData) => {
-            return serverData;
+        .then((_serverData) => {
+            createWelcomeMessage(_serverData);
+            return true;
         })
         .catch((error) => {
             console.dir(error);
@@ -70,6 +67,10 @@ function fetchUserDataFromServer(loginData) {
         });
 
 
+}
+
+function createWelcomeMessage(_data) {
+    console.log('Welcome');
 }
 
 // Control, event control
