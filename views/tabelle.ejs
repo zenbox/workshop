@@ -6,18 +6,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabelle</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
     <h1>Tabelle</h1>
 
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <% for (let i=0; i<userData.length; i++ ) { %>
+            <tr>
+                <td><%= userData[i].username %></td>
+                <td><%= userData[i].role %></td>
+            </tr>
+            <% } %>
+
+        </tbody>
+    </table>
+
     <% if (data) { %>
     <p><%= value %> <%= data %></p>
     <% } else { %>
     <p>no data</p>
     <% } %>
-    
+
 </body>
 
 </html>
