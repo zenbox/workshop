@@ -15,8 +15,10 @@
 import path from 'path';
 import express from 'express';
 
-// const express = require('express');
+// import modules (routes)
+import table from './routes/tabelle.js';
 
+// const express = require('express');
 const app = express();
 
 // Some express configuration
@@ -28,6 +30,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.resolve('views'));
 
 // Dynamic routes
-app.use('/tabelle-1.html', path.resolve('routes/tabelle-1.js') );
+app.use('/tabelle.html', table);
 
 app.listen(5500, ()=>{console.log(`Server runs on port 5500`)});
