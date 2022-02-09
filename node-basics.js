@@ -11,8 +11,11 @@ let
 
 // Build
 server = http.createServer((request, response) => {
-    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.writeHead(200, {
+        'Content-Type': 'text/html'
+    });
     response.write('<h1>Hello World</h1>');
+    response.write('<ul><li>list point</li></ul>');
     response.end('<p>lorem ipsum ...</p>');
 });
 
