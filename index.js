@@ -21,18 +21,13 @@ const app = express();
 
 // Some express configuration
 // Static route
-// __ dirname, __filename
-app.use( express.static( path.join( path.dirname, 'public' ) ) );
+app.use(express.static(path.resolve('public')));
 
+// Use templates
+app.set('view engine', 'ejs');
+app.set('views', path.resolve('views'));
 
+// Dynamic routes
+app.use('/tabelle-1.html', path.resolve('routes/tabelle-1.js') );
 
-
-app.get('/', (request, response) => {
-    response.send('hello world');
-});
-
-app.get('/tabelle-1.html', (request, response) => {
-    response.send('<table border="1"><tr><td>example</td></tr></table>');
-});
-
-app.listen(5500);
+app.listen(5500, ()=>{console.log(`Server runs on port 5500`)});
