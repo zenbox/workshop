@@ -1,6 +1,19 @@
 // Declaration
 import express from 'express';
 
+// Get some data
+// Since import does not support json files ...
+import {
+    readFile
+} from 'fs/promises';
+
+const userData = JSON.parse(
+    await readFile(
+        new URL('../data/userData.json',
+            import.meta.url)
+    )
+);
+
 // Work as route
 const router = express.Router();
 
@@ -11,7 +24,9 @@ function onRequest(request, response) {
 
     response.render(
         'tabelle', {
-            data: 'here are some data ...'
+            value: 'here are some data ...',
+            data: 'A second data ...',
+            userData: userData
         }
     );
 }

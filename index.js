@@ -31,5 +31,6 @@ app.set('views', path.resolve('views'));
 
 // Dynamic routes
 app.use('/tabelle.html', table);
+app.use('/was-immer-ihr-wollt', table);
 
 app.listen(5500, ()=>{console.log(`Server runs on port 5500`)});
