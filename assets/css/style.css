@@ -9,6 +9,33 @@
   * @license MIT {https://opensource.org/licenses/MIT}
   * @copyright (c) 2022 Michael Reichart, Cologne
   */
+html,
+html * {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+body {
+  margin: 0;
+}
+
+@media screen and (max-width: 536px) {
+  body {
+    background: red;
+  }
+}
+
+@media screen and (min-width: 537px) {
+  body {
+    background: green;
+  }
+}
+
 .page-container {
   display: flex;
   flex-direction: column;
@@ -56,4 +83,20 @@ html[lang=ua] .item {
 .nav-stacked {
   display: flex;
   flex-direction: column;
+}
+
+.nav a[href]:visited {
+  color: magenta;
+}
+
+.nav a[href]:hover {
+  color: orange;
+}
+
+.nav a[href]:active {
+  color: red;
+}
+
+.nav a[name] {
+  color: blue;
 }

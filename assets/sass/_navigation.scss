@@ -15,7 +15,7 @@
     // reset, base definition
     list-style-type: none;
     margin: 0;
-    padding:0;
+    padding: 0;
 
     display: flex;
     flex-direction: row;
@@ -26,6 +26,25 @@
         flex-direction: column;
     }
 
-    // states
 
+    // states
+    a {
+        &[href] {
+            &:visited {
+                color: magenta;
+            }
+
+            &:hover {
+                color: orange;
+            }
+
+            &:active {
+                color: red;
+            }
+        }
+
+        &[name] {
+            color: blue;
+        }
+    }
 }

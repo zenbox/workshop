@@ -10,6 +10,16 @@
 //  * @copyright (c) 2022 Michael Reichart, Cologne
 //  */
 
+
+@media screen and (max-width: 536px) {
+    body { background: red;}
+}
+@media screen and (min-width: 537px) {
+    body { background: green;}
+}
+
+
+
 .page-container {
     display: flex;
     flex-direction: column;
