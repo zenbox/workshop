@@ -1,0 +1,31 @@
+// /** Navigatino Component
+//  *
+//  * @package Webapplication
+//  * @module Modules
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2022-02-16
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2022 Michael Reichart, Cologne
+//  */
+
+.nav {
+
+    // reset, base definition
+    list-style-type: none;
+    margin: 0;
+    padding:0;
+
+    display: flex;
+    flex-direction: row;
+
+    // layout definition
+    &-stacked {
+        display: flex;
+        flex-direction: column;
+    }
+
+    // states
+
+}
