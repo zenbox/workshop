@@ -16,7 +16,7 @@ html * {
 
 html {
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.4;
 }
 
@@ -24,15 +24,27 @@ body {
   margin: 0;
 }
 
-@media screen and (max-width: 536px) {
-  body {
-    background: red;
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 16px;
   }
 }
 
-@media screen and (min-width: 537px) {
+@media screen and (min-width: 769px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 576px) {
   body {
-    background: green;
+    background: rgba(255, 0, 0, 0.25);
+  }
+}
+
+@media screen and (min-width: 577px) {
+  body {
+    background: rgba(0, 128, 0, 0.25);
   }
 }
 
@@ -43,33 +55,42 @@ body {
 }
 
 .main-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: first baseline;
+  display: block;
+  width: 100%;
 }
 
-.main-container > *:nth-child(1) {
-  width: 25vw;
-  flex-basis: 25vw;
-  flex-grow: 1;
-  flex-shrink: 1;
+@media screen and (max-width: 576px) {
+  .main-container {
+    display: block;
+  }
+  .main-container > *:nth-child(1) {
+    display: none;
+  }
+  .main-container > *:nth-child(2) {
+    display: block;
+  }
 }
 
-.main-container > *:nth-child(2) {
-  width: 75vw;
-  flex-basis: 50vw;
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-
-.main-container > * {
-  background-color: rgba(64, 191, 64, 0.25);
-}
-
-html[lang=ua] .item {
-  order: 2;
+@media screen and (min-width: 577px) {
+  .main-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: first baseline;
+  }
+  .main-container > *:nth-child(1) {
+    width: 25vw;
+    flex-basis: 25vw;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  .main-container > *:nth-child(2) {
+    width: 75vw;
+    flex-basis: 50vw;
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
 }
 
 .nav {
@@ -99,4 +120,27 @@ html[lang=ua] .item {
 
 .nav a[name] {
   color: blue;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  .hamburger-bar {
+    width: 100%;
+    flex-basis: 0.25rem;
+    flex-grow: 1;
+    background-color: white;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .hamburger {
+    display: none;
+  }
 }

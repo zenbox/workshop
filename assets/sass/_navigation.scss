@@ -1,4 +1,4 @@
-// /** Navigatino Component
+// /** Navigation Component
 //  *
 //  * @package Webapplication
 //  * @module Modules
@@ -46,5 +46,31 @@
         &[name] {
             color: blue;
         }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 0.5rem;
+
+        width: 3rem; // Root em (M-Höhe == M-Breite)
+        height: 3rem;
+
+        &-bar {
+            width: 100%;
+            flex-basis: 0.25rem;
+            flex-grow: 1;
+
+            background-color: white;
+        }
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .hamburger {
+        display: none;
     }
 }

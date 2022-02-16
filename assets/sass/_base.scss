@@ -5,10 +5,22 @@ html * {
 
 html {
     font-family: sans-serif;
-    font-size: 18px;
-    line-height: 1.4;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
 }
 
 body {
     margin: 0;
+}
+
+@media screen and (max-width:768px) {
+    html {
+        font-size: $baseFonSize*1;
+    }
+}
+
+@media screen and (min-width:769px) {
+    html {
+        font-size: $baseFontSize*1.2;
+    }
 }
