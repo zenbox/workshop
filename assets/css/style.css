@@ -58,6 +58,10 @@ h4 {
   font-weight: 600;
 }
 
+* {
+  transition: all 25ms ease-in-out;
+}
+
 @media screen and (max-width: 576px) {
   body {
     background: rgba(255, 0, 0, 0.25);
@@ -161,6 +165,30 @@ h4 {
     flex-grow: 1;
     background-color: black;
   }
+  .hamburger > * {
+    transition-property: transform opacity;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0;
+  }
+  .hamburger:hover .hamburger__bar:first-child, .hamburger--closed .hamburger__bar:first-child {
+    transform: rotate(45deg) translateY(1.08rem) scale(1, 1);
+  }
+  .hamburger:hover .hamburger__bar:last-child, .hamburger--closed .hamburger__bar:last-child {
+    transform: rotate(-45deg) translateY(-1.08rem) scale(1, 1);
+  }
+  .hamburger:hover .hamburger__bar:nth-child(2), .hamburger--closed .hamburger__bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger--opened .hamburger__bar:first-child {
+    transform: rotate(0deg);
+  }
+  .hamburger--opened .hamburger__bar:last-child {
+    transform: rotate(0deg);
+  }
+  .hamburger--opened .hamburger__bar:nth-child(2) {
+    opacity: 1;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -209,11 +237,10 @@ main {
 
 .fas {
   --iconColor: 0;
+}
+
+.fas {
   margin: 1rem;
-  color: hsla(var(--iconColor), 0%, 50%, 1);
-  background-color: transparent;
-  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
-  font-size: 1.3rem;
 }
 
 .fas:hover {
@@ -222,4 +249,11 @@ main {
 
 .fas:active {
   color: hsla(var(--iconColor), 100%, 70%, 1);
+}
+
+.fas {
+  color: hsla(var(--iconColor), 0%, 50%, 1);
+  background-color: transparent;
+  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+  font-size: 1.3rem;
 }

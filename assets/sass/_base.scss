@@ -60,3 +60,11 @@ h4 {
     font-size: calc(var(--defaultFontSize) * 1.2);
     font-weight: 600;
 }
+
+
+
+
+// behaviour
+* {
+    transition: all 25ms ease-in-out;
+}

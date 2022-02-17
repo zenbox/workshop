@@ -51,6 +51,8 @@
 
 @media screen and (max-width: 768px) {
     .hamburger {
+        // base
+        // layout
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -68,11 +70,51 @@
             background-color: black;
         }
 
+        // states & behaviour
+        &>* {
+            transition-property: transform opacity;
+            transition-duration: 250ms;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0;
+        }
+
+        &:hover,
+        &--closed {
+            .hamburger__bar:first-child {
+                transform: rotate(45deg) translateY(1.08rem) scale(1,1);
+            }
+
+            .hamburger__bar:last-child {
+                transform: rotate(-45deg) translateY(-1.08rem) scale(1, 1);
+            }
+
+            .hamburger__bar:nth-child(2) {
+                opacity: 0;
+            }
+        }
+
+        &--opened {
+            .hamburger__bar:first-child {
+                transform: rotate(0deg);
+            }
+
+            .hamburger__bar:last-child {
+                transform: rotate(0deg);
+            }
+
+            .hamburger__bar:nth-child(2) {
+                opacity: 1;
+            }
+        }
+
         &__bar-first {}
+
         &__bar-second {}
+
         &__bar-third {}
 
         &--hidden {}
+
         &--visible {}
     }
 }
