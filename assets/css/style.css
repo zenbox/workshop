@@ -286,3 +286,11 @@ main {
   text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
   font-size: 1.3rem;
 }
+
+.theme {
+  color: white;
+  background-image: url("../figures/image.jpeg");
+  background-repeat: no-repeat;
+  background-position: 0;
+  background-size: cover;
+}
