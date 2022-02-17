@@ -46,13 +46,13 @@
 // Icons
 .fas {
     --iconColor: 0;
-    margin-right: 0.25rem;
+    margin: 1rem;
 
     // hue, saturation, luminance, alpha
     color: hsla(var(--iconColor), 0%, 50%, 1);
     background-color: transparent;
     text-shadow: 5px 5px 8px hsla(0, 0%, 0%, 0.5);
-    font-size: 3rem;
+    font-size: 1.3rem;
 }
 
 .fas:hover {
