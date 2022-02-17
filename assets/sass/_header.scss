@@ -21,5 +21,10 @@ main {
 }
 
 .brand {
-    
+    display: block;
+    width: 8rem;
+    height: 3rem;
+    background-image: url("../figures/shou.svg");
+    background-size: contains;
+    background-repeat: no-repeat;
 }

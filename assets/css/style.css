@@ -215,6 +215,15 @@ main {
   height: 200vh;
 }
 
+.brand {
+  display: block;
+  width: 8rem;
+  height: 3rem;
+  background-image: url("../figures/shou.svg");
+  background-size: contains;
+  background-repeat: no-repeat;
+}
+
 .figure {
   margin: 0;
   margin-top: 1rem;
@@ -288,9 +297,6 @@ main {
 }
 
 .theme {
-  color: white;
-  background-image: url("../figures/image.jpeg");
-  background-repeat: no-repeat;
-  background-position: 0;
-  background-size: cover;
+  color: black;
+  background: rgba(128, 128, 128, 0.3) linear-gradient(-45deg, rgba(242, 242, 242, 0.8), rgba(242, 242, 242, 0.5));
 }

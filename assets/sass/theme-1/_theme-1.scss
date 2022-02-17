@@ -14,16 +14,18 @@
 // typography
 // color
 .theme {
-    color: white;
+    color: black;
     
-    background-image: url("../figures/image.jpeg");
-    background-repeat: no-repeat;
-    background-position: 0;
-    background-size: cover;
+    // background-image: url("../figures/image.jpeg");
+    // background-repeat: no-repeat;
+    // background-position: 0;
+    // background-size: cover;
 
-        // background: hsla(0, 50%, 50%, 0.3) linear-gradient(-45deg,
-        //     hsla(0, 0%, 0%, 0.9),
-        //     hsla(0, 0%, 0%, 0.1))
+        background: hsla(0, 0%, 50%, 0.3) 
+            
+            linear-gradient(-45deg,
+            hsla(0, 0%, 95%, 0.8),
+            hsla(0, 0%, 95%, 0.5))
 
 }
 
