@@ -9,15 +9,11 @@
   * @license MIT {https://opensource.org/licenses/MIT}
   * @copyright (c) 2022 Michael Reichart, Cologne
   */
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
 html,
 html * {
   box-sizing: border-box;
-}
-
-html {
-  font-family: sans-serif;
-  font-size: 16px;
-  line-height: 1.4;
 }
 
 body {
@@ -34,6 +30,32 @@ body {
   html {
     font-size: 19.2px;
   }
+}
+
+html,
+:root {
+  --defaultFontSize: 18px;
+  font-family: "Barlow", sans-serif;
+}
+
+h1 {
+  font-size: var(--defaultFontSize);
+  font-weight: 100;
+}
+
+h2 {
+  font-size: calc(var(--defaultFontSize) * 2.5);
+  font-weight: 200;
+}
+
+h3 {
+  font-size: calc(var(--defaultFontSize) * 2.2);
+  font-weight: 300;
+}
+
+h4 {
+  font-size: calc(var(--defaultFontSize) * 1.2);
+  font-weight: 600;
 }
 
 @media screen and (max-width: 576px) {
@@ -57,6 +79,7 @@ body {
 .main-container {
   display: block;
   width: 100%;
+  margin-top: 3rem;
 }
 
 @media screen and (max-width: 576px) {
@@ -107,7 +130,7 @@ body {
 }
 
 .nav a[href]:visited {
-  color: magenta;
+  color: black;
 }
 
 .nav a[href]:hover {
@@ -132,7 +155,7 @@ body {
     width: 2rem;
     height: 2rem;
   }
-  .hamburger-bar {
+  .hamburger__bar {
     width: 100%;
     flex-basis: 0.25rem;
     flex-grow: 1;
@@ -151,4 +174,51 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  height: 3rem;
+  max-height: 4rem;
+  min-height: 3rem;
+}
+
+main {
+  height: 200vh;
+}
+
+.figure {
+  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.figure--responsive {
+  display: block;
+  width: 100%;
+}
+
+.figure__col-4 {
+  width: 33.3333334%;
+}
+
+.image--responsive {
+  width: 100%;
+  height: auto;
+}
+
+.fas {
+  --iconColor: 0;
+  margin-right: 0.25rem;
+  color: hsla(var(--iconColor), 0%, 50%, 1);
+  background-color: transparent;
+  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+  font-size: 3rem;
+}
+
+.fas:hover {
+  color: hsla(var(--iconColor), 50%, 50%, 1);
+}
+
+.fas:active {
+  color: hsla(var(--iconColor), 100%, 70%, 1);
 }

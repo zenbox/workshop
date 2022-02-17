@@ -1,0 +1,64 @@
+// /** Figures Component
+//  *
+//  * @package Webapplication
+//  * @module Images
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2022-02-17
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2022 Michael Reichart, Cologne
+//  */
+
+.figure {
+    // base, reset
+    margin: 0;
+
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    // layout
+    &--responsive {
+        display: block;
+        width: 100%;
+    }
+
+    &__col-4 {
+        width: 33.3333334%;
+    }
+
+    // states
+}
+
+.image {
+
+    // base
+
+    // layout
+    &--responsive {
+        width: 100%;
+        height: auto;
+    }
+
+    // states
+}
+
+// Icons
+.fas {
+    --iconColor: 0;
+    margin-right: 0.25rem;
+
+    // hue, saturation, luminance, alpha
+    color: hsla(var(--iconColor), 0%, 50%, 1);
+    background-color: transparent;
+    text-shadow: 5px 5px 8px hsla(0, 0%, 0%, 0.5);
+    font-size: 3rem;
+}
+
+.fas:hover {
+    color: hsla(var(--iconColor), 50%, 50%, 1);
+}
+
+.fas:active {
+    color: hsla(var(--iconColor), 100%, 70%, 1);
+}

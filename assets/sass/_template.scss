@@ -38,6 +38,9 @@
     display: block;
     width: 100%;
 
+    // sticky header?
+    margin-top: $stickyHeaderMinHeight;
+
     // Small devices first
     @media screen and (max-width: $smallDevice) {
         display: block;

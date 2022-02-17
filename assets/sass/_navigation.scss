@@ -31,7 +31,7 @@
     a {
         &[href] {
             &:visited {
-                color: magenta;
+                color: black;
             }
 
             &:hover {
@@ -60,13 +60,20 @@
         width: 2rem; // Root em (M-Höhe == M-Breite)
         height: 2rem;
 
-        &-bar {
+        &__bar {
             width: 100%;
             flex-basis: 0.25rem;
             flex-grow: 1;
 
             background-color: black;
         }
+
+        &__bar-first {}
+        &__bar-second {}
+        &__bar-third {}
+
+        &--hidden {}
+        &--visible {}
     }
 }
 

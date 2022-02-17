@@ -3,4 +3,19 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    // sticky
+    position: fixed;
+    width: 100vw;
+    top: 0;
+
+    height: 3rem;
+    max-height: 4rem;
+    min-height: $stickyHeaderMinHeight;
+
+
+}
+
+main {
+    height: 200vh;
 }
