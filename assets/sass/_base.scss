@@ -15,12 +15,12 @@ body {
 
 @media screen and (max-width:768px) {
     html {
-        font-size: $baseFonSize*1;
+        font-size: $baseFontSize * 1;
     }
 }
 
 @media screen and (min-width:769px) {
     html {
-        font-size: $baseFontSize*1.2;
+        font-size: $baseFontSize * 1.2;
     }
 }

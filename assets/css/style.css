@@ -32,7 +32,7 @@ body {
 
 @media screen and (min-width: 769px) {
   html {
-    font-size: 18px;
+    font-size: 19.2px;
   }
 }
 
@@ -127,9 +127,10 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 0.5rem;
-    width: 3rem;
-    height: 3rem;
+    gap: 0.25rem;
+    margin: 0.5rem;
+    width: 2rem;
+    height: 2rem;
   }
   .hamburger-bar {
     width: 100%;
@@ -143,4 +144,11 @@ body {
   .hamburger {
     display: none;
   }
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
