@@ -1,0 +1,27 @@
+// /** Style Collector
+//  *
+//  * @package Webapplication
+//  * @module i.e. header
+//  * @author Michael Reichart <michael@zenbox.de>
+//  * @since 2022-02-24
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2022 Michael Reichart, Cologne
+//  */
+
+// Variables and mixins
+@import '_variables';
+@import 'theme/_variables';
+
+// Reset, normalize, base
+@import 'base';
+
+// Layout (templates)
+@import 'template';
+
+// Modules (components)
+@import 'navigation';
+
+// Theming (skin)
+@import 'theme/theme';

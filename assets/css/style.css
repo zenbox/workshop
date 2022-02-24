@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
+body {
+  margin: 0;
+}
+
+html,
+html * {
+  box-sizing: border-box;
+}
+
+html,
+:root {
+  font-family: Barlow, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+body {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 25.2px;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: normal;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p,
+li,
+td,
+th {
+  font-size: 18px;
+}
+
+.page-container > * {
+  border: 2px dashed cyan;
+  margin-bottom: 0.125rem;
+}
+
+.main-container > * {
+  border: 2px dashed lightcoral;
+  padding: 0.125rem;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-container > * {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 575px) {
+  .main-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 576px) {
+  .main-container {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.nav--stacked {
+  flex-direction: column;
+}
+
+.nav--stacked-bottom-to-top {
+  flex-direction: column-reverse;
+}
+
+.nav a[href]:link {
+  color: #0080ff;
+}
+
+.nav a[href]:visited {
+  color: #0f4d8a;
+}
+
+.nav a[href]:hover {
+  color: #ff8a14;
+}
+
+.nav a[href]:active {
+  color: red;
+}
+
+html, :root {
+  font-family: Barlow, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: rgba(255, 255, 255, 0.85);
+}

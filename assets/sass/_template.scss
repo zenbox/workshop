@@ -1,0 +1,53 @@
+// /** Template
+//  *
+//  * @package Webapplication
+//  * @module Layout
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2022-02-24
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2022 Michael Reichart, Cologne
+//  */
+
+.page-container>* {
+    border: 2px dashed cyan;
+    margin-bottom: 0.125rem;
+}
+
+.main-container>* {
+    border: 2px dashed lightcoral;
+    padding: 0.125rem;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {}
+
+.main-container {
+
+    // All devices fallback;
+    >* {
+        display: block;
+        width: 100%;
+    }
+
+    // Small devices first
+    @media (max-width: $breakpointMaxXtraSmall) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    // Progressive enhancement for larger devices
+    @media (min-width: $breakpointMinSmall) {
+        display: flex;
+        flex-direction: row;
+    }
+
+    @media (min-width:$breakpointMinMedium) {}
+}
+
+.footer-container {}

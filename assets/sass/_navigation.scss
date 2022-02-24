@@ -1,0 +1,71 @@
+// /** Nacigatino Component
+//  *
+//  * @package Webapplication
+//  * @module Navigation
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2022-02-24
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2022 Michael Reichart, Cologne
+//  */
+
+.nav {
+    // base, reset
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    // layout
+    display: flex;
+    flex-direction: row;
+
+    &--stacked {
+        flex-direction: column;
+
+        &-bottom-to-top {
+            flex-direction: column-reverse;
+        }
+
+    }
+
+    // state
+    a[href]:link {
+        color: $linkColor;
+    }
+
+    a[href]:visited {
+        color: $visitedLinkColor;
+    }
+
+    a[href]:hover {
+        color: $hoverLinkColor;
+    }
+
+    a[href]:active {
+        color: $activeLinkColor;
+    }
+}
+
+
+// #ff0000 rgb(255,0,0)
+// hsl - hue (Farbton), saturation (Sättigung), luminance (Helligkeit) 
+
+
+
+
+
+// // Lazy:
+// main {
+//     h1 {
+//         // General following siblings
+//         ~* {
+//             color: hsla(0, 100%, 50%, 1);
+//         }
+
+//         // Immediate following sibling
+//         +* {
+//             color: hsla(30, 100%, 54%, 1)
+//         }
+//     }
+// }
