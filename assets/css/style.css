@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css");
 body {
   margin: 0;
 }
@@ -86,12 +87,11 @@ th {
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 }
 
 .header h2,
 .header nav {
-  border: 2px dashed lightcoral;
   flex-basis: 40vw;
 }
 
@@ -103,6 +103,14 @@ th {
 .header nav {
   flex-grow: 1;
   flex-shrink: 1;
+}
+
+.header__brand {
+  background-image: url(../figures/shou.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  min-height: 5rem;
 }
 
 .modal {
@@ -199,6 +207,16 @@ th {
 
 .nav a[href]:active {
   color: red;
+}
+
+.nav html[lang=de] .currency::after {
+  content: " Euro";
+}
+
+.nav a[href]::before {
+  font-family: "Font Awesome 6 Free";
+  margin-right: 0.125rem;
+  content: "\f2bb";
 }
 
 html, :root {

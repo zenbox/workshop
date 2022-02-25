@@ -31,22 +31,35 @@
 
     }
 
+    
     // state
     a[href]:link {
         color: lighten($linkColor, 20%);
     }
-
+    
     a[href]:visited {
         color: lighten($visitedLinkColor, 20%);
     }
-
+    
     a[href]:hover {
         color: $hoverLinkColor;
     }
-
+    
     a[href]:active {
         color: $activeLinkColor;
     }
+
+    // theming
+    html[lang=de] .currency::after {
+        content: " Euro"
+    }
+
+    a[href]::before {
+        font-family: "Font Awesome 6 Free";
+        margin-right: 0.125rem;
+        content: "\f2bb";
+    }
+
 }
 
 

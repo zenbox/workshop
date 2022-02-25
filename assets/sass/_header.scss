@@ -25,16 +25,16 @@
         flex-wrap: nowrap;
 
         justify-content: space-between;
-        align-items: baseline;
+        align-items: center;
     }
 
     h2,
     nav {
-        border: 2px dashed lightcoral;
+        // border: 2px dashed lightcoral;
 
         // width: 40vw;
         flex-basis: 40vw;
-        
+
 
     }
 
@@ -42,6 +42,7 @@
         flex-grow: 0;
         flex-shrink: 1;
     }
+
     nav {
         flex-grow: 1;
         flex-shrink: 1;
@@ -52,4 +53,16 @@
     // states
 
     // theming
+
+    // Sub componente
+    &__brand {
+        background-image: url(../figures/shou.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        min-height: 5rem;
+    }
+
+    // h2 {font-size:0%}
 }
