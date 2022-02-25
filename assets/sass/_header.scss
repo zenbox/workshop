@@ -1,0 +1,55 @@
+// /** Header
+//  *
+//  * @package Webapplication
+//  * @module Template
+//  * @author Michael Reichart <michael.reichart@gfu.net>
+//  * @since 2022-02-25
+//  * @version 1.0.0
+//  * @see i.e. inspired by ... {link to}
+//  * @license MIT {https://opensource.org/licenses/MIT}
+//  * @copyright (c) 2022 Michael Reichart, Cologne
+//  */
+
+.header {
+
+    // base
+    h2 {
+        margin: 0;
+        padding: 0;
+    }
+
+    // layout
+    &-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    h2,
+    nav {
+        border: 2px dashed lightcoral;
+
+        // width: 40vw;
+        flex-basis: 40vw;
+        
+
+    }
+
+    h2 {
+        flex-grow: 0;
+        flex-shrink: 1;
+    }
+    nav {
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    // behaviour
+
+    // states
+
+    // theming
+}

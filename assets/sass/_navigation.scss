@@ -20,6 +20,8 @@
     display: flex;
     flex-direction: row;
 
+    justify-content: space-evenly;
+
     &--stacked {
         flex-direction: column;
 
@@ -31,11 +33,11 @@
 
     // state
     a[href]:link {
-        color: $linkColor;
+        color: lighten($linkColor, 20%);
     }
 
     a[href]:visited {
-        color: $visitedLinkColor;
+        color: lighten($visitedLinkColor, 20%);
     }
 
     a[href]:hover {

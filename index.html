@@ -13,9 +13,15 @@
 
 <body class="page-container">
 
-    <header class="header-container">
-        brand
-        nav
+    <header class="header header-container">
+        <h2>Company name</h2>
+        <nav>
+            <ul class="nav">
+                <li><a href="">page 1</a></li>
+                <li><a href="">page 2</a></li>
+                <li><a href="">page 3</a></li>
+            </ul>
+        </nav>
     </header>
 
     <div class="main-container">
@@ -29,6 +35,16 @@
         </nav>
 
         <main>
+
+            <picture>
+                <source media="(min-width: 1400px)" srcset="https://picsum.photos/id/6/1400/120">
+                <source media="(min-width: 1200px)" srcset="https://picsum.photos/id/6/1200/120">
+                <source media="(min-width: 992px)" srcset="https://picsum.photos/id/6/992/120">
+                <source media="(min-width: 768px)" srcset="https://picsum.photos/id/6/768/120">
+
+                <img src="https://picsum.photos/id/6/767/120" style="width:100%;" alt="">
+            </picture>
+
             <h1>Hello SASS!</h1>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
@@ -45,7 +61,7 @@
         </address>
     </footer>
 
-    <section class="modal">
+    <section class="modal" style="display: none">
 
         <h3>Modal windows headline</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit?
