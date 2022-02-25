@@ -37,6 +37,10 @@ $baseLineHeight: 1.4;
 // Spacings
 $defaultSpacing: $baseFontSize * $baseLineHeight;
 
+// Design parameters
+$defaultBorderRadius : 5px;
+$defaultBoxShadowOffset: 5px;
+
 // Layout, grid
 $breakpointMinSmall: 576px;
 $breakpointMinMedium: 768px;
