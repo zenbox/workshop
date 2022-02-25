@@ -12,7 +12,10 @@
 
 // Color
 $backgroundColor : hsla(0, 0%, 0%, 0.85);
+$backgroundColorInverse : hsla(0, 0%, 100%, 0.85);
+
 $textColor : hsla(0, 0%, 100%, 0.85);
+$textColorInverse : hsla(0, 0%, 0%, 0.85);
 
 $linkColor:hsla(210, 100%, 50%, 1);
 $visitedLinkColor:hsla(210, 80%, 30%, 1);
@@ -23,8 +26,10 @@ $primaryColor: hsla(290, 95%, 20%, 1);
 $secondaryColor: hsla(160, 90%, 30%, 1);
 
 $errorColor: hsla(0, 100%, 50%, 1);
-$warningColor:hsla(150, 100%, 30%, 1);
-$successColor:hsla(40, 100%, 50%, 1);
+$errorColorLighter: lighten($errorColor, 30%);
+
+$successColor:hsla(150, 100%, 30%, 1);
+$warningColor:hsla(40, 100%, 50%, 1);
 $infoColor:hsla(200, 100%, 50%, 1);
 
 $color: rebeccapurple;
@@ -38,8 +43,8 @@ $baseLineHeight: 1.4;
 $defaultSpacing: $baseFontSize * $baseLineHeight;
 
 // Design parameters
-$defaultBorderRadius : 5px;
-$defaultBoxShadowOffset: 5px;
+$defaultBorderRadius :1rem;
+$defaultBoxShadowOffset: 1px;
 
 // Layout, grid
 $breakpointMinSmall: 576px;

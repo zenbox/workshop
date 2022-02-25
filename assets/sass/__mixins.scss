@@ -24,3 +24,8 @@
 
     border-radius: $radius;
 }
+
+@mixin defaultBoxShadowLayer($height) {
+    // offset-x, offset-y, radius, color
+    box-shadow: $defaultBoxShadowOffset * $height $defaultBoxShadowOffset * $height 0.25rem hsla(0, 0%, 0%, 0.5);
+}

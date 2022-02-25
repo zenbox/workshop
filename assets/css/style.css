@@ -52,16 +52,6 @@ th {
   font-size: 18px;
 }
 
-.page-container > * {
-  border: 2px dashed cyan;
-  margin-bottom: 0.125rem;
-}
-
-.main-container > * {
-  border: 2px dashed lightcoral;
-  padding: 0.125rem;
-}
-
 .page-container {
   display: flex;
   flex-direction: column;
@@ -84,6 +74,69 @@ th {
     display: flex;
     flex-direction: row;
   }
+}
+
+.modal {
+  padding: 25.2px;
+  --width: 24rem;
+  --height: 24rem;
+  position: absolute;
+  z-index: 10;
+  max-width: var(--width);
+  max-height: var(--height);
+  left: calc(50vw - var(--width) / 2);
+  top: calc(50vh - var(--height) / 2);
+  background-color: rgba(255, 255, 255, 0.85);
+  color: rgba(0, 0, 0, 0.85);
+  border-radius: 1rem;
+  box-shadow: 1px 1px 0.25rem rgba(0, 0, 0, 0.5);
+}
+
+.modal > * {
+  margin: 0;
+}
+
+.modal__login input {
+  border: 0;
+  outline: 0;
+  line-height: 2.5;
+  box-shadow: 1px 1px 0.25rem rgba(0, 0, 0, 0.5);
+}
+
+.modal__login button {
+  border: 0;
+  margin-top: 25.2px;
+  line-height: 2.5;
+  border-radius: 5px;
+  box-shadow: 0px 0px 0.25rem rgba(0, 0, 0, 0.5);
+}
+
+.modal__login fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__login input {
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+.modal__login input:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 0.25rem rgba(0, 0, 0, 0.5);
+}
+
+.modal__login input:focus {
+  outline: 2px dotted rgba(64, 64, 191, 0.25);
+}
+
+.modal__login input.active:valid {
+  background-color: #99ffcc;
+}
+
+.modal__login input.active:invalid {
+  background-color: #ff9999;
 }
 
 .nav {
@@ -125,6 +178,6 @@ html, :root {
 }
 
 body {
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(38, 38, 115, 0.85);
   color: rgba(255, 255, 255, 0.85);
 }

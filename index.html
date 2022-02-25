@@ -48,19 +48,24 @@
     <section class="modal">
 
         <h3>Modal windows headline</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit?
+        </p>
 
-       <!-- form>fieldset>legend{Login}+label{E-Mail}+input:email+label{Password}+input:password+button:submit{login} -->
+        <!-- form>fieldset>legend{Login}+label{E-Mail}+input:email+label{Password}+input:password+button:submit{login} -->
 
-        <form action="">
+        <form class="modal__login" action="">
             <fieldset>
                 <legend>Login</legend>
-                <label for="">E-Mail</label>
-                <input type="email" name="" id="">
-                <label for="">Password</label>
-                <input type="password" name="" id="">
+                <label for="">E-Mail <sup>*</sup></label>
+                <input type="email" name="" id="" required onblur="this.classList.remove('active');"
+                    onfocus="this.classList.add('active');">
+                <label for="">Password <sup>*</sup></label>
+                <input type="password" name="" id="" minlength="8" maxlength="12" required
+                    onfocus="this.classList.add('active');" onblur="this.classList.remove('active');">
                 <button type="submit">login</button>
             </fieldset>
         </form>
+
     </section>
 
 </body>
