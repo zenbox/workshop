@@ -31,6 +31,34 @@
                 </li>
             </ul>
         </nav>
+
+        <div class="hamburger">
+            <div class="hamburger__bar"></div>
+            <div class="hamburger__bar"></div>
+            <div class="hamburger__bar"></div>
+            <script>
+                window.onload = () => {
+                    let hamburger = document.querySelector('.hamburger');
+
+
+                    hamburger.addEventListener('click', function (e) {
+                        this.classList.toggle('hamburger--closed');
+                        // add control classes to hide/see navigation here ...
+                    })
+
+                    // Set a breakpoint listener
+                    let mediaXtraSmall = window.matchMedia('(max-width: 576px)');
+                    // Reset the hamburger while resize
+                    mediaXtraSmall.onchange = function () {
+                        if (mediaXtraSmall.matches === true) {
+                            hamburger.classList.remove('hamburger--closed');
+                            // add control classes to hide/see navigation here ...
+                        }
+                    }
+                }
+            </script>
+        </div>
+
     </header>
 
     <div class="main-container">
@@ -54,7 +82,7 @@
                 <img src="https://picsum.photos/id/6/767/120" style="width:100%;" alt="">
             </picture>
 
-            <img src="assets/figures/shou.svg" style="width:100%;" alt="">
+            <!-- <img src="assets/figures/shou.svg" style="width:100%;" alt=""> -->
 
             <h1>Hello SASS!</h1>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>

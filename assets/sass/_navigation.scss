@@ -16,7 +16,7 @@
     margin: 0;
     padding: 0;
 
-    // layout
+    // layout / responsive appearance
     display: flex;
     flex-direction: row;
 
@@ -31,6 +31,9 @@
 
     }
 
+    @media(max-width:$breakpointMaxXtraSmall) {
+        display: none;
+    }
     
     // state
     a[href]:link {

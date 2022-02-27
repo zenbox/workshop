@@ -113,6 +113,56 @@ th {
   min-height: 5rem;
 }
 
+/** Hamburger Menu button
+  *
+  * @package Webapplication
+  * @module navigation
+  * @author Michael Reichart <michael@zenbox.de>
+  * @since 2021-01-15
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2021 Michael Reichart, Cologne
+  */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.hamburger__bar {
+  background-color: rgba(255, 255, 255, 0.85);
+  width: 1.2rem;
+  height: 4px;
+  margin: 1px;
+  transition: all 250ms ease-in-out;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 575px) {
+  .hamburger {
+    display: inherit;
+  }
+}
+
+.hamburger--closed > *:nth-child(1) {
+  transform: rotateZ(45deg) translateY(4.21053px) translateX(4.21053px);
+}
+
+.hamburger--closed > *:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger--closed > *:nth-child(3) {
+  transform: rotateZ(-45deg) translateY(-4.21053px) translateX(4.21053px);
+}
+
 .modal {
   padding: 25.2px;
   --width: 24rem;
@@ -191,6 +241,12 @@ th {
 
 .nav--stacked-bottom-to-top {
   flex-direction: column-reverse;
+}
+
+@media (max-width: 575px) {
+  .nav {
+    display: none;
+  }
 }
 
 .nav a[href]:link {
