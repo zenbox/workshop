@@ -39,20 +39,47 @@
             <script>
                 window.onload = () => {
                     let hamburger = document.querySelector('.hamburger');
+                    let clones = [],
+                        isCloned = false;
 
 
+                    // Open the navigation on xtrasmall
                     hamburger.addEventListener('click', function (e) {
+
+                        // Change the hamburger icon
                         this.classList.toggle('hamburger--closed');
+
+                        // fill the xtrasmall navigation
+                        let navigations = document.querySelectorAll('.nav:not(.nav-sm) li');
+
+                        if (!isCloned) {
+                            navigations.forEach((li) => {
+                                clones.push(li.cloneNode(true));
+                            })
+
+                            clones.forEach((li) => {
+                                document.querySelector('.nav-sm').appendChild(li);
+                            });
+
+                            isCloned = true;
+                        }
+
+
                         // add control classes to hide/see navigation here ...
+                        document.querySelector('.nav-sm').classList.toggle('nav-sm--opened')
                     })
 
+                    // Reset while changing the window width to not xtrasmall
                     // Set a breakpoint listener
                     let mediaXtraSmall = window.matchMedia('(max-width: 576px)');
                     // Reset the hamburger while resize
                     mediaXtraSmall.onchange = function () {
                         if (mediaXtraSmall.matches === true) {
                             hamburger.classList.remove('hamburger--closed');
+
                             // add control classes to hide/see navigation here ...
+                            document.querySelector('.nav-sm').classList.remove('nav-sm--opened')
+
                         }
                     }
                 }
@@ -60,6 +87,10 @@
         </div>
 
     </header>
+
+    <nav>
+        <ul class="nav nav-sm nav-sm--closed"></ul>
+    </nav>
 
     <div class="main-container">
         <nav>

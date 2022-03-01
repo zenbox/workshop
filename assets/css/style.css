@@ -249,6 +249,34 @@ th {
   }
 }
 
+@media (max-width: 575px) {
+  .nav-sm {
+    transition: margin 250ms ease-in-out;
+    background-color: rgba(38, 38, 115, 0.85);
+    color: rgba(255, 255, 255, 0.85);
+    box-shadow: 4px 4px 0.25rem rgba(0, 0, 0, 0.5);
+    padding: 25.2px;
+    display: block;
+    position: fixed;
+    min-height: 100vh;
+    width: 75vw;
+    top: 0;
+    left: 0;
+  }
+  .nav-sm--opened {
+    margin-left: 0 !important;
+  }
+  .nav-sm--closed {
+    margin-left: -75vw;
+  }
+}
+
+@media (min-width: 576px) {
+  .nav-sm {
+    display: none;
+  }
+}
+
 .nav a[href]:link {
   color: #66b3ff;
 }

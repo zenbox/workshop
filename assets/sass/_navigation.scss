@@ -34,20 +34,49 @@
     @media(max-width:$breakpointMaxXtraSmall) {
         display: none;
     }
-    
+
+    @media(max-width:$breakpointMaxXtraSmall) {
+        $width: 75vw;
+        &-sm {
+            // theming & behaviour
+            transition: margin 250ms ease-in-out;
+            background-color: $backgroundColor;
+            color: $textColor;
+            @include defaultBoxShadowLayer(4);
+
+            // layout
+            padding: $defaultSpacing;
+            display: block;
+            position: fixed;
+            min-height: 100vh;
+            width: $width;
+            top: 0;
+            left: 0;
+        }
+
+        &-sm--opened{margin-left: 0 !important;}
+        &-sm--closed{margin-left:$width * -1;}
+    }
+
+    @media(min-width:$breakpointMinSmall) {
+        &-sm {
+            display: none;
+        }
+    }
+
     // state
     a[href]:link {
         color: lighten($linkColor, 20%);
     }
-    
+
     a[href]:visited {
         color: lighten($visitedLinkColor, 20%);
     }
-    
+
     a[href]:hover {
         color: $hoverLinkColor;
     }
-    
+
     a[href]:active {
         color: $activeLinkColor;
     }
