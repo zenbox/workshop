@@ -27,10 +27,10 @@ import {
 const userData =
     JSON.parse(
         await readFile(
-        new URL('../data/userData.json',
-            import.meta.url)
+            new URL('../data/userData.json',
+                import.meta.url)
         )
-    )    ;
+    );
 
 console.log(typeof userData);
 
@@ -42,7 +42,8 @@ function onRequest(request, response) {
 
     // Response
     response.render('tableView', {
-        data: 'Some data ...'
+        data: 'Some data ...',
+        userData: userData
     });
 }
 
