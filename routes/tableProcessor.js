@@ -32,7 +32,7 @@ const userData =
         )
     )    ;
 
-console.log(userData);
+console.log(typeof userData);
 
 
 
