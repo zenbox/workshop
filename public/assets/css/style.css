@@ -1,0 +1,8 @@
+html {
+    font-family: Barlow, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+
+    color: hsla(0, 0%, 100%, 0.85);
+    background-color: hsla(0, 0%, 0%, 0.85);
+}
