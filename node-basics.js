@@ -22,4 +22,13 @@ server = http.createServer((request, response) => {
 
 
 // Control
+console.time('serverprocess');
+
 server.listen(port);
+
+console.log('- - - - - - - - - -');
+console.log(`Server running at ${host}:${port}`);
+console.log('- - - - - - - - - -');
+
+console.timeEnd('serverprocess');
+console.log('- - - - - - - - - -');
