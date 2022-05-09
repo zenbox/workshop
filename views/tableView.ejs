@@ -12,6 +12,21 @@
 <body>
     <h1>Table View</h1>
     <p><%= data %></p>
+    <p><%= userData %></p>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        <% for (let i=0; i<userData.length; i++) { %>
+        <tr>
+            <td><%= userData[i].username %></td>
+            <td><%= userData[i].email %></td>
+        </tr>
+        <% } %>
+    </table>
+
     <script src="assets/js/script.js"></script>
 </body>
 
