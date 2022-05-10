@@ -34,7 +34,7 @@ app.use(express.static(path.resolve('public')));
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('views'));
 
-// // Live reload
+// Live reload
 // app.use(connectLivereload({
 //     port: 35729
 // }));
