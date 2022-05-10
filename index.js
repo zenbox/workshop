@@ -14,7 +14,7 @@
 // Importing the required modules
 import path from 'path'; // const path = require('path');
 import express from 'express'; // const express = require('express');
-
+import connectLivereload from 'connect-livereload';
 import tableProcessor from './routes/tableProcessor.js';
 
 // Declaration
@@ -34,6 +34,10 @@ app.use(express.static(path.resolve('public')));
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('views'));
 
+// // Live reload
+// app.use(connectLivereload({
+//     port: 35729
+// }));
 
 // Dynamic routes
 app.use('/table.html', tableProcessor);
