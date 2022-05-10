@@ -1,5 +1,5 @@
 
-
+// ES Modules import statement
 import circle from './module.js';
 
 console.log(circle);
@@ -7,11 +7,11 @@ console.log(circle);
 let myCircle = new circle.Circle(8);
 
 // Use a class' function
-console.log(myCircle.circumference());
+console.log(myCircle.calcCircumference());
 
 // use a class' property
 console.log(myCircle.circumference);
 
 
-console.log(circle.circumference(5));
-console.log(circle.area(5));
+console.log(circle.calcCircumference(5));
+console.log(circle.calcArea(5));

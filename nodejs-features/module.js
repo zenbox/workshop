@@ -15,14 +15,13 @@
  */
 
 // Module: functional/(prototype-)object-based way
-
 function anInternalFunctionOnly() {}
 
-function _circumference(radius) {
+function calcCircumference(radius) {
     return 2 * Math.PI * radius;
 }
 
-function _area(radius) {
+function calcArea(radius) {
     return Math.PI * radius * radius;
 }
 
@@ -36,34 +35,41 @@ class Circle {
         this._area;
     }
 
-    circumference() {
+    calcCircumference() {
         return 2 * Math.PI * this._radius;
     }
 
-    area() {
+    calcArea() {
         return Math.PI * this._radius * this._radius;
     }
 
     // Convinient getter and setter for _properties
-    getRadius() {}
+    getRadius() {
+        return this._radius;
+    }
     setRadius(r) {
-        if (!r) return;
-
-        return r;
+        this._radius = r;
     }
 
-    getCircumference() {}
-    setCircumference() {}
+    getCircumference() {
+        this._circumference;
+    }
+    setCircumference() {
+        this._circumference = calcCircumference();
+    }
 }
 
-
-
-
-// exports.circumference = _circumference;
-// exports.area = _area;
-
+// ES moduls export statement
 export default {
-    circumference: _circumference,
-    area: _area,
+    calcCircumference: calcCircumference,
+    calcArea: calcArea,
     Circle: Circle
 };
+
+// Common JS export syntax
+// exports.circumference = _circumference;
+// exports.area = _area;
+// module.exports = {
+//     calcCircumference,
+//     calcArea
+// };
