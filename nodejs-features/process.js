@@ -1,3 +1,6 @@
+// Common JS
+// let circle = require('./circle.js');
+
 
 // ES Modules import statement
 import circle from './module.js';

@@ -32,11 +32,6 @@ const userData =
         )
     );
 
-console.log(typeof userData);
-
-
-
-
 // Request?
 function onRequest(request, response) {
 
