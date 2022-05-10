@@ -18,5 +18,5 @@ import {
 let db = mysql.createConnection({}),
     query = '';
 
-db.connect((err) => { });
-db.query(query, (err, result) => { });
+db.connect((error) => {});
+db.query(query, (error, result) => {});
