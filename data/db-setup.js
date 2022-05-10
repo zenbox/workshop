@@ -53,7 +53,7 @@ db.query('USE animals;');
 // Tabelle anlegen
 db.query('DROP TABLE IF EXISTS sheeps;');
 
-CountQueuingStrategy = "CREATE TABLE sheeps ( " +
+query = "CREATE TABLE sheeps ( " +
     "id INT(11) AUTO_INCREMENT, " +
     "sheep VARCHAR(50), " +
     "PRIMARY KEY (id) );";
@@ -70,6 +70,6 @@ query = "INSERT INTO sheeps " +
     "('Brillenschaf')," +
     "('Haarschaf');";
 
-db.query(sql, function () {
+db.query(query, function () {
     console.log('Datensätze geschrieben.');
 });
