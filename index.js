@@ -40,7 +40,8 @@ app.set('views', path.resolve('views'));
 // }));
 
 // Dynamic routes
-app.use('/table.html', tableProcessor);
+app.use('/table.html', tableProcessor); // tableRoute
+app.use('/search', searchProcessor); // searchRoute
 
 // Control
 app.listen(port, () => console.log(`Server running at http://${host}:${port}`));
