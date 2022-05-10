@@ -44,8 +44,6 @@ function onRequest(request, response) {
 
 router.get('/', onRequest);
 
-
-
 // - - - - - - - - -
 // Export as module
 export default router;
