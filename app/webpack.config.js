@@ -18,7 +18,12 @@ const {
 } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development', // 'production',
+    mode: 'production', // 'development', 'production'
+
+    // To mix frontend and backend code:
+    // instructs webpack to target a specific environment,
+    // here 'node'. Defaults to "web", others would be 'electron', ....
+    target: 'node',
 
     // Instructions, how to build the application
     entry: {
@@ -43,6 +48,16 @@ module.exports = {
                     }
                 ]
             },
+            // {
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     use: [{
+            //         loader: 'babel-loader',
+            //         options: {
+            //             presets: ['@babel/preset-env']
+            //         }
+            //     }],
+            // },
             // {}, for more loader, i.e. images, fonts, sass ...
         ]
     },
