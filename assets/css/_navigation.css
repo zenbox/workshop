@@ -24,19 +24,48 @@
 }
 
 /* Layout */
-@media screen {}
+@media screen {
+    .nav-right ul {
+        justify-content: flex-end;
+
+    }
+    .nav li {
+        margin: 0.5rem;
+    }
+}
 
 @media screen and (max-width: 767px) {
-    /* States */
-    .nav {
-        display: none;
-    }
 
+    /* States */
     .nav-bars {
         display: block;
     }
 
-    ,
+    .nav,
+    .nav-closed {
+        /* Numeric value for transition! */
+        height: 0;
+        overflow: hidden;
+    }
+
+    .nav-opened {
+        /* display: block; */
+        height: calc(100vh - var(--header-height));
+    }
+
+    .nav-opened {
+        transition-property: all;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0ms;
+    }
+
+    .nav-closed {
+        transition-property: all;
+        transition-duration: 20ms;
+        transition-timing-function: linear;
+        transition-delay: 0ms;
+    }
 
 }
 
@@ -48,7 +77,7 @@
     .nav-row>ol {
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap
+        flex-wrap: nowrap;
     }
 
     .nav-column>ul,

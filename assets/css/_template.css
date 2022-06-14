@@ -25,7 +25,13 @@
 }
 
 /* Mobile devices changes */
-@media screen and (max-width: 767px) {}
+@media screen and (max-width: 767px) {
+    .page-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
 
 /* Large devices changes */
 @media screen and (min-width: 768px) {
@@ -61,7 +67,7 @@
 
 
 
-
+/*
 .page-header,
 .page-content,
 .page-footer {
@@ -75,3 +81,4 @@
     background-color: hsla(30, 80%, 50%, 0.25);
     border: 3px dotted hsla(30, 80%, 50%, 0.75);
 }
+*/

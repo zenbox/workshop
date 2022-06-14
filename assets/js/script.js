@@ -21,7 +21,12 @@
 
     // Methods
     function onHamburgerClick() { 
-        console.log('click!');
+        
+        let navigation = document.querySelector('#navigation');
+
+        navigation.classList.toggle('nav-opened');
+
+
     }
 
     // Control (Event-)

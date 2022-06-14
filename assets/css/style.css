@@ -1,5 +1,8 @@
 /* The style loader file */
 
+/* Variables */
+@import url(_variables.css);
+
 /* Base section */
 @import url(_theme-import.css);
 @import url(_base.css);
@@ -8,6 +11,7 @@
 @import url(_template.css);
 
 /* Component section */
+@import url(_header.css);
 @import url(_navigation.css);
 @import url(_images.css);
 
