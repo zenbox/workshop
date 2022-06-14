@@ -36,8 +36,24 @@
         </nav>
         <main>
             <article>
-                <img src="assets/figures/cereals.jpg" class="img img-responsive"
-                    alt="">
+
+                <picture>
+                    <source media="(max-width: 320px)"
+                        srcset="https://picsum.photos/id/103/320/320">
+
+                    <source media="(max-width: 480px)"
+                        srcset="https://picsum.photos/id/102/480/320">
+
+                    <source media="(max-width: 640px)"
+                        srcset="https://picsum.photos/id/101/640/320">
+
+                    <source media="(max-width: 767px)"
+                        srcset="https://picsum.photos/id/100/767/320">
+
+                    <img src="https://picsum.photos/id/104/1280/320"
+                        class="img img-responsive" alt="">
+                </picture>
+
                 <h1>Headline dolor sit amet consectetur</h1>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Tenetur
