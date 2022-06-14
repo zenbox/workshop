@@ -1,0 +1,26 @@
+/** Theme for Customer 1
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Webapplication
+  * @module i.e. themes
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2022-06-13
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license 2021 Michael Reichart, copyleft CC BY-NC-SA {https://creativecommons.org/licenses/by-nc-sa/2.0/de/}
+  * @copyright (c) 2022 Michael Reichart, Cologne
+  */
+
+
+html {
+    font-family: "Barlow", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.3334;
+}
+
+h1, h2, h3 {
+    font-weight: 100;
+}

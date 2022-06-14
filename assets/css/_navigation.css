@@ -1,0 +1,64 @@
+/** Navigation Styles
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Webapplication
+  * @module i.e. navigation
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2022-06-13
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license 2021 Michael Reichart, copyleft CC BY-NC-SA {https://creativecommons.org/licenses/by-nc-sa/2.0/de/}
+  * @copyright (c) 2022 Michael Reichart, Cologne
+  */
+
+/* Base */
+.nav {}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Layout */
+@media screen {}
+
+@media screen and (max-width: 767px) {
+    /* States */
+    .nav {
+        display: none;
+    }
+
+    .nav-bars {
+        display: block;
+    }
+
+    ,
+
+}
+
+@media screen and (min-width: 768px) {
+
+    .nav>ul,
+    .nav>ol,
+    .nav-row>ul,
+    .nav-row>ol {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap
+    }
+
+    .nav-column>ul,
+    .nav-column>ol {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap
+    }
+
+    .nav-bars {
+        display: none;
+    }
+}

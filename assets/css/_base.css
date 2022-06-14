@@ -1,0 +1,52 @@
+/** Base styles
+  *
+  *  @desc 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Webapplication
+  * @module i.e. base
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2022-06-13
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license 2021 Michael Reichart, copyleft CC BY-NC-SA {https://creativecommons.org/licenses/by-nc-sa/2.0/de/}
+  * @copyright (c) 2022 Michael Reichart, Cologne
+  */
+
+html,
+html * {
+    box-sizing: border-box;
+}
+/* Rest of reset! */
+html,
+body {
+    width: 100vw;
+    min-height: 100vh;
+}
+
+body {
+    margin: 0;
+}
+
+/* Base typography */
+/* :root, */
+html {
+    font-family: Arial, sans-serif;
+    /* Base font size; root font size */
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2,
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1rem;
+}

@@ -1,0 +1,15 @@
+/* The style loader file */
+
+/* Base section */
+@import url(_theme-import.css);
+@import url(_base.css);
+
+/* Layout/template section */
+@import url(_template.css);
+
+/* Component section */
+@import url(_navigation.css);
+@import url(_images.css);
+
+/* Theme sections */
+@import url(_theme.css);
