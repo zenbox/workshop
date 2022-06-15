@@ -32,11 +32,25 @@ body {
 
 /* Base typography */
 /* :root, */
-html {
-    font-family: Arial, sans-serif;
-    /* Base font size; root font size */
-    font-size: 18px;
-    line-height: 1.4;
+@media screen {
+    html {
+        font-family: Arial, sans-serif;
+        /* Base font size; root font size */
+        font-size: 18px;
+        line-height: 1.4;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 18px;
+    }
 }
 
 h1 {

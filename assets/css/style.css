@@ -40,13 +40,24 @@ body {
 
 /* Base typography */
 /* :root, */
-html {
-  font-family: Arial, sans-serif;
-  /* Base font size; root font size */
-  font-size: 18px;
-  line-height: 1.4;
+@media screen {
+  html {
+    font-family: Arial, sans-serif;
+    /* Base font size; root font size */
+    font-size: 18px;
+    line-height: 1.4;
+  }
 }
-
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+}
 h1 {
   font-size: 2rem;
 }
@@ -165,11 +176,6 @@ h4 {
   flex-shrink: 1;
 }
 
-.header h2,
-.header nav {
-  background-color: hsla(0deg, 100%, 50%, 0.25);
-}
-
 .header #logo {
   min-height: var(--header-height);
   background-image: url("../figures/shou.svg");
@@ -272,6 +278,36 @@ h4 {
     display: none;
   }
 }
+.article-teaser-text {
+  column-width: 16rem;
+  column-gap: 2rem;
+  column-rule-color: hsla(0deg, 0%, 0%, 0.125);
+  column-rule-width: 1px;
+  column-rule-style: dotted;
+  widows: 3;
+  orphans: 3;
+  text-align: left;
+  hyphens: auto;
+}
+@media screen {
+  .article-teaser img {
+    filter: grayscale(1);
+    transition-property: filter box-shadow;
+    transition-duration: 450ms;
+    transition-delay: 0;
+    transition-timing-function: ease-in-out;
+  }
+  .article-teaser img:hover, .article-teaser img:active {
+    filter: grayscale(0);
+    box-shadow: -1rem 1rem 1rem hsla(0deg, 0%, 0%, 0.4);
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: top left;
+    transform: rotateZ(10deg) translateZ(500px) translateX(1rem) translateY(1rem) scale(1.3);
+    perspective: 800px;
+    perspective-origin: 50% 100px;
+  }
+}
 /** Images Styles
   *
   *  @desc 
@@ -312,12 +348,34 @@ h4 {
   * @license 2021 Michael Reichart, copyleft CC BY-NC-SA {https://creativecommons.org/licenses/by-nc-sa/2.0/de/}
   * @copyright (c) 2022 Michael Reichart, Cologne
   */
-html {
-  font-family: "Barlow", Arial, sans-serif;
-  font-size: 18px;
-  line-height: 1.3334;
-}
+@media screen {
+  html {
+    font-family: "Barlow", Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.3334;
+  }
 
-h1, h2, h3 {
-  font-weight: 100;
+  h1,
+h2,
+h3 {
+    font-weight: 100;
+  }
+
+  html {
+    background-color: hsla(0deg, 0%, 0%, 0.125);
+  }
+
+  body {
+    background-color: hsl(0deg, 0%, 100%);
+  }
+}
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
 }
