@@ -60,7 +60,7 @@ Für das Seminar sind folgende Pausenzeiten geplant:
 			"  *",
 			"  * @package Webapplication",
 			"  * @module $3",
-			"  * @author Evvi <evvi@codng-samurai.org>",
+			"  * @author Evvi <evvi@coding-samurai.org>",
 			"  * @version v1.0.0",
 			"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
 			"  * @see i.e. inspired by ... {link to}",
