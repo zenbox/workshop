@@ -32,6 +32,47 @@ Für das Seminar sind folgende Pausenzeiten geplant:
 
 
 ## Code Snippets
+### nodejs/JS Snippets
+```json
+{
+	"function documentation block": {
+		"prefix": "function comment",
+		"description": "print the function comment block",
+		"body": [
+			"/** $1",
+			" *",
+			" * @version v1.0.0",
+			" * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" * @callback namepath",
+			" * @param {type} desc",
+			" * @returns {void}",
+			" */",
+			"$2"
+		]
+	},
+	"page documention block": {
+		"prefix": "docblock",
+		"description": "print the page doc block",
+		"body": [
+			"/** $1",
+			"  *",
+			"  *  @desc $2",
+			"  *",
+			"  * @package Webapplication",
+			"  * @module $3",
+			"  * @author Evvi <evvi@codng-samurai.org>",
+			"  * @version v1.0.0",
+			"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			"  * @see i.e. inspired by ... {link to}",
+			"  * @license MIT {https://opensource.org/licenses/MIT}",
+			"  * @copyright (c) $CURRENT_YEAR Agila, Hannover",
+			"  */",
+			"$4"
+		]
+	}
+}
+```
+
 ### Socket.io Chat Styles
 ```css
         body {
