@@ -31,7 +31,7 @@ Für das Seminar sind folgende Pausenzeiten geplant:
 
 ## Code Snippets
 ### Socket.io Chat Styles
-```stylesheet
+```css
         body {
             margin: 0;
             padding-bottom: 3rem;
