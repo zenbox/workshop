@@ -16,8 +16,11 @@ Für das Seminar sind folgende Pausenzeiten geplant:
 ## Inhalte
 - Einführung in nodejs
 - Aufbau einer Entwicklungsumgebung
-- degugger, nodemon, packages, versionierung, module vs. module
-- 
+- Debugger, Nodemon, Packages, Versionierung 
+- Common Modules, ES-Modules
+- Hello World, Filesystem
+- Webservice, Websocket
+- Classes, Promises
 - Aufbau einer Middleware-Architektur mit
 - Express
   - Router
@@ -25,7 +28,6 @@ Für das Seminar sind folgende Pausenzeiten geplant:
 - ReST API (Schnittstellen-Standard)
 - Mongo DB (Dokumentenbasierte Datenbank)
 - XMLHttpRequest (ggf. AXIOS)
-- Websockets Grundlagen (Einsatz zwischen Webservices)
 - Best Practices
 
 
