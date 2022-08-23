@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="data:" type="image/x-icon">
+</head>
+
+<body>
+    <h1>Your not allowed to log in</h1>
+    <p><b>
+            <%= email %>
+        </b>, <b>
+            <%= password %>
+        </b> is w r o n g.</p>
+    <p><i>
+            <%= dataEmail %>
+        </i>, <i>
+            <%= dataPassword %>
+        </i> would be right.</p>
+
+    <a href="/">give it another try</a>
+
+    <input type="text" id="id" value="Karl">
+
+    <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+        integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+        crossorigin="anonymous"></script>
+    <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

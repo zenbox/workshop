@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="shortcut icon" href="data:" type="image/x-icon">
+</head>
+
+<body>
+    <% if (email || password || username || lastLogin) { %>
+        <h2>You're logged in.</h2>
+        <p>
+            <%= username %>, <%= email %>, <%= lastLogin %>.
+        </p>
+        <% } %>
+
+            <h1>Index ipsum dolor sit amet</h1>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis
+                dolorum
+                accusamus ratione. Facere, sit rem. Ea deleniti sequi quo alias
+                obcaecati eum dolor quasi, fugiat, molestias dicta cum!</p>
+            <ol>
+                <li>A ipsum dolor Lorem ipsum dolor sit.</li>
+                <li>B ipsum dolor Lorem, ipsum dolor.</li>
+                <li>C ipsum dolor Lorem ipsum dolor sit amet consectetur.</li>
+            </ol>
+
+            <a href="/">logout</a>
+            <a href="/rest">ReST API</a>
+            <a href="/broker" target="_blank">broker</a>
+
+            <input type="text" id="id" value="Karl">
+
+            <script src="https://cdn.socket.io/4.5.0/socket.io.min.js"
+                integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k"
+                crossorigin="anonymous"></script>
+            <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

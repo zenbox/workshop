@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Login</title>
+    <link rel="stylesheet" href="assets/css/broker.css">
+    <link rel="shortcut icon" href="data:" type="image/x-icon">
+</head>
+
+<body>
+    <h1>Broker</h1>
+
+    <ul id="messages"></ul>
+    <form id="form" action="">
+        <input id="input" autocomplete="off" autofocus /><button>Send</button>
+    </form>
+
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/assets/js/broker.js"></script>
+</body>
+
+</html>
