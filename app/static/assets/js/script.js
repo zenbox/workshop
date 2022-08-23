@@ -146,9 +146,15 @@ function setInterface(id) {
  * @param {object} event 
  */
 async function onDelete(event) {
-    console.log('ON DELETE');
-
     let id = event.target.dataset.id;
+
+    console.log(
+        '\n',
+        '- - - - - - - - - -\n',
+        'ON DELETE\n',
+        '- - - - - - - - - -\n',
+        `fetch('rest/delete/${id}')\n\n`
+    );
 
     const response = await fetch(`rest/delete/${id}`, {
         method: 'DELETE',
@@ -176,12 +182,21 @@ async function onDelete(event) {
  * @param {object} event 
  * TODO: generating the new texts serverside and receive via fetch
  */
-async function onPut(event) {
-    console.log('ON PUT');
-
+async function onPut(event)
+{
+    
     let id = event.target.dataset.id;
     let newTitle = 'That\'s the puted title.';
     let newContent = 'Put fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.';
+        
+    console.log(
+            '\n',
+            '- - - - - - - - - -\n',
+            'ON PUT\n',
+            '- - - - - - - - - -\n',
+            `fetch('rest/put/${id}?title=${newTitle.substring(0,8)}...&content=${newContent.substring(0,8)}...')\n\n`
+        );
+
     const response = await fetch(`rest/put/${id}?title=${newTitle}&content=${newContent}`, {
         method: 'PUT',
         cache: 'no-cache',
