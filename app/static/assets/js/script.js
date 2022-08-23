@@ -7,49 +7,49 @@
 
 console.log('c l i e n t  r u n s ...');
 
-// - - - - - - - - - -
-// Sockets and stuff
-// - - - - - - - - - -
-let socket = io();
-let id = (document.querySelector('#id').value = localStorage.getItem('id')) || document.querySelector('#id').value;
+// // - - - - - - - - - -
+// // Sockets and stuff
+// // - - - - - - - - - -
+// let socket = io();
+// let id = (document.querySelector('#id').value = localStorage.getItem('id')) || document.querySelector('#id').value;
 
-document
-    .querySelector('#id')
-    .onchange = () => {
-        id = document.querySelector('#id').value;
-        let old = localStorage.getItem('id');
-        localStorage.setItem('id', id = document.querySelector('#id').value);
-        socket.emit('client', `${old || socket.id} changed to ${id}`)
+// document
+//     .querySelector('#id')
+//     .onchange = () => {
+//         id = document.querySelector('#id').value;
+//         let old = localStorage.getItem('id');
+//         localStorage.setItem('id', id = document.querySelector('#id').value);
+//         socket.emit('client', `${old || socket.id} changed to ${id}`)
 
-    };
+//     };
 
-// - - - - - - - - - -
-// Sockets events
-// - - - - - - - - - -
-socket.on('connect', function () {
-    socket.emit('client', `${id || socket.id} connect`)
-})
-socket.on('disconnect', function () {
-    socket.emit('client', `${id || socket.id} disconnect`)
-})
-socket.on('reconnect_attempt', function () {
-    socket.emit('client', `${id || socket.id} reconnect_attempt`)
-})
-socket.on('reconnect_failed', function () {
-    socket.emit('client', `${id || socket.id} reconnect_failed`)
-})
-socket.on('reconnect_error', function () {
-    socket.emit('client', `${id || socket.id} reconnect_error`)
-})
-socket.on('ping', function () {
-    socket.emit('client', `${id || socket.id} ping`)
-})
-socket.on('error', function () {
-    socket.emit('client', `${id || socket.id} error`)
-})
-socket.on('broker message', function (msg) {
-    console.log(msg)
-});
+// // - - - - - - - - - -
+// // Sockets events
+// // - - - - - - - - - -
+// socket.on('connect', function () {
+//     socket.emit('client', `${id || socket.id} connect`)
+// })
+// socket.on('disconnect', function () {
+//     socket.emit('client', `${id || socket.id} disconnect`)
+// })
+// socket.on('reconnect_attempt', function () {
+//     socket.emit('client', `${id || socket.id} reconnect_attempt`)
+// })
+// socket.on('reconnect_failed', function () {
+//     socket.emit('client', `${id || socket.id} reconnect_failed`)
+// })
+// socket.on('reconnect_error', function () {
+//     socket.emit('client', `${id || socket.id} reconnect_error`)
+// })
+// socket.on('ping', function () {
+//     socket.emit('client', `${id || socket.id} ping`)
+// })
+// socket.on('error', function () {
+//     socket.emit('client', `${id || socket.id} error`)
+// })
+// socket.on('broker message', function (msg) {
+//     console.log(msg)
+// });
 
 // - - - - - - - - - -
 // Page handling
@@ -91,8 +91,8 @@ async function onLogin(event) {
 
     window.location.href = url2;
 
-    // Tell the broker ...
-    socket.emit('client', `${id || socket.id} logs in ...`)
+    // // Tell the broker ...
+    // socket.emit('client', `${id || socket.id} logs in ...`)
 }
 
 /** onPostInterface

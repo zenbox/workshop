@@ -14,10 +14,22 @@
 // ES Modules
 import path from 'path';
 import express from 'express';
+import restRoute from './src/routes/rest.js';
 
 // Declaration
 const app = express();
 const port = 3000;
+
+// Configure express
+app.use(express.static(path.resolve('./static')));
+
+app.use('/rest', restRoute);
+// app.use('/login', loginRoute);
+// ...
+
+// Template engine
+app.set('view engine', 'ejs');
+app.set('views', path.resolve('./src/views'));
 
 // Methods
 

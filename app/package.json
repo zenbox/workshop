@@ -12,6 +12,8 @@
   "author": "Michael Reichart <michael.reichar@gfu.net> (https://github.com/zenbox/)",
   "license": "CC BY-NC-SA",
   "dependencies": {
-    "express": "^4.18.1"
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongodb": "^4.9.0"
   }
 }
