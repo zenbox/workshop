@@ -7,7 +7,7 @@ import {
 
 // Mongo Db Client and Dump (kind of)
 const url = 'mongodb://docker:mongopw@localhost:55002'; // 55000
-const RESET = true;
+const RESET = false;
 if (RESET) {
     await MongoClient.connect(url, (error, dbo) => {
         if (error) throw error;
@@ -16,19 +16,24 @@ if (RESET) {
 
         const data = [{
             "title": "First Lorem ipsum dolor sit",
-            "content": "Lorem ipsum dolor sit ..."
+            "content": "Lorem ipsum dolor sit ...",
+            "type": "post"
         }, {
             "title": "Second Lorem ipsum dolor sit",
-            "content": "Lorem ipsum dolor sit ..."
+            "content": "Lorem ipsum dolor sit ...",
+            "type": "post"
         }, {
             "title": "Third Lorem ipsum dolor sit",
-            "content": "Lorem ipsum dolor sit ..."
+            "content": "Lorem ipsum dolor sit ...",
+            "type": "post"
         }, {
             "title": "Fouth Lorem ipsum dolor sit",
-            "content": "Lorem ipsum dolor sit ..."
+            "content": "Lorem ipsum dolor sit ...",
+            "type": "post"
         }, {
             "title": "Fifth Lorem ipsum dolor sit",
-            "content": "Lorem ipsum dolor sit ..."
+            "content": "Lorem ipsum dolor sit ...",
+            "type": "post"
         }];
 
         database
@@ -47,24 +52,45 @@ if (RESET) {
 
 
 // Methods
-const getPosts = (request, response, next) => {
+const getPosts = async (request, response, next) => {
     // Get data from ...
+    await MongoClient.connect(url, (error, dbo) => {
+        if (error) throw error;
 
+        const database = dbo.db('blog');
+
+        let query = {
+            "type": "post"
+        };
+
+        database
+            .collection('posts')
+            .find(query)
+            .toArray((error, resultset) => {
+                if (error) throw error;
+                console.log(resultset);
+                response
+                    .status(200)
+                    .render('posts', {
+                        posts: resultset
+                    });
+            })
+    });
     // Render data as response
-    response
-        .status(200)
-        .render('posts', {
-            "posts": [{
-                "title": "First Post title",
-                "content": "Lorem ipsum dolor sit ..."
-            }, {
-                "title": "Second Post title",
-                "content": "Lorem ipsum dolor sit ..."
-            }, {
-                "title": "Third Post title",
-                "content": "Lorem ipsum dolor sit ..."
-            }]
-        })
+    // response
+    //     .status(200)
+    //     .render('posts', {
+    //         "posts": [{
+    //             "title": "First Post title",
+    //             "content": "Lorem ipsum dolor sit ..."
+    //         }, {
+    //             "title": "Second Post title",
+    //             "content": "Lorem ipsum dolor sit ..."
+    //         }, {
+    //             "title": "Third Post title",
+    //             "content": "Lorem ipsum dolor sit ..."
+    //         }]
+    //     })
 
     return true;
 }
