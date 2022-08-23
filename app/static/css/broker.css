@@ -1,0 +1,71 @@
+html {
+    font-family: Barlow, sans-serif;
+    background-color: hsla(210, 30%, 10%, 0.85);
+    color: hsla(0, 0%, 100%, 0.85);
+}
+
+p {
+    opacity: 0.125;
+}
+
+body {
+    margin: 0;
+    padding-bottom: 3rem;
+}
+
+#form {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 0.25rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    height: 3rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(10px);
+}
+
+#input {
+    border: none;
+    padding: 0 1rem;
+    flex-grow: 1;
+    border-radius: 2rem;
+    margin: 0.25rem;
+}
+
+#input:focus {
+    outline: none;
+}
+
+#form>button {
+    background: #333;
+    border: none;
+    padding: 0 1rem;
+    margin: 0.25rem;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#messages>li {
+    padding: 0.5rem 1rem;
+}
+
+#messages>li:nth-child(odd) {
+    background: hsla(210, 30%, 10%, 0.5);
+}
+
+h1 {
+    position: fixed;
+    margin: 0;
+    top: 0.25rem;
+    right: 0.25rem;
+    font-weight: 100;
+}
