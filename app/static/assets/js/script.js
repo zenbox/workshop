@@ -11,17 +11,17 @@ console.log('c l i e n t  r u n s ...');
 // // Sockets and stuff
 // // - - - - - - - - - -
 // let socket = io();
-// let id = (document.querySelector('#id').value = localStorage.getItem('id')) || document.querySelector('#id').value;
+let id = (document.querySelector('#id').value = localStorage.getItem('id')) || document.querySelector('#id').value;
 
-// document
-//     .querySelector('#id')
-//     .onchange = () => {
-//         id = document.querySelector('#id').value;
-//         let old = localStorage.getItem('id');
-//         localStorage.setItem('id', id = document.querySelector('#id').value);
-//         socket.emit('client', `${old || socket.id} changed to ${id}`)
+document
+    .querySelector('#id')
+    .onchange = () => {
+        id = document.querySelector('#id').value;
+        let old = localStorage.getItem('id');
+        localStorage.setItem('id', id = document.querySelector('#id').value);
+        // socket.emit('client', `${old || socket.id} changed to ${id}`)
 
-//     };
+    };
 
 // // - - - - - - - - - -
 // // Sockets events
@@ -63,9 +63,9 @@ console.log('c l i e n t  r u n s ...');
  * 
  * todo: Error handling for json data
  */
-let formLogin = document.querySelector('form#login');
+// let formLogin = document.querySelector('form#login');
 
-if (formLogin) formLogin.addEventListener('submit', onLogin);
+// if (formLogin) formLogin.addEventListener('submit', onLogin);
 
 async function onLogin(event) {
     let url1 = event.target.action;
@@ -115,26 +115,26 @@ async function onPostInterface(event) {
 }
 
 /**
- * @desc setInterface creates an edit and a patch button.
+ * @desc setInterface creates an edit and a put button.
  * @param {string} id - the post id
  */
 function setInterface(id) {
     let
         container = document.createElement('div');
 
-    button['patch'] = document.createElement('button');
+    button['put'] = document.createElement('button');
     button['delete'] = document.createElement('button');
 
-    button['patch'].appendChild(document.createTextNode('patch'));
-    button['patch'].dataset.id = id;
-    button['patch'].addEventListener('click', onPatch);
+    button['put'].appendChild(document.createTextNode('put'));
+    button['put'].dataset.id = id;
+    button['put'].addEventListener('click', onPut);
 
     button['delete'].appendChild(document.createTextNode('delete'));
     button['delete'].dataset.id = id;
     button['delete'].addEventListener('click', onDelete);
 
     container.setAttribute('id', 'interface');
-    container.appendChild(button['patch']);
+    container.appendChild(button['put']);
     container.appendChild(button['delete']);
 
     return container;
@@ -171,7 +171,7 @@ async function onDelete(event) {
 }
 
 /**
- * @desc The patch function updates a document by id.
+ * @desc The put function updates a document by id.
  *       The response is a reload:true/false.
  * @param {object} event 
  * TODO: generating the new texts serverside and receive via fetch
@@ -180,7 +180,7 @@ async function onPut(event) {
     console.log('ON PUT');
 
     let id = event.target.dataset.id;
-    let newTitle = 'That\'s the patched title.';
+    let newTitle = 'That\'s the puted title.';
     let newContent = 'Put fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.';
     const response = await fetch(`rest/put/${id}?title=${newTitle}&content=${newContent}`, {
         method: 'PUT',
