@@ -41,7 +41,7 @@ if (RESET) {
             .insertMany(data, (error, resultset) => {
                 if (error) throw error;
 
-                console.log(resultset);
+                // console.log(resultset);
                 console.log("Number of documents inserted: " + resultset.insertedCount);
 
                 dbo.close();
@@ -68,7 +68,7 @@ const getPosts = async (request, response, next) => {
             .find(query)
             .toArray((error, resultset) => {
                 if (error) throw error;
-                console.log(resultset);
+                // console.log(resultset);
                 response
                     .status(200)
                     .render('posts', {
