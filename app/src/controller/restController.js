@@ -97,7 +97,30 @@ const createPost = (request, response, next) => {
     return true;
 }
 const deletePost = (request, response, next) => {
-    return true;
+
+    MongoClient.connect(url, (error, dbo) => {
+        if (error) throw error;
+
+        const database = dbo.db('blog');
+        const query = {
+            _id: new ObjectId(request.params.id)
+        };
+
+        database
+            .collection('posts')
+            .deleteOne(query, (error, resultset) => {
+                console.log(resultset)
+            })
+
+        response
+            .status(200)
+            .json({
+                reload: true
+            })
+    })
+
+
+
 }
 const putPost = (request, response, next) => {
     return true;

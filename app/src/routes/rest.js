@@ -12,6 +12,10 @@ import {
 // The router object!
 const router = express.Router();
 
+// Parse application/json
+// router.use(bodyParser.json()); // Obsolete since express 4.16
+router.use(express.json());
+
 // Get access from any domain ...
 router.use((request, response, next) => {
     response.setHeader('Access-Control-Allow-Origin', '*');

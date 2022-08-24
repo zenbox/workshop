@@ -1,6 +1,5 @@
 console.log(axios);
-window.onload = () =>
-{
+window.onload = () => {
     // - - - - - - - - - -
     /**
      * @desc A simple client script example:
@@ -152,46 +151,62 @@ window.onload = () =>
      */
     async function onDelete(event) {
         let id = event.target.dataset.id;
-
+        console.log(event.target);
         console.log(
             '\n',
             '- - - - - - - - - -\n',
             'ON DELETE\n',
             '- - - - - - - - - -\n',
-            `${AXIOS?'axios':'fetch'}('rest/delete/${id}')\n\n`
+            `${AXIOS?'axios':'fetch'}('/rest/delete/${id}')\n\n`
         );
 
         if (!AXIOS) {
-            const response = await fetch(`rest/delete/${id}`, {
+            const response = await fetch(`/rest/delete/${id}`, {
                 method: 'DELETE',
                 cache: 'no-cache',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-            })
+            });
+
+            if (!response.ok) {
+                const message = `An error has occured: ${response.status}`;
+                throw new Error(message);
+            }
+
+            const data = await response.json();
+            if (data.reload === true) {
+                console.log('reloading ...');
+                window.location.reload(true);
+            }
         }
 
         if (AXIOS) {
             axios
-                .delete(`rest/delete/${id}`)
-                .then((response) => {
+                .delete(`/rest/delete/${id}`)
+                .then(async (response) => {
                     console.log(response);
+
+                    if (!response.statusText === 'ok') {
+                        const message = `An error has occured: ${response.status}`;
+                        throw new Error(message);
+                    }
+
+                    const data = response.data;
+                    console.log(typeof data);
+                    if (data.reload === true) {
+                        console.log('reloading ...');
+                        window.location.reload(true);
+                    }
+
+
                 })
                 .catch((error) => {
                     console.log(error)
                 })
         }
 
-        if (!response.ok) {
-            const message = `An error has occured: ${response.status}`;
-            throw new Error(message);
-        }
 
-        const data = await response.json();
-        if (data.reload === true) {
-            console.log('reloading ...');
-            window.location.reload(true);
-        }
     }
 
     /**
@@ -215,35 +230,35 @@ window.onload = () =>
         );
 
         if (!AXIOS) {
-            const response = await fetch(`rest/put/${id}?title=${newTitle}&content=${newContent}`, {
+            const response = await fetch(`/rest/put/${id}?title=${newTitle}&content=${newContent}`, {
                 method: 'PUT',
                 cache: 'no-cache',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-            })
+            });
+
+            if (!response.ok) {
+                const message = `An error has occured: ${response.status}`;
+                throw new Error(message);
+            }
+
+            const data = await response.json();
+            if (data.reload === true) {
+                console.log('reloading ...');
+                window.location.reload(true);
+            }
         }
 
         if (AXIOS) {
             axios
-                .put(`rest/put/${id}?title=${newTitle}&content=${newContent}`)
+                .put(`/rest/put/${id}?title=${newTitle}&content=${newContent}`)
                 .then((response) => {
                     console.log(response);
                 })
                 .catch((error) => {
                     console.log(error)
                 })
-        }
-
-        if (!response.ok) {
-            const message = `An error has occured: ${response.status}`;
-            throw new Error(message);
-        }
-
-        const data = await response.json();
-        if (data.reload === true) {
-            console.log('reloading ...');
-            window.location.reload(true);
         }
     }
 
@@ -269,38 +284,36 @@ window.onload = () =>
             `${AXIOS?'axios':'fetch'}('rest/post?title=${newTitle.substring(0,10)}...&content=${newContent.substring(0,10)}...')\n\n`
         );
 
-
         if (!AXIOS) {
-            const response = await fetch(`rest/post?title=${newTitle}&content=${newContent}`, {
+            const response = await fetch(`/rest/post?title=${newTitle}&content=${newContent}`, {
                 method: 'POST',
                 cache: 'no-cache',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-            })
+            });
+            if (!response.ok) {
+                const message = `An error has occured: ${response.status}`;
+                throw new Error(message);
+            }
+
+            const data = await response.json();
+
+            if (data.reload === true) {
+                console.log('reloading ...');
+                window.location.reload(true);
+            }
         }
 
         if (AXIOS) {
             axios
-                .post(`rest/post?title=${newTitle}&content=${newContent}`)
+                .post(`/rest/post?title=${newTitle}&content=${newContent}`)
                 .then((response) => {
                     console.log(response);
                 })
                 .catch((error) => {
                     console.log(error)
                 })
-        }
-
-        if (!response.ok) {
-            const message = `An error has occured: ${response.status}`;
-            throw new Error(message);
-        }
-
-        const data = await response.json();
-
-        if (data.reload === true) {
-            console.log('reloading ...');
-            window.location.reload(true);
         }
     }
     // - - - - - - - - - -
