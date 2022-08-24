@@ -8,6 +8,7 @@ import {
 // Mongo Db Client and Dump (kind of)
 const url = 'mongodb://docker:mongopw@localhost:55002'; // 55000
 const RESET = false;
+
 if (RESET) {
     await MongoClient.connect(url, (error, dbo) => {
         if (error) throw error;
@@ -48,8 +49,6 @@ if (RESET) {
             })
     });
 }
-
-
 
 // Methods
 const getPosts = async (request, response, next) => {
