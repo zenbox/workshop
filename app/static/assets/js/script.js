@@ -1,4 +1,3 @@
-console.log(axios);
 window.onload = () => {
     // - - - - - - - - - -
     /**
@@ -11,10 +10,10 @@ window.onload = () => {
     console.log('c l i e n t  r u n s ...');
     const AXIOS = true;
 
-    // // - - - - - - - - - -
-    // // Sockets and stuff
-    // // - - - - - - - - - -
-    // let socket = io();
+    // - - - - - - - - - -
+    // Sockets and stuff
+    // - - - - - - - - - -
+    let socket = io();
     let id = (document.querySelector('#id').value = localStorage.getItem('id')) || document.querySelector('#id').value;
 
     document
@@ -27,33 +26,37 @@ window.onload = () => {
 
         };
 
-    // // - - - - - - - - - -
-    // // Sockets events
-    // // - - - - - - - - - -
-    // socket.on('connect', function () {
-    //     socket.emit('client', `${id || socket.id} connect`)
-    // })
-    // socket.on('disconnect', function () {
-    //     socket.emit('client', `${id || socket.id} disconnect`)
-    // })
-    // socket.on('reconnect_attempt', function () {
-    //     socket.emit('client', `${id || socket.id} reconnect_attempt`)
-    // })
-    // socket.on('reconnect_failed', function () {
-    //     socket.emit('client', `${id || socket.id} reconnect_failed`)
-    // })
-    // socket.on('reconnect_error', function () {
-    //     socket.emit('client', `${id || socket.id} reconnect_error`)
-    // })
-    // socket.on('ping', function () {
-    //     socket.emit('client', `${id || socket.id} ping`)
-    // })
-    // socket.on('error', function () {
-    //     socket.emit('client', `${id || socket.id} error`)
-    // })
-    // socket.on('broker message', function (msg) {
-    //     console.log(msg)
-    // });
+    // - - - - - - - - - -
+    // Sockets events
+    // - - - - - - - - - -
+    socket.on('connect', function () {
+        socket.emit('client', `${id || socket.id} connect`)
+    })
+    socket.on('disconnect', function () {
+        socket.emit('client', `${id || socket.id} disconnect`)
+    })
+    socket.on('reconnect_attempt', function () {
+        socket.emit('client', `${id || socket.id} reconnect_attempt`)
+    })
+    socket.on('reconnect_failed', function () {
+        socket.emit('client', `${id || socket.id} reconnect_failed`)
+    })
+    socket.on('reconnect_error', function () {
+        socket.emit('client', `${id || socket.id} reconnect_error`)
+    })
+    socket.on('ping', function () {
+        socket.emit('client', `${id || socket.id} ping`)
+    })
+    socket.on('error', function () {
+        socket.emit('client', `${id || socket.id} error`)
+    })
+    // Receiving messages
+    socket.on('serverMessage', function (message) {
+        console.log(message);
+
+        socket.emit('clientMessage', 'Hello server, nice to ...')
+        socket.emit('superMessage', 'Hello server, nice to ...')
+    });
 
     // - - - - - - - - - -
     // Page handling
