@@ -2,14 +2,38 @@
 // 1. flex boxes
 // 2. grids
 
-body {
+.page {
   display: flex;
   flex-direction: column;
   gap: 1rem; // eine Zeile
 }
 
-// Child:       ">"Q
+// Child:       ">"
 // Descendants: " "
-body > * {
-  border: 1px dotted hsla(0, 0%, 100%, 0.5);
+.page > *,
+.page-content > * {
+  // border: 3px dotted hsla(0, 0%, 100%, 0.5);
+  background-color: hsla(0, 50%, 50%, 0.25);
+}
+
+.page-content {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  // Ausrichtung in flex-Richtung
+  justify-content: flex-start;
+  // Ausrichtung in counter-flex-Richtung
+  align-items: stretch;
+}
+
+.page nav {
+  flex-basis: 33vw;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.page main {
+  flex-basis: 67vw;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
