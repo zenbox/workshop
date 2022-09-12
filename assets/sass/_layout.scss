@@ -1,0 +1,15 @@
+// Layouten mit CSS 3
+// 1. flex boxes
+// 2. grids
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; // eine Zeile
+}
+
+// Child:       ">"
+// Descendants: " "
+body > * {
+  border: 1px dotted hsla(0, 0%, 100%, 0.5);
+}
