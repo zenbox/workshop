@@ -1,0 +1,24 @@
+// Typography
+html {
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+// Base font size
+// All devices fallback
+h1 {
+  font-size: 2.5rem;
+}
+
+// Media Queries
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+}
