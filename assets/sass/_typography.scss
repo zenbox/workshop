@@ -11,14 +11,38 @@ h1 {
 }
 
 // Media Queries
-@media screen and (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
+// Extra small devices
+@media screen and (max-width: 599px) {
+  html {
+    font-size: 16px;
+  }
+}
+// Breakpoint list
+// Small devices
+// portrait mode (Hochformat)
+@media screen and (min-width: 600px) {
+  html {
+    font-size: 18px;
+  }
+}
+// Small devices
+// landscape mode (Querformat)
+@media screen and (min-width: 905px) {
+  html {
+    font-size: 20px;
   }
 }
 
-@media screen and (min-width: 481px) {
-  h1 {
-    font-size: 1.8rem;
+// Medium device, i.e. laptops
+@media screen and (min-width: 1240px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+// Large device, i.e. desktops
+@media screen and (min-width: 1440px) {
+  html {
+    font-size: 24px;
   }
 }
