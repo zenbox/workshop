@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
 body {
   margin: 0;
 }
@@ -6,8 +7,11 @@ body > * {
 }
 
 html {
+  font-family: Barlow, sans-serif;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.2;
+  hyphens: auto;
 }
 @media screen and (max-width: 599px) {
   html {
@@ -15,9 +19,24 @@ html {
   }
 }
 
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
 @media screen and (max-width: 599px) {
   html {
     font-size: 13px;
+  }
+  h1 {
+    font-size: 1.8rem;
   }
 }
 @media screen and (min-width: 600px) {
@@ -50,11 +69,6 @@ html {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.page > *,
-.page-content > * {
-  background-color: hsla(0deg, 0%, 0%, 0.05);
 }
 
 .page-content {
@@ -101,10 +115,6 @@ html {
   min-width: 2rem;
   min-height: 2rem;
 }
-.header > * {
-  border: 1px dotted black;
-}
-
 .nav {
   list-style-type: none;
   margin: 0;
@@ -135,6 +145,16 @@ html {
 .nav a:active {
   text-decoration: none;
   color: cornflowerblue;
+}
+
+.figure {
+  margin: 0;
+  padding: 0;
+}
+
+.figure-responsive img {
+  max-width: 100%;
+  height: auto;
 }
 
 html {
