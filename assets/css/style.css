@@ -33,6 +33,12 @@ html {
     font-size: 24px;
   }
 }
+.sr-only {
+  display: block;
+  position: absolute;
+  left: -10000px;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -52,23 +58,37 @@ html {
   align-items: stretch;
 }
 
-.page nav {
+.page > nav {
   flex-basis: 33vw;
   flex-grow: 1;
   flex-shrink: 1;
 }
 
-.page main {
+.page > main {
   flex-basis: 67vw;
   flex-grow: 1;
   flex-shrink: 1;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.header ul, .header li {
+  display: inline;
+}
 .header .logo {
   background-image: url("../figures/shou.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+  min-width: 2rem;
+  min-height: 2rem;
+}
+.header > * {
+  border: 1px dotted black;
 }
 
 html {
