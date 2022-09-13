@@ -41,7 +41,10 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 - https://necolas.github.io/normalize.css/8.0.1/normalize.css
 - https://www.caniemail.com/
 
-## Sass Setting für vscode
+## Sass vscode settings
+
+1. Sass Compiler installieren
+2. settings einfügen
 
 ```json
   "liveSassCompile.settings.formats": [
@@ -57,4 +60,16 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
     "**/node_modules/**",
     ".vscode/**"
   ],
+```
+
+## Prettier vscode settings
+
+1. prettier extension installieren
+2. settings anpassen
+
+```json
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
 ```
