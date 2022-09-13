@@ -65,6 +65,27 @@ html {
   align-items: stretch;
 }
 
+.page {
+  display: grid;
+  grid-template-rows: 4rem auto 4rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.page-header {
+  grid-row: 1/2;
+}
+.page-content {
+  grid-row: 2/3;
+}
+.page-content > nav {
+  grid-row: 2/3;
+}
+.page-content > main {
+  grid-row: 2/3;
+}
+.page-footer {
+  grid-row: 3/4;
+}
+
 .header {
   display: flex;
   flex-direction: row;
@@ -81,6 +102,38 @@ html {
 }
 .header > * {
   border: 1px dotted black;
+}
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.nav-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.nav a:link {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+.nav a:visited {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+.nav a:hover {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+.nav a:active {
+  text-decoration: none;
+  color: cornflowerblue;
 }
 
 html {
