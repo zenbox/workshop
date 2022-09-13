@@ -34,17 +34,22 @@
 
   &-header {
     grid-row: 1 / 2;
+    grid-column: 1 / 5;
   }
-  &-content {
+  // &-content {
+  //   grid-row: 2 / 3;
+  //   grid-column: 1 / 5;
+  // }
+  & > nav {
     grid-row: 2 / 3;
+    grid-column: 1 / 2;
   }
-  &-content > nav {
+  & > main {
     grid-row: 2 / 3;
-  }
-  &-content > main {
-    grid-row: 2 / 3;
+    grid-column: 2 / 5;
   }
   &-footer {
     grid-row: 3 / 4;
+    grid-column: 1 / 5;
   }
 }
