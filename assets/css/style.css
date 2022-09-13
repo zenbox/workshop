@@ -64,6 +64,13 @@ html {
   flex-shrink: 1;
 }
 
+.header .logo {
+  background-image: url("../figures/shou.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
 html {
   background-color: hsla(0deg, 0%, 0%, 0.85);
   color: hsla(0deg, 0%, 100%, 0.85);
