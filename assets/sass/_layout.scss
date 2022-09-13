@@ -27,12 +27,12 @@
   align-items: stretch;
 }
 
-.page nav {
+.page> nav {
   flex-basis: 33vw;
   flex-grow: 1;
   flex-shrink: 1;
 }
-.page main {
+.page> main {
   flex-basis: 67vw;
   flex-grow: 1;
   flex-shrink: 1;

@@ -1,11 +1,28 @@
 // Header
 
 .header {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+
+    ul, li{display: inline;}
+
+
   .logo {
     background-image: url("../figures/shou.svg");
     background-repeat: no-repeat;
     background-position: center center;
-    background-size:contain;
+    background-size: contain;
+
+    min-width: 2rem;
+    min-height: 2rem;
+  }
+
+  // Temporär
+  // & bezieht sich auf das den vorausgehenden 
+  // Ancestor-Selector, in diesem Fall ist das ".header"
+  & > * {
+    border: 1px dotted black;
   }
 }
-
