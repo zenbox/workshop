@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de-DE">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,18 +23,33 @@
         </header>
       </div>
       <!-- <div class="page-content"> -->
-        <nav>
-          <ul class="nav nav-column">
-            <li><a href="">link 1</a></li>
-            <li><a href="">link 2</a></li>
-            <li><a href="">link 3</a></li>
-            <li><a href="">link 4</a></li>
-          </ul>
-        </nav>
-        <main>
-          <h1>Responsives Layouten</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing nem?</p>
-        </main>
+      <nav>
+        <ul class="nav nav-column">
+          <li><a href="">link 1</a></li>
+          <li><a href="">link 2</a></li>
+          <li><a href="">link 3</a></li>
+          <li><a href="">link 4</a></li>
+        </ul>
+      </nav>
+      <main>
+        <figure class="figure figure-responsive">
+          <picture>
+            <source
+              media="max-width:599px"
+              srcset="https://picsum.photos/id/288/300/90"
+            />
+            <img src="https://picsum.photos/id/290/600/180" alt="" />
+          </picture>
+
+          <figcaption>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est nobis
+            minus dignissimos.
+          </figcaption>
+        </figure>
+
+        <h1>Responsives Layouten</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing nem?</p>
+      </main>
       <!-- </div> -->
       <div class="page-footer">
         <footer>footer</footer>
