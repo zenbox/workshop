@@ -1,13 +1,10 @@
 // Header
 
 .header {
-    display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    align-items: center;
-
-    ul, li{display: inline;}
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
   .logo {
     background-image: url("../figures/shou.svg");
@@ -20,7 +17,7 @@
   }
 
   // Temporär
-  // & bezieht sich auf das den vorausgehenden 
+  // & bezieht sich auf das den vorausgehenden
   // Ancestor-Selector, in diesem Fall ist das ".header"
   & > * {
     border: 1px dotted black;
