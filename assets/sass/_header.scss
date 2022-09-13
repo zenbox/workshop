@@ -20,6 +20,6 @@
   // & bezieht sich auf das den vorausgehenden
   // Ancestor-Selector, in diesem Fall ist das ".header"
   & > * {
-    border: 1px dotted black;
+    // border: 1px<  dotted black;
   }
 }
