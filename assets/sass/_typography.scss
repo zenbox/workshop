@@ -2,19 +2,18 @@
 html {
   font-size: 16px;
   line-height: 1.2;
-}
 
-// Base font size
-// All devices fallback
-h1 {
-  font-size: 2.5rem;
+  @media screen and (max-width: 599px) {
+    font-size: 13px;
+  }
 }
 
 // Media Queries
+// Base font size for the devices
 // Extra small devices
 @media screen and (max-width: 599px) {
   html {
-    font-size: 16px;
+    font-size: 13px;
   }
 }
 // Breakpoint list
@@ -22,14 +21,14 @@ h1 {
 // portrait mode (Hochformat)
 @media screen and (min-width: 600px) {
   html {
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 // Small devices
 // landscape mode (Querformat)
 @media screen and (min-width: 905px) {
   html {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
