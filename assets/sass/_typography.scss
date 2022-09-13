@@ -1,19 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 // Typography
 html {
+  font-family: Barlow, sans-serif;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.2;
+
+  // Typographic stuff
+  hyphens: auto;
 
   @media screen and (max-width: 599px) {
     font-size: 13px;
   }
 }
 
+h1,
+h2,
+h3 {
+  font-weight: 300;
+}
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
 // Media Queries
 // Base font size for the devices
 // Extra small devices
 @media screen and (max-width: 599px) {
   html {
     font-size: 13px;
+  }
+  h1 {
+    font-size: 1.8rem;
   }
 }
 // Breakpoint list
