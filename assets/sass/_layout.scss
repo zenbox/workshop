@@ -25,3 +25,26 @@
   // Ausrichtung in counter-flex-Richtung
   align-items: stretch;
 }
+
+// Grid Layout
+.page {
+  display: grid;
+  grid-template-rows: 4rem auto 4rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  &-header {
+    grid-row: 1 / 2;
+  }
+  &-content{
+    grid-row: 2 / 3
+  }
+  &-content > nav {
+    grid-row: 2 / 3;
+  }
+  &-content > main {
+    grid-row: 2 / 3;
+  }
+  &-footer {
+    grid-row: 3 / 4;
+  }
+}
