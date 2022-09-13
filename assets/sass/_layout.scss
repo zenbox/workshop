@@ -1,7 +1,6 @@
 // Layouten mit CSS 3
 // 1. flex boxes
 // 2. grids
-
 .page {
   display: flex;
   flex-direction: column;
@@ -25,15 +24,4 @@
   justify-content: flex-start;
   // Ausrichtung in counter-flex-Richtung
   align-items: stretch;
-}
-
-.page> nav {
-  flex-basis: 33vw;
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-.page> main {
-  flex-basis: 67vw;
-  flex-grow: 1;
-  flex-shrink: 1;
 }
