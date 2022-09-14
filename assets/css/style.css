@@ -110,19 +110,47 @@ p {
   grid-row: 1/2;
   grid-column: 1/5;
 }
-.page > nav {
-  grid-row: 2/3;
-  grid-column: 1/2;
+@media screen and (max-width: 599px) {
+  .page > nav {
+    display: none;
+  }
+  .page > main {
+    grid-row: 2/3;
+    grid-column: 1/5;
+  }
 }
-.page > main {
-  grid-row: 2/3;
-  grid-column: 2/5;
+.page-footer {
+  grid-row: 3/4;
+  grid-column: 1/5;
+}
+@media screen and (min-width: 600px) {
+  .page > nav {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+  .page > main {
+    grid-row: 2/3;
+    grid-column: 2/5;
+  }
 }
 .page-footer {
   grid-row: 3/4;
   grid-column: 1/5;
 }
 
+@media screen and (max-width: 599px) {
+  .hamburger {
+    display: block !important;
+  }
+  .header .nav {
+    display: none !important;
+  }
+}
+@media screen and (min-width: 600px) {
+  .hamburger {
+    display: none !important;
+  }
+}
 .header {
   display: flex;
   flex-direction: row;
@@ -134,8 +162,10 @@ p {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
-  min-width: 2rem;
-  min-height: 2rem;
+  margin: 0;
+  padding: 0;
+  min-width: 4rem;
+  min-height: 4rem;
 }
 .nav {
   list-style-type: none;
@@ -169,6 +199,65 @@ p {
   color: cornflowerblue;
 }
 
+/** HAMBURGER MENU */
+:root {
+  --bar-height: 0.5rem;
+  --bar-distance: calc(var(--bar-height)/2);
+  --hamburger-height: calc(calc(var(--bar-height)*3) + calc(var(--bar-distance)*2));
+  --hamburger-width: var(--hamburger-height);
+  --factor: 1.0902;
+  --default-bar-color: hsla(0, 0%, 0%, 0.85);
+}
+
+/** COMPONENT BASE */
+.hamburger {
+  display: block;
+  width: var(--hamburger-width);
+  height: var(--hamburger-height);
+  z-index: 10;
+  position: relative;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 100%;
+  height: var(--bar-height);
+  margin-bottom: var(--bar-distance);
+}
+
+/** COMPONENT LAYOUT */
+.hamburger-bar:nth-child(1) {
+  background: var(--default-bar-color);
+}
+
+.hamburger-bar:nth-child(2) {
+  background: var(--default-bar-color);
+}
+
+.hamburger-bar:nth-child(3) {
+  background: var(--default-bar-color);
+}
+
+/** COMPONENT THEME */
+/** COMPONENT CHANGING STATES (BEHAVIOUR) */
+.hamburger-bar {
+  transition-property: all;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+}
+
+.hamburger:hover .hamburger-bar:nth-child(1) {
+  transform: rotateZ(45deg) translateY(calc(var(--bar-height) * var(--factor))) translateX(calc(var(--bar-height) * var(--factor)));
+}
+
+.hamburger:hover .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger:hover .hamburger-bar:nth-child(3) {
+  transform: rotateZ(-45deg) translateY(calc(var(--bar-height) * var(--factor) * -1)) translateX(calc(var(--bar-height) * var(--factor)));
+}
+
 .figure {
   margin: 0;
   padding: 0;
@@ -187,4 +276,12 @@ html {
 body {
   color: hsla(0deg, 0%, 0%, 0.85);
   background-color: hsla(0deg, 0%, 100%, 0.85);
+}
+
+main {
+  background: radial-gradient(circle at 10vw 10vh, transparent 0%, hsla(0deg, 0%, 0%, 0.05));
+}
+
+img {
+  filter: grayscale(0.85);
 }
