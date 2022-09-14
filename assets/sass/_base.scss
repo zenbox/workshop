@@ -1,7 +1,14 @@
 // Include bootstrap?
 // @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css");
 
+// RESET
+html,
+html * {
+  box-sizing: border-box;
+}
+
 body {
+  // RESET
   margin: 0;
 
   & > * {
