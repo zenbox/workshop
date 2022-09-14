@@ -37,14 +37,23 @@
       height: 0;
       overflow: hidden;
 
-      position: relative;
+      position: absolute;
+      right: -50vw;
       z-index: 11;
+
+      padding: 1rem;
+      box-shadow: -1rem 1rem 1rem hsla(0, 0%, 0%, 0.5);
     }
 
     & .hamburger:active + .nav,
     & .nav:active,
     & .nav:hover {
-      height: 5rem;
+      transition: right ease-in-out 1000ms;
+      height: 50vh;
+      width: 50vw;
+      position: absolute;
+      right: 0;
+      background: white;
     }
   }
   @media screen and(min-width: 600px) {
