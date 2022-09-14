@@ -10,7 +10,7 @@ html {
   font-family: Barlow, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.28;
   hyphens: auto;
 }
 @media screen and (max-width: 599px) {
@@ -29,6 +29,28 @@ h4,
 h5,
 h6 {
   font-weight: 600;
+}
+
+p {
+  hyphens: auto;
+  text-align: justify;
+  widows: 3;
+  orphans: 3;
+}
+@media screen and (min-width: 600px) {
+  p {
+    column-width: 13rem;
+  }
+}
+@media screen and (min-width: 905px) {
+  p {
+    column-width: 15rem;
+  }
+}
+@media screen and (min-width: 1240px) {
+  p {
+    column-width: 18rem;
+  }
 }
 
 @media screen and (max-width: 599px) {
