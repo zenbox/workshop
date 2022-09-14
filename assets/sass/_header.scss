@@ -25,3 +25,34 @@
     // border: 1px<  dotted black;
   }
 }
+
+.header {
+  @media screen and(max-width: 599px) {
+    & .hamburger {
+      display: block;
+    }
+    & .nav {
+      display: block;
+
+      height: 0;
+      overflow: hidden;
+
+      position: relative;
+      z-index: 11;
+    }
+
+    & .hamburger:active + .nav,
+    & .nav:active,
+    & .nav:hover {
+      height: 5rem;
+    }
+  }
+  @media screen and(min-width: 600px) {
+    & .hamburger {
+      display: none;
+    }
+    & .nav {
+      display: flex;
+    }
+  }
+}

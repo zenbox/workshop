@@ -119,10 +119,6 @@ p {
     grid-column: 1/5;
   }
 }
-.page-footer {
-  grid-row: 3/4;
-  grid-column: 1/5;
-}
 @media screen and (min-width: 600px) {
   .page > nav {
     grid-row: 2/3;
@@ -133,24 +129,17 @@ p {
     grid-column: 2/5;
   }
 }
+@media screen and (min-width: 905px) {
+  .page .page {
+    max-width: 905px;
+    margin: 0 auto;
+  }
+}
 .page-footer {
   grid-row: 3/4;
   grid-column: 1/5;
 }
 
-@media screen and (max-width: 599px) {
-  .hamburger {
-    display: block !important;
-  }
-  .header .nav {
-    display: none !important;
-  }
-}
-@media screen and (min-width: 600px) {
-  .hamburger {
-    display: none !important;
-  }
-}
 .header {
   display: flex;
   flex-direction: row;
@@ -167,6 +156,30 @@ p {
   min-width: 4rem;
   min-height: 4rem;
 }
+@media screen and (max-width: 599px) {
+  .header .hamburger {
+    display: block;
+  }
+  .header .nav {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 11;
+  }
+  .header .hamburger:active + .nav, .header .nav:active, .header .nav:hover {
+    height: 5rem;
+  }
+}
+@media screen and (min-width: 600px) {
+  .header .hamburger {
+    display: none;
+  }
+  .header .nav {
+    display: flex;
+  }
+}
+
 .nav {
   list-style-type: none;
   margin: 0;
@@ -205,7 +218,7 @@ p {
   --bar-distance: calc(var(--bar-height)/2);
   --hamburger-height: calc(calc(var(--bar-height)*3) + calc(var(--bar-distance)*2));
   --hamburger-width: var(--hamburger-height);
-  --factor: 1.0902;
+  --factor: 1.05;
   --default-bar-color: hsla(0, 0%, 0%, 0.85);
 }
 
