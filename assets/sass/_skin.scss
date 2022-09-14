@@ -7,3 +7,17 @@ body {
   color: hsla(0deg, 0%, 0%, 0.85);
   background-color: hsla(0deg, 0%, 100%, 0.85);
 }
+
+main {
+  background: radial-gradient(
+    // 45deg,
+    circle at 10vw 10vh,
+    // from 90deg at 10vw 10vh,
+    transparent 0%,
+    hsla(0, 0%, 0%, 0.05)
+  );
+}
+
+img {
+  filter: grayscale(0.85);
+}
