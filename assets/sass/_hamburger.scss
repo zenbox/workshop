@@ -1,64 +1,67 @@
 /** HAMBURGER MENU */
 :root {
-    --bar-height: 0.5rem;
-    --bar-distance: calc(var(--bar-height)/2);
+  --bar-height: 0.5rem;
+  --bar-distance: calc(var(--bar-height) / 2);
 
-    --hamburger-height: calc(calc(var(--bar-height)*3) + calc(var(--bar-distance)*2));
-    --hamburger-width: var(--hamburger-height);
+  --hamburger-height: calc(
+    calc(var(--bar-height) * 3) + calc(var(--bar-distance) * 2)
+  );
+  --hamburger-width: var(--hamburger-height);
 
-    --factor: 1.05;
+  --factor: 1.05;
 
-    --default-bar-color: hsla(0, 0%, 0%, 0.85);
+  --default-bar-color: hsla(0, 0%, 0%, 0.85);
 }
 
 /** COMPONENT BASE */
 .hamburger {
-    display: block;
-    width: var(--hamburger-width);
-    height: var(--hamburger-height);
-    z-index: 10;
-    position: relative;
+  display: block;
+  width: var(--hamburger-width);
+  height: var(--hamburger-height);
+  z-index: 10;
+  position: relative;
 }
 
 .hamburger-bar {
-    display: block;
-    width: 100%;
-    height: var(--bar-height);
-    margin-bottom: var(--bar-distance);
+  display: block;
+  width: 100%;
+  height: var(--bar-height);
+  margin-bottom: var(--bar-distance);
 }
 
 /** COMPONENT LAYOUT */
 .hamburger-bar:nth-child(1) {
-    background: var(--default-bar-color);
+  background: var(--default-bar-color);
 }
 
 .hamburger-bar:nth-child(2) {
-    background: var(--default-bar-color);
+  background: var(--default-bar-color);
 }
 
 .hamburger-bar:nth-child(3) {
-    background: var(--default-bar-color);
+  background: var(--default-bar-color);
 }
 
 /** COMPONENT THEME */
 
 /** COMPONENT CHANGING STATES (BEHAVIOUR) */
 .hamburger-bar {
-    transition-property: all;
-    transition-duration: 150ms;
-    transition-timing-function: ease-in-out;
+  transition-property: all;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
 }
 
-.hamburger:hover .hamburger-bar:nth-child(1) {
-    transform:
-        rotateZ(45deg) translateY(calc(var(--bar-height)*var(--factor))) translateX(calc(var(--bar-height)*var(--factor)));
+.hamburger.active .hamburger-bar:nth-child(1) {
+  transform: rotateZ(45deg) translateY(calc(var(--bar-height) * var(--factor)))
+    translateX(calc(var(--bar-height) * var(--factor)));
 }
 
-.hamburger:hover .hamburger-bar:nth-child(2) {
-    opacity: 0;
+.hamburger.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
 }
 
-.hamburger:hover .hamburger-bar:nth-child(3) {
-    transform:
-        rotateZ(-45deg) translateY(calc(var(--bar-height)*var(--factor)*-1)) translateX(calc(var(--bar-height)*var(--factor)));
+.hamburger.active .hamburger-bar:nth-child(3) {
+  transform: rotateZ(-45deg)
+    translateY(calc(var(--bar-height) * var(--factor) * -1))
+    translateX(calc(var(--bar-height) * var(--factor)));
 }

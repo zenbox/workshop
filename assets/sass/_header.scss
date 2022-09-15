@@ -17,13 +17,6 @@
     min-width: 4rem;
     min-height: 4rem;
   }
-
-  // Temporär
-  // & bezieht sich auf das den vorausgehenden
-  // Ancestor-Selector, in diesem Fall ist das ".header"
-  & > * {
-    // border: 1px<  dotted black;
-  }
 }
 
 .header {
@@ -31,29 +24,32 @@
     & .hamburger {
       display: block;
     }
+    // Hier wird die Navigation positioniert und gestaltet,
+    // wenn sie als aufklappendes Menü von rechts reinkommen soll
     & .nav {
       display: block;
 
-      height: 0;
-      overflow: hidden;
-
       position: absolute;
-      right: -50vw;
-      z-index: 11;
+      // Wenn das Menü vollständig außerhalb des viewports stehen soll,
+      // dann muss left 100vw (oder mehr) sein
+      left: calc(100vw - 5rem);
 
+      width: 90vw;
+      min-height: calc(100vh - 6rem);
+
+      background-color: hsla(0, 0%, 100%, 0.85);
+
+      margin-top: 1rem;
       padding: 1rem;
-      box-shadow: -1rem 1rem 1rem hsla(0, 0%, 0%, 0.5);
-    }
 
-    & .hamburger:active + .nav,
-    & .nav:active,
-    & .nav:hover {
-      transition: right ease-in-out 1000ms;
-      height: 50vh;
-      width: 50vw;
-      position: absolute;
-      right: 0;
-      background: white;
+      box-shadow: 0 0 0 hsla(0, 0%, 0%, 0);
+      transition-property: left box-shadow;
+      transition-duration: 150ms;
+      transition-timing-function: ease-in-out;
+    }
+    & .hamburger.active + .nav {
+      left: calc(100vw - 20rem);
+      box-shadow: -1rem 1rem 1rem hsla(0, 0%, 0%, 0.5);
     }
   }
   @media screen and(min-width: 600px) {

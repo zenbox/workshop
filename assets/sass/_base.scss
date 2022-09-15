@@ -10,6 +10,9 @@ html * {
 body {
   // RESET
   margin: 0;
+  
+  width: 100vw;
+  min-height: 100vh;
 
   & > * {
     padding: 1rem;

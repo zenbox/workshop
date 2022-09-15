@@ -7,6 +7,8 @@ html * {
 
 body {
   margin: 0;
+  width: 100vw;
+  min-height: 100vh;
 }
 body > * {
   padding: 1rem;
@@ -162,27 +164,28 @@ p {
   min-width: 4rem;
   min-height: 4rem;
 }
+
 @media screen and (max-width: 599px) {
   .header .hamburger {
     display: block;
   }
   .header .nav {
     display: block;
-    height: 0;
-    overflow: hidden;
     position: absolute;
-    right: -50vw;
-    z-index: 11;
+    left: calc(100vw - 5rem);
+    width: 90vw;
+    min-height: calc(100vh - 6rem);
+    background-color: hsla(0deg, 0%, 100%, 0.85);
+    margin-top: 1rem;
     padding: 1rem;
-    box-shadow: -1rem 1rem 1rem hsla(0deg, 0%, 0%, 0.5);
+    box-shadow: 0 0 0 hsla(0deg, 0%, 0%, 0);
+    transition-property: left box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
   }
-  .header .hamburger:active + .nav, .header .nav:active, .header .nav:hover {
-    transition: right ease-in-out 1000ms;
-    height: 50vh;
-    width: 50vw;
-    position: absolute;
-    right: 0;
-    background: white;
+  .header .hamburger.active + .nav {
+    left: calc(100vw - 20rem);
+    box-shadow: -1rem 1rem 1rem hsla(0deg, 0%, 0%, 0.5);
   }
 }
 @media screen and (min-width: 600px) {
@@ -229,8 +232,10 @@ p {
 /** HAMBURGER MENU */
 :root {
   --bar-height: 0.5rem;
-  --bar-distance: calc(var(--bar-height)/2);
-  --hamburger-height: calc(calc(var(--bar-height)*3) + calc(var(--bar-distance)*2));
+  --bar-distance: calc(var(--bar-height) / 2);
+  --hamburger-height: calc(
+    calc(var(--bar-height) * 3) + calc(var(--bar-distance) * 2)
+  );
   --hamburger-width: var(--hamburger-height);
   --factor: 1.05;
   --default-bar-color: hsla(0, 0%, 0%, 0.85);
@@ -273,15 +278,15 @@ p {
   transition-timing-function: ease-in-out;
 }
 
-.hamburger:hover .hamburger-bar:nth-child(1) {
+.hamburger.active .hamburger-bar:nth-child(1) {
   transform: rotateZ(45deg) translateY(calc(var(--bar-height) * var(--factor))) translateX(calc(var(--bar-height) * var(--factor)));
 }
 
-.hamburger:hover .hamburger-bar:nth-child(2) {
+.hamburger.active .hamburger-bar:nth-child(2) {
   opacity: 0;
 }
 
-.hamburger:hover .hamburger-bar:nth-child(3) {
+.hamburger.active .hamburger-bar:nth-child(3) {
   transform: rotateZ(-45deg) translateY(calc(var(--bar-height) * var(--factor) * -1)) translateX(calc(var(--bar-height) * var(--factor)));
 }
 
@@ -307,8 +312,4 @@ body {
 
 main {
   background: radial-gradient(circle at 10vw 10vh, transparent 0%, hsla(0deg, 0%, 0%, 0.05));
-}
-
-img {
-  filter: grayscale(0.85);
 }
