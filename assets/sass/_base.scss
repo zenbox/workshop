@@ -7,14 +7,17 @@ html * {
   box-sizing: border-box;
 }
 
+html,
 body {
   // RESET
   margin: 0;
-  
-  width: 100vw;
-  min-height: 100vh;
 
-  & > * {
-    padding: 1rem;
-  }
+  width: 100vw;
+  max-width: 100vw;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+body > * {
+  padding: 1rem;
 }
