@@ -1,5 +1,28 @@
 {
-  "dependencies": {
+  "name": "webapp",
+  "description": "**Herzlich willkommen zu den nodejs Grundlagen.**",
+  "version": "1.0.0",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenbox/workshop.git"
+  },
+  "author": "Michael Reichart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zenbox/workshop/issues"
+  },
+  "homepage": "https://github.com/zenbox/workshop#readme",
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
