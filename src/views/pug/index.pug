@@ -1,0 +1,13 @@
+doctype html
+html(lang="de-DE", class="dark")
+- title="Lorem titulum ipsum"
+
+    include includes/head.pug
+
+    body
+  
+        h1 #{title}
+        p Lorem ipsum dolor sit amet consectetur adipisicing elit. A atque eum sit.
+  
+        each entry in data
+            p= entry
