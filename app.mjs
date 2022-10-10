@@ -27,9 +27,10 @@ app.use(express.static(path.resolve("./static")));
 
 // Template engine(s)
 app.set("view engine", "pug");
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 
 app.set("views", path.resolve("./src/views/pug"));
+// app.set("views", path.resolve("./src/views/ejs"));
 
 // Dynamic routes
 app.get("/", indexRoute);
