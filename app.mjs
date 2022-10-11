@@ -11,67 +11,74 @@
  */
 // ES module type (recommended)
 // - - - - - - - - - -
-import path from "path";
-import http from "http";
+import path from "path"
+import http from "http"
 // - - - - - - - - - -
-import express from "express";
-import { Server } from "socket.io";
-import connectLiveReload from "connect-livereload";
-import liveReload from "livereload";
+import express from "express"
+import { Server } from "socket.io"
+import connectLiveReload from "connect-livereload"
+import liveReload from "livereload"
 // - - - - - - - - - -
-import indexRoute from "./src/routes/indexRoute.mjs";
+import indexRoute from "./src/routes/indexRoute.mjs"
 
-const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
-const host = "http://localhost";
-const port = 3000;
+const app = express()
+const server = http.createServer(app)
+const io = new Server(server)
+const host = "http://localhost"
+const port = 3000
 
 // - - - - - - - - - -
 // Live reload configuration
-const liveReloadServer = liveReload.createServer();
+const liveReloadServer = liveReload.createServer()
 liveReloadServer.server.once("connection", () => {
-  setTimeout(() => {
-    liveReloadServer.refresh("/");
-  }),
-    100;
-});
+    setTimeout(() => {
+        liveReloadServer.refresh("/")
+    }),
+        100
+})
 // - - - - - - - - - -
 app.use(
-  connectLiveReload({
-    port: 35729,
-  })
-);
+    connectLiveReload({
+        port: 35729,
+    })
+)
 // - - - - - - - - - -
 
 // Webservice Configuration
 // Static routes
-app.use(express.static(path.resolve("./static")));
+app.use(express.static(path.resolve("./static")))
 
 // Template engine(s)
-app.set("view engine", "pug");
+app.set("view engine", "pug")
 // app.set("view engine", "ejs");
 
-app.set("views", path.resolve("./src/views/pug"));
+app.set("views", path.resolve("./src/views/pug"))
 // app.set("views", path.resolve("./src/views/ejs"));
 
 // Dynamic routes
-app.get("/", indexRoute);
+app.get("/", indexRoute)
 // app.get("/page", pageRoute);
 // app.get("/rest", restRoute);
 
+let user = {}
+
 // Socket service
 io.on("connect", (socket) => {
-  // A socket connection persists!
+    // A socket connection persists!
 
-  io.emit("broadcastMessage", "Hello Client, you got your socket connection.");
+    user[socket.id] = "my name"
 
-  socket.on("clientMessage", (data) => {
-    console.log(data);
-  });
-});
+    io.emit("broadcastMessage", "Hello Client, you got your socket connection.")
+    console.log(user)
+
+    socket.emit("clientMessage", "Hello Client!")
+
+    socket.on("clientMessage", (data) => {
+        console.log(data)
+    })
+})
 
 // Both services:
 server.listen(port, () => {
-  console.log(`Webservice and socket proxy run on port ${port}`);
-});
+    console.log(`Webservice and socket proxy run on port ${port}`)
+})
