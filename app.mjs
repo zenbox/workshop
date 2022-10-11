@@ -12,14 +12,37 @@
 // ES module type (recommended)
 // - - - - - - - - - -
 import path from "path";
+import http from "http";
 // - - - - - - - - - -
 import express from "express";
+import { Server } from "socket.io";
+import connectLiveReload from "connect-livereload";
+import liveReload from "livereload";
 // - - - - - - - - - -
 import indexRoute from "./src/routes/indexRoute.mjs";
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 const host = "http://localhost";
 const port = 3000;
+
+// - - - - - - - - - -
+// Live reload configuration
+const liveReloadServer = liveReload.createServer();
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }),
+    100;
+});
+// - - - - - - - - - -
+app.use(
+  connectLiveReload({
+    port: 35729,
+  })
+);
+// - - - - - - - - - -
 
 // Webservice Configuration
 // Static routes
@@ -37,6 +60,18 @@ app.get("/", indexRoute);
 // app.get("/page", pageRoute);
 // app.get("/rest", restRoute);
 
-app.listen(port, () => {
-  console.log(`Webservice runs on port ${port}`);
+// Socket service
+io.on("connect", (socket) => {
+  // A socket connection persists!
+
+  io.emit("broadcastMessage", "Hello Client, you got your socket connection.");
+
+  socket.on("clientMessage", (data) => {
+    console.log(data);
+  });
+});
+
+// Both services:
+server.listen(port, () => {
+  console.log(`Webservice and socket proxy run on port ${port}`);
 });
