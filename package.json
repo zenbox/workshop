@@ -1,16 +1,21 @@
 {
   "name": "webapp",
-  "description": "**Herzlich willkommen zu den nodejs Grundlagen.**",
+  "description": "Herzlich willkommen zu den nodejs Grundlagen.",
   "version": "1.0.0",
   "main": "app.js",
   "directories": {
     "doc": "docs"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "jest": "^29.1.2",
+    "jest-puppeteer": "^6.1.1",
+    "nodemon": "^2.0.20",
+    "puppeteer": "^18.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node app.mjs",
+    "dev": "nodemon app.mjs"
   },
   "repository": {
     "type": "git",

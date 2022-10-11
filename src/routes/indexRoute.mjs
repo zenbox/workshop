@@ -19,8 +19,8 @@ import IndexController from "./../controller/IndexController.class.mjs";
 const router = express.Router();
 
 // Routes under / (root)
-let indexRoutes = ["/", "/page"],
-  indexController = new IndexController();
+const indexRoutes = ["/", "/page"];
+const indexController = new IndexController();
 
 indexRoutes.forEach((route) => {
   router.get(route, (request, response, next) => {

@@ -2,12 +2,21 @@ export default class IndexController {
   constructor() {}
 
   getPage(request, response, next) {
-    let view = "indexView",
-      data = ["one", "two", "three"];
+    try {
+      // - - - - - - - - -
+      let view = "indexView",
+        data = ["one", "two", "three"];
 
-    response.status(200).render(view, { data: data });
+      console.log(request.url);
 
-    return true;
+      response.status(200).render(view, { data: data });
+      // - - - - - - - - -
+      return true;
+    } catch (error) {
+      // - - - - - - - - -
+      console.log(error);
+      // - - - - - - - - -
+      return false;
+    }
   }
 }
-
