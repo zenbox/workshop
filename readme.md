@@ -57,7 +57,7 @@ Sie können mich unter michael.reichart@gfu.net per Email erreichen.
 ## SQL Dump via nodejs
 
 ```javascript
-let db = mysql.createConnection(mysqlConfig),
+let db = mysql.createConnection(  ),
   sql = null;
 
 db.on("error", function (error) {
