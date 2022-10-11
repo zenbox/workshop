@@ -54,19 +54,6 @@ Sie können mich unter michael.reichart@gfu.net per Email erreichen.
 - Datenbankanbindung mit mySQL oder MongoDb
 - Grundlagen einer ReST-API
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## SQL Dump via nodejs
 
 ```javascript
@@ -338,3 +325,7 @@ db.end();
   </body>
 </html>
 ```
+
+## Lesezeichen
+
+- [Douglas Crockford](https://www.jslint.com/)
