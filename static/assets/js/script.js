@@ -10,22 +10,32 @@
  * @copyright (c) 2022 Michael Reichart, Cologne
  */
 
-const socket = io();
+const socket = io()
 
 // Socket events
 socket.on("connect", (id) => {
-  console.log(socket.id);
-});
+    console.log(socket.id)
+})
 socket.on("disconnect", () => {
-  console.log("disconnected.");
-});
+    console.log("disconnected.")
+})
 socket.on("ping", (d) => {
-  console.log("ping ...");
-});
+    console.log("ping ...")
+})
 // other events: error, reconnect_attempt, reconnect_failed, reconnect_error
 
 socket.on("broadcastMessage", (data) => {
-  console.log(data);
+    console.log(data)
 
-  socket.emit("clientMessage", "Hello Server, nice to meet you.");
-});
+    socket.emit("clientMessage", "Hello Server, nice to meet you.")
+})
+
+socket.on("clientMessage", (data) => {
+    console.log(data)
+    socket.emit("clientMessage", "Hello Server, nice to meet you.")
+})
+
+const o = {
+    "key": "value",
+    "key-2": "value 2",
+}
