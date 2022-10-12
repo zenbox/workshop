@@ -72,18 +72,15 @@ export default class SheepsController {
         const db = mysql.createConnection(dbConfig)
         db.connect()
 
-        db.query(
-            `DELETE * FROM sheeps WHERE id = ${id};`,
-            (error, resultset) => {
-                if (error) throw response.status(404).render(errorView404)
+        db.query(`DELETE FROM sheeps WHERE id = ${id};`, (error, resultset) => {
+            if (error) throw response.status(404).render("error404View")
 
-                response.status(200).json({ reload: true })
+            response.status(200).json({ reload: true })
 
-                // db end
-                db.end()
-                return true
-            }
-        )
+            // db end
+            db.end()
+            return true
+        })
         // db.end()
         return false
     }

@@ -39,10 +39,10 @@ app.set("views", path.resolve("./src/views/pug"))
 // app.set("views", path.resolve("./src/views/ejs"));
 
 // Dynamic routes
-app.get("/", indexRoute)
-app.get("/sheeps", sheepsRoute)
-app.get("/sheeps/:id?", sheepsRoute)
-app.delete("/sheeps/delete/:id?", sheepsRoute)
+app.use("/", indexRoute)
+app.use("/sheeps", sheepsRoute)
+// app.get("/sheeps/:id?", sheepsRoute)
+// app.delete("/sheeps/delete/:id?", sheepsRoute)
 
 let user = {}
 

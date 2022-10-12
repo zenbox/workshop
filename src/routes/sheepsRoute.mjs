@@ -36,15 +36,15 @@ router.use((request, response, next) => {
 // TODO Route stimmt nicht! sheeps/ sollte eigentlich obsolet sein.
 const controller = new SheepsController()
 
-router.get("/sheeps", (request, response, next) => {
+router.get("/", (request, response, next) => {
     controller.selectAllSheeps(request, response, next)
 })
 
-router.get("/sheeps/:id?", (request, response, next) => {
+router.get("/:id?", (request, response, next) => {
     controller.selectSheep(request, response, next)
 })
 
-router.delete("/sheeps/delete/:id?", (request, response, next) => {
+router.delete("/delete/:id?", (request, response, next) => {
     controller.deleteSheep(request, response, next)
 })
 
