@@ -35,7 +35,33 @@ socket.on("clientMessage", (data) => {
     socket.emit("clientMessage", "Hello Server, nice to meet you.")
 })
 
-const o = {
-    "key": "value",
-    "key-2": "value 2",
+// Ui for sheeps
+// Catch buttons
+let buttons = document.querySelectorAll("button")
+
+async function onDeleteSheep(event) {
+    event.preventDefault()
+
+    let id = event.target.parentNode.dataset.id
+
+    let response = await fetch(`/sheeps/delete/${id}`, {
+        method: "DELETE",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    })
+
+    if (!response.ok) {
+    }
+
+    // ok ....
+    let data = await response.json()
+    if (data.reload === true) window.location.reload(true)
 }
+
+buttons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+        onDeleteSheep(event)
+    })
+})
