@@ -15,34 +15,17 @@ import path from "path"
 import http from "http"
 // - - - - - - - - - -
 import express from "express"
+
 import { Server } from "socket.io"
-import connectLiveReload from "connect-livereload"
-import liveReload from "livereload"
 // - - - - - - - - - -
 import indexRoute from "./src/routes/indexRoute.mjs"
+import sheepsRoute from "./src/routes/sheepsRoute.mjs"
 
 const app = express()
 const server = http.createServer(app)
 const io = new Server(server)
 const host = "http://localhost"
-const port = 3000
-
-// - - - - - - - - - -
-// Live reload configuration
-const liveReloadServer = liveReload.createServer()
-liveReloadServer.server.once("connection", () => {
-    setTimeout(() => {
-        liveReloadServer.refresh("/")
-    }),
-        100
-})
-// - - - - - - - - - -
-app.use(
-    connectLiveReload({
-        port: 35729,
-    })
-)
-// - - - - - - - - - -
+const port = 3001
 
 // Webservice Configuration
 // Static routes
@@ -57,8 +40,9 @@ app.set("views", path.resolve("./src/views/pug"))
 
 // Dynamic routes
 app.get("/", indexRoute)
-// app.get("/page", pageRoute);
-// app.get("/rest", restRoute);
+app.get("/sheeps", sheepsRoute)
+app.get("/sheeps/:id?", sheepsRoute)
+app.delete("/sheeps/delete/:id?", sheepsRoute)
 
 let user = {}
 
@@ -79,6 +63,8 @@ io.on("connect", (socket) => {
 })
 
 // Both services:
-server.listen(port, () => {
+server.listen(port, (error) => {
+    if (error) throw error
+
     console.log(`Webservice and socket proxy run on port ${port}`)
 })
