@@ -1,13 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accessibility</title>
-</head>
-<body>
-    <h1>Accessibility Examples</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi consequatur quod illum!</p>
-</body>
+<html lang="de-DE">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+        />
+        <title>Accessibility</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css"
+        />
+    </head>
+    <body>
+        <main class="normal-vision">
+            <h1>Accessibility Examples</h1>
+            <section id="color">
+                <h2>Color</h2>
+                <div class="color primary">primary</div>
+                <div class="color secondary">secondary</div>
+            </section>
+        </main>
+        <aside id="simulation">
+            <button>switch vision desease</button>
+            <p>Simulating normal-vision ...</p>
+        </aside>
+
+        <script>
+            let index = 0
+            const trigger = document.querySelector("#simulation button")
+            const description = document.querySelector("#simulation p")
+            const context = document.querySelector("main")
+            const deseases = [
+                "blurred-vision",
+                "achromatopsia",
+                "deuteranopia",
+                "protanopia",
+                "tritanopia",
+                "normal-vision",
+            ]
+            trigger.addEventListener("click", (event) => {
+                console.log(index)
+                context.classList.remove(...context.classList)
+                context.classList.add(deseases[index])
+                description.innerText = `Simulating ${deseases[index++]} ...`
+                if (index >= deseases.length) index = 0
+            })
+        </script>
+    </body>
 </html>

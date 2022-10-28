@@ -2,7 +2,7 @@
 
 **Herzlich willkommen**
 
-Mein Name ist Michael Reichart, wir erarbeiten in den nächsten zwei Tagen die Grundlagen zur Entwicklung barrierefreier Webinterfaces.
+Mein Name ist Michael Reichart, wir erarbeiten in den nächsten zwei Tagen die Grundlagen des Designs barrierefreier Webinterfaces.
 
 Die Workshop-Ergebnisse finden Sie unter `https://github.com/zenbox/workshop`.
 
@@ -79,4 +79,6 @@ michael.reichart@gfu.net
 -   [Web Disability Simulator](https://chrome.google.com/webstore/detail/web-disability-simulator/olioanlbgbpmdlgjnnampnnlohigkjla?hl=de)
 -   [WCAG Color Contrast Checker](https://chrome.google.com/webstore/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf?hl=de)
 -   [EqualWeb Accessibility Checker](https://chrome.google.com/webstore/detail/equalweb-accessibility-ch/imemciokfejbnonkkinhcdfigdilcllg?hl=de)
--   [Exclusive Design](https://exclusive-design.vasilis.nl/fuckups-mama/)
+-   [Exclusive Design](https://exclusive-design.vasilis.nl/fuckups-mama/) -[https://color.review/](https://color.review/)
+-   [Lets get colorblind](https://chrome.google.com/webstore/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck)
+-   [Adobe Color + Accessibility](https://color.adobe.com/de/create/color-accessibility)
