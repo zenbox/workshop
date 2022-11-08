@@ -1,8 +1,8 @@
-# Accessibility Workshop für Design und Konzeption
+# Accessibility Workshop für Web-Entwickler
 
 **Herzlich willkommen**
 
-Mein Name ist Michael Reichart, wir erarbeiten in den nächsten zwei Tagen die Grundlagen des Designs barrierefreier Webinterfaces.
+Mein Name ist Michael Reichart, wir erarbeiten in den nächsten zwei Tagen die Grundlagen in der Umsetzung barrierefreier Webinterfaces.
 
 Die Workshop-Ergebnisse finden Sie unter `https://github.com/zenbox/workshop`.
 
@@ -38,6 +38,11 @@ michael.reichart@gfu.net
 -   Eine Seite nur über die Tastatur steuern?
 -   Tabulator-Steuerung
 -   Cursor-Tasten-Seuerung
+
+### WAI-ARIA
+
+-   roles - die Semantik unterstützen
+-   aria-attributes - (im Wesentlichen) Screenreader besser unterstützen
 
 ### Medieneinbindung und Abbildungen
 
