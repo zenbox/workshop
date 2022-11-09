@@ -11,15 +11,20 @@
             content="width=device-width, initial-scale=1.0"
         />
         <title>Barrierefreies Template</title>
+
+        <link rel="stylesheet" href="assets/css/accessibility.css">
+
+
     </head>
     <body>
-        <a href="#header">Zum Seiten-Kopf-Bereich</a>
-        <a href="#search">Zum Seiten-Suche</a>
-        <a href="#teaser">Zum Leitartikel</a>
+        <a class="sr-only" href="#header">Zum Seiten-Kopf-Bereich</a>
+        <a class="sr-only" href="#search">Zum Seiten-Suche</a>
+        <a class="sr-only" href="#teaser">Zum Leitartikel</a>
 
-        <header
+        <div
+            role="banner"
             id="header"
-            aria-describedby="#logo"
+            aria-labelledby="#logo"
         >
             <img
                 src="assets/figures/logo.jpg"
@@ -43,13 +48,31 @@
                     <button type="submit">Suchen</button>
                 </fieldset>
             </form>
-        </header>
+        </div>
 
-        <nav></nav>
+        <nav>
+            <ul>
+                <li><a href="http://">zur Seite 1</a></li>
+                <li><a href="http://">zur Seite 2</a></li>
+                <li><a href="http://">zur Seite 3</a></li>
+                <li><a href="http://">zur Seite 4</a></li>
+            </ul>
+        </nav>
+<!-- {# 
+        <script>
+            console.dir(document.querySelector("nav ul"))
+        </script> #} -->
+
+        <ul role="navigation">
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
 
         <main>
             <section id="news">
-                <article
+                <div
+                    role="header"
                     id="teaser"
                     aria-describedby="teaser-desc"
                 >
@@ -57,7 +80,7 @@
                         id="teaser-desc"
                         class="sr-only"
                     >
-                        Textbeschreibung beim Erreichen des Leitartikels
+                        Du bist jetzt beim Leitartikel.
                     </p>
                     <header>
                         <img
@@ -70,7 +93,7 @@
                         Lorem neu ipsum dolor sit amet consectetur adipisicing
                         elit.
                     </p>
-                </article>
+                </div>
             </section>
         </main>
         <aside></aside>
