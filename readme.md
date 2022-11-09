@@ -87,3 +87,8 @@ michael.reichart@gfu.net
 -   [Exclusive Design](https://exclusive-design.vasilis.nl/fuckups-mama/) -[https://color.review/](https://color.review/)
 -   [Lets get colorblind](https://chrome.google.com/webstore/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck)
 -   [Adobe Color + Accessibility](https://color.adobe.com/de/create/color-accessibility)
+-   [SkipTo Landmarks & Headings](https://chrome.google.com/webstore/detail/skipto-landmarks-headings/fjkpbfcodhflpdildjbmdhhmcoplghgf)
+
+## Links zur Barrierefreiheit
+
+-   [Gestaltung für Screenreader-Kompatibilität](https://immocado.com/barrierefrei/designing-screen-reader-compatibility/)
