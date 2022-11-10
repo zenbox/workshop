@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="font-size-1 high-contrast">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -41,6 +41,15 @@
             id="header"
             aria-labelledby="#logo"
         >
+
+
+            <nav>
+                <ul>
+                    <li><a href="">Schriftgröße ändern</a></li>
+                    <li><a href="">Kontrast ändern</a></li>
+                </ul>
+            </nav>
+
             <img
                 src="assets/figures/icons/mdi-basket.svg"
                 alt="Grafik: Logo der Firma, ein Warenkorb in Form einer geflochten Korbes ..."
@@ -51,8 +60,10 @@
             <form
                 id="search"
                 action=""
-                aria-label="Suchen"
+                aria-label="Suche über der Seite"
                 role="search"
+                
+                tabindex="1"
             >
                 <fieldset>
                     <legend>Suchen</legend>
@@ -61,8 +72,25 @@
                         type="search"
                         name=""
                         id="searchfield"
+                        tabindex="1"
                     />
-                    <button type="submit">Suchen</button>
+                    <label for="list">Auswahlliste</label>
+                    <select
+                        tabindex="1"
+                        name=""
+                        id="list"
+                    >
+                        <option value="" aria-checked="true" "keine Auswahl">keine Auswahl</option>
+                        <option value="one">Eins</option>
+                        <option value="two">Zwei</option>
+                        <option value="three">Drei</option>
+                    </select>
+                    <button
+                        tabindex="1"
+                        type="submit"
+                    >
+                        Suchen
+                    </button>
                 </fieldset>
             </form>
         </div>
@@ -76,12 +104,92 @@
             </ul>
         </nav>
 
-        <script>
-            console.dir(document.activeElement)
-        </script>
-
         <main>
-            <section id="news">
+            <section id="example">
+                <nav aria-label="Mythical University" aria-live="off">
+  <ul id="exTest" class="disclosure-nav">
+    <li>
+      <button type="button" aria-expanded="true" aria-controls="id_about_menu">About</button>
+      <ul id="id_about_menu">
+        <li>
+          <a href="#mythical-page-content">Overview</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Administration</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Facts</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Campus Tours</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button type="button" aria-expanded="true" aria-controls="id_admissions_menu">Admissions</button>
+      <ul id="id_admissions_menu">
+        <li>
+          <a href="#mythical-page-content">Apply</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Tuition</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Sign Up</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Visit</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Photo Tour</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Connect</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <button type="button" aria-expanded="true" aria-controls="id_academics_menu">Academics</button>
+      <ul id="id_academics_menu">
+        <li>
+          <a href="#mythical-page-content">Colleges &amp; Schools</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Programs of Study</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Honors Programs</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Online Courses</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Course Explorer</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Register for Class</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Academic Calendar</a>
+        </li>
+        <li>
+          <a href="#mythical-page-content">Transcripts</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<div id="mythical-page-content" class="disclosure-page-content" tabindex="-1" role="region" aria-label="Mythical University sample page content">
+  <h3 id="mythical-page-heading">Mythical University</h3>
+  <p>Sample content section. Activating a link above will update and navigate to this region.</p>
+</div>
+    
+            </section>
+            <section
+                id="news"
+                tabindex="0"
+                aria-label="Der Bereich Neuigkeiten."
+            >
                 <div
                     role="header"
                     id="teaser"
@@ -97,7 +205,7 @@
                         <img
                             src="assets/figures/52-1280x853.jpg"
                             alt=""
-                            style="height: 20vh;"
+                            style="height: 20vh"
                         />
                     </header>
                     <h1>Barrierefreies Layout</h1>
