@@ -6,9 +6,13 @@
     })
 
     function onkeyup(event) {
+        console.log(document.activeElement)
         console.log(event.keyCode)
         console.log(event.target.closest("form"))
     }
+
+    // - - - - - - - - - -
+    // Flying Focus
     // - - - - - - - - - -
     var DURATION = 150
 
