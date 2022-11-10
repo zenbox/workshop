@@ -1,38 +1,137 @@
-* {
-  box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --primary: #1b882d;
+  --secondary: hsla(178, 91%, 37%, 1);
+  --tertiary: hsla(287, 91%, 32%, 1);
+  --success: green;
+  --warning: yellow;
+  --error: red;
+  --info: lightblue;
+  --bright: hsla(0, 0%, 100%, 1);
+  --dark: hsla(0, 0%, 0%, 0.85);
 }
 
-*:focus-visible {
-  outline: 2px dashed hsla(0deg, 100%, 50%, 0.25);
+.color {
+  display: inline-block;
+  width: 50ch;
+  height: 20ch;
+  border: 1px solid gray;
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--bright);
+}
+
+.secondary {
+  background-color: var(--secondary);
+  color: var(--bright);
+}
+
+.tertiary {
+  background-color: var(--tertiary);
+  color: var(--bright);
+}
+
+.success {
+  background-color: var(--success);
+  color: var(--bright);
+}
+
+.warning {
+  background-color: var(--warning);
+  color: var(--dark);
+}
+
+.error {
+  background-color: var(--error);
+  color: var(--bright);
+}
+
+.info {
+  background-color: var(--info);
+  color: var(--dark);
+}
+
+html {
+  background-color: white;
+  color: black;
+}
+
+html {
+  font-family: Barlow, sans-serif;
+  font-size: 16px;
+  line-height: 1.4;
+}
+html p {
+  column-width: 60ch;
+}
+@media (max-width: 599px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (min-width: 600px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (min-width: 905px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1240px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (min-width: 1440px) {
+  html {
+    font-size: 19px;
+  }
 }
 
 .sr-only {
+  background-color: red;
+  display: block;
   position: absolute;
-  right: 0;
+  left: -10000px;
   bottom: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  #flying-focus {
-    box-shadow: none;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -3px;
-  }
-}
-#flying-focus {
+.sr-only:focus-visible {
+  display: block;
   position: absolute;
-  margin: 0;
-  background: transparent;
-  -webkit-transition-property: left, top, width, height, opacity;
-  transition-property: left, top, width, height, opacity;
-  -webkit-transition-timing-function: cubic-bezier(0, 0.2, 0, 1);
-  transition-timing-function: cubic-bezier(0, 0.2, 0, 1);
-  visibility: hidden;
-  pointer-events: none;
-  box-shadow: 0 0 2px 3px #78aeda, 0 0 2px #78aeda inset;
-  border-radius: 2px;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  text-align: center;
+  padding-top: 50vh;
+  font-size: 4rem;
 }
 
-main {
-  height: 100vh;
+.blurred-vision {
+  filter: blur(2px);
+}
+
+.achromatopsia {
+  filter: url('data:image/svg+xml,      <svg xmlns="http://www.w3.org/2000/svg">        <filter id="achromatopsia">          <feColorMatrix values="0.213  0.715  0.072  0.000  0.000                                 0.213  0.715  0.072  0.000  0.000                                 0.213  0.715  0.072  0.000  0.000                                 0.000  0.000  0.000  1.000  0.000" />        </filter>      </svg>#achromatopsia');
+}
+
+.deuteranopia {
+  filter: url('data:image/svg+xml,      <svg xmlns="http://www.w3.org/2000/svg">        <filter id="deuteranopia">          <feColorMatrix values="0.367  0.861 -0.228  0.000  0.000                                 0.280  0.673  0.047  0.000  0.000                                -0.012  0.043  0.969  0.000  0.000                                 0.000  0.000  0.000  1.000  0.000" />        </filter>      </svg>#deuteranopia');
+}
+
+.protanopia {
+  filter: url('data:image/svg+xml,      <svg xmlns="http://www.w3.org/2000/svg">        <filter id="protanopia">        <feColorMatrix values="0.152  1.053 -0.205  0.000  0.000                               0.115  0.786  0.099  0.000  0.000                              -0.004 -0.048  1.052  0.000  0.000                               0.000  0.000  0.000  1.000  0.000" />        </filter>      </svg>#protanopia');
+}
+
+.tritanopia {
+  filter: url('data:image/svg+xml,      <svg xmlns="http://www.w3.org/2000/svg">        <filter id="tritanopia">        <feColorMatrix values="1.256 -0.077 -0.179  0.000  0.000                              -0.078  0.931  0.148  0.000  0.000                               0.005  0.691  0.304  0.000  0.000                               0.000  0.000  0.000  1.000  0.000" />        </filter>      </svg>#tritanopia');
 }

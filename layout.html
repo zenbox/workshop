@@ -12,14 +12,29 @@
         />
         <title>Barrierefreies Template</title>
 
-        <link rel="stylesheet" href="assets/css/accessibility.css">
-
-
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css"
+        />
     </head>
     <body>
-        <a class="sr-only" href="#header">Zum Seiten-Kopf-Bereich</a>
-        <a class="sr-only" href="#search">Zum Seiten-Suche</a>
-        <a class="sr-only" href="#teaser">Zum Leitartikel</a>
+        <a
+            class="sr-only"
+            href="#header"
+            title=""
+            aria-label=""
+            >Zum Seiten-Kopf-Bereich</a
+        >
+        <a
+            class="sr-only"
+            href="#search"
+            >Zum Seiten-Suche</a
+        >
+        <a
+            class="sr-only"
+            href="#teaser"
+            >Zum Leitartikel</a
+        >
 
         <div
             role="banner"
@@ -36,6 +51,7 @@
                 id="search"
                 action=""
                 aria-label="Suchen"
+                role="search"
             >
                 <fieldset>
                     <legend>Suchen</legend>
@@ -58,16 +74,10 @@
                 <li><a href="http://">zur Seite 4</a></li>
             </ul>
         </nav>
-<!-- {# 
-        <script>
-            console.dir(document.querySelector("nav ul"))
-        </script> #} -->
 
-        <ul role="navigation">
-            <li></li>
-            <li></li>
-            <li></li>
-        </ul>
+        <script>
+            console.dir(document.activeElement)
+        </script>
 
         <main>
             <section id="news">
@@ -91,12 +101,55 @@
                     <h1>Barrierefreies Layout</h1>
                     <p>
                         Lorem neu ipsum dolor sit amet consectetur adipisicing
-                        elit.
+                        elit. Lorem ipsum dolor, sit amet consectetur
+                        adipisicing elit. Ratione hic, natus eaque at, sed
+                        magnam perferendis error quas odio quibusdam a velit.
+                        Quibusdam dolorum deserunt quod maxime, ad consequatur
+                        natus magnam obcaecati sit sed eius, necessitatibus
+                        illum ratione repudiandae accusantium sunt libero
+                        perspiciatis voluptatum minus voluptate. Numquam
+                        reiciendis doloribus ullam porro quis facilis?
+                        Architecto repudiandae beatae consequuntur quae facilis
+                        totam sapiente quas dignissimos voluptatum nostrum sint
+                        consequatur asperiores ducimus veniam, sit iste deleniti
+                        voluptate dolorem, unde quidem. Sit, ea? At ipsam
+                        repudiandae natus, sit dolor temporibus illo repellendus
+                        tempore voluptatibus ratione pariatur aliquid ullam.
+                        Porro quasi harum minus labore ratione dolores
+                        voluptatibus, enim quos perspiciatis voluptatum eos
+                        libero, sunt dignissimos, pariatur unde ut? Libero dolor
+                        sequi nostrum recusandae a, iusto quasi error optio
+                        rerum, itaque quas tempora dolores vero, tempore quis
+                        doloribus alias? Magni a rerum nobis sit laudantium eos
+                        illo error tenetur ad molestiae, modi aliquid harum amet
+                        architecto ab sint consequatur sed, voluptas accusamus
+                        repellat nesciunt impedit totam itaque quas. Rerum
+                        reiciendis laboriosam recusandae tenetur. Vitae delectus
+                        accusamus recusandae voluptates cum doloribus sit est,
+                        repudiandae molestias voluptatem unde sunt iure
+                        praesentium facere odit cumque iste corrupti quibusdam,
+                        et nemo vero alias! Cum perferendis ipsum obcaecati
+                        nobis autem quam delectus? Nobis exercitationem
+                        voluptate vitae excepturi, eum delectus ut! Doloremque
+                        ducimus modi repudiandae possimus mollitia sapiente nam
+                        labore eos quae officia assumenda, temporibus facilis
+                        voluptas aliquam asperiores beatae velit voluptatibus
+                        consequatur? Corporis consequuntur iusto qui officiis
+                        dolor eaque repudiandae maiores quod temporibus minima
+                        magnam tenetur, minus voluptate ipsam eos laudantium nam
+                        quos suscipit architecto est debitis. Eaque mollitia ex
+                        reprehenderit odio, at inventore tempora sapiente
+                        dignissimos commodi quos laborum vitae nemo a? Placeat,
+                        quis. Ullam dignissimos consequatur itaque sed
+                        aspernatur officiis quae nam blanditiis quibusdam odit
+                        possimus eveniet beatae enim doloribus optio officia
+                        quia assumenda repellendus iusto, voluptas laborum? Ut.
                     </p>
                 </div>
             </section>
         </main>
         <aside></aside>
         <footer></footer>
+        <script src="script.js"></script>
     </body>
 </html>

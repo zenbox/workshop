@@ -1,0 +1,170 @@
+// Colors
+:root {
+    --primary: #1b882d;
+    --secondary: hsla(178, 91%, 37%, 1);
+    --tertiary: hsla(287, 91%, 32%, 1);
+
+    --success: green;
+    --warning: yellow;
+    --error: red;
+    --info: lightblue;
+
+    --bright: hsla(0, 0%, 100%, 1);
+    --dark: hsla(0, 0%, 0%, 0.85);
+}
+
+.color {
+    display: inline-block;
+    width: 50ch;
+    height: 20ch;
+    border: 1px solid gray;
+}
+
+.primary {
+    background-color: var(--primary);
+    color: var(--bright);
+}
+.secondary {
+    background-color: var(--secondary);
+    color: var(--bright);
+}
+.tertiary {
+    background-color: var(--tertiary);
+    color: var(--bright);
+}
+.success {
+    background-color: var(--success);
+    color: var(--bright);
+}
+.warning {
+    background-color: var(--warning);
+    color: var(--dark);
+}
+.error {
+    background-color: var(--error);
+    color: var(--bright);
+}
+.info {
+    background-color: var(--info);
+    color: var(--dark);
+}
+
+// Base
+html {
+    background-color: white;
+    color: black;
+}
+
+// Typography
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+html {
+    font-family: Barlow, sans-serif;
+    font-size: 16px; // Basis für root em!
+    line-height: 1.4;
+
+    p {
+        column-width: 60ch;
+    }
+
+    // xtra small device (portrtait)
+    @media (max-width: 599px) {
+        font-size: 12px;
+    }
+
+    // small devices (landscape xtrasmall)
+    @media (min-width: 600px) {
+        font-size: 12px;
+    }
+
+    @media (min-width: 905px) {
+        font-size: 15px;
+    }
+    // Medium device (i.e. tablet)
+    @media (min-width: 1240px) {
+        font-size: 15px;
+    }
+    // Large (i.e. desktop)
+    @media (min-width: 1440px) {
+        font-size: 19px;
+    }
+}
+
+// Accessibility
+.sr-only {
+    background-color: red;
+
+    display: block;
+    position: absolute;
+    left: -10000px;
+    bottom: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.sr-only:focus-visible {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+
+    text-align: center;
+    padding-top: 50vh;
+    font-size: 4rem;
+}
+
+.blurred-vision {
+    filter: blur(2px);
+}
+
+.achromatopsia {
+    filter: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="achromatopsia">\
+          <feColorMatrix values="0.213  0.715  0.072  0.000  0.000\
+                                 0.213  0.715  0.072  0.000  0.000\
+                                 0.213  0.715  0.072  0.000  0.000\
+                                 0.000  0.000  0.000  1.000  0.000" />\
+        </filter>\
+      </svg>#achromatopsia');
+}
+
+.deuteranopia {
+    filter: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="deuteranopia">\
+          <feColorMatrix values="0.367  0.861 -0.228  0.000  0.000\
+                                 0.280  0.673  0.047  0.000  0.000\
+                                -0.012  0.043  0.969  0.000  0.000\
+                                 0.000  0.000  0.000  1.000  0.000" />\
+        </filter>\
+      </svg>#deuteranopia');
+}
+
+.protanopia {
+    filter: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="protanopia">\
+        <feColorMatrix values="0.152  1.053 -0.205  0.000  0.000\
+                               0.115  0.786  0.099  0.000  0.000\
+                              -0.004 -0.048  1.052  0.000  0.000\
+                               0.000  0.000  0.000  1.000  0.000" />\
+        </filter>\
+      </svg>#protanopia');
+}
+
+.tritanopia {
+    filter: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="tritanopia">\
+        <feColorMatrix values="1.256 -0.077 -0.179  0.000  0.000\
+                              -0.078  0.931  0.148  0.000  0.000\
+                               0.005  0.691  0.304  0.000  0.000\
+                               0.000  0.000  0.000  1.000  0.000" />\
+        </filter>\
+      </svg>#tritanopia');
+}

@@ -92,3 +92,4 @@ michael.reichart@gfu.net
 ## Links zur Barrierefreiheit
 
 -   [Gestaltung für Screenreader-Kompatibilität](https://immocado.com/barrierefrei/designing-screen-reader-compatibility/)
+-   [WAI Authoring Practise Guide](https://www.w3.org/WAI/ARIA/apg/)
