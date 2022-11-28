@@ -53,7 +53,38 @@ Für das Seminar sind folgende Pausenzeiten geplant:
 
 ## Code Snippets
 
-### Prettier config
+### .vscode/settings.json
+
+```json
+{
+    // LIVE SERVER
+    "liveServer.settings.port": 5502,
+
+    // LIVE SASS COMPILER
+    "liveSassCompile.settings.formats": [
+        {
+            "extensionName": ".css",
+            "format": "expanded",
+            "savePath": "/assets/css/"
+        }
+    ],
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.autoprefix": [],
+    "liveSassCompile.settings.excludeList": [
+        "**/node_modules/**",
+        ".vscode/**"
+    ],
+    "liveSassCompile.settings.includeItems": [],
+
+    // EDITOR
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true
+}
+```
+
+### .prettierrc
 
 ```json
 {
