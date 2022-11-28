@@ -9,12 +9,12 @@
 
 Die Kurstage gehen jeweils von
 
--   9:00 bis 16:00 Uhr.
+-   8:45 bis 15:45 Uhr.
 
 Für das Seminar sind folgende Pausenzeiten geplant:
 
 -   10:30 bis 10:45 Uhr
--   12:00 bis 13:00 Uhr
+-   12:15 bis 13:00 Uhr
 -   14:30 bis 14:45 Uhr
 -
 
