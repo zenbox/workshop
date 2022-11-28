@@ -1,95 +1,145 @@
-# Accessibility Workshop für Web-Entwickler
+# Willkommen zu Javascript mit Schwerpunkt nodejs
 
-**Herzlich willkommen**
+## Michael Reichart
+- michael.reichart@gfu.net
+- Auf LinkedIn unter Michael Reichart
 
-Mein Name ist Michael Reichart, wir erarbeiten in den nächsten zwei Tagen die Grundlagen in der Umsetzung barrierefreier Webinterfaces.
+## Zeiten
+Die Kurstage gehen jeweils von 
+- 9:00 bis 16:00 Uhr. 
 
-Die Workshop-Ergebnisse finden Sie unter `https://github.com/zenbox/workshop`.
-
-michael.reichart@gfu.net
-
-## Seminarzeiten
-
--   9:00 bis 16:00 Uhr
--   Mittagspause von 12:00 Uhr bis 13:00 Uhr
--   kleine Pausen etwa gegen 10:30 Uhr und gegen 14:30 Uhr.
-
+Für das Seminar sind folgende Pausenzeiten geplant:
+- 10:30 bis 10:45 Uhr
+- 12:00 bis 13:00 Uhr
+- 14:30 bis 14:45 Uhr
+- 
 ## Inhalte
+### JavaScript-Schulung mit Schwerpunkt auf NodeJS
+- Sprachgrundlagen
+- ES6+ Grundlagen, Sprachkern, Syntax und vieles mehr
+- Variablen, Konstanten, Datentypen, Arrays, Objekte
+- Kontrollstrukturen, Funktionen
+- Klassen, Vererbung
+ 
+### Nodejs Grundlagen
+- Was ist NodeJS? Wozu wird es verwendet?
+- NodeJS-Standardbibliothek und Open Source Module kennenlernen
+- Node Package Manager (NPM) verstehen und anwenden
+- Debugging, Konsole & Error Handling
+- Code in mehreren Modulen (Dateien) verwalten
+- ES Module Syntax (vs. Common JS Module)
+- JSON anhand von Beispielen verstehen und anwenden
+- EventEmitter verstehen und anwenden
+ 
+### Sonstiges
+- Kleine und mittelgroße Problemstellungen mit JavaScript lösen
+- Einführung in die SOLID-Design-Prinzipien
+- Asynchrones JavaScript, Promises und Callbacks verstehen und anwenden
+- APIs ansteuern
+- Moderne Fetch-API verwenden
+- Test Driven Development (TDD)
+- Einsatzzweck und die Vorteile von TDD verstehen
+- Ziele, Werte und Prinzipien von TDD verstehen
+- Unittest-Framework Jest verstehen und anwenden
+ 
 
-### Einführung in die Barrierefreiheit
 
--   Definition und Verständnis
--   Gesetze und Erwartungen
--   WCAG, BITV
+## Code Snippets
+### nodejs/JS Snippets
+```json
+{
+	"function documentation block": {
+		"prefix": "function comment",
+		"description": "print the function comment block",
+		"body": [
+			"/** $1",
+			" *",
+			" * @version v1.0.0",
+			" * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" * @callback namepath",
+			" * @param {type} desc",
+			" * @returns {void}",
+			" */",
+			"$2"
+		]
+	},
+	"page documention block": {
+		"prefix": "docblock",
+		"description": "print the page doc block",
+		"body": [
+			"/** $1",
+			"  *",
+			"  *  @desc $2",
+			"  *",
+			"  * @package Webapplication",
+			"  * @module $3",
+			"  * @author Evvi <evvi@coding-samurai.org>",
+			"  * @version v1.0.0",
+			"  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			"  * @see i.e. inspired by ... {link to}",
+			"  * @license MIT {https://opensource.org/licenses/MIT}",
+			"  * @copyright (c) $CURRENT_YEAR Agila, Hannover",
+			"  */",
+			"$4"
+		]
+	}
+}
+```
 
-### Entwicklungsumgebung
+### Socket.io Chat Styles
+```css
+        body {
+            margin: 0;
+            padding-bottom: 3rem;
+            font-family: sans-serif;
+        }
 
--   Chrome, Lighthouse
--   VS Code, SASS, ggf. Pug
+        #form {
+            background: rgba(0, 0, 0, 0.15);
+            padding: 0.25rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 3rem;
+            box-sizing: border-box;
+            backdrop-filter: blur(10px);
+        }
 
-### Semantik
+        #input {
+            border: none;
+            padding: 0 1rem;
+            flex-grow: 1;
+            border-radius: 2rem;
+            margin: 0.25rem;
+        }
 
--   Aufbau einer Webseite oder eines Webinterfacs
--   Auswirkungen auf assistive Systeme, z. B. Screenreader
--   Elemente für Menschen mit Beeinträchtigungen
+        #input:focus {
+            outline: none;
+        }
 
-### Tastatur-Steuerung
+        #form>button {
+            background: #333;
+            border: none;
+            padding: 0 1rem;
+            margin: 0.25rem;
+            border-radius: 3px;
+            outline: none;
+            color: #fff;
+        }
 
--   Eine Seite nur über die Tastatur steuern?
--   Tabulator-Steuerung
--   Cursor-Tasten-Seuerung
+        #messages {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
 
-### WAI-ARIA
+        #messages>li {
+            padding: 0.5rem 1rem;
+        }
 
--   roles - die Semantik unterstützen
--   aria-attributes - (im Wesentlichen) Screenreader besser unterstützen
-
-### Medieneinbindung und Abbildungen
-
--   Abbildungen und Text-Alternativen
--   Video, Audio, Untertitel und Transkriptionen
-
-### Skalierbarkeit
-
--   Adaptives Layout
--   Adaptiver Zoom
--   CSS für barrierefreie Typografie
-
-### Farbe und Kontrast
-
--   Fehlsichtigeiten
--   Simulation von Fehlsichtigkeit
--   Einrichten und Steuern von Farbe und Kontrast
--   Bewerten
-
-### Animationen
-
--   Dynamisches Verhalten bei Veränderungen
--   Wiederholbarkeit
--   Abschaltbarkeit
-
-### Barrierefreiheit nach BITV und WCAG testen
-
--   Chrome Lighthouse (Checklisten)
--   Chrome-Extensions
--   Simulationen
--   Screenreader
-
-## Chrome Extensions
-
--   [Chrome Screenreader](https://chrome.google.com/webstore/detail/screen-reader/kgejglhpjiefppelpmljglcjbhoiplfn/related?hl=de)
--   [Colour Contrast Checker](https://chrome.google.com/webstore/detail/colour-contrast-checker/nmmjeclfkgjdomacpcflgdkgpphpmnfe?hl=de)
--   [headingsmap](https://chrome.google.com/webstore/detail/headingsmap/flbjommegcjonpdmenkdiocclhjacmbi?hl=de)
--   [Accessibility View](https://chrome.google.com/webstore/detail/accessibility-view/ekpmnemcmjcimpnmofmiaeoggjkjohjg?hl=de)
--   [Web Disability Simulator](https://chrome.google.com/webstore/detail/web-disability-simulator/olioanlbgbpmdlgjnnampnnlohigkjla?hl=de)
--   [WCAG Color Contrast Checker](https://chrome.google.com/webstore/detail/wcag-color-contrast-check/plnahcmalebffmaghcpcmpaciebdhgdf?hl=de)
--   [EqualWeb Accessibility Checker](https://chrome.google.com/webstore/detail/equalweb-accessibility-ch/imemciokfejbnonkkinhcdfigdilcllg?hl=de)
--   [Exclusive Design](https://exclusive-design.vasilis.nl/fuckups-mama/) -[https://color.review/](https://color.review/)
--   [Lets get colorblind](https://chrome.google.com/webstore/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck)
--   [Adobe Color + Accessibility](https://color.adobe.com/de/create/color-accessibility)
--   [SkipTo Landmarks & Headings](https://chrome.google.com/webstore/detail/skipto-landmarks-headings/fjkpbfcodhflpdildjbmdhhmcoplghgf)
-
-## Links zur Barrierefreiheit
-
--   [Gestaltung für Screenreader-Kompatibilität](https://immocado.com/barrierefrei/designing-screen-reader-compatibility/)
--   [WAI Authoring Practise Guide](https://www.w3.org/WAI/ARIA/apg/)
+        #messages>li:nth-child(odd) {
+            background: #efefef;
+        }
+```
