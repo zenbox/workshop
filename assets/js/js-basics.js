@@ -15,7 +15,7 @@ console.log(f);
 f = 15;
 // - - - - - - - - - -
 
-// ! Do use docblock-comments
+// ! Do docblock-comments
 /** Javascript Basics
  *
  * @desc ...
