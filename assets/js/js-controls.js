@@ -1,12 +1,13 @@
-let examples = [
-    "objects and arrays",
-    "sets and maps",
-    "form",
-    "other controls",
-];
+let examples = {
+    0: "objects and arrays",
+    1: "sets and maps",
+    2: "destructuring",
+    3: "form",
+    4: "other controls",
+};
 console.clear();
 
-switch (examples[1]) {
+switch (examples[2]) {
     case "objects and arrays":
         // Multivalent data types
         // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
@@ -80,6 +81,26 @@ switch (examples[1]) {
         // exist = chars.has("z");
         // chars.delete("e");
         // chars.clear();
+
+        break;
+
+    case "destructuring":
+        // Objects
+        let tuple = {
+            a: 3,
+            b: 7,
+            c: 6,
+        };
+
+        let { a, b, c } = tuple;
+        console.log(a, b, c);
+
+        // Arrays
+        const rgb = [255, 200, 0];
+        const [red, green, blue] = rgb;
+        const [, , blue_2] = rgb;
+
+        console.log(red, green, blue);
 
         break;
 
