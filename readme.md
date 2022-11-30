@@ -58,7 +58,8 @@ Für das Seminar sind folgende Pausenzeiten geplant:
 ```json
 {
     // LIVE SERVER
-    "liveServer.settings.port": 5502,
+    "liveServer.settings.port": 5500,
+    "liveServer.settings.CustomBrowser": "chrome",
 
     // LIVE SASS COMPILER
     "liveSassCompile.settings.formats": [
@@ -80,7 +81,12 @@ Für das Seminar sind folgende Pausenzeiten geplant:
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "editor.formatOnType": true
+    "editor.formatOnType": true,
+    "editor.quickSuggestionsDelay": 1000,
+    "editor.hover.delay": 250,
+
+    "files.autoSave": "afterDelay"
+    
 }
 ```
 

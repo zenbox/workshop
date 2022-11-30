@@ -7,7 +7,7 @@ let examples = {
 };
 console.clear();
 
-switch (examples[2]) {
+switch (examples[3]) {
     case "objects and arrays":
         // Multivalent data types
         // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object
@@ -18,10 +18,20 @@ switch (examples[2]) {
 
         console.log(typeof obj, "(obj)");
         console.log(typeof arr, "(arr)");
-
+        // window = {
+        //     document: {
+        //         querySelector: function () { },
+        //         property: "value",
+        //         style: {},
+        //         html: {
+        //             head: {},
+        //             body: {},
+        //         }
+        //     }
+        // }
         obj = {
-            key: `value`,
             number: 42,
+            key: `value`,
             bool: true,
             obj: {},
             arr: [],
@@ -31,7 +41,7 @@ switch (examples[2]) {
         obj.number; // 42
         obj["number"]; // 42
 
-        arr = [true, 2, "three"];
+        arr = [true, 2, "three", [], {}];
         arr[0]; // true
 
         // - - - - - - - - - -
@@ -73,7 +83,8 @@ switch (examples[2]) {
         }
 
         // Sets are arays with unique values
-        let chars = new Set(["a", "b", "b", "c", "c", "c"]);
+        let arr_2 = ["a", "b", "b", "c", "c", "c"];
+        let chars = new Set(arr_2);
         console.log(chars);
 
         // chars.size; //  3
@@ -115,6 +126,7 @@ switch (examples[2]) {
 
         console.log(form);
         console.log(form.length);
+        console.dir(form);
         break;
 
     case "other controls":
