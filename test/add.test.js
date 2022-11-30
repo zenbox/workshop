@@ -1,44 +1,43 @@
+// docblock
+
 import ConvertData from "../class/ConvertData.class.mjs";
 let convert = new ConvertData();
+console.log(convert.add(3, 4));
 
-// A test series for the `add`-function
-describe("add tests", () => {
-    // A common setup
+// Write a test suite
+describe("add() Tests", () => {
     beforeAll(async () => {
-        // await
-        console.log("before all ...");
+        // Set up
+        // console.log("before all ...");
     });
-
-    // A common tear down
     afterAll(async () => {
-        //await
-        console.log("after all ...");
+        // Tear down
+        // console.log("after all ...");
     });
-    // A setup for each test
     beforeEach(async () => {
-        // await
-        console.log("before each ...");
+        // common set up per test
+        // console.log("before each ...");
     });
-
-    // A tear down for each test
     afterEach(async () => {
-        //await
-        console.log("after each ...");
+        // Common tear down per test
+        // console.log("after each ...");
     });
 
-    // The test
-    it("add(3,4) should be 7", async () => {
-        console.log("the test 1");
+    it("add(3, 4) should be 7", async () => {
         await expect(convert.add(3, 4)).toBe(7);
     });
 
-    it("add(3,4) should be 7", async () => {
-        console.log("the test 2");
-        await expect(convert.add(3, 4)).toBe(7);
+    it("add(4, 8) should be 12", async () => {
+        await expect(convert.add(4, 8)).toBe(12);
     });
 
-    it("add(3,4) should be 7", async () => {
-        console.log("the test 3");
-        await expect(convert.add(3, 4)).toBe(7);
+    it("add(0.3, 0.4) should be 0.7", async () => {
+        await expect(convert.add(0.3, 0.4)).toBe(0.7);
     });
+
+        it('add("4", "8") should be undefined', async () => {
+            await expect(convert.add("4", "8")).toBe(undefined);
+        });
+
+
 });

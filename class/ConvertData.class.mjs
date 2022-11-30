@@ -59,6 +59,8 @@ export default class ConvertData {
         line.split(",").forEach((key) => {
             this.keys.push(key.trim());
         });
+
+        return this.keys
     }
 
     addValues(line) {
@@ -89,8 +91,22 @@ export default class ConvertData {
         return json;
     }
 
+    /**
+     * @desc    add some numbers as integer or float
+     *          but not strings!
+     * @param   {number} a - integer, float (signed)
+     * @param   {number} b - integer, float (signed)
+     * @returns {number}
+     */
     add(a, b) {
-        return a + b;
+        try {
+            if (typeof a === "number" && typeof b === "number") {
+                return a + b;
+            }
+            return undefined;
+        } catch (error) {
+            return undefined;
+        }
     }
 }
 
@@ -110,3 +126,7 @@ fs.readFile(file, (error, data) => {
 
     // console.log("READY:", json);
 });
+
+
+
+// if ( a === undefined) { }

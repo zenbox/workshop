@@ -33,23 +33,23 @@ Für das Seminar sind folgende Pausenzeiten geplant:
 -   Was ist NodeJS? Wozu wird es verwendet?
 -   NodeJS-Standardbibliothek und Open Source Module kennenlernen
 -   Node Package Manager (NPM) verstehen und anwenden
--   Debugging, Konsole & Error Handling
 -   Code in mehreren Modulen (Dateien) verwalten
 -   ES Module Syntax (vs. Common JS Module)
 -   JSON anhand von Beispielen verstehen und anwenden
 -   EventEmitter verstehen und anwenden
 
 ### Sonstiges
-
--   Kleine und mittelgroße Problemstellungen mit JavaScript lösen
--   Einführung in die SOLID-Design-Prinzipien
+-   Debugging, Konsole & Error Handling
 -   Asynchrones JavaScript, Promises und Callbacks verstehen und anwenden
--   APIs ansteuern
 -   Moderne Fetch-API verwenden
 -   Test Driven Development (TDD)
 -   Einsatzzweck und die Vorteile von TDD verstehen
 -   Ziele, Werte und Prinzipien von TDD verstehen
 -   Unittest-Framework Jest verstehen und anwenden
+
+-   Kleine und mittelgroße Problemstellungen mit JavaScript lösen
+-   Einführung in die SOLID-Design-Prinzipien
+-   APIs ansteuern
 
 ## Code Snippets
 

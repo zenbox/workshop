@@ -15,7 +15,7 @@
     },
     "scripts": {
         "start": "node app.js",
-        "dev": "nodemon --inspect class/ConvertData.class.mjs",
+        "dev": "nodemon --inspect-brk class/ConvertData.class.mjs",
         "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
     },
     "dependencies": {
