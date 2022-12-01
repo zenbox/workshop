@@ -1,0 +1,15 @@
+//  Soon deprecated!
+//  $linkColor: green;
+
+:root {
+  // Colors
+  --linkColor: green;
+  --visitedColor: purple;
+  --hoverColor: black;
+  --activeColor: red;
+
+  // Layout
+  --mainWidth: 50vw;
+  --navWidth: calc(var(--mainWidth) / 2);
+  --asideWidth: calc(var(--mainWidth) / 2);
+}

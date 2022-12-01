@@ -1,4 +1,77 @@
+:root {
+  --linkColor: green;
+  --visitedColor: purple;
+  --hoverColor: black;
+  --activeColor: red;
+  --mainWidth: 50vw;
+  --navWidth: calc(var(--mainWidth) / 2);
+  --asideWidth: calc(var(--mainWidth) / 2);
+}
+
 html,
 html * {
   box-sizing: border-box;
+}
+
+.bt-template--three-columns {
+  display: flex;
+  flex-direction: column;
+}
+.bt-template--three-columns .bt-page-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+.bt-template--three-columns .bt-page-content nav {
+  flex-basis: var(--navWidth);
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.bt-template--three-columns .bt-page-content main {
+  flex-basis: var(--mainWidth);
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.bt-template--three-columns .bt-page-content aside {
+  flex-basis: var(--asideWidth);
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.bt-template--three-columns header,
+.bt-template--three-columns .bt-page-content,
+.bt-template--three-columns nav,
+.bt-template--three-columns main,
+.bt-template--three-columns aside,
+.bt-template--three-columns footer {
+  background-color: hsla(90deg, 50%, 50%, 0.25);
+  border: 2px dashed hsla(90deg, 50%, 50%, 0.5);
+}
+
+.bt-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.bt-nav--row {
+  flex-direction: row;
+}
+.bt-nav--column {
+  flex-direction: column;
+}
+.bt-nav a:link {
+  color: var(--linkColor);
+}
+.bt-nav a:visited {
+  color: var(--visitedColor);
+}
+.bt-nav a:hover {
+  color: var(--hoverColor);
+}
+.bt-nav a:active {
+  color: var(--activeColor);
 }

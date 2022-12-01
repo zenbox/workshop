@@ -1,0 +1,40 @@
+.bt {
+  &-template--three-columns {
+    display: flex;
+    flex-direction: column;
+
+    .bt-page-content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: nowrap;
+
+      nav {
+        flex-basis: var(--navWidth);
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+      main {
+        flex-basis: var(--mainWidth);
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+      aside {
+        flex-basis: var(--asideWidth);
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+
+    header,
+    .bt-page-content,
+    nav,
+    main,
+    aside,
+    footer {
+      background-color: hsla(90deg, 50%, 50%, 0.25);
+      border: 2px dashed hsla(90deg, 50%, 50%, 0.5);
+    }
+  }
+}
