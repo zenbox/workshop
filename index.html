@@ -22,7 +22,7 @@
           />
         </svg>
       </div>
-      , navigation
+      <nav class="hamburger bi bi-list"></nav>
     </header>
 
     <nav>
@@ -56,5 +56,16 @@
     <aside>aside</aside>
 
     <footer>address, navigation</footer>
+    <script>
+      let button = document.querySelector(".hamburger"),
+        main = document.querySelector("body>main"),
+        nav = document.querySelector("body>nav");
+
+      button.addEventListener("click", (event) => {
+        console.log("click!");
+        main.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+    </script>
   </body>
 </html>

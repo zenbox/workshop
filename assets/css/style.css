@@ -57,8 +57,73 @@ kbd {
 
 body {
   display: grid;
+  grid-template-columns: 25vw auto 25vw;
+  grid-template-rows: 8rem auto 5rem;
+}
+body header {
+  grid-column: 1/4;
+  grid-row: 1/2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+body header .hamburger {
+  display: none;
+}
+body nav {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+body main {
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+body aside {
+  grid-column: 3/4;
+  grid-row: 2/3;
+}
+body footer {
+  grid-column: 1/4;
+  grid-row: 3/4;
 }
 
+@media (max-width: 600px) {
+  body {
+    display: grid;
+    grid-template-columns: 100vw 100vw;
+    grid-template-rows: 8rem auto 5rem;
+  }
+  body header {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  body header .hamburger {
+    display: block;
+  }
+  body nav {
+    grid-column: 2/3;
+    grid-row: 2/3;
+  }
+  body nav.active {
+    transform: translateX(-100vw);
+  }
+  body main {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  body main.active {
+    transform: translateX(-100vw);
+  }
+  body aside {
+    display: none;
+  }
+  body footer {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+}
 .bt-nav {
   list-style-type: none;
   margin: 0;
