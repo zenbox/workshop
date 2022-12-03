@@ -6,7 +6,7 @@
 @import "typography";
 
 // Page layout, templates
-@import "template-grid";
+@import "template-responsive-grid";
 
 // Components, modules, blocks
 @import "navigation";
@@ -16,4 +16,4 @@
 @import "animations";
 
 // Delete!
-// @import "temporary";
+@import "temporary";

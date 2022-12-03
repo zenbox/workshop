@@ -46,27 +46,3 @@ body * {
 //   transform: rotateZ(360deg) translateZ(-500px);
 //   background-color: green;
 // }
-
-svg {
-  display: block;
-  position: absolute;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  border: 1px solid black;
-  width: 400px;
-  height: 400px;
-  fill: transparent;
-  stroke: black !important;
-  stroke-width: 4px !important;
-  stroke-dasharray: 8rem 8rem;
-  stroke-dashoffset: -8rem;
-
-  transition-property: stroke-dasharray;
-  transition-timing-function: ease-in-out;
-  transition-duration: 20s;
-}
-svg:hover {
-  stroke-dasharray: 8rem 50rem;
-  stroke-dashoffset: 50rem;
-}

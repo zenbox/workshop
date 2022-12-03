@@ -55,35 +55,8 @@ kbd {
   font-family: var(--monospaceFontFamily);
 }
 
-.bt-template {
-  --headerHeight: 5rem;
-  --footerHeight: 8rem;
-  --contentHeight: auto;
-}
-.bt-template--three-columns {
+body {
   display: grid;
-  grid-template-columns: 25vw auto 25vw;
-  grid-template-rows: var(--headerHeight) var(--contentHeight) var(--footerHeight);
-}
-.bt-template--three-columns header {
-  grid-column: 1/4;
-  grid-row: 1/2;
-}
-.bt-template--three-columns nav {
-  grid-column: 1/2;
-  grid-row: 2/3;
-}
-.bt-template--three-columns main {
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
-.bt-template--three-columns aside {
-  grid-column: 3/4;
-  grid-row: 2/3;
-}
-.bt-template--three-columns footer {
-  grid-column: 1/4;
-  grid-row: 3/4;
 }
 
 .bt-nav {
@@ -125,6 +98,18 @@ kbd {
   -webkit-font-smoothing: antialiased;
 }
 
+.bt-brand svg {
+  fill: red;
+  stroke: white;
+  stroke-width: 1px;
+  width: 3rem;
+  height: 3rem;
+  filter: drop-shadow(0.125rem 0.125rem 0.125rem var(--shadowColor));
+}
+.bt-brand path {
+  fill: green;
+}
+
 body,
 body * {
   transform: rotateZ(0deg) translateZ(0);
@@ -135,26 +120,12 @@ body * {
   transition-timing-function: ease-in-out;
 }
 
-svg {
-  display: block;
-  position: absolute;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  border: 1px solid black;
-  width: 400px;
-  height: 400px;
-  fill: transparent;
-  stroke: black !important;
-  stroke-width: 4px !important;
-  stroke-dasharray: 8rem 8rem;
-  stroke-dashoffset: -8rem;
-  transition-property: stroke-dasharray;
-  transition-timing-function: ease-in-out;
-  transition-duration: 20s;
-}
-
-svg:hover {
-  stroke-dasharray: 8rem 50rem;
-  stroke-dashoffset: 50rem;
+header,
+.bt-page-content,
+nav,
+main,
+aside,
+footer {
+  background-color: hsla(90deg, 50%, 50%, 0.25);
+  border: 2px dashed hsla(90deg, 50%, 50%, 0.5);
 }
