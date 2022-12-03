@@ -1,0 +1,12 @@
+//
+
+@mixin boxShadow($level: 1) {
+  $default: calc(1rem / 8);
+  $xOffset: calc($default * 2 * $level);
+  $yOffset: calc($default * 2 * $level);
+  $blurRadius: calc($default * 2 * $level);
+  $color: var(--shadowColor);
+
+//   box-shadow: $xOffset $yOffset $blurRadius $color;
+  filter: drop-shadow($xOffset $yOffset $blurRadius $color);
+}

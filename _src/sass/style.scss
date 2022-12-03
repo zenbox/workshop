@@ -1,8 +1,19 @@
 @import "variables";
 @import "mixins";
 
+// Reset und base
 @import "base";
+@import "typography";
 
-@import "template";
+// Page layout, templates
+@import "template-grid";
 
+// Components, modules, blocks
 @import "navigation";
+@import "brand";
+
+// Themes, skins, customer wishes
+@import "animations";
+
+// Delete!
+// @import "temporary";

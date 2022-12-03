@@ -1,0 +1,36 @@
+.bt {
+  &-template {
+    --headerHeight: 5rem;
+    --footerHeight: 8rem;
+    --contentHeight: auto;
+
+    &--three-columns {
+      display: grid;
+      grid-template-columns: 25vw auto 25vw;
+      grid-template-rows: var(--headerHeight) var(--contentHeight) var(
+          --footerHeight
+        );
+
+      header {
+        grid-column: 1 / 4;
+        grid-row: 1 / 2;
+      }
+      nav {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+      }
+      main {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+      aside {
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+      }
+      footer {
+        grid-column: 1 / 4;
+        grid-row: 3 / 4;
+      }
+    }
+  }
+}

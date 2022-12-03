@@ -1,0 +1,72 @@
+// @keyframes my-animation {
+//   0% {
+//     background-color: hsla(0deg, 50%, 50%, 0.5);
+//     opacity: 0;
+//   }
+//   25% {
+//     background-color: hsla(90deg, 50%, 50%, 0.5);
+//     opacity: 0.25;
+//   }
+//   50% {
+//     background-color: hsla(180deg, 50%, 50%, 0.5);
+//     opacity: 1;
+//   }
+//   75% {
+//     background-color: hsla(270deg, 50%, 50%, 0.5);
+//     opacity: 0.5;
+//   }
+//   100% {
+//     background-color: hsla(360deg, 50%, 50%, 0.5);
+//     opacity: 0;
+//   }
+// }
+// body {
+//   animation-name: my-animation;
+//   animation-timing-function: ease-in-out;
+//   animation-duration: 5s;
+//   animation-iteration-count: infinite;
+//   ;
+// }
+
+body,
+body * {
+  transform: rotateZ(0deg) translateZ(0);
+  perspective: 400px;
+  perspective-origin: 1rem 1rem;
+
+  //   background-color: red;
+
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+}
+
+// body:hover,
+// body *:hover {
+//   transform: rotateZ(360deg) translateZ(-500px);
+//   background-color: green;
+// }
+
+svg {
+  display: block;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  border: 1px solid black;
+  width: 400px;
+  height: 400px;
+  fill: transparent;
+  stroke: black !important;
+  stroke-width: 4px !important;
+  stroke-dasharray: 8rem 8rem;
+  stroke-dashoffset: -8rem;
+
+  transition-property: stroke-dasharray;
+  transition-timing-function: ease-in-out;
+  transition-duration: 20s;
+}
+svg:hover {
+  stroke-dasharray: 8rem 50rem;
+  stroke-dashoffset: 50rem;
+}
