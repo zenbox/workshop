@@ -1,139 +1,125 @@
-# Willkommen zu SASS Einführung und Architektur
+# Links zur Barrierefreiheit
 
-## Michael Reichart
+## Statistik
 
-- michael.reichart@gfu.net
-- Auf Xing und LinkedIn unter Michael Reichart
+[Zahlen, Daten, Fakten](https://www.bgw-online.de/bgw-online-de/service/medien-arbeitshilfen/medien-center/behindertenhilfe-in-deutschland-zahlen-daten-fakten-20896)
 
-## Inhalte und Zeiten
+## Grundlagen
 
-Die Kurstage gehen jeweils von
+### WCAG
 
-- 9:00 bis 16:00 Uhr.
+- [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/)
+- [WCAG 2.0 in deutsch](https://www.einfach-fuer-alle.de/wcag2.0/uebersetzungen/WCAG20-de/)
+- [Wie man die WCAG erfüllt](https://www.einfach-fuer-alle.de/wcag2.0/uebersetzungen/How-to-Meet-WCAG-2.0/#qr-text-equiv-all)
 
-Für das Seminar sind folgende Pausenzeiten geplant:
+### BITV
 
-- 10:30 bis 10:45 Uhr
-- 12:00 bis 13:00 Uhr
-- 14:30 bis 14:45 Uhr
+- [BITV](https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html)
+- [BIK - Barrierefrei informieren und kommunizieren](https://bik-fuer-alle.de/barrierefreiheit-umsetzen.html)
+- [BITV Prüfschritte](https://ergebnis.bitvtest.de/pruefverfahren?tx_twbitvtest_procedure%5Baction%5D=show&tx_twbitvtest_procedure%5Bcontroller%5D=Procedure&tx_twbitvtest_procedure%5Bprocedure%5D=11&cHash=4a277975185785af9c687eb03489b3ef)
 
-## Foliensatz
+### Assistenzen
 
-Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **SASS und CSS Architektur kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird. Eine vollständige Sass Dokumentation liefert die Webseite unter [sass-lang.com](https://sass-lang.com/) Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+- [Assistenz-Technologien](https://www.weissenstein-bs.de/)
 
-## Dateien zum Download
+## Farbe und Kontrast
 
-wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können während und am Ende des Seminars von https://github.com/zenbox/workshop heruntergeladen werden.
+### Tools
 
-## Links zu SASS
+- [Farben und Kontraste in Echtzeit prüfen](https://contrast-checker.glitch.me/)
+- [Farben und Kontraste mit Farbskalen](https://colorbox.io/)
+- [Farben und Kontraste für Texte](https://webaim.org/resources/contrastchecker/)
+- [Die nächste barrierefreie Farben finden](https://www.learnui.design/tools/accessible-color-generator.html)
+- [Adobe Color Barrierefreiheitstool](https://color.adobe.com/de/create/color-contrast-analyzer)
 
-- [sass-lang.com](https://sass-lang.com/)
+### Infos
 
-## Links zu HTML und CSS
+- [Alles über Farbenblindheit](https://www.color-blindness.com/)
+- [GEO - Beispiel für Sehstörungen](https://www.geo.de/wissen/gesundheit/22295-rtkl-augenkrankheiten-wie-menschen-mit-sehstoerungen-die-welt-wahrnehmen)
+- [GEO - Beispiele für Farbenblindheit](https://www.geo.de/wissen/gesundheit/19493-rtkl-interaktive-bilder-wie-farbenblinde-menschen-die-welt-sehen)
 
-- [html5Test.com](http://html5test.com/index.html)
-- [Can i Use?](https://caniuse.com/)
-- [MIT License](https://opensource.org/licenses/MIT)
-- [Cost of Defect](http://thklein.com/de_DE/cost-of-defect/)
-- [Emmet Cheat Sheet](https://docs.emmet.io/cheat-sheet/)
+## Leserlichkeit, Lesbarkeit
 
-- [W3C](https://www.w3.org/TR/)
-- [HTML Dokumentation I](https://www.w3schools.com/)
-- [HTML Dokumentation II](https://wiki.selfhtml.org/)
-- [HTML Dokumentation III](http://html5doctor.com/)
+### Leserlichkeit
 
-- [CSS Tricks](https://css-tricks.com/)
-- [CSS Nomenklatur - Block Element Modifier](http://getbem.com/introduction/)
-- [Scalable and Modular CSS](http://smacss.com/)
-- [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
-- [Normalize CSS](https://necolas.github.io/)
-- [Bootstrap](https://getbootstrap.com/)
-- [Material IO](https://material.io/)
-- [Fontello](https://fontello.com/)
+- [Leserlichkeit](https://www.leserlich.info/)
+- [Lexend - Font für Dyslexie](https://www.lexend.com/)
 
-## Code Snippets
+### Lesbarkeit
 
-### Live Sass Compiler Setting
+- [Lesbarkeit testen](http://leichtlesbar.ch/html/)
 
-```JSON
-  "liveSassCompile.settings.formats": [
-    {
-      "extensionName": ".css",
-      "format": "expanded",
-      "savePath": "/assets/css/"
-    }
-  ],
-  "liveSassCompile.settings.generateMap": false,
-  "liveSassCompile.settings.autoprefix": [],
-    "liveSassCompile.settings.excludeList": [
-      "**/node_modules/**",
-      ".vscode/**"
-    ],
-```
+### Beipiele
 
-### CSS Doc Block
+- [Berufsgenossenschaft in Leichter Sprache](https://www.bgw-online.de/bgw-online-de/begriffe-in-leichter-sprache-berufs-genossenschaft-einfach-28780)
 
-```JSON
-{
-  "CSS Doc Block and main comments": {
-    "prefix": "docblock",
-    "description": " structure for components",
-    "body": [
-      "/** $1",
-      "  *",
-      "  *  @desc $2",
-      "  *        All devices fallback: @media screen {}",
-      "  *        Small devices:        @media screen and (max-width:768px) {}",
-      "  *",
-      "  * ",
-      "  *  @toc  i.e. COMPONENT",
-      "  *        i.e. SUB COMPONENT",
-      "  *",
-      "  * @package Webapplication",
-      "  * @module i.e. header",
-      "  * @author Michael Reichart <michael@zenbox.de>",
-      "  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-      "  * @version 1.0.0",
-      "  * @see i.e. inspired by ... {link to}",
-      "  * @license MIT {https://opensource.org/licenses/MIT}",
-      "  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
-      "  */",
-      "",
-      "/** COMPONENT BASE */",
-      "",
-      "/** COMPONENT LAYOUT */",
-      "  ",
-      "/** COMPONENT THEME */",
-      "",
-      "/** COMPONENT CHANGING STATES (BEHAVIOUR) */",
-      "  ",
-    ],
-  },
+## Grafik und Datenvisualisierung
+
+- [Studienarbeit Barrierefreie Charts](https://courses.isds.tugraz.at/ivis/surveys/ss2021/ivis-ss2021-g1-survey-accessible-charts.pdf)
+- [Grafik vorlesen](https://semanticresponsiveillustration.com/)
+
+## Forschung
+
+- [Exklusives Design (Forschung)](https://exclusive-design.vasilis.nl/)
+- [Inklusives Design](https://inclusivedesignprinciples.org/)
+
+## CSS-Snippets
+
+```css
+.sr-only {
+  display: none;
 }
-```
+.invisible {
+  display: none !important;
+}
+.blurred-vision {
+  filter: blur(2px);
+}
+.achromatopsia {
+  filter: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="achromatopsia">\
+          <feColorMatrix values="0.213  0.715  0.072  0.000  0.000\
+                                 0.213  0.715  0.072  0.000  0.000\
+                                 0.213  0.715  0.072  0.000  0.000\
+                                 0.000  0.000  0.000  1.000  0.000" />\
+        </filter>\
+      </svg>#achromatopsia');
+}
 
-### SCSS Doc Block
+.deuteranopia {
+  filter: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="deuteranopia">\
+          <feColorMatrix values="0.367  0.861 -0.228  0.000  0.000\
+                                 0.280  0.673  0.047  0.000  0.000\
+                                -0.012  0.043  0.969  0.000  0.000\
+                                 0.000  0.000  0.000  1.000  0.000" />\
+        </filter>\
+      </svg>#deuteranopia');
+}
 
-```JSON
-{
-"SCSS Doc Block and main comments": {
-  "prefix": "docblock",
-  "description": " Docblock Comment for SCSS Files",
-  "body": [
-    "///** $1",
-    "// *",
-    "// * @package Webapplication",
-    "// * @module $2",
-    "// * @author Michael Reichart <michael.reichart@gfu.net>",
-    "// * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
-    "// * @version 1.0.0",
-    "// * @see i.e. inspired by ... {link to}",
-    "// * @license MIT {https://opensource.org/licenses/MIT}",
-    "// * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
-    "// */",
-    "",
-    "$3"
-  ],
-},
+.protanopia {
+  filter: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="protanopia">\
+        <feColorMatrix values="0.152  1.053 -0.205  0.000  0.000\
+                               0.115  0.786  0.099  0.000  0.000\
+                              -0.004 -0.048  1.052  0.000  0.000\
+                               0.000  0.000  0.000  1.000  0.000" />\
+        </filter>\
+      </svg>#protanopia');
+}
+
+.tritanopia {
+  filter: url('data:image/svg+xml,\
+      <svg xmlns="http://www.w3.org/2000/svg">\
+        <filter id="tritanopia">\
+        <feColorMatrix values="1.256 -0.077 -0.179  0.000  0.000\
+                              -0.078  0.931  0.148  0.000  0.000\
+                               0.005  0.691  0.304  0.000  0.000\
+                               0.000  0.000  0.000  1.000  0.000" />\
+        </filter>\
+      </svg>#tritanopia');
 }
 ```
