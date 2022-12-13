@@ -37,26 +37,10 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 - https://necolas.github.io/normalize.css/8.0.1/normalize.css
 - https://www.caniemail.com/
 
-## Sass vscode settings
+## Vscode settings
 
 1. Sass Compiler installieren
 2. settings einfügen
-
-```json
-  "liveSassCompile.settings.formats": [
-    {
-      "extensionName": ".css",
-      "format": "expanded",
-      "savePath": "/assets/css/"
-    }
-  ],
-  "liveSassCompile.settings.generateMap": false,
-  "liveSassCompile.settings.autoprefix": [],
-  "liveSassCompile.settings.excludeList": [
-    "**/node_modules/**",
-    ".vscode/**"
-  ],
-```
 
 ## Prettier vscode settings
 
@@ -64,8 +48,34 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
 2. settings anpassen
 
 ```json
+{
+  // LIVE SERVER
+  "liveServer.settings.port": 5500,
+  "liveServer.settings.CustomBrowser": "chrome",
+
+  // LIVE SASS COMPILER
+  "liveSassCompile.settings.formats": [
+    {
+      "ext aensionName": ".css",
+      "format": "expanded",
+      "savePath": "/assets/css/"
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.autoprefix": [],
+  "liveSassCompile.settings.excludeList": ["**/node_modules/**", ".vscode/**"],
+  "liveSassCompile.settings.includeItems": [],
+
+  // EDITOR
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
+  "editor.quickSuggestionsDelay": 1000,
+  "editor.hover.delay": 250,
+
+  "files.autoSave": "afterDelay"
+
+  // "compile-hero.disable-compile-files-on-did-save-code": true
+}
 ```
