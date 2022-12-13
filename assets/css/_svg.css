@@ -28,3 +28,9 @@
 .svg circle {
   stroke: hsla(0deg, 0%, 100%, 0.125);
 }
+
+.line-red {
+  stroke:hsla(0deg, 100%, 50%, 0.85);
+  stroke-width: 2px;
+  stroke-dasharray: 10px 20px;
+}
