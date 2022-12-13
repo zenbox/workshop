@@ -23,10 +23,6 @@ Ein Remoteseminar funktioniert im Großen und Ganzen wie ein Präsenzseminar auc
 
 Es ist anstrengend, einen ganzen Tag über Kamera und Bildschirm konzentriert zu arbeiten. Man kann keine Unterhaltungen führen wie gewohnt und viele kleine Gesten und Momente fehlen schlicht.
 
-## Foliensatz
-
-Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **SASS und CSS Architektur kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird. Eine vollständige Sass Dokumentation liefert die Webseite unter [sass-lang.com](https://sass-lang.com/) Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
-
 ## Dateien zum Download
 
 wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können während und am Ende des Seminars von https://github.com/zenbox/workshop heruntergeladen werden.
