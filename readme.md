@@ -1,125 +1,75 @@
-# Links zur Barrierefreiheit
+# Willkommen zu HTML, CSS, Javascript
 
-## Statistik
+## Michael Reichart
 
-[Zahlen, Daten, Fakten](https://www.bgw-online.de/bgw-online-de/service/medien-arbeitshilfen/medien-center/behindertenhilfe-in-deutschland-zahlen-daten-fakten-20896)
+- michael.reichart@gfu.net
+- Auf Xing und LinkedIn unter Michael Reichart
 
-## Grundlagen
+## Inhalte und Zeiten
 
-### WCAG
+Die Kurstage gehen jeweils von
 
-- [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/)
-- [WCAG 2.0 in deutsch](https://www.einfach-fuer-alle.de/wcag2.0/uebersetzungen/WCAG20-de/)
-- [Wie man die WCAG erfüllt](https://www.einfach-fuer-alle.de/wcag2.0/uebersetzungen/How-to-Meet-WCAG-2.0/#qr-text-equiv-all)
+- 9:00 bis 16:00 Uhr.
 
-### BITV
+Für das Remoteseminar sind folgende Pausenzeiten geplant:
 
-- [BITV](https://www.gesetze-im-internet.de/bitv_2_0/BJNR184300011.html)
-- [BIK - Barrierefrei informieren und kommunizieren](https://bik-fuer-alle.de/barrierefreiheit-umsetzen.html)
-- [BITV Prüfschritte](https://ergebnis.bitvtest.de/pruefverfahren?tx_twbitvtest_procedure%5Baction%5D=show&tx_twbitvtest_procedure%5Bcontroller%5D=Procedure&tx_twbitvtest_procedure%5Bprocedure%5D=11&cHash=4a277975185785af9c687eb03489b3ef)
+- 10:30 bis 10:45 Uhr
+- 12:00 bis 13:00 Uhr
+- 14:30 bis 14:45 Uhr
 
-### Assistenzen
+## Präsenz während des Remote
 
-- [Assistenz-Technologien](https://www.weissenstein-bs.de/)
+Ein Remoteseminar funktioniert im Großen und Ganzen wie ein Präsenzseminar auch. Die Teilnahme mit einem Live-Videobild ist sehr wichtig. Das Video vermittelt Präsenz und stützt Fragen und Unterhaltungen.
 
-## Farbe und Kontrast
+Es ist anstrengend, einen ganzen Tag über Kamera und Bildschirm konzentriert zu arbeiten. Man kann keine Unterhaltungen führen wie gewohnt und viele kleine Gesten und Momente fehlen schlicht.
 
-### Tools
+## Foliensatz
 
-- [Farben und Kontraste in Echtzeit prüfen](https://contrast-checker.glitch.me/)
-- [Farben und Kontraste mit Farbskalen](https://colorbox.io/)
-- [Farben und Kontraste für Texte](https://webaim.org/resources/contrastchecker/)
-- [Die nächste barrierefreie Farben finden](https://www.learnui.design/tools/accessible-color-generator.html)
-- [Adobe Color Barrierefreiheitstool](https://color.adobe.com/de/create/color-contrast-analyzer)
+Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **SASS und CSS Architektur kompakt.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird. Eine vollständige Sass Dokumentation liefert die Webseite unter [sass-lang.com](https://sass-lang.com/) Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
 
-### Infos
+## Dateien zum Download
 
-- [Alles über Farbenblindheit](https://www.color-blindness.com/)
-- [GEO - Beispiel für Sehstörungen](https://www.geo.de/wissen/gesundheit/22295-rtkl-augenkrankheiten-wie-menschen-mit-sehstoerungen-die-welt-wahrnehmen)
-- [GEO - Beispiele für Farbenblindheit](https://www.geo.de/wissen/gesundheit/19493-rtkl-interaktive-bilder-wie-farbenblinde-menschen-die-welt-sehen)
+wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können während und am Ende des Seminars von https://github.com/zenbox/workshop heruntergeladen werden.
 
-## Leserlichkeit, Lesbarkeit
+# Lesezeichen
 
-### Leserlichkeit
+- https://caniuse.com
+- https://html5test.com
+- https://css-tricks.com
+- https://meyerweb.com/eric/tools/css/reset/
+- https://docs.emmet.io/cheat-sheet/
+- https://necolas.github.io/normalize.css/8.0.1/normalize.css
+- https://www.caniemail.com/
 
-- [Leserlichkeit](https://www.leserlich.info/)
-- [Lexend - Font für Dyslexie](https://www.lexend.com/)
+## Sass vscode settings
 
-### Lesbarkeit
+1. Sass Compiler installieren
+2. settings einfügen
 
-- [Lesbarkeit testen](http://leichtlesbar.ch/html/)
+```json
+  "liveSassCompile.settings.formats": [
+    {
+      "extensionName": ".css",
+      "format": "expanded",
+      "savePath": "/assets/css/"
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveSassCompile.settings.autoprefix": [],
+  "liveSassCompile.settings.excludeList": [
+    "**/node_modules/**",
+    ".vscode/**"
+  ],
+```
 
-### Beipiele
+## Prettier vscode settings
 
-- [Berufsgenossenschaft in Leichter Sprache](https://www.bgw-online.de/bgw-online-de/begriffe-in-leichter-sprache-berufs-genossenschaft-einfach-28780)
+1. prettier extension installieren
+2. settings anpassen
 
-## Grafik und Datenvisualisierung
-
-- [Studienarbeit Barrierefreie Charts](https://courses.isds.tugraz.at/ivis/surveys/ss2021/ivis-ss2021-g1-survey-accessible-charts.pdf)
-- [Grafik vorlesen](https://semanticresponsiveillustration.com/)
-
-## Forschung
-
-- [Exklusives Design (Forschung)](https://exclusive-design.vasilis.nl/)
-- [Inklusives Design](https://inclusivedesignprinciples.org/)
-
-## CSS-Snippets
-
-```css
-.sr-only {
-  display: none;
-}
-.invisible {
-  display: none !important;
-}
-.blurred-vision {
-  filter: blur(2px);
-}
-.achromatopsia {
-  filter: url('data:image/svg+xml,\
-      <svg xmlns="http://www.w3.org/2000/svg">\
-        <filter id="achromatopsia">\
-          <feColorMatrix values="0.213  0.715  0.072  0.000  0.000\
-                                 0.213  0.715  0.072  0.000  0.000\
-                                 0.213  0.715  0.072  0.000  0.000\
-                                 0.000  0.000  0.000  1.000  0.000" />\
-        </filter>\
-      </svg>#achromatopsia');
-}
-
-.deuteranopia {
-  filter: url('data:image/svg+xml,\
-      <svg xmlns="http://www.w3.org/2000/svg">\
-        <filter id="deuteranopia">\
-          <feColorMatrix values="0.367  0.861 -0.228  0.000  0.000\
-                                 0.280  0.673  0.047  0.000  0.000\
-                                -0.012  0.043  0.969  0.000  0.000\
-                                 0.000  0.000  0.000  1.000  0.000" />\
-        </filter>\
-      </svg>#deuteranopia');
-}
-
-.protanopia {
-  filter: url('data:image/svg+xml,\
-      <svg xmlns="http://www.w3.org/2000/svg">\
-        <filter id="protanopia">\
-        <feColorMatrix values="0.152  1.053 -0.205  0.000  0.000\
-                               0.115  0.786  0.099  0.000  0.000\
-                              -0.004 -0.048  1.052  0.000  0.000\
-                               0.000  0.000  0.000  1.000  0.000" />\
-        </filter>\
-      </svg>#protanopia');
-}
-
-.tritanopia {
-  filter: url('data:image/svg+xml,\
-      <svg xmlns="http://www.w3.org/2000/svg">\
-        <filter id="tritanopia">\
-        <feColorMatrix values="1.256 -0.077 -0.179  0.000  0.000\
-                              -0.078  0.931  0.148  0.000  0.000\
-                               0.005  0.691  0.304  0.000  0.000\
-                               0.000  0.000  0.000  1.000  0.000" />\
-        </filter>\
-      </svg>#tritanopia');
-}
+```json
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
 ```
