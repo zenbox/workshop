@@ -1,0 +1,25 @@
+/* BASE */
+.figure {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+
+/* LAYOUT */
+.figure-responsive img {
+
+    display: inline-block;
+    width: 100%;
+}
+
+/*
+    display: block; -> width, height
+    display: inline; -> flows as words in paragraphs
+    display: inline-block -> width, height;
+
+
+*/
+
+/* STATES */
+/* THEME */
