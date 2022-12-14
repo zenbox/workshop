@@ -1,57 +1,29 @@
-const data = [
-    {
-        "UUID": "{02397efwkhsf97423hefs}",
-        "KanalName": "PMX_107 Ch4.4",
-        "Kurzbezeichung": "",
-        "Physikalische Einheit": " ",
-        "Formatierung": "7:F3",
-        "Kommentar": "",
-        "ArtDesKanals": "",
-    },
-    {
-        "UUID": "{023efa45z97efwkhss}",
-        "KanalName": "PMX_142 Ch5.4",
-        "Kurzbezeichung": "",
-        "Physikalische Einheit": " ",
-        "Formatierung": "7:F3",
-        "Kommentar": "",
-        "ArtDesKanals": "",
-    },
-    ["2022-12-12T12:00:00.1234Z", [0.2342345, 0.76435123]],
-];
+/** PROCESS */
+import Chart from "./Chart.class.js";
 
-// let h1 = document.querySelector("h1");
-// h1.innerHTML = "<em>Test</em>";
+// DECLARATION, INIT
+let canvas = document.querySelector("#line-chart");
 
-// Create an new element with some content
-let h1 = document.createElement("h1"),
-    context = document.querySelector("#item_4"),
-    content = document.createTextNode(data[0].KanalName);
+// METHODS
 
-h1.appendChild(content);
-context.appendChild(h1);
+// CONTROL
+// Load a file via fetch
+// fetch is a promise
+fetch("../../data/data.json")
+    .then((response) => {
+        console.dir(response);
+        if (response.status === 200) {
+            return response.json();
+        }
+    })
+    .then((data) => {
+        // - - - - - - - - - -
+        let chart = new Chart(data);
 
-let canvas = document.querySelector("svg"),
-    path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        chart.drawAsPath(canvas);
 
-path.setAttribute("d", "M 10,10 L 20,30");
-path.classList.add("line-red");
-
-canvas.appendChild(path);
-
-// Classes in Javascript
-class Chart {
-    constructor(d) {
-        this.data = d;
-    }
-
-    setHeadline(content) {}
-
-    // set data() { }
-    // get data() { }
-}
-
-let chart = new Chart(data);
-
-chart.data;
-chart.setHeadline("lalala");
+        // - - - - - - - - - -
+    })
+    .catch((error) => {
+        console.log(error);
+    });

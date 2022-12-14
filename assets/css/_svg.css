@@ -32,5 +32,5 @@
 .line-red {
   stroke:hsla(0deg, 100%, 50%, 0.85);
   stroke-width: 2px;
-  stroke-dasharray: 10px 20px;
+  stroke-dasharray: 10px 5px;
 }
