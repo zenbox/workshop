@@ -2,7 +2,7 @@
 export default class Chart {
     constructor(data) {
         this.data = data;
-        console.log(this.data[5])
+        console.log(this.data[5]);
     }
 
     drawAsPath(canvas) {
@@ -34,10 +34,8 @@ export default class Chart {
         let index = 0;
         pathData.forEach((dataPoint) => {
             let xTime = this.getXTime(xTimeValue[index]),
-                xScale = 8;
-console.log(xScale, xTime)
-            
-            
+                xScale = 400 / 55;
+
             if (index === 0)
                 pathAttribute = `M ${xTime * xScale} ${200 + dataPoint * 1000}`;
             else
@@ -53,6 +51,13 @@ console.log(xScale, xTime)
         canvas.appendChild(pathElement);
 
         return pathElement;
+    }
+
+    removePath(canvas) {
+        let child = canvas.querySelector("path");
+        if (child) {
+            canvas.removeChild(child);
+        }
     }
 
     getXTime(timeValue = undefined) {
