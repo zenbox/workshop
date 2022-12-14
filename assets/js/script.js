@@ -13,7 +13,33 @@ function getAsciiData(filename) {
                 return response.text();
             }
         })
-        .then()
+        .then((data) => {
+            // - - - - - - - - - -
+
+            // Preg for lazy people
+            let lines = data.split("\n");
+            lines.forEach((line) => {
+                // console.log(">", line);
+
+                let values = line.split(" ");
+
+                // console.log(Array.isArray(values))
+                // console.log(values)
+
+                let date = values.shift();
+                let time = values.shift();
+
+                console.log(date, time, values);
+
+                for (let i = 0; i < values.length; i++) {
+                    values[i] = parseFloat(values[i]);
+                }
+
+                console.log(">>>", values);
+            });
+
+            // - - - - - - - - - -
+        })
         .catch();
 }
 
@@ -39,6 +65,8 @@ function getData(filename) {
 }
 
 // CONTROL
+getAsciiData("../../data/data.txt");
+
 // EVENT CONTROL
 button.addEventListener("click", (event) => {
     console.log(event);
