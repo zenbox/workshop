@@ -27,7 +27,8 @@
     "editor.quickSuggestionsDelay": 1000,
     "editor.hover.delay": 250,
 
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
 
-    // "compile-hero.disable-compile-files-on-did-save-code": true
+    // DEBUGGER
+    "debug.javascript.autoAttachFilter": "onlyWithFlag"
 }
