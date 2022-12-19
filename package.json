@@ -1,4 +1,5 @@
 {
+    "type": "module",
     "name": "workshop",
     "version": "1.0.0",
     "description": "Lorem ipsum dolor sit ...",
@@ -7,7 +8,10 @@
         "doc": "docs"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js",
+        "dev": "nodemon hello-world-http.js",
+        "build": "webpack ..."
     },
     "repository": {
         "type": "git",
@@ -18,5 +22,8 @@
     "bugs": {
         "url": "https://github.com/zenbox/workshop/issues"
     },
-    "homepage": "https://github.com/zenbox/workshop#readme"
+    "homepage": "https://github.com/zenbox/workshop#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    }
 }
