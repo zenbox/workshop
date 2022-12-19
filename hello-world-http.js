@@ -26,5 +26,3 @@ server = http.createServer((request, response) => {
 server.listen(port, () => { 
     console.log(" - - - - - - - - - -\n",`http service runs on port ${port}.\n`, "- - - - - - - - - -"); // "   '   `  
 });
-
-// setInterval(()=>{},100)
