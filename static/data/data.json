@@ -1,0 +1,6 @@
+[
+    { "type": "XYZ123", "wheels": 1 },
+    { "type": "ABC124", "wheels": 2 },
+    { "type": "XYZ125", "wheels": 3 },
+    { "type": "ABC126", "wheels": 4 }
+]
