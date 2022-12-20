@@ -12,12 +12,29 @@ window.addEventListener("load", function () {
     function loadData(url) {
         console.log("load ...");
 
-        xhr.addEventListener("readystatechange", (event) =>
-            onDataLoad(event, xhr)
-        );
+        // xhr.addEventListener("readystatechange", (event) =>
+        //     onDataLoad(event, xhr)
+        // );
 
-        xhr.open("GET", url);
-        xhr.send();
+        // xhr.open("GET", url);
+        // xhr.send();
+
+        // Using fetch as a promise
+        // ES 2015 in browser
+        fetch(url)
+            // Fetch promise fulfilled!
+            .then((string) => {
+                // A second promise!
+                return string.json(data);
+            })
+            // Second promise fulfilled!
+            .then((data) => {
+                console.log(data);
+            })
+            // Something is rejected
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     function onDataLoad(event) {
