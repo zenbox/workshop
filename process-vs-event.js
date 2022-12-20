@@ -39,3 +39,12 @@ function onconnect() {
 
 // EVENT CONTROL
 dbHandle = db.connect(credentials, onconnect);
+
+async function doSomething(data) {
+    await fetch(url)
+        .then((string) => string.json())
+        .then((data) => data)
+        .catch();
+}
+
+// doSomething(){ }
