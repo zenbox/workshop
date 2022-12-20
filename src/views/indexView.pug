@@ -8,8 +8,14 @@ html
         each entry in list
             p= entry 
 
+        h2 JSON Output
+        button get some data
+        output some output goes here ...
+
+
+        h2 Some Markdown
         :markdown-it
-            ## Look mum, no markup!
+            ### Look mum, no markup!
             Written in nice and short markdown syntax. Maybe
             the multiline thing istn't as bad as in pug.
 
@@ -28,3 +34,6 @@ html
             ```
         style
             | table, th, td { border: 1px solid black; }
+            | button, output { display: block; margin-bottom: 1rem;}
+
+        script(type="module" src="/assets/js/script.js") 
