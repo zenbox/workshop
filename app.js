@@ -5,7 +5,7 @@
  * @package Webapplication
  * @module Webservice
  * @author Michael <michael.reichart@gfu.net>
- * @version v1.0.0
+ * @version v1.0.28
  * @since 2022-12-19
  * @license MIT {https://opensource.org/licenses/MIT}
  * @copyright (c) 2022 Michael Reichart, Cologne
