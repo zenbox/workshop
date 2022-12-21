@@ -5,13 +5,19 @@ html
     body
         h1 Data Driven Example 
         
+        svg(width="200", height="200")
+            g
+                circle#data-1(r="20", cx="100", cy="100")
+
         ol
             each entry in list
-                li= entry.sheep 
+                li(data-id=entry.id)= entry.sheep
+                    |    
+                    button delete
 
-        h2 JSON Output
-        button get some data
-        output some output goes here ...
+        //- h2 JSON Output
+        //- button get some data
+        //- output some output goes here ...
 
 
         h2 Some Markdown
@@ -35,6 +41,10 @@ html
             ```
         style
             | table, th, td { border: 1px solid black; }
-            | button, output { display: block; margin-bottom: 1rem;}
+            | svg { border: 1px solid black;}
+            | circle { transition: all 500ms ease-in-out; }
+            //- | button, output { display: block; margin-bottom: 1rem;}
 
+
+        script(src="/socket.io/socket.io.js")
         script(type="module" src="/assets/js/script.js") 
