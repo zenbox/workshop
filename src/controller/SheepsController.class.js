@@ -40,9 +40,10 @@ export default class SheepsController {
                 // console.log(resultset);
 
                 data = { list: resultset };
+
                 response.status(200).render(view, data);
 
-                db.close();
+                // db.close();
             });
             // - - - - - - - - - -
             // - - - - - - - - - -
@@ -52,5 +53,22 @@ export default class SheepsController {
             return false;
         }
         // - - - - - - - - - -
+    }
+
+    deleteSheep(request, response, next) {
+        const db = mysql.createConnection(dbConfig);
+
+        let idString = "1,13,42,8";
+        let ids = idString.split(",");
+        console.log(ids);
+
+        let id = request.params.id,
+            sql = `DELETE FROM sheeps WHERE id="${id}";`;
+
+        db.connect();
+        db.query(sql, (error, resultset) => {
+            if (error) throw response.status(200).json({ reload: false });
+            response.status(200).json({ reload: true });
+        });
     }
 }
