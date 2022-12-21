@@ -41,17 +41,43 @@ app.use(express.static(path.resolve("./static")));
 // Template engine for html
 // app.set("view engine", "ejs");
 app.set("view engine", "pug");
-app.set("views", path.resolve("./src/views") );
+app.set("views", path.resolve("./src/views"));
 
 // Dynamic routes
 app.use("/", indexRoute);
 app.use("/index", indexRoute);
 app.use("/other", otherRoute);
 
+// SOCKET SERVICE STUFF
+// Accept incoming socket requests
+io.on("connect", (socket) => {
+    // console.dir(io);
+    console.dir(socket.id);
+
+    // Send messages
+    socket.emit("message", "hello world");
+    socket.emit("adminmessage", "hello admin");
+
+    io.emit("message", "Hello all!!");
+
+    socket.on("message", (data) => {
+        console.log(data);
+    });
+    
+    // Data generator
+    setInterval(() => {
+        io.emit("data", Math.round(Math.random() * 50));
+    }, 5000);
+});
+
 // CONTROL
-app.listen(port, (error) => {
+// Socket and webservice!
+server.listen(port, (error) => {
     if (error) {
+        console.log(chalk.bgRed(`App didn't start [${host}:${port}]`));
         throw error;
     }
-    console.log(chalk.bgGreen(`App runs as webservice on ${host}:${port}`));
+    console.log(
+        chalk.bgGreen(`App runs as web- and socket-service on ${host}:${port}`)
+    );
 });
