@@ -21,6 +21,7 @@ import Time from "./Time";
 
 class Helicopter {
     constructor(type = "XYZ123") {
+        // Public property
         this.type = type;
     }
 
@@ -57,6 +58,11 @@ class Helicopter {
     }
 }
 
+// Process
+myHeli = new Helicopter();
+let totalTime = myHeli.getTotalTime();
+
+
 // /**
 //  * @desc    setValue
 //  * @param   {type} desc
@@ -88,6 +94,4 @@ class User {
     }
 }
 
-// Process
-myHeli = new Helicopter();
-let totalTime = myHeli.getTotalTime();
+
