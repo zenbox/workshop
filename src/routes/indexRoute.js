@@ -16,7 +16,9 @@ router.get("/sheeps", (request, response, next) => {
     sheepsController.selectAllSheeps(request, response, next);
 });
 
-// router.post("page-2/state/");
+router.delete("/sheep/delete/:id?", (request, response, next) => {
+    sheepsController.deleteSheep(request, response, next);
+});
 
 // - - - - - - - - - -
 export default router;
