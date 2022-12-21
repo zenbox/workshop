@@ -1,10 +1,11 @@
 // import default MyClass from "./MyClass.class.js";
+// import { io } from "socket.io-client";
 
 window.addEventListener("load", function () {
     "use strict";
     // - - - - - - - - - -
     // DECLARATION
-    let button = document.querySelector("button"),
+    let buttons = document.querySelectorAll("button"),
         xhr = new XMLHttpRequest(),
         data = undefined;
 
@@ -67,8 +68,56 @@ window.addEventListener("load", function () {
 
         loadData("/data/data.json");
     }
+
+    async function onDeleteSheep(event) {
+        // Avoid any browser execution
+        event.preventDefault();
+
+        let id = event.target.parentNode.dataset.id;
+
+        await fetch(`/index/sheep/delete/${id}`, {
+            method: "DELETE",
+            cache: "no-cache",
+            headers: { "Content-type": "application/json" },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.reload === true) window.location.reload(true);
+            })
+            .catch((error) => console.log(error));
+    }
+
     // EVENT CONTROL
-    button.addEventListener("click", (event) => onClickButton(event));
+    buttons.forEach((button) => {
+        button.addEventListener("click", (event) => onDeleteSheep(event));
+    });
     loadData("/data/data.json");
+    // - - - - - - - - - -
+    // SOCKET CLIENT
+    const socket = io();
+
+    // let ws = new WebSocket("ws://localhost:3001")
+    // - - - - - - - - - -
+    socket.on("message", (data) => {
+        console.log(data);
+    });
+    socket.on("adminmessage", (data) => {
+        console.log(data);
+    });
+    socket.on("data", (data) => {
+        let circle = document.querySelector("#data-1");
+        circle.setAttribute("r", data);
+    });
+    // - - - - - - - - - -
+    socket.on("connect", (event) => {
+        socket.emit("message", "Hello server!");
+    });
+    socket.on("disconnect", (event) => {
+        socket.emit("message", "Ciao!");
+    });
+    socket.on("reconnect", (event) => {
+        socket.emit("message", "Hello server, here i am again!");
+    });
+    socket.on("ping", () => console.log("ping"));
     // - - - - - - - - - -
 });
