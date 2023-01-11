@@ -1,4 +1,4 @@
-@layer base,, base.typography, template, service-provider, customer-theme;
+@layer base, base.typography, template, service-provider, customer-theme;
 
 /* Base */
 @layer base {
@@ -26,7 +26,7 @@
 }
 @layer service-provider {
     .concludis {}
-    
+
     @layer base {
         .concludis,
         .concludis * {
