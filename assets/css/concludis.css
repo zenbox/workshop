@@ -1,0 +1,98 @@
+@layer base, template, service-provider, customer-theme;
+
+/* Base */
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+    @layer typography {
+        /* Typography */
+        html {
+            font-family: sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+    }
+}
+@layer template {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+}
+@layer service-provider {
+    @layer base {
+        /* Variables */
+        .concludis {
+        }
+        /* Base */
+        .concludis,
+        .concludis * {
+            box-sizing: border-box;
+        }
+        @layer typography {
+    }
+    @layer layout {
+        /* Base */
+    }
+    @layer components {
+        .concludis_title {
+        }
+        .concludis_grid-infofield {
+        }
+        .concludis_header {
+        }
+        .concludis_company {
+        }
+        .concludis_tasks {
+        }
+        .concludis_profile {
+        }
+        .concludis_equality {
+        }
+        .concludis_apply {
+        }
+        .concludis_benefits {
+        }
+        .concludis_address {
+        }
+        .concludis_contact-person {
+        }
+    }
+}
+@layer customer-theme{}
+/* Layout */
+
+/*
+    @layer RESET
+    - - -
+    @layer BASE
+        COLOR
+        TYPOGRAPHY
+    - - -
+    @layer TEMPLATE
+    - - -
+    @layer COMPONENTS
+        INFOBLOCK
+            BASE
+                color: orange
+            LAYOUT
+                display: flex
+            STATES
+                :hover
+            SKIN:
+
+        BUTTON
+            BASE
+            LAYOUT
+            STATES
+    - - -
+    @layer SKIN
+        COLORS
+        TYPOGRAPHY
+        STATES
+*/
