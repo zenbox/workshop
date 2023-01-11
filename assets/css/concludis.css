@@ -1,4 +1,4 @@
-@layer base, template, service-provider, customer-theme;
+@layer base,, base.typography, template, service-provider, customer-theme;
 
 /* Base */
 @layer base {
@@ -25,74 +25,58 @@
     }
 }
 @layer service-provider {
+    .concludis {}
+    
     @layer base {
-        /* Variables */
-        .concludis {
-        }
-        /* Base */
         .concludis,
         .concludis * {
             box-sizing: border-box;
         }
-        @layer typography {
-    }
-    @layer layout {
-        /* Base */
-    }
+    @layer typography {}
+    @layer layout {}
     @layer components {
-        .concludis_title {
-        }
-        .concludis_grid-infofield {
-        }
-        .concludis_header {
-        }
-        .concludis_company {
-        }
-        .concludis_tasks {
-        }
-        .concludis_profile {
-        }
-        .concludis_equality {
-        }
-        .concludis_apply {
-        }
-        .concludis_benefits {
-        }
-        .concludis_address {
-        }
-        .concludis_contact-person {
-        }
+        .concludis_title {}
+        .concludis_grid-infofield {}
+        .concludis_header {}
+        .concludis_company {}
+        .concludis_tasks {}
+        .concludis_profile {}
+        .concludis_equality {}
+        .concludis_apply {}
+        .concludis_benefits {}
+        .concludis_address {}
+        .concludis_contact-person {}
     }
 }
 @layer customer-theme{}
-/* Layout */
 
 /*
-    @layer RESET
-    - - -
-    @layer BASE
-        COLOR
-        TYPOGRAPHY
-    - - -
-    @layer TEMPLATE
-    - - -
-    @layer COMPONENTS
-        INFOBLOCK
-            BASE
-                color: orange
-            LAYOUT
-                display: flex
-            STATES
-                :hover
-            SKIN:
-
-        BUTTON
-            BASE
-            LAYOUT
-            STATES
-    - - -
-    @layer SKIN
-        COLORS
-        TYPOGRAPHY
+Architektur einer CSS-Kaskade
+@layer RESET
+- - -
+@layer BASE
+    COLOR
+    TYPOGRAPHY
+- - -
+@layer TEMPLATE
+- - -
+@layer COMPONENTS
+    INFOBLOCK
+        BASE
+            color: orange
+        LAYOUT
+            display: flex
         STATES
+            :hover
+        SKIN:
+
+    BUTTON
+        BASE
+        LAYOUT
+        STATES
+- - -
+@layer SKIN
+    COLORS
+    TYPOGRAPHY
+    STATES
 */
