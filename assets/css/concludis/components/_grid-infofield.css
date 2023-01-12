@@ -1,0 +1,54 @@
+ul {
+    /* Base */
+    list-style-type: none;
+    padding: 0.25em;
+
+    /* Layout */
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+    align-items: stretch;
+
+    flex-wrap: wrap;
+
+    gap: 0.25em;
+
+    /* Theme */
+    background: lightgrey;
+
+    /* Temporär */
+    /* background: hsla(300, 100%, 25%, 0.5); */
+    /* outline: 2px dotted black; */
+}
+@media (max-width: 767px) {
+    .concludis_grid-infofield li {
+        flex-basis: calc(100% / 2);
+    }
+}
+
+@media (min-width: 768px) {
+    .concludis_grid-infofield li {
+        flex-basis: calc(100% / 3);
+    }
+}
+
+.concludis_grid-infofield li {
+    /* Layout*/
+    /* min-width: calc(100% / 3);
+                   max-width: calc(100% / 2); */
+    min-height: 2em;
+    padding: 1em;
+
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    /* Theme */
+    background: white;
+
+    /* Temporär */
+    /* background: hsla(38, 98%, 44%, 0.5); */
+    /* outline: 2px dotted black; */
+}
+.concludis_grid-infofield .concludis_header {
+}

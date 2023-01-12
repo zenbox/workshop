@@ -1,0 +1,9 @@
+.concludis {
+    width: 50vw;
+    margin: 0 auto;
+}
+
+.concludis > * {
+    margin-bottom: 2em;
+    width: 100%;
+}
