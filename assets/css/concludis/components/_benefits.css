@@ -1,2 +1,89 @@
 .concludis_benefits {
 }
+
+.concludis_benefits ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 4rem);
+}
+
+.concludis_benefits li:nth-child(1) {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.concludis_benefits li:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+.concludis_benefits li:nth-child(3) {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+.concludis_benefits li:nth-child(4) {
+    grid-column: 4 / 5;
+    grid-row: 1 / 2;
+}
+.concludis_benefits li:nth-child(5) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+.concludis_benefits li:nth-child(6) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+.concludis_benefits li:nth-child(7) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+.concludis_benefits li:nth-child(8) {
+    grid-column: 4 / 5;
+    grid-row: 2 / 3;
+}
+.concludis_benefits li:nth-child(9) {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+.concludis_benefits li:nth-child(10) {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+.concludis_benefits li:nth-child(11) {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+}
+.concludis_benefits li:nth-child(12) {
+    grid-column: 4 / 5;
+    grid-row: 3 / 4;
+}
+.concludis_benefits li:nth-child(13) {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+.concludis_benefits li:nth-child(14) {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+.concludis_benefits li:nth-child(15) {
+    grid-column: 3 / 4;
+    grid-row: 4 / 5;
+}
+.concludis_benefits li:nth-child(16) {
+    grid-column: 4 / 5;
+    grid-row: 4 / 5;
+}
+
+.benefit-1,
+.benefit-2,
+.benefit-3,
+.benefit-4,
+.benefit-5,
+.benefit-6,
+.benefit-7,
+.benefit-8 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    background-image: url(../../../figures/Gesundheit.svg);
+}
