@@ -4,9 +4,20 @@
 .concludis_benefits ul {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 4rem);
+    grid-template-rows: repeat(4, 7rem);
+    gap: 0.25rem;
 }
+.concludis_benefits li {
+    /* LAYOUT */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0.5em;
 
+    /* VISUAL */
+    background: white;
+}
 .concludis_benefits li:nth-child(1) {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -72,18 +83,86 @@
     grid-row: 4 / 5;
 }
 
-.benefit-1,
-.benefit-2,
-.benefit-3,
-.benefit-4,
-.benefit-5,
-.benefit-6,
-.benefit-7,
-.benefit-8 {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+.concludis_benefit-1,
+.concludis_benefit-2,
+.concludis_benefit-3,
+.concludis_benefit-4,
+.concludis_benefit-5,
+.concludis_benefit-6,
+.concludis_benefit-7,
+.concludis_benefit-8 {
+    /* Size */
     display: inline-block;
-    width: 4rem;
-    height: 4rem;
+    width: 5em;
+    height: 5em;
+
+    /* Visuals */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.concludis_benefit-1 {
     background-image: url(../../../figures/Gesundheit.svg);
+}
+.concludis_benefit-2 {
+    background-image: url(../../../figures/Idee.svg);
+}
+.concludis_benefit-3 {
+    background-image: url(../../../figures/Weiterentwicklung.svg);
+}
+.concludis_benefit-4 {
+    background-image: url(../../../figures/Familienunterstuetzung.svg);
+}
+.concludis_benefit-5 {
+    background-image: url(../../../figures/Jobrad.svg);
+}
+.concludis_benefit-6 {
+    background-image: url(../../../figures/Mobiles-Arbeiten.svg);
+}
+.concludis_benefit-7 {
+    background-image: url(../../../figures/Rabatte.svg);
+}
+.concludis_benefit-8 {
+    background-image: url(../../../figures/VVS-Zuschuss.svg);
+}
+
+.concludis-benefits,
+.concludis_benefits li,
+.concludis_benefit-1,
+.concludis_benefit-2,
+.concludis_benefit-3,
+.concludis_benefit-4,
+.concludis_benefit-5,
+.concludis_benefit-6,
+.concludis_benefit-7,
+.concludis_benefit-8 {
+    border: 1px dotted black;
+}
+
+/* BENEFITS Version 2*/
+
+.concludis_benefits-2 ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.concludis_benefits-2 li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+    padding: 0.25em;
+    hyphens: auto;
+}
+
+.concludis_benefits-2 li img {
+    width: 5em;
+    height: 5em;
+}
+.concludis_benefits-2 li p {
+    text-align: center;
 }
