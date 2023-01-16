@@ -1,0 +1,12 @@
+.concludis ul {
+    /* Base */
+    list-style-type: none;
+    padding: 0.25em;
+
+    /* Theme */
+    background: lightgrey;
+
+    /* Temporär */
+    /* background: hsla(300, 100%, 25%, 0.5); */
+    /* outline: 2px dotted black; */
+}

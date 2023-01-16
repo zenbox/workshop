@@ -7,3 +7,17 @@
     margin-bottom: 2em;
     width: 100%;
 }
+
+.concludis ul {
+    /* Layout */
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+    align-items: stretch;
+
+    flex-wrap: wrap;
+
+    gap: 0.25em;
+
+}
