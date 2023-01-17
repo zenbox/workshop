@@ -1,9 +1,19 @@
-body{margin: 0;}
+body {
+    margin: 0;
+}
 .task {
     padding: 2rem;
     background-color: hsla(0deg, 0%, 0%, 0.85);
     color: hsla(0deg, 0%, 100%, 0.85);
     font-family: Barlow;
+    min-height: 100vh;
 }
-.task * {margin:0.25rem;}
-.task>ol>li {margin:1rem;}
+.task * {
+    margin: 0.25rem;
+}
+.task > ol > li {
+    margin: 1rem;
+}
+.example{
+    min-height: 100vh;
+}
