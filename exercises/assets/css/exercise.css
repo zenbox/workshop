@@ -1,0 +1,9 @@
+body{margin: 0;}
+.task {
+    padding: 2rem;
+    background-color: hsla(0deg, 0%, 0%, 0.85);
+    color: hsla(0deg, 0%, 100%, 0.85);
+    font-family: Barlow;
+}
+.task * {margin:0.25rem;}
+.task>ol>li {margin:1rem;}
