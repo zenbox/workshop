@@ -1,0 +1,62 @@
+.concludis,
+.concludis * {
+    box-sizing: border-box;
+}
+.concludis {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.concludis h3 {
+    font-size: 20px;
+    border-bottom: 3px solid black;
+}
+
+.concludis a,
+.concludis button {
+    /* width: 100px; */
+    /* height: 30px; */
+
+    border-width: 2px;
+    border-color: purple;
+    border-style: solid;
+
+    border: 2px solid red;
+
+    padding-top: 1rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+
+    /* TRBL */
+    padding: 1rem 2rem 1rem 2rem;
+
+    border-radius: 5px;
+
+    background-color: aqua;
+    color: black;
+
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.concludis ul {
+    padding-left: 80px;
+}
+.concludis li {
+    padding-left: 1rem;
+}
+.concludis li::marker {
+    content: "\2661";
+    color: magenta;
+    font-size: 1rem;
+}
+
+/* .concludis li::before {
+    content: "B ";
+    color: magenta;
+} */
+
+ul.concludis_disc {
+    list-style-type: decimal;
+}
