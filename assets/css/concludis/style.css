@@ -1,9 +1,0 @@
-@layer base, typography, layout, components, theme;
-
-@import url(_base.css) layer(base);
-@import url(_typography.css) layer(typography);
-@import url(_layout.css) layer(layout);
-
-@import url(_components.css) layer(components);
-
-@import url(_theme.css) layer(theme);
