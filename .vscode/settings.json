@@ -1,14 +1,19 @@
 {
+    // EDITOR
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+
     // LIVE SERVER
-    "liveServer.settings.port": 5500,
-    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.port": 5503,
 
     // LIVE SASS COMPILER
     "liveSassCompile.settings.formats": [
         {
             "extensionName": ".css",
             "format": "expanded",
-            "savePath": "/assets/css/"
+            "savePath": "/dist/assets/css/"
         }
     ],
     "liveSassCompile.settings.generateMap": false,
@@ -19,16 +24,6 @@
     ],
     "liveSassCompile.settings.includeItems": [],
 
-    // EDITOR
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true,
-    "editor.formatOnType": true,
-    "editor.quickSuggestionsDelay": 1000,
-    "editor.hover.delay": 250,
-
-    "files.autoSave": "afterDelay",
-
-    // DEBUGGER
-    "debug.javascript.autoAttachFilter": "onlyWithFlag"
+    // LIVE PUG COMPILER
+    "livePugCompiler.savePath": "/dist"
 }
