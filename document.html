@@ -26,6 +26,24 @@
             </ol>
         </nav>
 
+        <div
+            id="live"
+            aria-live="polite">
+            Es wurde noch nichts gesagt.
+        </div>
+        <script>
+            let i = 10
+            setInterval(() => {
+                if (i > 0) {
+                    document.getElementById(
+                        "live"
+                    ).innerText = `Daten werden noch ${
+                        i-- * 4
+                    } Sekunden lang geladen.`
+                }
+            }, 4000)
+        </script>
+
         <header
             id="header"
             aria-label="Headergruppe Anfang">
