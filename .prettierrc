@@ -9,7 +9,7 @@
     "jsxSingleQuote": false,
     "trailingComma": "es5",
     "bracketSpacing": true,
-    "bracketSameLine": false,
+    "bracketSameLine": true,
     "arrowParens": "always",
     "htmlWhitespaceSensitivity": "css",
     "vueIndentScriptAndStyle": false,

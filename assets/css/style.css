@@ -1,0 +1,60 @@
+table {
+    background: lightsteelblue;
+}
+
+.lightgreen {
+    background-color: green;
+    color: white;
+}
+
+html {
+    font-family: Barlow, sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 3rem;
+    max-width: 100%;
+}
+
+.sr-only {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    background: white;
+    border: 1px solid black;
+}
+
+.skiplinks {
+    display: flex;
+    flex-direction: column;
+    opacity: 0.25;
+    padding: 1rem;
+}
+
+.sr-only::before {
+    content: "sr-only:";
+    font-size: 0.8rem;
+}
+
+.skiplinks ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.skiplinks:focus-within {
+    opacity: 1;
+}
+
+.skiplinks a:focus {
+    display: block;
+    background: black;
+    color: white;
+}

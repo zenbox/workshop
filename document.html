@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+    </head>
+    <body>
+        <nav
+            id="skiplinks"
+            class="skiplinks sr-only">
+            <ol>
+                <li><a href="#header">Zum Kopfbereich der Seite</a></li>
+                <li><a href="#page-search">Zum Suchenfeld der Seite</a></li>
+                <li><a href="#main-h1">Zum Inhalt der Seite</a></li>
+                <li><a href="#aside">Zum Marginalbereich der Seite</a></li>
+                <li><a href="#footer">Zum Fußbereich der Seite</a></li>
+            </ol>
+        </nav>
+
+        <header
+            id="header"
+            aria-label="Headergruppe Anfang">
+            <div>
+                <img
+                    class="logo"
+                    src="assets/figures/logo.svg"
+                    alt="Firmenlogo: ineinander verschlungene Kleinbuchstaben g, f, u" />
+            </div>
+            <div>
+                <form action="">
+                    <label for="page-search">Suche</label>
+                    <input
+                        type="search"
+                        name="search"
+                        id="page-search" />
+                    <button>Suchanfrage abschicken</button>
+                </form>
+            </div>
+        </header>
+
+        <main id="main">
+            <h1 id="main-h1">Überschrift des Hauptinhaltes</h1>
+            <p>Irgendwas an Inhalt</p>
+        </main>
+
+        <aside
+            id="aside"
+            aria-label="Nebeninhaltsgruppe Anfang">
+            Marginalbereich
+        </aside>
+
+        <footer
+            id="footer"
+            aria-label="Fußbereichsgruppe Anfang">
+            Fußbereich
+        </footer>
+    </body>
+</html>

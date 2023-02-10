@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Formulare</title>
+    </head>
+    <body>
+        <form action="login.php" method="get">
+            <fieldset>
+                <legend>Ihre Login-Daten</legend>
+
+                <label for="login-email">E-Mail</label>
+                <input
+                    type="email"
+                    name="email"
+                    id="login-email"
+                    placeholder="email@example.com"
+                    autocomplete="off"
+                    size="25"
+                />
+
+                <label for="login-password">Passwort</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="login-password"
+                    placeholder="Mind. 10 Zeichen ..."
+                    aria-describedby="login-password-description"
+                />
+
+                <p id="login-password-description">
+                    Geben Sie Ihr Passwort ein, das aus mindestens 10 Zeichen
+                    besteht.
+                </p>
+            </fieldset>
+
+            <label>
+                <input
+                    type="checkbox"
+                    name="save"
+                    value="true"
+                    id="login-save"
+                />
+                Passwort speichern
+            </label>
+
+            <button type="submit">Log in</button>
+            <button type="reset">Zurücksetzen</button>
+        </form>
+
+        <form action="">
+            <label for="form-color">Farbauswahl</label>
+            <input type="color" name="" id="form-color" />
+
+            <label for="form-date">Datum</label>
+            <input type="date" name="" id="form-date" />
+
+            <label for="form-text">Texteingabe</label>
+            <textarea name="" id="" cols="30" rows="10">Testeingabe</textarea>
+
+            <label for="form-select">Auswahlliste</label>
+            <select name="" id="form-select">
+                <option value="one">Erster Eintrag</option>
+                <option value="two">Zweiter Eintrag</option>
+                <option value="three">Dritter Eintrag</option>
+            </select>
+
+            <fieldset>
+                <legend>Gender</legend>
+                <label
+                    ><input checked type="radio" name="gender" id="gender" />
+                    weiblich</label
+                >
+                <label
+                    ><input type="radio" name="gender" id="gender" />
+                    männlich</label
+                >
+            </fieldset>
+        </form>
+    </body>
+</html>
