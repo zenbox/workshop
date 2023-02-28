@@ -70,7 +70,7 @@ $(window.document).ready(function () {
     // Javascript 2 - fetch() as a promise
     fetch("assets/data/data.json")
         .then((response) => {
-            console.log("yes!")
+            console.log("yes!");
             return response.json();
         })
         .then((data) => {
@@ -82,3 +82,16 @@ $(window.document).ready(function () {
 
     // - - - - - - - - - -
 });
+
+function fn() {
+    var a = 42;
+    let b = 108;
+
+    for (let i = 0; i < 10; i++) {
+        console.log(i);
+    }
+
+    console.log(i); // undefined
+}
+
+fn();
