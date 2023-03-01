@@ -18,7 +18,7 @@
         <h1>Headline ipsum dolor sit</h1>
         <main>
             <section id="we-1">
-                <table>
+                <table data-context="#we-1">
                     <thead>
                         <tr>
                             <th colspan="2">column header</th>
@@ -30,17 +30,17 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        <tr>
-                            <td>11</td>
-                            <td>12</td>
+                        <tr data-row="1">
+                            <td data-value="1">11</td>
+                            <td data-unit="1">12</td>
                         </tr>
-                        <tr>
-                            <td>21</td>
-                            <td>22</td>
+                        <tr data-row="2">
+                            <td data-value="2">21</td>
+                            <td data-unit="2">22</td>
                         </tr>
-                        <tr>
-                            <td>31</td>
-                            <td>32</td>
+                        <tr data-row="3">
+                            <td data-value="3">31</td>
+                            <td data-unit="3">32</td>
                         </tr>
                     </tbody>
                 </table>
@@ -49,7 +49,36 @@
             <section id="we-3">3</section>
             <section id="we-4">4</section>
 
-            <template>template</template>
+            <template id="template-we-table">
+                <!-- - - - - - - - - - - -->
+                <table data-context="#we-1">
+                    <thead>
+                        <tr>
+                            <th colspan="2">column header</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">footer</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr data-row="1">
+                            <td data-value="1">11</td>
+                            <td data-unit="1">12</td>
+                        </tr>
+                        <tr data-row="2">
+                            <td data-value="2">21</td>
+                            <td data-unit="2">22</td>
+                        </tr>
+                        <tr data-row="3">
+                            <td data-value="3">31</td>
+                            <td data-unit="3">32</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- - - - - - - - - - - -->
+            </template>
         </main>
         <aside>
             <form
@@ -84,5 +113,6 @@
         <script src="assets/js/libs/jquery-3.6.3.js"></script>
         <script src="assets/js/login.js"></script>
         <script src="assets/js/we-data.js"></script>
+        <!-- <script src="assets/js/script.js"></script> -->
     </body>
 </html>

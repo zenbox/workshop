@@ -17,7 +17,7 @@ window.onload = function () {
 
 // jQuery version
 $(window.document).ready(function () {
-    "use strict";
+    ("use strict");
     // - - - - - - - - - -
     console.log("document");
 
@@ -81,6 +81,23 @@ $(window.document).ready(function () {
         });
 
     // - - - - - - - - - -
+
+    // Data-  - attributes
+    console.clear();
+    let el = document.querySelector("#we-1 [data-value]");
+    // console.dir("JS: ", el);
+    console.log("JS: ", el.dataset.value);
+
+    console.log("jQuery: ", $("#we-1 [data-value]").data().value);
+
+    // - - - - - - - - - -
+    // localStorage
+
+    localStorage.setItem("userParams", JSON.stringify({ "we-1": "#we-1" }));
+    // localStorage.removeItem("myKey");
+    console.log(JSON.parse(localStorage.getItem("userParams")));
+
+    // - - - - - - - - - -
 });
 
 function fn() {
@@ -91,7 +108,7 @@ function fn() {
         console.log(i);
     }
 
-    console.log(i); // undefined
+    // console.log(i); // undefined
 }
 
 fn();

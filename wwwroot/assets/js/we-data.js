@@ -42,22 +42,53 @@ class DataGenerator {
         if (nValue === undefined) {
             nValue = this.fnCreateDatapointValue();
         }
-        /* 
-            #we-${nSection}
-                tbody
-                    > tr:nth-child(${nRow})
-                        > td:first-child 
-        */
 
         document.querySelector(
-            `#we-${nSection} tbody>tr:nth-child(${nRow})>td:first-child`
+            `#we-${nSection} [data-value="${nRow}"]`
         ).textContent = nValue;
 
-        // $(
-        //     `#we-${nSection} tbody>tr:nth-child(${nRow})>td:first-child`
-        // ).text(nValue);
+        document.querySelector(
+            `#we-${nSection} [data-unit="${nRow}"]`
+        ).textContent = sDescription;
+
+        // $(`#we-${nSection} [data-value=${nRow}]`).text(nValue);
+        // $(`#we-${nSection} [data-unit=${nRow}]`).text(sDescription);
     }
 }
+
+class TableBuilder {
+    constructor(dataContext) {
+        this.dataContext = dataContext;
+    }
+
+    getTemplateTable() {
+        this.templateTable =
+            document.querySelector("template").content.children[0];
+    }
+
+    setDatapoint(dataIndex, datapoint) {
+        let nValue = datapoint.value,
+            sUnit = datapoint.unit;
+
+        let oValueField = this.templateTable.querySelector(
+                `[data-value="${dataIndex}"]`
+            ),
+            oUnitField = this.templateTable.querySelector(
+                `[data-unit="${dataIndex}"]`
+            );
+
+        oValueField.textContent = nValue;
+        oUnitField.textContent = sUnit;
+    }
+}
+
+const dataset = [];
+
+let data = (dataset[0] = [
+    { value: 1234, unit: "LE" },
+    { value: 376, unit: "POS" },
+    { value: 5129, unit: "STK" },
+]);
 
 // PROCESS
 // - - - - - - - - - -
@@ -79,6 +110,32 @@ $(document).ready(() => {
             });
         }
     }
+
+    // Data ...
+    let dataIndex = 1,
+        dataContext = "#we-2";
+
+    let oTableBuilder = new TableBuilder(dataContext);
+
+    oTableBuilder.getTemplateTable();
+
+    data.forEach((datapoint) => {
+        oTableBuilder.setDatapoint(dataIndex, datapoint);
+        dataIndex++;
+    });
+
+    // Prototyping
+    // console.log(document.importNode(document.querySelector("template").content))
+
+    let myTable = $(document.querySelector("template").content).children();
+
+    myTable.find("[data-value]").addClass("selected");
+
+    myTable.appendTo("#we-3");
+
+    // let children = $("table").children("")
+    // children.addClass("selected")
+    // children.appendTo("#we-4")
 
     // - - - - - - - - - -
 });
