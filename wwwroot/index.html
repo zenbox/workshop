@@ -9,55 +9,80 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
     </head>
     <body>
         <header>logo</header>
+        <h1>Headline ipsum dolor sit</h1>
         <main>
-            <h1>Headline ipsum dolor sit</h1>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                minima aperiam fugiat dolore ab doloribus aliquam, sequi
-                temporibus veniam reprehenderit animi aliquid quod dolores. Was
-                Neues.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-                minima aperiam fugiat dolore ab doloribus aliquam, sequi
-                temporibus veniam reprehenderit animi aliquid quod dolores. Was
-                Neues.
-            </p>
+            <section id="we-1">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="2">column header</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">footer</td>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td>22</td>
+                        </tr>
+                        <tr>
+                            <td>31</td>
+                            <td>32</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="we-2">2</section>
+            <section id="we-3">3</section>
+            <section id="we-4">4</section>
+
+            <template>template</template>
         </main>
         <aside>
             <form
-            id="form-login"
-            action="">
-            <fieldset>
-                <legend>Benutzer Anmeldung</legend>
-                <label for="login-input-email">E-Mail</label>
-                <input
-                id="login-input-email"
-                type="email"
-                name="login-email"
-                value="michael.reichart@gfu.net" />
-                <label for="login-input-password">Passwort</label>
-                <input
-                id="login-input-password"
-                type="password"
-                name="login-password"
-                value="geheim" />
-                <button type="submit">Anmelden</button>
-            </fieldset>
-        </form>
-        <p class="teaser">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-            minima aperiam fugiat dolore ab doloribus aliquam, sequi
-            temporibus veniam reprehenderit animi aliquid quod dolores. Was
-            Neues.
-        </p>
-    </aside>
-    <footer><address>&copy; Michael 2023</address></footer>
-    <!--  1. jQuery import! -->
-    <script src="assets/js/libs/jquery-3.6.3.js"></script>
-    <script src="assets/js/login.js"></script>
+                id="form-login"
+                action="">
+                <fieldset>
+                    <legend>Benutzer Anmeldung</legend>
+                    <label for="login-input-email">E-Mail</label>
+                    <input
+                        id="login-input-email"
+                        type="email"
+                        name="login-email"
+                        value="michael.reichart@gfu.net" />
+                    <label for="login-input-password">Passwort</label>
+                    <input
+                        id="login-input-password"
+                        type="password"
+                        name="login-password"
+                        value="geheim" />
+                    <button type="submit">Anmelden</button>
+                </fieldset>
+            </form>
+            <p class="teaser">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
+                minima aperiam fugiat dolore ab doloribus aliquam, sequi
+                temporibus veniam reprehenderit animi aliquid quod dolores. Was
+                Neues.
+            </p>
+        </aside>
+        <footer><address>&copy; Michael 2023</address></footer>
+        <!--  1. jQuery import! -->
+        <script src="assets/js/libs/jquery-3.6.3.js"></script>
+        <script src="assets/js/login.js"></script>
+        <script src="assets/js/we-data.js"></script>
     </body>
 </html>

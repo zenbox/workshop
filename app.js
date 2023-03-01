@@ -19,7 +19,7 @@ import http from "http";
 import express from "express";
 
 // Own modules
-import loginController from "./src/controller/login.js";
+import loginController from "./src/controller/loginController.js";
 
 // DECLARATION
 const app = express();
