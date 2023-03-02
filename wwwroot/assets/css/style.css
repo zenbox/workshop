@@ -1,3 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    font-family: Barlow;
+    font-size: 18px;
+    line-height: 1.4;
+}
 main {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -28,4 +36,24 @@ section {
 
 .selected {
     background-color: hsla(180deg, 100%, 50%, 0.5);
+}
+table {
+    width: 100%;
+}
+thead, tfoot {
+    background-color: hsla(180deg, 80%, 30%, 1);
+    color: hsla(0deg, 100%, 100%, 1);
+    text-align: center;
+}
+th {
+    font-weight: 400;
+}
+tr:nth-child(odd) {
+    background-color: hsla(180deg, 80%, 30%, 0.25);
+}
+[data-value] {
+    text-align: right;
+}
+[data-unit] {
+    text-align: left;
 }

@@ -29,15 +29,15 @@ class DataGenerator {
     fnUpdateDatapointValue() {}
 
     /**
-     * @desc    Set any datapoint into a grid table
-     * @param   {object} datapoint - contains grid infos and an optional value
+     * @desc    Set any oDatapoint into a grid table
+     * @param   {object} oDatapoint - contains grid infos and an optional value
      * @returns {void}
      */
-    fnSetDatapoint(datapoint) {
-        let nSection = datapoint.section,
-            nRow = datapoint.row,
-            nValue = datapoint.value,
-            sDescription = datapoint.description;
+    fnSetDatapoint(oDatapoint) {
+        let nSection = oDatapoint.section,
+            nRow = oDatapoint.row,
+            nValue = oDatapoint.value,
+            sDescription = oDatapoint.description;
 
         if (nValue === undefined) {
             nValue = this.fnCreateDatapointValue();
@@ -57,24 +57,30 @@ class DataGenerator {
 }
 
 class TableBuilder {
-    constructor(dataContext) {
-        this.dataContext = dataContext;
+    constructor(sDataContext) {
+        this.sDataContext = sDataContext;
     }
 
-    getTemplateTable() {
+    fnGetTemplateTable() {
         this.templateTable =
             document.querySelector("template").content.children[0];
     }
 
-    setDatapoint(dataIndex, datapoint) {
-        let nValue = datapoint.value,
-            sUnit = datapoint.unit;
+    fnSetTemplateTable() {
+        document
+            .querySelector(this.sDataContext)
+            .appendChild(this.templateTable);
+    }
+
+    fnSetDatapoint(nDataIndex, oDatapoint) {
+        let nValue = oDatapoint.value,
+            sUnit = oDatapoint.unit;
 
         let oValueField = this.templateTable.querySelector(
-                `[data-value="${dataIndex}"]`
+                `[data-value="${nDataIndex}"]`
             ),
             oUnitField = this.templateTable.querySelector(
-                `[data-unit="${dataIndex}"]`
+                `[data-unit="${nDataIndex}"]`
             );
 
         oValueField.textContent = nValue;
@@ -100,42 +106,30 @@ $(document).ready(() => {
     let oGenerator = new DataGenerator();
 
     // CONTROLS
-    for (let section = 1; section <= 1; section++) {
-        for (let row = 1; row <= 3; row++) {
-            oGenerator.fnSetDatapoint({
-                description: "Stück",
-                value: undefined,
-                section: section,
-                row: row,
-            });
-        }
-    }
+    // for (let section = 1; section <= 1; section++) {
+    //     for (let row = 1; row <= 3; row++) {
+    //         oGenerator.fnSetDatapoint({
+    //             description: "Stück",
+    //             value: undefined,
+    //             section: section,
+    //             row: row,
+    //         });
+    //     }
+    // }
 
     // Data ...
-    let dataIndex = 1,
-        dataContext = "#we-2";
+    let nDataIndex = 1,
+        sDataContext = "#we-4";
 
-    let oTableBuilder = new TableBuilder(dataContext);
+    let oTableBuilder = new TableBuilder(sDataContext);
 
-    oTableBuilder.getTemplateTable();
+    oTableBuilder.fnGetTemplateTable();
 
-    data.forEach((datapoint) => {
-        oTableBuilder.setDatapoint(dataIndex, datapoint);
-        dataIndex++;
+    data.forEach((oDatapoint) => {
+        oTableBuilder.fnSetDatapoint(nDataIndex, oDatapoint);
+        nDataIndex++;
     });
 
-    // Prototyping
-    // console.log(document.importNode(document.querySelector("template").content))
-
-    let myTable = $(document.querySelector("template").content).children();
-
-    myTable.find("[data-value]").addClass("selected");
-
-    myTable.appendTo("#we-3");
-
-    // let children = $("table").children("")
-    // children.addClass("selected")
-    // children.appendTo("#we-4")
-
+    oTableBuilder.fnSetTemplateTable();
     // - - - - - - - - - -
 });
