@@ -45,7 +45,9 @@
                     </tbody>
                 </table>
             </section>
-            <section id="we-2"></section>
+            <section
+                id="we-2"
+                class="default"></section>
             <section id="we-3"></section>
             <section id="we-4"></section>
 
@@ -111,8 +113,24 @@
         <footer><address>&copy; Michael 2023</address></footer>
         <!--  1. jQuery import! -->
         <script src="assets/js/libs/jquery-3.6.3.js"></script>
+        <script src="assets/js/libs/jquery-closable-1.0.0/closable.js"></script>
+
         <script src="assets/js/login.js"></script>
-        <script type="module" src="assets/js/we-data.js"></script>
-        <!-- <script src="assets/js/script.js"></script> -->
+        <script
+            type="module"
+            src="assets/js/we-data.js"></script>
+        <script src="assets/js/js-basics.js"></script>
+
+        <script>
+            $(document).ready(() => {
+                "use strict";
+                // - - - - - - - - - -
+                setTimeout(() => {
+                    $("#we-2").removeClass("default");
+                    $("#we-2").addClass("good");
+                }, 3000);
+                // - - - - - - - - - -
+            });
+        </script>
     </body>
 </html>

@@ -10,6 +10,7 @@
  * @copyright (c) 2023 Michael Reichart, Cologne
  */
 
+
 // Javascript version
 window.onload = function () {
     console.log("window");
@@ -112,3 +113,4 @@ function fn() {
 }
 
 fn();
+

@@ -1,0 +1,6 @@
+.jquery-closable {
+    display: block;
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+}

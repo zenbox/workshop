@@ -11,7 +11,7 @@
  */
 
 import DataGenerator from "./classes/DataGenerator.class.js";
-import TemplateTable from "./classes/TemplateTable.class.js"
+import TemplateTable from "./classes/TemplateTable.class.js";
 
 const dataset = [];
 
@@ -56,5 +56,13 @@ $(document).ready(() => {
     });
 
     oTableBuilder.fnSetTemplateTable();
+
+    $("p").closable();
+
+    // let collection = document.querySelectorAll("p");
+    // collection.forEach((element) => {
+    //     element.closable();
+    // });
+
     // - - - - - - - - - -
 });

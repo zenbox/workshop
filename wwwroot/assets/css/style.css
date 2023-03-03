@@ -1,11 +1,17 @@
+/* Base */
 * {
     box-sizing: border-box;
 }
 html {
-    font-family: Barlow;
-    font-size: 18px;
+    font-family: Barlow, sans-serif;
+    font-size: 18px; /* Base for root em (rem) */
     line-height: 1.4;
 }
+body {
+    margin: 1rem;
+}
+
+/* Layout */
 main {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -40,7 +46,8 @@ section {
 table {
     width: 100%;
 }
-thead, tfoot {
+thead,
+tfoot {
     background-color: hsla(180deg, 80%, 30%, 1);
     color: hsla(0deg, 100%, 100%, 1);
     text-align: center;
@@ -56,4 +63,66 @@ tr:nth-child(odd) {
 }
 [data-unit] {
     text-align: left;
+}
+/* - - - - - - - - - - 
+   Effects?
+
+   - transitions (Übergang)
+   - animations (Bewegungsfolge)
+   - transformation (Veränderung)
+*/
+
+.default {
+    background-color: lightgrey;
+}
+.good {
+    background-color: green;
+}
+.bad {
+    background-color: red;
+}
+
+section {
+    transition-property: all;
+    transition-duration: 250ms;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0;
+}
+
+.good {
+    animation-name: my-animation;
+    animation-duration: 5s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes my-animation {
+    0% {
+        background-color: yellow;
+        width: 1em;
+    }
+    25% {
+        background-color: orange;
+        width: 2rem;
+    }
+    50% {
+        background-color: red;
+        width: 3rem;
+    }
+    75% {
+        background-color: green;
+        width: 4rem;
+    }
+    100% {
+        background-color: yellow;
+        width: 5rem;
+    }
+}
+
+section#we-1 {
+    transform: rotateZ(0) translate3d(0, 0, 0);
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    perspective: 800px;
+    perspective-origin: 50% 100px;
 }
