@@ -1,0 +1,17 @@
+/* COMPONENTS (MODULES) */
+/* RESET */
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* BASE */
+/* LAYOUT */
+.nav {
+    display: flex;
+}
+/* STATE */
+.nav a[href]:hover {
+    color: red;
+}

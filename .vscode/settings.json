@@ -13,7 +13,7 @@
         {
             "extensionName": ".css",
             "format": "expanded",
-            "savePath": "/dist/assets/css/"
+            "savePath": "/assets/css/"
         }
     ],
     "liveSassCompile.settings.generateMap": false,
