@@ -1,0 +1,39 @@
+// Accordion Component
+//
+//  @package Webapplication
+//  @module Web UI
+//  @author Michael Reichart <michael.reichart@gfu.net>
+//  @since 2023-03-10
+//  @version 1.0.0
+//  @see i.e. inspired by ... {link to}
+//  @license MIT {https://opensource.org/licenses/MIT}
+//  @copyright (c) 2023 Michael Reichart, Cologne
+
+#{$prefix} {
+    &-accordion {
+        button {
+            display: block;
+
+            // STATE
+            &:not(.active) + p {
+                display: none;
+            }
+            &.active + p {
+                display: block;
+            }
+        }
+
+        p {
+            // BASE
+            // LAYOUT
+            display: block;
+            margin-top: 0;
+            margin-right: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+
+            // TEMP
+            border: 1px dotted blue;
+        }
+    }
+}

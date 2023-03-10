@@ -1,10 +1,22 @@
+// CONFIGURATION
+@import "variables";
+@import "mixins";
+
+// BASIS
+@import "normalize-8.0.1";
 @import "base";
-@import "reset";
-// @import "state";
 
+// TEMPLATES
 @import "layout";
+@import "typography";
+@import "color-scheme";
 
+// COMPONENTS
 @import "navigation";
+@import "accordion";
+
+/* DEVELOPER THEME */
+@import "develop";
 
 /* CUSTOMER THEME */
 @import "theme";

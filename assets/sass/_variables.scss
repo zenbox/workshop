@@ -1,0 +1,29 @@
+// SASS Variables
+$prefix: ".mD"; // ???
+
+// TYPOGRAPHY
+$fontSize: 18px;
+
+// COLORS
+$primary: hsl(20, 100%, 50%);
+$secondary: orange;
+$tertiary: green;
+
+$primary-disabled: desaturate($primary, 10%);
+
+// APPLICATION EXAMPLE
+body {
+    background: $primary;
+}
+
+// CSS VARIABLES
+// SCOPE!
+:root {
+    --primary: lightblue;
+    --secondary: orange;
+    --tertiary: green;
+}
+
+body {
+    background: var(--primary);
+}
