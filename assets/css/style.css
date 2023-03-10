@@ -413,11 +413,20 @@ body.template footer {
 .mD-accordion button {
   display: block;
 }
+.mD-accordion button.active ~ p {
+  display: block;
+  transition-property: height opacity;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+}
 .mD-accordion button:not(.active) + p {
-  display: none;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 .mD-accordion button.active + p {
-  display: block;
+  height: 2rem;
+  opacity: 1;
 }
 .mD-accordion p {
   display: block;

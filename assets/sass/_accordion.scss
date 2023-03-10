@@ -12,14 +12,27 @@
 #{$prefix} {
     &-accordion {
         button {
+            // LAYOUT
             display: block;
+
+            // BEHAVIOUR
+            &.active ~ p {
+                display: block;
+
+                transition-property: height opacity;
+                transition-duration: 250ms;
+                transition-timing-function: ease-in-out;
+            }
 
             // STATE
             &:not(.active) + p {
-                display: none;
+                height: 0;
+                opacity: 0;
+                overflow: hidden;
             }
             &.active + p {
-                display: block;
+                height: 2rem;
+                opacity: 1;
             }
         }
 
