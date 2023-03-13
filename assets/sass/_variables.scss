@@ -5,7 +5,7 @@ $prefix: ".mD"; // ???
 $fontSize: 18px;
 
 // COLORS
-$primary: hsl(20, 100%, 50%);
+$primary: hsla(20, 100%, 50%, 0.18);
 $secondary: orange;
 $tertiary: green;
 
@@ -19,7 +19,7 @@ body {
 // CSS VARIABLES
 // SCOPE!
 :root {
-    --primary: lightblue;
+    --primary: transparent;
     --secondary: orange;
     --tertiary: green;
 }

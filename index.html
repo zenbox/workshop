@@ -34,6 +34,35 @@
         <main>
             <!-- - - - - - - - - - - -->
             <h1>Headline ipsum dolor sit</h1>
+
+            <form
+                action=""
+                id="login">
+                <fieldset>
+                    <legend>User login</legend>
+
+                    <fieldset>
+                        <label for="login-email">E-Mail</label>
+                        <input
+                            id="login-email"
+                            type="email"
+                            name="email"
+                            value="michael.reichart@gfu.net" />
+                    </fieldset>
+
+                    <fieldset>
+                        <label for="login-password">Password</label>
+                        <input
+                            id="login-password"
+                            type="password"
+                            name="password"
+                            value="geheim" />
+                    </fieldset>
+                </fieldset>
+
+                <button type="submit">log in</button>
+            </form>
+
             <article>
                 <h2>Headline article ipsum dolor</h2>
                 <!-- - - - - - - - - - - - -->
@@ -99,5 +128,8 @@
         <script
             defer
             src="assets/js/script.js"></script>
+        <script
+            defer
+            src="assets/js/login.js"></script>
     </body>
 </html>

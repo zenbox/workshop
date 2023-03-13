@@ -1,9 +1,9 @@
 body {
-  background: hsl(20, 100%, 50%);
+  background: hsla(20, 100%, 50%, 0.18);
 }
 
 :root {
-  --primary: lightblue;
+  --primary: transparent;
   --secondary: orange;
   --tertiary: green;
 }
