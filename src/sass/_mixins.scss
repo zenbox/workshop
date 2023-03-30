@@ -1,0 +1,46 @@
+// Mixins
+//
+// @package Webapplication
+// @module Base
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-03-28
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+
+@mixin borderRadius($borderRadius: $level) {
+    border-radius: $borderRadius;
+
+    -webkit-border-radius: $borderRadius;
+    -ms-border-radius: $borderRadius;
+    -moz-border-radius: $borderRadius;
+    -o-border-radius: $borderRadius;
+    -khtml-border-radius: $borderRadius;
+}
+
+@mixin boxRadius($borderRadius: $level) {
+    border-radius: $borderRadius;
+
+    -webkit-border-radius: $borderRadius;
+    -ms-border-radius: $borderRadius;
+    -moz-border-radius: $borderRadius;
+    -o-border-radius: $borderRadius;
+    -khtml-border-radius: $borderRadius;
+}
+//
+// @param $level - any description
+// @desc ...
+@mixin boxShadow($level: $level) {
+    box-shadow: $level $level $level * 2 $shadowColor;
+}
+
+@mixin boxPadding($gap: $gap) {
+    padding: $gap;
+}
+
+@mixin resetList() {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}

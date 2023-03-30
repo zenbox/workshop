@@ -1,0 +1,28 @@
+// Functions
+//
+// @package Webapplication
+// @module Utilities
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-03-29
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+
+@function offset($level) {
+    // $level -> 1, 2, 3 ...
+    // $gap -> 0.5rem!
+    $offset: $level * $gap * 0.5;
+    @return $offset;
+}
+
+@function blur($level) {
+    // $level -> 1, 2, 3 ...
+    // -> rem!
+    @return $level * 0.25rem;
+}
+
+@function shadow($color, $background) {
+    @return mix($color, $background);
+}
+
