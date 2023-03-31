@@ -778,11 +778,6 @@ html {
   width: 3rem;
   height: 3rem;
 }
-.brand > * {
-  display: block;
-  position: absolute;
-  right: 1rem;
-}
 
 .cards {
   margin: 0;
@@ -799,7 +794,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0.5rem 0.5rem 1rem hsla(0, 0%, 0%, 0.5);
+  box-shadow: 0.25rem 0.25rem 0.5rem rgba(179, 179, 179, 0.5);
   border-radius: 0.5rem;
   -webkit-border-radius: 0.5rem;
   -ms-border-radius: 0.5rem;
@@ -839,7 +834,7 @@ html {
   -moz-border-radius: 0.125rem;
   -o-border-radius: 0.125rem;
   -khtml-border-radius: 0.125rem;
-  box-shadow: 0.125rem 0.125rem 0.25rem hsla(0, 0%, 0%, 0.5);
+  box-shadow: 0.0625rem 0.0625rem 0.125rem rgba(179, 179, 179, 0.5);
 }
 .color-field:hover {
   background: #a3dd1d;
@@ -872,6 +867,13 @@ html {
   background-color: hsl(0, 100%, 50%);
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 img.responsive {
   width: 100%;
   height: auto;
@@ -893,6 +895,7 @@ img.full-bleed {
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
+  position: relative;
 }
 .nav a[href] {
   display: inline-block;
@@ -918,6 +921,90 @@ img.full-bleed {
 .nav a:active {
   color: #b1e538;
   text-decoration: underline;
+}
+.nav .submenu {
+  background-color: #3d0c05;
+  color: #fdfefa;
+  padding-inline: 0.5rem;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.nav .submenu:active {
+  background-color: #ed3c21;
+}
+.nav .submenu:active > ul.sub {
+  height: 5rem;
+  width: 100vw;
+}
+@keyframes my-sub-animation {
+  0% {
+    display: block;
+    height: 0;
+  }
+  100% {
+    height: 12rem;
+  }
+}
+.nav .sub {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: absolute;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  height: 0;
+  text-overflow: clip;
+  overflow: hidden;
+  background-color: #fdfefa;
+  color: #3d0c05;
+}
+.nav .sub:hover {
+  height: auto;
+}
+
+.search {
+  margin-block-end: 0.5rem;
+}
+.search fieldset {
+  border: none;
+  outline: none;
+  padding: 0;
+}
+.search input[type=search] {
+  transition-property: all;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+.search input[type=search] {
+  width: 0;
+  padding: 0;
+  border: none;
+}
+.search:hover input[type=search] {
+  width: 20vw;
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(179, 179, 179, 0.5);
+}
+.search button[type=submit] {
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  padding: 0;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+.search button[type=submit]::before {
+  content: "\e8b6";
+  font-family: "Material Symbols Outlined";
+  font-size: 1.5rem;
+  text-shadow: -0.125rem 0.125rem 0.125rem hsla(0, 0%, 0%, 0.5);
+  color: hsl(8, 85%, 28%);
 }
 
 .developer body {

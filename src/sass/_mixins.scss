@@ -32,7 +32,7 @@
 // @param $level - any description
 // @desc ...
 @mixin boxShadow($level: $level) {
-    box-shadow: $level $level $level * 2 $shadowColor;
+    box-shadow: $level * 0.5 $level * 0.5 $level * 1 lighten($shadowColor, 70);
 }
 
 @mixin boxPadding($gap: $gap) {
@@ -43,4 +43,11 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+}
+
+@mixin resetButton() {
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    padding: 0;
 }

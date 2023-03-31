@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
     lang="en"
-    class="customer-theme-1">
+    class="customer-theme-1 #developer">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -21,7 +21,7 @@
     <body class="template-1">
         <header
             id="my-header"
-            class="header-orange c1 c2 c3 c4 c5 c6 c7 c8 c9">
+            class="header">
             <div class="brand">
                 <h1
                     tabindex="1"
@@ -38,11 +38,49 @@
 
             <nav id="page-header-navigation">
                 <ul class="nav">
-                    <li class="active"><a href="#">link 1</a></li>
+                    <li>
+                        <form
+                            class="search"
+                            action="search.php"
+                            method="get">
+                            <fieldset>
+                                <legend class="sr-only">search</legend>
+
+                                <label
+                                    for="search"
+                                    class="sr-only"
+                                    >search</label
+                                >
+                                <input
+                                    type="search"
+                                    id="search"
+                                    name="search"
+                                    value="lala" />
+
+                                <button type="submit">
+                                    <span class="sr-only">search</span>
+                                </button>
+
+                                <!-- <button class="material-symbols-outlined">
+                        search
+                    </button> -->
+                            </fieldset>
+                        </form>
+                    </li>
+                    <li class="submenu">
+                        link 1
+                        <ul class="sub">
+                            <li>sub content 1</li>
+                            <li>sub content 2</li>
+                            <li>sub content 3</li>
+                        </ul>
+                    </li>
                     <li><a href="#">link 2</a></li>
                     <li><a href="#">link 3</a></li>
                 </ul>
             </nav>
+
+            <!-- <div>...</div> -->
         </header>
 
         <nav id="page-main-navigation">

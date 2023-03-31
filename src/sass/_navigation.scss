@@ -1,4 +1,6 @@
-// Navigation Component
+// Navigation and Subnavigation Components
+//
+// @desc lorem ipsum dolor sit amet
 //
 // @package Webapplication
 // @module UI Components
@@ -35,6 +37,8 @@
         padding: $gap;
     }
 
+    position: relative;
+
     // Layout variants
     &-column {
         flex-direction: column;
@@ -64,5 +68,72 @@
             color: lighten($secondaryColor, 15);
             text-decoration: underline;
         }
+    }
+
+    // - - - - - - - - - -
+    // SUBMENU
+    // - - - - - - - - - -
+    .submenu {
+        // BASE, RESET
+
+        // STATE
+        &:active {
+            background-color: lighten($darkColor, 40);
+
+            & > ul.sub {
+                height: 5rem;
+                width: 100vw;
+            }
+        }
+
+        // SKIN
+        background-color: $darkColor;
+        color: $lightColor;
+        padding-inline: $gap;
+        border-top-left-radius: $borderRadius * 0.25;
+        border-top-right-radius: $borderRadius * 0.25;
+    }
+
+    @keyframes my-sub-animation {
+        0% {
+            display: block;
+            height: 0;
+        }
+        100% {
+            height: 12rem;
+        }
+    }
+
+    .sub {
+        // BASE
+        @include resetList();
+
+        // LAYOUT
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        position: absolute;
+
+        // BEHAVIOUR
+        transition-property: all;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+        // animation: my-sub-animation;
+
+        // STATE
+        // display: none;
+        height: 0;
+        text-overflow: clip;
+        overflow: hidden;
+
+        &:hover {
+            height: auto;
+        }
+
+        // SKIN
+        background-color: $lightColor;
+        color: $darkColor;
     }
 }
