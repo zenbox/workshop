@@ -14,28 +14,42 @@
         <link
             rel="stylesheet"
             href="assets/css/style.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     </head>
     <body class="template-1">
-        <header>
-            <div class="brand">company logo</div>
+        <header
+            id="my-header"
+            class="header-orange c1 c2 c3 c4 c5 c6 c7 c8 c9">
+            <div class="brand">
+                <h1
+                    tabindex="1"
+                    aria-describedby="brand-desc"
+                    class="sr-only">
+                    The SHOU Company
+                </h1>
+                <p
+                    class="sr-only"
+                    id="brand-desc">
+                    The Shou company sign: ....
+                </p>
+            </div>
 
-            <nav>
+            <nav id="page-header-navigation">
                 <ul class="nav">
-                    <li class="header__nav--hover"><a href="#">link 1</a></li>
+                    <li class="active"><a href="#">link 1</a></li>
                     <li><a href="#">link 2</a></li>
                     <li><a href="#">link 3</a></li>
                 </ul>
             </nav>
         </header>
 
-        <nav>
+        <nav id="page-main-navigation">
             <!-- Navigation standard code -->
             <ul class="nav nav-column">
                 <li>
-                    <a
-                        href="#"
-                        >page 1</a
-                    >
+                    <a href="#">page 1</a>
                 </li>
                 <li><a href="#">page 2</a></li>
                 <li><a href="#">page 3</a></li>
@@ -147,6 +161,12 @@
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 Molestias at ipsum labore.
             </p>
+
+            <article id="stellenazeige">
+                <img
+                    src="assets/figures/shou.svg"
+                    alt="" />
+            </article>
         </main>
         <footer>footer</footer>
     </body>

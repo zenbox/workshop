@@ -12,3 +12,21 @@ html,
 html * {
     box-sizing: border-box;
 }
+
+a[href] {
+    text-decoration: none;
+
+    &:hover {
+        color: red;
+    }
+}
+
+
+h2 {
+    display: block;
+}
+
+.my-stellenanzeige {
+    .title {}
+    .vertragsart {}
+}
