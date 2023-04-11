@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            http-equiv="X-UA-Compatible"
+            content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Accessible Document</title>
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+    </head>
+    <body>
+        <header>
+            <nav></nav>
+        </header>
+        <main>
+            <h1>Überschrift für das Dokument</h1>
+            <nav></nav>
+            <header>
+                <nav>
+                    <ul>
+                        <li>
+                            <a
+                                href=""
+                                class="fa-solid fa-search">
+                                <span class="sr-only">Suchen</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <section id="news">
+                <h2>Überschrift für die Sektion</h2>
+                <article class="two-columns">
+                    <h3>Überschrift für den Artikel</h3>
+
+                    <figure>
+                        <picture>
+                            <source />
+                            <img
+                                tabindex="1"
+                                src="https://picsum.photos/id/62/480/320"
+                                alt="Foto: Toskanische Landschaft in Sonnenaufgangsstimmung."
+                                longdesc="" />
+                        </picture>
+                        <figcaption>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing
+                            elit. Dolor ipsum quae cum.
+                        </figcaption>
+                    </figure>
+
+                    <p>Lorem ipsum dolor sit amet consectetur.</p>
+                </article>
+                <article></article>
+                <article></article>
+            </section>
+            <section id="dates">
+                <article></article>
+            </section>
+        </main>
+        <aside></aside>
+        <footer></footer>
+
+        <!-- Alternate with divs -->
+        <!--       <div
+            role="banner"
+            class="header"></div>
+        <div
+            role="navigation"
+            class="nav"></div>
+        <div
+            role="main"
+            class="main">
+            <div role="header"></div>
+            <div role=""></div>
+            <div role="article">
+                <img
+                    src=""
+                    alt="" />
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <div
+            role="complementary"
+            class="aside"></div>
+        <div
+            role="contentinfo"
+            class="footer"></div>
+    --></body>
+</html>
