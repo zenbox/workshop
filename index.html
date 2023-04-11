@@ -8,7 +8,7 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
-        <title>Accessible Document</title>
+        <title>Barrierefreies Webdokument</title>
         <link
             rel="stylesheet"
             href="assets/css/style.css" />
@@ -35,6 +35,44 @@
             </header>
             <section id="news">
                 <h2>Überschrift für die Sektion</h2>
+                <article>
+                    <form
+                        action=""
+                        aria-label="Benutzeranmeldung mit Zustimmungen">
+                        <fieldset>
+                            <legend id="form-login-label">
+                                Benutzeranmeldung
+                            </legend>
+                            <label for="form-login-email">E-Mail</label>
+                            <input
+                                id="form-login-email"
+                                type="email" />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Zustimmungen</legend>
+
+                            <label>
+                                <input type="checkbox" />
+                                <abbr title="Allgemeine Geschäftsbedingungen"
+                                    >AGB</abbr
+                                >'s zustimmen
+                            </label>
+                        </fieldset>
+                        <button>einloggen</button>
+                    </form>
+                </article>
+                <article>
+                    <h3>Urlaub in der Toskana</h3>
+                    <img
+                        tabindex="1"
+                        aria-describedby="img-desc"
+                        src="https://picsum.photos/id/62/480/320"
+                        alt="Foto: Toskanische Landschaft in Sonnenaufgangsstimmung." />
+                    <p id="img-desc">
+                        Morgens haben wir einen Sonnenaufgang auf der Terrasse
+                        unseres Hauses genossen.
+                    </p>
+                </article>
                 <article class="two-columns">
                     <h3>Überschrift für den Artikel</h3>
 
@@ -55,8 +93,6 @@
 
                     <p>Lorem ipsum dolor sit amet consectetur.</p>
                 </article>
-                <article></article>
-                <article></article>
             </section>
             <section id="dates">
                 <article></article>
