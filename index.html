@@ -14,17 +14,29 @@
             href="assets/css/style.css" />
     </head>
     <body>
-        <header>
-            <nav></nav>
-        </header>
+        <nav
+            id="nav-accessibility"
+            class="sr-only">
+            <a href="#header">Zum Seitenkopf</a>
+            <a href="#nav">zur Hauptnavigation</a>
+            <a href="#main">zum Inhalt</a>
+            <a href="#search">zum Suche</a>
+            <a href="#accessibility-notes"
+                >zu den Hinweisen zur Barrierefreiheit</a
+            >
+            <a href="#footer">Zum Seitenfuß</a>
+        </nav>
+
+        <header id="header">HEADER</header>
         <main>
-            <h1>Überschrift für das Dokument</h1>
+            <h1 tabindex="0">Überschrift für das Dokument</h1>
             <nav></nav>
             <header>
                 <nav>
                     <ul>
                         <li>
                             <a
+                                tabindex="-1"
                                 href=""
                                 class="fa-solid fa-search">
                                 <span class="sr-only">Suchen</span>
@@ -34,37 +46,69 @@
                 </nav>
             </header>
             <section id="news">
-                <h2>Überschrift für die Sektion</h2>
+                <h2 tabindex="0">Überschrift für die Sektion</h2>
                 <article>
+                    <!-- - - - - -->
                     <form
+                        id="login-form"
+                        tabindex="0"
                         action=""
+                        aria-live="assertive"
                         aria-label="Benutzeranmeldung mit Zustimmungen">
                         <fieldset>
                             <legend id="form-login-label">
                                 Benutzeranmeldung
                             </legend>
-                            <label for="form-login-email">E-Mail</label>
-                            <input
-                                id="form-login-email"
-                                type="email" />
+
+                            <div class="fieldset-for-fields">
+                                <label for="form-login-email">E-Mail</label>
+                                <input
+                                    id="form-login-email"
+                                    type="email"
+                                    aria-describedby="form-login-email-desc"
+                                    autocomplete="false" />
+                                <p
+                                    id="form-login-email-desc"
+                                    class="##sr-only"></p>
+                            </div>
+
+                            <div class="fieldset-for-fields">
+                                <label for="form-login-password"
+                                    >Passwort</label
+                                >
+                                <input
+                                    id="form-login-password"
+                                    type="password"
+                                    autocomplete="off" />
+                            </div>
                         </fieldset>
                         <fieldset>
                             <legend>Zustimmungen</legend>
-
                             <label>
-                                <input type="checkbox" />
+                                <input
+                                    type="checkbox"
+                                    id="form-login-checkbox-terms" />
                                 <abbr title="Allgemeine Geschäftsbedingungen"
                                     >AGB</abbr
                                 >'s zustimmen
                             </label>
+                            <label for="form-login-select">Auswahl</label>
+                            <select
+                                name=""
+                                id="form-login-select">
+                                <option value="">eins</option>
+                                <option value="">zwei</option>
+                                <option value="">drei</option>
+                            </select>
                         </fieldset>
-                        <button>einloggen</button>
+                        <button type="submit">einloggen</button>
                     </form>
+                    <!-- - - - - -->
                 </article>
+
                 <article>
                     <h3>Urlaub in der Toskana</h3>
                     <img
-                        tabindex="1"
                         aria-describedby="img-desc"
                         src="https://picsum.photos/id/62/480/320"
                         alt="Foto: Toskanische Landschaft in Sonnenaufgangsstimmung." />
@@ -73,6 +117,7 @@
                         unseres Hauses genossen.
                     </p>
                 </article>
+
                 <article class="two-columns">
                     <h3>Überschrift für den Artikel</h3>
 
@@ -80,7 +125,6 @@
                         <picture>
                             <source />
                             <img
-                                tabindex="1"
                                 src="https://picsum.photos/id/62/480/320"
                                 alt="Foto: Toskanische Landschaft in Sonnenaufgangsstimmung."
                                 longdesc="" />
@@ -98,8 +142,11 @@
                 <article></article>
             </section>
         </main>
-        <aside></aside>
-        <footer></footer>
+        <aside>ASIDE</aside>
+        <footer id="footer">
+            FOOTER
+            <a href="#header">nach oben</a>
+        </footer>
 
         <!-- Alternate with divs -->
         <!--       <div
@@ -126,5 +173,7 @@
         <div
             role="contentinfo"
             class="footer"></div>
-    --></body>
+    -->
+        <script src="assets/js/script.js"></script>
+    </body>
 </html>

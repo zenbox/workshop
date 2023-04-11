@@ -1,7 +1,7 @@
 .sr-only {
     display: block;
     position: absolute;
-    left :-10000px;
+    left: -10000px;
 }
 
 .hidden-for-all {
@@ -12,4 +12,36 @@
     visibility: hidden;
 }
 
-:focus, :focus-visible {outline: 3px dotted blue;}
+// NAVIGATION
+#nav-accessibility {
+    &:has(*:focus) {
+        position: unset;
+    }
+    a[href] {
+        &:active,
+        &:focus,
+        &:focus-visible {
+            display: flex;
+            left: 0;
+            top: 0;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            position: absolute;
+
+            width: 100vw;
+            height: 100vh;
+
+            background: hsla(0, 0%, 100%, 0.85);
+
+            font-size: 3rem;
+        }
+    }
+}
+
+// DEVELOPER
+:focus,
+:focus-visible {
+    outline: 3px dotted red;
+}
