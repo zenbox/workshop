@@ -1,0 +1,15 @@
+.sr-only {
+    display: block;
+    position: absolute;
+    left :-10000px;
+}
+
+.hidden-for-all {
+    display: none;
+}
+
+.invisible-but-existing {
+    visibility: hidden;
+}
+
+:focus, :focus-visible {outline: 3px dotted blue;}
