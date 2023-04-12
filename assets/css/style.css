@@ -1,16 +1,31 @@
 :root,
-html {
+html,
+html.normale-sprache {
   font-family: Barlow, Geneva, Tahoma, sans-serif;
-  font-size: 18px;
+  font-size: clamp(16px, 4vh, 22px);
   line-height: 1.38;
+  font-weight: 400;
 }
 
 p {
-  column-width: 18rem;
+  column-width: 22rem;
+  padding-inline: 1rem;
+  margin-block: 1rem;
+}
+
+html.leichte-sprache {
+  font-family: Barlow, Geneva, Tahoma, sans-serif;
+  font-size: clamp(18px, 4vh, 24px);
+  line-height: 1.7;
+  font-weight: 400;
+}
+html.leichte-sprache p {
+  margin-block: 1.3rem;
+  column-width: 15rem;
 }
 
 form {
-  font-size: 22px;
+  font-size: clamp(18px, 4vh, 24px);
 }
 form input {
   font-size: 1em;
@@ -21,6 +36,40 @@ form p {
 
 fieldset {
   border-radius: 1rem;
+}
+
+h1 {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 2.7rem;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 2.4rem;
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.7rem;
+}
+
+h6 {
+  font-size: 1.5rem;
+}
+
+p,
+li,
+td,
+th {
+  font-size: 1rem;
 }
 
 .sr-only {
@@ -67,4 +116,46 @@ fieldset {
 :focus,
 :focus-visible {
   outline: 3px dotted red;
+}
+
+.blurred-vision {
+  filter: blur(2px);
+}
+
+.achromatopsia {
+  filter: url('data:image/svg+xml,      <svg xmlns="http://www.w3.org/2000/svg">        <filter id="achromatopsia">          <feColorMatrix values="0.213  0.715  0.072  0.000  0.000                                 0.213  0.715  0.072  0.000  0.000                                 0.213  0.715  0.072  0.000  0.000                                 0.000  0.000  0.000  1.000  0.000" />        </filter>      </svg>#achromatopsia');
+}
+
+.deuteranopia {
+  filter: url('data:image/svg+xml,      <svg xmlns="http://www.w3.org/2000/svg">        <filter id="deuteranopia">          <feColorMatrix values="0.367  0.861 -0.228  0.000  0.000                                 0.280  0.673  0.047  0.000  0.000                                -0.012  0.043  0.969  0.000  0.000                                 0.000  0.000  0.000  1.000  0.000" />        </filter>      </svg>#deuteranopia');
+}
+
+.protanopia {
+  filter: url('data:image/svg+xml,      <svg xmlns="http://www.w3.org/2000/svg">        <filter id="protanopia">        <feColorMatrix values="0.152  1.053 -0.205  0.000  0.000                               0.115  0.786  0.099  0.000  0.000                              -0.004 -0.048  1.052  0.000  0.000                               0.000  0.000  0.000  1.000  0.000" />        </filter>      </svg>#protanopia');
+}
+
+.tritanopia {
+  filter: url('data:image/svg+xml,      <svg xmlns="http://www.w3.org/2000/svg">        <filter id="tritanopia">        <feColorMatrix values="1.256 -0.077 -0.179  0.000  0.000                              -0.078  0.931  0.148  0.000  0.000                               0.005  0.691  0.304  0.000  0.000                               0.000  0.000  0.000  1.000  0.000" />        </filter>      </svg>#tritanopia');
+}
+
+body {
+  background: hsl(120, 25%, 30%);
+  color: #bfd9bf;
+}
+
+figure {
+  position: relative;
+  background: red;
+}
+figure img {
+  opacity: 0.85;
+}
+
+figcaption {
+  display: block;
+  position: absolute;
+  margin-bottom: 4rem;
+  bottom: 2rem;
+  left: 2rem;
+  color: white;
 }
