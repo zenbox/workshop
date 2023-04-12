@@ -13,11 +13,11 @@
             rel="stylesheet"
             href="assets/css/style.css" />
     </head>
-    <body>
+    <body aria-hidden="true">
         <nav
             id="nav-accessibility"
             class="sr-only">
-            <a href="#header">Zum Seitenkopf</a>
+            <a role="button" #header">Zum Seitenkopf</a>
             <a href="#nav">zur Hauptnavigation</a>
             <a href="#main">zum Inhalt</a>
             <a href="#search">zum Suche</a>
@@ -144,7 +144,10 @@
         </main>
         <aside>ASIDE</aside>
         <footer id="footer">
-            FOOTER
+            <address>
+                Copyright © 2023 World Wide Web Consortium (W3C®). 
+                See Permission to Use WAI Material.
+            </address>
             <a href="#header">nach oben</a>
         </footer>
 
@@ -174,6 +177,7 @@
             role="contentinfo"
             class="footer"></div>
     -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tota11y/0.1.6/tota11y.min.js"></script>
         <script src="assets/js/script.js"></script>
     </body>
 </html>

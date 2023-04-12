@@ -1,12 +1,31 @@
-// setTimeout(() => {
-//     let element = document.getElementById("form-login-email"),
-//         desc = document.getElementById("form-login-email-desc");
+setTimeout(() => {
+    let element = document.getElementById("form-login-email"),
+        desc = document.getElementById("form-login-email-desc");
 
-//     desc.textContent = "Bitte gib deine E-Mail Adresse hier ein ...";
-//     desc.classList.remove("sr-only");
+    desc.textContent = "Bitte gib deine E-Mail Adresse hier ein ...";
+    desc.classList.remove("sr-only");
 
-//     element.focus();
-// }, 3000);
+    element.focus();
+
+    // // Das aktuell fokussierte Element abrufen
+    // const focusedElement =
+    //     document.accessibilityObjectModel.getFocusedElement();
+
+    // // Überprüfen, ob das fokussierte Element ein Formularelement ist
+    // if (
+    //     focusedElement.tagName === "INPUT" ||
+    //     focusedElement.tagName === "SELECT" ||
+    //     focusedElement.tagName === "TEXTAREA"
+    // ) {
+    //     // Wenn ja, den Typ des Formularelements abrufen und ausgeben
+    //     const inputType = focusedElement.type;
+    //     console.log(
+    //         `Das fokussierte Formularelement ist vom Typ "${inputType}".`
+    //     );
+    // } else {
+    //     console.log("Das fokussierte Element ist kein Formularelement.");
+    // }
+}, 3000);
 
 window.onload = () => {
     // - - - - - - - - - -
@@ -29,5 +48,13 @@ window.onload = () => {
                 break;
         }
     });
+    // - - - - - - - - - -
+    // - - - - - - - - - -
+    // Versuche, VoiceOver zu erkennen
+    // Geht derzeit nicht!
+
+    const voiceOverStatus = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
     // - - - - - - - - - -
 };

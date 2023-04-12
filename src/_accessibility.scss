@@ -40,6 +40,18 @@
     }
 }
 
+// ANIMATION
+.animation {
+  animation: pulse 1s linear infinite both;
+}
+
+/* Tone down the animation to avoid vestibular motion triggers like scaling or panning large objects. */
+@media (prefers-reduced-motion) {
+  .animation {
+    animation: dissolve 2s linear infinite both;
+  }
+}
+
 // DEVELOPER
 :focus,
 :focus-visible {
