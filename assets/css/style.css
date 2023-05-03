@@ -1009,16 +1009,13 @@ img.full-bleed {
 }
 
 .developer body {
-  border: 4px solid green;
-  background: hsla(0, 0%, 15%, 0.85);
-  color: hsl(156, 100%, 50%);
-  color: white;
+  border: 2px solid green;
 }
 .developer body > * {
-  border: 4px solid cyan;
+  border: 2px solid cyan;
 }
 .developer body > * > * {
-  border: 4px solid orange;
+  border: 2px solid orange;
 }
 
 .customer-theme-1 {
