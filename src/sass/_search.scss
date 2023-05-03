@@ -1,0 +1,67 @@
+// Search
+//
+// @package Webapplication
+// @module header
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-03-31
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+
+.search {
+    // BASE, RESET
+    fieldset {
+        border: none;
+        outline: none;
+        padding: 0;
+    }
+
+    // LAYOUT
+    margin-block-end: $gap;
+
+    // BEHAVIOUR
+    input[type="search"] {
+        transition-property: all;
+        transition-duration: 0.3s;
+        transition-timing-function: ease-in-out;
+    }
+
+    // STATE
+    input[type="search"] {
+        width: 0;
+        padding: 0;
+        border: none;
+    }
+
+    // &.active,
+    &:hover {
+        input[type="search"] {
+            width: 20vw;
+            @include boxShadow(0.25rem);
+        }
+    }
+
+    button[type="submit"] {
+        // BASE, RESET
+        @include resetButton();
+
+        // LAYOUT
+        display: inline-block;
+        width: 2rem;
+        height: 2rem;
+
+        // THEME, SKIN
+        &::before {
+            content: "\e8b6";
+            font-family: "Material Symbols Outlined";
+            font-size: 1.5rem;
+            text-shadow: -0.125rem 0.125rem 0.125rem $shadowColor;
+            color: $tertiaryColor;
+        }
+
+        // background: radial-gradient(circle at left top, white, lightgrey);
+        // border: 2px solid hsla(0, 0%, 0%, 0.15);
+        border-radius: 50%;
+    }
+}

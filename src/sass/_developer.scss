@@ -1,0 +1,19 @@
+.developer {
+    body {
+        border: 4px solid green;
+        background: hsla(0, 0%, 15%, 0.85);
+        color: hsl(156, 100%, 50%);
+        color: white;
+
+        // All children of body
+        // Layout element layer
+        > * {
+            border: 4px solid cyan;
+
+            // Component layer
+            > * {
+                border: 4px solid orange;
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+img {
+    &.responsive {
+        width: 100%;
+        height: auto;
+        // max-width: calc(100% + 2 * $gap);
+        // height: 100%;
+    }
+    &.full-bleed {
+        width: calc(100% + 2 * $gap) !important;
+        margin: -$gap !important;
+    }
+}

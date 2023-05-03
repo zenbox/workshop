@@ -1,0 +1,18 @@
+.brand {
+    &::after {
+        content: " ";
+        // font-family:"Material Symbols Outlined";
+        // font-size: 5rem;
+        // color: red;
+
+        background-image: url(../figures/shou.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        display: inline-block;
+        width: 3rem;
+        height: 3rem;
+
+    }
+}

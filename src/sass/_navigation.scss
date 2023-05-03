@@ -1,0 +1,139 @@
+// Navigation and Subnavigation Components
+//
+// @desc lorem ipsum dolor sit amet
+//
+// @package Webapplication
+// @module UI Components
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-03-28
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+
+// .#{$prefix}nav {}
+.header {
+    &__nav {
+        &--hover {
+            border: 2px dashed green;
+        }
+    }
+}
+
+.nav {
+    // BASE, RESET
+    @include resetList();
+
+    // LAYOUT
+    // default layout: horizontal
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+
+    a[href] {
+        display: inline-block;
+        width: 100%;
+        padding: $gap;
+    }
+
+    position: relative;
+
+    // Layout variants
+    &-column {
+        flex-direction: column;
+    }
+
+    // Theme ?
+    &-tabs {
+    }
+
+    // STATES
+    a {
+        &:link {
+            color: $primaryColor;
+            text-decoration: none;
+        }
+        &:visited {
+            color: $tertiaryColor;
+            text-decoration: none;
+        }
+        &.active,
+        &:hover {
+            color: $secondaryColor;
+            background-color: darken($secondaryColor, 20);
+            text-decoration: underline;
+        }
+        &:active {
+            color: lighten($secondaryColor, 15);
+            text-decoration: underline;
+        }
+    }
+
+    // - - - - - - - - - -
+    // SUBMENU
+    // - - - - - - - - - -
+    .submenu {
+        // BASE, RESET
+
+        // STATE
+        &:active {
+            background-color: lighten($darkColor, 40);
+
+            & > ul.sub {
+                height: 5rem;
+                width: 100vw;
+            }
+        }
+
+        // SKIN
+        background-color: $darkColor;
+        color: $lightColor;
+        padding-inline: $gap;
+        border-top-left-radius: $borderRadius * 0.25;
+        border-top-right-radius: $borderRadius * 0.25;
+    }
+
+    @keyframes my-sub-animation {
+        0% {
+            display: block;
+            height: 0;
+        }
+        100% {
+            height: 12rem;
+        }
+    }
+
+    .sub {
+        // BASE
+        @include resetList();
+
+        // LAYOUT
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: stretch;
+
+        position: absolute;
+
+        // BEHAVIOUR
+        transition-property: all;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+        // animation: my-sub-animation;
+
+        // STATE
+        // display: none;
+        height: 0;
+        text-overflow: clip;
+        overflow: hidden;
+
+        &:hover {
+            height: auto;
+        }
+
+        // SKIN
+        background-color: $lightColor;
+        color: $darkColor;
+    }
+}

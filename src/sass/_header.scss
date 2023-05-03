@@ -1,0 +1,60 @@
+// Header
+// 
+// @package Webapplication
+// @module Layout
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-03-31
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+
+
+.header {
+
+    // LAYOUT
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    // THEME
+    // background-color: $darkColor;
+    // color: $lightColor;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #my-header {
+//     background: black !important;
+// }
+
+// header.header-green.c1.c2.c3.c4.c5.c6.c7.c8.c9 {
+//     background: darkseagreen;
+// }
+
+// header {
+//     background: coral !important;
+// }
+
+// .header-green {
+//     background: red;
+// }
+
+// header#my-header {
+//     background: yellow !important;
+// }
+
+// .header-orange {
+//     background: orange;
+// }

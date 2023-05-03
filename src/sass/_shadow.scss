@@ -1,0 +1,37 @@
+// Text and Box Shadows
+//
+// @package Webapplication
+// @module Utilities
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-03-29
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+@for $i from 1 through 5 {
+    .level-#{$i} {
+        $level: $i;
+        box-shadow: offset($level)
+            offset($level)
+            blur($level)
+            shadow($shadowColor, darkseagreen);
+        translate: offset($level) * 0.5 offset($level) * 0.5;
+    }
+}
+
+$bool: 1;
+
+.shadow {
+    & > * {
+        outline: 3px dotted orange;
+    }
+}
+@if & {
+    .shadow {
+        outline: 3px dotted green;
+    }
+} @else {
+    .shadow {
+        outline: 3px dotted cyan;
+    }
+}
