@@ -1,3 +1,8 @@
+// General
+// the bootstrap prefix is `bs-`
+$prefix: bs-;
+$myPrefix: rfr-;
+
 // My colors
 // Shades between white and black
 $white: #fff;
@@ -25,8 +30,10 @@ $green: #198754;
 $teal: #20c997;
 $cyan: #0dcaf0;
 
-$primary: $purple;
-$secondary: grey;
+$primary: $red;
+$onPrimary: $white;
+
+$secondary: blue;
 $tertiary: grey;
 
 // Semantical colors
@@ -73,3 +80,11 @@ $danger-bg-subtle: tint-color($danger, 60%);
 $light-bg-subtle: mix($gray-100, $white);
 $dark-bg-subtle: $gray-400;
 // scss-docs-end theme-bg-subtle-variables
+
+// Switches
+$enable-rounded: false;
+$border-radius: 0.25rem;
+
+$enable-shadows: true;
+
+$enable-rfr-component: true;

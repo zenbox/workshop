@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html
     lang="en"
-    class="">
+    class=""
+    data-customer-id="12345">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -24,7 +25,11 @@
                 <!-- - - - - - - - - - - -->
                 <nav class="navbar navbar-expand-lg bg-body-tertiary">
                     <div class="container-fluid">
-                        <h2 class="navbar-brand">Logo</h2>
+                        <!-- - Own component! - -->
+                        <h2 class="rfr-brand rfr-brand-2x">
+                            <span class="visually-hidden">Shou</span>
+                        </h2>
+                        <!-- - - - -->
                         <button
                             class="navbar-toggler"
                             type="button"
@@ -437,5 +442,6 @@
             <footer class="col-sm-12 col-md-12 col-lg-12">footer</footer>
         </div>
         <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/customer-color-theme.js"></script>
     </body>
 </html>
