@@ -13,6 +13,7 @@
   @each $color, $value in $grays {
     --#{$prefix}gray-#{$color}: #{$value};
   }
+  // --bs-gray-100: #f8f9fa;
 
   @each $color, $value in $theme-colors {
     --#{$prefix}#{$color}: #{$value};

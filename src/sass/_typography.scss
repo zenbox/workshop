@@ -8,9 +8,30 @@
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2023 Michael Reichart, Cologne
 
-
 html {
     font-family: sans-serif;
-    font-size: 18px;    
+    font-size: 18px; // base for 1rem
     line-height: 1.3857;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+p,
+code,
+li,
+td,
+th {
+    font-size: 1rem;
+}
+
+form {
+    font-size: 1.4rem;
+
+    input,
+    select,
+    option {
+        font-size: 0.95em;
+    }
 }

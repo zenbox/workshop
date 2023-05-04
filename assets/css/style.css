@@ -700,6 +700,27 @@ html {
   line-height: 1.3857;
 }
 
+h1 {
+  font-size: 2rem;
+}
+
+p,
+code,
+li,
+td,
+th {
+  font-size: 1rem;
+}
+
+form {
+  font-size: 1.4rem;
+}
+form input,
+form select,
+form option {
+  font-size: 0.95em;
+}
+
 .sr-only {
   display: block;
   position: absolute;
