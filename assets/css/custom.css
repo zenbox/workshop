@@ -73,18 +73,18 @@
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
-  --bs-body-color: #f8f9fa;
-  --bs-body-color-rgb: 248, 249, 250;
-  --bs-body-bg: #343a40;
-  --bs-body-bg-rgb: 52, 58, 64;
+  --bs-body-color: #343a40;
+  --bs-body-color-rgb: 52, 58, 64;
+  --bs-body-bg: #f8f9fa;
+  --bs-body-bg-rgb: 248, 249, 250;
   --bs-emphasis-color: #000;
   --bs-emphasis-color-rgb: 0, 0, 0;
-  --bs-secondary-color: rgba(248, 249, 250, 0.75);
-  --bs-secondary-color-rgb: 248, 249, 250;
+  --bs-secondary-color: rgba(52, 58, 64, 0.75);
+  --bs-secondary-color-rgb: 52, 58, 64;
   --bs-secondary-bg: #e9ecef;
   --bs-secondary-bg-rgb: 233, 236, 239;
-  --bs-tertiary-color: rgba(248, 249, 250, 0.5);
-  --bs-tertiary-color-rgb: 248, 249, 250;
+  --bs-tertiary-color: rgba(52, 58, 64, 0.5);
+  --bs-tertiary-color-rgb: 52, 58, 64;
   --bs-tertiary-bg: #f8f9fa;
   --bs-tertiary-bg-rgb: 248, 249, 250;
   --bs-link-color: #533193;
@@ -2550,7 +2550,7 @@ progress {
   --bs-navbar-toggler-padding-y: 0.25rem;
   --bs-navbar-toggler-padding-x: 0.75rem;
   --bs-navbar-toggler-font-size: 1.25rem;
-  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28248, 249, 250, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2852, 58, 64, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
   --bs-navbar-toggler-border-color: rgba(var(--bs-emphasis-color-rgb), 0.15);
   --bs-navbar-toggler-border-radius: 0.375rem;
   --bs-navbar-toggler-focus-width: 0.25rem;
@@ -3600,10 +3600,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #343a40, 0 0 0 0.25rem rgba(83, 49, 147, 0.25);
+  box-shadow: 0 0 0 1px #f8f9fa, 0 0 0 0.25rem rgba(83, 49, 147, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #343a40, 0 0 0 0.25rem rgba(83, 49, 147, 0.25);
+  box-shadow: 0 0 0 1px #f8f9fa, 0 0 0 0.25rem rgba(83, 49, 147, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
