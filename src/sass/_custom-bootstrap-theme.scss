@@ -1,0 +1,75 @@
+// My colors
+// Shades between white and black
+$white: #fff;
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+$black: #000;
+
+// Common color values
+// Ask your designer!
+$blue: #2860b5;
+$indigo: #440c9d;
+$purple: #533193;
+$pink: #921553;
+$red: #a40717;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+
+$primary: $purple;
+$secondary: grey;
+$tertiary: grey;
+
+// Semantical colors
+$success: $green;
+$danger: $red;
+$warning: $yellow;
+
+$info: $primary;
+
+// High contrast colors
+$dark: $gray-800;
+$light: $gray-100;
+
+$body-color: $light;
+$body-bg: $dark;
+
+$body-secondary-color: rgba($body-color, 0.75);
+$body-secondary-bg: $gray-200;
+
+$body-tertiary-color: rgba($body-color, 0.5);
+$body-tertiary-bg: $gray-100;
+
+$body-emphasis-color: $black;
+
+// Variants
+// scss-docs-start theme-text-variables
+$primary-text-emphasis: shade-color($primary, 40%);
+$secondary-text-emphasis: shade-color($secondary, 40%);
+$success-text-emphasis: shade-color($success, 40%);
+$info-text-emphasis: shade-color($info, 40%);
+$warning-text-emphasis: shade-color($warning, 40%);
+$danger-text-emphasis: shade-color($danger, 40%);
+$light-text-emphasis: $gray-700;
+$dark-text-emphasis: $gray-700;
+// scss-docs-end theme-text-variables
+
+// scss-docs-start theme-bg-subtle-variables
+$primary-bg-subtle: tint-color($primary, 60%);
+$secondary-bg-subtle: tint-color($secondary, 60%);
+$success-bg-subtle: tint-color($success, 60%);
+$info-bg-subtle: tint-color($info, 60%);
+$warning-bg-subtle: tint-color($warning, 60%);
+$danger-bg-subtle: tint-color($danger, 60%);
+$light-bg-subtle: mix($gray-100, $white);
+$dark-bg-subtle: $gray-400;
+// scss-docs-end theme-bg-subtle-variables

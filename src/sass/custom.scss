@@ -5,6 +5,7 @@
 @import "bootstrap/scss/functions";
 
 // 2. Include any default variable overrides here
+@import "custom-bootstrap-theme";
 
 // 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
 @import "bootstrap/scss/variables";
@@ -33,7 +34,6 @@
 @import "bootstrap/scss/carousel";
 @import "bootstrap/scss/placeholders";
 @import "bootstrap/scss/forms";
-@import "bootstrap/scss/nav";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/dropdown";
 
