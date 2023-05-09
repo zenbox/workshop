@@ -25,5 +25,12 @@
     "liveSassCompile.settings.includeItems": [],
 
     // LIVE PUG COMPILER
-    "livePugCompiler.savePath": "/dist"
+    "livePugCompiler.savePath": "/dist",
+
+    "liveServer.settings.https": {
+        "enable": true, //set it true to enable the feature.
+        "cert": "/Users/michaelreichart/server.crt", //full path of the certificate
+        "key": "/Users/michaelreichart/server.key", //full path of the private key
+        "passphrase": "Eg3szseg!"
+    }
 }
