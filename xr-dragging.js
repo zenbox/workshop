@@ -30,14 +30,21 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { XRButton } from "three/addons/webxr/XRButton.js";
 import { XRControllerModelFactory } from "three/addons/webxr/XRControllerModelFactory.js";
 
+import {RapierPhysics} from "three/addons/physics/RapierPhysics.js"
+
 // Variablen für den Aufbau
-let cube,
+let cube1,
+    cube2,
+    cube3,
+    cube4,
     group,
     ambientLight,
     controller1,
     controller2,
     w = window.innerWidth,
     h = window.innerHeight;
+
+let physics, position;
 
 const clock = new THREE.Clock();
 const scene = new THREE.Scene();
@@ -106,9 +113,12 @@ function renderXrLoop() {
     intersectObjects(controller1);
     intersectObjects(controller2);
 
-    cube.rotation.x += 0.005;
-    cube.rotation.y += 0.005;
-    cube.rotation.z += 0.005;
+    cube1.rotation.x += 0.005;
+    cube2.rotation.y += 0.005;
+    cube3.rotation.z += 0.005;
+    cube4.rotation.x += 0.005;
+    cube4.rotation.y += 0.005;
+    cube4.rotation.z += 0.005;
 }
 // - - - - - - - - - -
 // Controller functions
@@ -221,21 +231,55 @@ function cleanIntersected() {
     }
 }
 // - - - - - - - - - -
-function addCube() {
+function addCube1() {
     const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-    const material = new THREE.MeshPhongMaterial({ color: 0x00ff55 });
-    cube = new THREE.Mesh(geometry, material);
+    const material = new THREE.MeshPhongMaterial({ color: 0xff0000 });
+    let cube = new THREE.Mesh(geometry, material);
     cube.position.set(0, 0, 0);
     // scene.add(cube);
     group.add(cube);
+    cube1 = cube;
+}
+function addCube2() {
+    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+    let cube = new THREE.Mesh(geometry, material);
+    cube.position.set(-1, 0, 0);
+    // scene.add(cube);
+    group.add(cube);
+    cube2 = cube;
+}
+function addCube3() {
+    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    const material = new THREE.MeshPhongMaterial({ color: 0x0000ff });
+    let cube = new THREE.Mesh(geometry, material);
+    cube.position.set(1, 0, 0);
+    // scene.add(cube);
+    group.add(cube);
+    cube3 = cube;
+}
+function addCube4() {
+    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    const material = new THREE.MeshPhongMaterial({ color: 0xff00ff });
+    let cube = new THREE.Mesh(geometry, material);
+    cube.position.set(0, 2, 0);
+    scene.add(cube);
+    // group.add(cube);
+    cube4 = cube;
 }
 function addGroup() {
     group = new THREE.Group();
     scene.add(group);
 }
-// - - - - - - - - - - -
+// - - - - - - - - - -
+// PHYSICS
+// - - - - - - - - - -
+physics = await RapierPhysics();
+position = new THREE.Vector3();
+
+// - - - - - - - - - -
 // PROCESS
-// - - - - - - - - - - -
+// - - - - - - - - - -
 addCamera();
 addLights();
 addRenderer();
@@ -249,7 +293,15 @@ addGrip1();
 addGrip2();
 
 addGroup();
-addCube();
+addCube1();
+addCube2();
+addCube3();
+addCube4();
+
+physics.addMesh(cube1, 1);
+physics.addMesh(cube2, 1);
+physics.addMesh(cube3, 1);
+physics.addMesh(cube4, 1);
 
 // - - - - - - - - - -
 // Always at the end
