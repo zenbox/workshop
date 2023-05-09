@@ -39,9 +39,8 @@ let cube,
     w = window.innerWidth,
     h = window.innerHeight;
 
-    
-    const clock = new THREE.Clock();
-    const scene = new THREE.Scene();
+const clock = new THREE.Clock();
+const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 2000); // Perspective: focal length, image ratio, nearest distance, farest distance
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -120,12 +119,7 @@ function addController1() {
     controller1.addEventListener("selectstart", onSelectStart);
     controller1.addEventListener("selectend", onSelectEnd);
 
-    controller1.addEventListener("connected", function (event) {
-        this.add(buildController(event.data));
-    });
-    controller1.addEventListener("disconnected", function () {
-        this.remove(this.children[0]);
-    });
+    controller1.add(line.clone());
 
     scene.add(controller1);
 }
@@ -133,12 +127,9 @@ function addController2() {
     controller2 = renderer.xr.getController(1);
     controller2.addEventListener("selectstart", onSelectStart);
     controller2.addEventListener("selectend", onSelectEnd);
-    controller2.addEventListener("connected", function (event) {
-        this.add(buildController(event.data));
-    });
-    controller2.addEventListener("disconnected", function () {
-        this.remove(this.children[0]);
-    });
+
+    controller2.add(line.clone());
+
     scene.add(controller2);
 }
 function addGrip1() {
@@ -154,46 +145,6 @@ function addGrip2() {
         controllerModelFactory.createControllerModel(controllerGrip2)
     );
     scene.add(controllerGrip2);
-}
-function buildController(data) {
-    let geometry, material;
-
-    switch (data.targetRayMode) {
-        case "tracked-pointer":
-            geometry = new THREE.BufferGeometry();
-            geometry.setAttribute(
-                "position",
-                new THREE.Float32BufferAttribute([0, 0, 0, 0, 0, -1], 3)
-            );
-            geometry.setAttribute(
-                "color",
-                new THREE.Float32BufferAttribute([0.5, 0.5, 0.5, 0, 0, 0], 3)
-            );
-
-            material = new THREE.LineBasicMaterial({
-                vertexColors: true,
-                blending: THREE.AdditiveBlending,
-            });
-
-            return new THREE.Line(geometry, material);
-
-        case "gaze":
-            geometry = new THREE.RingGeometry(0.02, 0.04, 32).translate(
-                0,
-                0,
-                -1
-            );
-            material = new THREE.MeshBasicMaterial({
-                opacity: 0.5,
-                transparent: true,
-            });
-            return new THREE.Mesh(geometry, material);
-    }
-}
-function handleController(controller) {
-    if (controller.userData.isSelecting) {
-        // do something ...
-    }
 }
 // - - - - - - - - - -
 // DRAGGING
@@ -303,6 +254,5 @@ addCube();
 // - - - - - - - - - -
 // Always at the end
 // - - - - - - - - - -
-controller1.add(line.clone());
-controller2.add(line.clone());
+
 animate();
