@@ -32,18 +32,33 @@ import { XRControllerModelFactory } from "three/addons/webxr/XRControllerModelFa
 
 // Variablen für den Aufbau
 let cube,
+    group,
     ambientLight,
     controller1,
     controller2,
     w = window.innerWidth,
     h = window.innerHeight;
 
-const clock = new THREE.Clock();
-const scene = new THREE.Scene();
+    
+    const clock = new THREE.Clock();
+    const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 2000); // Perspective: focal length, image ratio, nearest distance, farest distance
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 const controls = new OrbitControls(camera, renderer.domElement);
 const controllerModelFactory = new XRControllerModelFactory();
+
+// Variablen für das Dragging
+const geometry = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(0, 0, -1),
+]);
+let raycaster,
+    intersected = [];
+const tempMatrix = new THREE.Matrix4();
+const line = new THREE.Line(geometry);
+raycaster = new THREE.Raycaster();
+line.name = "line";
+line.scale.z = 5;
 
 function addRenderer() {
     // Canvas initalisation with xr!
@@ -86,6 +101,11 @@ function animate() {
 function renderXrLoop() {
     // Render the image into the canvas object
     renderer.render(scene, camera);
+
+    cleanIntersected();
+
+    intersectObjects(controller1);
+    intersectObjects(controller2);
 
     cube.rotation.x += 0.005;
     cube.rotation.y += 0.005;
@@ -175,11 +195,79 @@ function handleController(controller) {
         // do something ...
     }
 }
-function onSelectStart() {
+// - - - - - - - - - -
+// DRAGGING
+function onSelectStart(event) {
     this.userData.isSelecting = true;
+
+    const controller = event.target;
+
+    const intersections = getIntersections(controller);
+
+    if (intersections.length > 0) {
+        const intersection = intersections[0];
+
+        const object = intersection.object;
+        object.material.emissive.b = 1;
+        controller.attach(object);
+
+        controller.userData.selected = object;
+    }
+
+    controller.userData.targetRayMode = event.data.targetRayMode;
 }
-function onSelectEnd() {
+function onSelectEnd(event) {
     this.userData.isSelecting = false;
+
+    const controller = event.target;
+
+    if (controller.userData.selected !== undefined) {
+        const object = controller.userData.selected;
+        object.material.emissive.b = 0;
+        group.attach(object);
+
+        controller.userData.selected = undefined;
+    }
+}
+function getIntersections(controller) {
+    controller.updateMatrixWorld();
+
+    tempMatrix.identity().extractRotation(controller.matrixWorld);
+
+    raycaster.ray.origin.setFromMatrixPosition(controller.matrixWorld);
+    raycaster.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
+
+    return raycaster.intersectObjects(group.children, false);
+}
+function intersectObjects(controller) {
+    // Do not highlight in mobile-ar
+
+    if (controller.userData.targetRayMode === "screen") return;
+
+    // Do not highlight when already selected
+
+    if (controller.userData.selected !== undefined) return;
+
+    const line = controller.getObjectByName("line");
+    const intersections = getIntersections(controller);
+
+    if (intersections.length > 0) {
+        const intersection = intersections[0];
+
+        const object = intersection.object;
+        object.material.emissive.r = 1;
+        intersected.push(object);
+
+        line.scale.z = intersection.distance;
+    } else {
+        line.scale.z = 5;
+    }
+}
+function cleanIntersected() {
+    while (intersected.length) {
+        const object = intersected.pop();
+        object.material.emissive.r = 0;
+    }
 }
 // - - - - - - - - - -
 function addCube() {
@@ -187,9 +275,13 @@ function addCube() {
     const material = new THREE.MeshPhongMaterial({ color: 0x00ff55 });
     cube = new THREE.Mesh(geometry, material);
     cube.position.set(0, 0, 0);
-    scene.add(cube);
+    // scene.add(cube);
+    group.add(cube);
 }
-
+function addGroup() {
+    group = new THREE.Group();
+    scene.add(group);
+}
 // - - - - - - - - - - -
 // PROCESS
 // - - - - - - - - - - -
@@ -205,9 +297,12 @@ addController2();
 addGrip1();
 addGrip2();
 
+addGroup();
 addCube();
 
 // - - - - - - - - - -
 // Always at the end
 // - - - - - - - - - -
+controller1.add(line.clone());
+controller2.add(line.clone());
 animate();
