@@ -30,7 +30,7 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { XRButton } from "three/addons/webxr/XRButton.js";
 import { XRControllerModelFactory } from "three/addons/webxr/XRControllerModelFactory.js";
 
-import {RapierPhysics} from "three/addons/physics/RapierPhysics.js"
+import { RapierPhysics } from "three/addons/physics/RapierPhysics.js";
 
 // Variablen für den Aufbau
 let cube1,
