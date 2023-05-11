@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Three.js Room Example</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <script type="module">
+    import * as THREE from 'https://cdn.skypack.dev/three@0.132.0/build/three.module.js';
+    import { OrbitControls } from 'https://cdn.skypack.dev/three@0.132.0/examples/jsm/controls/OrbitControls.js';
+    
+    // Erstellung des Grid Helpers
+const gridHelper = new THREE.GridHelper(10, 10);
+
+
+// Erstellung der Ursprungsachsen
+const axesHelper = new THREE.AxesHelper(10);
+
+    
+    // Größe des Raums
+    const roomWidth = 100;
+    const roomDepth = 100;
+    const roomHeight = 50;
+
+    // Initialisierung der Szene, der Kamera und des Renderers
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 2000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Erstellung des Orbit Controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    
+    // Positionierung der Kamera im Raum
+    camera.position.set(0,1.7,0);
+
+    // Erstellung des Raumes
+    const roomGeometry = new THREE.BoxGeometry(roomWidth, roomHeight, roomDepth);
+    const roomMaterial = new THREE.MeshStandardMaterial({ color: 0x888888, side: THREE.BackSide });
+    const roomMesh = new THREE.Mesh(roomGeometry, roomMaterial);
+    roomMesh.position.set(0,roomHeight/2,0);
+    scene.add(roomMesh);
+    
+    scene.add(gridHelper);
+    scene.add(axesHelper);
+
+
+    // Erstellung der Würfel an den Wänden
+    const wallCubeGeometry = new THREE.BoxGeometry(1, 1, 1);
+    
+    const wallCubeCount = 25;
+    
+    const wallCubes=[];
+    for (let i = 0; i < wallCubeCount; i++) {
+       let wallCube
+       const wallCubeMaterial = new THREE.MeshStandardMaterial({ color: Math.random()*0xffffff });
+       wallCube =new THREE.Mesh(wallCubeGeometry, wallCubeMaterial);
+       wallCubes.push(wallCube);
+       wallCube.position.set(
+           -roomWidth/2 + Math.random() * (roomWidth/2),
+        0.5,
+        -roomDepth/2 + Math.random() * (roomDepth/2)
+      );
+      scene.add(wallCube);
+    }
+    
+    let lx=0,ly=roomHeight/2,lz=0;
+    // Erstellung des Point Lights an der Decke
+    const pointLight = new THREE.PointLight(0xffffff, 1, 0);
+    pointLight.position.set(lx,ly,lz);
+    scene.add(pointLight);
+
+    // Erstellung der Würfel an den Wänden
+    const lightBulbGeometry = new THREE.SphereGeometry(0.1);
+    const lightBulbMaterial = new THREE.MeshStandardMaterial({ color: 0xffccff });
+    const lightBulbMesh = new THREE.Mesh(lightBulbGeometry, lightBulbMaterial);
+    lightBulbMesh.position.set(roomWidth / 2, roomHeight-0.25, roomDepth / 2);
+    lightBulbMesh.material.emissive.r=1;
+    lightBulbMesh.material.emissive.g=1;
+    lightBulbMesh.position.set(lx,ly,lz);
+    scene.add(lightBulbMesh);
+    
+    camera.lookAt(wallCubes[0].position)
+    //console.log(wallCubes[0].position)
+    // Funktion zum Rendern der Szene
+    function render() {
+      requestAnimationFrame(render);
+      controls.update(); // Aktualisiere das Orbit Controls
+      renderer.render(scene, camera);
+    }
+
+    // Aufruf der Render-Funktion
+    render();
+  </script>
+</body>
+</html>
