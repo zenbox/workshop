@@ -21,7 +21,7 @@
 // threejs and xr modules
 import * as THREE from "three";
 const axesHelper = new THREE.AxesHelper(10);
-const gridHelper = new THREE.GridHelper(10, 10);
+const gridHelper = new THREE.GridHelper(2000, 2000);
 
 // Desktop browser controls
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -30,23 +30,20 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { XRButton } from "three/addons/webxr/XRButton.js";
 import { XRControllerModelFactory } from "three/addons/webxr/XRControllerModelFactory.js";
 
-// import { RapierPhysics } from "three/addons/physics/RapierPhysics.js";
-// import { RigidBodyType } from "@dimforge/rapier3d";
-
-// import("@dimforge/rapier3d").then((RAPIER) => {
-//     const gravity = { x: 0.0, y: -9.81, z: 0.0 };
-//     const world = new RAPIER.World(gravity);
-// });
+import { Node } from "three/src/core/Node.js";
 
 // Variablen für den Aufbau
 let cubes = [],
     floor,
     group,
     ambientLight,
-    controller1,
-    controller2,
+    leftController,
+    rightController,
+    marker,
+    baseReferenceSpace,
     w = window.innerWidth,
-    h = window.innerHeight;
+    h = window.innerHeight,
+    INTERSECTION;
 
 let physics, position;
 
@@ -57,26 +54,37 @@ const renderer = new THREE.WebGLRenderer({ antialias: true });
 const controls = new OrbitControls(camera, renderer.domElement);
 const controllerModelFactory = new XRControllerModelFactory();
 
-// Variablen für das Dragging
+// Variablen für das Dragging und Teleport
 const geometry = new THREE.BufferGeometry().setFromPoints([
     new THREE.Vector3(0, 0, 0),
     new THREE.Vector3(0, 0, -1),
 ]);
-let raycaster,
-    intersected = [];
 const tempMatrix = new THREE.Matrix4();
 const line = new THREE.Line(geometry);
-raycaster = new THREE.Raycaster();
 line.name = "line";
 line.scale.z = 5;
+
+let intersected = [];
+
+const raycasterDrag = new THREE.Raycaster();
+const raycasterTeleport = new THREE.Raycaster();
 
 function addRenderer() {
     // Canvas initalisation with xr!
     renderer.setSize(w, h);
-    renderer.xr.enabled = true;
     renderer.setPixelRatio(window.devicePixelRatio); // Optional!
 
-    // enable shadows
+    // XR für die XR-Brille aktivieren
+    renderer.xr.enabled = true;
+
+    // Bei Starten der XR-Session die Ausgangspositionierung merken,
+    // um später den Teleport berechnen zu können.
+    renderer.xr.addEventListener(
+        "sessionstart",
+        () => (baseReferenceSpace = renderer.xr.getReferenceSpace())
+    );
+
+    // Enable shadows
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
@@ -88,7 +96,6 @@ function setSceneProperties() {
     scene.background = new THREE.Color(0x000000);
     scene.add(axesHelper);
     scene.add(gridHelper);
-    // scene.add(light);
 }
 function addCamera() {
     camera.position.set(10, 5, -10);
@@ -109,41 +116,92 @@ function animate() {
     renderer.setAnimationLoop(renderXrLoop);
 }
 function renderXrLoop() {
-    // Render the image into the canvas object
-    renderer.render(scene, camera);
-
-    cleanIntersected();
-
-    intersectObjects(controller1);
-    intersectObjects(controller2);
-
+    // Transformation, Animation von Objekten
     cubes.forEach((cube) => {
         cube.rotation.x += 0.005 + Math.random() * 0.05;
         cube.rotation.y += 0.005 + Math.random() * 0.05;
         cube.rotation.z += 0.005 + Math.random() * 0.05;
     });
+
+    // Intersection zwischen Controlle (raycaster) und Welt
+    INTERSECTION = undefined;
+    cleanIntersected();
+
+    // intersectObjects(leftController);
+    intersectObjects(rightController);
+
+    // Linker Controller steuert den Teleport
+    if (leftController.userData.isSelecting === true) {
+        tempMatrix.identity().extractRotation(leftController.matrixWorld);
+        raycasterTeleport.ray.origin.setFromMatrixPosition(
+            leftController.matrixWorld
+        );
+        raycasterTeleport.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
+        let intersects = raycasterTeleport.intersectObjects([floor]);
+        if (intersects.length > 0) {
+            INTERSECTION = intersects[0].point;
+        }
+        if (INTERSECTION) marker.position.copy(INTERSECTION);
+        marker.visible = INTERSECTION !== undefined;
+    }
+
+    // Render the image into the canvas object
+    renderer.render(scene, camera);
+}
+
+function addHouse() {
+// Erstelle eine Geometrie
+const geometry = new THREE.Geometry();
+
+// Füge Eckpunkte zur Geometrie hinzu
+geometry.vertices.push(
+    new THREE.Vector3(0, 0, 0), // Eckpunkt 1
+    new THREE.Vector3(1, 0, 0), // Eckpunkt 2
+    new THREE.Vector3(0, 1, 0), // Eckpunkt 3
+    new THREE.Vector3(0, 0, 1) // Eckpunkt 4
+);
+
+// Füge Dreiecke zur Geometrie hinzu
+geometry.faces.push(
+    new THREE.Face3(0, 1, 2), // Dreieck 1, bestehend aus Eckpunkten 0, 1 und 2
+    new THREE.Face3(0, 2, 3) // Dreieck 2, bestehend aus Eckpunkten 0, 2 und 3
+);
+
+// Berechne die Normalen für eine korrekte Beleuchtung
+geometry.computeFaceNormals();
+
+// Erstelle ein Material für das Mesh
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+
+// Erstelle ein Mesh mit der Geometrie und dem Material
+const mesh = new THREE.Mesh(geometry, material);
+
+// Füge das Mesh zur Szene hinzu oder mache weitere Operationen damit
+scene.add(mesh);
 }
 // - - - - - - - - - -
 // Controller functions
 // - - - - - - - - - -
-function addController1() {
-    controller1 = renderer.xr.getController(0);
+// LEFT CONTROLLER
+function addLeftController() {
+    leftController = renderer.xr.getController(0);
 
-    controller1.addEventListener("selectstart", onSelectStart);
-    controller1.addEventListener("selectend", onSelectEnd);
+    leftController.addEventListener("selectstart", onTeleportStart);
+    leftController.addEventListener("selectend", onTeleportEnd);
 
-    controller1.add(line.clone());
+    leftController.add(line.clone());
 
-    scene.add(controller1);
+    scene.add(leftController);
 }
-function addController2() {
-    controller2 = renderer.xr.getController(1);
-    controller2.addEventListener("selectstart", onSelectStart);
-    controller2.addEventListener("selectend", onSelectEnd);
+// RIGHT CONTROLLER
+function addRightController() {
+    rightController = renderer.xr.getController(1);
 
-    controller2.add(line.clone());
+    rightController.addEventListener("selectstart", onSelectStart);
+    rightController.addEventListener("selectend", onSelectEnd);
+    rightController.add(line.clone());
 
-    scene.add(controller2);
+    scene.add(rightController);
 }
 function addGrip1() {
     let controllerGrip1 = renderer.xr.getControllerGrip(0);
@@ -161,35 +219,51 @@ function addGrip2() {
 }
 // - - - - - - - - - -
 // DRAGGING
+function onTeleportStart(event) {
+    console.log("teleport start");
+    this.userData.isSelecting = true;
+}
+function onTeleportEnd(event) {
+    console.log("teleport end");
+    this.userData.isSelecting = false;
+    if (INTERSECTION) {
+        const offsetPosition = {
+            x: -INTERSECTION.x,
+            y: -INTERSECTION.y,
+            z: -INTERSECTION.z,
+            w: 1,
+        };
+        const offsetRotation = new THREE.Quaternion();
+        const transform = new XRRigidTransform(offsetPosition, offsetRotation);
+        const teleportSpaceOffset =
+            baseReferenceSpace.getOffsetReferenceSpace(transform);
+
+        renderer.xr.setReferenceSpace(teleportSpaceOffset);
+    }
+}
 function onSelectStart(event) {
     this.userData.isSelecting = true;
-
     const controller = event.target;
 
     const intersections = getIntersections(controller);
+    const intersection = intersections[0];
+    const object = intersection.object;
+    object.material.emissive.b = 1;
+    controller.attach(object);
+
+    controller.userData.selected = object;
 
     if (intersections.length > 0) {
-        const intersection = intersections[0];
-
-        const object = intersection.object;
-        object.material.emissive.b = 1;
-        controller.attach(object);
-
-        controller.userData.selected = object;
     }
-
     controller.userData.targetRayMode = event.data.targetRayMode;
 }
 function onSelectEnd(event) {
     this.userData.isSelecting = false;
-
     const controller = event.target;
-
     if (controller.userData.selected !== undefined) {
         const object = controller.userData.selected;
         object.material.emissive.b = 0;
         group.attach(object);
-
         controller.userData.selected = undefined;
     }
 }
@@ -198,10 +272,10 @@ function getIntersections(controller) {
 
     tempMatrix.identity().extractRotation(controller.matrixWorld);
 
-    raycaster.ray.origin.setFromMatrixPosition(controller.matrixWorld);
-    raycaster.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
+    raycasterDrag.ray.origin.setFromMatrixPosition(controller.matrixWorld);
+    raycasterDrag.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
 
-    return raycaster.intersectObjects(group.children, false);
+    return raycasterDrag.intersectObjects(group.children, false);
 }
 function intersectObjects(controller) {
     // Do not highlight in mobile-ar
@@ -239,9 +313,9 @@ function cleanIntersected() {
 function addCubes() {
     for (let i = 0; i < 5; i++) {
         const geometry = new THREE.BoxGeometry(
-            Math.random() * 1.5,
-            Math.random() * 1.5,
-            Math.random() * 1.5
+            0.18 + Math.random() * 0.25,
+            0.18 + Math.random() * 0.25,
+            0.18 + Math.random() * 0.25
         );
 
         const material = new THREE.MeshPhongMaterial({
@@ -251,9 +325,9 @@ function addCubes() {
         let cube = new THREE.Mesh(geometry, material);
 
         cube.position.set(
-            -5 + Math.random() * 10,
-            0 + Math.random() * 3,
-            -5 + Math.random() * 10
+            -1.5 + Math.random() * 3, // x=> -1.5 bis 1.5 von links nach rechts, (orange)
+            +1.0 + Math.random() * 1.5, // y=> 1 bis 2.5m hoch (grün)
+            -2.0 + Math.random() * 1 // -z=> -2 bis -1m entfernt (blau)
         );
 
         cubes.push(cube);
@@ -265,19 +339,23 @@ function addGroup() {
     scene.add(group);
 }
 function addFloor() {
-    const geometry = new THREE.BoxGeometry(20, 0.1, 20);
+    const geometry = new THREE.BoxGeometry(1000, 0.05, 1000);
     const material = new THREE.MeshPhongMaterial({ color: 0x666666 });
     floor = new THREE.Mesh(geometry, material);
     floor.rotation.set(0, 0, 0);
-    floor.position.set(0, -0.1, 0);
+    floor.position.set(0, -0.2, 0);
     scene.add(floor);
 }
-
+function addMarker() {
+    marker = new THREE.Mesh(
+        new THREE.CircleGeometry(0.25, 32).rotateX(-Math.PI / 2),
+        new THREE.MeshBasicMaterial({ color: 0xffffff })
+    );
+    scene.add(marker);
+}
 // - - - - - - - - - -
 // PHYSICS
 // - - - - - - - - - -
-// physics = await RapierPhysics();
-// position = new THREE.Vector3();
 
 // - - - - - - - - - -
 // PROCESS
@@ -289,29 +367,18 @@ addOrbitControls();
 
 setSceneProperties();
 
-addController1();
-addController2();
+addLeftController();
+addRightController();
 addGrip1();
 addGrip2();
 
 addGroup();
 addCubes();
 addFloor();
+addMarker();
 
-console.log(cubes.length);
-
-// setTimeout(() => {
-//     cubes.forEach((cube) => physics.addMesh(cube, 1));
-
-//     physics.addMesh(floor, 0);
-//     // physics.addMesh(cube1, 1);
-//     // physics.addMesh(cube2, 1);
-//     // physics.addMesh(cube3, 1);
-//     // physics.addMesh(cube4, 1);
-// }, 2000);
-
+addHouse();
 // - - - - - - - - - -
 // Always at the end
 // - - - - - - - - - -
-
 animate();
