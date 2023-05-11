@@ -15,7 +15,8 @@ import { XRControllerModelFactory } from "three/addons/webxr/XRControllerModelFa
 let controller1,
     controller2,
     w = window.innerWidth,
-    h = window.innerHeight;
+    h = window.innerHeight,
+    barMaterials = [];
 
 let physics, position;
 
@@ -65,17 +66,20 @@ function renderXrLoop() {
     renderer.render(scene, camera);
     bar1.rotation.y += 0.01;
     bar1.rotation.z += 0.01;
-                update();
+    update();
 
+    // Texture movement
+    if (barMaterials[5]) barMaterials[5].map.rotation += 0.003;
 
-   var per = Math.round(frame) / frameMax,
-       bias = 1 - Math.abs(0.5 - per) / 0.5,
-       radian = Math.PI * 2 * per,
-       x = Math.cos(radian) * 8,
-       y = 10,
-       z = Math.sin(radian) * 8;
-   spotLight.position.set(x, y, z);
-   spotTarget.position.set(0, 0, -3 + 6 * bias);
+    // Spotlight movement
+    var per = Math.round(frame) / frameMax,
+        bias = 1 - Math.abs(0.5 - per) / 0.5,
+        radian = Math.PI * 2 * per,
+        x = Math.cos(radian) * 8,
+        y = 10,
+        z = Math.sin(radian) * 8;
+    spotLight.position.set(x, y, z);
+    spotTarget.position.set(0, 0, -3 + 6 * bias);
 
     var now = new Date(),
         secs = (now - lt) / 1000;
@@ -87,7 +91,6 @@ function renderXrLoop() {
         frame %= frameMax;
         lt = now;
     }
-    
 }
 // - - - - - - - - - -
 // Controller functions
@@ -145,6 +148,7 @@ function addHouse() {
         houseMesh = new THREE.Mesh(houseGeometry, houseMaterial);
 
     houseMesh.receiveShadow = true;
+
     houseMesh.position.set(0, houseHeight / 2, 0);
 
     scene.add(houseMesh);
@@ -165,21 +169,57 @@ function addLightBulb(x = 0, y = houseHeight / 2, z = 0) {
     return group;
 }
 function addWoodenBar() {
-    let barGeometry = new THREE.BoxGeometry(1, 1, 2),
-        // barTexture = textureLoader.load("textures/checkerboard.webp"),
-        barTexture = textureLoader.load("textures/plane-wood-seamless.jpeg"),
-        barBump = textureLoader.load("textures/plane-wood-seamless-bump.jpg"),
-        barMaterial = new THREE.MeshStandardMaterial({
-            color: 0xffffff,
-            map: barTexture,
-        }),
-        barMesh = new THREE.Mesh(barGeometry, barMaterial);
+    let barGeometry = new THREE.BoxGeometry(1, 1, 2);
+    let barTextures = [];
+    // let barMaterials = [];
 
-    // barTexture.wrapS = texture2.wrapT = THREE.RepeatWrapping;
-    barTexture.repeat.set(0.25, 0.5);
+    let i = 0;
+    barTextures[i++] = textureLoader.load("textures/plane-wood-seamless.jpeg");
+    barTextures[i++] = textureLoader.load("textures/plane-wood-seamless.jpeg");
+    barTextures[i++] = textureLoader.load("textures/plane-wood-seamless.jpeg");
+    barTextures[i++] = textureLoader.load("textures/plane-wood-seamless.jpeg");
+    barTextures[i++] = textureLoader.load("textures/checkerboard.webp");
+    barTextures[i++] = textureLoader.load("textures/checkerboard.webp");
 
-    barMaterial.bumpMap = barBump;
-    barMaterial.bumpScale = 0.02;
+    barTextures.forEach((texture) => {
+        let barMaterial = new THREE.MeshStandardMaterial({
+            map: texture,
+        });
+
+        barMaterials.push(barMaterial);
+    });
+
+    // barMaterials[5].map.rotation = Math.PI / 4;
+
+    // barMaterials[5].map.centerX = 0;
+    // barMaterials[5].map.centerY = 0;
+    // barMaterials[5].map.offsetX = 1;
+    // barMaterials[5].map.offsetY = 1;
+    // barMaterials[5].map.repeatX = 0.25;
+    // barMaterials[5].map.repeatY = 0.25;
+
+    // barGeometry.faceVertexUvs[0][0][0].rotateAround(
+    //     new THREE.Vector2(0.5, 0.5),
+    //     textureRotation
+    // );
+    // barGeometry.faceVertexUvs[0][0][1].rotateAround(
+    //     new THREE.Vector2(0.5, 0.5),
+    //     textureRotation
+    // );
+    // barGeometry.faceVertexUvs[0][0][2].rotateAround(
+    //     new THREE.Vector2(0.5, 0.5),
+    //     textureRotation
+    // );
+
+    let barMesh = new THREE.Mesh(barGeometry, barMaterials);
+
+    // barTexture1.repeat.set(0.25, 0.5);
+
+    barMesh.castShadow = true;
+    barMesh.receiveShadow = true;
+
+    // barMaterial.bumpMap = barBump;
+    // barMaterial.bumpScale = 0.02;
 
     barMesh.position.set(1, 1.25, -4);
     barMesh.rotation.y = 1;
@@ -188,43 +228,45 @@ function addWoodenBar() {
     return barMesh;
 }
 function addSpotlight() {
-const color = new THREE.Color("white"),
-    intensity = 1,
-    distance = 30,
-    angle = Math.PI * 0.05,
-    penumbra = 0.25,
+    const color = new THREE.Color(0xff00ff),
+        intensity = 1,
+        distance = 30,
+        angle = Math.PI * 0.05,
+        penumbra = 0.25,
         decay = 0.5;
-    const spotLight = new THREE.SpotLight(color, intensity, distance, angle, penumbra, decay);
-
-    spotLight.position.set(9, +19, -9);
-
-    spotLight.angle = 0.3;
-    spotLight.map = new THREE.TextureLoader().load(
-        "textures/plane-wood-seamless-bump.jpg"
+    const spotLight = new THREE.SpotLight(
+        color,
+        intensity,
+        distance,
+        angle,
+        penumbra,
+        decay
     );
 
-    spotLight.shadow.mapSize.width = 1024;
-    spotLight.shadow.mapSize.height = 1024;
+    // spotLight.map = new THREE.TextureLoader()
+    // spotLight.shadow.focus = 0.01;
 
-    spotLight.shadow.camera.near = 500;
-    spotLight.shadow.camera.far = 4000;
-    spotLight.shadow.camera.fov = 30;
-    spotLight.shadow.focus = 0.125;
-
+    spotLight.position.set(9, +19, -9);
     spotLight.castShadow = true;
 
+    spotLight.shadow.mapSize.width = 512;
+    spotLight.shadow.mapSize.height = 512;
+    spotLight.shadow.camera.near = 1;
+    spotLight.shadow.camera.far = 1000;
+    spotLight.shadow.camera.fov = 30;
+
     scene.add(spotLight);
+
     return spotLight;
 }
 
 // SpotLight
 var secs = 0,
-    fps_update = 30,   // fps rate to update ( low fps for low CPU use, but choppy video )
+    fps_update = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
     fps_movement = 60, // fps rate to move camera
     frame = 0,
     frameMax = 600,
     lt = new Date();
- 
 
 var update = function () {
     var per = Math.round(frame) / frameMax,
@@ -260,14 +302,14 @@ let bulb1 = addLightBulb();
 let bulb2 = addLightBulb(5, 8, 5);
 
 let spotLight = addSpotlight();
+
 const spotLightHelper = new THREE.SpotLightHelper(spotLight);
+scene.add(spotLightHelper);
 
 let spotTarget = new THREE.Object3D(); // spotlight target
 spotLight.target = spotTarget; // set spotLight target for spotLight
 
 scene.add(spotTarget);
-scene.add(spotLightHelper);
-
 
 // - - - - - - - - - -
 // Always at the end
