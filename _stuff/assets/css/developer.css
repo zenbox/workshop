@@ -1,9 +1,0 @@
-.developer body {
-  border: 2px solid green;
-}
-.developer body > * {
-  border: 2px solid cyan;
-}
-.developer body > * > * {
-  border: 2px solid orange;
-}
