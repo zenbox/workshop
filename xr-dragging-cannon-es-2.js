@@ -430,7 +430,7 @@ function updateMeshFromBody() {
     }
 }
 let simulationRunning = false;
-let s = 0.5
+let s = 0.5;
 let physicsObject = new CANNON.Body({
     mass: 1,
     shape: new CANNON.Box(new CANNON.Vec3(s, s, s)),
@@ -441,6 +441,8 @@ let meshObject = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshStandardMaterial({ color: 0xffcc00 })
 );
+
+physicsObject.position.set(0, 10, -2);
 
 world.add(floorBody);
 world.add(physicsObject);
@@ -465,8 +467,6 @@ addBack();
 addLeft();
 addRight();
 addMarker();
-
-
 
 //Wände und Boden zu Physics hinzufügen
 
