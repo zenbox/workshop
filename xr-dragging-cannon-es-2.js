@@ -104,7 +104,7 @@ function setSceneProperties() {
     // scene.add(light);
 }
 function addCamera() {
-    camera.position.set(1, 8, 7);
+    camera.position.set(1, 8, 30);
 }
 function addLights() {
     ambientLight = new THREE.AmbientLight(0x404040); // soft white light
@@ -209,28 +209,22 @@ function addGrip2() {
     );
     scene.add(controllerGrip2);
 }
-
-function addMarker() {
-    marker = new THREE.Mesh(
-        new THREE.CircleGeometry(0.25, 32).rotateX(-Math.PI / 2),
-        new THREE.MeshBasicMaterial({ color: 0x808080 })
-    );
-    scene.add(marker);
-}
 // - - - - - - - - - -
 // DRAGGING
 function onDragStart(event) {
     this.userData.isSelecting = true;
 
-    const controller = event.target;
+    const controller = event.target; // group!
 
     const intersections = getIntersections(controller);
 
     if (intersections.length > 0) {
         const intersection = intersections[0];
 
-        const object = intersection.object;
+        const object = intersection.object; // selected cube!
+
         object.material.emissive.b = 1;
+
         controller.attach(object);
 
         controller.userData.selected = object;
@@ -245,19 +239,22 @@ function onDragEnd(event) {
 
     if (controller.userData.selected !== undefined) {
         const object = controller.userData.selected;
+
         object.material.emissive.b = 0;
+
+        console.dir(object);
+
         group.attach(object);
+        updateBodyFromMesh();
 
         controller.userData.selected = undefined;
     }
 }
-
 //Teleport
 function onTeleportStart() {
     this.userData.isSelecting = true;
     //console.log("Suqueezebutton pressed");
 }
-
 function onTeleportEnd() {
     // console.log("Suqueezebutton unpressed");
     this.userData.isSelecting = false;
@@ -271,7 +268,7 @@ function onTeleportEnd() {
         };
         // todo HIER ROTATION BEIM TELEPORTIEREN
         const offsetRotation = new THREE.Quaternion();
-        console.dir(offsetRotation);
+        // console.dir(offsetRotation);
         const transform = new XRRigidTransform(offsetPosition, offsetRotation);
         const teleportSpaceOffset =
             baseReferenceSpace.getOffsetReferenceSpace(transform);
@@ -279,7 +276,14 @@ function onTeleportEnd() {
         renderer.xr.setReferenceSpace(teleportSpaceOffset);
     }
 }
-
+function addMarker() {
+    marker = new THREE.Mesh(
+        new THREE.CircleGeometry(0.25, 32).rotateX(-Math.PI / 2),
+        new THREE.MeshBasicMaterial({ color: 0x808080 })
+    );
+    scene.add(marker);
+}
+// Raycaster
 function getIntersections(controller) {
     controller.updateMatrixWorld();
 
@@ -292,11 +296,8 @@ function getIntersections(controller) {
 }
 function intersectObjects(controller) {
     // Do not highlight in mobile-ar
-
     if (controller.userData.targetRayMode === "screen") return;
-
     // Do not highlight when already selected
-
     if (controller.userData.selected !== undefined) return;
 
     const line = controller.getObjectByName("line");
@@ -420,6 +421,7 @@ floorBody.position.copy(floor.position);
 
 function updatePhysics() {
     world.step(1.0 / 60.0);
+    // console.dir(physicsObject)
     updateMeshFromBody();
 }
 
@@ -428,6 +430,11 @@ function updateMeshFromBody() {
         meshObject.position.copy(physicsObject.position);
         meshObject.quaternion.copy(physicsObject.quaternion);
     }
+}
+
+function updateBodyFromMesh() {
+    physicsObject.position.copy(meshObject.position);
+    physicsObject.quaternion.copy(meshObject.quaternion);
 }
 let simulationRunning = false;
 let s = 0.5;
@@ -442,10 +449,14 @@ let meshObject = new THREE.Mesh(
     new THREE.MeshStandardMaterial({ color: 0xffcc00 })
 );
 
-physicsObject.position.set(0, 10, -2);
+// setTimeout(() => {
+//     physicsObject.position.set(0, 30, 0);
+//     meshObject.position.copy(physicsObject.position);
+// }, 5000);
 
 world.add(floorBody);
 world.add(physicsObject);
+
 group.add(meshObject);
 
 // - - - - - - - - - - -
