@@ -26,23 +26,26 @@ const gridHelper = new THREE.GridHelper(10, 10);
 // Desktop browser controls
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
+import CANNON from "cannon";
+// import * as CANNON from "/node_modules/cannon-es/dist/cannon-es.js"
+let world;
+
 // XR
 import { XRButton } from "three/addons/webxr/XRButton.js";
 import { XRControllerModelFactory } from "three/addons/webxr/XRControllerModelFactory.js";
 
 //Physics
-import { RapierPhysics } from "three/addons/physics/RapierPhysics.js";
 
 // Variablen für den Aufbau
-let cube1,
-    cube2,
-    cube3,
-    cubes = [],
+let cubes = [],
     group,
     floor,
     back,
     left,
     right,
+    marker,
+    INTERSECTION,
+    baseReferenceSpace,
     ambientLight,
     controller1,
     controller2,
@@ -50,7 +53,6 @@ let cube1,
     h = window.innerHeight;
 
 //Physics
-let physics, position;
 
 const clock = new THREE.Clock();
 const scene = new THREE.Scene();
@@ -64,11 +66,15 @@ const geometry = new THREE.BufferGeometry().setFromPoints([
     new THREE.Vector3(0, 0, 0),
     new THREE.Vector3(0, 0, -1),
 ]);
-let raycaster,
+let raycaster_drag,
+    raycasterTeleport,
     intersected = [];
 const tempMatrix = new THREE.Matrix4();
 const line = new THREE.Line(geometry);
-raycaster = new THREE.Raycaster();
+raycaster_drag = new THREE.Raycaster();
+//Raycaster für Teleport
+raycasterTeleport = new THREE.Raycaster();
+
 line.name = "line";
 line.scale.z = 5;
 
@@ -82,6 +88,11 @@ function addRenderer() {
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
+    renderer.xr.addEventListener(
+        "sessionstart",
+        () => (baseReferenceSpace = renderer.xr.getReferenceSpace())
+    );
+
     // Add canvas, button to DOM
     document.body.appendChild(renderer.domElement);
     document.body.appendChild(XRButton.createButton(renderer));
@@ -93,7 +104,7 @@ function setSceneProperties() {
     // scene.add(light);
 }
 function addCamera() {
-    camera.position.set(10, 5, -10);
+    camera.position.set(1, 8, 7);
 }
 function addLights() {
     ambientLight = new THREE.AmbientLight(0x404040); // soft white light
@@ -111,6 +122,39 @@ function animate() {
     renderer.setAnimationLoop(renderXrLoop);
 }
 function renderXrLoop() {
+    INTERSECTION = undefined;
+
+    if (controller1.userData.isSelecting === true) {
+        tempMatrix.identity().extractRotation(controller1.matrixWorld);
+
+        raycasterTeleport.ray.origin.setFromMatrixPosition(
+            controller1.matrixWorld
+        );
+        raycasterTeleport.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
+
+        const intersects = raycasterTeleport.intersectObjects([floor]);
+
+        if (intersects.length > 0) {
+            INTERSECTION = intersects[0].point;
+        }
+    } else if (controller2.userData.isSelecting === true) {
+        tempMatrix.identity().extractRotation(controller2.matrixWorld);
+
+        raycasterTeleport.ray.origin.setFromMatrixPosition(
+            controller2.matrixWorld
+        );
+        raycasterTeleport.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
+
+        const intersects = raycasterTeleport.intersectObjects([floor]);
+
+        if (intersects.length > 0) {
+            INTERSECTION = intersects[0].point;
+        }
+    }
+
+    if (INTERSECTION) marker.position.copy(INTERSECTION);
+
+    marker.visible = INTERSECTION !== undefined;
     // Render the image into the canvas object
     renderer.render(scene, camera);
 
@@ -125,11 +169,7 @@ function renderXrLoop() {
         cube.rotation.x += 0.005 + Math.random() * 0.005;
     });
 
-    /*cube1.rotation.x += 0.005;
-    cube1.rotation.y += 0.005;
-    cube1.rotation.z += 0.005;
-    cube2.rotation.z += 0.005;
-    cube3.rotation.y += 0.005;*/
+    updatePhysics();
 }
 // - - - - - - - - - -
 // Controller functions
@@ -137,8 +177,8 @@ function renderXrLoop() {
 function addController1() {
     controller1 = renderer.xr.getController(0);
 
-    controller1.addEventListener("selectstart", onSelectStart);
-    controller1.addEventListener("selectend", onSelectEnd);
+    controller1.addEventListener("selectstart", onDragStart);
+    controller1.addEventListener("selectend", onDragEnd);
 
     controller1.add(line.clone());
 
@@ -146,8 +186,10 @@ function addController1() {
 }
 function addController2() {
     controller2 = renderer.xr.getController(1);
-    controller2.addEventListener("selectstart", onSelectStart);
-    controller2.addEventListener("selectend", onSelectEnd);
+    controller2.addEventListener("selectstart", onTeleportStart);
+    controller2.addEventListener("selectend", onTeleportEnd);
+
+    //console.log("AAAAAA");
 
     controller2.add(line.clone());
 
@@ -167,9 +209,17 @@ function addGrip2() {
     );
     scene.add(controllerGrip2);
 }
+
+function addMarker() {
+    marker = new THREE.Mesh(
+        new THREE.CircleGeometry(0.25, 32).rotateX(-Math.PI / 2),
+        new THREE.MeshBasicMaterial({ color: 0x808080 })
+    );
+    scene.add(marker);
+}
 // - - - - - - - - - -
 // DRAGGING
-function onSelectStart(event) {
+function onDragStart(event) {
     this.userData.isSelecting = true;
 
     const controller = event.target;
@@ -188,7 +238,7 @@ function onSelectStart(event) {
 
     controller.userData.targetRayMode = event.data.targetRayMode;
 }
-function onSelectEnd(event) {
+function onDragEnd(event) {
     this.userData.isSelecting = false;
 
     const controller = event.target;
@@ -201,15 +251,44 @@ function onSelectEnd(event) {
         controller.userData.selected = undefined;
     }
 }
+
+//Teleport
+function onTeleportStart() {
+    this.userData.isSelecting = true;
+    //console.log("Suqueezebutton pressed");
+}
+
+function onTeleportEnd() {
+    // console.log("Suqueezebutton unpressed");
+    this.userData.isSelecting = false;
+
+    if (INTERSECTION) {
+        const offsetPosition = {
+            x: -INTERSECTION.x,
+            y: -INTERSECTION.y,
+            z: -INTERSECTION.z,
+            w: 1,
+        };
+        // todo HIER ROTATION BEIM TELEPORTIEREN
+        const offsetRotation = new THREE.Quaternion();
+        console.dir(offsetRotation);
+        const transform = new XRRigidTransform(offsetPosition, offsetRotation);
+        const teleportSpaceOffset =
+            baseReferenceSpace.getOffsetReferenceSpace(transform);
+
+        renderer.xr.setReferenceSpace(teleportSpaceOffset);
+    }
+}
+
 function getIntersections(controller) {
     controller.updateMatrixWorld();
 
     tempMatrix.identity().extractRotation(controller.matrixWorld);
 
-    raycaster.ray.origin.setFromMatrixPosition(controller.matrixWorld);
-    raycaster.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
+    raycaster_drag.ray.origin.setFromMatrixPosition(controller.matrixWorld);
+    raycaster_drag.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
 
-    return raycaster.intersectObjects(group.children, false);
+    return raycaster_drag.intersectObjects(group.children, false);
 }
 function intersectObjects(controller) {
     // Do not highlight in mobile-ar
@@ -243,7 +322,7 @@ function cleanIntersected() {
 }
 // - - - - - - - - - -
 function addCubes() {
-    for (let i = 0; i <= 1000; i++) {
+    for (let i = 0; i <= 10; i++) {
         const geometry = new THREE.BoxGeometry(
             Math.random() * 0.5,
             Math.random() * 0.5,
@@ -257,55 +336,27 @@ function addCubes() {
         let cube = new THREE.Mesh(geometry, material);
 
         cube.position.set(
-            -5 + Math.random() * 10,
-            3 + Math.random() * 2,
-            -4 + Math.random() * 8
+            -5 + Math.random() * 10, //x orange
+            3 + Math.random() * 2, // y grün
+            -4 + Math.random() * 8 // -z blau
         );
         cubes.push(cube);
         group.add(cube);
     }
 }
-function addCube1() {
-    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-    const material = new THREE.MeshPhongMaterial({ color: 0x00ff55 });
-    let cube = new THREE.Mesh(geometry, material);
-    cube.position.set(0, 5, -1);
-    // scene.add(cube);
-    group.add(cube);
-    cube1 = cube;
-}
-function addCube2() {
-    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-    const material = new THREE.MeshPhongMaterial({ color: 0x00ff55 });
-    let cube = new THREE.Mesh(geometry, material);
-    cube.position.set(0, 4, -2);
-    // scene.add(cube);
-    group.add(cube);
-    cube2 = cube;
-}
-function addCube3() {
-    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
-    const material = new THREE.MeshPhongMaterial({ color: 0x00ff55 });
-    let cube = new THREE.Mesh(geometry, material);
-    cube.position.set(0, 3, -3);
-    // scene.add(cube);
-    group.add(cube);
-    cube3 = cube;
-}
 function addGroup() {
     group = new THREE.Group();
     scene.add(group);
 }
-
 function addFloor() {
-    const geometry = new THREE.BoxGeometry(10, 0.5, 10);
+    const geometry = new THREE.BoxGeometry(10, 0.1, 10);
     const material = new THREE.MeshBasicMaterial({
         color: 0x444444,
     });
     floor = new THREE.Mesh(geometry, material);
-    floor.position.x = 0;
+    floor.position.y = -0.2;
     //Boden neigen
-    floor.rotation.set(-0.3, 0, 0);
+    //floor.rotation.set(-0.3, 0, 0);
     floor.receiveShadow = true;
     scene.add(floor);
 }
@@ -315,8 +366,8 @@ function addBack() {
         color: 0x444444,
     });
     back = new THREE.Mesh(geometry, material);
-    back.position.y = 5;
-    back.position.z = -4.7;
+    back.position.y = 4.85;
+    back.position.z = -5.2;
     back.receiveShadow = true;
     scene.add(back);
 }
@@ -326,8 +377,8 @@ function addLeft() {
         color: 0xff0000,
     });
     left = new THREE.Mesh(geometry, material);
-    left.position.y = 5;
-    left.position.z = 0;
+    left.position.y = 4.85;
+    left.position.z = -0;
     left.position.x = 5;
     left.receiveShadow = true;
     scene.add(left);
@@ -338,17 +389,33 @@ function addRight() {
         color: 0x00ff00,
     });
     right = new THREE.Mesh(geometry, material);
-    right.position.y = 5;
-    right.position.z = 0;
+    right.position.y = 4.85;
+    right.position.z = -0;
     right.position.x = -5;
     right.receiveShadow = true;
     scene.add(right);
 }
 
+// - - - - - - - - - - -
 //Physics
-physics = await RapierPhysics();
-position = new THREE.Vector3();
+// - - - - - - - - - - -
+world = new CANNON.World();
+world.gravity.set(0, -9.82 * 20, 0);
+world.broadphase = new CANNON.NaiveBroadphase();
+world.solver.iterations = 16;
 
+//Floor
+let floorBody = new CANNON.Body({
+    mass: 0,
+    shape: new CANNON.Plane(),
+});
+floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
+world.add(floorBody);
+
+function updatePhysics() {
+    world.step(1.0 / 60.0);
+}
+function updateMeshFromBody() {}
 // - - - - - - - - - - -
 // PROCESS
 // - - - - - - - - - - -
@@ -368,24 +435,13 @@ addFloor();
 addBack();
 addLeft();
 addRight();
+addMarker();
 
 addGroup();
-addCube1();
-addCube2();
-addCube3();
 addCubes();
 
 //Wände und Boden zu Physics hinzufügen
-physics.addMesh(floor);
-physics.addMesh(back);
-physics.addMesh(left);
-physics.addMesh(right);
-setTimeout(() => {
-    cubes.forEach((cube) => physics.addMesh(cube, 1));
-    physics.addMesh(cube1, 1);
-    physics.addMesh(cube2, 1);
-    physics.addMesh(cube3, 1);
-}, 5000);
+
 // - - - - - - - - - -
 // Always at the end
 // - - - - - - - - - -

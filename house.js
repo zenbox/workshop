@@ -12,14 +12,32 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { XRButton } from "three/addons/webxr/XRButton.js";
 import { XRControllerModelFactory } from "three/addons/webxr/XRControllerModelFactory.js";
 
+// Text
+import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
+import { FontLoader } from "three/addons/loaders/FontLoader.js";
+const loader = new FontLoader();
+
 let controller1,
     controller2,
     w = window.innerWidth,
     h = window.innerHeight,
     barMaterials = [];
 
-let physics, position;
+// Variablen für das Dragging
+const geometry = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(0, 0, -1),
+]);
+let raycaster,
+    intersected = [];
+const tempMatrix = new THREE.Matrix4();
+const line = new THREE.Line(geometry);
+raycaster = new THREE.Raycaster();
+line.name = "line";
+line.scale.z = 5;
 
+let physics, position;
+const group = new THREE.Group();
 const clock = new THREE.Clock();
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 1000); // Perspective: focal length, image ratio, nearest distance, farest distance
@@ -64,12 +82,17 @@ function animate() {
 function renderXrLoop() {
     // Render the image into the canvas object
     renderer.render(scene, camera);
-    bar1.rotation.y += 0.01;
-    bar1.rotation.z += 0.01;
+    bar.rotation.y += 0.01;
+    bar.rotation.z += 0.01;
     update();
 
+    cleanIntersected();
+
+    intersectObjects(controller1);
+    intersectObjects(controller2);
+
     // Texture movement
-    if (barMaterials[5]) barMaterials[5].map.rotation += 0.003;
+    // if (barMaterials[5]) barMaterials[5].map.rotation += 0.003;
 
     // Spotlight movement
     var per = Math.round(frame) / frameMax,
@@ -83,7 +106,6 @@ function renderXrLoop() {
 
     var now = new Date(),
         secs = (now - lt) / 1000;
-    // requestAnimationFrame(loop);
     if (secs > 1 / fps_update) {
         update();
         renderer.render(scene, camera);
@@ -128,6 +150,78 @@ function addGrip2() {
     );
     scene.add(controllerGrip2);
 }
+// - - - - - - - - - -
+// DRAGGING
+function onSelectStart(event) {
+    this.userData.isSelecting = true;
+
+    const controller = event.target;
+
+    const intersections = getIntersections(controller);
+
+    if (intersections.length > 0) {
+        const intersection = intersections[0];
+
+        const object = intersection.object;
+        object.material.emissive.b = 1;
+        controller.attach(object);
+
+        controller.userData.selected = object;
+    }
+
+    controller.userData.targetRayMode = event.data.targetRayMode;
+}
+function onSelectEnd(event) {
+    this.userData.isSelecting = false;
+
+    const controller = event.target;
+
+    if (controller.userData.selected !== undefined) {
+        const object = controller.userData.selected;
+        object.material.emissive.b = 0;
+        group.attach(object);
+
+        controller.userData.selected = undefined;
+    }
+}
+function getIntersections(controller) {
+    controller.updateMatrixWorld();
+
+    tempMatrix.identity().extractRotation(controller.matrixWorld);
+
+    raycaster.ray.origin.setFromMatrixPosition(controller.matrixWorld);
+    raycaster.ray.direction.set(0, 0, -1).applyMatrix4(tempMatrix);
+
+    return raycaster.intersectObjects(group.children, false);
+}
+function intersectObjects(controller) {
+    // Do not highlight in mobile-ar
+
+    if (controller.userData.targetRayMode === "screen") return;
+
+    // Do not highlight when already selected
+
+    if (controller.userData.selected !== undefined) return;
+
+    const line = controller.getObjectByName("line");
+    const intersections = getIntersections(controller);
+
+    if (intersections.length > 0) {
+        const intersection = intersections[0];
+        const object = intersection.object;
+        object.material.emissive.r = 1;
+        intersected.push(object);
+        line.scale.z = intersection.distance;
+    } else {
+        line.scale.z = 5;
+    }
+}
+function cleanIntersected() {
+    while (intersected.length) {
+        const object = intersected.pop();
+        object.material.emissive.r = 0;
+    }
+}
 // - - - - - - - - - - -
 // HOUSE
 // - - - - - - - - - - -
@@ -169,47 +263,48 @@ function addLightBulb(x = 0, y = houseHeight / 2, z = 0) {
     return group;
 }
 function addWoodenBar() {
-    let barGeometry = new THREE.BoxGeometry(1, 1, 2);
-    let barTextures = [];
-    // let barMaterials = [];
+    let barGeometry = new THREE.BoxGeometry(0.2, 0.4, 5);
 
-    let i = 0;
-    barTextures[i++] = textureLoader.load("textures/plane-wood-seamless.jpeg");
-    barTextures[i++] = textureLoader.load("textures/plane-wood-seamless.jpeg");
-    barTextures[i++] = textureLoader.load("textures/plane-wood-seamless.jpeg");
-    barTextures[i++] = textureLoader.load("textures/plane-wood-seamless.jpeg");
-    barTextures[i++] = textureLoader.load("textures/checkerboard.webp");
-    barTextures[i++] = textureLoader.load("textures/checkerboard.webp");
+    let frontBump = textureLoader.load("textures/plane-wood-seamless-bump.jpg");
+    let backBump = textureLoader.load("textures/plane-wood-seamless-bump.jpg");
 
-    barTextures.forEach((texture) => {
-        let barMaterial = new THREE.MeshStandardMaterial({
-            map: texture,
-        });
-
-        barMaterials.push(barMaterial);
+    let top = new THREE.MeshStandardMaterial({
+        map: textureLoader.load("textures/plane-wood-seamless.jpg"),
+    });
+    let bottom = new THREE.MeshStandardMaterial({
+        map: textureLoader.load("textures/plane-wood-seamless.jpg"),
+    });
+    let front = new THREE.MeshStandardMaterial({
+        map: textureLoader.load("textures/plane-wood-seamless-2.jpg"),
+    });
+    let back = new THREE.MeshStandardMaterial({
+        map: textureLoader.load("textures/plane-wood-seamless-2.jpg"),
+    });
+    let right = new THREE.MeshStandardMaterial({
+        map: textureLoader.load("textures/trunk-wood.jpg"),
+    });
+    let left = new THREE.MeshStandardMaterial({
+        map: textureLoader.load("textures/trunk-wood.jpg"),
     });
 
-    // barMaterials[5].map.rotation = Math.PI / 4;
+    right.map.center.x = left.map.center.x = 0.5;
+    right.map.center.y = left.map.center.y = 0.5;
+    right.map.offset.x = left.map.offset.x = 0;
+    right.map.offset.y = left.map.offset.y = 0.2;
+    right.map.repeat.x = left.map.repeat.x = 0.25;
+    right.map.repeat.y = left.map.repeat.y = 0.5;
 
-    // barMaterials[5].map.centerX = 0;
-    // barMaterials[5].map.centerY = 0;
-    // barMaterials[5].map.offsetX = 1;
-    // barMaterials[5].map.offsetY = 1;
-    // barMaterials[5].map.repeatX = 0.25;
-    // barMaterials[5].map.repeatY = 0.25;
+    front.map.repeat.x = 0.125;
+    front.map.repeat.y = 0.125;
+    back.map.repeat.x = 0.125;
+    back.map.repeat.y = 0.125;
 
-    // barGeometry.faceVertexUvs[0][0][0].rotateAround(
-    //     new THREE.Vector2(0.5, 0.5),
-    //     textureRotation
-    // );
-    // barGeometry.faceVertexUvs[0][0][1].rotateAround(
-    //     new THREE.Vector2(0.5, 0.5),
-    //     textureRotation
-    // );
-    // barGeometry.faceVertexUvs[0][0][2].rotateAround(
-    //     new THREE.Vector2(0.5, 0.5),
-    //     textureRotation
-    // );
+    barMaterials.push(top);
+    barMaterials.push(bottom);
+    barMaterials.push(front);
+    barMaterials.push(back);
+    barMaterials.push(right);
+    barMaterials.push(left);
 
     let barMesh = new THREE.Mesh(barGeometry, barMaterials);
 
@@ -218,12 +313,16 @@ function addWoodenBar() {
     barMesh.castShadow = true;
     barMesh.receiveShadow = true;
 
-    // barMaterial.bumpMap = barBump;
-    // barMaterial.bumpScale = 0.02;
+    front.bumpMap = frontBump;
+    front.bumpScale = 0.02;
+    back.bumpMap = backBump;
+    back.bumpScale = 0.02;
 
     barMesh.position.set(1, 1.25, -4);
-    barMesh.rotation.y = 1;
-    scene.add(barMesh);
+    barMesh.rotation.x = 0;
+    barMesh.rotation.y = 1.5;
+    barMesh.rotation.z = 0.7;
+    group.add(barMesh);
 
     return barMesh;
 }
@@ -260,6 +359,41 @@ function addSpotlight() {
     return spotLight;
 }
 
+function addText() {
+    loader.load(
+        "node_modules/three/examples/fonts/helvetiker_regular.typeface.json",
+        function (font) {
+            let geometry, material, mesh;
+            geometry = new TextGeometry("Hello three.js!", {
+                font: font,
+                size: 200,
+                height: 20,
+                curveSegments: 12,
+                bevelEnabled: true,
+                bevelThickness: 1,
+                bevelSize: 8,
+                bevelOffset: -2,
+                bevelSegments: 5,
+            });
+
+            material = new THREE.MeshStandardMaterial({
+                color: 0xffffff,
+                side: THREE.DoubleSide,
+            });
+
+            mesh = new THREE.Mesh(geometry, material);
+            mesh.position.set(0, 0, -5);
+            console.dir(mesh);
+            let sc = 0.005;
+            mesh.scale.x = sc;
+            mesh.scale.y = sc;
+            mesh.scale.z = sc;
+            mesh.castShadow = true;
+            scene.add(mesh);
+            return mesh;
+        }
+    );
+}
 // SpotLight
 var secs = 0,
     fps_update = 30, // fps rate to update ( low fps for low CPU use, but choppy video )
@@ -289,14 +423,15 @@ addOrbitControls();
 
 setSceneProperties();
 
-// addController1();
-// addController2();
-// addGrip1();
-// addGrip2();
+addController1();
+addController2();
+addGrip1();
+addGrip2();
 
+addText();
 addHouse();
-let bar1 = addWoodenBar();
-camera.lookAt(bar1.position);
+let bar = addWoodenBar();
+camera.lookAt(bar.position);
 
 let bulb1 = addLightBulb();
 let bulb2 = addLightBulb(5, 8, 5);
@@ -310,7 +445,7 @@ let spotTarget = new THREE.Object3D(); // spotlight target
 spotLight.target = spotTarget; // set spotLight target for spotLight
 
 scene.add(spotTarget);
-
+scene.add(group);
 // - - - - - - - - - -
 // Always at the end
 // - - - - - - - - - -
