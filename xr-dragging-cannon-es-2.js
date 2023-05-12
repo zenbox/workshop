@@ -353,12 +353,14 @@ function addFloor() {
     const material = new THREE.MeshBasicMaterial({
         color: 0x444444,
     });
-    floor = new THREE.Mesh(geometry, material);
+    let floor = new THREE.Mesh(geometry, material);
     floor.position.y = -0.2;
     //Boden neigen
     //floor.rotation.set(-0.3, 0, 0);
     floor.receiveShadow = true;
     scene.add(floor);
+
+    return floor;
 }
 function addBack() {
     const geometry = new THREE.BoxGeometry(10, 10, 0.5);
@@ -399,6 +401,10 @@ function addRight() {
 // - - - - - - - - - - -
 //Physics
 // - - - - - - - - - - -
+floor = addFloor();
+addGroup();
+addCubes();
+
 world = new CANNON.World();
 world.gravity.set(0, -9.82 * 20, 0);
 world.broadphase = new CANNON.NaiveBroadphase();
@@ -410,12 +416,36 @@ let floorBody = new CANNON.Body({
     shape: new CANNON.Plane(),
 });
 floorBody.quaternion.setFromAxisAngle(new CANNON.Vec3(1, 0, 0), -Math.PI / 2);
-world.add(floorBody);
+floorBody.position.copy(floor.position);
 
 function updatePhysics() {
     world.step(1.0 / 60.0);
+    updateMeshFromBody();
 }
-function updateMeshFromBody() {}
+
+function updateMeshFromBody() {
+    if (!simulationRunning) {
+        meshObject.position.copy(physicsObject.position);
+        meshObject.quaternion.copy(physicsObject.quaternion);
+    }
+}
+let simulationRunning = false;
+let s = 0.5
+let physicsObject = new CANNON.Body({
+    mass: 1,
+    shape: new CANNON.Box(new CANNON.Vec3(s, s, s)),
+    material: new THREE.MeshBasicMaterial(0xff0000),
+});
+
+let meshObject = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshStandardMaterial({ color: 0xffcc00 })
+);
+
+world.add(floorBody);
+world.add(physicsObject);
+group.add(meshObject);
+
 // - - - - - - - - - - -
 // PROCESS
 // - - - - - - - - - - -
@@ -431,14 +461,12 @@ addController2();
 addGrip1();
 addGrip2();
 
-addFloor();
 addBack();
 addLeft();
 addRight();
 addMarker();
 
-addGroup();
-addCubes();
+
 
 //Wände und Boden zu Physics hinzufügen
 
