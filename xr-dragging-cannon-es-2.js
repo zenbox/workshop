@@ -20,8 +20,8 @@
 
 // threejs and xr modules
 import * as THREE from "three";
-const axesHelper = new THREE.AxesHelper(10);
-const gridHelper = new THREE.GridHelper(10, 10);
+// // const axesHelper = new THREE.AxesHelper(10);
+// // const gridHelper = new THREE.GridHelper(10, 10);
 
 // Desktop browser controls
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -52,11 +52,40 @@ let cubes = [],
     w = window.innerWidth,
     h = window.innerHeight;
 
-//Physics
+//----------
+class Scene {
+  constructor(config = {}){
+    this._init()
+    this._helper(config.helper?.sections?)
+    this._camera(config.camera?)
+    this._cameraPosition(config.camera?.position?)
+  }
+  _init(){
+    this._scene = new THREE.Scene();
+  }
+  _helper(s=10){
+    this._axesHelper = new THREE.AxesHelper(s);
+    this._gridHelper = new THREE.GridHelper(s, s);
+  }
+  _camera(c = {focalLength:50, ratio:window.innerWidth/window.innerHeight, nearest:0.1, farest:2000}){
+    this.camera = new THREE.PerspectiveCamera(c.focalLength, c.ratio, c.nearest, c.farest);
+  }
+  _cameraPosition(c = {x:1,y:8,z:30}){
+    this.camera.position.set(c.x, c.y, c.z);
+  }
+  _background(c = 0x000000) {
+    this._scene.background = new THREE.Color(0xffffff);
+  }
+  add(t = undefined){
+    if (t) this._scene.add(t)
+  }
+}
+class Controller {}
+//----------
 
-const clock = new THREE.Clock();
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 2000); // Perspective: focal length, image ratio, nearest distance, farest distance
+// const clock = new THREE.Clock();
+const scene = new Scene();
+// // const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 2000); // Perspective: focal length, image ratio, nearest distance, farest distance
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 const controls = new OrbitControls(camera, renderer.domElement);
 const controllerModelFactory = new XRControllerModelFactory();
@@ -97,15 +126,15 @@ function addRenderer() {
     document.body.appendChild(renderer.domElement);
     document.body.appendChild(XRButton.createButton(renderer));
 }
-function setSceneProperties() {
-    scene.background = new THREE.Color(0xffffff);
-    scene.add(axesHelper);
-    scene.add(gridHelper);
-    // scene.add(light);
-}
-function addCamera() {
-    camera.position.set(1, 8, 30);
-}
+// //function setSceneProperties() {
+// //    scene.background = new THREE.Color(0xffffff);
+// //    scene.add(axesHelper);
+// //    scene.add(gridHelper);
+// //    // scene.add(light);
+// //}
+// //function addCamera() {
+// //    camera.position.set(1, 8, 30);
+// //}
 function addLights() {
     ambientLight = new THREE.AmbientLight(0x404040); // soft white light
 
@@ -188,8 +217,6 @@ function addController2() {
     controller2 = renderer.xr.getController(1);
     controller2.addEventListener("selectstart", onTeleportStart);
     controller2.addEventListener("selectend", onTeleportEnd);
-
-    //console.log("AAAAAA");
 
     controller2.add(line.clone());
 
@@ -462,12 +489,12 @@ group.add(meshObject);
 // - - - - - - - - - - -
 // PROCESS
 // - - - - - - - - - - -
-addCamera();
+//addCamera();
 addLights();
 addRenderer();
 addOrbitControls();
 
-setSceneProperties();
+//setSceneProperties();
 
 addController1();
 addController2();
