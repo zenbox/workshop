@@ -20,8 +20,11 @@
 
 // threejs and xr modules
 import * as THREE from "three";
-// // const axesHelper = new THREE.AxesHelper(10);
-// // const gridHelper = new THREE.GridHelper(10, 10);
+
+// ********
+const axesHelper = new THREE.AxesHelper(10);
+const gridHelper = new THREE.GridHelper(10, 10);
+// ********
 
 // Desktop browser controls
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
@@ -53,12 +56,12 @@ let cubes = [],
     h = window.innerHeight;
 
 //----------
-class Scene {
+class Studio {
     constructor(config = {}) {
         this._init();
-        this._helper(config.helper?.sections);
-        this._camera(config.camera);
-        this._cameraPosition(config.camera?.position);
+        this._helper();
+        this._camera();
+        this._cameraPosition();
     }
     _init() {
         this._scene = new THREE.Scene();
@@ -95,11 +98,13 @@ class Scene {
 class Controller {}
 //----------
 
-// const clock = new THREE.Clock();
-const scene = new Scene();
-// // const camera = new THREE.PerspectiveCamera(50, w / h, 0.1, 2000); // Perspective: focal length, image ratio, nearest distance, farest distance
+const clock = new THREE.Clock();
+
+const studio = new Studio();
+const scene = studio._scene
+
 const renderer = new THREE.WebGLRenderer({ antialias: true });
-const controls = new OrbitControls(scene.camera, renderer.domElement);
+const controls = new OrbitControls(studio.camera, renderer.domElement);
 const controllerModelFactory = new XRControllerModelFactory();
 
 // Variablen für das Dragging
@@ -136,15 +141,18 @@ function addRenderer() {
     document.body.appendChild(renderer.domElement);
     document.body.appendChild(XRButton.createButton(renderer));
 }
-// //function setSceneProperties() {
-// //    scene.background = new THREE.Color(0xffffff);
-// //    scene.add(axesHelper);
-// //    scene.add(gridHelper);
-// //    // scene.add(light);
-// //}
-// //function addCamera() {
-// //    camera.position.set(1, 8, 30);
-// //}
+// ********
+function setSceneProperties() {
+   scene.background = new THREE.Color(0xffffff);
+   scene.add(axesHelper);
+   scene.add(gridHelper);
+   // scene.add(light);
+}
+function addCamera() {
+   camera.position.set(1, 8, 30);
+}
+// ********
+
 function addLights() {
     ambientLight = new THREE.AmbientLight(0x404040); // soft white light
 
@@ -195,7 +203,7 @@ function renderXrLoop() {
 
     marker.visible = INTERSECTION !== undefined;
     // Render the image into the canvas object
-    renderer.render(scene, scene.camera);
+    renderer.render(scene, studio.camera);
 
     cleanIntersectedObjects();
 
@@ -495,12 +503,11 @@ group.add(meshObject);
 // - - - - - - - - - - -
 // PROCESS
 // - - - - - - - - - - -
-//addCamera();
+
 addLights();
 addRenderer();
 addOrbitControls();
 
-//setSceneProperties();
 
 addLeftController();
 addRightController();
