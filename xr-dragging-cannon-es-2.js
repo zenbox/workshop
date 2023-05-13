@@ -220,14 +220,6 @@ function addLeftController() {
     leftController.add(rayMesh.clone());
     scene.add(leftController);
 }
-<<<<<<< master
-function addController2() {
-    controller2 = renderer.xr.getController(1);
-    controller2.addEventListener("selectstart", onTeleportStart);
-    controller2.addEventListener("selectend", onTeleportEnd);
-
-    controller2.add(line.clone());
-=======
 function addRightController() {
     rightController = renderer.xr.getController(1);
     rightController.addEventListener("selectstart", onTeleportStart);
@@ -652,7 +644,6 @@ function addRenderer() {
     document.body.appendChild(renderer.domElement);
     document.body.appendChild(XRButton.createButton(renderer));
 }
-<<<<<<< master
 // //function setSceneProperties() {
 // //    scene.background = new THREE.Color(0xffffff);
 // //    scene.add(axesHelper);
@@ -662,17 +653,6 @@ function addRenderer() {
 // //function addCamera() {
 // //    camera.position.set(1, 8, 30);
 // //}
-=======
-function setSceneProperties() {
-    scene.background = new THREE.Color(0xffffff);
-    scene.add(axesHelper);
-    scene.add(gridHelper);
-    // scene.add(light);
-}
-function addCamera() {
-    camera.position.set(1, 2, 2);
-}
->>>>>>> origin/master
 function addLights() {
     ambientLight = new THREE.AmbientLight(0x404040); // soft white light
 
@@ -749,14 +729,6 @@ function addLeftController() {
     leftController.add(rayMesh.clone());
     scene.add(leftController);
 }
-<<<<<<< master
-function addController2() {
-    controller2 = renderer.xr.getController(1);
-    controller2.addEventListener("selectstart", onTeleportStart);
-    controller2.addEventListener("selectend", onTeleportEnd);
-
-    controller2.add(line.clone());
-=======
 function addRightController() {
     rightController = renderer.xr.getController(1);
     rightController.addEventListener("selectstart", onTeleportStart);
@@ -767,7 +739,6 @@ function addRightController() {
 function addLeftGrip() {
     let _leftGrip = renderer.xr.getControllerGrip(0);
     _leftGrip.add(controllerModelFactory.createControllerModel(_leftGrip));
->>>>>>> origin/master
 
     scene.add(_leftGrip);
 }
