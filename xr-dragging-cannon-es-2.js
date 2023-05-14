@@ -22,8 +22,8 @@
 import * as THREE from "three";
 
 // ********
-const axesHelper = new THREE.AxesHelper(10);
-const gridHelper = new THREE.GridHelper(10, 10);
+//const axesHelper = new THREE.AxesHelper(10);
+//const gridHelper = new THREE.GridHelper(10, 10);
 // ********
 
 // Desktop browser controls
@@ -95,17 +95,145 @@ class Studio {
         if (t) this._scene.add(t);
     }
 }
-class Controller {}
+class Plot(){
+  constructor(){
+    this._renderer = new THREE.WebGLRenderer({ antialias: true });
+    this._init()
+    this._initXr()
+    this._initShadowMap()
+    this._addDomElements()
+  }
+  _init(){
+    this._renderer.setSize(w, h);
+    this._renderer.setPixelRatio(window.devicePixelRatio);
+  }
+  _initXr(){
+    this._renderer.xr.enabled = true;
+    this._renderer.xr.addEventListener(
+        "sessionstart",
+        () => (baseReferenceSpace = renderer.xr.getReferenceSpace())
+        );
+  }
+  _initShadowMap(){
+    this._renderer.shadowMap.enabled = true;
+    this._renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  }
+  _addDomElementd(){
+    document.body.appendChild(this._renderer.domElement);
+    document.body.appendChild(XRButton.createButton(this._renderer));
+  }
+}
+class Controller {
+  constructor(){
+    this._initOrbitControl()
+    this._initXrControl()
+  }
+  _initOrbitControl(){
+    this._orbitControls = new OrbitControls(studio.camera, renderer.domElement);
+  }
+  _initXrControl(){
+    this._controllerModelFactory = new XRControllerModelFactory();
+  }
+  _update(){
+    this._orbitControls.update();
+  }
+  _addLeftController() {
+    let _leftController = renderer.xr.getController(0);
+    _leftController.addEventListener("selectstart", this._onDragStart);
+    _leftController.addEventListener("selectend", this._onDragEnd);
+    _leftController.add(rayMesh.clone());
+    scene.add(_leftController);
+}
+  _addRightController() {
+    let _rightController = renderer.xr.getController(1);
+    _rightController.addEventListener("selectstart", this._onTeleportStart);
+    _rightController.addEventListener("selectend", this._onTeleportEnd);
+    _rightController.add(rayMesh.clone());
+    scene.add(_rightController);
+}
+   _addLeftGrip() {
+    let _leftGrip = renderer.xr.getControllerGrip(0);
+    _leftGrip.add(controllerModelFactory.createControllerModel(_leftGrip));
+    scene.add(_leftGrip);
+}
+  _addRightGrip() {
+    let _rightGrip = renderer.xr.getControllerGrip(1);
+    _rightGrip.add(controllerModelFactory.createControllerModel(_rightGrip));
+    scene.add(_rightGrip);
+}
+  _addMarker() {
+    let _marker = new THREE.Mesh(
+        new THREE.CircleGeometry(0.25, 32).rotateX(-Math.PI / 2),
+        new THREE.MeshBasicMaterial({ color: 0x808080 })
+    );
+    scene.add(marker);
+  }
+  _onDragStart(event) {
+    this.userData.isSelecting = true;
+    let _controller = event.target,
+        _intersections = getRaycasterIntersections(_controller);
+    if (_intersections.length > 0) {
+        let _intersection = _intersections[0],
+            _object = _intersection.object; // selected cube!
+        _object.material.emissive.b = 1;
+        _controller.attach(object);
+        _controller.userData.selected = _object;
+    }
+    _controller.userData.targetRayMode = event.data.targetRayMode;
+}
+ _onDragEnd(event) {
+    this.userData.isSelecting = false;
+    let _controller = event.target;
+    if (_controller.userData.selected !== undefined) {
+        let _object = _controller.userData.selected;
+        // todo wtf?
+        updateBodyFromMesh();
+        _object.material.emissive.b = 0;
+        // The global group of draggable objects
+group.attach(object);
+        _controller.userData.selected = undefined;
+    }
+_onTeleportStart() {
+    this.userData.isSelecting = true;
+    //console.log("Suqueezebutton pressed");
+}
+_onTeleportEnd() {
+    // console.log("Suqueezebutton unpressed");
+    this.userData.isSelecting = false;
+    if (INTERSECTION) {
+        let _offsetPosition = {
+                x: -INTERSECTION.x,
+                y: -INTERSECTION.y,
+                z: -INTERSECTION.z,
+                w: 1,
+            },
+            _offsetRotation = new THREE.Quaternion(),
+            _transform = new XRRigidTransform(_offsetPosition, _offsetRotation),
+            _teleportSpaceOffset =
+                baseReferenceSpace.getOffsetReferenceSpace(_transform);
+        renderer.xr.setReferenceSpace(_teleportSpaceOffset);
+    }
+  }
+}
 //----------
 
 const clock = new THREE.Clock();
 
 const studio = new Studio();
-const scene = studio._scene
+const scene  = studio._scene
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-const controls = new OrbitControls(studio.camera, renderer.domElement);
-const controllerModelFactory = new XRControllerModelFactory();
+const plot     = new Plot()
+const renderer = plot._renderer()
+
+const controller = new Controller()
+controller._update()
+
+
+// **********
+// **********
+// const renderer = new THREE.WebGLRenderer({ antialias: true });
+// const controls = new OrbitControls(studio.camera, renderer.domElement);
+// const controllerModelFactory = new XRControllerModelFactory();
 
 // Variablen für das Dragging
 // Geomtrie für den ray
@@ -122,35 +250,36 @@ let raycasterDrag = new THREE.Raycaster(),
 rayMesh.name = "line";
 rayMesh.scale.z = 5;
 
-function addRenderer() {
-    // Canvas initalisation with xr!
-    renderer.setSize(w, h);
-    renderer.xr.enabled = true;
-    renderer.setPixelRatio(window.devicePixelRatio); // Optional!
-
-    // enable shadows
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-    renderer.xr.addEventListener(
-        "sessionstart",
-        () => (baseReferenceSpace = renderer.xr.getReferenceSpace())
-    );
-
-    // Add canvas, button to DOM
-    document.body.appendChild(renderer.domElement);
-    document.body.appendChild(XRButton.createButton(renderer));
-}
 // ********
-function setSceneProperties() {
-   scene.background = new THREE.Color(0xffffff);
-   scene.add(axesHelper);
-   scene.add(gridHelper);
-   // scene.add(light);
-}
-function addCamera() {
-   camera.position.set(1, 8, 30);
-}
+// function addRenderer() {
+//    // Canvas initalisation with xr!
+//    renderer.setSize(w, h);
+//    renderer.xr.enabled = true;
+//    renderer.setPixelRatio(window.devicePixelRatio); // Optional!
+//
+//    // enable shadows
+//    renderer.shadowMap.enabled = true;
+//    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+//
+//    renderer.xr.addEventListener(
+//        "sessionstart",
+//        () => (baseReferenceSpace = renderer.xr.getReferenceSpace())
+//    );
+//
+//    // Add canvas, button to DOM
+//    document.body.appendChild(renderer.domElement);
+//    document.body.appendChild(XRButton.createButton(renderer));
+//}
+
+//function setSceneProperties() {
+//   scene.background = new THREE.Color(0xffffff);
+//   scene.add(axesHelper);
+//   scene.add(gridHelper);
+//   // scene.add(light);
+//}
+//function addCamera() {
+//   camera.position.set(1, 8, 30);
+//}
 // ********
 
 function addLights() {
@@ -162,9 +291,9 @@ function addLights() {
     scene.add(ambientLight);
     scene.add(pointLight);
 }
-function addOrbitControls() {
-    controls.update();
-}
+//function addOrbitControls() {
+//    controls.update();
+//}
 function animate() {
     renderer.setAnimationLoop(renderXrLoop);
 }
@@ -218,97 +347,97 @@ function renderXrLoop() {
 
     updatePhysics();
 }
+//// - - - - - - - - - -
+//// Controller functions, grip models
+//// and teleport marker
 // - - - - - - - - - -
-// Controller functions, grip models
-// and teleport marker
-// - - - - - - - - - -
-function addLeftController() {
-    leftController = renderer.xr.getController(0);
-    leftController.addEventListener("selectstart", onDragStart);
-    leftController.addEventListener("selectend", onDragEnd);
-    leftController.add(rayMesh.clone());
-    scene.add(leftController);
-}
-function addRightController() {
-    rightController = renderer.xr.getController(1);
-    rightController.addEventListener("selectstart", onTeleportStart);
-    rightController.addEventListener("selectend", onTeleportEnd);
-    rightController.add(rayMesh.clone());
-    scene.add(rightController);
-}
-function addLeftGrip() {
-    let _leftGrip = renderer.xr.getControllerGrip(0);
-    _leftGrip.add(controllerModelFactory.createControllerModel(_leftGrip));
-
-    scene.add(_leftGrip);
-}
-function addRightGrip() {
-    let _rightGrip = renderer.xr.getControllerGrip(1);
-    _rightGrip.add(controllerModelFactory.createControllerModel(_rightGrip));
-    scene.add(_rightGrip);
-}
-function addMarker() {
-    marker = new THREE.Mesh(
-        new THREE.CircleGeometry(0.25, 32).rotateX(-Math.PI / 2),
-        new THREE.MeshBasicMaterial({ color: 0x808080 })
-    );
-    scene.add(marker);
-}
-// - - - - - - - - - -
-// DRAGGING
-// - - - - - - - - - -
-function onDragStart(event) {
-    this.userData.isSelecting = true;
-    let _controller = event.target,
-        _intersections = getRaycasterIntersections(_controller);
-    if (_intersections.length > 0) {
-        let _intersection = _intersections[0],
-            _object = _intersection.object; // selected cube!
-        _object.material.emissive.b = 1;
-        _controller.attach(object);
-        _controller.userData.selected = _object;
-    }
-    _controller.userData.targetRayMode = event.data.targetRayMode;
-}
-function onDragEnd(event) {
-    this.userData.isSelecting = false;
-    let _controller = event.target;
-    if (_controller.userData.selected !== undefined) {
-        let _object = _controller.userData.selected;
-        // todo wtf?
-        updateBodyFromMesh();
-        _object.material.emissive.b = 0;
-        // The global group of draggable objects
-        group.attach(object);
-        _controller.userData.selected = undefined;
-    }
-}
-
-// - - - - - - - - - -
-// TELEPORT
-// - - - - - - - - - -
-function onTeleportStart() {
-    this.userData.isSelecting = true;
-    //console.log("Suqueezebutton pressed");
-}
-function onTeleportEnd() {
-    // console.log("Suqueezebutton unpressed");
-    this.userData.isSelecting = false;
-    if (INTERSECTION) {
-        let _offsetPosition = {
-                x: -INTERSECTION.x,
-                y: -INTERSECTION.y,
-                z: -INTERSECTION.z,
-                w: 1,
-            },
-            _offsetRotation = new THREE.Quaternion(),
-            _transform = new XRRigidTransform(_offsetPosition, _offsetRotation),
-            _teleportSpaceOffset =
-                baseReferenceSpace.getOffsetReferenceSpace(_transform);
-        renderer.xr.setReferenceSpace(_teleportSpaceOffset);
-    }
-}
-
+//function addLeftController() {
+//    leftController = renderer.xr.getController(0);
+//    leftController.addEventListener("selectstart", onDragStart);
+//    leftController.addEventListener("selectend", onDragEnd);
+//    leftController.add(rayMesh.clone());
+//    scene.add(leftController);
+//}
+//function addRightController() {
+//    rightController = renderer.xr.getController(1);
+//    rightController.addEventListener("selectstart", onTeleportStart);
+//    rightController.addEventListener("selectend", onTeleportEnd);
+//    rightController.add(rayMesh.clone());
+//    scene.add(rightController);
+//}
+//function addLeftGrip() {
+//    let _leftGrip = renderer.xr.getControllerGrip(0);
+//    _leftGrip.add(controllerModelFactory.createControllerModel(_leftGrip));
+//
+//    scene.add(_leftGrip);
+//}
+//function addRightGrip() {
+//    let _rightGrip = renderer.xr.getControllerGrip(1);
+//    _rightGrip.add(controllerModelFactory.createControllerModel(_rightGrip));
+//    scene.add(_rightGrip);
+//}
+//function addMarker() {
+//    marker = new THREE.Mesh(
+//        new THREE.CircleGeometry(0.25, 32).rotateX(-Math.PI / 2),
+//        new THREE.MeshBasicMaterial({ color: 0x808080 })
+//    );
+//    scene.add(marker);
+//}
+//// - - - - - - - - - -
+//// DRAGGING
+//// - - - - - - - - - -
+//function onDragStart(event) {
+//    this.userData.isSelecting = true;
+//    let _controller = event.target,
+//        _intersections = getRaycasterIntersections(_controller);
+//    if (_intersections.length > 0) {
+//        let _intersection = _intersections[0],
+//            _object = _intersection.object; // selected cube!
+//        _object.material.emissive.b = 1;
+//        _controller.attach(object);
+//        _controller.userData.selected = _object;
+//    }
+//    _controller.userData.targetRayMode = event.data.targetRayMode;
+//}
+//function onDragEnd(event) {
+//    this.userData.isSelecting = false;
+//    let _controller = event.target;
+//    if (_controller.userData.selected !== undefined) {
+//        let _object = _controller.userData.selected;
+//        // todo wtf?
+//        updateBodyFromMesh();
+//        _object.material.emissive.b = 0;
+//        // The global group of draggable objects
+//        group.attach(object);
+//        _controller.userData.selected = undefined;
+//    }
+//}
+//
+//// - - - - - - - - - -
+//// TELEPORT
+//// - - - - - - - - - -
+//function onTeleportStart() {
+//    this.userData.isSelecting = true;
+//    //console.log("Suqueezebutton pressed");
+//}
+//function onTeleportEnd() {
+//    // console.log("Suqueezebutton unpressed");
+//    this.userData.isSelecting = false;
+//    if (INTERSECTION) {
+//        let _offsetPosition = {
+//                x: -INTERSECTION.x,
+//                y: -INTERSECTION.y,
+//                z: -INTERSECTION.z,
+//                w: 1,
+//            },
+//            _offsetRotation = new THREE.Quaternion(),
+//            _transform = new XRRigidTransform(_offsetPosition, _offsetRotation),
+//            _teleportSpaceOffset =
+//                baseReferenceSpace.getOffsetReferenceSpace(_transform);
+//        renderer.xr.setReferenceSpace(_teleportSpaceOffset);
+//    }
+//}
+//
 // - - - - - - - - - -
 // RAYCASTER
 // - - - - - - - - - -
@@ -505,8 +634,8 @@ group.add(meshObject);
 // - - - - - - - - - - -
 
 addLights();
-addRenderer();
-addOrbitControls();
+//addRenderer();
+//addOrbitControls();
 
 
 addLeftController();
