@@ -1,0 +1,14 @@
+// Some documentation ...
+
+body {
+    border: 4px dotted lime;
+    background: grey;
+
+    > * {
+        border: 4px dotted cyan;
+
+        > * {
+            border: 4px dotted orange;
+        }
+    }
+}

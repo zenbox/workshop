@@ -1,1 +1,12 @@
+// Base
 @import "base";
+
+// Layout / template
+@import "template-1";
+
+// Modules / components
+@import "header";
+@import "navigation";
+
+// Theme
+@import "developer";

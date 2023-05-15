@@ -1,0 +1,27 @@
+// Some documentation ...
+.template-1 {
+    // Base
+    display: grid;
+    grid-template-columns: 25vw 75vw;
+    grid-template-rows: 8vh auto 8vh;
+
+    // Layout
+    header {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+    }
+    nav {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+    main {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+    footer {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+    }
+
+    // State
+}
