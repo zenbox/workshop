@@ -1,4 +1,4 @@
-# Willkommen zu HTML, CSS und Javascript plus Bootstrap
+# Willkommen zu den CSS Grundlagen
 
 ## Michael Reichart
 
