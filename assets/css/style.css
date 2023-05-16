@@ -50,8 +50,8 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  width: 18rem;
-  height: 10rem;
+  width: var(--width);
+  height: var(--height);
   left: calc(50vw - var(--width) / 2);
   top: calc(50vh - var(--height) / 2);
   padding: 2rem;
