@@ -3,7 +3,7 @@
     // Base
     display: grid;
     grid-template-columns: 25vw 75vw;
-    grid-template-rows: 8vh auto 8vh;
+    grid-template-rows: $headerHeight auto 8vh;
 
     // Layout
     header {

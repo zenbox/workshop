@@ -1,14 +1,15 @@
 // Some documentation ...
-
-body {
-    border: 4px dotted lime;
-    background: grey;
-
-    > * {
-        border: 4px dotted cyan;
+.developer {
+    body {
+        outline: 2px dashed hsla(120, 100%, 25%, 0.5);
 
         > * {
-            border: 4px dotted orange;
+            outline: 2px dashed hsla(180, 100%, 50%, 0.25);
+            background: hsla(180, 100%, 50%, 0.25);
+            > * {
+                outline: 2px dashed hsla(39, 100%, 50%, 0.25);
+                background: hsla(40, 100%, 50%, 0.25);
+            }
         }
     }
 }

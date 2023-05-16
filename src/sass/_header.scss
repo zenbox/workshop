@@ -9,5 +9,13 @@
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2023 Michael Reichart, Cologne
 .header {
-    
+    // Base
+    // Layout
+    &-fixed {
+        display: block;
+        position:fixed;
+        width: 100%;
+        height: $headerHeight;
+    }
+    // States
 }
