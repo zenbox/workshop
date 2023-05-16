@@ -1,4 +1,5 @@
 // Some documentation ...
+// All devices layout
 .template-1 {
     // Base
     display: grid;
@@ -24,4 +25,27 @@
     }
 
     // State
+}
+
+// Responsive layout variations
+// Small device (sm)
+@media screen and (max-width: 393px) {
+
+
+}
+// Medium device (md)
+@media screen and (min-width:394px){}
+
+@media screen {
+    // All devices fallback
+    
+    // Extra-small
+    @media (max-width: 599px) {}
+    // Small (tablet)
+    @media (min-width: 600px) {}
+    @media (min-width: 905px) {}
+    // Medium (laptop)
+    @media (min-width: 1240px) {}
+    // Large (desktop)
+    @media (min-width: 1440px) {}
 }
