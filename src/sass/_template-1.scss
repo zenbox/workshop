@@ -30,7 +30,10 @@
 // Responsive layout variations
 // Small device (sm)
 @media screen and (max-width: 393px) {
-
+    .template-1 {
+        grid-template-columns: 100vw;
+        grid-template-rows: repeat(4,auto);
+    }
 
 }
 // Medium device (md)
