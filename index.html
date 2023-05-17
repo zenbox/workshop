@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
     lang="en"
-    class="developer">
+    class="theme-1">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -16,12 +16,22 @@
             href="assets/css/style.css" />
     </head>
     <body class="template-1">
-        <header class="header header-fixed">header</header>
+        <header class="header header-fixed">
+            <div class="brand">logo</div>
+            <nav>
+                <ul class="nav">
+                    <li><a href="#">link 1</a></li>
+                    <li><a href="#">link 2</a></li>
+                    <li><a href="#">link 3</a></li>
+                </ul>
+            </nav>
+            <p>Michael</p>
+        </header>
         <nav>
             <!-- - - - -->
-            <ul class="nav">
+            <ul class="nav flex-column">
                 <li id="sel"><a href="#">link 1</a></li>
-                <li><a href="#">link 2</a></li>
+                <li><a href="#">link 2 mit mehr Text</a></li>
                 <li><a href="#">link 3</a></li>
                 <li><a href="#">link 4</a></li>
                 <li><a href="#">link 5</a></li>
@@ -32,10 +42,21 @@
         <main>
             <!-- - - - -->
             <article>
+                <figure class="figure">
+                    <img
+                        class="responsive"
+                        src="https://picsum.photos/id/69/480/320"
+                        alt="" />
+                    <figcaption>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dolorem at placeat doloremque?
+                    </figcaption>
+                </figure>
+
                 <h1>Cascading Stylesheets</h1>
                 <address>
-                    <time datetime="2023-05-16 12:00:00">16. Mai 2023</time
-                    >, Michael
+                    <time datetime="2023-05-16 12:00:00">16. Mai 2023</time>,
+                    Michael
                 </address>
                 <p class="teaser">
                     Lorem ipsum, <strong>Auszeichung</strong> dolor sit amet

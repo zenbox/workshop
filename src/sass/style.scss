@@ -1,4 +1,3 @@
-
 // Base
 @import "variables";
 @import "base";
@@ -8,9 +7,11 @@
 @import "template-1";
 
 // Modules / components
+@import "figures";
 @import "header";
 @import "modal";
 @import "navigation";
 
 // Theme
 @import "developer";
+@import "theme-1";
