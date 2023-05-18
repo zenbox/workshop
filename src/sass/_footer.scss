@@ -1,0 +1,12 @@
+// ...
+
+footer {
+    display: block;
+    width: 100vw;
+    height: 5rem;
+    position: sticky !important;
+    z-index:9999;
+    bottom: 0;
+    margin-inline: 0;
+    background: orange !important;
+}

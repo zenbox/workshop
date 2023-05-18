@@ -1,4 +1,9 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --headerHeight: $headerHeight;
+}
+
 html,
 html * {
   box-sizing: border-box;
@@ -41,12 +46,33 @@ body {
     display: block;
   }
 }
+.brand-svg:is(svg) {
+  width: calc(var(--headerHeight) / 4);
+  height: auto;
+  fill: orange;
+}
+
 .figure {
   margin-inline: 0;
 }
 .figure img.responsive {
   width: 100%;
   height: auto;
+}
+
+svg .red {
+  fill: red;
+}
+
+footer {
+  display: block;
+  width: 100vw;
+  height: 5rem;
+  position: sticky !important;
+  z-index: 9999;
+  bottom: 0;
+  margin-inline: 0;
+  background: orange !important;
 }
 
 .header {
@@ -72,6 +98,19 @@ body {
     position: relative;
     height: auto;
   }
+}
+
+.icon::before {
+  content: "";
+  font-family: "Font Awesome";
+  font-size: 1rem;
+  margin-inline-end: 1rem;
+  color: red;
+  background: green;
+}
+
+.icon-arrow-left::before {
+  content: "/f061";
 }
 
 .modal {

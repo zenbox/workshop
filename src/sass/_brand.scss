@@ -1,0 +1,10 @@
+// Some documentation ...
+
+.brand {
+    &-svg:is(svg) {
+        width: calc( var(--headerHeight) / 4 );
+        height: auto;
+        fill: orange;
+
+    }
+}
