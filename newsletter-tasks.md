@@ -3,7 +3,7 @@
 -   Template auf dem neuesten Stand
 -   In allen Clients richtig darstellen
 -   `preheader` nutzen
--   -   Farbcodierung für unterschiedliche Newlstter-Themen/-Programme/-Rubriken (anstelle der `header`-Grafiken)
+-   Farbcodierung für unterschiedliche Newlstter-Themen/-Programme/-Rubriken (anstelle der `header`-Grafiken)
 
 ## Gestaltung und Umsetzung überarbeiten
 
