@@ -1,0 +1,40 @@
+.visually-hidden {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+a:link.visually-hidden:focus,
+a:link.visually-hidden:active {
+    position: absolute;
+    overflow: visible;
+    clip: auto;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: hsla(0, 0%, 0%, 0.85);
+}
+
+.hidden {
+    display: none;
+}
+
+a:link,
+a:visited {
+    color: white !important;
+}
+
+// Develop styles
+[tabindex],
+a:link,
+input {
+    border: 2px dotted red;
+}

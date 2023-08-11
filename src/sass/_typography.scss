@@ -1,3 +1,5 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+
 // Base typography
 // Fallback
 html {
@@ -5,6 +7,20 @@ html {
     font-size: 16px;
     line-height: 1.4;
     font-weight: 400;
+
+    color: hsla(0, 0%, 85%, 1);
+    background-color: hsla(0, 10%, 20%, 1);
+    // background: linear-gradient(
+    //     90deg,
+    //     hsla(0, 50%, 8%, 1) 0%,
+    //     hsla(0, 20%, 95%, 1) 100%
+    // );
+}
+
+body {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0;
 }
 
 // Small devices

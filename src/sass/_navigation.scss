@@ -1,0 +1,26 @@
+// Base
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+// Layout
+.nav {
+    display: flex;
+}
+.nav-row {
+    flex-direction: row;
+    justify-content: space-between;
+}
+.nav-column {
+    flex-direction: column;
+}
+
+// Untermenu
+.nav ul {
+    display: none;
+}
+.selected {
+    display: block !important;
+}

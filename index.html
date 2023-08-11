@@ -14,12 +14,25 @@
             href="assets/css/style.css" />
     </head>
     <body>
-        <a href="#content-main">direkt zum Inhalt</a>
-        <a href="#form-search">direkt zur Suche</a>
-        <a href="#content-foot">direkt zur Seitenfuß</a>
+        <a
+            class="visually-hidden"
+            href="#content-main"
+            >direkt zum Inhalt</a
+        >
+        <a
+            class="visually-hidden"
+            href="#form-search"
+            >direkt zur Suche</a
+        >
+        <a
+            class="visually-hidden"
+            href="#content-foot"
+            >direkt zur Seitenfuß</a
+        >
 
         <header>
             <form
+                aria-live="polite"
                 action=""
                 id="form-search">
                 <fieldset>
@@ -31,12 +44,65 @@
                         id="input-search"
                         placeholder="hier Suchbegriff eingeben" />
                     <button>Suchanfrage starten</button>
+                    <p class="hidden">Das Suchenfeld darf nicht leer sein</p>
                 </fieldset>
             </form>
+
+            <nav>
+                <ul
+                    id="main-nav"
+                    class="nav nav-row">
+                    <li><a href="">eins</a></li>
+                    <li aria-expanded="false">
+                        <a href="">zwei</a>
+                        <ul class="nav nav-column">
+                            <li aria-selected="true">
+                                <a href="">unter eins</a>
+                            </li>
+                            <li><a href="">unter zwei</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">drei</a></li>
+                    <li><a href="">vier</a></li>
+                </ul>
+            </nav>
         </header>
 
         <main id="content-main">
             <h1>Barrierefreiheit in HTML-Interfaces</h1>
+
+            <article>
+                <table tabindex="0">
+                    <caption class="visually-hidden">
+                        Die Überschrift der Tabelle
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Alter</th>
+                            <th>Ort</th>
+                        </tr>
+                    </thead>
+                    <tfoot></tfoot>
+                    <tbody>
+                        <tr>
+                            <td>Ben</td>
+                            <td>12</td>
+                            <td>München</td>
+                        </tr>
+                        <tr>
+                            <td>Alisha</td>
+                            <td>23</td>
+                            <td>Berlin</td>
+                        </tr>
+                        <tr>
+                            <td>Cäsar</td>
+                            <td>34</td>
+                            <td>Mannheim</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
 
             <article>
                 <figure>
@@ -51,20 +117,24 @@
                 </figure>
                 <h2>Überschrift der Ebene 2</h2>
                 <p>
-                    <span class="fa-solid fa-arrow">Pfeil</span> Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Architecto
-                    cupiditate ea aperiam suscipit earum eaque, omnis accusamus
-                    molestias.
+                    <span
+                        aria-hidden="true"
+                        class="fa-solid fa-arrow-right"
+                        >Pfeil nach links</span
+                    >
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Architecto cupiditate ea aperiam suscipit earum eaque, omnis
+                    accusamus molestias.
                 </p>
             </article>
 
             <article>
                 <h2>Überschrift der Ebene 2</h2>
                 <p>
-                    <span class="fa-solid fa-arrow">Pfeil</span> Lorem ipsum
-                    dolor sit amet consectetur adipisicing elit. Architecto
-                    cupiditate ea aperiam suscipit earum eaque, omnis accusamus
-                    molestias.
+                    <span class="fa-solid fa-arrow-left">Pfeil</span> Lorem
+                    ipsum dolor sit amet consectetur adipisicing elit.
+                    Architecto cupiditate ea aperiam suscipit earum eaque, omnis
+                    accusamus molestias.
                 </p>
             </article>
         </main>
@@ -75,6 +145,7 @@
                 <a href="mailto:michael.reichart@gfu.net">Email schreiben!</a>
             </address>
         </footer>
+        <script src="assets/js/script.js"></script>
     </body>
 </html>
 
