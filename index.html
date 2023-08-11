@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+        <title>
+            Beispielseite für eine barrierefreie Umsetzung von HTML, Michael
+            Reichart
+        </title>
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+    </head>
+    <body>
+        <a href="#content-main">direkt zum Inhalt</a>
+        <a href="#form-search">direkt zur Suche</a>
+        <a href="#content-foot">direkt zur Seitenfuß</a>
+
+        <header>
+            <form
+                action=""
+                id="form-search">
+                <fieldset>
+                    <legend>Seitensuche</legend>
+                    <label for="input-search">Sucheingabe</label>
+                    <input
+                        type="search"
+                        name=""
+                        id="input-search"
+                        placeholder="hier Suchbegriff eingeben" />
+                    <button>Suchanfrage starten</button>
+                </fieldset>
+            </form>
+        </header>
+
+        <main id="content-main">
+            <h1>Barrierefreiheit in HTML-Interfaces</h1>
+
+            <article>
+                <figure>
+                    <img
+                        src="https://picsum.photos/id/62/400/150"
+                        alt="" />
+                    <figcaption>
+                        Waldlandschaft Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Nemo distinctio eos adipisci.
+                        Inventore quas veritatis libero autem est.
+                    </figcaption>
+                </figure>
+                <h2>Überschrift der Ebene 2</h2>
+                <p>
+                    <span class="fa-solid fa-arrow">Pfeil</span> Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Architecto
+                    cupiditate ea aperiam suscipit earum eaque, omnis accusamus
+                    molestias.
+                </p>
+            </article>
+
+            <article>
+                <h2>Überschrift der Ebene 2</h2>
+                <p>
+                    <span class="fa-solid fa-arrow">Pfeil</span> Lorem ipsum
+                    dolor sit amet consectetur adipisicing elit. Architecto
+                    cupiditate ea aperiam suscipit earum eaque, omnis accusamus
+                    molestias.
+                </p>
+            </article>
+        </main>
+        <aside>aside</aside>
+        <footer id="content-foot">
+            <address>
+                &copy; <time datetime="2023">2023</time> Michael,
+                <a href="mailto:michael.reichart@gfu.net">Email schreiben!</a>
+            </address>
+        </footer>
+    </body>
+</html>
+
+<!--
+    nicht semantische Elemente:
+    b, i, u
+
+    semantisch:
+    strong, em
+-->
