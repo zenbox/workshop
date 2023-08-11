@@ -1,6 +1,6 @@
 {
     "proseWrap": "preserve",
-    "semi": true,
+    "semi": false,
     "singleQuote": false,
     "useTabs": false,
     "tabWidth": 4,
