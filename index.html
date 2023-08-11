@@ -45,6 +45,14 @@
                         placeholder="hier Suchbegriff eingeben" />
                     <button>Suchanfrage starten</button>
                     <p class="hidden">Das Suchenfeld darf nicht leer sein</p>
+
+                    <select
+                        name=""
+                        id="">
+                        <option value=""></option>
+                        <option value=""></option>
+                        <option value=""></option>
+                    </select>
                 </fieldset>
             </form>
 
@@ -68,13 +76,17 @@
             </nav>
         </header>
 
-        <main id="content-main">
+        <div
+            role="main"
+            id="content-main">
             <h1>Barrierefreiheit in HTML-Interfaces</h1>
 
             <article>
-                <table tabindex="0">
+                <table
+                    tabindex="0"
+                    aria-label="Tabelle mit den Pfeiltatsen navigierbar">
                     <caption class="visually-hidden">
-                        Die Überschrift der Tabelle
+                        Tabelle mit Personen
                     </caption>
                     <thead>
                         <tr>
@@ -137,14 +149,16 @@
                     accusamus molestias.
                 </p>
             </article>
-        </main>
+        </div>
         <aside>aside</aside>
-        <footer id="content-foot">
+        <div
+            role="contentinfo"
+            id="content-foot">
             <address>
                 &copy; <time datetime="2023">2023</time> Michael,
                 <a href="mailto:michael.reichart@gfu.net">Email schreiben!</a>
             </address>
-        </footer>
+        </div>
         <script src="assets/js/script.js"></script>
     </body>
 </html>
@@ -155,4 +169,28 @@
 
     semantisch:
     strong, em
+
+    aria-label
+    aria-labelledby
+    aria-describedby
+
+    aria-live="assertive | polite | off "
+    role=alert
+
+    aria-expanded
+    aria-selected
+    aria-current
+    aria-disabled
+    ...
+
+
+    aria-level
+    h1 - h6
+    <p role="heading" aria-level="7">Überschrift 7</p>
+
+    <table role="presentation">
+        <tr role="presentation">
+            <td role="presentation">
+    
+    <table role="none">
 -->
