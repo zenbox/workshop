@@ -22,8 +22,5 @@
         "**/node_modules/**",
         ".vscode/**"
     ],
-    "liveSassCompile.settings.includeItems": [],
-
-    // LIVE PUG COMPILER
-    "livePugCompiler.savePath": "/dist",
+    "liveSassCompile.settings.includeItems": []
 }
