@@ -19,6 +19,7 @@ boolean btnState;
 // unsigned: OHNE Vorzeichen, also keine Minus-Werte!
 unsigned int potValue;
 unsigned int lsValue;
+long lsAverageValue = 0;
 
 void setup() {
   // Serielle Ausgabe am Rechner
@@ -36,28 +37,32 @@ void setup() {
   btnState = digitalRead(BTN_PIN); // Zustand abfragen
   potValue = analogRead(POT_PIN);
   lsValue = analogRead(LS_PIN);
-  
+
   // Serielle Ausgabe eines Wertes
   if (DEBUG) Serial.println(potValue);
+
+  // Aufruf der Lichtsensor Kalibration
+  lsAverageValue = calibrateLightSensor(LS_PIN);
 }
 
+// Funktion:
 void loop() {
   // Wiederholtes Einlesen eines Wertes
   potValue = analogRead(POT_PIN);
   lsValue = analogRead(LS_PIN);
   btnState = digitalRead(BTN_PIN);
 
-// Testausgabe des LS Wertes
-Serial.print("LS_PIN: ");
-Serial.print(lsValue);
-Serial.println();
+  // Testausgabe des LS Wertes
+  //  Serial.print("LS_PIN: ");
+  //  Serial.print(lsValue);
+  //  Serial.println();
 
   if (btnState == HIGH) {
-    Serial.println("Der Taster ist gedrückt.");
+    if (DEBUG) Serial.println("Der Taster ist gedrückt.");
   } else if (btnState == -1) {
-    Serial.println("Der Taster ist seltsam.");
+    if (DEBUG) Serial.println("Der Taster ist seltsam.");
   } else {
-    Serial.println("Der Taster ist NICHT gedrückt");
+    if (DEBUG) Serial.println("Der Taster ist NICHT gedrückt");
   }
 
   // BEREICH ABFRAGEN
@@ -82,13 +87,49 @@ Serial.println();
   if (DEBUG) Serial.println();
 
   // - - - - -
-  float fDeg = 21.3;
-  String sUnit = "Celsius";
-
-  char buffer[40];
-  sprintf(buffer, "Temp: %d degree %s", fDeg, sUnit);
-  Serial.println(buffer);
+  //  float fDeg = 21.3;
+  //  String sUnit = "Celsius";
+  //
+  //  char buffer[40];
+  //  sprintf(buffer, "Temp: %d degree %s", fDeg, sUnit);
+  //  Serial.println(buffer);
   // - - - - -
 
   delay(500);
 }
+
+/**
+   @desc Kalibriert einen Lichtsensor mit eine Messreihe
+         über 5 Sekunden und ermittelt den Durchschnittswert
+*/
+long calibrateLightSensor(byte lsPin) {
+  // lokale Variablen für diese Funktion
+  unsigned int duration = 5000;
+  unsigned int count = 1000;
+  unsigned long averageValue = 0;
+  unsigned long sum = 0;
+  unsigned long counter = 0;
+  unsigned int measureValue;
+
+  unsigned long startTime = millis();
+  Serial.println("Messung beginnt");
+
+  do {
+    // Messungen durchführen
+    measureValue = analogRead(lsPin);
+    sum = sum + measureValue;
+    if (DEBUG) Serial.println(sum);
+  } while ( millis() - startTime <= duration );
+
+  // Durchschnittswert berechnen
+  averageValue = sum / counter;
+  Serial.print("averageValue: ");
+  Serial.print(averageValue);
+  Serial.println();
+
+  // Rückgabe eines Wertes an den Aufruf der Funktion (im setup)
+  return averageValue;
+}
+
+
+
