@@ -7,7 +7,7 @@
 
 ## Foliensatz
 
-Es gibt begleitende Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML.pdf**, **Cascading Stylesheets.pdf** und **Javascript.pdf**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
+Es gibt begleitende Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML.pdf** und **Cascading Stylesheets.pdf**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
 
 ## Dateien zum Download
 
