@@ -1,0 +1,29 @@
+.my-breadcrumb {
+    flex-direction: column;
+}
+
+/* base */
+ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+/* layout */
+ol {
+    display: flex;
+    flex-direction: row;
+}
+/* module */
+/* state */
+ol a:active {
+    color: red;
+    text-decoration: none;
+}
+ol a:visited {
+    color: orange;
+}
+
+/* theme */
+.customer {
+    color: blue;
+}
