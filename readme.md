@@ -16,7 +16,7 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 ## Links zum Seminar
 
 -   [Codes auf github](https://github.com/zenbox/workshop/)
--   [Snippets und Linksb](https://github.com/zenbox/settings-snippets-and-links)
+-   [Settings, Snippets und Links](https://github.com/zenbox/settings-snippets-and-links)
 
 ## Links zu Bootstrap, HTML und CSS
 
