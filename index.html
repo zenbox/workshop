@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+    lang="en"
+    data-bs-theme="light">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -10,6 +12,9 @@
         <link
             rel="stylesheet"
             href="assets/css/bootstrap.css" />
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
         <link
             rel="shortcut icon"
             href="data: 0x0"
@@ -124,7 +129,94 @@
                 </div>
                 <div class="col-sm-12 col-lg-9">
                     <!-- - - - - - -->
-                    <main>content</main>
+                    <main>
+                        <article>
+                            <h2>Navigation</h2>
+                            <!-- - - - - - -->
+                            <ul class="nav margin nav-tabs">
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link active"
+                                        aria-current="page"
+                                        href="#"
+                                        >Active</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link"
+                                        href="#"
+                                        >Link</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link"
+                                        href="#"
+                                        >Link</a
+                                    >
+                                </li>
+                                <li class="nav-item">
+                                    <a
+                                        class="nav-link disabled"
+                                        aria-disabled="true"
+                                        >Disabled</a
+                                    >
+                                </li>
+                            </ul>
+                            <!-- - - - - - -->
+                        </article>
+
+                        <article>
+                            <h2>Buttons</h2>
+                            <button
+                                type="button"
+                                class="btn btn-primary">
+                                Primary
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-secondary">
+                                Secondary
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-success">
+                                Success
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-danger">
+                                Danger
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-warning">
+                                Warning
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-info">
+                                Info
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-light">
+                                Light
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-dark">
+                                Dark
+                            </button>
+
+                            <button
+                                type="button"
+                                class="btn btn-link">
+                                Link
+                            </button>
+                        </article>
+                    </main>
                     <!-- - - - - - -->
                 </div>
             </div>
@@ -141,7 +233,8 @@
             </div>
         </div>
 
-        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/bootstrap.bundle.js"></script>
+
         <style>
             .container > * {
                 background: hsla(0, 0%, 0%, 0.15);
