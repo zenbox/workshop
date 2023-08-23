@@ -1,0 +1,61 @@
+html, html * {
+  box-sizing: border-box;
+}
+
+.my-nav {
+  border-radius: 1rem;
+}
+
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  opacity: 0.5;
+}
+.nav a:link {
+  text-decoration: none;
+}
+.nav-tabs {
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+}
+.nav-pills {
+  background: #4444ff;
+  border-radius: 0.75rem;
+}
+.nav-pills-active {
+  background: #c21111;
+}
+.nav-error {
+  background: #f59090;
+  color: #c21111;
+}
+
+.example {
+  border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -webkit-border-radius: 0.5rem;
+  -khtml-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+  color: blue;
+  border-color: red;
+  background: #f00 linear-gradient(90deg, #f00, #00f);
+  background-color: #f00;
+  background-image: linear-gradient(90deg, #f00, #00f);
+  background-image: url(../figures/shou.svg);
+  border-radius: 1rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  margin: 0 auto;
+  margin-inline-start: 1rem;
+  margin-inline-end: 1rem;
+  margin-block: 1rem;
+  padding-inline: 1rem;
+  padding-block: 1rem;
+}

@@ -1,0 +1,88 @@
+// Navigation
+//
+// @package Webapplication
+// @module Navigation
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-08-22
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+$borderRadius: 1rem;
+
+.my-nav {
+    border-radius: $borderRadius;
+}
+.nav {
+    // variables
+    $borderRadius: 0.75rem;
+
+    // reset
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    // layout
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    // states
+    a:link {
+        text-decoration: none;
+    }
+
+    // modules
+    &-tabs {
+        // base
+        // layout
+        // theme
+        border: 1px solid $black;
+        border-radius: $borderRadius;
+    }
+    &-pills {
+        // base
+        // layout
+        // theme
+        background: $blue;
+        border-radius: $borderRadius;
+
+        &-active {
+            background: $red;
+        }
+    }
+    opacity: 0.5;
+
+    &-error {
+        background: $errorBackground;
+        color: $errorColor;
+    }
+}
+
+.example {
+    @include borderRadius(0.5rem);
+
+    color: blue;
+    border-color: red;
+    background: #f00
+                linear-gradient(90deg, #f00, #00f);
+
+    background-color: #f00;
+    background-image: linear-gradient(90deg, #f00, #00f);
+    background-image: url(../figures/shou.svg);
+
+    border-radius: 1rem;
+
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
+    margin: 0 auto;
+
+    margin-inline-start: 1rem;
+    margin-inline-end: 1rem;
+    margin-block: 1rem;
+    padding-inline: 1rem;
+    padding-block: 1rem;
+}
