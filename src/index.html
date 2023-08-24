@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
     lang="en"
-    data-bs-theme="light">
+    data-bs-theme="light" data-my-wonderful-property="true">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -15,6 +15,20 @@
             type="image/x-icon" />
     </head>
     <body>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const html = document.querySelector("html")
+                // const bsEls = document.querySelector("[data-bs-*]")
+
+html.dataset.bsTheme = "dark";
+html.dataset.bsLalelu = "dark";
+
+html.setAttribute("firlefanz", "dark");
+
+                console.dir(html)
+            })
+        </script>
+
         <!-- - - - - - -->
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -132,6 +146,56 @@
                         <script>
                             myCheckbox.indeterminate = true
                         </script>
+                        <article>
+                            <h2>Modal</h2>
+                            <!-- Button trigger modal -->
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                                Launch demo modal
+                            </button>
+
+                            <!-- Modal -->
+                            <div
+                                class="modal fade"
+                                id="exampleModal"
+                                tabindex="-1"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1
+                                                class="modal-title fs-5"
+                                                id="exampleModalLabel">
+                                                Modal title
+                                            </h1>
+                                            <button
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">...</div>
+                                        <div class="modal-footer">
+                                            <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                                Close
+                                            </button>
+                                            <button
+                                                type="button"
+                                                class="btn btn-primary">
+                                                Save changes
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
 
                         <article>
                             <h2>Image Carousel 2</h2>

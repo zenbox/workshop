@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Inline Flex</title>
+    </head>
+    <body>
+        <div
+            style="
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                flex-wrap: nowrap;
+                width: 100%;
+                text-align: center;
+            ">
+            <p style="flex-basis: 100%; flex-shrink: 1">left</p>
+
+            <button style="flex-basis: 10%; flex-grow: 1">click</button>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid-item-1">eins</div>
+            <div>zwei</div>
+            <div>drei</div>
+            <div>vier</div>
+        </div>
+
+        <style>
+            body * {
+                background: hsla(0, 50%, 50%, 0.25);
+            }
+
+            .grid-container {
+                display: grid;
+                grid-template-columns: 120px auto 2rem;
+                grid-template-rows: 60px auto 5rem;
+            }
+
+            .grid-item-1 {
+                grid-column: 2/4;
+                grid-row: 3/4;
+            }
+        </style>
+    </body>
+</html>
