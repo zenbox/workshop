@@ -18,7 +18,7 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 -   [Codes auf github](https://github.com/zenbox/workshop/)
 -   [Settings, Snippets und Links](https://github.com/zenbox/settings-snippets-and-links)
 
-## Links zu HTML und CSS
+## Links zu HTML, CSS und Javascript
 
 <!-- -   [Bootstrap](https://getbootstrap.com/)
 -   [Bootstrap Icons](https://icons.getbootstrap.com/)
@@ -42,6 +42,11 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 -   [Stop Using IDs in CSS](https://medium.com/@zenbox/stop-using-ids-in-css-e79a860838c6)
 -   [Dropdown via CSS](https://css-tricks.com/solved-with-css-dropdown-menus/)
 -   [Shape with CSS](https://css-tricks.com/the-shapes-of-css/)
+
+-   [Javascript](https://developer.mozilla.org/de/docs/Web/JavaScript)
+-   [Javascript bei W3Schools](https://www.w3schools.com/js/default.asp)
+-   [Javascript bei SelfHTML](https://wiki.selfhtml.org/wiki/JavaScript)
+-   [Javascript bei Javascript.info](https://javascript.info/)
 
 -   [Blind-Bild-Generator](https://picsum.photos/)
 -   [Generative Gestaltung](http://www.generative-gestaltung.de/)
