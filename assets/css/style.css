@@ -1,0 +1,27 @@
+html {
+    color: white;
+    background-color: hsla(0, 0%, 0%, 0.497);
+}
+
+h1 {
+    background-color: green;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: red;
+}
+a:active {
+    color: yellow;
+}
+
+li a:visited {
+    color: aqua;
+}
