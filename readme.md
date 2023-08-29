@@ -46,7 +46,7 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 -   [Blind-Bild-Generator](https://picsum.photos/)
 -   [Generative Gestaltung](http://www.generative-gestaltung.de/)
 -   [The origin of responsive webdesign](https://alistapart.com/article/responsive-web-design/)
--   [SASS for CSS](https://sass-lang.com/guide)
+<!-- -   [SASS for CSS](https://sass-lang.com/guide) -->
 
 -   [Popup Book for Beercamp](https://2012.beercamp.nclud.com/)
 -   [David Walsh: Spinning Cube](https://davidwalsh.name/css-cube)
