@@ -1,4 +1,4 @@
-# Willkommen zum Bootstrap Seminar
+# Willkommen zum HTML5 Seminar - Grundlagen für HTML, CSS und Javascript
 
 ## Michael Reichart
 
@@ -7,22 +7,23 @@
 
 ## Foliensatz
 
-Es gibt begleitende Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML.pdf** und **Cascading Stylesheets.pdf**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
+Es gibt begleitende Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML.pdf** und **Cascading Stylesheets.pdf** und **Javascript.pdf**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
 
 ## Dateien zum Download
 
-wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Meine Versionen davon können am Ende des Seminars hier heruntergeladen werden.
+wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Meine Versionen davon können hier währed und am Ende des Seminars heruntergeladen werden.
 
 ## Links zum Seminar
 
 -   [Codes auf github](https://github.com/zenbox/workshop/)
 -   [Settings, Snippets und Links](https://github.com/zenbox/settings-snippets-and-links)
 
-## Links zu Bootstrap, HTML und CSS
+## Links zu HTML und CSS
 
--   [Bootstrap](https://getbootstrap.com/)
+<!-- -   [Bootstrap](https://getbootstrap.com/)
 -   [Bootstrap Icons](https://icons.getbootstrap.com/)
--   [Bootstrap bei W3Schools](https://www.w3schools.com/bootstrap5/index.php)
+-   [Bootstrap bei W3Schools](https://www.w3schools.com/bootstrap5/index.php) -->
+
 -   [html5Test.com](http://html5test.com/index.html)
 -   [Can i Use?](https://caniuse.com/)
 -   [CC BY-NC-SA Lizenz](https://creativecommons.org/licenses/by-nc-sa/3.0/de/)
