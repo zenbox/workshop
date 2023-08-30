@@ -16,6 +16,10 @@
         margin: 0;
         padding: 0;
 
+        a {
+            text-decoration: none;
+        }
+
         // Base
         display: flex;
 
@@ -34,6 +38,14 @@
             flex-direction: row;
         }
         // States
+
         // Theme
+        // füge einen Material Icon pfeil vor den Links ein
+        a:link::before {
+            font-family: "Material Icons";
+            content: "arrow_forward";
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
     }
 }

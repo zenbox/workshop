@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Barlow:400,400i,700,700i&display=swap");
 html,
 html * {
   box-sizing: border-box;
@@ -19,6 +21,38 @@ figure {
   margin-inline-start: 0;
 }
 
+.hg-grid-1 {
+  --gridColumns: 13;
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 6rem auto 4rem;
+}
+.hg-grid-1 > header {
+  grid-column: 1/var(--gridColumns);
+  grid-row: 1/2;
+}
+.hg-grid-1 > nav {
+  grid-column: 1/3;
+  grid-row: 2/3;
+}
+.hg-grid-1 > main {
+  grid-column: 3/var(--gridColumns);
+  grid-row: 2/3;
+}
+.hg-grid-1 > footer {
+  grid-column: 1/var(--gridColumns);
+  grid-row: 3/4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.hg-grid-1 footer {
+  background-color: #000;
+  color: #fff;
+}
+
 .hg-nav {
   list-style-type: none;
   margin: 0;
@@ -30,11 +64,20 @@ figure {
   flex-wrap: nowrap;
   gap: 1rem;
 }
+.hg-nav a {
+  text-decoration: none;
+}
 .hg-nav-column {
   flex-direction: column;
 }
 .hg-nav-row {
   flex-direction: row;
+}
+.hg-nav a:link::before {
+  font-family: "Material Icons";
+  content: "arrow_forward";
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 html {

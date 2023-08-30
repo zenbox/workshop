@@ -1,5 +1,11 @@
+@import "variables";
+// @import "mixins";
+
 // Base, reset, and typography
 @import "base";
+
+// Layout
+@import "layout";
 
 // Components
 @import "navigation";

@@ -10,6 +10,9 @@
 // @copyright (c) 2023 Michael Reichart, Cologne
 
 // Base, reset, and typography
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Barlow:400,400i,700,700i&display=swap");
+
 html,
 html * {
     box-sizing: border-box;
@@ -28,11 +31,9 @@ h3 {
 
 // Element resets
 figure {
-    margin-inline-start: 0
+    margin-inline-start: 0;
 }
-
 
 // Template
 // Modules
 // States
-

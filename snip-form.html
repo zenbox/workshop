@@ -1,56 +1,61 @@
-            <article>
-                <h2>Formular</h2>
-                <!-- - - - - - -->
-                <!-- Loginformular mit Email, Passwort, Länderauswahl und Zustimmung der AGBs und Newsletter -->
-                <!-- die Aufgabe ist: Layouten des Formulars mit Flexboxes -->                
-                <form action="" method="post">
-                    <fieldset>
-                        <legend>Login</legend>
-                        <div class="input-group">
-                        <label for="email">E-Mail</label>
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="E-Mail"
-                            required />
-                        </div>
-                        <div class="input-group">
-                            <label for="password">Passwort</label>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                placeholder="Passwort"
-                                required />
-                         </div>
-                        <div class="input-group">
-                            <label for="country">Land</label>
-                            <select name="country" id="country">
-                                <option value="de">Deutschland</option>
-                                <option value="at">Österreich</option>
-                                <option value="ch">Schweiz</option>
-                            </select>
-                        </div>
-                        <div class="input-group input-group-inline">
-                            <input
-                            type="checkbox"
-                            name="agb"
-                            id="agb"
-                            required />
-                            <label for="agb">AGBs</label>
-                        </div>
-                        <div class="input-group input-group-inline">
-                            <input
-                                type="checkbox"
-                                name="newsletter"
-                                id="newsletter" />
-                            <label for="newsletter">Newsletter</label>
-                        </div>
-                        <div class="input-group input-group-inline">
-                            <button type="submit">Absenden</button>
-                            <button type="reset">Zurücksetzen</button>
-                        </div>
-                    </fieldset>
-                    <!-- - - - - - -->
-            </article>
+<article>
+    <h2>Formular</h2>
+    <!-- - - - - - -->
+    <!-- Loginformular mit Email, Passwort, Länderauswahl und Zustimmung der AGBs und Newsletter -->
+    <!-- die Aufgabe ist: Layouten des Formulars mit Flexboxes -->
+    <form
+        action=""
+        method="post">
+        <fieldset>
+            <legend>Login</legend>
+            <div class="input-group">
+                <label for="email">E-Mail</label>
+                <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="E-Mail"
+                    required />
+            </div>
+            <div class="input-group">
+                <label for="password">Passwort</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Passwort"
+                    required />
+            </div>
+            <div class="input-group">
+                <label for="country">Land</label>
+                <select
+                    name="country"
+                    id="country">
+                    <option value="de">Deutschland</option>
+                    <option value="at">Österreich</option>
+                    <option value="ch">Schweiz</option>
+                </select>
+            </div>
+            <div class="input-group input-group-inline">
+                <input
+                    type="checkbox"
+                    name="agb"
+                    id="agb"
+                    required />
+                <label for="agb">AGBs</label>
+            </div>
+            <div class="input-group input-group-inline">
+                <input
+                    type="checkbox"
+                    name="newsletter"
+                    id="newsletter" />
+                <label for="newsletter">Newsletter</label>
+            </div>
+            <div class="input-group input-group-inline">
+                <button type="submit">Absenden</button>
+                <button type="reset">Zurücksetzen</button>
+            </div>
+        </fieldset>
+    </form>
+    <!-- - - - - - -->
+</article>
