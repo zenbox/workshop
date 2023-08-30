@@ -1,0 +1,36 @@
+form fieldset {
+  display: flex;
+  flex-direction: column;
+  border: none;
+}
+form .input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+form .input-group label {
+  margin-bottom: 0.5rem;
+}
+form .input-group input, form .input-group select, form .input-group textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+form .input-group input:focus, form .input-group select:focus, form .input-group textarea:focus {
+  outline: none;
+  border-color: #b3b3b3;
+}
+form .input-group textarea {
+  resize: vertical;
+}
+form .input-group-inline {
+  flex-direction: row;
+  align-items: center;
+}
+form .input-group-inline label {
+  margin-right: 1rem;
+  margin-bottom: 0;
+}
+form .input-group-inline input, form .input-group-inline select, form .input-group-inline textarea {
+  margin-bottom: 0;
+}

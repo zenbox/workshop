@@ -1,0 +1,38 @@
+form {
+    fieldset{
+        display: flex;
+        flex-direction: column;
+        border: none;
+    }
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        label {
+            margin-bottom: 0.5rem;
+        }
+        input, select, textarea {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            &:focus {
+                outline: none;
+                border-color: darken(#ccc, 10%);
+            }
+        }
+        textarea {
+            resize: vertical;
+        }
+        &-inline {
+            flex-direction: row;
+            align-items: center;
+            label {
+                margin-right: 1rem;
+                margin-bottom: 0;
+            }
+            input, select, textarea {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

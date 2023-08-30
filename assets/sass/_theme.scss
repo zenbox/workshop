@@ -1,0 +1,39 @@
+// Theme Styles
+// 
+// @package Webapplication
+// @module UI Theme
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-08-30
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+
+
+html {
+    color: white;
+    background-color: hsla(0, 0%, 0%, 0.497);
+}
+
+h1 {
+    background-color: green;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: red;
+}
+a:active {
+    color: yellow;
+}
+
+li a:visited {
+    color: aqua;
+}

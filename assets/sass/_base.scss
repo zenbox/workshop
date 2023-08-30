@@ -1,0 +1,38 @@
+// Style Basics
+//
+// @package Webapplication
+// @module UI
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-08-30
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+
+// Base, reset, and typography
+html,
+html * {
+    box-sizing: border-box;
+}
+// Typography
+html {
+    font-family: Barlow, sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+}
+h1,
+h2,
+h3 {
+    font-weight: 400;
+}
+
+// Element resets
+figure {
+    margin-inline-start: 0
+}
+
+
+// Template
+// Modules
+// States
+
