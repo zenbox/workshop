@@ -11,7 +11,7 @@
             href="./assets/css/style.css" />
     </head>
     <body class="hg-grid-1">
-        <header>header</header>
+        <header id="header">header</header>
         <nav>
             <!-- - - - - - -->
             <ul
@@ -33,18 +33,22 @@
                 <h2>Formular</h2>
                 <!-- - - - - - -->
                 <!-- Loginformular mit Email, Passwort, Länderauswahl und Zustimmung der AGBs und Newsletter -->
-                <!-- die Aufgabe ist: Layouten des Formulars mit Flexboxes -->                
-                <form action="" method="post">
+                <!-- die Aufgabe ist: Layouten des Formulars mit Flexboxes -->
+                <form
+                    action=""
+                    method="post"
+                    id="form-login">
                     <fieldset>
                         <legend>Login</legend>
                         <div class="input-group">
-                        <label for="email">E-Mail</label>
-                        <input
-                            type="email"
-                            name="email"
-                            id="email"
-                            placeholder="E-Mail"
-                            required />
+                            <label for="email">E-Mail</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="E-Mail"
+                                value="michael.reichart@gfu.net"
+                                required />
                         </div>
                         <div class="input-group">
                             <label for="password">Passwort</label>
@@ -53,22 +57,30 @@
                                 name="password"
                                 id="password"
                                 placeholder="Passwort"
+                                value="geheim"
                                 required />
-                         </div>
+                        </div>
                         <div class="input-group">
                             <label for="country">Land</label>
-                            <select name="country" id="country">
-                                <option value="de">Deutschland</option>
+                            <select
+                                name="country"
+                                id="country">
+                                <option
+                                    value="de"
+                                    selected>
+                                    Deutschland
+                                </option>
                                 <option value="at">Österreich</option>
                                 <option value="ch">Schweiz</option>
                             </select>
                         </div>
                         <div class="input-group input-group-inline">
                             <input
-                            type="checkbox"
-                            name="agb"
-                            id="agb"
-                            required />
+                                type="checkbox"
+                                name="agb"
+                                id="agb"
+                                checked
+                                required />
                             <label for="agb">AGBs</label>
                         </div>
                         <div class="input-group input-group-inline">
@@ -83,8 +95,8 @@
                             <button type="reset">Zurücksetzen</button>
                         </div>
                     </fieldset>
-                    </form>
-                    <!-- - - - - - -->
+                </form>
+                <!-- - - - - - -->
             </article>
 
             <article>
@@ -157,5 +169,14 @@
             </nav>
             <!-- - - - - - -->
         </footer>
+
+        <script
+            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
+            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+            crossorigin="anonymous"></script>
+
+        <script
+            type="module"
+            src="assets/js/script.js"></script>
     </body>
 </html>
