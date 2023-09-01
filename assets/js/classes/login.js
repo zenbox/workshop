@@ -1,40 +1,37 @@
+/** Login ...
+ *
+ * @desc Login für UI
+ *
+ * @package Webapplication
+ * @module UI Frontend
+ * @author Michael <michael.reichart@gfu.net>
+ * @version v1.0.0
+ * @since 2023-08-31
+ * @see i.e. inspired by ... {link to}
+ * @license MIT {https://opensource.org/licenses/MIT}
+ * @copyright (c) 2023 Michael Reichart, Cologne
+ */
+
 export default class Login {
-    /**
-     * @desc    Constructor
-     *
-     * @param   {string} selector to identify the form
-     * @returns {void}
-     */
-    constructor(formSelector) {
-        this.loginForm = document.querySelector(formSelector)
-        this.loginForm.addEventListener("submit", this.login.bind(this))
+    constructor(selector) {
+        this.form = document.getElementById(selector);
+        this.loadData();
     }
 
-    /**
-     * @desc    Login process (event handler)
-     *
-     * @param   {event object} form, submitted the login
-     * @returns {void}
-     */
-    login(event) {
-        event.preventDefault()
-
-        const formData = new FormData(event.target)
-        const data = Object.fromEntries(formData)
-        this._sendFormData(data)
+    onSubmit(event) {
+        event.preventDefault();
+        this.loadData();
     }
 
-    /**
-     * @desc    Set fetch options
-     *
-     * @param   {object} json data
-     * @returns {void}
-     */
-    _setSendOptions(data) {
-        if (!data) {
-            throw new Error("No data")
-        }
-
+    async loadData() {
+        // AJAX
+        // let url = "http://172.25.33.83:3000";
+        let url = "http://localhost:3000/login";
+        const clientData = {
+            email: "michael.reichart@gfu.net",
+            password: "geheim",
+        };
+        let clientDataString = JSON.stringify(clientData);
         const options = {
             method: "POST",
             headers: {
@@ -42,76 +39,23 @@ export default class Login {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*",
             },
-            body: JSON.stringify(data),
-        }
-        return options
+            body: clientDataString,
+        };
+        // Promise
+        await fetch(url, options)
+            .then(async (response) => await response.json())
+            .then((data) => {
+                console.log(data);
+                this.buildMessage(data);
+            })
+            .catch((error) => console.log(error));
     }
 
-    /**
-     * @desc    Set fetch url
-     *
-     * @returns {void}
-     * @todo    set url dynamically
-     */
-    _setSendUrl() {
-        const url = "http://localhost:3000/login"
-        return url
-    }
-
-    /**
-     * @desc    Send form data to server
-     *
-     * @param   {object} json data
-     * @returns {void}
-     */
-    async _sendFormData(data) {
-        const url = this._setSendUrl()
-        const options = this._setSendOptions(data)
-
-        try {
-            await fetch(url, options)
-                .then(async (response) => {
-                    console.log(response)
-                    await response.json()
-                })
-                .then((data) => {
-                    // todo: set header content dynamically
-                    console.dir(data)
-                    const header = document.querySelector("#header")
-                    header.innerHTML = `Hallo ${data.firstname} ${data.lastname}`
-                    this.loginForm.classList.add("hidden")
-                })
-        } catch (error) {
-            // console.error(error)
-            // console.dir(error)
-            console.log(
-                `%c- - - -,
-FETCH ERROR:,
-${error.name}
-${error.message}
-${error.at}
-
-STACK:
-${error.stack}
-- - - -`,
-                "color: red;  background: hsl(0,70%,85%); font-size: 0.75rem;"
-            )
-        }
+    buildMessage(data) {
+        let el = document.createElement("p");
+        let text = document.createTextNode(`Hallo ${data.firstname}`);
+        const context = document.querySelector("#header");
+        el.appendChild(text);
+        context.appendChild(el);
     }
 }
-
-const clientData = { key: "value" }
-await fetch("http://localhost:3000/login", {
-    method: "POST",
-    headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-    },
-    body: JSON.stringify(clientData),
-})
-    .then(async (response) => {
-        console.dir(response)
-        await response.json()
-    })
-    .then((serverData) => console.dir(serverData))

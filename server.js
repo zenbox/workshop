@@ -13,14 +13,14 @@
  * @copyright (c) 2023 Michael Reichart, Cologne
  */
 
-const express = require("express")
-const http = require("http")
-const cors = require("cors")
-const app = express()
-const port = 3000
+const express = require("express");
+const http = require("http");
+const cors = require("cors");
+const app = express();
+const port = 3000;
 
-const server = http.createServer(app)
-const socketio = require("socket.io")
+const server = http.createServer(app);
+const socketio = require("socket.io");
 const io = socketio(server, {
     cors: {
         origin: "*",
@@ -28,24 +28,24 @@ const io = socketio(server, {
         allowedHeaders: ["Content-Type"],
         credentials: true,
     },
-})
+});
 // - - - - -
 // Express webservice
 // - - - - -
-app.use(cors())
-app.use(express.static("public"))
-app.use(express.json())
+app.use(cors());
+app.use(express.static("public"));
+app.use(express.json());
 
 app.post("/login", (request, response) => {
-    response.header("Access-Control-Allow-Origin", "*")
-
+    response.header("Access-Control-Allow-Origin", "*");
+    console.log(request.body);
     // Send the response as json back to the client
     // todo: get data from database
     response.json({
         firstname: "Michael",
         lastname: "Reichart",
-    })
-})
+    });
+});
 
 // - - - - -
 // Socket.io
@@ -53,20 +53,20 @@ app.post("/login", (request, response) => {
 // socket with acces-control-allow-origin
 
 io.on("connection", (socket) => {
-    console.log("a user connected")
-    socket.emit("socket message", "via socket: Hello from server")
+    console.log("a user connected");
+    socket.emit("socket message", "via socket: Hello from server");
     socket.on("disconnect", () => {
-        console.log("user disconnected")
-    })
+        console.log("user disconnected");
+    });
 
     socket.on("socket message", (msg) => {
-        io.emit("socket message", msg)
-    })
-})
+        io.emit("socket message", msg);
+    });
+});
 
 // - - - - -
 // Server
 // - - - - -
 server.listen(port, () => {
-    console.log(`Example server listening at http://localhost:${port}`)
-})
+    console.log(`Example server listening at http://localhost:${port}`);
+});
