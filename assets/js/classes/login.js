@@ -52,10 +52,11 @@ export default class Login {
     }
 
     buildMessage(data) {
-        let p = document.createElement("p");
+        let lastLogin = new Date(data.lastLogin).toLocaleDateString();
+        const p = document.createElement("p");
         p.classList.add("message");
-        let text = document.createTextNode(
-            `Hallo ${data.firstname}. Nice to see you again, your last login was on ${data.lastLogin}. You are looged in as ${data.role}. Have a nice and successful day!`
+        const text = document.createTextNode(
+            `Hallo ${data.firstname}. Nice to see you again, your last login was on ${lastLogin}. You are looged in as ${data.role}. Have a nice and successful day!`
         );
         const context = document.querySelector("#messages");
         p.appendChild(text);

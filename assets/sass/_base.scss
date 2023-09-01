@@ -23,6 +23,12 @@ html {
     font-size: 18px;
     line-height: 1.4;
 }
+body {
+    margin: 0;
+}
+body > * {
+    padding: 1rem;
+}
 h1,
 h2,
 h3 {
