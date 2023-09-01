@@ -106,10 +106,20 @@ table thead tr {
   top: 0;
 }
 
+form {
+  max-width: 30rem;
+}
+form legend {
+  font-size: 1.5rem;
+}
+form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
 form fieldset {
   display: flex;
   flex-direction: column;
-  border: none;
 }
 form .input-group {
   display: flex;
@@ -118,21 +128,6 @@ form .input-group {
 }
 form .input-group label {
   margin-bottom: 0.5rem;
-}
-form .input-group input,
-form .input-group select,
-form .input-group textarea,
-form .input-group button {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-form .input-group input:focus,
-form .input-group select:focus,
-form .input-group textarea:focus,
-form .input-group button:focus {
-  outline: none;
-  border-color: #b3b3b3;
 }
 form .input-group textarea {
   resize: vertical;
@@ -152,6 +147,36 @@ form .input-group-inline textarea {
 }
 form .input-group-inline button {
   margin-inline-end: 1rem;
+}
+form input,
+form select,
+form textarea,
+form button {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+form input:focus,
+form select:focus,
+form textarea:focus,
+form button:focus {
+  outline: none;
+  border-color: #b3b3b3;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.message {
+  display: block;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
 }
 
 html {

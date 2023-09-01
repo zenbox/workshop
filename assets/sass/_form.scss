@@ -1,8 +1,19 @@
 form {
+    // base
+    legend {
+        font-size: 1.5rem;
+    }
+    fieldset {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+    // layout
+    max-width: 30rem;
+
     fieldset {
         display: flex;
         flex-direction: column;
-        border: none;
     }
     .input-group {
         display: flex;
@@ -11,21 +22,12 @@ form {
         label {
             margin-bottom: 0.5rem;
         }
-        input,
-        select,
-        textarea,
-        button {
-            padding: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            &:focus {
-                outline: none;
-                border-color: darken(#ccc, 10%);
-            }
-        }
+
         textarea {
             resize: vertical;
         }
+
+        // modules
         &-inline {
             flex-direction: row;
             align-items: center;
@@ -41,6 +43,20 @@ form {
             button {
                 margin-inline-end: 1rem;
             }
+        }
+    }
+    // state
+    // theme
+    input,
+    select,
+    textarea,
+    button {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        &:focus {
+            outline: none;
+            border-color: darken(#ccc, 10%);
         }
     }
 }

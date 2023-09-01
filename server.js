@@ -44,6 +44,8 @@ app.post("/login", (request, response) => {
     response.json({
         firstname: "Michael",
         lastname: "Reichart",
+        lastLogin: "2023-09-01",
+        role: "coworker",
     });
 });
 
