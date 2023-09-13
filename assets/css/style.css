@@ -29,26 +29,35 @@ figure {
   margin-inline-start: 0;
 }
 
-.hg-grid-1 {
+.ws-grid-1 {
   --gridColumns: 13;
   max-width: 100vw;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 6rem auto 4rem;
 }
-.hg-grid-1 > header {
+.ws-grid-1 > header {
   grid-column: 1/var(--gridColumns);
   grid-row: 1/2;
 }
-.hg-grid-1 > nav {
+.ws-grid-1 > nav {
   grid-column: 1/3;
   grid-row: 2/3;
 }
-.hg-grid-1 > main {
+.ws-grid-1 > main {
   grid-column: 3/var(--gridColumns);
   grid-row: 2/3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
-.hg-grid-1 > footer {
+.ws-grid-1 > main > * {
+  flex-basis: calc(50% - 1rem);
+}
+.ws-grid-1 > footer {
   grid-column: 1/var(--gridColumns);
   grid-row: 3/4;
   display: flex;
@@ -56,7 +65,7 @@ figure {
   justify-content: space-between;
   align-items: center;
 }
-.hg-grid-1 footer {
+.ws-grid-1 footer {
   background-color: #000;
   color: #fff;
 }
@@ -146,7 +155,7 @@ form button:focus {
   border-style: solid;
 }
 
-.hg-nav {
+.ws-nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -157,20 +166,58 @@ form button:focus {
   flex-wrap: nowrap;
   gap: 1rem;
 }
-.hg-nav a {
+.ws-nav a {
   text-decoration: none;
 }
-.hg-nav-column {
+.ws-nav li,
+.ws-nav a:link {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding-inline: 0;
+}
+.ws-nav-column {
   flex-direction: column;
 }
-.hg-nav-row {
+.ws-nav-row {
   flex-direction: row;
 }
-.hg-nav a:link::before {
+.ws-nav a:link,
+.ws-nav a:visited,
+.ws-nav a:hover,
+.ws-nav a:active {
+  color: white;
+}
+.ws-icon::before {
   font-family: "Material Icons";
-  content: "arrow_forward";
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  display: inline-block;
+  transform: translateY(0.2rem);
   margin-right: 0.5rem;
+}
+.ws-icon-dashboard::before {
+  content: "dashboard";
+}
+.ws-icon-reuse::before {
+  content: "compost";
+}
+.ws-icon-settings::before {
+  content: "settings";
+}
+.ws-icon-groups::before {
+  content: "groups";
+}
+.ws-icon-logout::before {
+  content: "logout";
+}
+.ws-icon-imprint::before {
+  content: "description";
+}
+.ws-icon-payment::before {
+  content: "payments";
+}
+.ws-icon-email::before {
+  content: "email";
 }
 
 table {
@@ -197,6 +244,16 @@ table tr:hover {
 table thead tr {
   position: sticky;
   top: 0;
+}
+
+.visuals {
+  background: hsla(0, 0%, 20%, 0.85);
+  width: 100%;
+  height: auto;
+}
+.visuals rect {
+  fill: hsla(0, 0%, 80%, 0.85);
+  transition: all 2s ease;
 }
 
 html {

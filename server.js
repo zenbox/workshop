@@ -44,7 +44,7 @@ app.post("/login", (request, response) => {
     response.json({
         firstname: "Michael",
         lastname: "Reichart",
-        lastLogin: "2023-09-01",
+        lastLogin: new Date(),
         role: "coworker",
     });
 });
@@ -64,6 +64,14 @@ io.on("connection", (socket) => {
     socket.on("socket message", (msg) => {
         io.emit("socket message", msg);
     });
+
+    setInterval(() => {
+        const data = [];
+        for (let i = 0; i < 5; i++) {
+            data.push(Math.floor(Math.random() * 400));
+        }
+        socket.emit("visual data", data);
+    }, 10000);
 });
 
 // - - - - -

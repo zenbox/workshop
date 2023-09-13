@@ -1,0 +1,16 @@
+.footer {
+    // Layout
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 1rem;
+
+    nav {
+        ul {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}
