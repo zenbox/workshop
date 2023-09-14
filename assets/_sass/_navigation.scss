@@ -1,0 +1,91 @@
+// Navigation Styles
+//
+// @package Webapplication
+// @module UI Navigation
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2023-08-30
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2023 Michael Reichart, Cologne
+
+.#{$prefix} {
+    // - - - - -
+    &-nav {
+        // Reset
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        a {
+            text-decoration: none;
+        }
+
+        li,
+        a:link {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            padding-inline: 0;
+        }
+        // Base
+        display: flex;
+
+        // Layout
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+        gap: 1rem; // root em! = font-size des :root / html
+
+        &-column {
+            flex-direction: column;
+        }
+
+        &-row {
+            flex-direction: row;
+        }
+        // States
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            color: white;
+        }
+        // Theme
+    }
+    &-icon {
+        &::before {
+            font-family: "Material Icons";
+            font-size: 1.2rem;
+            display: inline-block;
+            transform: translateY(0.2rem);
+            margin-right: 0.5rem;
+        }
+        &-dashboard::before {
+            content: "dashboard";
+        }
+        &-reuse::before {
+            content: "compost";
+        }
+        &-settings::before {
+            content: "settings";
+        }
+        &-groups::before {
+            content: "groups";
+        }
+        &-logout::before {
+            content: "logout";
+        }
+        &-imprint::before {
+            content: "description";
+        }
+        &-payment::before {
+            content: "payments";
+        }
+        &-email::before {
+            content: "email";
+        }
+    }
+    // - - - - -
+}

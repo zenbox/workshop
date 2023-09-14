@@ -1,236 +1,126 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-DE">
     <head>
         <meta charset="UTF-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
-        <title>HTML5 Workshop</title>
+        <title>Document</title>
         <link
             rel="stylesheet"
-            href="./assets/css/style.css" />
+            href="assets/css/style.css" />
     </head>
-    <body class="ws-grid-1">
-        <header
-            id="header"
-            class="header">
-            <h2 class="brand">The Company</h2>
-            <div id="messages"></div>
+    <body>
+        <header>
+            <!-- - - - - - -->
+            <h3 class="brand">Firmenname</h3>
+            <!-- - - - - - -->
+            <ul
+                class="nav nav-row"
+                role="navigation">
+                <li><a href="#">Suchen</a></li>
+                <li><a href="#">Impressum</a></li>
+                <li>
+                    <a href="#"
+                        ><abbr title="Allgemeine Geschäftsbedingungen">AGB</abbr
+                        >'s</a
+                    >
+                </li>
+            </ul>
+            <!-- - - - - - -->
         </header>
         <nav>
             <!-- - - - - - -->
-            <ul class="ws-nav ws-nav-column">
-                <li>
-                    <a
-                        href="#"
-                        class="ws-icon ws-icon-dashboard"
-                        >Dashboard</a
-                    >
-                </li>
-                <li>
-                    <a
-                        href="#"
-                        class="ws-icon ws-icon-reuse"
-                        >Re-use</a
-                    >
-                </li>
-                <li>
-                    <a
-                        href="#"
-                        class="ws-icon ws-icon-settings"
-                        >Settings</a
-                    >
-                </li>
-                <li>
-                    <a
-                        href="#"
-                        class="ws-icon ws-icon-groups"
-                        >Groups</a
-                    >
-                </li>
-                <li>
-                    <a
-                        href="#"
-                        class="ws-icon ws-icon-logout"
-                        >Logout</a
-                    >
-                </li>
+            <!-- ul>li*5>a{Seite $} -->
+            <!-- - - - - - -->
+            <ul class="nav nav-column">
+                <li><a href="#">Reuse</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+                <li><a href="#">Group</a></li>
+                <li><a href="#">Seite 5</a></li>
             </ul>
             <!-- - - - - - -->
         </nav>
         <main>
             <!-- - - - - - -->
+            <h1>Überschrift Eins</h1>
             <article>
-                <h1>HTML5 Workshop</h1>
-                <svg
-                    width="480"
-                    height="480"
-                    viewBox="0 0 480 480"
-                    id="visual"
-                    class="visuals">
-                    <g></g>
-                </svg>
-            </article>
-
-            <article>
-                <h2>Formular</h2>
                 <!-- - - - - - -->
-                <!-- Loginformular mit Email, Passwort, Länderauswahl und Zustimmung der AGBs und Newsletter -->
-                <!-- die Aufgabe ist: Layouten des Formulars mit Flexboxes -->
-                <form
-                    action=""
-                    method="post"
-                    id="form-login">
-                    <fieldset>
-                        <legend>Login</legend>
-                        <div class="input-group">
-                            <label for="email">E-Mail</label>
-                            <input
-                                type="email"
-                                name="email"
-                                id="email"
-                                placeholder="E-Mail"
-                                value="michael.reichart@gfu.net"
-                                required />
-                        </div>
-                        <div class="input-group">
-                            <label for="password">Passwort</label>
-                            <input
-                                type="password"
-                                name="password"
-                                id="password"
-                                placeholder="Passwort"
-                                value="geheim"
-                                required />
-                        </div>
-                        <div class="input-group">
-                            <label for="country">Land</label>
-                            <select
-                                name="country"
-                                id="country">
-                                <option
-                                    value="de"
-                                    selected>
-                                    Deutschland
-                                </option>
-                                <option value="at">Österreich</option>
-                                <option value="ch">Schweiz</option>
-                            </select>
-                        </div>
-                        <div class="input-group input-group-inline">
-                            <input
-                                type="checkbox"
-                                name="agb"
-                                id="agb"
-                                checked
-                                required />
-                            <label for="agb">AGBs</label>
-                        </div>
-                        <div class="input-group input-group-inline">
-                            <input
-                                type="checkbox"
-                                name="newsletter"
-                                id="newsletter" />
-                            <label for="newsletter">Newsletter</label>
-                        </div>
-                        <div class="input-group input-group-inline">
-                            <button type="submit">Absenden</button>
-                            <button type="reset">Zurücksetzen</button>
-                        </div>
-                    </fieldset>
-                </form>
-                <!-- - - - - - -->
-            </article>
-
-            <article>
-                <h2>Tabelle</h2>
-                <!-- - - - - - -->
-                <table>
-                    <caption>
-                        Meine Tabelle
-                    </caption>
-                    <thead>
-                        <tr>
-                            <th>Spalte 1</th>
-                            <th>Spalte 2</th>
-                            <th>Spalte 3</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Zelle 1</td>
-                            <td>Zelle 2</td>
-                            <td>Zelle 3</td>
-                        </tr>
-                        <tr>
-                            <td>Zelle 1</td>
-                            <td>Zelle 2</td>
-                            <td>Zelle 3</td>
-                        </tr>
-                        <tr>
-                            <td>Zelle 1</td>
-                            <td>Zelle 2</td>
-                            <td>Zelle 3</td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="3">Fußzeile</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <!-- - - - - - -->
-            </article>
-
-            <article>
                 <figure>
                     <img
-                        src="https://picsum.photos/id/63/320/160"
-                        alt="Foto: Expresso auf rotem Tisch" />
+                        width="360"
+                        src="assets/figures/sea.jpg"
+                        alt="" />
                     <figcaption>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Doloribus hic cupiditate facilis nam?
                     </figcaption>
                 </figure>
-                <h2>Artikelüberschrift</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <!-- - - - - - -->
+
+                <h2>Überschrift Zwei</h2>
+                <h3>Überschrift Drei</h3>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea
+                    dolor rem laudantium?
+                </p>
             </article>
             <!-- - - - - - -->
+            <!-- table>caption+thead+tfoot+tdata
+                 
+                 tr>td*4{$}
+            -->
+            <table id="my-table">
+                <caption>
+                    Tabellenüberschrift
+                </caption>
+                <thead>
+                    <tr>
+                        <td>column 1</td>
+                        <td>column 2</td>
+                        <td>column 3</td>
+                        <td>column 4</td>
+                    </tr>
+                </thead>
+
+                <tdata
+                    ><tr>
+                        <td>data 1</td>
+                        <td>data 2</td>
+                        <td>data 3</td>
+                        <td>data 4</td>
+                    </tr>
+                    <tr>
+                        <td>data 1</td>
+                        <td>data 2</td>
+                        <td>data 3</td>
+                        <td>data 4</td>
+                    </tr>
+                    <tr>
+                        <td>data 1</td>
+                        <td>data 2</td>
+                        <td>data 3</td>
+                        <td>data 4</td>
+                    </tr></tdata
+                >
+                <tfoot>
+                    <tr class="table-footer">
+                        <td>footer 1</td>
+                        <td>footer 2</td>
+                        <td>footer 3</td>
+                        <td>footer 4</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <!-- - - - - - -->
         </main>
-        <footer class="footer">
+        <footer>
             <!-- - - - - - -->
             <address>
-                &copy; <time datetime="2023-08-29">2023</time> Michael,
-                <a href="mailto:michael.reichart@gfu.net" class="ws-icon ws-icon-email">E-Mail</a>
+                &copy; <time datetime="2023-09-13 00:12:13">2023</time> by
+                Michael, <a href="mailto:michael.reichart@gfu.net">E-Mail me</a>
             </address>
             <!-- - - - - - -->
-            <nav>
-                <ul class="ws-nav">
-                    <li>
-                        <a
-                            href=""
-                            class="ws-icon ws-icon-imprint"
-                            >Impressum</a
-                        >
-                    </li>
-                    <li>
-                        <a
-                            href=""
-                            class="ws-icon ws-icon-payment"
-                            >Zahlungsarten</a
-                        >
-                    </li>
-                </ul>
-            </nav>
-            <!-- - - - - - -->
         </footer>
-
-        <script
-            src="https://cdn.socket.io/4.6.0/socket.io.min.js"
-            integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
-            crossorigin="anonymous"></script>
-        <script
-            type="module"
-            src="assets/js/script.js"></script>
     </body>
 </html>
