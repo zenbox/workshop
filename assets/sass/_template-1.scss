@@ -1,0 +1,20 @@
+.template-1 {
+    // Base
+    // Layout
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 8rem auto 6rem;
+
+    &-header { grid-column: 1 / 13; grid-row: 1 / 2; }
+    &-nav    { grid-column: 1 / 4;  grid-row: 2 / 3; }
+    &-main   { grid-column: 4 / 13; grid-row: 2 / 3; }
+    &-footer { grid-column: 1 / 13; grid-row: 3 / 4; }
+
+    // Components
+    // States
+    // Theme
+    &-header { background: red; }
+    &-nav    { background: yellow; }
+    &-main   { background: green; }
+    &-footer { background: blue; }
+}

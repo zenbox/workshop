@@ -10,7 +10,7 @@
 // @copyright (c) 2023 Michael Reichart, Cologne
 
 .nav {
-    // Reset
+    // Reset / base
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -19,6 +19,15 @@
     display: flex;
     flex-direction: row;
 
-    &-row { flex-direction: row; }
-    &-column {flex-direction: column;}
+    &-row {
+        flex-direction: row;
+    }
+    &-column {
+        flex-direction: column;
+    }
+    // (Sub-)Components)
+    
+    // States
+
+    // Theme
 }
