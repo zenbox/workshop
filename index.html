@@ -74,7 +74,9 @@
                                 name="email"
                                 id="email"
                                 placeholder="E-Mail"
-                                required />
+                                required 
+                                value="michael@gfu.net"
+                                />
                         </div>
                         <div class="input-group">
                             <label for="password">Passwort</label>
@@ -83,14 +85,15 @@
                                 name="password"
                                 id="password"
                                 placeholder="Passwort"
-                                required />
+                                required 
+                                value="geheim"/>
                         </div>
                         <div class="input-group">
                             <label for="country">Land</label>
                             <select
                                 name="country"
                                 id="country">
-                                <option value="de">Deutschland</option>
+                                <option value="de" selected>Deutschland</option>
                                 <option value="at">Österreich</option>
                                 <option value="ch">Schweiz</option>
                             </select>
@@ -100,7 +103,8 @@
                                 type="checkbox"
                                 name="agb"
                                 id="agb"
-                                required />
+                                required
+                                checked />
                             <label for="agb">AGBs</label>
                         </div>
                         <div class="input-group input-group-inline">

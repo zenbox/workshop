@@ -53,9 +53,33 @@ socket.on("visual data", (data) => {
 // - - - - -
 // Declaration, initalisation
 const login = document.querySelector("#login");
-// Methods, event handler
 
-const onloginSubmit = function (event) {};
+// Methods, event handler
+function getData(target) {
+    let data = { email: "mail@gfu.net", password: "geheim" };
+    return data;
+}
+
+async function sendData(data) {
+    let url = "http://localhost:3000/login/";
+    const options = {
+        method: "POST",
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    };
+
+    await fetch(url, options).then().then().catch().finally();
+}
+
+const onloginSubmit = function (event) {
+    event.preventDefault();
+    let data = getData(event.target);
+    sendData(data);
+};
 const onloginReset = function (event) {};
 
 // Process, event control
