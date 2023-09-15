@@ -72,7 +72,17 @@ async function sendData(data) {
         body: JSON.stringify(data),
     };
 
-    await fetch(url, options).then().then().catch().finally();
+    await fetch(url, options)
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => {
+            console.error(error);
+            // buildMessage()
+            // deleteLogin()
+        })
+        .finally(() => {
+            console.log("finally!");
+        });
 }
 
 const onloginSubmit = function (event) {
