@@ -47,9 +47,30 @@ socket.on("visual data", (data) => {
         rect.setAttribute("height", d);
     });
 });
+
 // - - - - -
 // Events
 // - - - - -
+// Declaration, initalisation
+const login = document.querySelector("#login");
+// Methods, event handler
+
+const onloginSubmit = function (event) {};
+const onloginReset = function (event) {};
+
+// Process, event control
+login.addEventListener("submit", onloginSubmit);
+login.addEventListener("reset", onloginReset);
+
+// function addEventListener(type, callback) {
+
+//     const event = {};
+//     event.type = type;
+//     event.timeStamp = new Date();
+//     ...
+
+//     callback(event);
+//  }
 
 // - - - - -
 // Data Handling
