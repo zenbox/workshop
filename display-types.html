@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Display Types</title>
+        <style>
+            html,
+            html * {
+                box-sizing: border-box;
+            }
+            body {  background: lightsteelblue;}
+            body > * {
+                background-color: lightgrey;
+                border: 4px solid maroon;
+              
+            }
+            div,
+            header,
+            main,
+            footer,
+            h1,
+            p {
+                display: block;
+                width: calc( 100% - 4rem);
+                height: auto;
+                /* overflow: auto; */
+                padding-left: 2rem;
+                padding-inline-start: 2rem;
+                margin-block-end: 2rem;
+            }
+            h1 {
+                display: block;
+                width: 200px;
+                position: absolute;
+                margin: 0;
+                right:0.5rem;
+                bottom:0.5rem;
+                border-radius: 1rem;
+                box-shadow: -0.5rem -0.5rem 1rem black
+
+            }
+            button, strong {
+                display: inline;
+                font-size: 1.4rem;
+            }
+            table {display: table;}
+            th, td { display: table-cell;}
+
+            .layout-1 {display: grid;}
+            .layout-2 {display: flex;}
+        </style>
+    </head>
+    <body>
+        <h1>Display Types</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum
+            maiores omnis illo.
+        </p>
+        <div>
+            <p>Lorem <strong>fetter Text</strong> ipsum dolor sit amet.</p>
+            <button>save</button>
+            <button>reset</button>
+        </div>
+    </body>
+</html>

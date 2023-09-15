@@ -16,7 +16,7 @@
             <h3 class="brand">Firmenname</h3>
             <!-- - - - - - -->
             <ul
-                class="nav nav-row"
+                class="ws-nav ws-nav-row"
                 role="navigation">
                 <li><a href="#">Suchen</a></li>
                 <li><a href="#">Impressum</a></li>
@@ -33,7 +33,7 @@
             <!-- - - - - - -->
             <!-- ul>li*5>a{Seite $} -->
             <!-- - - - - - -->
-            <ul class="nav nav-column">
+            <ul class="ws-nav ws-nav-column">
                 <li><a href="#">Reuse</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Logout</a></li>
@@ -44,7 +44,80 @@
         </nav>
         <main class="template-1-main">
             <!-- - - - - - -->
-            <h1>Überschrift Eins</h1>
+            <article>
+                <h1>HTML5 Workshop</h1>
+                <svg
+                    width="480"
+                    height="480"
+                    viewBox="0 0 480 480"
+                    id="visual"
+                    class="visuals">
+                    <g></g>
+                </svg>
+            </article>
+            <!-- - - - - - -->
+            <article>
+                <h2>Formular</h2>
+                <!-- - - - - - -->
+                <!-- Loginformular mit Email, Passwort, Länderauswahl und Zustimmung der AGBs und Newsletter -->
+                <!-- die Aufgabe ist: Layouten des Formulars mit Flexboxes -->
+                <form
+                    action=""
+                    method="post">
+                    <fieldset>
+                        <legend>Login</legend>
+                        <div class="input-group">
+                            <label for="email">E-Mail</label>
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="E-Mail"
+                                required />
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Passwort</label>
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Passwort"
+                                required />
+                        </div>
+                        <div class="input-group">
+                            <label for="country">Land</label>
+                            <select
+                                name="country"
+                                id="country">
+                                <option value="de">Deutschland</option>
+                                <option value="at">Österreich</option>
+                                <option value="ch">Schweiz</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-inline">
+                            <input
+                                type="checkbox"
+                                name="agb"
+                                id="agb"
+                                required />
+                            <label for="agb">AGBs</label>
+                        </div>
+                        <div class="input-group input-group-inline">
+                            <input
+                                type="checkbox"
+                                name="newsletter"
+                                id="newsletter" />
+                            <label for="newsletter">Newsletter</label>
+                        </div>
+                        <div class="input-group input-group-inline">
+                            <button type="submit">Absenden</button>
+                            <button type="reset">Zurücksetzen</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <!-- - - - - - -->
+            </article>
+            <!-- - - - - - -->
             <article>
                 <!-- - - - - - -->
                 <figure>

@@ -9,25 +9,27 @@
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2023 Michael Reichart, Cologne
 
-.nav {
-    // Reset / base
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.#{$prefix} {
+    &-nav {
+        // Reset / base
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
 
-    // Layout
-    display: flex;
-    flex-direction: row;
-
-    &-row {
+        // Layout
+        display: flex;
         flex-direction: row;
-    }
-    &-column {
-        flex-direction: column;
-    }
-    // (Sub-)Components)
-    
-    // States
 
-    // Theme
+        &-row {
+            flex-direction: row;
+        }
+        &-column {
+            flex-direction: column;
+        }
+        // (Sub-)Components)
+
+        // States
+
+        // Theme
+    }
 }
