@@ -1,51 +1,36 @@
-/** Application script
- *
- * @desc This script is the main script of the application.
- *
- * @package Webapplication
- * @module UI Webapplication
- * @author Michael <michael.reichart@gfu.net>
- * @version v1.0.0
- * @since 2023-08-30
- * @see i.e. inspired by ... {link to}
- * @license MIT {https://opensource.org/licenses/MIT}
- * @copyright (c) 2023 Michael Reichart, Cologne
- */
+console.log("Hello World!");
 
 // - - - - -
-// Login
+// DOM Manipulation
 // - - - - -
-// ES module import
-import Login from "./classes/login.js";
+// 1. DOM context
 
-// Declaration, Initalization
-const login = new Login("form-login");
-console.dir(login);
+// const context = document.getElementById("visual");
+// const context = document.querySelector("#visual g");
 
-// Event process control
-login.form.addEventListener("submit", (event) => {
-    login.onSubmit(event);
-});
+// // 2. New element
+// let bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
 
-// - - - - -
-// Socket.io
-// - - - - -
+// // <rect x="" y="" width="" height=""  >
+// bar.setAttribute("x", 10);
+// bar.setAttribute("y", 10);
+// bar.setAttribute("width", 100);
+// bar.setAttribute("height", 300);
+
+// // 3. Append to DOM context
+// context.appendChild(bar);
+
 const socket = io("http://localhost:3000", {});
 
-socket.on("socket message", (msg) => {
-    console.log(
-        `%c${msg}`,
-        "color: white;  background: green; font-size: 0.75rem;"
-    );
+socket.on("socket message", (message) => {
+    console.log(message);
 });
 
-// - - - - -
-// Visual
-// - - - - -
 const border = 2;
 const width = 480 - border;
 const height = 480;
 const data = [200, 100, 300, 400, 300];
+
 data.forEach((d, i) => {
     const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
     rect.setAttribute("x", border + i * (width / data.length));
@@ -60,6 +45,12 @@ socket.on("visual data", (data) => {
         const rect = document.querySelectorAll("#visual g rect")[i];
         rect.setAttribute("y", height - d);
         rect.setAttribute("height", d);
-
     });
 });
+// - - - - -
+// Events
+// - - - - -
+
+// - - - - -
+// Data Handling
+// - - - - -
