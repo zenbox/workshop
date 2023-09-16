@@ -1,5 +1,3 @@
-console.log("Hello World!");
-
 // - - - - -
 // DOM Manipulation
 // - - - - -
@@ -25,7 +23,7 @@ const socket = io("http://localhost:3000", {});
 socket.on("socket message", (message) => {
     console.log(message);
 });
-
+76m
 const border = 2;
 const width = 480 - border;
 const height = 480;
