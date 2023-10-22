@@ -1,0 +1,43 @@
+// Common
+$prefix: "ws";
+$spacer: 0.5rem;
+
+// Colors
+$bright: white;
+$dark: #424242;
+$white: white;
+$grey: #aaa;
+$lightgrey: #ddd;
+$black: black;
+$blue: #2196f3;
+$red: #f44336;
+$green: #4caf50;
+$yellow: #ffeb3b;
+$orange: #ff9800;
+$purple: #9c27b0;
+$pink: #e91e63;
+
+$focusColor: $blue;
+$successColor: $green;
+$validColor: $successColor;
+$errorColor: $red;
+$invalidColor: $errorColor;
+$warningColor: $yellow;
+$inactiveColor: $grey;
+
+// Fonts
+$fontFamily: "Barlow", sans-serif;
+$fontFamilyMono: "Menlo", monospace;
+$fontSize: 18px;
+$fontWeight: 400;
+$fontWeightBold: 500;
+$lineHeight: 1.5;
+$fontColor: $black;
+$fontSizeHeadlines: (
+  "1": 2.2rem,
+  "2": 1.9rem,
+  "3": 1.6rem,
+  "4": 1.3rem,
+  "5": 1rem,
+  "6": 1rem,
+);
