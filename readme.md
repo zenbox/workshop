@@ -11,7 +11,7 @@ Es gibt begleitende Arbeitstexte zu unserem Seminar und Workshop unter `https://
 
 -   [Ein React-Tutorial](https://michaelreichart.de/slides/react-tutorial/)
 -   [Ein Next.js Tutorial](https://michaelreichart.de/slides/nextjs-tutorial/)
--   [Javascript Basics for React](https://michaelreichart.de/slides/javascript-basics-for-react-nextjs/)
+-   [Javascript Basics for React](https://michaelreichart.de/slides/javascript-basics-for-react/)
 -   [Typescript Basics for React](https://michaelreichart.de/slides/typescript-basics-for-react/)
 -   [React-Next.js Workshop](https://michaelreichart.de/slides/react-nextjs/)
 
