@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Typography</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box green-1">
+                <h2>headline</h2>
+                <h2 class="not-bold">not bold</h2>
+                <p>copy</p>
+                <p><strong>bold</strong></p>
+            </div>
+            <div class="box green-2">
+                <h2>headline</h2>
+                <h2 class="not-bold">not bold</h2>
+                <p>copy</p>
+                <p><strong>bold</strong></p>
+            </div>
+            <div class="box blue-yellow-1">
+                <h2>headline</h2>
+                <h2 class="not-bold">not bold</h2>
+                <p>copy</p>
+                <p><strong>bold</strong></p>
+            </div>
+            <div class="box blue-yellow-2">
+                <h2>headline</h2>
+                <h2 class="not-bold">not bold</h2>
+                <p>copy</p>
+                <p><strong>bold</strong></p>
+            </div>
+        </div>
+
+        <h1>Lorem Headline 1 ipsum</h1>
+        <p>
+            Lorem Copy ipsum dolor sit amet consectetur, adipisicing elit.
+            Impedit adipisci, rerum officia earum ullam atque dicta alias
+            veritatis perferendis laudantium eos nihil dolorem? Maiores corrupti
+            harum non. Expedita magnam aperiam inventore nesciunt.
+        </p>
+        <p>
+            <small
+                >Lorem Konsultationsext ipsum dolor sit amet, consectetur
+                adipisicing elit. Pariatur eveniet numquam ipsa rerum. Eaque,
+                animi qui. Saepe, minus.</small
+            >
+        </p>
+
+        <style>
+            html {
+                --lightgreen: #a5c35a;
+                --darkgreen: #255234;
+                --yellow: #fdbd00;
+                --blue: #1190eb;
+            }
+            body {
+                margin: 0;
+            }
+            .container {
+                background: #4f4f4f;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 100vw;
+                height: 100vh;
+                margin: 0;
+                padding: 0;
+            }
+            .box {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                width: 10rem;
+                height: 10rem;
+                margin: 1rem;
+                padding: 1rem;
+                text-align: center;
+                font-family: Barlow;
+                font-size: 18px;
+            }
+            .box h2 {
+                margin: 0;
+                padding: 0;
+                font-size: 2rem;
+                line-height: 1;
+            }
+            .box p {
+                margin: 0;
+                padding: 0;
+                font-size: 1.5rem;
+                line-height: 1;
+            }
+            .green-1 {
+                color: var(--lightgreen);
+                background: var(--darkgreen);
+            }
+            .green-2 {
+                color: var(--darkgreen);
+                background: var(--lightgreen);
+            }
+            .blue-yellow-1 {
+                color: var(--yellow);
+                background: url("https://picsum.photos/200/300");
+                background-size: cover;
+            }
+            .blue-yellow-2 {
+                color: var(--blue);
+                background: linear-gradient(
+                    45deg,
+                    var(--yellow) 0%,
+                    var(--lightgreen) 100%
+                );
+            }
+            .not-bold {
+                font-weight: 400;
+            }
+            html {
+                font-family: "Helvetica Neue", sans-serif;
+                font-size: clamp(12.1px, 3vw, 18.7px);
+                line-height: 1.5;
+            }
+            h1 {
+                /* display: block;
+                max-width: 24rem; */
+                font-size: 2.5rem; /* root M-Höhe: 2.5 * 16px = 40px*/
+                background: hsla(0, 50%, 50%, 0.25);
+            }
+            p {
+                font-size: 1rem;
+            }
+            small {
+                font-size: 0.768rem;
+            }
+
+            @media screen and (max-width: 480px) {
+                html {
+                    font-size: clamp(8px, 2.5vw, 15px);
+                }
+            }
+        </style>
+    </body>
+</html>

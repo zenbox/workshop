@@ -1,20 +1,13 @@
-# Willkommen zum Next.js - Seminar
+# Willkommen zum HTML5 Seminar - Grundlagen für HTML, CSS und Javascript
 
 ## Michael Reichart
 
 -   michael.reichart@gfu.net
 -   Auf Xing und LinkedIn unter Michael Reichart
 
-## Online-Buch zur Begleitung
+## Foliensatz
 
-Es gibt begleitende Arbeitstexte zu unserem Seminar und Workshop unter `https://michaelreichart.de/slides/`.
-
--  [Ein Next.js Tutorial](https://michaelreichart.de/slides/nextjs-tutorial/)
--  [Ein React-Tutorial](https://michaelreichart.de/slides/react-tutorial/)
-
-## Workshop
-Wir entwickeln im Laufe der Woche verschiedene React- und Next.js Projekte *from scratch*.  Wir schreiben alle Codes in Visual Studio Code.
-Die Ergebnisse werden hier veröffentlicht und stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zum Download zur Verfügung.
+Es gibt begleitende Foliensätze zu unserem Seminar und Workshop im Verzeichnis `docs`: **HTML.pdf** und **Cascading Stylesheets.pdf** und **Javascript.pdf**. Was wir im Laufe des Seminars erarbeiten, kommt hinzu. Alle Ergebnisse stehen Ihnen anschließend unter der Common Creative Lizenz CC BY-NC-SA zur Verfügung.
 
 ## Dateien zum Download
 
@@ -63,3 +56,33 @@ wir werden im Laufe des Seminars HTML, CSS und Javascript Dateien schreiben. Mei
 -   [Popup Book for Beercamp](https://2012.beercamp.nclud.com/)
 -   [David Walsh: Spinning Cube](https://davidwalsh.name/css-cube)
 
+## Code Snippet Beispiel für VS Code
+
+### Docblock für Kommentare
+
+```json
+{
+    "CSS Doc Block and main comments": {
+        "prefix": "docblock",
+        "description": "Comment for CSS documents",
+        "body": [
+            "/** $1",
+            "  *",
+            "  *  @desc $2",
+            "  *        All devices fallback: @media screen {}",
+            "  *        Small devices:        @media screen and (max-width:768px) {}",
+            "  *",
+            "  * @package Webapplication",
+            "  * @module i.e. header",
+            "  * @author Michael Reichart <michael.reichart@gfu.net>",
+            "  * @since $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+            "  * @version 1.0.0",
+            "  * @see i.e. inspired by ... {link to}",
+            "  * @license 2021 Michael Reichart, copyleft CC BY-NC-SA {https://creativecommons.org/licenses/by-nc-sa/2.0/de/}",
+            "  * @copyright (c) $CURRENT_YEAR Michael Reichart, Cologne",
+            "  */",
+            "$3"
+        ]
+    }
+}
+```
