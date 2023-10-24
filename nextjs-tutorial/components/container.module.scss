@@ -1,0 +1,15 @@
+.container {
+    $fontColor: pink;
+    $borderColor: pink;
+
+    color: $fontColor;
+    border: 1px solid $borderColor;
+
+    h2 {
+        color: var(--otherColor);
+    }
+
+    h3 {
+        font-size: 4rem;
+    }
+}
