@@ -41,7 +41,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ \"./node_modules/next/link.js\");\n/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction HomePage() {\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                children: \"Welcome to Next.js!\"\n            }, void 0, false, {\n                fileName: \"/Users/michaelreichart/Documents/htdocs/workshop/nextjs-tutorial/pages/index.js\",\n                lineNumber: 6,\n                columnNumber: 13\n            }, this),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {\n                href: \"posts/first\",\n                children: \"zum ersten Post\"\n            }, void 0, false, {\n                fileName: \"/Users/michaelreichart/Documents/htdocs/workshop/nextjs-tutorial/pages/index.js\",\n                lineNumber: 7,\n                columnNumber: 13\n            }, this)\n        ]\n    }, void 0, true);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomePage);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9wYWdlcy9pbmRleC5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7QUFBNkI7QUFFN0IsU0FBU0M7SUFDTCxxQkFDSTs7MEJBQ0ksOERBQUNDOzBCQUFJOzs7Ozs7MEJBQ0wsOERBQUNGLGtEQUFJQTtnQkFBQ0csTUFBSzswQkFBYzs7Ozs7Ozs7QUFHckM7QUFFQSxpRUFBZUYsUUFBUUEsRUFBQyIsInNvdXJjZXMiOlsid2VicGFjazovL25leHRqcy10dXRvcmlhbC8uL3BhZ2VzL2luZGV4LmpzP2JlZTciXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IExpbmsgZnJvbSBcIm5leHQvbGlua1wiO1xuXG5mdW5jdGlvbiBIb21lUGFnZSgpIHtcbiAgICByZXR1cm4gKFxuICAgICAgICA8PlxuICAgICAgICAgICAgPGRpdj5XZWxjb21lIHRvIE5leHQuanMhPC9kaXY+XG4gICAgICAgICAgICA8TGluayBocmVmPVwicG9zdHMvZmlyc3RcIj56dW0gZXJzdGVuIFBvc3Q8L0xpbms+XG4gICAgICAgIDwvPlxuICAgICk7XG59XG5cbmV4cG9ydCBkZWZhdWx0IEhvbWVQYWdlO1xuIl0sIm5hbWVzIjpbIkxpbmsiLCJIb21lUGFnZSIsImRpdiIsImhyZWYiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./pages/index.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   getStaticProps: () => (/* binding */ getStaticProps)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ \"./node_modules/next/link.js\");\n/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/router */ \"./node_modules/next/router.js\");\n/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\nfunction HomePage(props) {\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                children: \"Welcome to Next.js!\"\n            }, void 0, false, {\n                fileName: \"/Users/michaelreichart/Documents/htdocs/workshop/nextjs-tutorial/pages/index.js\",\n                lineNumber: 7,\n                columnNumber: 13\n            }, this),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {\n                href: \"posts/first\",\n                children: \"zum ersten Post\"\n            }, void 0, false, {\n                fileName: \"/Users/michaelreichart/Documents/htdocs/workshop/nextjs-tutorial/pages/index.js\",\n                lineNumber: 8,\n                columnNumber: 13\n            }, this),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                onClick: ()=>next_router__WEBPACK_IMPORTED_MODULE_2___default().push(\"posts/first\"),\n                children: \"Imparative Link\"\n            }, void 0, false, {\n                fileName: \"/Users/michaelreichart/Documents/htdocs/workshop/nextjs-tutorial/pages/index.js\",\n                lineNumber: 10,\n                columnNumber: 13\n            }, this),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n                children: [\n                    \"Anzahl der Sterne: \",\n                    props.stars\n                ]\n            }, void 0, true, {\n                fileName: \"/Users/michaelreichart/Documents/htdocs/workshop/nextjs-tutorial/pages/index.js\",\n                lineNumber: 12,\n                columnNumber: 13\n            }, this)\n        ]\n    }, void 0, true);\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (HomePage);\n// Daten beim `request` aktualisiert laden\n// export async function getServerSideProps(context) {\n// Daten beim `build` hinterlegen\nasync function getStaticProps(context) {\n    const response = await fetch(\"http://localhost:3000/api/stars.json\");\n    const json = await response.json();\n    return {\n        props: {\n            stars: json.stargazers_count\n        }\n    };\n}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9wYWdlcy9pbmRleC5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7QUFBNkI7QUFDSTtBQUVqQyxTQUFTRSxTQUFTQyxLQUFLO0lBQ25CLHFCQUNJOzswQkFDSSw4REFBQ0M7MEJBQUk7Ozs7OzswQkFDTCw4REFBQ0osa0RBQUlBO2dCQUFDSyxNQUFLOzBCQUFjOzs7Ozs7MEJBRXpCLDhEQUFDRDtnQkFBSUUsU0FBUyxJQUFNTCx1REFBVyxDQUFDOzBCQUFnQjs7Ozs7OzBCQUVoRCw4REFBQ0c7O29CQUFJO29CQUFvQkQsTUFBTUssS0FBSzs7Ozs7Ozs7O0FBR2hEO0FBRUEsaUVBQWVOLFFBQVFBLEVBQUM7QUFDeEIsMENBQTBDO0FBQzFDLHNEQUFzRDtBQUV0RCxpQ0FBaUM7QUFDMUIsZUFBZU8sZUFBZUMsT0FBTztJQUN4QyxNQUFNQyxXQUFXLE1BQU1DLE1BQU07SUFDN0IsTUFBTUMsT0FBTyxNQUFNRixTQUFTRSxJQUFJO0lBQ2hDLE9BQU87UUFDSFYsT0FBTztZQUNISyxPQUFPSyxLQUFLQyxnQkFBZ0I7UUFDaEM7SUFDSjtBQUNKIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vbmV4dGpzLXR1dG9yaWFsLy4vcGFnZXMvaW5kZXguanM/YmVlNyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgTGluayBmcm9tIFwibmV4dC9saW5rXCI7XG5pbXBvcnQgUm91dGVyIGZyb20gXCJuZXh0L3JvdXRlclwiO1xuXG5mdW5jdGlvbiBIb21lUGFnZShwcm9wcykge1xuICAgIHJldHVybiAoXG4gICAgICAgIDw+XG4gICAgICAgICAgICA8ZGl2PldlbGNvbWUgdG8gTmV4dC5qcyE8L2Rpdj5cbiAgICAgICAgICAgIDxMaW5rIGhyZWY9XCJwb3N0cy9maXJzdFwiPnp1bSBlcnN0ZW4gUG9zdDwvTGluaz5cblxuICAgICAgICAgICAgPGRpdiBvbkNsaWNrPXsoKSA9PiBSb3V0ZXIucHVzaChcInBvc3RzL2ZpcnN0XCIpfT5JbXBhcmF0aXZlIExpbms8L2Rpdj5cblxuICAgICAgICAgICAgPGRpdj5BbnphaGwgZGVyIFN0ZXJuZToge3Byb3BzLnN0YXJzfTwvZGl2PlxuICAgICAgICA8Lz5cbiAgICApO1xufVxuXG5leHBvcnQgZGVmYXVsdCBIb21lUGFnZTtcbi8vIERhdGVuIGJlaW0gYHJlcXVlc3RgIGFrdHVhbGlzaWVydCBsYWRlblxuLy8gZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGdldFNlcnZlclNpZGVQcm9wcyhjb250ZXh0KSB7XG5cbi8vIERhdGVuIGJlaW0gYGJ1aWxkYCBoaW50ZXJsZWdlblxuZXhwb3J0IGFzeW5jIGZ1bmN0aW9uIGdldFN0YXRpY1Byb3BzKGNvbnRleHQpIHtcbiAgICBjb25zdCByZXNwb25zZSA9IGF3YWl0IGZldGNoKFwiaHR0cDovL2xvY2FsaG9zdDozMDAwL2FwaS9zdGFycy5qc29uXCIpO1xuICAgIGNvbnN0IGpzb24gPSBhd2FpdCByZXNwb25zZS5qc29uKCk7XG4gICAgcmV0dXJuIHtcbiAgICAgICAgcHJvcHM6IHtcbiAgICAgICAgICAgIHN0YXJzOiBqc29uLnN0YXJnYXplcnNfY291bnQsXG4gICAgICAgIH0sXG4gICAgfTtcbn1cbiJdLCJuYW1lcyI6WyJMaW5rIiwiUm91dGVyIiwiSG9tZVBhZ2UiLCJwcm9wcyIsImRpdiIsImhyZWYiLCJvbkNsaWNrIiwicHVzaCIsInN0YXJzIiwiZ2V0U3RhdGljUHJvcHMiLCJjb250ZXh0IiwicmVzcG9uc2UiLCJmZXRjaCIsImpzb24iLCJzdGFyZ2F6ZXJzX2NvdW50Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./pages/index.js\n");
 
 /***/ }),
 
@@ -77,6 +77,17 @@ module.exports = require("react");
 
 /***/ }),
 
+/***/ "react-dom":
+/*!****************************!*\
+  !*** external "react-dom" ***!
+  \****************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("react-dom");
+
+/***/ }),
+
 /***/ "react/jsx-dev-runtime":
 /*!****************************************!*\
   !*** external "react/jsx-dev-runtime" ***!
@@ -88,6 +99,17 @@ module.exports = require("react/jsx-dev-runtime");
 
 /***/ }),
 
+/***/ "fs":
+/*!*********************!*\
+  !*** external "fs" ***!
+  \*********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs");
+
+/***/ }),
+
 /***/ "path":
 /*!***********************!*\
   !*** external "path" ***!
@@ -96,6 +118,28 @@ module.exports = require("react/jsx-dev-runtime");
 
 "use strict";
 module.exports = require("path");
+
+/***/ }),
+
+/***/ "stream":
+/*!*************************!*\
+  !*** external "stream" ***!
+  \*************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("stream");
+
+/***/ }),
+
+/***/ "zlib":
+/*!***********************!*\
+  !*** external "zlib" ***!
+  \***********************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("zlib");
 
 /***/ })
 
