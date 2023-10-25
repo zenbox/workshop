@@ -24,7 +24,6 @@ export default (request, response) => {
             break;
     }
 
-
     response.statusCode = 200;
 
     response.setHeader("Content-Type", "application/json");
