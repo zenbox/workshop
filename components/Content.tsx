@@ -18,13 +18,13 @@ export default function Content(props: Props) {
         currentUrl: props.currentUrl,
     });
 
-// - - -
+    // - - -
 
     // Veränderungen werden umgesetzt (update or didUpdate)
-    async function getContent() { }
-    useEffect(() => { })
-    
-// - - -
+    async function getContent() {}
+    useEffect(() => {});
+
+    // - - -
 
     return (
         <div className="content">

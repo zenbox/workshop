@@ -4,6 +4,9 @@ import type { AppProps } from "next/app";
 
 interface Props extends AppProps {
     children: ReactNode;
+    component: string;
+    router: any;
+    pageProps: any;
 }
 
 // Baut `children` die, die von `_app.tsx` 

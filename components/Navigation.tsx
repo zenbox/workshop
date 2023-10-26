@@ -1,4 +1,7 @@
-export default function Navigation() {
+import React, { ReactNode } from "react";
+import type { AppProps } from "next/app";
+
+export default function Navigation(): ReactNode {
     return (
         <nav>
             <ul>

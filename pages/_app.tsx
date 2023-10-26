@@ -11,7 +11,7 @@ import Main from "../components/Main";
 import Footer from "../components/Footer";
 
 // Global styles
-import "../src/sass/MyApp.scss"
+import "../src/sass/MyApp.scss";
 
 // Interface
 interface Props extends AppProps {
