@@ -9,38 +9,40 @@
  * @license MIT {https://opensource.org/licenses/MIT}
  */
 .nav {
-  /* @group Layout */
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
-  &-column {
-    flex-direction: column;
-  }
-  &-row {
+    /* @group base, reset */
+    ul,
+    ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* @group Layout */
+
+    display: flex;
     flex-direction: row;
-  }
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
 
-  /*
-  * @event click
-  * @param {object} event - MouseEvent
-  * @listens event:click
-  * @description
-  * @since 2023-10-10
-  * @see i.e. inspired by ... {link to}
-  * @todo
-  */
-  a[href] {
-    color: white;
-    text-decoration: none;
-  }
+    &-column {
+        flex-direction: column;
+    }
+    &-row {
+        flex-direction: row;
+    }
+
+    /* @group theme */
+    a[href] {
+        color: white;
+        text-decoration: none;
+    }
 }
-/* @group Theme */
 main .nav a[href] {
-  color: black;
+    color: black;
 
-  &.active {
-    font-weight: $fontWeightBold;
-  }
+    /* @group State */
+    &.active {
+        font-weight: $fontWeightBold;
+    }
 }

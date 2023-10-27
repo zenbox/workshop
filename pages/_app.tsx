@@ -20,12 +20,12 @@ interface Props extends AppProps {
 
 export default function MyApp({ Component, pageProps }: Props) {
     // * ggf. dynamischen Erzeugen von Properties
-    const headerTitle = "HEADER CONTENT";
+    const headerTitle: string = "header content";
 
     return (
         <div className="template-container">
             <Head>
-                <title> My App</title>
+                <title>My App</title>
                 <link
                     rel="icon"
                     href="/favicon.ico"
@@ -38,7 +38,7 @@ export default function MyApp({ Component, pageProps }: Props) {
             />
             <Navigation />
             <Main>
-                {" "}
+                {/* Hier werden die eigentlichen Komponente eingesetzt! */}
                 <Component {...pageProps} />{" "}
             </Main>
             <Footer />
