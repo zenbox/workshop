@@ -57,17 +57,21 @@ export default function Form() {
 
         setErrors(errors);
         console.log("length: ", Object.keys(errors).length);
-        setIsFormValid(true);
+
+        // Check if errors object is empty
+        if (
+            Object.keys(errors).length === 0 ||
+            errors.name ||
+            errors.email ||
+            errors.password
+        ) {
+            setIsFormValid(false);
+        } else setIsFormValid(true);
     };
 
     // Submit
     const onHandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.dir(event);
-        console.log(event.target);
-        console.log(typeof event.preventDefault);
-        return false;
-
         if (isFormValid) {
             console.log("Form submitted");
         } else {
