@@ -18,6 +18,9 @@ export default function Navigation(): ReactNode {
                     <Anchor href="form">Form</Anchor>
                 </li>
                 <li>
+                    <Anchor href="formik">Formik</Anchor>
+                </li>
+                <li>
                     <Anchor href="table">Table</Anchor>
                 </li>
                 <li>
