@@ -1,14 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     // "Proxy" setting in Next.js
-    rewrites: async () => {
-        return [
-            {
-                source: "/api/:path*", // old path
-                destination: "/:path*", // new path
-            },
-        ];
-    },
+    // rewrites: async () => {
+    //     return [
+    //         {
+    //             source: "/api/:path*", // old path
+    //             destination: "/:path*", // new path
+    //         },
+    //     ];
+    // },
+    reactStrictMode: true,
+    // experimental: { appDir: true },
     images: {
         remotePatterns: [
             {

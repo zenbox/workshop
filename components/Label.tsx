@@ -1,7 +1,7 @@
 interface LabelProps {
     text: string;
-    style: object;
-    htmlFor: string;
+    style?: object;
+    htmlFor?: string;
 }
 
 export default function Label({ text, style, htmlFor }: LabelProps) {

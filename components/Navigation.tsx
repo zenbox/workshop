@@ -22,6 +22,9 @@ export default function Navigation(): ReactNode {
                 </li>
                 <li>
                     <Anchor href="table">Table</Anchor>
+                </li>{" "}
+                <li>
+                    <Anchor href="fileupload">File upload</Anchor>
                 </li>
                 <li>
                     <Anchor href="logout">Logout</Anchor>

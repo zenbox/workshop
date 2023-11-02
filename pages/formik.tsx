@@ -20,7 +20,10 @@ export default function Formik() {
 
     return (
         <>
-            <form id="loginForm">
+            <form
+                action="api/user"
+                method="POST"
+                id="loginForm">
                 <Label text="Email" />
                 <Input
                     id="email"
