@@ -30,3 +30,30 @@ h5,
 h6 {
   font-size: 1.2rem;
 }
+
+.layout-1 {
+  margin: 2rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 8rem auto 6rem;
+}
+.layout-1-header {
+  grid-column: 1/span 12;
+  grid-row: 1/span 1;
+}
+.layout-1-nav {
+  grid-column: 1/span 3;
+  grid-row: 2/span 1;
+}
+.layout-1-main {
+  grid-column: 4/span 9;
+  grid-row: 2/span 1;
+}
+.layout-1-footer {
+  grid-column: 1/span 12;
+  grid-row: 3/span 1;
+}
+.layout-1 > * {
+  background: rgba(0, 200, 250, 0.25);
+  border: 1px solid rgba(0, 200, 250, 0.5);
+}
