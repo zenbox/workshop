@@ -14,7 +14,7 @@
 // - - - - - - - - - -
 .#{$prefix}-layout-1 {
     display: block;
-    width: 100%;
+    width: 97%;
     min-height: 100%;
 
     &-header,
@@ -36,7 +36,7 @@
 // - - - - - - - - - -
 // Medium device (desktop)
 // - - - - - - - - - -
-@media screen and (min-width: 1240px) {
+@media screen and (min-width: 905px) {
     // - - - - - - - - - -
     .#{$prefix}-layout-1 {
         // Base
@@ -47,6 +47,8 @@
         grid-template-rows: 8rem auto 6rem;
 
         gap: $defaultGap;
+
+        width: calc(100vw - 4rem);
 
         // Module
         &-header {

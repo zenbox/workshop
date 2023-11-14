@@ -1,0 +1,21 @@
+.#{$prefix}-footer {
+    // Base
+    ul,
+    ol {
+        @include listReset();
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    }
+    // Layout
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // Modules
+    // States
+    // Theme
+    background-color: $primaryColor;
+    color: $onPrimaryColor;
+}

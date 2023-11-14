@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 html,
 html * {
   box-sizing: border-box;
@@ -6,6 +7,11 @@ html * {
 
 body {
   margin: 0;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -117,7 +123,7 @@ h6 {
 
 .ws-layout-1 {
   display: block;
-  width: 100%;
+  width: 97%;
   min-height: 100%;
 }
 .ws-layout-1-header, .ws-layout-1-nav, .ws-layout-1-main, .ws-layout-1-footer {
@@ -126,13 +132,14 @@ h6 {
   width: 100%;
 }
 
-@media screen and (min-width: 1240px) {
+@media screen and (min-width: 905px) {
   .ws-layout-1 {
     margin: 2rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 8rem auto 6rem;
     gap: 0.5rem;
+    width: calc(100vw - 4rem);
   }
   .ws-layout-1-header {
     grid-column: 1/span 12;
@@ -154,7 +161,7 @@ h6 {
     border: 1px solid rgba(0, 200, 250, 0.5);
   }
 }
-@media screen and (min-width: 1240px) and (max-width: 767px) {
+@media screen and (min-width: 905px) and (max-width: 767px) {
   .ws-layout-1 {
     margin: 1rem;
     display: block;
@@ -193,6 +200,25 @@ article abbr {
 }
 .ws-figure figcaption::before {
   content: "Figure: ";
+}
+
+.ws-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  color: #fff;
+}
+.ws-footer ul,
+.ws-footer ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
 }
 
 .ws-header {
@@ -241,11 +267,32 @@ article abbr {
   .ws-nav-row {
     flex-direction: row;
   }
+  .ws-nav-row li {
+    border: 1px solid rgba(0, 200, 250, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .ws-nav-column {
     flex-direction: column;
   }
-  .ws-nav li {
+  .ws-nav-column li {
     border: 1px solid rgba(0, 200, 250, 0.5);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .ws-nav a:link {
+    color: #007bff;
+    text-decoration: none;
+    margin-left: 0.5rem;
+  }
+  .ws-nav li:has(a:hover) {
+    background-color: #007bff;
+    transition: background-color 0.5s ease;
+  }
+  .ws-nav li:has(a:hover) a:hover {
+    color: #fff;
   }
 }
 @media print and (min-device-width: 21cm) {

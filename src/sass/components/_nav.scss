@@ -15,16 +15,40 @@
 
         &-row {
             flex-direction: row;
+
+            li {
+                border: 1px solid $gridColor;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
         }
         &-column {
             flex-direction: column;
+            li {
+                border: 1px solid $gridColor;
+
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
         }
         // Modules
         // States
-        // Themes
-        li {
-            border: 1px solid $gridColor;
+        a:link {
+            color: $primaryColor;
+            text-decoration: none;
+            margin-left: $defaultGap;
         }
+        li:has(a:hover) {
+            a:hover {
+                color: $onPrimaryColor;
+            }
+            background-color: $primaryColor;
+            transition: background-color 0.5s ease;
+        }
+        // Themes
     }
     // - - - - - - - - - -
 }
