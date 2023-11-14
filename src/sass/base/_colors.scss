@@ -3,7 +3,6 @@
     @include listReset();
     display: flex;
     gap: 1rem;
-    
 
     &-row {
         flex-direction: row;
@@ -16,12 +15,14 @@
 .light {
     background-color: $lightColor;
 
+    //.light-100 {}
     @each $gradation in $gradations {
         &-#{$gradation * 10} {
             background-color: darken($lightColor, $gradation);
         }
     }
 }
+//.dark-100 {}
 .dark {
     background-color: $darkColor;
     @each $gradation in $gradations {

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 html,
 html * {
   box-sizing: border-box;
@@ -174,8 +175,24 @@ article abbr {
   text-transform: uppercase;
 }
 
-.figure {
+.ws-icon {
+  color: #007bff;
+  text-shadow: 0.125rem 0.125rem 0.15rem rgba(0, 0, 0, 0.25);
+  font-size: 1.5rem;
+}
+
+.ws-figure {
+  list-style-type: none;
   margin: 0;
+  padding: 0;
+}
+.ws-figure-responsive img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.ws-figure figcaption::before {
+  content: "Figure: ";
 }
 
 .ws-header {
@@ -183,6 +200,32 @@ article abbr {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+.ws-header .brand {
+  border: 1px solid rgba(0, 200, 250, 0.5);
+  color: transparent;
+  background-image: url(../figures/shou.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.ws-header .logo {
+  width: 6rem;
+  height: 6rem;
+  border: 1px solid rgba(0, 200, 250, 0.5);
+}
+.ws-header .logo svg {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  stroke-linejoin: round;
+  stroke-miterlimit: 2;
+  fill: red;
+  background: black;
+}
+.ws-header .logo img {
+  background: black;
+  width: 100%;
+  height: auto;
 }
 
 @media screen {
