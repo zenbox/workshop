@@ -163,6 +163,15 @@ article p {
   column-width: 16rem;
   column-gap: 2rem;
   column-rule: 1px solid black;
+  break-after: always;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  widows: 3;
+  orphans: 3;
+}
+article abbr {
+  text-transform: uppercase;
 }
 
 .figure {

@@ -1,7 +1,25 @@
 article {
     p {
+        // Multi column layout
         column-width: 16rem;
         column-gap: 2rem;
         column-rule: 1px solid black;
+
+        break-after: always;
+
+        // Text alignment and more
+        text-align: justify;
+        text-justify: inter-word;
+        hyphens: auto;
+
+        widows: 3; // Schusterjungen
+        orphans: 3; // Hurenkinder
+
+        // word-spacing:0.125em;
+        // letter-spacing:0.05em;
+    }
+
+    abbr {
+        text-transform: uppercase;
     }
 }
