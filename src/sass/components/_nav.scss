@@ -1,28 +1,35 @@
-.#{$prefix}-nav {
-    // Base
-    // list-reset
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+@media screen {
+    // - - - - - - - - - - -
+    .#{$prefix}-nav {
+        // Base
+        // list-reset
+        @include listReset();
 
-    // Layout
-    display: flex;
+        // Layout
+        display: flex;
 
-    justify-content: space-evenly;
-    align-items: stretch;
+        justify-content: space-evenly;
+        align-items: stretch;
 
-    gap: $defaultGap;
+        gap: $defaultGap;
 
-    &-row {
-        flex-direction: row;
+        &-row {
+            flex-direction: row;
+        }
+        &-column {
+            flex-direction: column;
+        }
+        // Modules
+        // States
+        // Themes
+        li {
+            border: 1px solid $gridColor;
+        }
     }
-    &-column {
-        flex-direction: column;
-    }
-    // Modules
-    // States
-    // Themes
-    li {
-        border: 1px solid $gridColor;
+    // - - - - - - - - - -
+}
+@media print and (min-device-width: 21cm) {
+    .#{$prefix}-nav {
+        display: none;
     }
 }

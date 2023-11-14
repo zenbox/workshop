@@ -1,7 +1,7 @@
 html {
-    font-family: sans-serif;
-    font-size: 16px; // root em!
-    line-height: 1.4;
+    font-family: $fontFamily;
+    font-size: $baseFontSize; // root em!
+    line-height: $lineHeight;
 }
 
 h1 {

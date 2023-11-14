@@ -1,0 +1,18 @@
+@mixin listReset() {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+@media screen {
+    // All devices fallback
+    
+    // Extra-small
+    @media (max-width: 599px) {}
+    // Small (tablet)
+    @media (min-width: 600px) {}
+    @media (min-width: 905px) {}
+    // Medium (laptop)
+    @media (min-width: 1240px) {}
+    // Large (desktop)
+    @media (min-width: 1440px) {}
+}

@@ -1,0 +1,43 @@
+// Base
+.colors {
+    @include listReset();
+    display: flex;
+    gap: 1rem;
+    
+
+    &-row {
+        flex-direction: row;
+    }
+    &-column {
+        flex-direction: column;
+    }
+}
+
+.light {
+    background-color: $lightColor;
+
+    @each $gradation in $gradations {
+        &-#{$gradation * 10} {
+            background-color: darken($lightColor, $gradation);
+        }
+    }
+}
+.dark {
+    background-color: $darkColor;
+    @each $gradation in $gradations {
+        &-#{$gradation * 10} {
+            background-color: lighten($darkColor, $gradation);
+        }
+    }
+}
+
+// Layout
+.light,
+.dark {
+    display: block;
+    width: 4rem;
+    height: 2rem;
+}
+// Modules
+// States
+// Theme

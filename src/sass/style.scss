@@ -1,5 +1,18 @@
+// Variables, mixins, functions
 @import "variables";
+@import "mixins";
 
-@import "base/index";
-@import "templates/index";
-@import "components/index";
+// @layer base, template, compontent, customer;
+
+// Base
+@import "base/index"; // layer(base);
+
+//Templates
+@import "templates/index"; // layer(template);
+
+// Components
+@import "components/index"; // layer(component);
+
+// States
+
+// Themes

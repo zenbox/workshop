@@ -1,13 +1,19 @@
 // SCSS Variablen
 
+// Common values
 $prefix: "ws";
-
 $defaultGap: 0.5rem;
 
-// Colors
-$gridColor : rgba(0,200,250,0.5);
+// Typography
+$baseFontSize: clamp(16px, 2vw, 24px); // Fluid font sizes!
+$fontFamily: monospace, "Noto Serif", serif;
+$fontSize: 1rem;
+$lineHeight: 1.6;
 
-// Theme colors
+// Colors
+$gridColor: rgba(0, 200, 250, 0.5);
+
+// Theme colors (customer corporate)
 $primaryColor: #007bff;
 $secondaryColor: #6c757d;
 $tertiaryColor: #6c757d;
@@ -21,3 +27,16 @@ $dangerColor: #dc3545;
 // Common colors
 $lightColor: #f8f9fa;
 $darkColor: #343a40;
+
+// Color gradations
+$gradations: 10,20,30,40,50,60,70,80,90;
+
+// Breakpoints
+$breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);

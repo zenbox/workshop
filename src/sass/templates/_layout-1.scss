@@ -9,46 +9,78 @@
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2023 Michael Reichart, Cologne
 
+// - - - - - - - - - -
+// All devices fallback
+// - - - - - - - - - -
 .#{$prefix}-layout-1 {
-    // Base
-    margin: 4 * $defaultGap;
-    // Layout
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: 8rem auto 6rem;
+    display: block;
+    width: 100%;
+    min-height: 100%;
 
-    gap: $defaultGap;
-
-    // Module
-    &-header {
-        grid-column: 1 / span 12;
-        grid-row: 1 / span 1;
-    }
-    &-nav {
-        grid-column: 1 / span 3;
-        grid-row: 2 / span 1;
-    }
-    &-main {
-        grid-column: 4 / span 9;
-        grid-row: 2 / span 1;
-    }
+    &-header,
+    &-nav,
+    &-main,
     &-footer {
-        grid-column: 1 / span 12;
-        grid-row: 3 / span 1;
-    }
-
-    // States
-    // Theme
-    > * {
-        border: 1px solid $gridColor;
+        padding: 1rem;
+        display: block;
+        width: 100%;
     }
 }
 
-@media screen and (max-width: 767px) {
+// - - - - - - - - - -
+// Small device (tablet)
+// - - - - - - - - - -
+@media screen and (min-width: 600px) {
+}
+
+// - - - - - - - - - -
+// Medium device (desktop)
+// - - - - - - - - - -
+@media screen and (min-width: 1240px) {
+    // - - - - - - - - - -
     .#{$prefix}-layout-1 {
         // Base
-        margin: 1rem;
+        margin: 4 * $defaultGap;
         // Layout
-        display: block;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 8rem auto 6rem;
+
+        gap: $defaultGap;
+
+        // Module
+        &-header {
+            grid-column: 1 / span 12;
+            grid-row: 1 / span 1;
+        }
+        &-nav {
+            grid-column: 1 / span 3;
+            grid-row: 2 / span 1;
+        }
+        &-main {
+            grid-column: 4 / span 9;
+            grid-row: 2 / span 1;
+        }
+        &-footer {
+            grid-column: 1 / span 12;
+            grid-row: 3 / span 1;
+        }
+
+        // States
+        // Theme
+        > * {
+            border: 1px solid $gridColor;
+        }
     }
+
+    @media screen and (max-width: 767px) {
+        .#{$prefix}-layout-1 {
+            // Base
+            margin: 1rem;
+            // Layout
+            display: block;
+        }
+    }
+
+    // - - - - - - - - - -
 }
