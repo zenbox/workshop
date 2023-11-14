@@ -8,8 +8,8 @@ body {
 }
 
 html {
-  font-family: monospace, "Noto Serif", serif;
-  font-size: clamp(16px, 2vw, 24px);
+  font-family: "Noto Serif", serif;
+  font-size: clamp(13px, 2vw, 20px);
   line-height: 1.6;
 }
 
@@ -110,8 +110,8 @@ h6 {
 .light,
 .dark {
   display: block;
-  width: 4rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
 }
 
 .ws-layout-1 {
@@ -162,7 +162,7 @@ h6 {
 article p {
   column-width: 16rem;
   column-gap: 2rem;
-  column-rule: 1px solid #ccc;
+  column-rule: 1px solid black;
 }
 
 .figure {
