@@ -32,6 +32,7 @@
 
         // Base
 
+        // Behaviour
         * {
             font-family: $formFontFamily;
             font-size: $formFontSize;
@@ -40,14 +41,18 @@
             border: 0;
 
             margin-block: $defaultGap; // margin-bottom, margin-top
+
+            transition-property: all;
+            transition-duration: 250ms;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0s;
         }
 
         fieldset {
             box-shadow: 0.125rem 0.125rem 0.25rem rgba($darkColor, 0.25);
-            
+
             &:focus-within {
                 box-shadow: 0.25rem 0.25rem 1rem rgba($darkColor, 0.25);
-
             }
         }
 
@@ -70,6 +75,7 @@
             display: none;
             opacity: 0;
         }
+
         // Layout
         fieldset {
             padding-inline: 5 * $defaultGap;
@@ -79,7 +85,16 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+
+            & > fieldset {
+                flex-basis: 100%;
+                flex-grow: 1;
+                flex-shrink: 1;
+
+                display: flex;
+            }
         }
+
         // Modules
         label {
             flex-basis: 8rem;
@@ -87,7 +102,7 @@
             flex-shrink: 0;
         }
         input {
-            flex-basis: 75%;
+            flex-basis: 82%;
             flex-grow: 1;
             flex-shrink: 1;
         }
@@ -135,26 +150,24 @@
     // States
     input {
         border: 0;
-        border-bottom: 1px solid $darkColor;
+        outline: 0;
 
-        // Behaviour
-        transition-property: all;
-        transition-duration: 250ms;
-        transition-timing-function: ease-in-out;
-        transition-delay: 0s;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-bottom-color: lighten($darkColor, 20);
 
         &:focus {
             border-bottom-style: solid;
-            border-bottom-width: 3px;
+            border-bottom-width: 2px;
             border-bottom-color: $primaryColor;
             background-color: lighten($primaryColor, 40%);
         }
 
         &:valid {
-            border-style: solid;
-            border-width: 3px;
-            border-color: $successColor;
-            background-color: lighten($successColor, 40%);
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: $successColor;
+            background-color: lighten($successColor, 57%);
             & + .errorText {
                 animation: blend-out 1s ease-in-out;
             }
@@ -164,7 +177,7 @@
             border-bottom-style: solid;
             border-bottom-width: 3px;
             border-bottom-color: $dangerColor;
-            background-color: lighten($dangerColor, 40%);
+            background-color: lighten($dangerColor, 44%);
 
             & + .errorText {
                 display: block;

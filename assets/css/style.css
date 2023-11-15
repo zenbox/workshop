@@ -285,6 +285,10 @@ article abbr {
   line-height: 1.6;
   border: 0;
   margin-block: 0.5rem;
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
 }
 .ws-login-form fieldset {
   box-shadow: 0.125rem 0.125rem 0.25rem rgba(52, 58, 64, 0.25);
@@ -316,13 +320,19 @@ article abbr {
   align-items: center;
   flex-wrap: wrap;
 }
+.ws-login-form fieldset > fieldset {
+  flex-basis: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+}
 .ws-login-form label {
   flex-basis: 8rem;
   flex-grow: 0;
   flex-shrink: 0;
 }
 .ws-login-form input {
-  flex-basis: 75%;
+  flex-basis: 82%;
   flex-grow: 1;
   flex-shrink: 1;
 }
@@ -355,23 +365,22 @@ article abbr {
 
 .ws-login-form:focus-within input {
   border: 0;
-  border-bottom: 1px solid #343a40;
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: ease-in-out;
-  transition-delay: 0s;
+  outline: 0;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #626d78;
 }
 .ws-login-form:focus-within input:focus {
   border-bottom-style: solid;
-  border-bottom-width: 3px;
+  border-bottom-width: 2px;
   border-bottom-color: #007bff;
   background-color: #cce5ff;
 }
 .ws-login-form:focus-within input:valid {
-  border-style: solid;
-  border-width: 3px;
-  border-color: #28a745;
-  background-color: #afecbd;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #28a745;
+  background-color: #f5fdf7;
 }
 .ws-login-form:focus-within input:valid + .errorText {
   animation: blend-out 1s ease-in-out;
@@ -380,7 +389,7 @@ article abbr {
   border-bottom-style: solid;
   border-bottom-width: 3px;
   border-bottom-color: #dc3545;
-  background-color: #fae3e5;
+  background-color: #fdf4f5;
 }
 .ws-login-form:focus-within input:invalid + .errorText {
   display: block;

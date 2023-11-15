@@ -108,26 +108,33 @@
                     <fieldset>
                         <legend>User login</legend>
 
-                        <label for="login-email">Your email</label>
-                        <input
-                            type="email"
-                            name="email"
-                            required
-                            id="login-email" />
+                        <fieldset>
+                            <label for="login-email">Your email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                required
+                                id="login-email" />
+                            <p class="errorText">
+                                Lorem Email lictus dolor sit.
+                            </p>
+                        </fieldset>
 
-                        <label for="login-password">Your password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            required
-                            minlength="8"
-                            id="login-password" />
+                        <fieldset>
+                            <label for="login-password">Your password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                required
+                                minlength="8"
+                                id="login-password" />
 
-                        <p class="errorText">
-                            Lorem mindestens 8 zeichen ipsum
-                        </p>
+                            <p class="errorText">
+                                Lorem mindestens 8 zeichen ipsum
+                            </p>
+                        </fieldset>
 
-                        <div class="login-select">
+                        <fieldset class="login-select">
                             <label class="checkbox">
                                 <input
                                     type="checkbox"
@@ -145,10 +152,12 @@
                                 <option value="">Italy</option>
                                 <option value="">Spain</option>
                             </select>
-                        </div>
+                        </fieldset>
 
-                        <button type="reset">Reset</button>
-                        <button type="submit">Login</button>
+                        <fieldset>
+                            <button type="submit">Login</button>
+                            <button type="reset">Reset</button>
+                        </fieldset>
                     </fieldset>
                 </form>
             </article>
