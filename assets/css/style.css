@@ -251,11 +251,43 @@ article abbr {
   height: auto;
 }
 
+@keyframes blend-in {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  50% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+@keyframes blend-out {
+  0% {
+    display: block;
+    opacity: 1;
+  }
+  50% {
+    display: block;
+    opacity: 0;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
 .ws-login-form * {
-  font-family: "Noto Sans Mono", monospace;
-  font-size: 0.8rem;
+  font-family: "Barlow", sans-serif;
+  font-size: 1.05rem;
   line-height: 1.6;
   margin-block: 0.5rem;
+}
+.ws-login-form .errorText {
+  display: none;
+  opacity: 0;
 }
 .ws-login-form fieldset {
   padding-inline: 2.5rem;
@@ -289,17 +321,10 @@ article abbr {
 .ws-login-form .login-select label.checkbox {
   grid-column: 1/span 1;
   grid-row: 2/span 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 0.5rem;
 }
 .ws-login-form .login-select [for=login-country] {
   grid-column: 2/span 1;
   grid-row: 1/span 1;
-  align-self: flex-end;
 }
 .ws-login-form .login-select [for=login-country] + select {
   grid-column: 2/span 1;
@@ -307,6 +332,42 @@ article abbr {
 }
 .ws-login-form button {
   margin-inline: 0.25rem;
+}
+
+.ws-login-form:focus-within input {
+  border: 0;
+  border-bottom: 1px solid #343a40;
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+.ws-login-form:focus-within input:focus {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #007bff;
+  background-color: #cce5ff;
+}
+.ws-login-form:focus-within input:valid {
+  border-style: solid;
+  border-width: 3px;
+  border-color: #28a745;
+  background-color: #afecbd;
+}
+.ws-login-form:focus-within input:valid + .errorText {
+  animation: blend-out 1s ease-in-out;
+}
+.ws-login-form:focus-within input:invalid {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: #dc3545;
+  background-color: #fae3e5;
+}
+.ws-login-form:focus-within input:invalid + .errorText {
+  display: block;
+  opacity: 1;
+  color: #dc3545;
+  animation: blend-in 1s ease-in-out;
 }
 
 @media screen {

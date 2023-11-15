@@ -118,14 +118,19 @@
                             type="password"
                             name="password"
                             required
+                            minlength="8"
                             id="login-password" />
 
+                            <p class="errorText">Lorem mindestens 8 zeichen ipsum</p>
+
+
                         <div class="login-select">
+                           
                             <label class="checkbox">
                                 <input
                                     type="checkbox"
                                     name=""
-                                    id="login-agree-termså" />
+                                    id="login-agree-terms" />
                                 agree terms
                             </label>
 
@@ -139,8 +144,10 @@
                                 <option value="">Spain</option>
                             </select>
                         </div>
+
                         <button type="reset">Reset</button>
                         <button type="submit">Login</button>
+
                     </fieldset>
                 </form>
             </article>

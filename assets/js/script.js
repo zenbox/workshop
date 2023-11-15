@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // - - -
 
     setBoxes = () => {
-        let boxes = document.querySelectorAll("body > *, body > * > *, fieldset > *");
+        let boxes = document.querySelectorAll("body > *, body > * > *");
         console.dir(boxes);
         boxes.forEach((box) => {
             box.classList.add("dev-box");

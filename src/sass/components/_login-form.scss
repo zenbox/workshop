@@ -1,11 +1,46 @@
 .#{$prefix} {
     &-login-form {
+        @keyframes blend-in {
+            0% {
+                display: none;
+                opacity: 0;
+            }
+            50% {
+                display: block;
+                opacity: 0;
+            }
+            100% {
+                display: block;
+                opacity: 1;
+            }
+        }
+
+        @keyframes blend-out {
+            0% {
+                display: block;
+                opacity: 1;
+            }
+            50% {
+                display: block;
+                opacity: 0;
+            }
+            100% {
+                display: none;
+                opacity: 0;
+            }
+        }
+
         // Base
         * {
             font-family: $formFontFamily;
             font-size: $formFontSize;
             line-height: $lineHeight;
-            margin-block: $defaultGap;
+            margin-block: $defaultGap; // margin-bottom, margin-top
+        }
+
+        .errorText {
+            display: none;
+            opacity: 0;
         }
         // Layout
         fieldset {
@@ -47,19 +82,11 @@
             label.checkbox {
                 grid-column: 1 / span 1;
                 grid-row: 2 / span 1;
-
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-end;
-                align-items: center;
-                flex-wrap: nowrap;
-                gap: $defaultGap;
             }
 
             [for="login-country"] {
                 grid-column: 2 / span 1;
                 grid-row: 1 / span 1;
-                align-self: flex-end;
 
                 + select {
                     grid-column: 2 / span 1;
@@ -67,11 +94,57 @@
                 }
             }
         }
+
         button {
             margin-inline: $defaultGap / 2;
         }
-        // States
-        
+
         // Themes
+    }
+}
+
+.#{$prefix}-login-form:focus-within {
+    // States
+    input {
+        border: 0;
+        border-bottom: 1px solid $darkColor;
+
+        // Behaviour
+        transition-property: all;
+        transition-duration: 250ms;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0s;
+
+        &:focus {
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: $primaryColor;
+            background-color: lighten($primaryColor, 40%);
+        }
+
+        &:valid {
+            border-style: solid;
+            border-width: 3px;
+            border-color: $successColor;
+            background-color: lighten($successColor, 40%);
+            & + .errorText {
+                animation: blend-out 1s ease-in-out;
+            }
+        }
+
+        &:invalid {
+            border-bottom-style: solid;
+            border-bottom-width: 3px;
+            border-bottom-color: $dangerColor;
+            background-color: lighten($dangerColor, 40%);
+
+            & + .errorText {
+                display: block;
+                opacity: 1;
+                color: $dangerColor;
+
+                animation: blend-in 1s ease-in-out;
+            }
+        }
     }
 }
