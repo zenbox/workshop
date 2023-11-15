@@ -31,11 +31,39 @@
         }
 
         // Base
+
         * {
             font-family: $formFontFamily;
             font-size: $formFontSize;
             line-height: $lineHeight;
+
+            border: 0;
+
             margin-block: $defaultGap; // margin-bottom, margin-top
+        }
+
+        fieldset {
+            box-shadow: 0.125rem 0.125rem 0.25rem rgba($darkColor, 0.25);
+            
+            &:focus-within {
+                box-shadow: 0.25rem 0.25rem 1rem rgba($darkColor, 0.25);
+
+            }
+        }
+
+        fieldset,
+        button,
+        select {
+            border: 1px solid $darkColor;
+            border-radius: $defaultGap / 3;
+        }
+
+        legend {
+            font-weight: 500;
+        }
+
+        input {
+            border-bottom: 1px solid black;
         }
 
         .errorText {

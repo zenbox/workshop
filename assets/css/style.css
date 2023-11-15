@@ -283,7 +283,26 @@ article abbr {
   font-family: "Barlow", sans-serif;
   font-size: 1.05rem;
   line-height: 1.6;
+  border: 0;
   margin-block: 0.5rem;
+}
+.ws-login-form fieldset {
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(52, 58, 64, 0.25);
+}
+.ws-login-form fieldset:focus-within {
+  box-shadow: 0.25rem 0.25rem 1rem rgba(52, 58, 64, 0.25);
+}
+.ws-login-form fieldset,
+.ws-login-form button,
+.ws-login-form select {
+  border: 1px solid #343a40;
+  border-radius: 0.1666666667rem;
+}
+.ws-login-form legend {
+  font-weight: 500;
+}
+.ws-login-form input {
+  border-bottom: 1px solid black;
 }
 .ws-login-form .errorText {
   display: none;
@@ -396,6 +415,9 @@ article abbr {
     justify-content: flex-start;
     align-items: center;
   }
+  .ws-nav a {
+    width: 100%;
+  }
   .ws-nav a:link {
     color: #007bff;
     text-decoration: none;
@@ -412,6 +434,29 @@ article abbr {
 @media print and (min-device-width: 21cm) {
   .ws-nav {
     display: none;
+  }
+}
+:root {
+  --primaryColor: #83baf4;
+  --onPrimaryColor: #fff;
+  --secondaryColor: #6c757d;
+  --tertiaryColor: #6c757d;
+  --successColor: #28a745;
+  --infoColor: #17a2b8;
+  --warningColor: #ffc107;
+  --dangerColor: #dc3545;
+  --lightColor: #f8f9fa;
+  --darkColor: #343a40;
+}
+
+@media (prefers-color-scheme: dark) {
+  .night {
+    background-color: var(--darkColor);
+    color: var(--lightColor);
+    width: calc(100vw - 6rem);
+  }
+  .night a:link {
+    color: var(--primaryColor);
   }
 }
 .dev-box {

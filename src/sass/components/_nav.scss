@@ -32,6 +32,7 @@
         }
         // Modules
         // States
+        a {width: 100%;}
         a:link {
             color: $primaryColor;
             text-decoration: none;
@@ -46,6 +47,8 @@
         }
         // Themes
     }
+
+
     // - - - - - - - - - -
 }
 @media print and (min-device-width: 21cm) {

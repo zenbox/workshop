@@ -1,0 +1,29 @@
+// Theme colors (customer corporate)
+:root {
+    --primaryColor: #83baf4;
+    --onPrimaryColor: #fff;
+    --secondaryColor: #6c757d;
+    --tertiaryColor: #6c757d;
+
+    // Semantic colors
+    --successColor: #28a745;
+    --infoColor: #17a2b8;
+    --warningColor: #ffc107;
+    --dangerColor: #dc3545;
+
+    // Common colors
+    --lightColor: #f8f9fa;
+    --darkColor: #343a40;
+}
+@media (prefers-color-scheme: dark) {
+    .night {
+        background-color: var(--darkColor);
+        color: var(--lightColor);
+
+        a:link {
+            color: var(--primaryColor);
+        }
+
+        width: calc(100vw - 6rem);
+    }
+}
