@@ -1,0 +1,77 @@
+.#{$prefix} {
+    &-login-form {
+        // Base
+        * {
+            font-family: $formFontFamily;
+            font-size: $formFontSize;
+            line-height: $lineHeight;
+            margin-block: $defaultGap;
+        }
+        // Layout
+        fieldset {
+            padding-inline: 5 * $defaultGap;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        // Modules
+        label {
+            flex-basis: 8rem;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        input {
+            flex-basis: 75%;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        .login-select {
+            // Base
+            * {
+                margin: 0;
+                white-space: nowrap;
+            }
+
+            // Layout
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: $defaultGap;
+
+            margin-inline: calc(30%);
+
+            // Modules
+            label.checkbox {
+                grid-column: 1 / span 1;
+                grid-row: 2 / span 1;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                align-items: center;
+                flex-wrap: nowrap;
+                gap: $defaultGap;
+            }
+
+            [for="login-country"] {
+                grid-column: 2 / span 1;
+                grid-row: 1 / span 1;
+                align-self: flex-end;
+
+                + select {
+                    grid-column: 2 / span 1;
+                    grid-row: 2 / span 1;
+                }
+            }
+        }
+        button {
+            margin-inline: $defaultGap / 2;
+        }
+        // States
+        
+        // Themes
+    }
+}

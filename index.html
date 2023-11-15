@@ -100,40 +100,47 @@
             <article>
                 <h2>A form</h2>
 
-                <form action="">
+                <form
+                    action=""
+                    class="ws-login-form">
                     <fieldset>
                         <legend>User login</legend>
-                        
+
                         <label for="login-email">Your email</label>
                         <input
                             type="email"
-                            name=""
+                            name="email"
+                            required
                             id="login-email" />
 
                         <label for="login-password">Your password</label>
                         <input
                             type="password"
-                            name=""
+                            name="password"
+                            required
                             id="login-password" />
 
-                        <input
-                            type="checkbox"
-                            name=""
-                            id="login-agree-termså" />
-                        <label for="login-agree-termn">agree terms</label>
+                        <div class="login-select">
+                            <label class="checkbox">
+                                <input
+                                    type="checkbox"
+                                    name=""
+                                    id="login-agree-termså" />
+                                agree terms
+                            </label>
 
-                        <label for="login-country">Your country</label>
-                        <select
-                            name=""
-                            id="login-country">
-                            <option value="">Germany</option>
-                            <option value="">France</option>
-                            <option value="">Italy</option>
-                            <option value="">Spain</option>
-                        </select>
-
-                        <button type="submit">Login</button>
+                            <label for="login-country">Your country</label>
+                            <select
+                                name=""
+                                id="login-country">
+                                <option value="">Germany</option>
+                                <option value="">France</option>
+                                <option value="">Italy</option>
+                                <option value="">Spain</option>
+                            </select>
+                        </div>
                         <button type="reset">Reset</button>
+                        <button type="submit">Login</button>
                     </fieldset>
                 </form>
             </article>
