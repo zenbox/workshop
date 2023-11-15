@@ -157,9 +157,6 @@ h6 {
     grid-column: 1/span 12;
     grid-row: 3/span 1;
   }
-  .ws-layout-1 > * {
-    border: 1px solid rgba(0, 200, 250, 0.5);
-  }
 }
 @media screen and (min-width: 905px) and (max-width: 767px) {
   .ws-layout-1 {
@@ -228,7 +225,6 @@ article abbr {
   align-items: center;
 }
 .ws-header .brand {
-  border: 1px solid rgba(0, 200, 250, 0.5);
   color: transparent;
   background-image: url(../figures/shou.svg);
   background-repeat: no-repeat;
@@ -268,7 +264,6 @@ article abbr {
     flex-direction: row;
   }
   .ws-nav-row li {
-    border: 1px solid rgba(0, 200, 250, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -277,7 +272,6 @@ article abbr {
     flex-direction: column;
   }
   .ws-nav-column li {
-    border: 1px solid rgba(0, 200, 250, 0.5);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -299,4 +293,7 @@ article abbr {
   .ws-nav {
     display: none;
   }
+}
+.dev-box {
+  outline: 1px solid rgba(0, 200, 250, 0.5);
 }
