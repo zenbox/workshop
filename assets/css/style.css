@@ -302,6 +302,9 @@ article abbr {
   border: 1px solid #343a40;
   border-radius: 0.1666666667rem;
 }
+.ws-login-form fieldset fieldset {
+  border: 0;
+}
 .ws-login-form legend {
   font-weight: 500;
 }

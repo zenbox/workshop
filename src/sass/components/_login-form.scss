@@ -63,6 +63,10 @@
             border-radius: $defaultGap / 3;
         }
 
+        fieldset fieldset {
+            border: 0;
+        }
+
         legend {
             font-weight: 500;
         }
