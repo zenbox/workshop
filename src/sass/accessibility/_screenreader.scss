@@ -27,19 +27,22 @@
 		@see https://csswizardry.com/2016/05/the-importance-of-important/
 */
 
-.sr-only, .visually-hidden {
-    border: 0 !important;
-    clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
-    -webkit-clip-path: inset(50%) !important;
-    clip-path: inset(50%) !important; /* 2 */
-    height: 1px !important;
-    margin: -1px !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    position: absolute !important;
-    width: 1px !important;
-    white-space: nowrap !important; /* 3 */
+.sr-only,
+.visually-hidden {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px); /* 1 */
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%); /* 2 */
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; /* 3 */
 }
+
+
 
 /*
 	Use in conjunction with .sr-only to only display content when it's focused.
@@ -52,15 +55,15 @@
 */
 .sr-only-focusable:focus,
 .sr-only-focusable:active {
-    clip: auto !important;
-    -webkit-clip-path: none !important;
-    clip-path: none !important;
-    height: auto !important;
-    margin: auto !important;
-    overflow: visible !important;
-    width: auto !important;
-    white-space: normal !important;
+    clip: auto;
+    -webkit-clip-path: none;
+    clip-path: none;
+    height: auto;
+    margin: auto;
+    overflow: visible;
+    width: auto;
+    white-space: normal;
 }
 .invisible {
-    display: none !important;
+    display: none;
 }

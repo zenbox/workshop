@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html
-    lang="en"
+    lang="de-CH"
     class="night">
     <head>
         <meta charset="UTF-8" />
@@ -10,15 +10,23 @@
         <title>Template</title>
         <link
             rel="stylesheet"
-            href="assets/css/#style.css" />
+            href="assets/css/style.css" />
         <style>
-            .material-symbols-outlined {
+            /* .material-symbols-outlined {
                 display: none;
-            }
+            } */
         </style>
     </head>
 
     <body class="ws-layout-1">
+        <div id="skiplinks">
+            <a href="#test">Zum Hauptinhalt</a>
+            <a href="#my-nav-id">Zur Navigation</a>
+            <a href="#search">Zur Suche</a>
+            <a href="#footer">Zum Fußbereich</a>
+            <a href="#notes">Zu den Erläuterungen zur Barrierefreiheit</a>
+        </div>
+
         <header
             id="test"
             class="ws-layout-1-header ws-header">
@@ -46,17 +54,42 @@
                 <!-- - - - - - -->
             </nav>
         </header>
+
         <nav class="ws-layout-1-nav">
             <!-- - - - - - -->
-            <h4 class="sr-only">Navigation für alle Inhalte</h4>
-            <ul class="ws-nav ws-nav-column">
+            <h4
+                id="my-nav-id"
+                class="sr-only">
+                Navigation für alle Inhalte
+            </h4>
+            <p
+                id="my-nav-desc"
+                class="visually-hidden">
+                Lorem <mark>descriptum dolor sit</mark> amet. Lorem ipsum dolor,
+                sit amet consectetur adipisicing elit.
+                <strong>Facere, modi qui molestias</strong> natus ad iste in
+                quos architecto vel expedita.
+            </p>
+            <ul
+                role="presentation"
+                class="ws-nav ws-nav-column"
+                aria-label="Seitennavigation"
+                aria-describedby="my-nav-desc">
                 <li>
                     <i class="ws-icon material-symbols-outlined">eco</i>
-                    <a href="#">Link 1 lorem ipsum dolor</a>
+                    <a
+                        tabindex="-1"
+                        href="#"
+                        >Link 1 lorem ipsum dolor</a
+                    >
                 </li>
                 <li>
                     <i class="ws-icon material-symbols-outlined">skull</i>
-                    <a href="#">Link 2</a>
+                    <a
+                        tabindex="1"
+                        href="#"
+                        >Link 2</a
+                    >
                 </li>
                 <li>
                     <i class="ws-icon material-symbols-outlined">forest</i>
@@ -73,8 +106,50 @@
             </ul>
             <!-- - - - - - -->
         </nav>
+
         <main class="ws-layout-1-main">
             <!-- - - - -->
+            <article>
+                <h2>Table dolor sit</h2>
+                <table class="ws-table">
+                    <caption>
+                        Lorem ipsum dolor sit amet consectetur adipisicing
+                        elit.
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>Headline 1</th>
+                            <th>Headline 2</th>
+                            <th>Headline 3</th>
+                            <th>Headline 4</th>
+                            <th>Headline 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cell 1</td>
+                            <td>Cell 2</td>
+                            <td>Cell 3</td>
+                            <td>Cell 4</td>
+                            <td>Cell 5</td>
+                        </tr>
+                        <tr>
+                            <td>Cell 1</td>
+                            <td>Cell 2</td>
+                            <td>Cell 3</td>
+                            <td>Cell 4</td>
+                            <td>Cell 5</td>
+                        </tr>
+                        <tr>
+                            <td>Cell 1</td>
+                            <td>Cell 2</td>
+                            <td>Cell 3</td>
+                            <td>Cell 4</td>
+                            <td>Cell 5</td>
+                        </tr>
+                        </tbody>
+                        </table>
+            </article>
             <article>
                 <h2>A form</h2>
 
@@ -113,6 +188,7 @@
                         <fieldset class="login-select">
                             <label class="checkbox">
                                 <input
+                                    accesskey="e"
                                     type="checkbox"
                                     name=""
                                     id="login-agree-terms" />
@@ -176,7 +252,7 @@
                 </figure>
             </article>
 
-            <article>
+            <article tabindex="0">
                 <h2>
                     Headline 1 ipsum dolor sit
                     Er&shy;le&shy;di&shy;gungs&shy;ver&shy;merk
@@ -184,14 +260,19 @@
                 <p lang="de">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Amet recusandae
-                    <abbr title="National Aerospace ">Nasa</abbr> tempora neque.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusantium saepe est ab a laborum temporibus laudantium
-                    omnis consequatur ex, cum sint sapiente veritatis quia iusto
-                    nostrum? Quis adipisci aliquam vero aut, facere inventore,
-                    porro quod, ad vitae iste deleniti? Dolor suscipit quidem
-                    rerum, error sit non? Nemo id sit adipisci tenetur eius
-                    dolorum, quia iusto eveniet
+                    <abbr
+                        tabindex="0"
+                        lang="en"
+                        title="National Aeronautic And Space Administration"
+                        >Nasa</abbr
+                    >
+                    tempora neque. Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Accusantium saepe est ab a laborum
+                    temporibus laudantium omnis consequatur ex, cum sint
+                    sapiente veritatis quia iusto nostrum? Quis adipisci aliquam
+                    vero aut, facere inventore, porro quod, ad vitae iste
+                    deleniti? Dolor suscipit quidem rerum, error sit non? Nemo
+                    id sit adipisci tenetur eius dolorum, quia iusto eveniet
                 </p>
             </article>
 
@@ -237,7 +318,10 @@
                 </p>
             </article>
         </main>
-        <footer class="ws-layout-1-footer ws-footer">
+
+        <footer
+            id="footer"
+            class="ws-layout-1-footer ws-footer">
             <address>&copy; 2023 Michael</address>
             <ul>
                 <li><i class="material-symbols-outlined">ad_units</i></li>
@@ -245,6 +329,7 @@
                 <li><i class="material-symbols-outlined">apk_install</i></li>
             </ul>
         </footer>
+
         <script src="assets/js/script.js"></script>
     </body>
 </html>
