@@ -1,21 +1,51 @@
+// html {
+//     font-family: $fontFamily;
+//     font-size: $baseFontSize; // root em!
+//     line-height: $lineHeight;
+// }
+
+// h1 {
+//     font-size: 3rem; // 48px
+// }
+// h2 {
+//     font-size: 2rem; // 32px
+// }
+// h3 {
+//     font-size: 1.5rem; // 24px
+// }
+
+// h4,
+// h5,
+// h6 {
+//     font-size: 1.2rem;
+// }
+
 html {
-    font-family: $fontFamily;
-    font-size: $baseFontSize; // root em!
-    line-height: $lineHeight;
+    font-family: "Atkinson Hyperlegible", "Noto Serif", serif;
+    // font-size: 1rem;
+    font-size: 16px; //clamp(16px, 1.5vw, 24px);
+    line-height: 1.5;
 }
 
-h1 {
-    font-size: 3rem; // 48px
+p {
+    font-size: 1rem;
 }
+
 h2 {
-    font-size: 2rem; // 32px
-}
-h3 {
-    font-size: 1.5rem; // 24px
+    font-size: 2rem;
 }
 
-h4,
-h5,
-h6 {
-    font-size: 1.2rem;
+.size-200 {
+    font-size: 2rem;
 }
+
+
+
+// table {
+//     display: block;
+// }
+
+// tr,
+// td, th {
+//     display: block;
+// }

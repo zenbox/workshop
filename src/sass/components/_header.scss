@@ -7,6 +7,9 @@
     align-items: center;
 
     // Modules (subcomponents)
+    .bigger {
+        font-size: 1.3rem;
+    }
     .brand {
         color: transparent;
 
@@ -45,4 +48,7 @@
     }
     // States
     // Themes
+    // Theme
+    background-color: $primaryColor;
+    color: $onPrimaryColor;
 }
