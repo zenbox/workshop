@@ -173,7 +173,7 @@
             border-bottom-color: $successColor;
             background-color: lighten($successColor, 57%);
             & + .errorText {
-                animation: blend-out 1s ease-in-out;
+                animation: blend-out 2s ease-in-out;
             }
         }
 
@@ -188,7 +188,7 @@
                 opacity: 1;
                 color: $dangerColor;
 
-                animation: blend-in 1s ease-in-out;
+                animation: blend-in 2s ease-in-out;
             }
         }
     }

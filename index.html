@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="de-CH" class="">
+<html
+    lang="de-CH"
+    class="">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -30,7 +32,7 @@
             class="ws-layout-1-header ws-header">
             <h1 class="brand">Shou</h1>
 
-<p class="bigger">Lorem header sit</p>
+            <p class="bigger">Lorem header sit</p>
 
             <nav class="">
                 <!-- - - - - - -->
@@ -111,9 +113,28 @@
         <main class="ws-layout-1-main">
             <!-- - - - -->
             <article>
+                <h2>Icons und Buttons</h2>
+
+                <!-- <i class="fa-solid fa-arrow-right fa-3x"></i> -->
+
+                <button
+                    class="btn fa-solid fa-arrow-right fa-3x"
+                    title="nach rechts">
+                    <span class="visually-hidden">nach rechts</span>
+                </button>
+
+                <button>
+                    <i
+                        title="nach rechts"
+                        aria-hidden="true"
+                        class="fa-solid fa-arrow-right fa-3x"></i>
+                    <span class="visually-hidden">nach rechts</span>
+                </button>
+            </article>
+            <article>
                 <h2>Leserlichkeit von Schriften</h2>
                 <h3>Atkinson Hyperlegible</h3>
-                <ul style="font: size 1rem">
+                <ul style="font-size: 1rem">
                     <li>Farn Illertissen</li>
                     <li>08BO4</li>
                     <li>683590</li>
@@ -175,7 +196,9 @@
                                 type="email"
                                 name="email"
                                 required
-                                id="login-email" />
+                                id="login-email"
+                                value="lorem dolor amet"
+                                autocomplete="off" readonly/>
                             <p class="errorText">
                                 Lorem Email lictus dolor sit.
                             </p>
