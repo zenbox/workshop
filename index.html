@@ -113,6 +113,32 @@
         <main class="ws-layout-1-main">
             <!-- - - - -->
             <article>
+                <h2>Bluetooth Low Energy</h2>
+                <form>
+                    <label for="allDevices">All Devices</label>
+                    <input
+                        id="allDevices"
+                        type="checkbox" />
+                    <input
+                        id="service"
+                        type="text"
+                        size="17"
+                        list="services"
+                        placeholder="Bluetooth Service" />
+                    <input
+                        id="name"
+                        type="text"
+                        size="17"
+                        placeholder="Device Name" />
+                    <input
+                        id="namePrefix"
+                        type="text"
+                        size="17"
+                        placeholder="Device Name Prefix" />
+                    <button>Get Bluetooth Device Info</button>
+                </form>
+            </article>
+            <article>
                 <h2>Icons und Buttons</h2>
 
                 <!-- <i class="fa-solid fa-arrow-right fa-3x"></i> -->
@@ -180,6 +206,24 @@
                         </tr>
                     </tbody>
                 </table>
+                <!-- <style>
+                    table,
+                    th,
+                    td {
+                        border: 1px solid black;
+                    }
+
+                    th {
+                        display: none;
+                    }
+
+                    table, tr {
+                        display: block;
+                    }
+                    td{
+                        display: block;
+                    }
+                </style> -->
             </article>
             <article>
                 <h2>A form</h2>
@@ -198,7 +242,8 @@
                                 required
                                 id="login-email"
                                 value="lorem dolor amet"
-                                autocomplete="off" readonly/>
+                                autocomplete="off"
+                                readonly />
                             <p class="errorText">
                                 Lorem Email lictus dolor sit.
                             </p>
@@ -369,6 +414,8 @@
             >
         </footer>
 
-        <script src="assets/js/script.js"></script>
+        <script
+            type="module"
+            src="assets/js/script.js"></script>
     </body>
 </html>

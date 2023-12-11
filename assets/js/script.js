@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     // - - -
 
-    setBoxes = () => {
+    const setBoxes = () => {
         let boxes = document.querySelectorAll(
             "body > *, body > * > *, fieldset *"
         );

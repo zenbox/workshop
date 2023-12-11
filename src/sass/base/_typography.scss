@@ -23,11 +23,48 @@
 // }
 
 html {
-    font-family: "Atkinson Hyperlegible", "Noto Serif", serif;
-    // font-size: 1rem;
-    font-size: 16px; //clamp(16px, 1.5vw, 24px);
+    font-family:  "Noto Serif", serif;
+    font-size:clamp(14.2px, 1.65vw, 25px); // Lesetextgröße (Copy)
     line-height: 1.5;
+
+
+    // letter-spacing: 0.12rem;
+    // word-spacing: 0.16rem;
 }
+
+// @media screen {
+//     // All devices fallback
+
+//     // Extra-small
+//     @media (max-width: 599px) {
+//         html {
+//             font-size: 14.2px;
+//         }
+//     }
+//     // Small (tablet)
+//     @media (min-width: 600px) {
+//         html {
+//             font-size: 16.2px;
+//         }
+//     }
+//     @media (min-width: 905px) {
+//         html {
+//             font-size: 17.7px;
+//         }
+//     }
+//     // Medium (laptop)
+//     @media (min-width: 1240px) {
+//         html {
+//             font-size: 22.2px;
+//         }
+//     }
+//     // Large (desktop)
+//     @media (min-width: 1440px) {
+//         html {
+//             font-size: 25px;
+//         }
+//     }
+// }
 
 p {
     font-size: 1rem;
@@ -37,11 +74,13 @@ h2 {
     font-size: 2rem;
 }
 
+h3 {
+    font: 1.5rem;
+}
+
 .size-200 {
     font-size: 2rem;
 }
-
-
 
 // table {
 //     display: block;
