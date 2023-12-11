@@ -1,0 +1,7 @@
+
+// 6. Developer
+body,
+body > *,
+body > * > * {
+    border: 2px solid $devColor;
+}

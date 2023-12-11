@@ -1,67 +1,8 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // - - -
+const hamburger = document.querySelector("#hamburger");
 
-    const setBoxes = () => {
-        let boxes = document.querySelectorAll(
-            "body > *, body > * > *, fieldset *"
-        );
-        console.dir(boxes);
-        boxes.forEach((box) => {
-            box.classList.add("dev-box");
-        });
-    };
+hamburger.addEventListener("click", (event) => {
+    // Wechsele die Klasse im body Element der Site aus:
+    // template-2--open / template-2--close
 
-    // setBoxes();
-    // - - -
-
-    const nav = document.getElementById("my-nav-id");
-
-    const subs = nav.querySelectorAll("li");
-    subs.forEach((sub) => {
-        sub.addEventListener("click", (event) => {
-            event.preventDefault();
-            console.log("click");
-            let li = event.target.parentElement;
-
-            li.setAttribute("aria-expanded", "true");
-            li.querySelector("ul").classList.toggle("selected");
-        });
-    });
-
-    const table = document.querySelector("table");
-    const cells = table.querySelectorAll("th, td");
-    const cellsPerRow = table.querySelectorAll("tr:first-child th").length;
-    let currentCellIndex = 0;
-
-    cells.forEach((cell, index) => {
-        cell.setAttribute("tabindex", 0);
-        cell.addEventListener("keydown", (event) => {
-            console.log(event.key);
-            switch (event.key) {
-                case "ArrowDown":
-                    if (index < cells.length - cellsPerRow) {
-                        event.preventDefault();
-                        currentCellIndex = index + cellsPerRow;
-                        cells[currentCellIndex].focus();
-                    }
-                    break;
-                case "ArrowUp":
-                    if (index >= cellsPerRow) {
-                        event.preventDefault();
-                        currentCellIndex = index - cellsPerRow;
-                        cells[currentCellIndex].focus();
-                    }
-                    break;
-                case "ArrowLeft":
-                    break;
-                case "ArrowRight":
-                    break;
-                case "Escape":
-                    cells[currentCellIndex].blur();
-                    cells.forEach((cell) => {
-                        cell.removeAttribute("tabindex");
-                    });
-            }
-        });
-    });
+    document.body.classList.toggle("template-2--open");
 });

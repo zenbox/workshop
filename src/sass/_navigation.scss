@@ -1,0 +1,34 @@
+.nav {
+    // Base
+    // Layout
+    // Components
+    // States
+    // Themes
+}
+
+// Sub-Components
+.hamburger {
+    // Base
+    $width: 2rem;
+
+    // Layout
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    width: $width;
+    height: $width;
+
+    > div {
+        display: block;
+        width: 100%;
+        height: $width / 5;
+
+        background-color: black;
+        border-radius: 1rem;
+    }
+    // Components
+    // States
+    // Themes
+}
