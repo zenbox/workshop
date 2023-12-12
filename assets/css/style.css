@@ -1,4 +1,5 @@
 /* My comment */
+@import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Hedvig+Letters+Serif:opsz@12..24&display=swap");
 html, html * {
   box-sizing: border-box;
 }
@@ -8,9 +9,41 @@ body {
 }
 
 html {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Hedvig Letters Sans", Arial, Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Hedvig Letters Serif", Georgia, serif;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 1rem;
 }
 
 .template-1 {
@@ -78,6 +111,7 @@ html {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: 8rem auto 12rem;
+    width: clamp(768px, 100vw, 120rem);
     min-height: 100vh;
   }
   .template-2 > header {
@@ -98,7 +132,64 @@ html {
   }
 }
 
-.hamburger {
+.figure {
+  margin-inline: 0;
+  display: block;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.nav {
+  list-style-type: none;
+  margin-block: 0;
+  padding-inline: 0;
+  display: flex;
+}
+.nav a[href] {
+  text-decoration: none;
+}
+.nav-row {
+  flex-direction: row;
+}
+.nav-column {
+  flex-direction: column;
+}
+.nav li,
+.nav a[href] {
+  display: block;
+  width: 100%;
+  color: blue;
+  cursor: pointer;
+}
+.nav li:visited,
+.nav a[href]:visited {
+  color: purple;
+}
+.nav li:hover,
+.nav a[href]:hover {
+  background-color: orange;
+  color: white;
+}
+.nav li:active,
+.nav a[href]:active {
+  background-color: red;
+  color: white;
+}
+
+.template-2 .hamburger {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -106,7 +197,10 @@ html {
   width: 2rem;
   height: 2rem;
 }
-.hamburger > div {
+.template-2 .hamburger > div {
+  transition-property: all;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in-out;
   display: block;
   width: 100%;
   height: 0.4rem;
@@ -114,8 +208,95 @@ html {
   border-radius: 1rem;
 }
 
-body,
-body > *,
-body > * > * {
-  border: 2px solid rgba(4, 165, 165, 0.8);
+body > * {
+  padding-inline: 0.5rem;
+}
+
+header {
+  background-color: hsl(179, 29%, 31%);
+  color: hsl(0, 0%, 100%);
+}
+header .hamburger * {
+  background-color: hsl(0, 0%, 100%) !important;
+}
+header a[href] {
+  color: hsl(0, 0%, 100%) !important;
+}
+
+body > nav {
+  background-color: hsl(70, 100%, 98%);
+  color: hsl(90, 8%, 10%);
+}
+
+footer {
+  background-color: hsl(73, 14%, 87%);
+  color: hsl(90, 8%, 10%);
+}
+
+main {
+  background-color: hsl(70, 100%, 98%);
+  color: hsl(90, 8%, 10%);
+}
+
+a:link {
+  color: hsl(100, 56%, 27%);
+}
+
+a:visited {
+  color: purple;
+}
+
+a:hover {
+  background-color: orange;
+  color: white;
+}
+
+a:active {
+  background-color: red;
+  color: white;
+}
+
+.message {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.error {
+  background-color: hsl(0, 75%, 42%);
+  color: hsl(0, 0%, 100%);
+}
+
+.success {
+  background-color: hsl(134, 82%, 33%);
+  color: hsl(0, 0%, 100%);
+}
+
+.warning {
+  background-color: hsl(195, 78%, 72%);
+  color: hsl(0, 4%, 37%);
+}
+
+.info {
+  background-color: hsl(45, 89%, 46%);
+  color: hsl(0, 4%, 37%);
+}
+
+.primary {
+  background-color: hsl(100, 56%, 27%);
+  color: hsl(0, 0%, 100%);
+}
+
+.secondary {
+  background-color: hsl(95, 13%, 34%);
+  color: hsl(0, 0%, 100%);
+}
+
+.tertiary {
+  background-color: hsl(179, 29%, 31%);
+  color: hsl(0, 0%, 100%);
+}
+
+.header-theme-1 {
+  background-color: hsl(100, 56%, 27%);
+  color: hsl(0, 0%, 100%);
 }

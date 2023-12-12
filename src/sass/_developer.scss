@@ -1,7 +1,12 @@
-
 // 6. Developer
-body,
-body > *,
+body {
+    border: 1px solid $devColor-1;
+}
+
+body > * {
+    border: 1px solid $devColor-2;
+}
+
 body > * > * {
-    border: 2px solid $devColor;
+    border: 1px solid $devColor-3;
 }

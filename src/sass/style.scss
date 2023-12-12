@@ -10,9 +10,14 @@
 @import "template-2";
 
 // Components
+@import "figure";
+@import "header";
+@import "image";
 @import "navigation";
 
 // States
 
 // Themes
-@import "developer";
+// @import "developer";
+@import "base-theme";
+@import "theme-1/index";

@@ -51,6 +51,12 @@
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: 8rem auto 12rem;
 
+        width: clamp(768px, 100vw, 120rem);
+
+        // width: 100vw;
+        // max-width: 1920px;
+        // min-width: 768px;
+
         min-height: 100vh;
 
         // Components
@@ -73,5 +79,30 @@
         }
         // States
         // Themes
+    }
+}
+
+@media screen {
+    // All devices fallback
+
+    // Extra-small
+    @media (max-width: 599px) {
+    }
+    // Small (tablet)
+    @media (min-width: 600px) {
+    }
+    @media (min-width: 905px) {
+    }
+    // Medium (laptop)
+    @media (min-width: 1240px) {
+    }
+    // Large (desktop)
+    @media (min-width: 1440px) {
+    }
+    // Full HD
+    @media (min-width: 1920px) {
+    }
+    // 4K
+    @media (min-width: 3840px) {
     }
 }

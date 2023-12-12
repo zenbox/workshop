@@ -1,0 +1,76 @@
+body > * {
+    padding-inline: $spacer;
+}
+
+header {
+    background-color: $tertiary;
+    color: $onTertiary;
+
+    .hamburger * {
+        background-color: $onTertiary !important;
+    }
+
+    a[href] {
+        color: $onTertiary !important;
+    }
+}
+body > nav {
+    background-color: $surface-lowest;
+    color: $onSurface;
+}
+footer {
+    background-color: $surface-highest;
+    color: $onSurface;
+}
+main {
+    background-color: $surface-lowest;
+    color: $onSurface;
+}
+
+a:link {
+    color: $primary;
+}
+a:visited {
+    color: purple;
+}
+a:hover {
+    background-color: orange;
+    color: white;
+}
+a:active {
+    background-color: red;
+    color: white;
+}
+
+.message {
+    border-radius: $spacer;
+    padding: $spacer;
+}
+.error {
+    background-color: $error;
+    color: $onError;
+}
+.success {
+    background-color: $success;
+    color: $onSuccess;
+}
+.warning {
+    background-color: $warning;
+    color: $onWarning;
+}
+.info {
+    background-color: $info;
+    color: $onInfo;
+}
+.primary {
+    background-color: $primary;
+    color: $onPrimary;
+}
+.secondary {
+    background-color: $secondary;
+    color: $onSecondary;
+}
+.tertiary {
+    background-color: $tertiary;
+    color: $onTertiary;
+}

@@ -1,34 +1,88 @@
+// Basis Klasse für die Navigation
 .nav {
     // Base
+    // Alles was sein soll, ohne dass man darüber nachdenkt
+    list-style-type: none;
+    margin-block: 0;
+    padding-inline: 0;
+
+    a[href] {
+        text-decoration: none;
+    }
+
     // Layout
-    // Components
+    display: flex;
+
+    &-row {
+        flex-direction: row;
+    }
+    &-column {
+        flex-direction: column;
+    }
+
+    // Components / Subelement
+    // .nav li {}
+    li,
+    a[href] {
+        // Base
+        // Layout
+        display: block;
+        width: 100%;
+        // States
+        // ! Reihenfolge ist relevant
+        // &:link{}
+        color: blue;
+        &:visited {
+            color: purple;
+        }
+        &:hover {
+            background-color: orange;
+            color: white;
+        }
+        &:active {
+            background-color: red;
+            color: white;
+        }
+
+        // Themes
+        cursor: pointer;
+    }
+
     // States
     // Themes
 }
 
 // Sub-Components
-.hamburger {
-    // Base
-    $width: 2rem;
+.template-2 {
+    .hamburger {
+        // Base
+        $width: 2rem;
 
-    // Layout
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+        // Layout
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
 
-    width: $width;
-    height: $width;
+        width: $width;
+        height: $width;
 
-    > div {
-        display: block;
-        width: 100%;
-        height: $width / 5;
+        > div {
+            transition-property: all;
+            transition-duration: 250ms;
+            transition-timing-function: ease-in-out;
 
-        background-color: black;
-        border-radius: 1rem;
+            display: block;
+            width: 100%;
+            height: $width / 5;
+
+            background-color: black;
+            border-radius: 1rem;
+        }
+        // Components
+        // States
+        // Themes
     }
-    // Components
+
     // States
-    // Themes
 }

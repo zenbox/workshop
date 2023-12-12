@@ -10,31 +10,103 @@
             rel="stylesheet"
             href="assets/css/style.css" />
     </head>
-    <body class="template-2 template-2--close">
-        <header>
+    <body class="template-2">
+        <header class="header">
             <!-- - - - -->
-            <div id="hamburger" class="hamburger">
+            <div
+                id="hamburger"
+                class="hamburger">
                 <div></div>
                 <div></div>
                 <div></div>
             </div>
             <!-- - - - -->
+
+            <div class="brand">Logo</div>
+
+            <nav>
+                <!-- - - - -->
+                <ul class="nav nav-row">
+                    <li><a href="">Link 1</a></li>
+                    <li><a href="">Link 2</a></li>
+                    <li><a href="">Link 3</a></li>
+                </ul>
+                <!-- - - - -->
+            </nav>
         </header>
 
         <!-- <div> /* flexbox only */ -->
-        <nav>NAV</nav>
+        <nav>
+            <!-- - - - -->
+            <ul class="nav nav-column">
+                <li><a href="#">link 1</a></li>
+                <li><a href="#">link 2</a></li>
+                <li><a href="#">link 3</a></li>
+                <li><a href="#">link 4</a></li>
+                <li><a href="#">link 5</a></li>
+            </ul>
+            <!-- - - - -->
+        </nav>
         <main>
             <h1>Lorem Headline ipsum dolor</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Distinctio, pariatur. Animi rem perferendis nisi doloremque sit,
-                a assumenda facilis numquam quae, odio corrupti dolorem dolore
-                odit esse ex?
-            </p>
+
+            <article>
+                <h2>Responsive Bilder</h2>
+
+                <figure class="figure figure-responsive">
+                    <picture>
+                        <source
+                            media="(min-width: 1920px)"
+                            srcset="https://picsum.photos/id/17/1920/240" />
+                        <source
+                            media="(min-width: 1680px)"
+                            srcset="https://picsum.photos/id/18/1024/240" />
+                        <source
+                            media="(min-width: 768px)"
+                            srcset="https://picsum.photos/id/19/768/240" />
+                        <img
+                            class="image image-responsive"
+                            src="https://picsum.photos/id/16/900/240"
+                            alt="" />
+                    </picture>
+
+                    <figcaption>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Quisquam, voluptatum.
+                    </figcaption>
+                </figure>
+            </article>
+
+            <article>
+                <h2>Corporate und semantische Farben</h2>
+                <p class="message error">Lorem error dolor sit</p>
+                <p class="message success">Lorem success dolor sit</p>
+                <p class="message warning">Lorem warning dolor sit</p>
+                <p class="message info">Lorem info dolor sit</p>
+                <p class="message primary">Lorem primary dolor sit</p>
+                <p class="message secondary">Lorem secondary dolor sit</p>
+                <p class="message tertiary">Lorem tertiary dolor sit</p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Distinctio, pariatur. Animi rem perferendis nisi doloremque
+                    sit, a assumenda facilis numquam quae, odio corrupti dolorem
+                    dolore odit esse ex?
+                </p>
+            </article>
         </main>
         <!-- </div> /* flexbox only */ -->
 
-        <footer>FOOTER</footer>
+        <footer class="footer">
+            <nav>
+                <!-- - - - -->
+                <ul class="nav nav-row">
+                    <li><a href="">Link 1</a></li>
+                    <li><a href="">Link 2</a></li>
+                    <li><a href="">Link 3</a></li>
+                </ul>
+                <!-- - - - -->
+            </nav>
+        </footer>
 
         <script src="assets/js/script.js"></script>
     </body>
