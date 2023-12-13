@@ -20,8 +20,40 @@ header {
 }
 
 body > nav {
-    background-color: $surface-lowest;
-    color: $onSurface;
+    background-color: $dark;
+    color: $onDark;
+
+    & > ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 20vh;
+        padding-block-start: 2rem;
+        a {
+            color: $onDark !important;
+            padding-block: $spacer;
+        }
+    }
+    
+    li,
+    a[href] {
+        // ! Reihenfolge ist relevant
+        // &:link{}
+        color: $onTertiary;
+        &:visited {
+            color: $onTertiary;
+        }
+        &:hover {
+            background-color: $tertiary;
+            color: $onTertiary;
+        }
+        &:active {
+            background-color: $primary;
+            color: $onPrimary;
+        }
+        cursor: pointer;
+    }
 }
 footer {
     background-color: $surface-highest;
@@ -30,21 +62,6 @@ footer {
 main {
     background-color: $surface-lowest;
     color: $onSurface;
-}
-
-a:link {
-    color: $primary;
-}
-a:visited {
-    color: purple;
-}
-a:hover {
-    background-color: orange;
-    color: white;
-}
-a:active {
-    background-color: red;
-    color: white;
 }
 
 .message {

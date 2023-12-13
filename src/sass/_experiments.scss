@@ -1,0 +1,102 @@
+// Farbmodelle
+body {
+    background: hsla(0, 0%, 100%, 0.85);
+}
+
+$hexColor: #ff0000;
+$hexColorWithAlpha: #ff000044; // 00 - ff = 0 - 255, 44 = 32% opacity
+
+$rgbColor: rgb(255, 0, 0);
+$rgbColorWithAlpha: rgba(255, 0, 0, 0.32); // 0 - 1 = 0% - 100% opacity
+
+$hslColor: hsl(0, 100%, 50%);
+$hslColorWithAlpha: hsla(0, 100%, 50%, 0.32); // 0 - 1 = 0% - 100% opacity
+
+$namedColor: red;
+
+header {
+    background: $rgbColorWithAlpha;
+}
+
+main {
+    // background-image: url(../figures/shou.svg);
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    // background-position: top center;
+
+    border: 1px solid black;
+
+    // background: linear-gradient(
+    //         150deg,
+    //         rgba(255, 255, 255, 0.5),
+    //         hsla(0, 0%, 83%, 0.5)
+    //     ),
+    //     rgba(255, 0, 0, 0.43);
+
+    background: radial-gradient(circle at left top, white, lightgrey, white);
+}
+
+@keyframes indicator {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -300px 0;
+    }
+}
+article p:first-of-type {
+    $f: 20px;
+    background: repeating-linear-gradient(
+        to right bottom,
+        white 0,
+        white $f,
+        lightgrey $f,
+        lightgrey 2 * $f
+    );
+
+    animation-name: indicator;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction:normal;
+    animation-timing-function: ease-in-out;
+}
+
+
+.filter {
+    transition: all 0.25s ease-in-out;
+    
+    filter: grayscale(0);
+    &:hover {
+        filter: grayscale(1);
+        
+    }
+
+    figcaption {
+        display: block;
+        position: absolute;
+        width: 400px;
+        height: 200px;
+        padding: 0.25rem; 
+        left: 14rem;
+        top: 4rem;
+        font-size: 1rem;
+        // border: 2px dotted red;
+color: white;
+        backdrop-filter: sepia(1) brightness(0.5);
+    }
+
+    // filter: blur(8px);
+    // filter: brightness(0.5);
+    // filter: contrast(0.5);
+    // filter: drop-shadow(10px 10px 5px red);
+    // filter: hue-rotate(90deg);
+    // filter: invert(0.5);
+    // filter: opacity(0.5);
+    // filter: saturate(0.5);
+    // filter: sepia(0.5);
+    // filter: url(filters.svg#filter);
+
+
+
+}

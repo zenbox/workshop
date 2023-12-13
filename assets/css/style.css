@@ -1,3 +1,10 @@
+@charset "UTF-8";
+/*
+    1. Make it run - Herausbekommen, was du eigentlich tun musst
+    2. Make it fast - Umbauen, dass es verständlich ist
+    3. Make it beautiful - Kommentiere, bessere Variablen oder Klassennamen
+
+*/
 /* My comment */
 @import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Hedvig+Letters+Serif:opsz@12..24&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
@@ -137,8 +144,39 @@ h6 {
   }
 }
 
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 2.3rem;
+  }
+}
+body * {
+  padding-inline: 1rem;
+}
+
+.article {
+  font-family: "Hedvig Letters Sans";
+  font-size: 18px;
+  line-height: 1.28;
+}
+@media screen and (max-width: 767px) {
+  .article h2 {
+    font-size: 1.7em;
+  }
+}
+.article-multicolumn h2 {
+  margin-block-start: 2em;
+  margin-block-end: 0;
+}
+.article-multicolumn p {
+  column-width: 20em;
+  column-gap: 1em;
+  text-align: left;
+  hyphens: auto;
+}
+
 .figure {
   margin-inline: 0;
+  padding-inline: 0;
   display: block;
   width: 100%;
 }
@@ -201,25 +239,10 @@ svg .tertiary {
 .nav a[href] {
   display: block;
   width: 100%;
-  color: blue;
   cursor: pointer;
 }
-.nav li:visited,
-.nav a[href]:visited {
-  color: purple;
-}
-.nav li:hover,
-.nav a[href]:hover {
-  background-color: orange;
-  color: white;
-}
-.nav li:active,
-.nav a[href]:active {
-  background-color: red;
-  color: white;
-}
 
-.template-2 .hamburger {
+.hamburger {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -227,28 +250,26 @@ svg .tertiary {
   width: 2rem;
   height: 2rem;
 }
-.template-2 .hamburger--open {
+.hamburger > div {
+  transition: transform 250ms ease-in-out;
+  width: 2rem;
+  height: 0.4rem;
+  border-radius: 1rem;
+  background: white;
+}
+.hamburger--open {
   transform: translateX(-1rem);
 }
-.template-2 .hamburger--open > div:nth-child(2) {
-  opacity: 0.1;
-  transform: translateX(0.875rem);
+.hamburger--open > div:nth-child(2) {
+  opacity: 0;
 }
-.template-2 .hamburger--open > div:nth-child(1) {
+.hamburger--open > div:nth-child(1) {
   transform: rotateZ(45deg) translateX(1.125rem);
+  transform-origin: center center;
 }
-.template-2 .hamburger--open > div:nth-child(3) {
+.hamburger--open > div:nth-child(3) {
   transform: rotateZ(-45deg) translateX(1.125rem);
-}
-.template-2 .hamburger > div {
-  transition-property: all;
-  transition-duration: 250ms;
-  transition-timing-function: ease-in-out;
-  display: block;
-  width: 100%;
-  height: 0.4rem;
-  background-color: black;
-  border-radius: 1rem;
+  transform-origin: center center;
 }
 
 @media screen and (min-width: 768px) {
@@ -257,7 +278,7 @@ svg .tertiary {
   }
 }
 body {
-  background-color: hsl(0, 0%, 0%);
+  background-color: hsl(90, 8%, 10%);
   marginn: 0 auto;
 }
 
@@ -277,8 +298,39 @@ header a[href] {
 }
 
 body > nav {
-  background-color: hsl(72, 100%, 98%);
-  color: hsl(90, 8%, 10%);
+  background-color: hsl(90, 8%, 10%);
+  color: hsl(0, 0%, 85%);
+}
+body > nav > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 20vh;
+  padding-block-start: 2rem;
+}
+body > nav > ul a {
+  color: hsl(0, 0%, 85%) !important;
+  padding-block: 0.5rem;
+}
+body > nav li,
+body > nav a[href] {
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+}
+body > nav li:visited,
+body > nav a[href]:visited {
+  color: hsl(0, 0%, 100%);
+}
+body > nav li:hover,
+body > nav a[href]:hover {
+  background-color: hsl(179, 88%, 33%);
+  color: hsl(0, 0%, 100%);
+}
+body > nav li:active,
+body > nav a[href]:active {
+  background-color: hsl(100, 56%, 27%);
+  color: hsl(0, 0%, 100%);
 }
 
 footer {
@@ -289,24 +341,6 @@ footer {
 main {
   background-color: hsl(72, 100%, 98%);
   color: hsl(90, 8%, 10%);
-}
-
-a:link {
-  color: hsl(100, 56%, 27%);
-}
-
-a:visited {
-  color: purple;
-}
-
-a:hover {
-  background-color: orange;
-  color: white;
-}
-
-a:active {
-  background-color: red;
-  color: white;
 }
 
 .message {
@@ -352,4 +386,54 @@ a:active {
 .header-theme-1 {
   background-color: hsl(100, 56%, 27%);
   color: hsl(0, 0%, 100%);
+}
+
+body {
+  background: hsla(0, 0%, 100%, 0.85);
+}
+
+header {
+  background: rgba(255, 0, 0, 0.32);
+}
+
+main {
+  border: 1px solid black;
+  background: radial-gradient(circle at left top, white, lightgrey, white);
+}
+
+@keyframes indicator {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -300px 0;
+  }
+}
+article p:first-of-type {
+  background: repeating-linear-gradient(to right bottom, white 0, white 20px, lightgrey 20px, lightgrey 40px);
+  animation-name: indicator;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: ease-in-out;
+}
+
+.filter {
+  transition: all 0.25s ease-in-out;
+  filter: grayscale(0);
+}
+.filter:hover {
+  filter: grayscale(1);
+}
+.filter figcaption {
+  display: block;
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  padding: 0.25rem;
+  left: 14rem;
+  top: 4rem;
+  font-size: 1rem;
+  color: white;
+  backdrop-filter: sepia(1) brightness(0.5);
 }

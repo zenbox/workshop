@@ -29,21 +29,6 @@
         display: block;
         width: 100%;
         // States
-        // ! Reihenfolge ist relevant
-        // &:link{}
-        color: blue;
-        &:visited {
-            color: purple;
-        }
-        &:hover {
-            background-color: orange;
-            color: white;
-        }
-        &:active {
-            background-color: red;
-            color: white;
-        }
-
         // Themes
         cursor: pointer;
     }
@@ -53,62 +38,48 @@
 }
 
 // Sub-Components
-.template-2 {
-    .hamburger {
-        // Base
-        $width: 2rem;
+.hamburger {
+    // Base
+    $width: 2rem;
 
-        // Layout
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
+    // Layout
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
+    width: $width;
+    height: $width;
+
+    > div {
+        transition: transform 250ms ease-in-out;
         width: $width;
-        height: $width;
-
-        // - - - - - - - -
-        // Menü geöffnet
-        // - - - - - - - -
-        &--open {
-            transform: translateX($width / -2);
-            $f: 16;
-            > div {
-                &:nth-child(2) {
-                    opacity: 0.1;
-                    transform: translateX($width / 2 - $width / $f);
-                }
-                &:nth-child(1) {
-                    transform: rotateZ(45deg)
-                        translateX($width / 2 + $width / $f);
-                }
-                &:nth-child(3) {
-                    transform: rotateZ(-45deg)
-                        translateX($width / 2 + $width / $f);
-                }
-            }
-        }
-
-        > div {
-            transition-property: all;
-            transition-duration: 250ms;
-            transition-timing-function: ease-in-out;
-
-            display: block;
-            width: 100%;
-            height: $width / 5;
-
-            background-color: black;
-            border-radius: 1rem;
-        }
-        // Components
-        // States
-        // Themes
+        height: $width / 5;
+        border-radius: 1rem;
+        background: white;
     }
 
-    // States
+    &--open {
+        transform: translateX($width / -2);
+
+        > div {
+            &:nth-child(2) {
+                opacity: 0;
+            }
+
+            &:nth-child(1) {
+                transform: rotateZ(45deg) translateX($width / 2 + $width / 16);
+                transform-origin: center center;
+            }
+            &:nth-child(3) {
+                transform: rotateZ(-45deg) translateX($width / 2 + $width / 16);
+                transform-origin: center center;
+            }
+        }
+    }
 }
 
+// States
 
 @media screen and (min-width: 768px) {
     .hamburger {

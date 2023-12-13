@@ -36,9 +36,16 @@ $devColor-2: rgba(17, 201, 57, 0.5);
 $devColor-3: rgba(208, 140, 15, 0.5);
 $devColor-4: rgba(132, 41, 223, 0.5);
 
-$dark: hsl(0, 0%, 0%);
+$dark: hsl(90, 8%, 10%);
 $onDark: hsl(0, 0%, 85%);
 $light: hsl(0, 0%, 100%);
 $onLight: hsl(0, 0%, 0%);
 // Default values
 $spacer: 0.5rem;
+
+/*
+    1. Make it run - Herausbekommen, was du eigentlich tun musst
+    2. Make it fast - Umbauen, dass es verständlich ist
+    3. Make it beautiful - Kommentiere, bessere Variablen oder Klassennamen
+
+*/

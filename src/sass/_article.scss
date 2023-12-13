@@ -1,0 +1,41 @@
+@media screen and (max-width: 767px) {
+    h1 {
+        font-size: 2.3rem;
+    }
+}
+body * {
+    padding-inline: $spacer * 2;
+}
+
+.article {
+    font-family: "Hedvig Letters Sans";
+    font-size: 18px; // 1.1rem; // em
+    line-height: 1.28;
+
+    @media screen and (max-width: 767px) {
+        h2 {
+            font-size: 1.7em;
+        }
+    }
+
+    &-multicolumn {
+        h2 {
+            margin-block-start:2em;
+            margin-block-end:0;
+        }
+        p {
+        // 60 Zeichen
+        column-width: 20em;
+        column-gap: 1em;
+        // column-rule: 1px solid #ccc;
+
+        text-align: left;
+        hyphens: auto;
+
+        // margin-block: 2em;
+        // border-bottom: 1px solid rgba(211, 211, 211, 0.564);
+        // padding-block: 1em;
+
+    }
+    }
+}
