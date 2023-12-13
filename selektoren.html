@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Selektoren</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="orchid">
+        <h1>Selektoren</h1>
+        <p class="teaser">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+            laborum enim est?
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde
+            laborum enim est?
+        </p>
+
+        <a href="#top">...</a>
+        <a name="top">...</a>
+
+        <ul id="main-navigation" style="border: 3px dashed lime;">
+            <li><a href="http://google.de">Eins</a></li>
+            <li><a href="#">Zwei</a></li>
+        </ul>
+
+        <style>
+            /* Elemente Selektoren für allgemeine, generelle Einstellungen
+               -> base!
+               */
+            .orchid {
+                background: rgb(92, 3, 137);
+            }
+            body {
+                background: hsla(0, 0%, 0%, 0.85);
+                color: white;
+            }
+            .teaser[id] {
+                font-size: 1.5rem;
+            }
+            a[href]:link {
+                color: white;
+            }
+            a[href]:visited {
+                color: magenta;
+            }
+            #main-navigation {
+                border: 5px dotted white;
+            }
+            ul {
+                
+                border: 5px dotted blue !important;
+            }
+
+            .nav a[href]:hover {
+                color: red;
+            }
+        </style>
+    </body>
+</html>

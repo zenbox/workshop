@@ -7,7 +7,7 @@ $onPrimary: hsl(0, 0%, 100%);
 $secondary: hsl(95, 13%, 34%);
 $onSecondary: hsl(0, 0%, 100%);
 
-$tertiary: hsl(179, 29%, 31%);
+$tertiary: hsl(179, 88%, 33%);
 $onTertiary: hsl(0, 0%, 100%);
 
 $error: hsl(0, 75%, 42%);
@@ -22,7 +22,7 @@ $onWarning: hsl(0, 4%, 37%);
 $info: hsl(45, 89%, 46%);
 $onInfo: hsl(0, 4%, 37%);
 
-$surface-lowest: hsl(70, 100%, 98%);
+$surface-lowest: hsl(72, 100%, 98%);
 $surface-low: hsl(72, 33%, 94%);
 
 $surface: hsl(72, 24%, 92%);
@@ -36,5 +36,9 @@ $devColor-2: rgba(17, 201, 57, 0.5);
 $devColor-3: rgba(208, 140, 15, 0.5);
 $devColor-4: rgba(132, 41, 223, 0.5);
 
+$dark: hsl(0, 0%, 0%);
+$onDark: hsl(0, 0%, 85%);
+$light: hsl(0, 0%, 100%);
+$onLight: hsl(0, 0%, 0%);
 // Default values
 $spacer: 0.5rem;

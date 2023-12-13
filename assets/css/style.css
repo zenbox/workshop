@@ -160,7 +160,7 @@ h6 {
   height: 1em;
   font-size: 70%;
   margin-inline-end: 0.5rem;
-  color: hsl(179, 29%, 31%);
+  color: hsl(179, 88%, 33%);
 }
 
 .image-responsive {
@@ -177,7 +177,7 @@ svg {
   background: hsl(72, 24%, 92%);
 }
 svg .tertiary {
-  fill: hsl(179, 29%, 31%);
+  fill: hsl(179, 88%, 33%);
   stroke: black;
   stroke-width: 50px;
 }
@@ -256,12 +256,17 @@ svg .tertiary {
     display: none !important;
   }
 }
+body {
+  background-color: hsl(0, 0%, 0%);
+  marginn: 0 auto;
+}
+
 body > * {
   padding-inline: 0.5rem;
 }
 
 header {
-  background-color: hsl(179, 29%, 31%);
+  background-color: hsl(179, 88%, 33%);
   color: hsl(0, 0%, 100%);
 }
 header .hamburger * {
@@ -272,7 +277,7 @@ header a[href] {
 }
 
 body > nav {
-  background-color: hsl(70, 100%, 98%);
+  background-color: hsl(72, 100%, 98%);
   color: hsl(90, 8%, 10%);
 }
 
@@ -282,7 +287,7 @@ footer {
 }
 
 main {
-  background-color: hsl(70, 100%, 98%);
+  background-color: hsl(72, 100%, 98%);
   color: hsl(90, 8%, 10%);
 }
 
@@ -340,7 +345,7 @@ a:active {
 }
 
 .tertiary {
-  background-color: hsl(179, 29%, 31%);
+  background-color: hsl(179, 88%, 33%);
   color: hsl(0, 0%, 100%);
 }
 

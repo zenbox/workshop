@@ -1,6 +1,7 @@
 /**
  * @desc Das Verhalten für das Hamburger Menu
  *       und die Off Canvas Navigation
+ *       DOM - Document Object Model
  */
 document.addEventListener("DOMContentLoaded", () => {
     // - - - - - - - - -
