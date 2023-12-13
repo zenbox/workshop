@@ -251,6 +251,11 @@ svg .tertiary {
   border-radius: 1rem;
 }
 
+@media screen and (min-width: 768px) {
+  .hamburger {
+    display: none !important;
+  }
+}
 body > * {
   padding-inline: 0.5rem;
 }

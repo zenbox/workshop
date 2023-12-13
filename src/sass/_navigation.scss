@@ -108,3 +108,10 @@
 
     // States
 }
+
+
+@media screen and (min-width: 768px) {
+    .hamburger {
+        display: none !important;
+    }
+}
