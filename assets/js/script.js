@@ -1,8 +1,6 @@
 const hamburger = document.querySelector("#hamburger");
 
 hamburger.addEventListener("click", (event) => {
-    // Wechsele die Klasse im body Element der Site aus:
-    // template-2--open / template-2--close
-
+    hamburger.classList.toggle("hamburger--open");
     document.body.classList.toggle("template-2--open");
 });

@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Hedvig+Letters+Serif:opsz@12..24&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
 html {
     // Root Element
     font-family: "Hedvig Letters Sans", Arial, Helvetica, sans-serif;
@@ -32,4 +34,12 @@ h5 {
 }
 h6 {
     font-size: 1rem;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }

@@ -67,6 +67,28 @@
         width: $width;
         height: $width;
 
+        // - - - - - - - -
+        // Menü geöffnet
+        // - - - - - - - -
+        &--open {
+            transform: translateX($width / -2);
+            $f: 16;
+            > div {
+                &:nth-child(2) {
+                    opacity: 0.1;
+                    transform: translateX($width / 2 - $width / $f);
+                }
+                &:nth-child(1) {
+                    transform: rotateZ(45deg)
+                        translateX($width / 2 + $width / $f);
+                }
+                &:nth-child(3) {
+                    transform: rotateZ(-45deg)
+                        translateX($width / 2 + $width / $f);
+                }
+            }
+        }
+
         > div {
             transition-property: all;
             transition-duration: 250ms;

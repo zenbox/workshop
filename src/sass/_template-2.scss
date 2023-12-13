@@ -5,30 +5,36 @@
     @media screen and (max-width: 767px) {
         // Base
         // Layout
+        // - - - - - - - - - -
+        // Das Off-Canvas Layout
+        // insgesamt 200vw breit, 100vw sind sichtbar
+        // Die Navigation verwendet 90vw (plus 10vw für den Abstand)
+        // Der Inhalt verwendet 100vw
+        // - - - - - - - - - -
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 10vw 90vw 100vw;
         grid-template-rows: 8rem auto 12rem;
 
         width: 200vw; // Überbreite
-        margin-inline-start: -90vw;
+        margin-inline-start: -100vw;
 
         // Components
 
         > nav {
-            grid-column: 1 / 2;
+            grid-column: 2 / 3;
             grid-row: 1 / 4;
         }
 
         > header {
-            grid-column: 2 / 3;
+            grid-column: 3 / 4;
             grid-row: 1 / 2;
         }
         > main {
-            grid-column: 2 / 3;
+            grid-column: 3 / 4;
             grid-row: 2 / 3;
         }
         > footer {
-            grid-column: 2 / 3;
+            grid-column: 3 / 4;
             grid-row: 3 / 4;
         }
         // States

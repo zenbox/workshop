@@ -1,5 +1,6 @@
 /* My comment */
 @import url("https://fonts.googleapis.com/css2?family=Hedvig+Letters+Sans&family=Hedvig+Letters+Serif:opsz@12..24&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
 html, html * {
   box-sizing: border-box;
 }
@@ -46,6 +47,10 @@ h6 {
   font-size: 1rem;
 }
 
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
 .template-1 {
   display: flex;
   flex-direction: column;
@@ -78,28 +83,28 @@ h6 {
 @media screen and (max-width: 767px) {
   .template-2 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 10vw 90vw 100vw;
     grid-template-rows: 8rem auto 12rem;
     width: 200vw;
-    margin-inline-start: -90vw;
+    margin-inline-start: -100vw;
     transition-property: all;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
   }
   .template-2 > nav {
-    grid-column: 1/2;
+    grid-column: 2/3;
     grid-row: 1/4;
   }
   .template-2 > header {
-    grid-column: 2/3;
+    grid-column: 3/4;
     grid-row: 1/2;
   }
   .template-2 > main {
-    grid-column: 2/3;
+    grid-column: 3/4;
     grid-row: 2/3;
   }
   .template-2 > footer {
-    grid-column: 2/3;
+    grid-column: 3/4;
     grid-row: 3/4;
   }
   .template-2--open {
@@ -136,7 +141,6 @@ h6 {
   margin-inline: 0;
   display: block;
   width: 100%;
-  border: 1px solid black;
 }
 
 .header {
@@ -146,10 +150,36 @@ h6 {
   align-items: center;
 }
 
+.icon::before {
+  content: "dining";
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-variation-settings: "FILL" 0, "wght" 800, "GRAD" 0, "opsz" 24;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  font-size: 70%;
+  margin-inline-end: 0.5rem;
+  color: hsl(179, 29%, 31%);
+}
+
 .image-responsive {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.white {
+  filter: invert(100%);
+}
+
+svg {
+  background: hsl(72, 24%, 92%);
+}
+svg .tertiary {
+  fill: hsl(179, 29%, 31%);
+  stroke: black;
+  stroke-width: 50px;
 }
 
 .nav {
@@ -196,6 +226,19 @@ h6 {
   align-items: center;
   width: 2rem;
   height: 2rem;
+}
+.template-2 .hamburger--open {
+  transform: translateX(-1rem);
+}
+.template-2 .hamburger--open > div:nth-child(2) {
+  opacity: 0.1;
+  transform: translateX(0.875rem);
+}
+.template-2 .hamburger--open > div:nth-child(1) {
+  transform: rotateZ(45deg) translateX(1.125rem);
+}
+.template-2 .hamburger--open > div:nth-child(3) {
+  transform: rotateZ(-45deg) translateX(1.125rem);
 }
 .template-2 .hamburger > div {
   transition-property: all;
