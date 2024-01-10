@@ -11,11 +11,12 @@ import express from "express"; // ES6+ Modul!
 const port = 3000;
 const app = express();
 
+// console.log(__dirname);
+// console.log(__filename);
+
 // CONFIGURATION
 // Statische Routen
-app.use(
-    express.static( path.join(__dirname, "./static") )
-);
+app.use(express.static(path.resolve("./static")));
 
 // app.get("/", function (request, response) {
 //     response.send("index.html");
