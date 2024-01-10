@@ -7,6 +7,9 @@ import path from "path";
 // Import eines vereinfachten/erweiterten Webservice-Moduls
 import express from "express"; // ES6+ Modul!
 
+// Eigene Module (Programmteile)
+import loginRoute from "./src/routes/login.mjs";
+
 // DECLARATION / INITIALIZATION
 const port = 3000;
 const app = express();
@@ -18,9 +21,7 @@ const app = express();
 // Statische Routen
 app.use(express.static(path.resolve("./static")));
 
-// app.get("/", function (request, response) {
-//     response.send("index.html");
-// }); // GET-Request
+app.get("/login", loginRoute);
 
 // CONTROL
 app.listen(port, () => console.log(`Server runs on port ${port}`));
