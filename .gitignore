@@ -2,6 +2,7 @@
 
 /raster/*
 *villard*
+/todos-express-password
 
 # dependencies
 /node_modules

@@ -8,20 +8,23 @@ import path from "path";
 import express from "express"; // ES6+ Modul!
 
 // Eigene Module (Programmteile)
-import loginRoute from "./src/routes/login.mjs";
+import loginRoute from "./src/routes/loginRoute.mjs";
+import sheepsRoute from "./src/routes/sheepsRoute.mjs";
 
 // DECLARATION / INITIALIZATION
 const port = 3000;
 const app = express();
 
-// console.log(__dirname);
-// console.log(__filename);
-
 // CONFIGURATION
 // Statische Routen
 app.use(express.static(path.resolve("./static")));
 
-app.get("/login", loginRoute);
+// Template engine
+app.set("view engine", "ejs"); // "pug", "ejs", "mustache", "hbs", "handlebars", "nunjucks", "just"
+app.set("views", path.resolve("./src/views"));
+
+app.use("/login", loginRoute);
+app.use("/sheeps", sheepsRoute);
 
 // CONTROL
 app.listen(port, () => console.log(`Server runs on port ${port}`));
