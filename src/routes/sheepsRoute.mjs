@@ -36,7 +36,7 @@ router.use((request, response, next) => {
 
 // CONTROL
 // Pfad nach der Basisroute /sheeps
-router.get("/:id?", (request, response, next) => {
+router.get("/:id", (request, response, next) => {
     sheeps.selectSheepById(request, response, next);
 });
 
@@ -48,12 +48,24 @@ router.post("/", (request, response, next) => {
     sheeps.insertSheep(request, response, next);
 });
 
-router.patch("/:id?", (request, response, next) => {
+router.patch("/:id", (request, response, next) => {
     sheeps.updateSheep(request, response, next);
 });
 
-router.delete("/:id?", (request, response, next) => {
+router.delete("/:id", (request, response, next) => {
     sheeps.deleteSheep(request, response, next);
 });
 
 export default router;
+
+// let fnPointer = function (event) {};
+
+// button.addEventlistener("click", fnPointer);
+
+// function addEventListener(type, fn) {
+//     const event = {};
+//     event.type = type;
+//     // ...
+//     // ...
+//     fn(event);
+// }
