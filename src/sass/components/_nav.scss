@@ -1,0 +1,36 @@
+.#{$prefix}-nav {
+    // Base / Reset
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    // Layout
+    display: flex;
+    &-column {
+        flex-direction: column;
+    }
+    &-row {
+        flex-direction: row;
+    }
+
+    // States
+    a:link {
+        text-decoration: none;
+        color: $linkColor;
+    }
+    a:visited {
+        color: black;
+    }
+    a:hover {
+        color: orange;
+        text-decoration: underline;
+    }
+    a:active {
+        color: red;
+        text-decoration: underline;
+    }
+
+    // Themes / Appearance
+    font-family: monospace;
+    font-size: 0.8rem;
+}

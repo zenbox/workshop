@@ -40,6 +40,36 @@ body {
   grid-row: 3/4;
 }
 
+.-fx-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+.-fx-nav-column {
+  flex-direction: column;
+}
+.-fx-nav-row {
+  flex-direction: row;
+}
+.-fx-nav a:link {
+  text-decoration: none;
+  color: blue;
+}
+.-fx-nav a:visited {
+  color: black;
+}
+.-fx-nav a:hover {
+  color: orange;
+  text-decoration: underline;
+}
+.-fx-nav a:active {
+  color: red;
+  text-decoration: underline;
+}
+
 body > * {
-  background: hsla(180, 100%, 50%, 0.25);
+  background: hsla(180, 100%, 50%, 0.097);
 }
