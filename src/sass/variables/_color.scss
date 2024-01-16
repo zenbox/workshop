@@ -1,7 +1,44 @@
-// Colors
-$primary: blue;
-$secondary:lightgrey; 
-$tertiary: darkgrey;
-$quartiary
+// Corporate colors
+$primary: #f0e600;
+$secondary: #b5f000;
+$tertiary: #f0c700;
+$quaternary: #f0aa00;
 
+// Common colors
+$dark: hsl(0, 0%, 15%);
+$light: hsl(0, 0%, 95%);
+
+// Semantic colors
+$success: hsl(75, 93%, 30%);
+$info: rgb(0, 204, 255);
+$warning: hsl(42, 100%, 47%);
+$danger: hsla(14, 100%, 50%, 0.875);
+
+// Functional colors
+// Link colors
 $linkColor: $primary;
+
+// Color variants
+$primaryMap: (
+    100: 10%,
+    200: 20%,
+    300: 30%,
+    400: 40%,
+    500: 50%,
+    600: 60%,
+    700: 70%,
+    800: 80%,
+    900: 90%,
+);
+
+@each $key, $value in $primaryMap {
+    .primary-lighter-#{$key} {
+        background: lighten($primary, $value);
+    }
+}
+
+@each $key, $value in $primaryMap {
+    .primary-darker-#{$key} {
+        background: darken($primary, $value);
+    }
+}

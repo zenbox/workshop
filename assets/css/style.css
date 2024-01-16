@@ -1,3 +1,75 @@
+.primary-lighter-100 {
+  background: #fff624;
+}
+
+.primary-lighter-200 {
+  background: #fff857;
+}
+
+.primary-lighter-300 {
+  background: #fffa8a;
+}
+
+.primary-lighter-400 {
+  background: #fffcbd;
+}
+
+.primary-lighter-500 {
+  background: #fffef0;
+}
+
+.primary-lighter-600 {
+  background: white;
+}
+
+.primary-lighter-700 {
+  background: white;
+}
+
+.primary-lighter-800 {
+  background: white;
+}
+
+.primary-lighter-900 {
+  background: white;
+}
+
+.primary-darker-100 {
+  background: #bdb500;
+}
+
+.primary-darker-200 {
+  background: #8a8400;
+}
+
+.primary-darker-300 {
+  background: #575300;
+}
+
+.primary-darker-400 {
+  background: #242300;
+}
+
+.primary-darker-500 {
+  background: black;
+}
+
+.primary-darker-600 {
+  background: black;
+}
+
+.primary-darker-700 {
+  background: black;
+}
+
+.primary-darker-800 {
+  background: black;
+}
+
+.primary-darker-900 {
+  background: black;
+}
+
 html {
   font-size: 16px;
   line-height: 1.2;
@@ -40,6 +112,26 @@ body {
   grid-row: 3/4;
 }
 
+.color-fields {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  margin-block: 0.25rem;
+}
+.color-fields > * {
+  flex-basis: 2rem;
+  height: 2rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.color-fields > :first-child {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
 .-fx-nav {
   list-style-type: none;
   margin: 0;
@@ -56,7 +148,7 @@ body {
 }
 .-fx-nav a:link {
   text-decoration: none;
-  color: blue;
+  color: #f0e600;
 }
 .-fx-nav a:visited {
   color: black;

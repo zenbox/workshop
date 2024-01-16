@@ -1,0 +1,30 @@
+.color-fields {
+    // Base / Reset
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    // Layout
+    display: flex;
+    flex-direction: row;
+    gap: $defaultSpacer;
+    margin-block: $defaultSpacer;
+
+    & > * {
+        flex-basis: 2rem;
+        height: 2rem;
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    & > :first-child {
+        flex-grow: 1;
+        flex-shrink: 1;
+    }
+
+    // States
+
+}
+
+// Subcomponent
+.color-field {}
