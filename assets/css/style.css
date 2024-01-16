@@ -1,3 +1,5 @@
+/* @import "fx"; */
+@var $color: hsl(0, 100%, 60%);
 html {
   font-size: 16px;
   line-height: 1.2;

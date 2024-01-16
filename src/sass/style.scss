@@ -1,5 +1,8 @@
-// Variables
-$color: hsl(0, 100%, 60%);
+/* @import "fx"; */
+
+// Globals, variables
+@import "variables/colors";
+@import "variables/typography";
 
 @import "base/index";
 
