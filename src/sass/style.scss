@@ -1,9 +1,19 @@
-/* @import "fx"; */
+
 
 // Globals, variables
-@import "variables/colors";
-@import "variables/typography";
+@import "variables/index";
 
+// Base
 @import "base/index";
 
+// Layout
 @import "layout/layout-1";
+
+// - - - - - - - - - -
+// - - - - - - - - - -
+// - - - - - - - - - -
+
+// Themes
+// @import "customer-1/variables";
+// @import "customer-1/theme";
+@import "dev/dev";
