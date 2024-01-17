@@ -23,8 +23,13 @@
     }
 
     // States
+}
 
+.primary {
+    background: $primary;
+    color: $onPrimary;
 }
 
 // Subcomponent
-.color-field {}
+.color-field {
+}

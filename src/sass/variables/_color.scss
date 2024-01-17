@@ -1,12 +1,22 @@
+// Common colors
+$dark: hsl(0, 0%, 15%);
+$light: hsl(0, 0%, 95%);
+
 // Corporate colors
-$primary: #f0e600;
+$primary: hsl(58, 100%, 25%);
+$onPrimary: null;
+
+@if lightness($primary) > 50 {
+    $onPrimary: $dark;
+} @else {
+    $onPrimary: $light;
+}
+
 $secondary: #b5f000;
 $tertiary: #f0c700;
 $quaternary: #f0aa00;
 
-// Common colors
-$dark: hsl(0, 0%, 15%);
-$light: hsl(0, 0%, 95%);
+
 
 // Semantic colors
 $success: hsl(75, 93%, 30%);
