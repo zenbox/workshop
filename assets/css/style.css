@@ -81,33 +81,8 @@ html * {
   box-sizing: border-box;
 }
 
-#myId {
-  background: black;
-}
-
 body {
   margin: 0;
-}
-
-a {
-  color: blue;
-}
-
-a:hover {
-  color: red;
-}
-
-input:focus {
-  border: 3px solid red;
-  outline: 0;
-}
-input:not(:focus) {
-  border: 3px solid green;
-  outline: 0;
-}
-
-.myClass[id]:hover {
-  background: gold !important;
 }
 
 h1 {
@@ -234,6 +209,36 @@ h3 {
 
 .filter::before {
   content: 255;
+}
+
+.-fx-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  font-family: monospace;
+  font-size: 0.8rem;
+}
+.-fx-nav-column {
+  flex-direction: column;
+}
+.-fx-nav-row {
+  flex-direction: row;
+}
+.-fx-nav a:link {
+  text-decoration: none;
+  color: hsl(58, 100%, 25%);
+}
+.-fx-nav a:visited {
+  color: black;
+}
+.-fx-nav a:hover {
+  color: orange;
+  text-decoration: underline;
+}
+.-fx-nav a:active {
+  color: red;
+  text-decoration: underline;
 }
 
 body > * {

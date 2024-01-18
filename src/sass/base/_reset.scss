@@ -7,40 +7,40 @@ html {
     }
 }
 
-#myId{background: black;}
+// #myId{background: black;}
 
 body {
     margin: 0;
 }
 
-a {
-    color: blue;
-}
+// a {
+//     color: blue;
+// }
 
-a:hover {
-    color: red;
-}
+// a:hover {
+//     color: red;
+// }
 
-@mixin border($color) {
-    border: 3px solid $color;
-    outline: 0;
-}
+// @mixin border($color) {
+//     border: 3px solid $color;
+//     outline: 0;
+// }
 
-input {
-    &:focus {
-        @include border(red);
-    }
-    &:not(:focus) {
-        @include border(green);
-    }
-}
+// input {
+//     &:focus {
+//         @include border(red);
+//     }
+//     &:not(:focus) {
+//         @include border(green);
+//     }
+// }
 
-.myClass:hover {}
-.myClass[id]:hover{
-    background: gold !important;
-}
+// .myClass:hover {}
+// .myClass[id]:hover{
+//     background: gold !important;
+// }
 
-#stellenanzeige {
-    p {}
-    h1 {}
-}
+// #stellenanzeige {
+//     p {}
+//     h1 {}
+// }
