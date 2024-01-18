@@ -5,9 +5,42 @@ html {
     * {
         box-sizing: border-box;
     }
-
 }
 
+#myId{background: black;}
+
 body {
-    margin:0;
+    margin: 0;
+}
+
+a {
+    color: blue;
+}
+
+a:hover {
+    color: red;
+}
+
+@mixin border($color) {
+    border: 3px solid $color;
+    outline: 0;
+}
+
+input {
+    &:focus {
+        @include border(red);
+    }
+    &:not(:focus) {
+        @include border(green);
+    }
+}
+
+.myClass:hover {}
+.myClass[id]:hover{
+    background: gold !important;
+}
+
+#stellenanzeige {
+    p {}
+    h1 {}
 }

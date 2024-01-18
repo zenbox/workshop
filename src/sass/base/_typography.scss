@@ -23,17 +23,18 @@
 }
 
 body * {
-    font-family: "Noto Sans KR";
+    font-family: "Barlow";
 }
 h1,
-h2 {
-    font-family: "Great Vibes";
+h2,
+h3 {
+    font-family: "Noto Serif";
+    font-weight: 300;
 }
 
 // [lang="de"] {
 //     color: red;
 //     direction: rtl;
-//     // transform:rotateY(180deg);
 // }
 // [lang="en"] {
 //     color: green;
