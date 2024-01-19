@@ -120,18 +120,19 @@ h3 {
   font-weight: 300;
 }
 
+body > header,
+body > nav,
+body > main,
+body > footer {
+  display: block;
+  width: 100%;
+}
+
 .layout-1 {
   /* All Devices Fallback */
   display: block;
   width: 100%;
   margin: 0.25rem;
-}
-.layout-1 > header,
-.layout-1 > nav,
-.layout-1 > main,
-.layout-1 > footer {
-  display: block;
-  width: 100%;
 }
 @media screen and (max-width: 599px) {
   .layout-1 > nav {
@@ -196,15 +197,32 @@ h3 {
   color: hsl(0, 0%, 95%);
 }
 
+.figure {
+  margin: 0;
+  padding: 0;
+}
+.figure-responsive > img {
+  max-width: 100%;
+  height: auto;
+}
+.figure img {
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0;
+  transform: translateX(2rem) scale(0.5) rotateY(1440deg);
+  filter: grayscale(1) brightness(2) blur(3px);
+}
+.figure img:hover {
+  transform: translateX(0) scale(1) rotateX(0);
+  filter: grayscale(0) blur(0px);
+}
+
 .-fx-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-.-fx-header > * {
-  border: 1px dotted black;
-  margin: 0;
 }
 
 .filter::before {
@@ -239,8 +257,4 @@ h3 {
 .-fx-nav a:active {
   color: red;
   text-decoration: underline;
-}
-
-body > * {
-  background: hsla(180, 100%, 50%, 0.097);
 }

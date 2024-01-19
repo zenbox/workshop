@@ -1,0 +1,29 @@
+.figure {
+    // Reset
+    margin: 0;
+    padding: 0;
+
+    &-responsive {
+        > img {
+            max-width: 100%;
+            height: auto;
+        }
+    }
+
+    img {
+        transition-property: all;
+        transition-duration: 1s;
+        transition-timing-function: ease-in-out;
+        transition-delay: 0;
+
+        transform: translateX(2rem) scale(0.5) rotateY(1440deg);
+
+        filter: grayscale(1) brightness(2) blur(3px);
+
+        &:hover {
+            transform: translateX(0) scale(1) rotateX(0);
+            filter: grayscale(0) blur(0px);
+
+        }
+    }
+}

@@ -10,7 +10,7 @@
             rel="stylesheet"
             href="assets/css/style.css" />
     </head>
-    <body class="layout-1 red">
+    <body class="layout-1">
         <header class="-fx-header">
             <p class="brand">Company</p>
 
@@ -52,10 +52,33 @@
         <main>
             <article class="filter">
                 <h2>Image ipsum sit</h2>
-                <figure>
-                    <img
-                        src="https://picsum.photos/id/129/600/400"
-                        alt="" />
+                <figure class="figure figure-responsive">
+                    <!-- img 
+                        src="https://picsum.photos/id/127/200/400"
+                        alt="" /-->
+                    <picture>
+                        <source
+                            media="(min-resolution: 192dpi)  and (min-width: 500px)"
+                            srcset="https://picsum.photos/id/128/1000/300" />
+                        <source
+                            media="(min-resolution: 96dpi) and (min-width: 500px)"
+                            srcset="https://picsum.photos/id/128/500/300" />
+                        <source
+                            media="(min-width: 250px)"
+                            srcset="https://picsum.photos/id/128/250/150" />
+                        <img
+                            src="https://picsum.photos/id/128/600/400"
+                            alt="" />
+                    </picture>
+                    <!--img
+                        src="https://picsum.photos/id/129/200/400"
+                        alt="" /-->
+                    <figcaption>
+                        Image description Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit. Aliquam voluptatum quam esse ducimus
+                        amet, obcaecati, tempora sapiente modi deleniti
+                        laudantium reprehenderit dolore tenetur ratione!
+                    </figcaption>
                 </figure>
             </article>
 
