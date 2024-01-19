@@ -1,0 +1,29 @@
+.DecorationPane {
+}
+.StackPane {
+}
+.UserAdministrationView {
+}
+.GridPane {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.VBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.HBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    .Label {
+        flex-basis: 30%;
+
+        + *:not([type="radio"]) {
+            flex-basis: 50%;
+        }
+
+    }
+}

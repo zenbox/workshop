@@ -1,0 +1,92 @@
+$dark: hsla(0, 0%, 0%, 0.85);
+$light: hsla(0, 0%, 100%, 0.85);
+
+@mixin b($hue: 0) {
+    $hsl: hsla($hue, 70%, 50%, 0.85);
+    outline: 0;
+    border: 1px dotted $hsl;
+    padding: 2px;
+    // background: $hsl;
+}
+html {
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        color: $light;
+    }
+}
+body {
+    background: $dark;
+    color: $light;
+
+    $h: 330;
+    $d: 30;
+
+    @include b($h);
+    > * {
+        $h: $h + $d;
+        @include b($h);
+
+        > * {
+            $h: $h + $d;
+            @include b($h);
+
+            > * {
+                $h: $h + $d;
+                @include b($h);
+                > * {
+                    $h: $h + $d;
+                    @include b($h);
+                    > * {
+                        $h: $h + $d;
+                        @include b($h);
+                        > * {
+                            $h: $h + $d;
+                            @include b($h);
+                            > * {
+                                $h: $h + $d;
+                                @include b($h);
+                                > * {
+                                    $h: $h + $d;
+                                    @include b($h);
+                                    > * {
+                                        $h: $h + $d;
+                                        @include b($h);
+                                        > * {
+                                            $h: $h + $d;
+                                            @include b($h);
+                                            > * {
+                                                $h: $h + $d;
+                                                @include b($h);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.DecorationPane {
+    background: hsla(0, 0%, 90%, 0.05);
+}
+.StackPane {
+    background: hsla(0, 0%, 90%, 0.05);
+}
+.UserAdministrationView {
+    background: hsla(0, 0%, 90%, 0.05);
+}
+.GridPane {
+    background: hsla(0, 0%, 90%, 0.05);
+    border: 3px solid lime !important;
+}
+.VBox {
+    background: hsla(0, 0%, 90%, 0.05);
+}
+.HBox {
+    background: hsla(0, 0%, 90%, 0.05);
+}
