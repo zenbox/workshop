@@ -7,12 +7,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: stretch;
 }
 
 .HBox {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
 }
 .HBox .Label {
   flex-basis: 30%;
@@ -21,96 +23,20 @@
   flex-basis: 50%;
 }
 
-html * {
-  box-sizing: border-box;
-  margin: 0;
-  color: hsla(0, 0%, 100%, 0.85);
+.PercentWidthHBox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.PercentWidthHBox > * {
+  flex-basis: 50%;
+  flex-grow: 1;
+  flex-shrink: 1;
 }
 
-body {
-  background: hsla(0, 0%, 0%, 0.85);
-  color: hsla(0, 0%, 100%, 0.85);
-  outline: 0;
-  border: 1px dotted hsla(330, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * {
-  outline: 0;
-  border: 1px dotted hsla(0, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * {
-  outline: 0;
-  border: 1px dotted hsla(30, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(60, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(90, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(120, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(150, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * > * > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(180, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * > * > * > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(210, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * > * > * > * > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(240, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * > * > * > * > * > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(270, 70%, 50%, 0.85);
-  padding: 2px;
-}
-body > * > * > * > * > * > * > * > * > * > * > * {
-  outline: 0;
-  border: 1px dotted hsla(300, 70%, 50%, 0.85);
-  padding: 2px;
-}
-
-.DecorationPane {
-  background: hsla(0, 0%, 90%, 0.05);
-}
-
-.StackPane {
-  background: hsla(0, 0%, 90%, 0.05);
-}
-
-.UserAdministrationView {
-  background: hsla(0, 0%, 90%, 0.05);
-}
-
-.GridPane {
-  background: hsla(0, 0%, 90%, 0.05);
-  border: 3px solid lime !important;
-}
-
-.VBox {
-  background: hsla(0, 0%, 90%, 0.05);
-}
-
-.HBox {
-  background: hsla(0, 0%, 90%, 0.05);
+.Group {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
