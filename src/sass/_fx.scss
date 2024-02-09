@@ -1,6 +1,0 @@
-$-fx-my-value: -fx-my-value-parsed;
-$-fx-my-property-as-variable: "-fx-my-property-parsed";
-.-fx-my-class {
-    -fx-my-property: $-fx-my-value; 
-    #{$-fx-my-property-as-variable}: "One";
-}

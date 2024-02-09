@@ -1,163 +1,155 @@
 <!DOCTYPE html>
-<html lang="de">
+<html
+    lang="de"
+    class="tritanomaly-100">
     <head>
         <meta charset="UTF-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Barrierefreiheit im Design</title>
         <link
             rel="stylesheet"
             href="assets/css/style.css" />
+        <script src="assets/js/script.js"></script>
     </head>
-    <body class="layout-1">
-        <header class="-fx-header">
-            <p class="brand">Company</p>
-
-            <form>
-                <label for="fx-search">Search</label>
-                <input
-                    id="fx-search"
-                    type="search"
-                    name="" />
-                <button>enter</button>
-            </form>
-
-            <nav>
-                <ul class="-fx-nav -fx-nav-row">
-                    <li>
-                        <a
-                            href="#"
-                            class="myClass"
-                            id="myId"
-                            >One</a
-                        >
-                    </li>
-                    <li><a href="#">Two</a></li>
-                    <li><a href="#">Three</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <nav>
-            <i class="fa-solid fa-bars"></i>
-            <ul class="-fx-nav -fx-nav-column">
-                <li><a href="#">Four</a></li>
-                <li><a href="#">Five</a></li>
-                <li><a href="#">Three</a></li>
-            </ul>
-            Six
-        </nav>
-
-        <main>
-            <article class="filter">
-                <h2>Image ipsum sit</h2>
-                <figure class="figure figure-responsive">
-                    <!-- img 
-                        src="https://picsum.photos/id/127/200/400"
-                        alt="" /-->
-                    <picture>
-                        <source
-                            media="(min-resolution: 192dpi)  and (min-width: 500px)"
-                            srcset="https://picsum.photos/id/128/1000/300" />
-                        <source
-                            media="(min-resolution: 96dpi) and (min-width: 500px)"
-                            srcset="https://picsum.photos/id/128/500/300" />
-                        <source
-                            media="(min-width: 250px)"
-                            srcset="https://picsum.photos/id/128/250/150" />
-                        <img
-                            src="https://picsum.photos/id/128/600/400"
-                            alt="" />
-                    </picture>
-                    <!--img
-                        src="https://picsum.photos/id/129/200/400"
-                        alt="" /-->
-                    <figcaption>
-                        Image description Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Aliquam voluptatum quam esse ducimus
-                        amet, obcaecati, tempora sapiente modi deleniti
-                        laudantium reprehenderit dolore tenetur ratione!
-                    </figcaption>
+    <body>
+        <h1>Barrierefreiheit</h1>
+        <nav><a href="#">Home</a> <a href="#main">Hauptinhalt</a></nav>
+        <main id="main">
+            <article>
+                <h2>Farben und Kontraste</h2>
+                <figure>
+                    <ul class="colors">
+                        <li class="color primary">
+                            <h3>Primary</h3>
+                            <p>Lorem<br /></p>
+                        </li>
+                        <li class="color secondary">
+                            <h3>Secondary</h3>
+                            <p>Lorem<br /></p>
+                        </li>
+                        <li class="color bright">
+                            <h3>Bright</h3>
+                            <p>Lorem<br /></p>
+                        </li>
+                        <li class="color dark">
+                            <h3>Dark</h3>
+                            <p>Lorem<br /></p>
+                        </li>
+                        <li class="color success">
+                            <h3>Success</h3>
+                            <p>Lorem<br /></p>
+                        </li>
+                        <li class="color error">
+                            <h3>Error</h3>
+                            <p>Lorem<br /></p>
+                        </li>
+                        <li class="color warning">
+                            <h3>Warning</h3>
+                            <p>Lorem<br /></p>
+                        </li>
+                        <li class="color info">
+                            <h3>Info</h3>
+                            <p>Lorem<br /></p>
+                        </li>
+                    </ul>
+                    <figcaption>Farbfelder</figcaption>
                 </figure>
             </article>
-
-            <style>
-                .position {
-                    border: 3px dashed rgb(23, 228, 23);
-                }
-                .position h2 {
-                    --width: 100px;
-
-                    width: var(--width);
-                    height: 8rem;
-                    border: 3px dashed black;
-                    background: hsla(0, 100%, 50%, 0.728);
-                    font-size: 1rem;
-
-                    display: block;
-                    position: fixed;
-                    z-index: 1;
-                    left: calc(50% - var(--width) / 2);
-                    top: 18rem;
-                }
-            </style>
-            <!-- <article class="position">
-                <div>One</div>
-                <h2>Positionierung Lorem ipsum dolor.</h2>
-                <div>two</div>
-            </article> -->
-
-            <article
-                id="stellenanzeige"
-                lang="en">
-                <h1>Headline 1</h1>
-                <h2>Headline 2</h2>
-                <h3>Headline 3</h3>
-                <h4>Headline 4</h4>
-                <h5>Headline 5</h5>
-                <h6>Headline 6 국제연합의</h6>
-                <p lang="la">
-                    Lorem ipsum dolor sit
-                    <span lang="en">nice to have</span> consectetur, adipisicing
-                    elit. Ipsa facere culpa beatae.
+            <article class="typography">
+                <h2>Umgang mit Schrift und Absatz</h2>
+                <p lang="en">
+                    1234567890 Lorem ipsum dolor sit amet consectetur,
+                    adipisicing elit. Laudantium dolores voluptas delectus et.
+                    Et magnam aperiam alias vero odio voluptate ab dolores odit
+                    accusantium corporis, tenetur dolorem aliquam ratione nemo
+                    cupiditate, animi numquam quis, repellat officia. Lorem
+                    ipsum dolor sit, amet consectetur adipisicing elit. Nam
+                    libero, soluta vel natus alias id dolor quasi laboriosam
+                    consequatur nostrum odit nobis veritatis vero minima placeat
+                    atque veniam iste assumenda sed?
                 </p>
-            </article>
-            <article>
-                <h2>Colors</h2>
-
-                <div class="color-fields">
-                    <span class="color-field primary">Lorem ipsum</span>
-                    <span class="color-field primary-lighter-200"
-                        >Lorem ipsum</span
-                    >
-                    <span class="color-field primary-lighter-300"
-                        >Lorem ipsum</span
-                    >
-                    <span class="primary-lighter-400">Lorem ipsum</span>
-                </div>
-
-                <ol class="color-fields">
-                    <li class="primary-darker-100">Lorem ipsum</li>
-                    <li class="primary-darker-200">Lorem ipsum</li>
-                    <li class="primary-darker-300">Lorem ipsum</li>
-                    <li class="primary-darker-400">Lorem ipsum</li>
-                </ol>
-            </article>
-
-            <article>
-                <h2>Lorem ipsum dolor ipsum</h2>
                 <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Enim porro molestias, eveniet veniam sed similique numquam
-                    necessitatibus, accusantium iste perspiciatis eligendi
-                    assumenda, fugit distinctio.
+                    A laborum nemo quibusdam praesentium aspernatur! Fuga ipsum
+                    laboriosam enim. Magni vel delectus laudantium voluptates
+                    optio voluptas. Ab esse nemo, optio voluptatum consectetur
+                    rem porro molestias nobis quod assumenda culpa
+                    necessitatibus ipsam accusamus libero maiores sed
+                    repudiandae obcaecati cum odit illo laboriosam similique.
+                    Eius rerum magnam nam dignissimos quos ipsa. Voluptates
+                    soluta, ullam ex illo aliquam a tempora accusamus neque
+                    culpa voluptatem rerum impedit odit quisquam officiis ipsa
+                    iste minima enim pariatur cupiditate nemo nostrum! Odit sed
+                    sit, numquam explicabo dignissimos placeat blanditiis, in
+                    natus commodi animi, ipsum vero dicta nihil porro id.
+                    Aliquid quis, dolore sapiente accusamus dolorem natus dolor,
+                    molestiae, magnam suscipit cupiditate voluptates! Eius omnis
+                    nesciunt sequi atque totam harum ad illum blanditiis, et
+                    animi voluptas iusto ipsam ipsum corporis saepe facere iure
+                    qui! Exercitationem cumque pariatur, repudiandae numquam
+                    voluptas asperiores accusamus perspiciatis laudantium saepe
+                    beatae velit commodi. Delectus obcaecati fugit tenetur quod
+                    blanditiis quas, officiis, quisquam excepturi quibusdam
+                    veritatis sunt, sequi rerum? Animi dolore eveniet
+                    voluptatibus? Corporis culpa nemo vitae similique dolorem,
+                    nostrum laudantium repellendus soluta id totam consequatur
+                    fugiat ab, aperiam numquam quidem. Qui officia nisi aliquam
+                    libero aut molestias sunt at natus quasi eligendi porro
+                    doloremque neque aspernatur nemo, veniam explicabo debitis
+                    minus quas nesciunt blanditiis, omnis facilis. Animi
+                    quibusdam hic corporis unde, esse libero officia eum
+                    delectus doloremque temporibus natus odio. Fugit
+                    voluptatibus deserunt assumenda dicta sit. Praesentium
+                    reprehenderit cumque velit dolor doloremque fugiat explicabo
+                    quod placeat error voluptatem alias molestiae, consectetur
+                    accusamus ex. Amet quas reprehenderit quae quia, accusantium
+                    voluptatum eveniet, natus sint facere unde quam beatae
+                    repellendus quo odio. Amet nesciunt, est alias iure
+                    repudiandae fugit harum ipsam minus. Error distinctio
+                    repudiandae excepturi corporis quia incidunt, nostrum soluta
+                    veritatis voluptatem tempora blanditiis hic repellendus sed
+                    reiciendis? Dolore, ad perferendis obcaecati cum, quod
+                    corporis exercitationem fugit atque excepturi, maxime
+                    asperiores aspernatur odit id. Tenetur, voluptatum. At enim
+                    accusantium sunt ex. Quo nostrum adipisci voluptatibus
+                    provident repellat quidem, esse hic error consequuntur,
+                    blanditiis dicta autem quos rerum ex voluptatem!
+                    Reprehenderit non eaque deserunt nobis deleniti, commodi
+                    omnis nihil aliquid sed at. Magni nisi, est alias ratione
+                    consectetur fugit laborum facilis! Dicta hic odio fugit
+                    facilis debitis cum in enim, deserunt voluptas eum, nulla a
+                    error ad neque suscipit consequatur rem sunt. Nisi quod
+                    velit, beatae assumenda, consequatur aut sit natus similique
+                    rem unde quis dolorem nostrum veritatis obcaecati dicta
+                    animi eius placeat iste et, iusto dolore. Rerum, assumenda,
+                    eum possimus facilis reprehenderit commodi, labore sunt
+                    dolorum minima exercitationem nobis doloribus voluptatum
+                    aliquam quia. Deserunt nostrum tempore, voluptas saepe
+                    suscipit vitae voluptates impedit adipisci quo quod hic
+                    consectetur inventore, a nemo asperiores quos, iste
+                    perferendis placeat qui delectus itaque accusamus?
+                    Laboriosam incidunt amet eveniet nesciunt rerum nobis
+                    corporis, a repellat ad quis nihil assumenda quasi minima
+                    illo ullam doloremque ratione placeat architecto voluptas
+                    impedit, iure eaque? Commodi pariatur, quam repellendus
+                    maxime porro recusandae!
                 </p>
+                <ol>
+                    <li>Lorem, ipsum dolor. 1</li>
+                    <li>Lorem, ipsum dolor. 2</li>
+                    <li>Lorem, ipsum dolor. 3</li>
+                    <li>Lorem, ipsum dolor. 4</li>
+                    <li>Lorem, ipsum dolor. 5</li>
+                </ol>
 
-                <a href="">Four</a>
+                <pre><code>
+Quelltexte sind vor-
+formatierte Texte.
+Sie verwenden eine 
+monospace-Schrift.
+        </code></pre>
             </article>
         </main>
-
-        <footer>&copy; 2024 Michael</footer>
     </body>
 </html>

@@ -1,24 +1,4 @@
-// Globals, variables
-@import "variables/index";
-
-// Base
-@import "base/index";
-
-// Layout
-@import "layout/layout-1";
-
-// Components
-@import "components/color-fields";
-@import "components/figure";
-@import "components/header";
-@import "components/images";
-@import "components/nav";
-
-// - - - - - - - - - -
-// - - - - - - - - - -
-// - - - - - - - - - -
-
-// Themes
-// @import "customer-1/variables";
-// @import "customer-1/theme";
-// @import "dev/dev";
+@import "typography";
+@import "layout";
+@import "theme";
+@import "accessibility";
