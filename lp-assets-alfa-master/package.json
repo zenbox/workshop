@@ -1,0 +1,18 @@
+{
+  "name": "lp-assets-bootstrap",
+  "version": "1.1.0",
+  "description": "This is a collection of styles and options to help get you started.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aptoma/lp-assets-bootstrap.git"
+  },
+  "author": "Peter Rudolfsen <peter@aptoma.com>",
+  "scripts": {
+    "live-reload": "dredition layoutpreview live-reload -c alfa",
+    "build": "dredition layoutpreview build -c alfa"
+  },
+  "devDependencies": {
+    "@aptoma/dredition-cli": "^1.2.0"
+  }
+}

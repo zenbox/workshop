@@ -1,0 +1,59 @@
+.alf-grid {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	padding: 0;
+
+	--alf-grid-line-height: #{$grid-line-height};
+	--alf-grid-top-line-offset: #{$grid-top-line-offset};
+	--alf-grid-margin-inner: 17mm;
+	--alf-grid-margin-outer: 0;
+	--alf-grid-column-gap: 4mm;
+	--alf-grid-anchor: bottom;
+
+	[class*="alf-col-"] {
+		position: absolute;
+		margin-top: 0;
+		margin-bottom: $grid-line-height;
+	}
+
+	.alf-col-top {
+		margin-top: 0;
+	}
+
+	.alf-col-bottom {
+		margin-bottom: 0;
+	}
+
+	&.alf-grid--5 {
+		--alf-grid-columns: 5;
+		--alf-grid-column-width: 45mm;
+		--alf-grid-column-gap: 5mm;
+	}
+	
+	&.alf-grid--10 {
+		--alf-grid-columns: 10;
+		--alf-grid-column-width: 20mm;
+		--alf-grid-column-gap: 5mm;
+	}
+
+	&.alf-grid--20 {
+		--alf-grid-columns: 20;
+		--alf-grid-column-width: 8.5mm;
+	}
+
+	&.alf-grid--49 {
+		--alf-grid-columns: 49;
+		--alf-grid-column-width: 5mm;
+		--alf-grid-column-gap: 0mm;
+	}
+
+	&.alf-grid--98 {
+		--alf-grid-columns: 98;
+		--alf-grid-column-width: 2.5mm;
+		--alf-grid-column-gap: 0mm;
+	}
+
+}

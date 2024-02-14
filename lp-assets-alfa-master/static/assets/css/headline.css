@@ -1,0 +1,34 @@
+.headline {
+  -ro-pdf-overprint-content: mode1;
+  --alf-grid-align-top: baseline;
+  --alf-grid-align-bottom: baseline;
+  --alf-text-respect-line-breaks: 0;
+  --alf-text-size-units: pt;
+  --alf-text-size-min: 25;
+  --alf-text-size-max: 65;
+  --alf-text-lines: 0;
+  --headline-color: var(--color-black);
+  --headline-size: 30pt;
+  --headline-line-height: 1.01;
+  --headline-font-family: PlayfairDisplay-SemiBold;
+  --headline-letter-spacing: -0.02em;
+}
+.headline * {
+  -ro-pdf-overprint-content: mode1;
+}
+.headline.alf-text-auto-size {
+  font-size: calc((var(--alf-text-size-min) + var(--alf-text-size-max)) / 2 * 1pt);
+}
+.headline * {
+  margin: 0;
+  font-weight: bold;
+  color: var(--headline-color);
+  font-size: var(--headline-size);
+  line-height: var(--headline-line-height);
+  font-family: var(--headline-font-family);
+  letter-spacing: var(--headline-letter-spacing);
+}
+.headline .alf-colspan-4, .headline .alf-colspan-16, .headline .alf-colspan-5 {
+  font-size: 8pt;
+  color: yellow;
+}

@@ -1,0 +1,5 @@
+& {
+	@include cmyk(--color-white, 0, 0, 0, 0);
+	@include cmyk(--color-black, 0, 0, 0, 1);
+	@include cmyk(--color-green, 70%, 0, 90%, 0);
+}

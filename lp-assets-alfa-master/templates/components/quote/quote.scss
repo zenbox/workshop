@@ -1,0 +1,33 @@
+.quote {
+	font-family: Rubik-Regular;
+
+	blockquote {
+		margin: 0;
+		padding: 0;
+	}
+
+	.quote-text {
+		margin: 0;
+		font-family: Rubik-Light;
+		line-height: 0.9em;;
+		font-weight: normal;
+		color: rgb(100,100,100);
+		font-size: 16pt;
+	}
+
+	/*
+	.quote-text:first-child::before{
+		content: "\201E"
+	}
+
+	.quote-text:last-child::after{
+		content: "\201C"
+	}
+	*/
+
+	.quote-creator {
+		font-family: Rubik-LightItalic;
+		margin: $grid-line-height 0 0 0;
+		--alf-hyphenate: 1;
+	}
+}

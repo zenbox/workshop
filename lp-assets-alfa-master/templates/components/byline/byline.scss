@@ -1,0 +1,25 @@
+// The byline for the article also contains a `<div class="byline">`,
+// so `.alf-component` is added to make sure we target the top element only
+.alf-component.byline {
+	--alf-grid-align-top: baseline;
+	--alf-grid-align-bottom: baseline;
+
+	border-width: 2pt 0 var(--unit-thin) 0;
+	border-style: solid;
+	border-color: var(--color-black);
+	padding-top: 0pt;
+	padding-bottom: 0;
+
+	.author {
+		display: block;
+		font-family: Rubik-Bold;
+		font-size: 10pt;
+		margin-bottom: 2pt;
+		transform: translateY(1.4pt);
+	}
+
+	.email {
+		font-family: Rubik-Light;
+		font-size: 9pt;
+	}
+}

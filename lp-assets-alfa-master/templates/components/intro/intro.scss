@@ -1,0 +1,19 @@
+.intro {
+	font-family: Rubik-Light;
+	font-weight: bold;
+	font-size: 12pt;
+	line-height: 1.1em;
+	-ro-pdf-overprint: mode1;
+	-ro-pdf-overprint-content: mode1;
+	margin-bottom: $grid-top-line-offset;
+	--alf-grid-align-top: top;
+	--alf-grid-align-bottom: baseline;
+	--alf-hyphens-after-first: 5;
+	--alf-hyphens-before-last: 5;
+	--alf-hyphenate: 1;
+
+	p {
+		margin: 0;
+	}
+
+}

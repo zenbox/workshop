@@ -1,0 +1,37 @@
+.subheadline {
+	-ro-pdf-overprint-content: mode1;
+
+	--alf-grid-align-top: baseline;
+	--alf-grid-align-bottom: baseline;
+	--alf-text-respect-line-breaks: 0;
+	--alf-text-size-units: pt;
+	--alf-text-size-min: 25;
+	--alf-text-size-max: 65;
+	--alf-text-lines: 0;
+
+	--subheadline-color: var(--color-black);
+	--subheadline-size: 16pt;
+	--subheadline-line-height: 1.01;
+	--subheadline-font-family: PlayfairDisplay-SemiBold;;
+	--subheadline-letter-spacing: -0.02em;
+
+	* {
+		-ro-pdf-overprint-content: mode1;
+	}
+
+	&.alf-text-auto-size {
+		// Setting the font size to the average of min/max so it can grow/shrink
+		// This will make sure the subheadline can always be automatically adjusted up or down
+		font-size: calc(((var(--alf-text-size-min) + var(--alf-text-size-max)) / 2) * 1pt);
+	}
+
+	* {
+		margin: 0;
+		font-weight: bold;
+		color: var(--suheadline-color);
+		font-size: var(--subheadline-size);
+		line-height: var(--subheadline-line-height);
+		font-family: var(--subheadline-font-family);
+		letter-spacing: var(--subheadline-letter-spacing);
+	}
+}

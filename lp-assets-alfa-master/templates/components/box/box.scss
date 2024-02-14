@@ -1,0 +1,18 @@
+.box {
+	min-height: $base-line-height;
+	--alf-grid-align-top: baseline;
+	--alf-grid-align-bottom: baseline;
+
+	&.alf-is-auto-adjustable {
+		min-height: 0;
+		margin-bottom: 0;
+	}
+
+	&.box--white {
+		background-color: var(--color-white);
+	}
+
+	&.box--black {
+		background-color: var(--color-black);
+	}
+}

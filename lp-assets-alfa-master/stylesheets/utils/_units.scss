@@ -1,0 +1,7 @@
+& {
+	--unit-thin: 0.25pt;
+
+	@media screen {
+		--unit-thin: 1px;
+	}
+}

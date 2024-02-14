@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+        <link rel="stylesheet" href="static/assets/css/styles.css">
+	</head>
+	<body>
+		<div
+			data-name="box"
+			class="alf-component alf-is-resizable box"
+			data-options="box .alf-is-auto-adjustable margins grid-align grid-gap"
+		>
+			Box
+		</div>
+
+		<div
+			data-name="headline"
+			data-color="#222"
+			data-lines="5"
+			class="alf-component alf-container alf-is-editable headline"
+			data-options="margins grid-align grid-gap"
+			data-map="title"
+		>
+			Headline
+		</div>
+
+		<div
+			data-name="intro"
+			data-color="#404040"
+			data-lines="8"
+			class="alf-component alf-container alf-is-editable alf-is-removable intro"
+			data-map="intro"
+			data-options="margins grid-align grid-gap"
+		>
+			<p class="alf-wordify" data-select-inner="p">Intro</p>
+		</div>
+
+		<div
+			data-name="byline"
+			data-color="#ff5722"
+			data-lines="5"
+			class="alf-component alf-is-removable byline"
+			data-options="margins"
+		>
+			<div class="byline-wrapper">
+				<div
+					class="alf-container byline-author"
+					data-map="byline-profiles"
+				></div>
+				<div
+					class="alf-container alf-is-optional byline-location alf-is-editable"
+					data-map="location"
+				>
+					byline
+				</div>
+			</div>
+		</div>
+
+		<div
+			data-name="caption"
+			data-color="#58a154"
+			data-lines="5"
+			class="alf-component alf-container alf-is-removable caption caption--align-left caption--color-black"
+			data-map="lead-asset-body picture-body"
+			data-options="margins"
+		>
+			<figcaption class="figcaption alf-is-editable">
+				<div
+					class="figcaption-inner alf-wordify"
+					data-select-inner=".figcaption"
+				>
+					figcaption
+				</div>
+			</figcaption>
+		</div>
+
+		<div
+			data-name="fact-box"
+			data-color="#5db3b3"
+			class="alf-component alf-container alf-is-removable fact-box"
+			data-map="fact-box"
+			data-options="margins grid-align grid-gap"
+		>
+			<h3 class="fact-box-header" data-select-inner="[itemprop=headline] p">
+				Fact box headline
+			</h3>
+			<div class="fact-box-body-container alf-align">
+				<div
+					class="fact-box-body alf-wordify"
+					data-select-inner="[itemprop=articleBody]"
+				>
+					Fact box body
+				</div>
+			</div>
+		</div>
+
+		<div
+			data-name="picture"
+			data-lines="10"
+			data-color="#48bb43"
+			class="alf-component alf-container alf-smart-crop alf-is-resizable alf-is-removable picture"
+			data-map="lead-asset picture"
+			data-options=".alf-is-auto-adjustable margins grid-align grid-gap"
+			data-type="image"
+		>
+			<figure>
+				<div class="image">
+					<div class="image-wrapper" data-select="img">
+						<img src="https://picsum.photos/280/120" />
+					</div>
+				</div>
+			</figure>
+		</div>
+
+		<div
+			data-name="quote"
+			data-color="#1487cd"
+			class="alf-component alf-container alf-is-removable quote"
+			data-map="quote"
+			data-options="margins"
+		>
+			<blockquote>
+				<p class="quote-text" data-select-inner="[itemprop='text']"></p>
+				<div class="alf-align">
+					<p
+						class="quote-creator alf-wordify"
+						data-select-inner="[itemprop='creator']"
+					>
+						Quote
+					</p>
+				</div>
+			</blockquote>
+		</div>
+
+		<div
+			data-name="subheadline"
+			data-color="#222"
+			data-lines="5"
+			class="alf-component alf-container alf-is-editable subheadline"
+			data-options="margins grid-align grid-gap"
+			data-map="subheadline"
+		>
+			Subheadline
+		</div>
+
+		<div
+			data-name="text-column"
+			data-color="#CCC"
+			class="alf-component alf-region alf-flex text-column"
+			data-options="margins grid-gap"
+		>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus sit
+			nesciunt expedita eius tempora voluptate unde omnis nostrum incidunt non
+			voluptatum accusantium repellendus perspiciatis culpa alias, accusamus
+			libero sint. Asperiores laboriosam repellat aliquid consectetur officia
+			quas cum fugit, velit impedit, totam a cumque dolorum magni. Iure iste
+			eius porro nostrum maiores fugit. Nemo, eum quia consequuntur consequatur
+			optio sequi aliquam qui provident quibusdam, necessitatibus sint illum,
+			sit fugit accusamus ex vitae perspiciatis fuga eveniet iste ullam? Facere
+			odio officia adipisci pariatur dolor tempore natus repellat nisi alias,
+			eveniet inventore distinctio aliquid molestiae modi unde, suscipit
+			molestias maiores expedita neque odit. Dolores eveniet laboriosam adipisci
+			dignissimos perferendis amet ipsum aspernatur facilis velit,
+			exercitationem doloribus sit, labore veniam minima architecto atque. Quos,
+			ut hic nulla dolore ad, magnam excepturi rerum officia ratione vero libero
+			necessitatibus soluta quibusdam fugit. Ullam corporis soluta dolorem
+			commodi exercitationem dolores, laudantium veritatis laboriosam debitis
+			sed quam asperiores voluptates rerum quod suscipit vel qui officia
+			sapiente doloremque, sit, obcaecati illum harum consequatur error. Beatae
+			rerum incidunt dignissimos cupiditate amet nesciunt, perferendis atque
+			enim, quidem cumque odio veniam fugiat voluptatem nam expedita dolor dicta
+			reprehenderit necessitatibus magnam recusandae, non repellendus. Eos, est
+			veniam et numquam molestiae maiores consequuntur enim laboriosam suscipit,
+			magni, optio quia molestias id beatae! Expedita praesentium, aut quas
+			nobis modi aliquam culpa maxime. Id dignissimos consequuntur dolorum vel
+			nulla quasi commodi debitis harum facilis ea quod nihil deserunt quo,
+			illo, autem atque nemo aliquid architecto eos at a pariatur? Adipisci
+			distinctio deserunt ad magnam nulla consectetur quidem reprehenderit atque
+			cum iure. Incidunt.
+		</div>
+	</body>
+</html>

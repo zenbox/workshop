@@ -1,0 +1,30 @@
+.fact-box {
+	--alf-grid-align-top: baseline;
+	--alf-grid-align-bottom: baseline;
+
+	box-sizing: border-box;
+	padding: 0 2mm 0 2mm;
+
+	.fact-box-header {
+		border-top: 2.5pt solid var(--color-black);
+		font-family: Rubik-SemiBold;
+		font-weight: normal;
+		font-size: 12pt;
+		line-height: $grid-line-height;
+		padding-top: $grid-line-height;
+		margin-top: 6pt;
+		margin-bottom: 6pt;
+	}
+
+	.fact-box-body {
+		font-family: Rubik-Regular;
+		font-size: 9pt;
+		line-height: $grid-line-height;
+		transform: translateY(1.8pt);
+		--alf-hyphenate: 1;
+
+		p {
+			margin: 0 0 $grid-line-height 0;
+		}
+	}
+}

@@ -1,0 +1,25 @@
+@mixin cmyk($name, $c, $m, $y, $k, $a: 1) {
+	$c: to-dec($c);
+	$m: to-dec($m);
+	$y: to-dec($y);
+	$k: to-dec($k);
+	$a: to-dec($a);
+
+	$r: 255 * (1 - $c) * (1 - $k);
+	$g: 255 * (1 - $m) * (1 - $k);
+	$b: 255 * (1 - $y) * (1 - $k);
+
+	#{$name}: rgba($r, $g, $b, $a);
+
+	@media print {
+		#{$name}: cmyk($c, $m, $y, $k, $a);
+	}
+}
+
+@function to-dec($value) {
+	@if unit($value) == '%' {
+		$value: $value / 100%;
+	}
+
+	@return $value;
+}

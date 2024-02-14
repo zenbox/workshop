@@ -1,0 +1,254 @@
+{
+	"assetBuilderConfig": {
+		"target": "layoutpreview"
+	},
+	"alf": {
+		"hyphenation": {
+			"exceptions": []
+		}
+	},
+	"formats": {
+		"010mm": {"title": "10mm", "height": 10.0, "units": "mm"},
+		"030mm": {"title": "30mm", "height": 30.0, "units": "mm"},
+		"070mm": {"title": "70mm", "height": 70.379, "units": "mm"},
+		"090mm": {"title": "90mm", "height": 89.994, "units": "mm"},
+		"148mm": {"title": "148mm", "height": 148.123, "units": "mm"},
+		"178mm": {"title": "178mm", "height": 177.8, "units": "mm"},
+		"263mm": {"title": "263mm", "height": 262.997, "units": "mm"},
+		"360mm": {"title": "360mm", "height": 359.304, "units": "mm"},
+		"396mm": {"title": "396mm", "height": 396, "units": "mm", "isDefault": true}
+	},
+	"grids": {
+		"alf-grid--49": {
+			"title": "49 column grid"
+		},
+		"alf-grid--40": {
+			"title": "40 column grid"
+		},
+		"alf-grid--20": {
+			"title": "20 column grid"
+		},
+		"alf-grid--10": {
+			"title": "10 column grid"
+		},
+		"alf-grid--5": {
+			"title": "5 column grid"
+		}
+	},
+	"templateOptions": {
+		".theme--{theme}": {
+			"title": "Theme",
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "string",
+				"enum": [
+					"default",
+					"blue"
+				],
+				"enumNames": [
+					"Default",
+					"Blue"
+				]
+			}
+		},
+		"[data-map]": {
+			"title": "Article types",
+			"type": "array",
+			"uniqueItems": true,
+			"items": {
+				"type": "string",
+				"enum": [
+					"article"
+				],
+				"enumNames": [
+					"All"
+				]
+			}
+		}
+	},
+	"dividerOptions": {
+		".divider--border-{alignment}": {
+			"title": "Alignment",
+			"type": "string",
+			"enum": [
+				"middle",
+				"top",
+				"bottom",
+				"left",
+				"right",
+				"left-right",
+				"none"
+			],
+			"enumNames": [
+				"Middle",
+				"Top",
+				"Bottom",
+				"Left",
+				"Right",
+				"Left/right",
+				"None"
+			]
+		},
+		".u-margin-top--{margin}": {
+			"title": "Margin above",
+			"type": "string",
+			"enum": [
+				"-2-lines",
+				"-1-line",
+				"0-lines",
+				"1-line",
+				"2-lines",
+				"3-lines",
+				"4-lines"
+			],
+			"enumNames": [
+				"-2 lines",
+				"-1 line",
+				"None",
+				"1 line",
+				"2 lines",
+				"3 lines",
+				"4 lines"
+			]
+		}
+	},
+	"componentOptions": {
+		".alf-is-auto-adjustable": {
+			"title": "Auto size to fit body text",
+			"type": "boolean"
+		},
+		"grid-align": {
+			"title": "Grid alignment",
+			"type": "object",
+			"properties": {
+				"--alf-grid-align-top": {
+					"title": "Top alignment",
+					"type": "string",
+					"enum": [
+						"top",
+						"baseline",
+						"none"
+					],
+					"enumNames": [
+						"Ascender/top",
+						"Baseline",
+						"None"
+					]
+				},
+				"--alf-grid-align-bottom": {
+					"title": "Bottom alignment",
+					"type": "string",
+					"enum": [
+						"top",
+						"baseline",
+						"none"
+					],
+					"enumNames": [
+						"Ascender/top",
+						"Baseline",
+						"None"
+					]
+				}
+			}
+		},
+		"grid-gap": {
+			"title": "Grid gaps",
+			"type": "object",
+			"properties": {
+				"--alf-grid-cell-gap-left": {
+					"title": "Left",
+					"type": "string",
+					"enum": [
+						"normal",
+						"none"
+					],
+					"enumNames": [
+						"Normal",
+						"None"
+					]
+				},
+				"--alf-grid-cell-gap-right": {
+					"title": "Right",
+					"type": "string",
+					"enum": [
+						"normal",
+						"none"
+					],
+					"enumNames": [
+						"Normal",
+						"None"
+					]
+				}
+			}
+		},
+		"margins": {
+			"title": "Margins",
+			"type": "object",
+			"properties": {
+				".u-margin-top--{margin}": {
+					"title": "Above",
+					"type": "string",
+					"enum": [
+						"-2-lines",
+						"-1-line",
+						"0-lines",
+						"1-line",
+						"2-lines",
+						"3-lines",
+						"4-lines"
+					],
+					"enumNames": [
+						"-2 lines",
+						"-1 line",
+						"None",
+						"1 line",
+						"2 lines",
+						"3 lines",
+						"4 lines"
+					]
+				},
+				".u-margin-bottom--{margin}": {
+					"title": "Below",
+					"type": "string",
+					"enum": [
+						"0-lines",
+						"1-line",
+						"2-lines",
+						"3-lines",
+						"4-lines"
+					],
+					"enumNames": [
+						"None",
+						"1 line",
+						"2 lines",
+						"3 lines",
+						"4 lines"
+					]
+				}
+			}
+		},
+		"box": {
+			"title": "Box",
+			"type": "object",
+			"properties": {
+				".box--{color}": {
+					"title": "Background color",
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "string",
+						"enum": [
+							"white",
+							"black"
+						],
+						"enumNames": [
+							"White",
+							"Black"
+						]
+					}
+				}
+			}
+		}
+	}
+}
