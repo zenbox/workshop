@@ -7,15 +7,21 @@
             content="width=device-width, initial-scale=1.0" />
         <title>Semantisches HTML und Beispiele</title>
 
-        <link rel="stylesheet" href="assets/css/style.css">
-
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
     </head>
     <body>
+        <!-- Benannter Anker -->
+        <a name="#top">hier ist oben</a>
+
         <h1>Headline ipsum dolor sit</h1>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+        <p class="teaser overwrite-the-background">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        </p>
 
         <!-- article>h2+p -->
-        <article>
+        <article id="first-content" class="first-content overwrite-the-background">
             <h2>Headline 2 ipsum dolor sit amet</h2>
             <p>
                 <strong>Lorem ipsum dolor</strong>
@@ -61,7 +67,7 @@
         </article>
 
         <article><h2>Headline 2</h2></article>
-        
+
         <!-- nicht semantische Elemente -->
         <!-- vom Typ `block`: folgen dem Dokumentenfluss von oben nach unten -->
         <div>Div-Element 1</div>
@@ -70,5 +76,7 @@
         <!-- vom Typ `inline`: folgen dem Textfluss von links nach rechts-->
         <span>Span-Element 1</span>
         <span>Span-Element 2</span>
+
+        <a href="#top">nach oben</a>
     </body>
 </html>

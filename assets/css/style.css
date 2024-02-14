@@ -1,0 +1,57 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+/* Elemente-Selektor */
+html {
+  font-family: "Open Sans", Arial, "Helvetica Neue", sans-serif;
+  font-size: 16px; /* Basis-Fontgröße 1 rem*/
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 5rem; /* root em */
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+/* Elemente mit `href`-Attribut */
+a[href] {
+  border: 2px solid rgba(255, 0, 0, 0.161);
+}
+
+a:link {
+  color: green;
+}
+
+a:visited {
+  color: orange;
+}
+
+a:hover {
+  color: red;
+}
+
+a:active {
+  color: yellow;
+  background: black;
+}
+
+/* Klassen-Selektor */
+.teaser {
+  color: blue;
+  font-size: 1.5rem;
+}
+
+.overwrite-the-background {
+  background-color: rgb(255, 189, 7);
+}
+
+/* ID-Selektor */
+.first-content {
+  background-color: #9e9e9e;
+  border-color: rgba(255, 0, 0, 0.161);
+  border-width: 8px;
+  border-style: solid;
+  padding: 1rem;
+}
