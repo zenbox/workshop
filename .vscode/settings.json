@@ -1,14 +1,11 @@
 {
-    // EDITOR
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
     "editor.formatOnType": true,
 
-    // LIVE SERVER
     "liveServer.settings.port": 5505,
 
-    // LIVE SASS COMPILER
     "liveSassCompile.settings.formats": [
         {
             "extensionName": ".css",
