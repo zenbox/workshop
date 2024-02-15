@@ -12,6 +12,9 @@ html {
 }
 
 .article {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12pt; /* Basis-Fontgröße 1 rem */
+  line-height: 1.5;
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: auto auto auto;
@@ -30,6 +33,7 @@ html {
   grid-row: 3/4;
 }
 
+.developer,
 .developer div {
   border-style: solid;
   border-width: 2px;
