@@ -1,0 +1,24 @@
+.article {
+    // Base
+
+    // Layout
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 10pt;
+
+    // Components / groups
+    .headline-group {
+        grid-column: 1 / 9;
+        grid-row: 1 / 2;
+    }
+    .figure-group {
+        grid-column: 2 / 8;
+        grid-row: 2 / 3;
+    }
+
+    .copy-group {
+        grid-column: 1 / 9;
+        grid-row: 3 / 4;
+    }
+}

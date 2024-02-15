@@ -1,14 +1,37 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
 /* BASE */
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: "Open Sans", sans-serif;
   font-size: 16px; /* Basis-Fontgröße 1 rem */
   line-height: 1.5;
 }
 
-.developer article div {
+.article {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 10pt;
+}
+.article .headline-group {
+  grid-column: 1/9;
+  grid-row: 1/2;
+}
+.article .figure-group {
+  grid-column: 2/8;
+  grid-row: 2/3;
+}
+.article .copy-group {
+  grid-column: 1/9;
+  grid-row: 3/4;
+}
+
+.developer div {
   border-style: solid;
   border-width: 2px;
-  border-color: magenta;
+  border-color: rgba(255, 0, 255, 0.25);
 }
