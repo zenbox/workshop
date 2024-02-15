@@ -6,3 +6,9 @@ html {
   font-size: 16px; /* Basis-Fontgröße 1 rem */
   line-height: 1.5;
 }
+
+.developer article div {
+  border-style: solid;
+  border-width: 2px;
+  border-color: magenta;
+}
