@@ -7,12 +7,17 @@
 	}
 
 	.quote-text {
+		// Layout
 		margin: 0;
+
+		// Typography
 		font-family: Rubik-Light;
 		line-height: 0.9em;;
 		font-weight: normal;
-		color: rgb(100,100,100);
 		font-size: 16pt;
+
+		// Theme
+		color: rgb(100,100,100);
 	}
 
 	/*
