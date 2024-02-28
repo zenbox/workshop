@@ -1,0 +1,38 @@
+{
+    "name": "Simple Webservice",
+    "version": "1.0.0",
+    "description": "lorem ipsum ...",
+    "main": "app.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zenbox/workshop.git"
+    },
+    "author": "Michael Reichart",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/zenbox/workshop/issues"
+    },
+    "homepage": "https://github.com/zenbox/workshop#readme",
+    "dependencies": {
+        "csurf": "^1.11.0",
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "express-session": "^1.17.3",
+        "express-session-sqlite": "^2.1.1",
+        "mkdirp": "^3.0.1",
+        "mysql": "^2.18.1",
+        "nodemon": "^3.0.2",
+        "passport": "^0.7.0",
+        "passport-local": "^1.0.0",
+        "sqlite3": "^5.1.7"
+    },
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
+}

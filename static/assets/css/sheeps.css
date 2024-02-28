@@ -1,0 +1,42 @@
+html {
+    font-family: Barlow;
+}
+body {
+    margin-inline: 4rem;
+}
+h1,
+h2 {
+    font-weight: 400;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+li > span {
+    min-width: 10rem;
+}
+li > span:focus {
+    outline: none;
+    border: 1px solid grey;
+    border-radius: 2px;
+}
+
+.material-symbols-outlined {
+    font-size: 1rem !important;
+    margin-inline: 0;
+    margin-block: 0.1rem;
+    padding-block: 0.1rem;
+    padding-inline: 0;
+    line-height: 1;
+    background: transparent;
+    border: 1px solid grey;
+    border-radius: 2px;
+    color: grey !important;
+    text-decoration: none;
+}
