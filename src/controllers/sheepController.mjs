@@ -1,5 +1,5 @@
 import mysql from "mysql";
-import dbConfig from "../model/dbConfig.mjs";
+import dbConfig from "../models/dbConfig.mjs";
 
 // Klassen fassen Funktionen zusammen!
 class SheepsController {
@@ -97,26 +97,30 @@ class SheepsController {
         db.connect();
 
         const sql = "UPDATE sheeps SET sheep = ? WHERE id = ?;";
-        db.query(sql, [request.body.sheep, request.params.id], (error, result) => {
-            if (error) {
-                console.log(error);
-                return false;
-            }
-
-            const sql2 = "SELECT * FROM sheeps;";
-            db.query(sql2, (error, result) => {
+        db.query(
+            sql,
+            [request.body.sheep, request.params.id],
+            (error, result) => {
                 if (error) {
                     console.log(error);
                     return false;
                 }
 
-                response.status(200).render(this.view, {
-                    title: "List of all the sheeps",
-                    sheeps: result, // Array mit Schafen
-                    message: "One sheep updated.",
+                const sql2 = "SELECT * FROM sheeps;";
+                db.query(sql2, (error, result) => {
+                    if (error) {
+                        console.log(error);
+                        return false;
+                    }
+
+                    response.status(200).render(this.view, {
+                        title: "List of all the sheeps",
+                        sheeps: result, // Array mit Schafen
+                        message: "One sheep updated.",
+                    });
                 });
-            });
-        });
+            }
+        );
         return true;
     }
 

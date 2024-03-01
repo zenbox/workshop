@@ -1,0 +1,23 @@
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+
+    "liveServer.settings.port": 5505,
+
+    "liveSassCompile.settings.formats": [
+        {
+            "extensionName": ".css",
+            "format": "expanded",
+            "savePath": "/assets/css"
+        }
+    ],
+    "liveSassCompile.settings.generateMap": false,
+    "liveSassCompile.settings.autoprefix": [],
+    "liveSassCompile.settings.excludeList": [
+        "**/node_modules/**",
+        ".vscode/**"
+    ],
+    "liveSassCompile.settings.includeItems": []
+}

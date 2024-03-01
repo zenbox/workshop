@@ -7,21 +7,21 @@ import path from "path";
 // Import eines vereinfachten/erweiterten Webservice-Moduls
 import express from "express"; // ES6+ Modul!
 
-// ! -----
-// * * * *
-import csrf from "csurf";
-import passport from "passport";
+// // ! -----
+// // * * * *
+// import csrf from "csurf";
+// import passport from "passport";
 
-import * as sqlite3 from "sqlite3";
-import session from "express-session";
-import sqliteStoreFactory from "express-session-sqlite";
-const SqliteStore = sqliteStoreFactory.default(session);
-// * * * *
-// ! -----
+// import * as sqlite3 from "sqlite3";
+// import session from "express-session";
+// import sqliteStoreFactory from "express-session-sqlite";
+// const SqliteStore = sqliteStoreFactory.default(session);
+// // * * * *
+// // ! -----
 
 // Eigene Module (Programmteile)
  import loginRoute from "./src/routes/loginRoute.mjs";
-import authRoute from "./src/routes/authRoute.mjs"; // !
+//import authRoute from "./src/routes/authRoute.mjs"; // !
 import sheepsRoute from "./src/routes/sheepsRoute.mjs";
 
 // DECLARATION / INITIALIZATION
@@ -36,29 +36,29 @@ app.use(express.static(path.resolve("./static")));
 app.set("view engine", "ejs"); // "pug", "ejs", "mustache", "hbs", "handlebars", "nunjucks", "just"
 app.set("views", path.resolve("./src/views"));
 
-// ! -----
-// * * * *
-app.use(
-    session({
-        secret: "keyboard cat",
-        resave: false, // don't save session if unmodified
-        saveUninitialized: false, // don't create session until something stored
-        // store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
-        store: new SqliteStore({
-            // driver: sqlite3.Database,
-            db: "session.db", // or ":memory:
-            dir: "./var/db",
-            // path: "./var/db",
-            // ttl: 1234,
-            // prefix: "sess:",
-            // cleanupInterval: 300000,
-        }),
-    })
-);
-app.use(csrf());
-app.use(passport.authenticate("session"));
-// * * * *
-// ! -----
+// // ! -----
+// // * * * *
+// app.use(
+//     session({
+//         secret: "keyboard cat",
+//         resave: false, // don't save session if unmodified
+//         saveUninitialized: false, // don't create session until something stored
+//         // store: new SQLiteStore({ db: "sessions.db", dir: "./var/db" }),
+//         store: new SqliteStore({
+//             // driver: sqlite3.Database,
+//             db: "session.db", // or ":memory:
+//             dir: "./var/db",
+//             // path: "./var/db",
+//             // ttl: 1234,
+//             // prefix: "sess:",
+//             // cleanupInterval: 300000,
+//         }),
+//     })
+// );
+// app.use(csrf());
+// app.use(passport.authenticate("session"));
+// // * * * *
+// // ! -----
 
 app.use("/login", loginRoute);
 // app.use("/login", authRoute);

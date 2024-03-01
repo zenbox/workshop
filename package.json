@@ -23,7 +23,7 @@
         "csurf": "^1.11.0",
         "ejs": "^3.1.9",
         "express": "^4.18.2",
-        "express-session": "^1.17.3",
+        "express-session": "^1.18.0",
         "express-session-sqlite": "^2.1.1",
         "mkdirp": "^3.0.1",
         "mysql": "^2.18.1",

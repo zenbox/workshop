@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    dir="ltr">
+    <%- include('partials/head') -%>
+    <body>
+        <%- include('partials/header') -%>
+        <section id="login">
+            <form
+                action="register"
+                method="post">
+                <h1 class="logintitle">Register</h1>
+
+                <p>
+                    Already a member ?<br />
+                    <a href="/login"> Better go and log in </a>
+                </p>
+
+                <label>Username : </label>
+                <input
+                    type="text"
+                    placeholder="Enter Username"
+                    name="username"
+                    required />
+                <label>Password : </label>
+                <input
+                    type="password"
+                    placeholder="Enter Password"
+                    name="password"
+                    required />
+                <button type="submit">Register</button>
+            </form>
+        </section>
+        <%- include('partials/footer'); -%>
+    </body>
+</html>
