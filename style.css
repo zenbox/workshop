@@ -21,3 +21,17 @@ header {
     padding: 10px;
     text-align: center;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+}
+
+[role="navigation"] ul,
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}

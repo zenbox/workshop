@@ -47,8 +47,10 @@
                     <h2 id="my-h2-id">Überschrift lorem ipsum</h2>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Officia quasi praesentium laboriosam?
+                        elit. Officia quasi praesentium laboriosam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae unde fugiat dolores distinctio doloribus deserunt ducimus alias, corporis esse nemo enim facilis dolorum officiis libero voluptatum in at. Illo, eum consequuntur aliquid harum eos mollitia ratione illum quaerat eaque distinctio, eligendi nisi. Expedita, delectus ad? Rem soluta tenetur nisi voluptatibus sapiente aliquam quam porro, nam ut.
                     </p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At facere ad perferendis ea quam officia cumque dolorum modi, nesciunt, totam maiores ipsa architecto fugiat repellendus sunt recusandae aspernatur tenetur, sed delectus ipsum harum molestias. Laboriosam voluptatibus quo obcaecati ducimus veritatis provident amet, aspernatur minima maiores, laudantium eveniet modi!</p>
 
                     <aside><a href="">Weiterführender Link</a></aside>
                 </article>
@@ -58,7 +60,7 @@
                         tabindex="0"
                         id="data-table"
                         border="1">
-                        <caption>
+                        <caption class="sr-only">
                             Tabellenüberschrift
                         </caption>
                         <thead>
@@ -95,21 +97,32 @@
             </main>
 
             <aside>
+          
                 <form action="">
                     <fieldset>
                         <legend>Benutzer-Anmeldung</legend>
 
-                        <label for="">Email</label>
+                        <label for="login-email"
+                            >Email
+                            <sup aria-describedby="asterisk-description"
+                                >*</sup
+                            ></label
+                        >
                         <input
                             type="email"
                             name=""
-                            id="" />
+                            id="login-email" />
 
-                        <label for="">Password</label>
+                        <label for="login-password"
+                            >Password
+                            <sup aria-describedby="asterisk-description"
+                                >*</sup
+                            ></label
+                        >
                         <input
                             type="password"
                             name=""
-                            id="" />
+                            id="login-password" />
 
                         <select
                             name=""
@@ -118,6 +131,11 @@
                             <option value="2">Option 2</option>
                             <option value="3">Option 3</option>
                         </select>
+
+                        <p id="asterisk-description">
+                            <sup>*</sup> Mit Sternchen gekennzeichnete Eingabe
+                            sind Pflichteingaben
+                        </p>
 
                         <button type="submit">einloggen</button>
 
