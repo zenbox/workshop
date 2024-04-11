@@ -1,23 +1,23 @@
-
 /* Farben */
 :root {
-    --color-primary: #0392ff;
-    --color-secondary: #ffbb00;
-    --color-tertiary: #00ad00;
-
     --color-light: #ffffff;
     --color-dark: #000000;
+
+    --color-primary: #0177d2;
+    --color-on-primary: var(--color-light);
+
+    --color-secondary: #ffbb00;
+    --color-tertiary: #00ad00;
 
     --color-info: #007bff;
     --color-success: #28a745;
     --color-warning: #ffc107;
     --color-danger: #dc3545;
-
 }
 
 header {
     background-color: var(--color-primary);
-    color: var(--color-light);
+    color: var(--color-on-primary);
     padding: 10px;
     text-align: center;
 }

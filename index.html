@@ -6,15 +6,213 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
         <title>Barrierefreiheit</title>
-        <link rel="stylesheet" href="style.css" />
+        <link
+            rel="stylesheet"
+            href="style.css" />
+
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     </head>
     <body>
-        <header>Logo Navigation</header>
+        <div>
+            <header>
+                Logo
 
-        <h1>Überschrift lorem ipsum</h1>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia
-            quasi praesentium laboriosam?
-        </p>
+                <!-- - - - -->
+                <div role="navigation">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- - - - -->
+            </header>
+
+            <main>
+                <h1>Überschrift lorem ipsum</h1>
+
+                <article
+                    tabindex="0"
+                    aria-labelledby="my-h2-id">
+                    <h2 id="my-h2-id">Überschrift lorem ipsum</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Officia quasi praesentium laboriosam?
+                    </p>
+
+                    <aside><a href="">Weiterführender Link</a></aside>
+                </article>
+                <article>
+                    <h2>Tabellenlogik</h2>
+                    <table
+                        tabindex="0"
+                        id="data-table"
+                        border="1">
+                        <caption>
+                            Tabellenüberschrift
+                        </caption>
+                        <thead>
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Fußzeilentext</td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr>
+                                <td>Inhalt 1</td>
+                                <td>Inhalt 2</td>
+                                <td>Inhalt 3</td>
+                            </tr>
+                            <tr>
+                                <td>Inhalt 1</td>
+                                <td>Inhalt 2</td>
+                                <td>Inhalt 3</td>
+                            </tr>
+                            <tr>
+                                <td>Inhalt 1</td>
+                                <td>Inhalt 2</td>
+                                <td>Inhalt 3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </main>
+
+            <aside>
+                <form action="">
+                    <fieldset>
+                        <legend>Benutzer-Anmeldung</legend>
+
+                        <label for="">Email</label>
+                        <input
+                            type="email"
+                            name=""
+                            id="" />
+
+                        <label for="">Password</label>
+                        <input
+                            type="password"
+                            name=""
+                            id="" />
+
+                        <select
+                            name=""
+                            id="">
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+
+                        <button type="submit">einloggen</button>
+
+                        <button
+                            title="Mandant bearbeiten"
+                            class="icon icon-edit fas fa-pencil-alt">
+                            <span class="sr-only visually-hidden"
+                                >Mandant bearbeiten</span
+                            >
+                        </button>
+
+                        <a
+                            tabindex="1"
+                            href="/OnlineFB/Clients/14dbae6a-c1c2-11ee-a910-b42e99837b67/Edit"
+                            class="btn btn-primary btn-sm"
+                            title="Mandant bearbeiten"
+                            role="button"
+                            aria-label="Mandant bearbeiten"
+                            ><i class="fas fa-pencil-alt"></i
+                        ></a>
+
+                        <a
+                            tabindex="-1"
+                            href="/OnlineFB/Clients/14dbae6a-c1c2-11ee-a910-b42e99837b67/Edit"
+                            class="btn btn-primary btn-sm"
+                            title="Mandant bearbeiten"
+                            role="button"
+                            aria-label="Mandant bearbeiten"
+                            ><i class="fas fa-pencil-alt"></i
+                        ></a>
+
+                        <a
+                            tabindex="3"
+                            href="/OnlineFB/Clients/14dbae6a-c1c2-11ee-a910-b42e99837b67/Edit"
+                            class="btn btn-primary btn-sm"
+                            title="Mandant bearbeiten"
+                            role="button"
+                            aria-label="Mandant bearbeiten"
+                            ><i class="fas fa-pencil-alt"></i
+                        ></a>
+                    </fieldset>
+                </form>
+            </aside>
+        </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // - - - - -
+
+                const table = document.querySelector("table");
+                const cells = table.querySelectorAll("tbody td, thead th");
+                const cellsPerRow =
+                    table.querySelectorAll("tr:first-child th").length;
+                let currentCellIndex = 0;
+
+                cells.forEach((cell, index) => {
+                    cell.setAttribute("tabindex", "0"); // Add tabindex to make cells focusable
+
+                    cell.addEventListener("keydown", (event) => {
+                        switch (event.key) {
+                            case "ArrowDown":
+                                if (index < cells.length - cellsPerRow) {
+                                    event.preventDefault();
+                                    cells[currentCellIndex].blur();
+                                    currentCellIndex = index + cellsPerRow;
+                                    cells[currentCellIndex].focus();
+                                }
+                                break;
+                            case "ArrowUp":
+                                if (index >= cellsPerRow) {
+                                    event.preventDefault();
+                                    cells[currentCellIndex].blur();
+                                    currentCellIndex = index - cellsPerRow;
+                                    cells[currentCellIndex].focus();
+                                }
+                                break;
+                            case "Tab":
+                                event.preventDefault();
+                                if (event.shiftKey) {
+                                    currentCellIndex =
+                                        (currentCellIndex - 1 + cells.length) %
+                                        cells.length;
+                                } else {
+                                    currentCellIndex =
+                                        (index + 1) % cells.length;
+                                }
+                                cells[currentCellIndex].focus();
+                                break;
+                            case "Escape":
+                                cells[currentCellIndex].blur();
+                                cells.forEach((cell) =>
+                                    cell.removeAttribute("tabindex")
+                                );
+                                const nextElement = table.nextElementSibling;
+                                if (nextElement) {
+                                    nextElement.focus();
+                                }
+                                break;
+                        }
+                    });
+                });
+
+                // - - - - -
+            });
+        </script>
     </body>
 </html>
