@@ -30,6 +30,14 @@
                 <!-- - - - -->
             </header>
 
+            <nav>
+                <ol>
+                    <li>Hauptseite</li>
+                    <li>Bereich</li>
+                    <li>Seite</li>
+                </ol>
+            </nav>
+
             <main>
                 <h1>Überschrift lorem ipsum</h1>
 
@@ -122,7 +130,7 @@
                         </button>
 
                         <a
-                            tabindex="1"
+                            tabindex="0"
                             href="/OnlineFB/Clients/14dbae6a-c1c2-11ee-a910-b42e99837b67/Edit"
                             class="btn btn-primary btn-sm"
                             title="Mandant bearbeiten"
@@ -132,7 +140,7 @@
                         ></a>
 
                         <a
-                            tabindex="-1"
+                            tabindex="0"
                             href="/OnlineFB/Clients/14dbae6a-c1c2-11ee-a910-b42e99837b67/Edit"
                             class="btn btn-primary btn-sm"
                             title="Mandant bearbeiten"
@@ -142,7 +150,7 @@
                         ></a>
 
                         <a
-                            tabindex="3"
+                            tabindex="0"
                             href="/OnlineFB/Clients/14dbae6a-c1c2-11ee-a910-b42e99837b67/Edit"
                             class="btn btn-primary btn-sm"
                             title="Mandant bearbeiten"
@@ -158,10 +166,11 @@
             document.addEventListener("DOMContentLoaded", () => {
                 // - - - - -
 
-                const table = document.querySelector("table");
-                const cells = table.querySelectorAll("tbody td, thead th");
-                const cellsPerRow =
-                    table.querySelectorAll("tr:first-child th").length;
+                const table = document.getElementById("data-table");
+                const cells = table.querySelectorAll("td, th");
+                const cellsPerRow = table.querySelectorAll(
+                    "thead tr:first-child th"
+                ).length;
                 let currentCellIndex = 0;
 
                 cells.forEach((cell, index) => {
