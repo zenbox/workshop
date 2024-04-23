@@ -62,7 +62,44 @@
                 </ul>
             </nav>
 
-            <main>main</main>
+            <main>
+                <!-- 2 tabs, eines mit Formular -->
+
+                <form>
+                    <!-- Uhrzeit, Datum Personalnummer, Chipkartennummer-->
+
+                    <label for="uhrzeit">Uhrzeit</label>
+                    <input
+                        type="time"
+                        id="uhrzeit"
+                        name="uhrzeit"
+                        required />
+
+                    <label for="datum">Datum</label>
+                    <input
+                        type="date"
+                        id="datum"
+                        name="datum"
+                        required />
+
+                    <label for="personalnummer">Personalnummer</label>
+                    <input
+                        type="text"
+                        id="personalnummer"
+                        name="personalnummer"
+                        required />
+
+                    <label for="chipkartennummer">Chipkartennummer</label>
+                    <input
+                        type="text"
+                        id="chipkartennummer"
+                        name="chipkartennummer"
+                        required />
+
+                    <button type="submit">Absenden</button>
+                    <button type="reset">Abbrechen</button>
+                </form>
+            </main>
             <footer>footer</footer>
         </div>
     </body>
