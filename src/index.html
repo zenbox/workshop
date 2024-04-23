@@ -12,95 +12,228 @@
     </head>
     <body>
         <div class="container">
-            <header>header</header>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="#"
-                            ><img
-                                src="https://picsum.photos/id/33/120/32/"
-                                alt=""
-                        /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            ><img
-                                src="https://picsum.photos/id/34/120/32/"
-                                alt=""
-                        /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            ><img
-                                src="https://picsum.photos/id/35/120/32/"
-                                alt=""
-                        /></a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a href=""
-                            ><img
-                                src="https://picsum.photos/id/36/40/32/"
-                                alt=""
-                        /></a>
-                    </li>
-                    <li>
-                        <a href=""
-                            ><img
-                                src="https://picsum.photos/id/41/40/32/"
-                                alt=""
-                        /></a>
-                    </li>
-                    <li>
-                        <a href=""
-                            ><img
-                                src="https://picsum.photos/id/38/40/32/"
-                                alt=""
-                        /></a>
-                    </li>
-                </ul>
-            </nav>
+            <header class="row">
+                <div class="col logo">logo</div>
+                <nav class="col logo">nav</nav>
+            </header>
+            <div class="row">
+                <nav class="col-4">
+                    <ul class="row">
+                        <li>
+                            <a href="#"
+                                ><img
+                                    src="https://picsum.photos/id/33/120/32/"
+                                    alt=""
+                            /></a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                ><img
+                                    src="https://picsum.photos/id/34/120/32/"
+                                    alt=""
+                            /></a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                ><img
+                                    src="https://picsum.photos/id/35/120/32/"
+                                    alt=""
+                            /></a>
+                        </li>
+                    </ul>
+                    <ul class="d-flex flex-nowrap justify-content-between">
+                        <li>
+                            <a href=""
+                                ><img
+                                    src="https://picsum.photos/id/36/40/32/"
+                                    alt=""
+                            /></a>
+                        </li>
+                        <li>
+                            <a href=""
+                                ><img
+                                    src="https://picsum.photos/id/41/40/32/"
+                                    alt=""
+                            /></a>
+                        </li>
+                        <li>
+                            <a href=""
+                                ><img
+                                    src="https://picsum.photos/id/38/40/32/"
+                                    alt=""
+                            /></a>
+                        </li>
+                    </ul>
+                </nav>
 
-            <main>
-                <!-- 2 tabs, eines mit Formular -->
+                <main class="col-8">
+                    <!-- 2 tabs, eines mit Formular -->
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active"
+                                aria-current="page"
+                                href="#"
+                                >Active</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="#"
+                                >Link</a
+                            >
+                        </li>
+                    </ul>
+                    <div
+                        class="tab-content"
+                        id="myTabContent">
+                        <div
+                            class="tab-pane fade show active"
+                            id="home-tab-pane"
+                            role="tabpanel"
+                            aria-labelledby="home-tab"
+                            tabindex="0">
+                            <form>
+                                <!-- Uhrzeit, Datum Personalnummer, Chipkartennummer-->
+                                <div class="row">
+                                    <label
+                                        class="form-label"
+                                        for="uhrzeit"
+                                        >Uhrzeit</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        type="time"
+                                        id="uhrzeit"
+                                        name="uhrzeit"
+                                        required />
+                                </div>
 
-                <form>
-                    <!-- Uhrzeit, Datum Personalnummer, Chipkartennummer-->
+                                <div class="row">
+                                    <label
+                                        class="form-label"
+                                        for="datum"
+                                        >Datum</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        type="date"
+                                        id="datum"
+                                        name="datum"
+                                        required />
+                                </div>
+                                <div class="row my-3 align-items-stretch">
+                                    <label
+                                        class="form-label col-3"
+                                        for="personalnummer"
+                                        >Personal-nummer</label
+                                    >
+                                    <div class="col-6 px-0 marked">
+                                        <input
+                                            class="form-control h-100"
+                                            type="text"
+                                            id="personalnummer"
+                                            name="personalnummer"
+                                            required />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label
+                                        class="form-label"
+                                        for="chipkartennummer"
+                                        >Chipkartennummer</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        type="text"
+                                        id="chipkartennummer"
+                                        name="chipkartennummer"
+                                        required />
+                                </div>
 
-                    <label for="uhrzeit">Uhrzeit</label>
-                    <input
-                        type="time"
-                        id="uhrzeit"
-                        name="uhrzeit"
-                        required />
+                                <div class="shadow row my-3 rounded ">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input
+                                                class=" form-check-input"
+                                                type="checkbox"
+                                                name=""
+                                                id="" />
+                                            <label class="form-check-label"
+                                                >accepts terms</label
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <label for="datum">Datum</label>
-                    <input
-                        type="date"
-                        id="datum"
-                        name="datum"
-                        required />
+                                <button type="submit">Absenden</button>
+                                <button type="reset">Abbrechen</button>
+                            </form>
+                        </div>
+                        <div
+                            class="tab-pane fade"
+                            id="profile-tab-pane"
+                            role="tabpanel"
+                            aria-labelledby="profile-tab"
+                            tabindex="0">
+                            <form class="row">
+                                <!-- Uhrzeit, Datum Personalnummer, Chipkartennummer-->
+                                <div class="col-6">
+                                    <label
+                                        class="form-label"
+                                        for="uhrzeit"
+                                        >Uhrzeit</label
+                                    >
+                                    <input
+                                        class="form-control"
+                                        type="time"
+                                        id="uhrzeit"
+                                        name="uhrzeit"
+                                        required />
+                                </div>
+                                <label
+                                    class="form-label"
+                                    for="datum"
+                                    >Datum</label
+                                >
+                                <input
+                                    type="date"
+                                    id="datum"
+                                    name="datum"
+                                    required />
 
-                    <label for="personalnummer">Personalnummer</label>
-                    <input
-                        type="text"
-                        id="personalnummer"
-                        name="personalnummer"
-                        required />
+                                <label
+                                    class="form-label"
+                                    for="personalnummer"
+                                    >Personalnummer</label
+                                >
+                                <input
+                                    type="text"
+                                    id="personalnummer"
+                                    name="personalnummer"
+                                    required />
 
-                    <label for="chipkartennummer">Chipkartennummer</label>
-                    <input
-                        type="text"
-                        id="chipkartennummer"
-                        name="chipkartennummer"
-                        required />
+                                <label
+                                    class="form-label"
+                                    for="chipkartennummer"
+                                    >Chipkartennummer</label
+                                >
+                                <input
+                                    type="text"
+                                    id="chipkartennummer"
+                                    name="chipkartennummer"
+                                    required />
 
-                    <button type="submit">Absenden</button>
-                    <button type="reset">Abbrechen</button>
-                </form>
-            </main>
-            <footer>footer</footer>
+                                <button type="submit">Absenden</button>
+                                <button type="reset">Abbrechen</button>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+            <footer class="row">footer</footer>
         </div>
     </body>
 </html>
