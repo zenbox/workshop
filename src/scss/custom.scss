@@ -1,3 +1,10 @@
+// My own colors
+$gfu-blue: #4b92fb;
+$gfu-orange: orange;
+
+$primary:       $gfu-blue !default;
+$secondary:     $gfu-orange !default;
+
 @import "bootstrap/scss/bootstrap";
 
 // Variables
@@ -6,5 +13,6 @@
 // Styles
 @import "components/navigation";
 @import "components/footer";
+@import "components/svg";
 
 .marked{background: yellow;}

@@ -11,7 +11,7 @@
             src="./js/main.js"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
             <header class="row">
                 <div class="col logo">logo</div>
                 <nav class="col logo">nav</nav>
@@ -67,6 +67,81 @@
                 </nav>
 
                 <main class="col-8">
+                    <article class="row">
+                        <div class="svg-container p-0">
+                            <svg
+                                class="svg svg-columns"
+                                width="480"
+                                height="100"
+                         >
+                                <g translate="0,0">
+                                    <rect
+                                        x="10"
+                                        y="50"
+                                        width="30"
+                                        height="50" />
+                                    <rect
+                                        x="50"
+                                        y="60"
+                                        width="30"
+                                        height="40" />
+                                    <rect
+                                        x="90"
+                                        y="40"
+                                        width="30"
+                                        height="60" />
+                                    <rect
+                                        x="130"
+                                        y="30"
+                                        width="30"
+                                        height="70" />
+                                    <rect
+                                        x="170"
+                                        y="70"
+                                        width="30"
+                                        height="30" />
+                                    <rect
+                                        x="210"
+                                        y="80"
+                                        width="30"
+                                        height="20" />
+                                </g>
+                                <g transform="translate(240,0)">
+                                    <rect
+                                        x="10"
+                                        y="50"
+                                        width="30"
+                                        height="50" />
+                                    <rect
+                                        x="50"
+                                        y="60"
+                                        width="30"
+                                        height="40" />
+                                    <rect
+                                        x="90"
+                                        y="40"
+                                        width="30"
+                                        height="60" />
+                                    <rect
+                                        x="130"
+                                        y="30"
+                                        width="30"
+                                        height="70" />
+                                    <rect
+                                        x="170"
+                                        y="70"
+                                        width="30"
+                                        height="30" />
+                                    <rect
+                                        x="210"
+                                        y="80"
+                                        width="30"
+                                        height="20" />
+                                </g>
+                            </svg>
+                        </div>
+                    </article>
+
                     <!-- 2 tabs, eines mit Formular -->
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
@@ -94,7 +169,7 @@
                             role="tabpanel"
                             aria-labelledby="home-tab"
                             tabindex="0">
-                            <form>
+                            <form class="">
                                 <!-- Uhrzeit, Datum Personalnummer, Chipkartennummer-->
                                 <div class="row">
                                     <label
@@ -152,11 +227,11 @@
                                         required />
                                 </div>
 
-                                <div class="shadow row my-3 rounded ">
+                                <div class="shadow row my-3 rounded">
                                     <div class="col">
                                         <div class="form-check">
                                             <input
-                                                class=" form-check-input"
+                                                class="form-check-input"
                                                 type="checkbox"
                                                 name=""
                                                 id="" />
@@ -167,8 +242,16 @@
                                     </div>
                                 </div>
 
-                                <button type="submit">Absenden</button>
-                                <button type="reset">Abbrechen</button>
+                                <button
+                                    class="btn btn-primary"
+                                    type="submit">
+                                    Absenden
+                                </button>
+                                <button
+                                    class="btn btn-primary"
+                                    type="reset">
+                                    Abbrechen
+                                </button>
                             </form>
                         </div>
                         <div
