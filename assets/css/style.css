@@ -1,0 +1,48 @@
+/* Base styles */
+html {
+    font-size: 20px;
+}
+h1 {
+    font-size: 3rem;
+}
+body {
+    margin: 0;
+}
+
+/* Design system */
+
+.own-system {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.flexbox {
+    direction: ltr;
+    border: 2px solid #000;
+
+    min-height: 20rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* gap: 4rem; */
+}
+.flexbox > *{
+    border: 2px solid black;
+    /* width: 25%; */
+    flex-basis: 25%;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+}
+.flexbox > *:nth-child(2) {
+    /* align-self: flex-end; */
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+}
