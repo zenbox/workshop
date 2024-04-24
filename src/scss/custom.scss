@@ -2,8 +2,12 @@
 $gfu-blue: #4b92fb;
 $gfu-orange: orange;
 
-$primary:       $gfu-blue !default;
-$secondary:     $gfu-orange !default;
+$primary: $gfu-blue !default;
+$secondary: $gfu-orange !default;
+
+// import Barlow als Schrift vom Google Fontserver
+// liefert eine "barlow.css"
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;300;400;500;600;700;900&display=swap");
 
 @import "bootstrap/scss/bootstrap";
 
@@ -15,4 +19,20 @@ $secondary:     $gfu-orange !default;
 @import "components/footer";
 @import "components/svg";
 
-.marked{background: yellow;}
+.marked {
+    background: yellow;
+}
+
+:root {
+    font-size: 16px; // rem-base!
+}
+
+@media (max-width: 576px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+.m {
+    margin: 0.25rem;
+}

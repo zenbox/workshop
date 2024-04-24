@@ -5,7 +5,7 @@
     // max-width: 960px;
     // min-width: 320px;
 
-    width: clamp(320px, 100%, 960px);
+    width: clamp(480px, 100%, 960px);
     height: 110px;
 
     // rect {
@@ -14,6 +14,7 @@
 }
 
 .svg-container {
+    width: 100%;
     border: 2px dotted red;
     overflow: scroll;
 }
