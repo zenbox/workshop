@@ -1,5 +1,64 @@
-// SASS features: @import
-// @mixin, @include, @function, @return, @if, @for, @each, @while, 
-// 
-// mehr: @error, @warn, @debug, @content, @extend, 
+.#{$prefix} {
+    &-button {
+        // Base / Reset / Normalize
+        border: 0;
+        font-family: monospace;
 
+        // Layout
+        &-right {
+            width: 100%;
+            text-align: right;
+        }
+
+        // Modules / Subkomponente
+        &-icon {
+            display: inline-block;
+            background: $primary;
+            width: $spacer;
+            height: $spacer;
+        }
+
+        // States
+        &:hover {
+            background: $secondary;
+        }
+        .active {
+            border: 1px solid $dark;
+        }
+
+        // Theme
+        &-pill {
+        }
+        &-corporate {
+            font-family: Barlow, sans-serif;
+        }
+    }
+}
+// SASS features: @import
+// @mixin, @include, @function, @use,  @return, @if, @for, @each, @while,
+//
+// mehr: @error, @warn, @debug, @content, @extend,
+
+// mix-in
+@mixin border-radius($radius: 5px) {
+    border-radius: $radius;
+    box-shadow: $radius $radius $radius rgba(0, 0, 0, 0.318);
+    -webkit-border-radius: $radius;
+}
+
+.rounded {
+    @include border-radius(2px);
+}
+
+// :root {
+//     --h2-background-color: #bee6fa;
+//     border: 2px solid black;
+// }
+
+// h2 {
+//     @include border-radius(20px);
+//     background: var(--h2-background-color);
+// }
+// h3 {
+//     background: var(--h2-background-color);
+// }
