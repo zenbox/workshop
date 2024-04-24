@@ -18,6 +18,20 @@
             height: $spacer;
         }
 
+        // Map
+        $modules: (
+            "red": #9168685c,
+            "green": #58745853,
+            "blue": #5c5c7b5c,
+        );
+        // Generische Klassen
+        //.rb-button-red, .rb-button-green, .rb-button-blue
+        @each $key, $value in $modules {
+            &-#{$key} {
+                background: $value;
+            }
+        }
+
         // States
         &:hover {
             background: $secondary;

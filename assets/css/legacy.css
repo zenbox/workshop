@@ -1,0 +1,14 @@
+body {
+  background-color: #f0f0f0;
+  color: #f0f0f0;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  border: 1px solid black;
+}
+
+input {
+  line-height: 20px;
+  background-color: #f0f0f0;
+}

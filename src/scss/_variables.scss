@@ -1,5 +1,5 @@
 // Variables
-$prefix: rheinbahn;
+$prefix: rb;
 
 $link-color: hsl(0, 100%, 50%);
 $background-color: hsl(0, 0%, 85%);
@@ -8,3 +8,63 @@ $background-color: hsl(0, 0%, 85%);
     --link-color: hsl(0, 100%, 50%);
     --background-color: hsl(0, 0%, 85%);
 }
+
+// OWN THEME COLORS
+$primary:       $blue !default;
+$secondary:     $gray !default;
+
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+
+$light:         $gray-100 !default;
+$dark:          $gray-900 !default;
+
+// SWITCHES
+$enable-caret:                true !default;
+$enable-rounded:              true !default;
+$enable-shadows:              false !default;
+$enable-gradients:            false !default;
+$enable-transitions:          true !default;
+$enable-reduced-motion:       true !default;
+$enable-smooth-scroll:        true !default;
+$enable-grid-classes:         true !default;
+$enable-container-classes:    true !default;
+$enable-cssgrid:              false !default;
+$enable-button-pointers:      true !default;
+$enable-rfs:                  true !default;
+$enable-validation-icons:     true !default;
+$enable-negative-margins:     false !default;
+$enable-deprecation-messages: true !default;
+$enable-important-utilities:  true !default;
+
+$enable-dark-mode:            true !default;
+$color-mode-type:             data !default; // `data` or `media-query`
+
+
+// TYPOGRAPHY
+$spacer: 4rem ;
+
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  6: $spacer * 4,
+);
+
+// OWN BREAKPOINTS
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+  own-portrait: 600px,
+  own-landscape: 1200px,
+) !default;
+// scss-docs-end grid-breakpoints
