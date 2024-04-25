@@ -143,6 +143,31 @@
   background-color: rgb(59 130 246 / var(--tw-bg-opacity)) !important
 }
 
+.tw-bg-blue-100 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity)) !important
+}
+
+.tw-bg-blue-200 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity)) !important
+}
+
+.tw-bg-blue-300 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity)) !important
+}
+
+.tw-bg-blue-400 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity)) !important
+}
+
+.tw-bg-blue-600 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity)) !important
+}
+
 .tw-text-3xl {
   font-size: 1.875rem !important;
   line-height: 2.25rem !important
@@ -160,6 +185,11 @@
 .tw-slashed-zero {
   --tw-slashed-zero: slashed-zero !important;
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction) !important
+}
+
+.tw-text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important
 }
 
 .tw-underline {
@@ -205,3 +235,4 @@
     }
   }
 }
+

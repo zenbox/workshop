@@ -1,0 +1,64 @@
+/* CSS 4 */
+/* Globale Variablen */
+:root {
+    --w: 100vw;
+    --h: 100vh;
+    --m: 24px;
+}
+
+/* Berechnungen */
+.my-container {
+    width: calc(var(--w) - 2 * var(--m));
+}
+
+/* Box Model */
+html,
+html *,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+/* Transitions, animations, transformation */
+.transformed {
+    animation: rotate 5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg) scale(1, 1) translate(0px, 0px);
+        background: white;
+        filter: blur(0px);
+    }
+    50% {
+        transform: rotate(360deg) scale(4.5, 5.5) translate(50px, 50px);
+        background: black;
+        filter: blur(4px);
+    }
+    100% {
+        transform: rotate(0deg) scale(1, 1) translate(0px, 0px);
+        background: white;
+        filter: blur(0px);
+    }
+}
+
+.modified {
+}
+
+/* Text mit mehrere Spalten */
+.multicolumn {
+    column-width: 17rem;
+    column-gap: 2rem;
+    column-rule: 1px solid black;
+}
+
+/* Blocksatz */
+.justify {
+    text-align: justify;
+    hyphens: auto;
+    orphans: 3;
+    widows: 3;
+
+    /* letter-spacing: clamp(0.5px, 0.25rem, 5px);
+    word-spacing: clamp(0.5px, 0.25rem, 5px); */
+}
