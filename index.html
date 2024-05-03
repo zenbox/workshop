@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="de-DE">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Barrierefreie Web-Interfaces</title>
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+    </head>
+    <body>
+        <nav
+            id="skiplinks"
+            class="visually-hidden">
+            <ul>
+                <li><a href="#main">Zum Hauptinhalt springen</a></li>
+                <li><a href="#nav">Zur Navigation springen</a></li>
+                <li><a href="#search">zur Suche springen</a></li>
+                <li><a href="#header">Zum Header springen</a></li>
+                <li><a href="#footer">Zum Footer springen</a></li>
+            </ul>
+        </nav>
+
+        <header id="header">
+            <form id="search">
+                <fieldset>
+                    <legend>Suche über alle Seiten</legend>
+
+                    <label for="search-field">Suchbegriff</label>
+                    <input
+                        readonly
+                        type="search"
+                        id="search-field"
+                        name="search-field"
+                        placeholder="Suchbegriff eingeben"
+                        required />
+                    <button type="submit">Suche starten</button>
+                </fieldset>
+            </form>
+            <nav role="navigation">
+                <ul>
+                    <li><a href="">Link zu Seite 1</a></li>
+                    <li><a href="">Link zu Seite 2</a></li>
+                    <li><a href="">Link zu Seite 3</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <nav id="nav">
+            <ul>
+                <li>
+                    <a
+                        tabindex="-1"
+                        href=""
+                        >Link zur Seite 4</a
+                    >
+                </li>
+                <li><a href="">Link zur Seite 5</a></li>
+                <li><a href="">Link zur Seite 6</a></li>
+                <li><a href="">Link zur Seite 7</a></li>
+                <li><a href="">Link zur Seite 8</a></li>
+            </ul>
+        </nav>
+
+        <main id="main">
+            <h1>Barrierefreies HTML</h1>
+            
+            <article class="invisible">
+                <h2>Menubar Navigation</h2>
+                <div class="page">
+                    <header role="banner">
+                        <div class="title">Mythical University</div>
+                        <div class="tagline">
+                            Using a Menubar for navigation links
+                        </div>
+                    </header>
+                    <nav aria-label="Mythical University">
+                        <ul
+                            class="menubar-navigation"
+                            role="menubar"
+                            aria-label="Mythical University">
+                            <li role="none">
+                                <a
+                                    role="menuitem"
+                                    href="#home">
+                                    Home
+                                </a>
+                            </li>
+                            <li role="none">
+                                <a
+                                    role="menuitem"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    href="#about">
+                                    About
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="down"
+                                        width="12"
+                                        height="9"
+                                        viewBox="0 0 12 9">
+                                        <polygon
+                                            points="1 0, 11 0, 6 8"></polygon>
+                                    </svg>
+                                </a>
+                                <ul
+                                    role="menu"
+                                    aria-label="About">
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#overview"
+                                            >Overview</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#administration"
+                                            >Administration</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                            href="#facts">
+                                            Facts
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="right"
+                                                width="9"
+                                                height="12"
+                                                viewBox="0 0 9 12">
+                                                <polygon
+                                                    points="0 1, 0 11, 8 6"></polygon>
+                                            </svg>
+                                        </a>
+                                        <ul
+                                            role="menu"
+                                            aria-label="Facts">
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#history"
+                                                    >History</a
+                                                >
+                                            </li>
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#current-statistics"
+                                                    >Current Statistics</a
+                                                >
+                                            </li>
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#awards"
+                                                    >Awards</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                            href="#campus-tours">
+                                            Campus Tours
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="right"
+                                                width="9"
+                                                height="12"
+                                                viewBox="0 0 9 12">
+                                                <polygon
+                                                    points="0 1, 0 11, 8 6"></polygon>
+                                            </svg>
+                                        </a>
+                                        <ul
+                                            role="menu"
+                                            aria-label="Campus Tours">
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#for-prospective-students"
+                                                    >For prospective students</a
+                                                >
+                                            </li>
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#for-alumni"
+                                                    >For alumni</a
+                                                >
+                                            </li>
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#for-visitors"
+                                                    >For visitors</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li role="none">
+                                <a
+                                    role="menuitem"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    href="#admissions">
+                                    Admissions
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="down"
+                                        width="12"
+                                        height="9"
+                                        viewBox="0 0 12 9">
+                                        <polygon
+                                            points="1 0, 11 0, 6 8"></polygon>
+                                    </svg>
+                                </a>
+                                <ul
+                                    role="menu"
+                                    aria-label="Admissions">
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#apply"
+                                            >Apply</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            aria-haspopup="true"
+                                            aria-expanded="false"
+                                            href="#tuition">
+                                            Tuition
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="right"
+                                                width="9"
+                                                height="12"
+                                                viewBox="0 0 9 12">
+                                                <polygon
+                                                    points="0 1, 0 11, 8 6"></polygon>
+                                            </svg>
+                                        </a>
+                                        <ul
+                                            role="menu"
+                                            aria-label="Tuition">
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#undergraduate"
+                                                    >Undergraduate</a
+                                                >
+                                            </li>
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#graduate"
+                                                    >Graduate</a
+                                                >
+                                            </li>
+                                            <li role="none">
+                                                <a
+                                                    role="menuitem"
+                                                    href="#professional-schools"
+                                                    >Professional Schools</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#sign-up"
+                                            >Sign Up</a
+                                        >
+                                    </li>
+                                    <li role="separator"></li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#visit"
+                                            >Visit</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#photo-tour"
+                                            >Photo Tour</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#connect"
+                                            >Connect</a
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                            <li role="none">
+                                <a
+                                    role="menuitem"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    href="#academics">
+                                    Academics
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        class="down"
+                                        width="12"
+                                        height="9"
+                                        viewBox="0 0 12 9">
+                                        <polygon
+                                            points="1 0, 11 0, 6 8"></polygon>
+                                    </svg>
+                                </a>
+                                <ul
+                                    role="menu"
+                                    id="sub-menu-academics"
+                                    aria-label="Academics">
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#colleges-and-schools"
+                                            >Colleges &amp; Schools</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#programs-of-study"
+                                            >Programs of Study</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#honors-programs"
+                                            >Honors Programs</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#online-courses"
+                                            >Online Courses</a
+                                        >
+                                    </li>
+                                    <li role="separator"></li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#course-explorer"
+                                            >Course Explorer</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#register-for-class"
+                                            >Register for Class</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#academic-calendar"
+                                            >Academic Calendar</a
+                                        >
+                                    </li>
+                                    <li role="none">
+                                        <a
+                                            role="menuitem"
+                                            href="#tanscripts"
+                                            >Transcripts</a
+                                        >
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="main">
+                        <section aria-labelledby="id-page-title">
+                            <h1
+                                id="id-page-title"
+                                class="page_title">
+                                Mythical University
+                            </h1>
+                            <div class="content">
+                                <p></p>
+                            </div>
+                        </section>
+                    </div>
+
+                    <footer role="contentinfo">
+                        Mythical University footer information
+                    </footer>
+                </div>
+            </article>
+
+            <article class="invisible">
+                <h2>Menubar Editor</h2>
+                <div class="menubar-editor">
+                    <ul
+                        role="menubar"
+                        aria-label="Text Formatting">
+                        <li role="none">
+                            <span
+                                role="menuitem"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                tabindex="0"
+                                >Font<span aria-hidden="true"></span
+                            ></span>
+                            <ul
+                                role="menu"
+                                data-option="font-family"
+                                aria-label="Font">
+                                <li
+                                    role="menuitemradio"
+                                    aria-checked="true">
+                                    <span aria-hidden="true"></span>Sans-serif
+                                </li>
+                                <li
+                                    role="menuitemradio"
+                                    aria-checked="false">
+                                    <span aria-hidden="true"></span>Serif
+                                </li>
+                                <li
+                                    role="menuitemradio"
+                                    aria-checked="false">
+                                    <span aria-hidden="true"></span>Monospace
+                                </li>
+                                <li
+                                    role="menuitemradio"
+                                    aria-checked="false">
+                                    <span aria-hidden="true"></span>Fantasy
+                                </li>
+                            </ul>
+                        </li>
+                        <li role="none">
+                            <span
+                                role="menuitem"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                tabindex="-1"
+                                >Style/Color<span aria-hidden="true"></span
+                            ></span>
+                            <ul
+                                role="menu"
+                                aria-label="Style/Color">
+                                <li role="none">
+                                    <ul
+                                        role="group"
+                                        data-option="font-style"
+                                        aria-label="Font Style">
+                                        <li
+                                            role="menuitemcheckbox"
+                                            data-option="font-bold"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span>Bold
+                                        </li>
+                                        <li
+                                            role="menuitemcheckbox"
+                                            data-option="font-italic"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >Italic
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li role="separator"></li>
+                                <li role="none">
+                                    <ul
+                                        role="group"
+                                        data-option="font-color"
+                                        aria-label="Text Color">
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="true">
+                                            <span aria-hidden="true"></span
+                                            >Black
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span>Blue
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span>Red
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >Green
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li role="separator"></li>
+                                <li role="none">
+                                    <ul
+                                        role="group"
+                                        data-option="text-decoration"
+                                        aria-label="Text Decoration">
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="true">
+                                            <span aria-hidden="true"></span>None
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >Overline
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >Line-through
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >Underline
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li role="none">
+                            <span
+                                role="menuitem"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                tabindex="-1"
+                                >Text Align<span aria-hidden="true"></span
+                            ></span>
+                            <ul
+                                role="menu"
+                                data-option="text-align"
+                                aria-label="Text Align">
+                                <li
+                                    role="menuitemradio"
+                                    aria-checked="true">
+                                    <span aria-hidden="true"></span>Left
+                                </li>
+                                <li
+                                    role="menuitemradio"
+                                    aria-checked="false">
+                                    <span aria-hidden="true"></span>Center
+                                </li>
+                                <li
+                                    role="menuitemradio"
+                                    aria-checked="false">
+                                    <span aria-hidden="true"></span>Right
+                                </li>
+                                <li
+                                    role="menuitemradio"
+                                    aria-checked="false">
+                                    <span aria-hidden="true"></span>Justify
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li role="none">
+                            <span
+                                role="menuitem"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                tabindex="-1"
+                                >Size<span aria-hidden="true"></span
+                            ></span>
+                            <ul
+                                role="menu"
+                                aria-label="Size">
+                                <li
+                                    role="menuitem"
+                                    data-option="font-smaller"
+                                    aria-disabled="false">
+                                    Smaller
+                                </li>
+                                <li
+                                    role="menuitem"
+                                    data-option="font-larger"
+                                    aria-disabled="false">
+                                    Larger
+                                </li>
+                                <li role="separator"></li>
+                                <li role="none">
+                                    <ul
+                                        role="group"
+                                        data-option="font-size"
+                                        aria-label="Font Sizes">
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >X-Small
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >Small
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="true">
+                                            <span aria-hidden="true"></span
+                                            >Medium
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >Large
+                                        </li>
+                                        <li
+                                            role="menuitemradio"
+                                            aria-checked="false">
+                                            <span aria-hidden="true"></span
+                                            >X-Large
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <textarea
+                        style="font-size: medium; font-family: sans-serif"
+                        aria-label="Text Sample">
+            Four score and seven years ago our fathers brought forth on this continent a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.
+
+  Now we are engaged in a great civil war, testing whether that nation, or any nation, so conceived and so dedicated, can long endure. We are met on a great battle-field of that war. We have come to dedicate a portion of that field, as a final resting place for those who here gave their lives that that nation might live. It is altogether fitting and proper that we should do this.
+
+  But, in a larger sense, we can not dedicate, we can not consecrate, we can not hallow, this ground. The brave men, living and dead, who struggled here, have consecrated it, far above our poor power to add or detract. The world will little note, nor long remember what we say here, but it can never forget what they did here. It is for us the living, rather, to be dedicated here to the unfinished work which they who fought here have thus far so nobly advanced. It is rather for us to be here dedicated to the great task remaining before us, that from these honored dead we take increased devotion to that cause for which they gave the last full measure of devotion, that we here highly resolve that these dead shall not have died in vain, that this nation, under God, shall have a new birth of freedom, and that government of the people, by the people, for the people, shall not perish from the earth.
+  </textarea
+                    >
+                </div>
+
+                <p>
+                    <a
+                        href="https://en.wikipedia.org/wiki/Gettysburg,_Pennsylvania"
+                        >More information on Gettysburg Address</a
+                    >
+                </p>
+            </article>
+
+            <article>
+                <h2>Tabelle</h2>
+                <table
+                    tabindex="0"
+                    aria-labelledby="table-caption">
+                    <caption id="table-caption">
+                        Titel für die Tabelle
+                    </caption>
+
+                    <thead>
+                        <tr>
+                            <th>Spalte 1</th>
+                            <th>Spalte 2</th>
+                            <th>Spalte 3</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <td colspan="3">Fußzeileninformationen</td>
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        <tr>
+                            <td>Inhalt 1</td>
+                            <td>Inhalt 2</td>
+                            <td>Inhalt 3</td>
+                        </tr>
+                        <tr>
+                            <td>Inhalt 1</td>
+                            <td>Inhalt 2</td>
+                            <td>Inhalt 3</td>
+                        </tr>
+                        <tr>
+                            <td>Inhalt 1</td>
+                            <td>Inhalt 2</td>
+                            <td>Inhalt 3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article
+                tabindex="1"
+                aria-label="Erster Artikel auf der Seite">
+                <h2>Überschrift für den Absatz</h2>
+                <p lang="la">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis non eligendi numquam velit aut repellat maiores fugit
+                    voluptas at vitae dolorum blanditiis maxime, porro nemo ad
+                    odit possimus libero minima officia sapiente minus natus ex.
+                    Blanditiis explicabo libero vitae, illo accusamus aperiam!
+                </p>
+            </article>
+        </main>
+
+        <footer id="footer">
+            <address>
+                <p>
+                    &copy;<time datetime="2024">2024</time>
+                    <a href="mailto:michael.reichart@gfu.de"
+                        >Michael Reichart</a
+                    >
+                </p>
+            </address>
+        </footer>
+
+        <script src="assets/js/keyboard-control.js"></script>
+        <script src="assets/js/menu-bar.js"></script>
+    </body>
+</html>

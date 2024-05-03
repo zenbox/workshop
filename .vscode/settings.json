@@ -10,7 +10,8 @@
         {
             "extensionName": ".css",
             "format": "expanded",
-            "savePath": "/assets/css"
+            "savePath": "/assets/css",
+            "generateMap": false
         }
     ],
     "liveSassCompile.settings.generateMap": false,
