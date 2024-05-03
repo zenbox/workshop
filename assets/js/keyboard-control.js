@@ -3,12 +3,13 @@
 // - Tab: Navigation
 // - Shift + Tab: Navigation
 // - ESC: Navigation verlassen
+// - ENTER: Auswählen
 
 document.addEventListener("DOMContentLoaded", () => {
     // - - - - -
 
     const table = document.querySelector("table");
-    const cells = table.querySelectorAll("td, th");
+    const cells = table.querySelectorAll("tbody td, th");
     const cellsPerRow = table.querySelectorAll("tr:first-child th").length;
     let currentCellIndex = 0;
 
