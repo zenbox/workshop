@@ -76,15 +76,23 @@
 }
 
 *:focus {
-    animation: focus-animation 1s;
+    animation: focus-animation 250ms;
     outline-style: solid;
     // outline: none;
 }
 
 :focus,
 :active {
-    outline: 5px solid #2d5dee;
-    outline-offset: 5px;
+    // outline: 5px solid #2d5dee;
+    // outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *:focus {
+        animation: focus-animation 1500ms;
+        outline: 5px solid #2d5dee;
+        outline-offset: 5px;
+    }
 }
 
 // TABLE

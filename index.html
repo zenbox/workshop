@@ -39,7 +39,7 @@
                     <button type="submit">Suche starten</button>
                 </fieldset>
             </form>
-            <nav role="navigation">
+            <nav id="banner-navigation">
                 <ul>
                     <li><a href="">Link zu Seite 1</a></li>
                     <li><a href="">Link zu Seite 2</a></li>
@@ -48,7 +48,7 @@
             </nav>
         </header>
 
-        <nav id="nav">
+        <nav id="main-nav">
             <ul>
                 <li>
                     <a
@@ -66,8 +66,8 @@
 
         <main id="main">
             <h1>Barrierefreies HTML</h1>
-            
-            <article >
+
+            <article>
                 <h2>Menubar Navigation</h2>
                 <div class="page">
                     <header role="banner">
@@ -93,7 +93,8 @@
                                     role="menuitem"
                                     aria-haspopup="true"
                                     aria-expanded="false"
-                                    href="#about">
+                                    href="#about"
+                                    aria-describedby="menubar-description">
                                     About
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -413,7 +414,7 @@
                 </div>
             </article>
 
-            <article class="invisible">
+            <article>
                 <h2>Menubar Editor</h2>
                 <div class="menubar-editor">
                     <ul

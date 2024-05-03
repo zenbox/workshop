@@ -76,16 +76,17 @@
   }
 }
 *:focus {
-  animation: focus-animation 1s;
+  animation: focus-animation 250ms;
   outline-style: solid;
 }
 
-:focus,
-:active {
-  outline: 5px solid #2d5dee;
-  outline-offset: 5px;
+@media (prefers-reduced-motion: reduce) {
+  *:focus {
+    animation: focus-animation 1500ms;
+    outline: 5px solid #2d5dee;
+    outline-offset: 5px;
+  }
 }
-
 table,
 th,
 td {
@@ -462,4 +463,18 @@ td {
 .menubar-navigation [role=menu] [role=menuitem][aria-current]:hover {
   padding-left: 4px;
   border-left: 4px solid #034575;
+}
+
+:root, html {
+  font-family: TheSans, Barlow, sans-serif;
+  font-size: 16px;
+  line-height: 1.34178;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+p {
+  margin-block: 1.3rem;
 }
