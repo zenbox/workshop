@@ -36,10 +36,6 @@ kbd {
   width: 100%;
 }
 
-.container > * {
-  border: 1px dashed rgb(0, 161, 161);
-}
-
 .color {
   display: flex;
   flex-direction: row;
@@ -100,4 +96,8 @@ kbd {
 .light {
   background-color: #f0f0f0;
   color: #333;
+}
+
+.container > * {
+  border: 1px dashed rgb(0, 161, 161);
 }
