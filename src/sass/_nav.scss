@@ -1,0 +1,41 @@
+/** 
+  *
+  * @package Webapplication
+  * @module i.e. navigation
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2024-05-14
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2024 Michael Reichart, Cologne
+  */
+$prefix: "axa";
+
+.#{$prefix}-nav {
+    // Base
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    // Layout
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1rem;
+
+    // .nav--column
+    &--column {
+        flex-direction: column;
+    }
+
+    &--row{
+        flex-direction: row;
+    }
+
+    // STATES
+    a:link {}
+    a:visited {}
+    a:hover {}
+    a:active {}
+}

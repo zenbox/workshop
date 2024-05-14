@@ -21,7 +21,11 @@ kbd {
 .container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   flex-wrap: wrap;
+}
+.container > * {
+  padding: 0.25rem;
 }
 .container > header {
   width: 100%;
@@ -40,6 +44,7 @@ kbd {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: flex-start;
   gap: 1rem;
   list-style: none;
   padding: 0;
@@ -51,8 +56,8 @@ kbd {
   box-shadow: 0.25rem 0.25rem 5px hsla(0, 0%, 0%, 0.25);
   background: linear-gradient(45deg, rgba(255, 255, 255, 0.125), rgba(0, 0, 255, 0.125)), linear-gradient(135deg, rgba(255, 0, 0, 0.125), rgba(255, 255, 255, 0.125));
   backdrop-filter: blur(1rem);
+  flex-basis: calc(25% - 1rem);
 }
-
 .primary {
   background-color: #00008f;
   color: #f0f0f0;
@@ -98,6 +103,40 @@ kbd {
   color: #333;
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/** 
+  *
+  * @package Webapplication
+  * @module i.e. navigation
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2024-05-14
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2024 Michael Reichart, Cologne
+  */
+.axa-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+}
+.axa-nav--column {
+  flex-direction: column;
+}
+.axa-nav--row {
+  flex-direction: row;
+}
 .container > * {
   border: 1px dashed rgb(0, 161, 161);
 }
