@@ -1,0 +1,21 @@
+// Base sind Elemente-Selektoren
+/**
+ * @desc Mehrzeilenkommentar
+ */
+
+html,
+html * {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: $font-family;
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+code,
+tt,
+kbd {
+    font-family: $font-family-monospace;
+}

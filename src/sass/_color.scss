@@ -1,0 +1,73 @@
+@mixin list-reset {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@mixin shadow($d: 0.25rem, $r: 5px) {
+    box-shadow: $d $d $r $shadow-color;
+}
+
+@mixin kind-of-effect($a: 0.125) {
+    background: linear-gradient(
+            45deg,
+            rgba(255, 255, 255, $a),
+            rgba(0, 0, 255, $a)
+        ),
+        linear-gradient(135deg, rgba(255, 0, 0, $a), rgba(255, 255, 255, $a));
+    // background-color: rgba(255, 255, 255, $a);
+    backdrop-filter: blur(1rem);
+}
+
+.color {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    @include list-reset;
+
+    > * {
+        padding: 1rem;
+        border-radius: 2rem;
+        @include shadow();
+        @include kind-of-effect();
+    }
+}
+
+.primary {
+    background-color: $primary;
+    color: $light;
+}
+.secondary {
+    background-color: $secondary;
+    color: $light;
+}
+.tertiary {
+    background-color: $tertiary;
+    color: $dark;
+}
+.success {
+    background-color: $success;
+    color: $light;
+}
+.warning {
+    background-color: $warning;
+    color: $light;
+}
+.error {
+    background-color: $error;
+    color: $light;
+}
+.info {
+    background-color: $info;
+    color: $light;
+}
+.dark {
+    background-color: $dark;
+    color: $light;
+}
+.light {
+    background-color: $light;
+    color: $dark;
+}
