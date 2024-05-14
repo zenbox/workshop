@@ -18,25 +18,25 @@ kbd {
   font-family: "Fira Code", monospace;
 }
 
-.container {
+.axa-flex-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.container > * {
+.axa-flex-container > * {
   padding: 0.25rem;
 }
-.container > header {
+.axa-flex-container > header {
   width: 100%;
 }
-.container > nav {
+.axa-flex-container > nav {
   width: 33.3333333333%;
 }
-.container > main {
+.axa-flex-container > main {
   width: 66.6666666667%;
 }
-.container > footer {
+.axa-flex-container > footer {
   width: 100%;
 }
 
@@ -103,7 +103,7 @@ kbd {
   color: #333;
 }
 
-.header {
+.axa-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
