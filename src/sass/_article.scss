@@ -1,0 +1,33 @@
+// @package Webapplication
+// @module Article
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-05-15
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+
+.#{$prefix}-article {
+    // BASE
+         // LAYOUT
+        column-width: 18rem;
+        column-gap: 3rem;
+        column-rule: 1px solid $primary;
+
+        // TYPOGRAPHY
+        text-align: justify;
+        hyphens: auto
+    // MODULES
+    p {
+        // LAYOUT
+        column-width: 18rem;
+        column-gap: 3rem;
+        column-rule: 1px solid $primary;
+
+        // TYPOGRAPHY
+        text-align: justify;
+        hyphens: auto
+    }
+    // STATES
+    // THEME
+}
