@@ -1,23 +1,4 @@
-@mixin list-reset {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
 
-@mixin shadow($d: 0.25rem, $r: 5px) {
-    box-shadow: $d $d $r $shadow-color;
-}
-
-@mixin kind-of-effect($a: 0.125) {
-    background: linear-gradient(
-            45deg,
-            rgba(255, 255, 255, $a),
-            rgba(0, 0, 255, $a)
-        ),
-        linear-gradient(135deg, rgba(255, 0, 0, $a), rgba(255, 255, 255, $a));
-    // background-color: rgba(255, 255, 255, $a);
-    backdrop-filter: blur(1rem);
-}
 
 .color {
     display: flex;

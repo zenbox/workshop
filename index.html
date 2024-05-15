@@ -11,14 +11,44 @@
             rel="stylesheet"
             href="assets/css/style.css" />
     </head>
-    <body class="axa-flex-container">
+    <body class="axa-grid-container">
         <header class="axa-header">
-            <h1>Header</h1>
+            <h1 class="axa-brand">
+                <a href="/">
+                    <svg
+                        width="200"
+                        height="200"
+                        viewBox="0 0 200 200"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <circle
+                            cx="100"
+                            cy="100"
+                            r="95" />
+                        <path d="M 40 100 H 160 M 100 40 V 160" />
+                        <path
+                            d="M 70 40 V 70 H 130 V 40 M 70 160 V 130 H 130 V 160" />
+                    </svg>
+                    <span class="visually-hidden">Shou Company</span>
+                </a>
+            </h1>
             <nav>
                 <ul class="axa-nav">
-                    <li><a href="#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
+                    <li>
+                        <a
+                            id="accessible"
+                            href="#"
+                            >Acessible</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            id="dev-mode"
+                            href="#"
+                            >Dev mode</a
+                        >
+                    </li>
                 </ul>
             </nav>
         </header>
@@ -35,15 +65,23 @@
 
         <main>
             <form
-                id="login"
-                class="login login-column golden">
+                class="axa-login"
+                id="login">
                 <fieldset>
                     <legend>Login</legend>
-                    <label for="">E-Mail</label
-                    ><input
-                        type="email"
+
+                    <label for="login-email">E-Mail</label><input type="email"
+                    name="" id="login-email" required " />
+
+                    <label for="login-password">Password</label>
+                    <input
+                        id="login-password"
+                        type="password"
                         name=""
-                        id="" /><button type="submit">login</button>
+                        required
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" />
+
+                    <button type="submit">login</button>
                 </fieldset>
             </form>
 
@@ -79,5 +117,6 @@
         <footer>
             <address><p>&copy; 2024 Michael</p></address>
         </footer>
+        <script src="assets/js/script.js"></script>
     </body>
 </html>

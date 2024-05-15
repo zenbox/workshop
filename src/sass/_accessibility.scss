@@ -1,0 +1,68 @@
+/** 
+  * @package Webapplication
+  * @module i.e. accessability
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2024-05-15
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2024 Michael Reichart, Cologne
+  */
+$accessibility-marker-1: #0000ffff;
+$accessibility-marker-0: #0000ff00;
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.accessible {
+    :focus {
+        outline-style: solid;
+        outline-width: 2px;
+        outline-offset: 1px;
+        outline-color: $accessibility-marker-1;
+        animation: focus-animation 1s 1;
+    }
+
+    @keyframes focus-animation {
+        0% {
+            outline-style: solid;
+            outline-width: 2px;
+            outline-offset: 1px;
+            outline-color: $accessibility-marker-0;
+        }
+        33% {
+            outline-style: solid;
+            outline-width: 2px;
+            outline-offset: 3px;
+            outline-color: $accessibility-marker-1;
+        }
+        66% {
+            outline-style: solid;
+            outline-width: 2px;
+            outline-color: $accessibility-marker-0;
+            outline-offset: 1px;
+        }
+        100% {
+            outline-style: solid;
+            outline-width: 2px;
+            outline-offset: 3px;
+            outline-color: $accessibility-marker-1;
+        }
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001s !important;
+        transition-duration: 0.001s !important;
+        scroll-behavior: auto !important;
+    }
+}

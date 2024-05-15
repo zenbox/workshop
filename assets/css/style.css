@@ -12,6 +12,10 @@ html {
   line-height: 1.3;
 }
 
+body {
+  margin: 0;
+}
+
 code,
 tt,
 kbd {
@@ -38,6 +42,62 @@ kbd {
 }
 .axa-flex-container > footer {
   width: 100%;
+}
+
+.axa-grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: 10rem auto 2rem;
+  gap: 0;
+  grid-template-areas: "header header header header" "nav main main main" "footer footer footer footer";
+}
+.axa-grid-container > * {
+  padding: 1rem;
+}
+.axa-grid-container header {
+  grid-area: header;
+}
+.axa-grid-container nav {
+  grid-area: nav;
+}
+.axa-grid-container main {
+  grid-area: main;
+}
+.axa-grid-container footer {
+  grid-area: footer;
+}
+
+@media screen and (max-width: 600px) {
+  .axa-grid-container {
+    grid-template-columns: 100vw 100vw;
+    grid-template-rows: auto auto auto;
+    overflow: hidden;
+    background: grey;
+    margin-inline-start: -100vw;
+  }
+  header {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+  nav {
+    grid-column: 2/3;
+    grid-row: 1/3;
+  }
+  main {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+  footer {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+}
+.axa-brand svg {
+  width: 3rem;
+  height: 3rem;
+  stroke: #00008f;
+  stroke-width: 10px;
+  fill: #ef6b57;
 }
 
 .color {
@@ -109,6 +169,37 @@ kbd {
   justify-content: space-between;
   align-items: center;
 }
+/** 
+  *
+  * @package Webapplication
+  * @module i.e. login
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2024-05-14
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2024 Michael Reichart, Cologne
+  */
+.axa-login:focus input, .axa-login:active input {
+  border: 0;
+  border-block-end: 3px solid #00008f;
+}
+.axa-login:focus input [data-error=true], .axa-login:active input [data-error=true] {
+  background: #fccbc7;
+}
+.axa-login:focus input [data-error=false], .axa-login:active input [data-error=false] {
+  background: #b5dfb7;
+}
+.axa-login:focus input:focus, .axa-login:active input:focus {
+  background: #ef6b57;
+}
+.axa-login:focus input:valid, .axa-login:active input:valid {
+  background: #b5dfb7;
+}
+.axa-login:focus input:invalid, .axa-login:active input:invalid {
+  background: #fccbc7;
+  border-color: #f44336;
+}
 
 /** 
   *
@@ -122,9 +213,9 @@ kbd {
   * @copyright (c) 2024 Michael Reichart, Cologne
   */
 .axa-nav {
-  list-style-type: none;
-  margin: 0;
+  list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -137,6 +228,70 @@ kbd {
 .axa-nav--row {
   flex-direction: row;
 }
-.container > * {
-  border: 1px dashed rgb(0, 161, 161);
+/** 
+  * @package Webapplication
+  * @module i.e. accessability
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2024-05-15
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2024 Michael Reichart, Cologne
+  */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.accessible :focus {
+  outline-style: solid;
+  outline-width: 2px;
+  outline-offset: 1px;
+  outline-color: blue;
+  animation: focus-animation 1s 1;
+}
+@keyframes focus-animation {
+  0% {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 1px;
+    outline-color: rgba(0, 0, 255, 0);
+  }
+  33% {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 3px;
+    outline-color: blue;
+  }
+  66% {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-color: rgba(0, 0, 255, 0);
+    outline-offset: 1px;
+  }
+  100% {
+    outline-style: solid;
+    outline-width: 2px;
+    outline-offset: 3px;
+    outline-color: blue;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001s !important;
+    transition-duration: 0.001s !important;
+    scroll-behavior: auto !important;
+  }
+}
+.dev body > * {
+  background: hsla(0, 50%, 80%, 0.25);
+  border: 2px dotted green;
 }

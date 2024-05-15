@@ -13,7 +13,9 @@ html {
     font-size: $font-size;
     line-height: $line-height;
 }
-
+body {
+    margin: 0;
+}
 code,
 tt,
 kbd {

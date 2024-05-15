@@ -1,3 +1,6 @@
-.container > * {
-    border: 1px dashed rgb(0, 161, 161);
+.dev {
+    body > * {
+        background: hsla(0, 50%, 80%, 0.25);
+        border: 2px dotted green;
+    }
 }

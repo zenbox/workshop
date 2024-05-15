@@ -27,3 +27,11 @@ $error: #f44336;
 $info: #2196f3;
 
 $shadow-color: hsla(0, 0%, 0%, 0.25);
+
+// DEFAULTS
+$default-spacer: 1rem;
+$default-spacer-2: 2 * $default-spacer;
+
+// Lines
+$default-line-width: 3px;
+$default-line-style: solid;

@@ -1,0 +1,48 @@
+/** 
+  *
+  * @package Webapplication
+  * @module i.e. login
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2024-05-14
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2024 Michael Reichart, Cologne
+  */
+
+@use "sass:color";
+
+.#{$prefix}-login {
+    // BASE
+    // LAYOUT
+    // MODULES
+    &:focus,
+    &:active {
+        input {
+            @include border-reset;
+            border-block-end: $default-line-width $default-line-style $primary;
+            // LAYOUT OF MODULE
+            // MODULES OF MODULE
+            // STATES OF MODULE
+            [data-error="true"] {
+                background: color.adjust($error, $lightness: +30%);
+            }
+            [data-error="false"] {
+                background: color.adjust($success, $lightness: +30%);
+            }
+            &:focus {
+                background: $secondary;
+            }
+            &:valid {
+                // background: $success;
+                background: color.adjust($success, $lightness: +30%);
+            }
+            &:invalid {
+                background: color.adjust($error, $lightness: +30%);
+                border-color: $error;
+            }
+        }
+    }
+    // STATES
+    // THEME
+}
