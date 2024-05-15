@@ -1,11 +1,9 @@
-
-
 .color {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 
-justify-content: flex-start;
+    justify-content: flex-start;
 
     gap: 1rem;
 
@@ -28,7 +26,10 @@ justify-content: flex-start;
 
 .primary {
     background-color: $primary;
-    color: $light;
+    color: $on-primary;
+
+    fill: $primary;
+
 }
 .secondary {
     background-color: $secondary;
@@ -62,6 +63,3 @@ justify-content: flex-start;
     background-color: $light;
     color: $dark;
 }
-
-
-

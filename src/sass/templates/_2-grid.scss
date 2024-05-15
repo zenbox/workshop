@@ -47,20 +47,27 @@
         margin-inline-start: -100vw;
     }
 
-  header{
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
-  }
-    nav{
+    header {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+    nav {
         grid-column: 2 / 3;
         grid-row: 1 / 3;
     }
-    main{
+    main {
         grid-column: 1 / 2;
         grid-row: 2 / 3;
     }
-    footer{
+    footer {
         grid-column: 1 / 2;
         grid-row: 3 / 4;
+    }
+}
+
+// Media Query
+@media screen and (max-width: 550px) {
+    body {
+        background: lightblue !important;
     }
 }

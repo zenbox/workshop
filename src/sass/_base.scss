@@ -21,3 +21,11 @@ tt,
 kbd {
     font-family: $font-family-monospace;
 }
+
+
+html[lang=de] .currency::after{
+    content: " €";
+}
+html[lang=en] .currency::after{
+    content: " $";
+}

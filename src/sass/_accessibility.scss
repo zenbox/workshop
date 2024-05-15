@@ -11,8 +11,11 @@
 $accessibility-marker-1: #0000ffff;
 $accessibility-marker-0: #0000ff00;
 
+.sr-only,
 .visually-hidden {
+    // appearance: scrollbartrack-vertical;
     position: absolute;
+    left: -10000px;
     width: 1px;
     height: 1px;
     margin: -1px;
@@ -23,37 +26,37 @@ $accessibility-marker-0: #0000ff00;
     border: 0;
 }
 
+.not-there {
+    display: none;
+}
+
 .accessible {
     :focus {
         outline-style: solid;
         outline-width: 2px;
-        outline-offset: 1px;
+        outline-offset: 2px;
         outline-color: $accessibility-marker-1;
-        animation: focus-animation 1s 1;
+        animation-name: focus-animation;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+
+        // transition: all 5s ease-in-out;
     }
 
     @keyframes focus-animation {
         0% {
-            outline-style: solid;
-            outline-width: 2px;
             outline-offset: 1px;
             outline-color: $accessibility-marker-0;
         }
         33% {
-            outline-style: solid;
-            outline-width: 2px;
             outline-offset: 3px;
             outline-color: $accessibility-marker-1;
         }
         66% {
-            outline-style: solid;
-            outline-width: 2px;
             outline-color: $accessibility-marker-0;
             outline-offset: 1px;
         }
         100% {
-            outline-style: solid;
-            outline-width: 2px;
             outline-offset: 3px;
             outline-color: $accessibility-marker-1;
         }
@@ -66,3 +69,4 @@ $accessibility-marker-0: #0000ff00;
         scroll-behavior: auto !important;
     }
 }
+

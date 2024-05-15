@@ -9,7 +9,10 @@
         // THEME
         stroke: $primary;
         stroke-width: 10px;
-        fill: $secondary;
+
+        g {
+            fill: $secondary;
+        }
     }
     // STATES
     // THEME

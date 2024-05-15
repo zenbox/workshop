@@ -16,6 +16,16 @@
     // BASE
     // LAYOUT
     // MODULES
+    label {
+        display: flex;
+        flex-direction: row;
+        align-self: center;
+        gap: $default-spacer;
+    }
+    .#{$prefix}-icon {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
     &:focus,
     &:active {
         input {
