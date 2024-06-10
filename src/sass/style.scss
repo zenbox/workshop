@@ -1,0 +1,45 @@
+// Sass imports
+// Variablen
+@import "variables";
+
+// Reset, Normalize
+@import "reset";
+
+// Basis Styles, z.B. Typografie
+// @import "base";
+@import "typography";
+
+
+// Templates (Layout)
+@import "template-1";
+
+// Komponenten
+@import "nav";
+
+// - - - - - - - - - -
+// - - - - - - - - - -
+// - - - - - - - - - -
+
+// Themes, Skins
+@import "developer";
+
+// SASS Variablen
+// $bright: white;
+// $dark: black;
+
+// /* CSS Variablen */
+// :root{
+//     --bright: white;
+//     --dark: black;
+// }
+
+// body {
+//     background: var(--bright);
+//     color: var(--dark);
+// }
+// table {
+//     $bright: lightgrey;
+//     $dark: darkgrey;
+//     border-collapse: collapse;
+//     width: 100%;
+// }

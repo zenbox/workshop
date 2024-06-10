@@ -1,0 +1,18 @@
+.template-1 {
+    // Layout
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    // Sub-Komponenten
+    > header,
+    > footer {
+        flex-basis: 100%;
+    }
+    > nav {
+        flex-basis: 25%;
+    }
+    > main {
+        flex-basis: 75%;
+    }
+}

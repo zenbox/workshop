@@ -19,7 +19,7 @@ Folgende Pausenzeiten sind geplant:
 
 ## Foliensatz
 
-Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **Cascading Stylesheets v3.2.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird. Eine vollständige Sass Dokumentation liefert die Webseite unter [sass-lang.com](https://sass-lang.com/) Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz zur freien Verfügung.
+Es gibt einen Foliensatz zu unserem Seminar und Workshop im Verzeichnis `docs`: **Cascading Stylesheets v3.2.pdf**. Dort finden Sie zum Nachlesen, was während Seminars erläutert wird. Eine vollständige Sass Dokumentation liefert die Webseite unter [sass-lang.com](https://sass-lang.com/) Der Foliensatz wird ggf. aktualisiert, wenn wir bis zum Ende Seminars Inhalte umstellen. Er steht Ihnen anschließend unter der MIT Lizenz und CC BY-NC-SA zur freien Verfügung.
 
 ## Dateien zum Download
 
