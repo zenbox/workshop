@@ -1,4 +1,44 @@
+// Rhytmus
+$unison: 1;
+    $minor-second: 1.067;
+    $major-second: 1.125;
+    $minor-third: 1.2;
+    $major-third: 1.25;
+    $perfect-fourth: 1.333;
+    $augmented-fourth: 1.414;
+    $perfect-fifth: 1.5;
+    $minor-sixth: 1.6;
+    $golden-ratio: 1.618;
+    $major-sixth: 1.667;
+    $minor-seventh: 1.778;
+    $major-seventh: 1.875;
+    $octave: 2;
+    $major-tenth: 2.5;
+    $major-eleventh: 2.667;
+    $major-twelfth: 3;
+    $double-octave: 4;
+
+
+// Spacer
+$default-spacer: 1rem;
+$half-spacer: $default-spacer / 2;
+$double-spacer: $default-spacer * 2;
+
+// Typografie
+$default-font-size: clamp(16px, 1.7vw, 22px);
+$default-line-height: $perfect-fourth;
+
+$headline-sizes: (
+    "h1": #{$major-eleventh}rem,
+    "h2": #{$octave}rem,
+    "h3": #{$minor-seventh}rem,
+    "h4": #{$perfect-fifth}rem,
+    "h5": #{$major-third}rem,
+    "h6": #{$unison}rem,
+);
+
+
 // Developer-Werte
-$dev-color: hsla(300, 100%, 50%, 0.25);
+$dev-color: hsla(300, 100%, 22%, 0.757);
 $dev-border-style: solid;
-$dev-border-width: 2px;
+$dev-border-width: 1px;

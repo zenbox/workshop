@@ -13,8 +13,8 @@ html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
         "Segoe UI Symbol";
-    font-size: 18px;
-    line-height: 1.333; //1.2 -> default
+    font-size: $default-font-size; // Basis für  root em = 18px
+    line-height: $default-line-height; //1.2 -> default
 }
 
 h1,
@@ -25,34 +25,17 @@ h5,
 h6 {
     font-family: inherit;
     font-weight: 700;
-    line-height: 1.333;
-    margin: 0 0 1rem;
+    line-height: $default-line-height;
 }
 
-h1 {
-    font-size: 2.5rem;
+// Headline-Größen
+@each $key, $value in $headline-sizes {
+    #{$key} {
+        font-size: $value;
+    }
 }
 
-h2 {
-    font-size: 2rem;
-}
-
-h3 {
-    font-size: 1.75rem;
-}
-
-h4 {
-    font-size: 1.5rem;
-}
-
-h5 {
-    font-size: 1.25rem;
-}
-
-h6 {
-    font-size: 1rem;
-}
-
+// Text-Elemente
 p {
-    margin: 0 0 1rem;
+    margin: 0 0 $default-spacer;
 }

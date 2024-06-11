@@ -8,11 +8,14 @@
     > header,
     > footer {
         flex-basis: 100%;
+        padding-inline: $default-spacer;
     }
     > nav {
         flex-basis: 25%;
+        padding-inline: $default-spacer;
     }
     > main {
         flex-basis: 75%;
+        padding-inline: $default-spacer;
     }
 }
