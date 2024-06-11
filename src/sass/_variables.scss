@@ -21,7 +21,7 @@ $unison: 1;
 
 // Spacer
 $default-spacer: 1rem;
-$half-spacer: $default-spacer / 2;
+$half-spacer: math.div($default-spacer, 2);
 $double-spacer: $default-spacer * 2;
 
 // Typografie

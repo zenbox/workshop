@@ -1,4 +1,7 @@
 // Sass imports
+@use "sass:math";
+
+
 // Variablen
 @import "variables";
 
@@ -14,6 +17,7 @@
 @import "template-1";
 
 // Komponenten
+@import "hamburger";
 @import "nav";
 
 // - - - - - - - - - -
@@ -42,4 +46,11 @@
 //     $dark: darkgrey;
 //     border-collapse: collapse;
 //     width: 100%;
+// }
+
+
+
+// main p:first-of-type {
+//     background: lightsteelblue;
+//     font-size: calc(4vw + 13px);
 // }

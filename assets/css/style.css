@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html,
 html * {
   box-sizing: border-box;
@@ -48,6 +49,12 @@ p {
   margin: 0 0 1rem;
 }
 
+/* 
+ Schreibe eine Sass-Anweisung, die für alle HTML-Elemente Schriftgrößen festlegt? Verwende map und each.
+ Elemente: h1, h2, h3, h4, h5, h6, p, a, dl, li, dt, dd, blockquote, 
+ pre, code, kbd, samp, var, abbr, acronym, q, cite, ins, del, dfn,
+ ... und alle anderen HTML-Elemente, die Text enthalten können.
+*/
 .template-1 {
   display: flex;
   flex-wrap: wrap;
@@ -65,6 +72,34 @@ p {
 .template-1 > main {
   flex-basis: 75%;
   padding-inline: 1rem;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 4rem;
+  height: 4rem;
+  outline: 1px dashed rgb(208, 208, 208);
+  outline-offset: 0.5rem;
+}
+.hamburger > *:nth-child(1),
+.hamburger > *:nth-child(2),
+.hamburger > *:nth-child(3) {
+  display: block;
+  width: 100%;
+  height: 1rem;
+  transition: transform 250ms ease-in-out;
+}
+.hamburger > *:nth-child(1) {
+  transform: rotate(45deg) translate(0.5rem, 0.5rem);
+}
+.hamburger > *:nth-child(1),
+.hamburger > *:nth-child(2),
+.hamburger > *:nth-child(3) {
+  outline: 1px dashed rgb(208, 208, 208);
+  outline-offset: 0.5rem;
+  background: black;
 }
 
 .nav {

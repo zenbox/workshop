@@ -1,0 +1,65 @@
+// Hamburger Menu
+//
+// @package Webapplication
+// @module Navigation
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-06-11
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+
+.hamburger {
+    // Variablen
+    $width: 4rem;
+    $height: $width;
+
+    // Base
+
+    // Layout
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: $width;
+    height: $height;
+
+    // flex-basis: 4rem;
+    // flex-grow: 0;
+    // flex-shrink: 0;
+
+    // (Sub)Komponenten (elements)
+    > *:nth-child(1),
+    > *:nth-child(2),
+    > *:nth-child(3) {
+        display: block;
+        width: 100%;
+        height: 1rem;
+
+        transition: transform 250ms ease-in-out;
+    }
+
+    > *:nth-child(1) {
+        transform: rotate(45deg) translate(0.5rem, 0.5rem);
+        
+    }
+
+
+    // States (modifiers
+    &--state-opened {
+    }
+    &--state-closed {
+    }
+
+    // Skin
+    outline: 1px dashed rgb(208, 208, 208);
+    outline-offset: $half-spacer;
+
+    > *:nth-child(1),
+    > *:nth-child(2),
+    > *:nth-child(3) {
+        outline: 1px dashed rgb(208, 208, 208);
+        outline-offset: $half-spacer;
+        background: black;
+    }
+}
