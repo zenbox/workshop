@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('#hamburger');
 
     hamburger.addEventListener('click', function (event) {
-        event.target.classList.toggle('hamburger--state-opened');
+        hamburger.classList.toggle('hamburger--state-opened');
         // event.target.classList.add('hamburger--state-opened');
         // event.target.classList.remove('hamburger--state-closed');
      });

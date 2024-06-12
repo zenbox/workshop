@@ -11,17 +11,11 @@
 
 .hamburger {
     // Variablen
-    $width: 4rem;
+    $width: 12rem;
     $height: $width;
 
-    &:hover {
-        > *:nth-child(1) {
-            transform: rotate(45deg) translate(0.5rem, 0.5rem);
-        }
-    }
-
     // Base
-
+    position: relative;
     // Layout
     display: flex;
     flex-direction: column;
@@ -39,10 +33,11 @@
     > *:nth-child(2),
     > *:nth-child(3) {
         display: block;
+        position: absolute;
         width: 100%;
         height: 1rem;
 
-        transition: transform 250ms ease-in-out;
+        transition: all 250ms ease-in-out;
     }
 
     // > *:nth-child(1) {
@@ -50,8 +45,21 @@
 
     // }
 
-    // States (modifiers
+    // States (modifiers)
     &--state-opened {
+        > *:nth-child(1) {
+            opacity: 0;
+        }
+        > *:nth-child(2) {
+            top: 50%;
+            // transform-origin: center;
+            transform: translate(0, 50%) rotate(45deg);
+        }
+        > *:nth-child(3) {
+            top: 50%;
+            // transform-origin: center;
+            transform: translate(0, 50%) rotate(-45deg);
+        }
     }
     &--state-closed {
     }
@@ -67,4 +75,8 @@
         outline-offset: $half-spacer;
         background: black;
     }
+
+    // > *:nth-child(2) {
+    //     background: red;
+    // }
 }
