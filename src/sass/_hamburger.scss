@@ -11,7 +11,7 @@
 
 .hamburger {
     // Variablen
-    $width: 12rem;
+    $width: 2rem;
     $height: $width;
 
     // Base
@@ -35,7 +35,7 @@
         display: block;
 
         width: 100%;
-        height: 1rem;
+        height: math.div($height, 6);
 
         transition: all 250ms ease-in-out;
     }
