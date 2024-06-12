@@ -1,6 +1,6 @@
 .developer {
     // Developer-Skin
-    .template-1 > * {
+    body > * > * {
         border-width: $dev-border-width;
         border-style: $dev-border-style;
         border-color: $dev-color;

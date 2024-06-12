@@ -46,6 +46,13 @@
     // }
 
     // States (modifiers)
+    @media screen and (min-width: 600px) {
+        display: none;
+    }
+    @media screen and (max-width: 599px) {
+        display: flex;
+    }
+
     &--state-opened {
         > *:nth-child(1) {
             opacity: 0;

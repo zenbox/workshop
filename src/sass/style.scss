@@ -1,33 +1,32 @@
 // Sass imports
 @use "sass:math";
 
-
 // Variablen
 @import "variables";
 @import "mixins";
 
 // Reset, Normalize
-@import "reset";
+@import "base/reset";
 
 // Basis Styles, z.B. Typografie
-// @import "base";
-@import "typography";
-@import "color";
-
+@import "base/base";
+@import "base/typography";
+@import "base/color";
 
 // Templates (Layout)
-@import "template-1";
+@import "templates/template-1";
+@import "templates/template-2";
 
 // Komponenten
-@import "hamburger";
-@import "nav";
+@import "components/hamburger";
+@import "components/nav";
 
 // - - - - - - - - - -
 // - - - - - - - - - -
 // - - - - - - - - - -
 
 // Themes, Skins
-@import "developer";
+@import "themes/developer";
 
 // SASS Variablen
 // $bright: white;
@@ -49,8 +48,6 @@
 //     border-collapse: collapse;
 //     width: 100%;
 // }
-
-
 
 // main p:first-of-type {
 //     background: lightsteelblue;

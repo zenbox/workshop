@@ -4,6 +4,15 @@ html * {
   box-sizing: border-box;
 }
 
+html,
+html * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
 html {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: clamp(16px, 1.7vw, 22px);
@@ -128,8 +137,13 @@ p {
   width: 8rem;
   height: 8rem;
   padding: 0.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.25rem;
+  -webkit-border-radius: 0.25rem;
+  -moz-border-radius: 0.25rem;
+  -ms-border-radius: 0.25rem;
+  -o-border-radius: 0.25rem;
+  -khtml-border-radius: 0.25rem;
+  box-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.2);
 }
 
 .template-1 {
@@ -151,6 +165,90 @@ p {
   padding-inline: 1rem;
 }
 
+body,
+body > div {
+  height: 100vh;
+}
+
+.template-2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 5rem auto 8vh;
+}
+.template-2 > header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 5rem;
+}
+.template-2 > nav {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.template-2 > main {
+  grid-column: 2/5;
+  grid-row: 2/3;
+}
+.template-2 > footer {
+  grid-column: 1/5;
+  grid-row: 3/4;
+}
+
+@media screen and (max-width: 599px) {
+  body {
+    background: lightgrey;
+  }
+  .template-2 {
+    display: block;
+  }
+  .template-2 > header,
+  .template-2 > nav,
+  .template-2 > main,
+  .template-2 > footer {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+  .template-2 > header {
+    top: 0;
+    position: fixed;
+    height: 3rem;
+  }
+  .template-2 > nav {
+    display: block;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    width: 75vw;
+    height: calc(100vh - 3rem - 5vh);
+    background: gray;
+    z-index: 1;
+    margin-inline-start: -75vw;
+    transition: margin-inline-start 5s ease-in-out;
+  }
+  .template-2 > .nav--state-opened {
+    margin-inline-start: 0vw;
+  }
+  .template-2 > main {
+    margin-top: 3rem;
+  }
+  .template-2 > footer {
+    position: fixed;
+    bottom: 0;
+    height: 5vh;
+  }
+}
+@media print and (max-width: 21cm) {
+  body {
+    background: blue;
+  }
+  nav {
+    display: none;
+  }
+}
 .hamburger {
   position: relative;
   display: flex;
@@ -166,6 +264,16 @@ p {
   width: 100%;
   height: 0.3333333333rem;
   transition: all 250ms ease-in-out;
+}
+@media screen and (min-width: 600px) {
+  .hamburger {
+    display: none;
+  }
+}
+@media screen and (max-width: 599px) {
+  .hamburger {
+    display: flex;
+  }
 }
 .hamburger--state-opened > *:nth-child(1) {
   opacity: 0;
@@ -206,8 +314,8 @@ p {
   font-size: small;
 }
 
-.developer .template-1 > * {
-  border-width: 1px;
-  border-style: solid;
+.developer body > * > * {
+  border-width: 3px;
+  border-style: dotted;
   border-color: hsla(300, 100%, 22%, 0.757);
 }

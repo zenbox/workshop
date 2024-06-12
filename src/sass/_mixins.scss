@@ -1,5 +1,5 @@
 // Mixins (Funktionen)
-// 
+//
 // @package Webapplication
 // @module functions
 // @author Michael Reichart <michael.reichart@gfu.net>
@@ -17,8 +17,21 @@
 
 @mixin border-radius($radius) {
     border-radius: $radius;
+
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    -khtml-border-radius: $radius;
+
 }
 
-@mixin box-shadow($level) {
-    box-shadow: $level * 0.5 $level * 0.5 $level $shadow-color;
+@mixin box-shadow($level: $default-spacer) {
+    // x-offset, y-offset, blur-radius, color
+    $x-offset: $level * 0.5;
+    $y-offset: $level * 0.5;
+    $blur-radius: $level;
+    $color: $shadow-color;
+    
+    box-shadow: $x-offset $y-offset $blur-radius $color;
 }
