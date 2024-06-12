@@ -1,0 +1,56 @@
+// Farben
+//
+// @package Webapplication
+// @module Base
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-06-12
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+
+@use "sass:color";
+
+@each $color, $value in $colors {
+    .#{$color} {
+        background-color: $value;
+        @if color.lightness($value) < 50.1% {
+            color: $light-color;
+        } @else {
+            color: $dark-color;
+        }
+    }
+}
+
+// Farbaufbau
+// body{
+//     background: green;
+// }
+.example {
+    // Hue (Farbton)
+    // Saturation (Sättigung)
+    // Luminance (Lightness, Helligkeit)
+    // Alpha (Opazität, Transparenz)
+    background-color: hsla(240deg, 100%, 50%, 1);
+}
+
+
+// Farbfelder - Utility!
+// Submodule: Farben
+.color-fields {
+    @include reset-list;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $default-spacer;
+
+    > * {
+        display: block;
+        width: #{$fourth-octave}rem;
+        height: #{$fourth-octave}rem;
+        padding: $half-spacer;
+        @include border-radius($half-spacer);
+        @include box-shadow($half-spacer);
+    }
+}

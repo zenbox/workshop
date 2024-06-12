@@ -4,6 +4,7 @@
 
 // Variablen
 @import "variables";
+@import "mixins";
 
 // Reset, Normalize
 @import "reset";
@@ -11,6 +12,7 @@
 // Basis Styles, z.B. Typografie
 // @import "base";
 @import "typography";
+@import "color";
 
 
 // Templates (Layout)

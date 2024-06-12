@@ -71,14 +71,14 @@
     }
 
     // Skin
-    outline: 1px dashed rgb(208, 208, 208);
-    outline-offset: $half-spacer;
+    // outline: 1px dashed rgb(208, 208, 208);
+    // outline-offset: $half-spacer;
 
     > *:nth-child(1),
     > *:nth-child(2),
     > *:nth-child(3) {
-        outline: 1px dashed rgb(208, 208, 208);
-        outline-offset: $half-spacer;
+        // outline: 1px dashed rgb(208, 208, 208);
+        // outline-offset: $half-spacer;
         background: black;
     }
 

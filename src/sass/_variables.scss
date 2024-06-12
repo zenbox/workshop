@@ -2,7 +2,7 @@
 // Corporate Farben
 $primary-color: #ff0000;
 $secondary-color: #00ff00;
-$tertiary-color: #0000ff;
+$tertiary-color: hsla(240deg, 100%, 50%, 1);
 
 // Semantische Farben
 $success-color: #00ff00;
@@ -15,6 +15,20 @@ $cta-color: #ff00ff;
 $light-color: #f5f5f5;
 $dark-color: #333;
 $shadow-color: #00000033;
+
+$colors: (
+    "primary": $primary-color,
+    "secondary": $secondary-color,
+    "tertiary": $tertiary-color,
+    "success": $success-color,
+    "warning": $warning-color,
+    "error": $error-color,
+    "info": $info-color,
+    "cta": $cta-color,
+    "light": $light-color,
+    "dark": $dark-color,
+    "shadow": $shadow-color,
+);
 
 // Rhytmus
 $unison: 1;
@@ -35,6 +49,7 @@ $major-tenth: 2.5;
 $major-eleventh: 2.667;
 $major-twelfth: 3;
 $double-octave: 4;
+$fourth-octave: 8;
 
 // Spacer
 $default-spacer: 1rem;

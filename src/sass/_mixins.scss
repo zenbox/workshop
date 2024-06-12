@@ -1,0 +1,24 @@
+// Mixins (Funktionen)
+// 
+// @package Webapplication
+// @module functions
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-06-12
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+
+@mixin reset-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+@mixin box-shadow($level) {
+    box-shadow: $level * 0.5 $level * 0.5 $level $shadow-color;
+}
