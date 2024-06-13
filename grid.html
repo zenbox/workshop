@@ -15,34 +15,105 @@
     <body>
         <div class="template-2">
             <header>
-                <div
-                    id="hamburger"
-                    class="hamburger">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="cntr">
-                    <form class="cntr-innr">
-                        <label
-                            class="search"
-                            for="inpt_search">
-                            <input
-                                id="inpt_search"
-                                type="text" />
-                        </label>
-                    </form>
-                </div>
+                <nav
+                    class="navbar"
+                    role="navigation"
+                    aria-label="Menu">
+                    <button
+                        class="navbar__btn"
+                        type="button">
+                        <span class="navbar__btn__bar"></span>
+                        <span class="navbar__btn__bar"></span>
+                        <span class="navbar__btn__bar"></span>
+                    </button>
+
+                    <ul class="navbar__nav">
+                        <li><a href="#">Home</a></li>
+                        <li>
+                            <a
+                                href="#"
+                                class="navbar__nav__hasDropdown"
+                                aria-haspopup="true"
+                                >Archive</a
+                            >
+                            <ul
+                                class="navbar__nav__dropdown"
+                                aria-label="submenu"
+                                role="menu">
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 1</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 2</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 3</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                class="navbar__nav__hasDropdown"
+                                aria-haspopup="true"
+                                >Categories</a
+                            >
+                            <ul
+                                class="navbar__nav__dropdown"
+                                aria-label="submenu"
+                                role="menu">
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 1</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 2</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 3</a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
             </header>
             <nav id="nav">nav</nav>
             <main>
-                <article><h2>Lorem Überschrift 2, ipsum dolor.</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil adipisci reiciendis eos!</p></article>
+                <article>
+                    <h2>Lorem Überschrift 2, ipsum dolor.</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Nihil adipisci reiciendis eos!
+                    </p>
+                </article>
             </main>
             <footer>footer</footer>
         </div>
-        <script
-            defer
-            src="assets/js/hamburger.js"></script>
+        <script src="assets/js/navbar.js"></script>
     </body>
 </html>
