@@ -92,7 +92,8 @@ body > div {
 
             margin-inline-start: -75vw;
 
-            transition: margin-inline-start 5s ease-in-out;
+            transition: margin-inline-start 250ms
+                cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         > .nav--state-opened {
@@ -100,7 +101,7 @@ body > div {
         }
 
         > main {
-            margin-top: $template-2-header-height;
+            margin-block-start: $template-2-header-height;
         }
         > footer {
             position: fixed;

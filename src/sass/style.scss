@@ -20,6 +20,8 @@
 // Komponenten
 @import "components/hamburger";
 @import "components/nav";
+@import "components/nav";
+@import "components/search-bar";
 
 // - - - - - - - - - -
 // - - - - - - - - - -
@@ -27,29 +29,5 @@
 
 // Themes, Skins
 @import "themes/developer";
+@import "themes/customer-1/typography";
 
-// SASS Variablen
-// $bright: white;
-// $dark: black;
-
-// /* CSS Variablen */
-// :root{
-//     --bright: white;
-//     --dark: black;
-// }
-
-// body {
-//     background: var(--bright);
-//     color: var(--dark);
-// }
-// table {
-//     $bright: lightgrey;
-//     $dark: darkgrey;
-//     border-collapse: collapse;
-//     width: 100%;
-// }
-
-// main p:first-of-type {
-//     background: lightsteelblue;
-//     font-size: calc(4vw + 13px);
-// }
