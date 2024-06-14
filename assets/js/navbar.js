@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // - - - - - - - - - -
     (() => {
-        let $ = (el) => document.querySelector(el);
+        const $ = (el) => document.querySelector(el);
 
         $(".navbar__btn").addEventListener("click", function () {
             this.classList.toggle("navbar__btn--active");

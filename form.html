@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Anmeldeformular</title>
+    </head>
+    <body>
+        <form
+            action=""
+            id="registration">
+            <fieldset>
+                <legend>Registrierung</legend>
+
+                <figure>
+                    <img
+                        src="https://picsum.photos/id/64/200"
+                        alt="" />
+                    <figcaption>Lorem Bildbeschreibung</figcaption>
+                </figure>
+
+                <fieldset>
+                    <legend>Anmeldedaten</legend>
+
+                    <label for="email">E-Mail</label>
+                    <input
+                        type="email"
+                        name="email"
+                        id="email" />
+
+                    <label for="password">Passwort</label>
+                    <input
+                        type="password"
+                        name="password-1"
+                        id="password"
+                        placeholder="Passwort erfinden" />
+                    <input
+                        type="password"
+                        name="password-2"
+                        placeholder="Passwort wiederholen" />
+
+                    <label
+                        ><input
+                            type="checkbox"
+                            name="terms" />AGBs</label
+                    >
+                    <label
+                        ><input
+                            type="checkbox"
+                            name="ads" />Werbung</label
+                    >
+                </fieldset>
+
+                <fieldset>
+                    <legend>Persönliche Angaben</legend>
+
+                    <label for="instrument">Instrument</label>
+                    <select
+                        name="instrument"
+                        id="instrument">
+                        <option
+                            selected
+                            value="">
+                            Schlagzeug
+                        </option>
+                        <option value="">Klavier</option>
+                        <option value="">Flöte</option>
+                        <option value="">Cembalo</option>
+                    </select>
+
+                    <fieldset>
+                        <legend>Niveau</legend>
+                        <label
+                            ><input
+                                type="radio"
+                                name="level" />Anfänger</label
+                        >
+                        <label
+                            ><input
+                                type="radio"
+                                name="level" />Fortgeschritten</label
+                        >
+                        <label
+                            ><input
+                                type="radio"
+                                name="level" />Amateur</label
+                        >
+                        <label
+                            ><input
+                                type="radio"
+                                name="level" />Profi</label
+                        >
+                    </fieldset>
+
+                    <label for="notes">Notizen</label>
+                    <textarea
+                        name="notes"
+                        id="notes"></textarea>
+                </fieldset>
+
+                <button type="reset">Abbrechen</button>
+                <button type="submit">Abschicken</button>
+            </fieldset>
+        </form>
+    </body>
+</html>

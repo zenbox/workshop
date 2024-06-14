@@ -1,8 +1,8 @@
 // Farben
 // Corporate Farben
-$primary-color: #ff0000;
-$secondary-color: #00ff00;
-$tertiary-color: hsla(240deg, 100%, 50%, 1);
+$primary-color: #00a6ff;
+$secondary-color: #007500;
+$tertiary-color: rgb(213, 76, 3);
 
 // Semantische Farben
 $success-color: #00ff00;
@@ -68,6 +68,9 @@ $headline-sizes: (
     "h5": #{$major-third}rem,
     "h6": #{$unison}rem,
 );
+
+// Transitions
+$default-transition: all 250ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 // Developer-Werte
 $dev-color: hsla(300, 100%, 22%, 0.757);

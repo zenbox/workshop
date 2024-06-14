@@ -72,8 +72,8 @@ body > div {
         // Anpassungen für kleine Geräte
         > header {
             top: 0;
-            position: fixed;
-            height: $template-2-header-height;
+            // position: fixed;
+            min-height: $template-2-header-height;
         }
 
         > nav {
