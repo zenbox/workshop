@@ -75,13 +75,12 @@ $shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     label {
         // Layout styles
         &::before {
-            margin-block-start: 2rem;
+            margin-block-start: 0.5rem;
         }
         &::before,
         &::after {
             content: "";
             display: block;
-            border: 2px dotted red;
         }
     }
 
@@ -94,11 +93,31 @@ $shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     select {
     }
     textarea {
+        // border-radius: 2rem;
         width: 100%;
+
         min-width: 100%;
         max-width: 100%;
-        max-height: 8rem;
 
+        min-height: 4rem;
+        max-height: 80rem;
+
+        // Skin
+        border-color: hsla(0, 0%, 0%, 0.1);
+        
+        background: repeating-linear-gradient(
+                0deg,
+                hsla(0, 0%, 100%, 0) 0px,
+                hsla(0, 0%, 100%, 0) 99px,
+                hsla(0, 0%, 70%, 1) 100px,
+                hsla(0, 0%, 100%, 0) 101px
+            ),
+            linear-gradient(
+                    180deg,
+                    hsla(0, 0%, 100%, 0.5) 0%,
+                    hsla(0, 0%, 97%, 0.8) 100%
+                )
+                ;
     }
 
     // States (modifiers)
