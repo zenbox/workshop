@@ -80,6 +80,102 @@
             <nav id="nav">nav</nav>
             <main>
                 <article>
+                    <style>
+.bar {
+    display: block; 
+    width: 3rem; 
+    height:3rem;
+    background: deepskyblue;
+
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0;
+}
+.slide { animation: my-slide-animation 5s ease-in-out infinite;}
+
+@keyframes my-slide-animation {
+    0% {display: none;}
+    1% {display: block;margin-left: 0rem;}
+    5% {margin-left: 40rem;}
+    60% {margin-left: 20rem; transform: rotateZ(180deg) rotateX(360deg) translateY(5rem) scale3d(0.7, 2, 3)}
+    80% {margin-left: -30rem;}
+    100% {margin-left: 0rem; background-color: blue;}
+}
+
+                    </style>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            document
+                                .querySelector(".animation")
+                                .addEventListener("click", (event) => {
+                                    event.preventDefault();
+                                    document
+                                        .querySelector(".bar")
+                                        .classList.toggle("slide");
+                                });
+                            document
+                                .querySelector(".bar")
+                                .addEventListener("transitionend", () => {
+                                    console.log("Ende der Animation");
+                                });
+                        });
+                    </script>
+                    <h2>Animationen</h2>
+                    <p>
+                        <div id="bar" class="bar"></div>
+                        <a
+                            href="#"
+                            class="animation"
+                            data-animation="slide"
+                            >Slide</a
+                        >
+                    </p>
+                </article>
+
+                <article>
+                    <h2>Responsive Bilder</h2>
+
+                    <style>
+                        figure {
+                            /* Base */
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        figure img {
+                            max-width: 100%;
+                        }
+                    </style>
+
+                    <figure>
+                        <!-- <img
+                            src="https://picsum.photos/id/64/300"
+                            alt="" />
+                        <img
+                            src="https://picsum.photos/id/65/300"
+                            alt="" /> -->
+                        <picture>
+                            <source
+                                srcset="https://picsum.photos/id/61/2400/600"
+                                media="(min-width: 1200px) and (resolution: 192dpi)" />
+                            <source
+                                srcset="https://picsum.photos/id/62/1200/300"
+                                media="(min-width: 1200px)" />
+                            <source
+                                srcset="https://picsum.photos/id/63/1000/300"
+                                media="(min-width: 1000px)" />
+                            <source
+                                srcset="https://picsum.photos/id/64/800/300"
+                                media="(min-width: 800px)" />
+                            <img
+                                src="https://picsum.photos/id/66/300/300"
+                                alt="" />
+                        </picture>
+                        <figcaption>Lorem Bildbeschreibung</figcaption>
+                    </figure>
+                </article>
+                <article>
                     <h2>Lorem Überschrift 2, ipsum dolor.</h2>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
