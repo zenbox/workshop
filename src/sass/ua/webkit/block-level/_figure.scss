@@ -1,0 +1,15 @@
+$figure-margin-before: 1em;
+$figure-margin-after: 1em;
+$figure-margin-start: 40px;
+$figure-margin-end: 40px;
+
+figcaption {
+    display: block;
+}
+figure {
+    display: block;
+    -webkit-margin-before: $figure-margin-before;
+    -webkit-margin-after: $figure-margin-after;
+    -webkit-margin-start: $figure-margin-start;
+    -webkit-margin-end: $figure-margin-end;
+}

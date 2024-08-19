@@ -1,0 +1,53 @@
+/* lists */
+
+ul,
+menu,
+dir {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+}
+
+ul,
+ol,
+menu {
+    counter-reset: list-item;
+}
+
+ol {
+    display: block;
+    list-style-type: decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+}
+
+li {
+    display: list-item;
+    text-align: match-parent;
+}
+
+/* nested lists have no top/bottom margins */
+:is(ul, ol, dir, menu, dl) ul,
+:is(ul, ol, dir, menu, dl) ol,
+:is(ul, ol, dir, menu, dl) dir,
+:is(ul, ol, dir, menu, dl) menu,
+:is(ul, ol, dir, menu, dl) dl {
+    margin-block: 0;
+}
+
+/* 2 deep unordered lists use a circle */
+:is(ol, ul, menu, dir) ul,
+:is(ol, ul, menu, dir) menu,
+:is(ol, ul, menu, dir) dir {
+    list-style-type: circle;
+}
+
+/* 3 deep (or more) unordered lists use a square */
+:is(ol, ul, menu, dir) :is(ol, ul, menu, dir) ul,
+:is(ol, ul, menu, dir) :is(ol, ul, menu, dir) menu,
+:is(ol, ul, menu, dir) :is(ol, ul, menu, dir) dir {
+    list-style-type: square;
+}

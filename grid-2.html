@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    class="--developer">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Ein <Grid-Layout></Grid-Layout></title>
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+    </head>
+    <body>
+        <div class="template-2">
+            <header>
+                <nav
+                    class="navbar"
+                    role="navigation"
+                    aria-label="Menu">
+                    <button
+                        class="navbar__btn"
+                        type="button">
+                        <span class="navbar__btn__bar"></span>
+                        <span class="navbar__btn__bar"></span>
+                        <span class="navbar__btn__bar"></span>
+                    </button>
+
+                    <ul class="navbar__nav">
+                        <li><a href="#">Home</a></li>
+                        <li>
+                            <a
+                                href="#"
+                                class="navbar__nav__hasDropdown"
+                                aria-haspopup="true"
+                                >Archive</a
+                            >
+                            <!-- <ul
+                                class="navbar__nav__dropdown"
+                                aria-label="submenu"
+                                role="menu">
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 1</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 2</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        href="#"
+                                        role="menuitem"
+                                        >Sub Item 3</a
+                                    >
+                                </li>
+                            </ul> -->
+                        </li>
+                        <li>
+                            <form class="search">
+                                <label for="main_search">
+                                    <input
+                                        id="main_search"
+                                        type="search" />
+                                </label>
+                            </form>
+                        </li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <nav id="nav">nav</nav>
+            <main>
+                <article>
+                    <style>
+.bar {
+    display: block; 
+    width: 3rem; 
+    height:3rem;
+    background: deepskyblue;
+
+    transition-property: all;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0;
+}
+.slide { animation: my-slide-animation 5s ease-in-out infinite;}
+
+@keyframes my-slide-animation {
+    0% {display: none;}
+    1% {display: block;margin-left: 0rem;}
+    5% {margin-left: 40rem;}
+    60% {margin-left: 20rem; transform: rotateZ(180deg) rotateX(360deg) translateY(5rem) scale3d(0.7, 2, 3)}
+    80% {margin-left: -30rem;}
+    100% {margin-left: 0rem; background-color: blue;}
+}
+
+                    </style>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            document
+                                .querySelector(".animation")
+                                .addEventListener("click", (event) => {
+                                    event.preventDefault();
+                                    document
+                                        .querySelector(".bar")
+                                        .classList.toggle("slide");
+                                });
+                            document
+                                .querySelector(".bar")
+                                .addEventListener("transitionend", () => {
+                                    console.log("Ende der Animation");
+                                });
+                        });
+                    </script>
+                    <h2>Animationen</h2>
+                    <p>
+                        <div id="bar" class="bar"></div>
+                        <a
+                            href="#"
+                            class="animation"
+                            data-animation="slide"
+                            >Slide</a
+                        >
+                    </p>
+                </article>
+
+                <article>
+                    <h2>Responsive Bilder</h2>
+
+                    <style>
+                        figure {
+                            /* Base */
+                            margin: 0;
+                            padding: 0;
+                        }
+
+                        figure img {
+                            max-width: 100%;
+                        }
+                    </style>
+
+                    <figure>
+                        <!-- <img
+                            src="https://picsum.photos/id/64/300"
+                            alt="" />
+                        <img
+                            src="https://picsum.photos/id/65/300"
+                            alt="" /> -->
+                        <picture>
+                            <source
+                                srcset="https://picsum.photos/id/61/2400/600"
+                                media="(min-width: 1200px) and (resolution: 192dpi)" />
+                            <source
+                                srcset="https://picsum.photos/id/62/1200/300"
+                                media="(min-width: 1200px)" />
+                            <source
+                                srcset="https://picsum.photos/id/63/1000/300"
+                                media="(min-width: 1000px)" />
+                            <source
+                                srcset="https://picsum.photos/id/64/800/300"
+                                media="(min-width: 800px)" />
+                            <img
+                                src="https://picsum.photos/id/66/300/300"
+                                alt="" />
+                        </picture>
+                        <figcaption>Lorem Bildbeschreibung</figcaption>
+                    </figure>
+                </article>
+                <article>
+                    <h2>Lorem Überschrift 2, ipsum dolor.</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Nihil adipisci reiciendis eos!
+                    </p>
+                </article>
+
+                <article
+                    data-type-of-cars="suv"
+                    class="pseudo">
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                            console.log(
+                                document.querySelector(".pseudo").dataset
+                                    .typeOfCars
+                            );
+                        });
+                    </script>
+                    <h2>Pseudo-Klassen</h2>
+                    <p>
+                        <a href="#">Link irgendwohin</a>
+                        <i lang="de">1 000 000</i>
+                        <i lang="en-US">1 000 000</i>
+                        <input type="email" />
+                    </p>
+                    <link
+                        rel="stylesheet"
+                        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+                    <style>
+                        /* Zustand-Pseudoklasse */
+                        [data-type-of-cars] {
+                            background: lightblue;
+                        }
+                        .pseudo a:link {
+                            color: blue;
+                        }
+                        .pseudo a:visited {
+                            color: rgb(255, 12, 255);
+                        }
+                        .pseudo a:hover,
+                        .pseudo i:hover {
+                            color: yellow;
+                            background: black;
+                        }
+                        .pseudo a:active,
+                        .pseudo i:active {
+                            color: red;
+                        }
+
+                        /* Zustände für Eingabefelder */
+                        .pseudo input:focus {
+                            outline: 4px solid blue;
+                            outline-offset: 0.25rem;
+                            transition: all 250ms ease-out;
+                        }
+
+                        .pseudo input:valid {
+                            color: green;
+                        }
+
+                        .pseudo input:invalid {
+                            color: red;
+                            font-weight: 700;
+                        }
+
+                        /* Pseudo-Elemente-Klassen */
+                        .pseudo a::before {
+                            content: "\f89a";
+                            font-family: "Material Symbols Outlined";
+                            margin-inline-end: 0.25rem;
+                            color: black;
+                        }
+                        .pseudo a::after {
+                            content: " €";
+                        }
+
+                        .pseudo [lang="de"]::after {
+                            content: " €";
+                        }
+
+                        .pseudo [lang="en-US"]::after {
+                            content: " $";
+                        }
+                    </style>
+                </article>
+            </main>
+            <footer>
+                <nav>
+                    <ul>
+                        <li>1 Lorem, ipsum.</li>
+                        <li>2 Lorem, ipsum.</li>
+                        <li>3 Lorem, ipsum.</li>
+                        <li>4 Lorem, ipsum.</li>
+                        <li>search</li>
+                    </ul>
+                </nav>
+                <style>
+                    footer nav {
+                        width: 99.5%;
+                    }
+                    footer nav ul {
+                        /* reset */
+                        margin: 0;
+                        list-style: none;
+                        padding: 0;
+
+                        /*layout*/
+                        display: flex;
+                        justify-content: space-between;
+                    }
+                    footer nav ul li {
+                        outline: 1px dotted black;
+                        flex-grow: 0;
+                        flex-shrink: 0;
+                    }
+                    footer nav ul li:last-child {
+                        text-align: right;
+                        flex-grow: 1;
+                        flex-shrink: 1;
+                    }
+                </style>
+            </footer>
+        </div>
+        <script src="assets/js/navbar.js"></script>
+    </body>
+</html>

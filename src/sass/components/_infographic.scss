@@ -1,0 +1,38 @@
+.infographic {
+    border: 1px solid black;
+    width: 500px;
+    height: 300px;
+    margin: 1rem;
+    stroke: black;
+    stroke-width: 1px;
+    fill: transparent;
+    font-size: 13px;
+}
+
+.x-scale {
+}
+.y-scale {
+}
+
+svg text {
+    stroke: transparent;
+    stroke-width: 0;
+    fill: black;
+}
+
+svg *:focus,
+svg *:focus-visible {
+    border: 2px dotted red;
+}
+$colors: (
+    1: red,
+    2: green,
+    3: blue,
+    4: yellow,
+);
+$index: 1;
+@each $index, $color in $colors {
+    [role="dataset"] [role="datapoint"]:not(text):nth-of-type(#{$index}) {
+        fill: $color;
+    }
+}

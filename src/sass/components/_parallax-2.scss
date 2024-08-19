@@ -2,7 +2,7 @@
 
 .parallax {
     .section {
-        $gap: 0.5rem;
+$gap: 0.5rem;
 
         border: 5px solid white;
         border-top: none;
@@ -87,36 +87,4 @@
             min-height: 50vh;
         }
     }
-// default motion
-    @media (prefers-reduced-motion: no-preference) {
-        @for $i from 1 through 10 {
-            .teaser-#{$i} {
-                animation: parallax 2s  infinite;
-            }
-        }
-    }
-
-    @keyframes parallax {
-        0% {
-            background-position: 0% 0%;
-        }
-        100% {
-            background-position: 100% 0%;
-        }
-    }
-
-// reduced motion
-    @media (prefers-reduced-motion: reduce) {
-
-       @for $i from 1 through 10 {
-        .teaser-#{$i} {
-       animation: parallax 10s  infinite;
-            background-attachment: scroll;
-
-        }
-    }
-    }
-
-
-
 }

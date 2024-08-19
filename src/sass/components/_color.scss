@@ -1,0 +1,89 @@
+.color {
+    &-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .box {
+            width: 8rem;
+            height: 5rem;
+            font-size: 12px;
+        }
+    }
+}
+
+.error {
+    background-color: var(--error);
+    color: var(--on-error);
+}
+
+.success {
+    background-color: var(--success);
+    color: var(--on-success);
+}
+
+.warning {
+    background-color: var(--warning);
+    color: var(--on-warning);
+}
+
+.info {
+    background-color: var(--info);
+    color: var(--on-info);
+}
+
+.primary {
+    background-color: var(--primary);
+    color: var(--on-primary);
+}
+
+.secondary {
+    background-color: var(--secondary);
+    color: var(--on-secondary);
+}
+
+.tertiary {
+    background-color: var(--tertiary);
+    color: var(--on-tertiary);
+}
+
+.neutral {
+    background-color: var(--neutral);
+    color: var(--on-neutral);
+}
+
+.bright {
+    background-color: var(--bright);
+    color: var(--on-bright);
+}
+
+.medium {
+    background-color: var(--medium);
+    color: var(--on-medium);
+}
+
+.dark {
+    background-color: var(--dark);
+    color: var(--on-dark);
+}
+
+.accred {
+    background-color: var(--accred);
+    color: var(--on-accred);
+}
+
+.shadow {
+    box-shadow: 0 0 10px var(--shadow);
+}
+
+.disabled {
+    background-color: var(--disabled);
+    color: var(--on-disabled);
+}
+
+.sample {
+    background-color: var(--sample);
+    color: var(--on-sample);
+    border: 1px solid var(--on-sample) !important;
+}

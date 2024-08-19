@@ -1,0 +1,67 @@
+/* inlines */
+
+q:before {
+    content: open-quote;
+}
+
+q:after {
+    content: close-quote;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+i,
+cite,
+em,
+var,
+dfn {
+    font-style: italic;
+}
+
+tt,
+code,
+kbd,
+samp {
+    font-family: -moz-fixed;
+}
+
+u,
+ins {
+    text-decoration: underline;
+}
+
+s,
+strike,
+del {
+    text-decoration: line-through;
+}
+
+big {
+    font-size: larger;
+}
+
+small {
+    font-size: smaller;
+}
+
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+nobr {
+    white-space: nowrap;
+}
+
+mark {
+    background: Mark;
+    color: MarkText;
+}

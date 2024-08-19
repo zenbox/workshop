@@ -1,0 +1,101 @@
+body {
+    > footer {
+        transition: opacity 0.5s;
+        &:active,
+        &:hover {
+            opacity: 1;
+        }
+        position: fixed;
+        bottom: 0;
+        opacity: 0;
+
+        background-color: var(--accred);
+        color: var(--on-accred);
+        font-size: 0.8em;
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            color: var(--on-accred);
+        }
+
+        > address {
+            white-space: nowrap;
+        }
+        > nav {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+    }
+}
+
+// - - - - - - - - - -
+// SAMPLES
+// - - - - - - - - - -
+samp:has(pre) {
+    display: block;
+    padding: var(--default);
+    background-color: var(--sample);
+    color: var(--on-sample);
+}
+
+samp:not(:has(pre)) {
+    display: block;
+    padding: var(--default);
+    font-family: $font-family-dyslexic;
+
+    background-color: var(--sample);
+    color: var(--on-sample);
+    
+}
+
+samp {
+    textarea {
+        background: transparent;
+        color: var(--on-sample);
+        border: 0;
+        font-family: $font-family-monospace;
+        font-size: 1rem;
+
+        resize: none;
+        overflow: hidden;
+        width: 100%;
+        min-height: 50px;
+        max-height: 100%;
+
+        white-space: pre;
+    }
+}
+article {
+    margin-block-start: toRem($double-octave);
+
+    h3 {
+        margin-block-start: toRem($double-octave);
+    }
+}
+
+a::before {
+    content: ">>";
+    margin-right: 0.25rem;
+    text-decoration: none;
+}
+
+.figcaption {
+    color: black;
+    background: none;
+    font-size: 0.8em !important;
+    text-align: left;
+    transform: translateX(-1em) translateY(1em);
+    text-shadow: none;
+    -webkit-text-stroke: 0;
+    font-weight: 400;
+}
+
+h1 {
+    font-weight: 300;
+}
+h2 {
+    font-weight: 400;
+}

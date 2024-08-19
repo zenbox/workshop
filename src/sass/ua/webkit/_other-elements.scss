@@ -1,0 +1,62 @@
+/* other elements */
+noframes {
+    display: none;
+}
+frameset,
+frame {
+    display: block;
+}
+frameset {
+    border-color: inherit;
+}
+iframe {
+    border: 2px inset;
+}
+details {
+    display: block;
+}
+summary {
+    display: block;
+}
+summary::-webkit-details-marker {
+    display: inline-block;
+    width: 0.66em;
+    height: 0.66em;
+    -webkit-margin-end: 0.4em;
+}
+template {
+    display: none;
+}
+bdi,
+output {
+    unicode-bidi: -webkit-isolate;
+}
+bdo {
+    unicode-bidi: bidi-override;
+}
+textarea[dir="auto" i] {
+    unicode-bidi: -webkit-plaintext;
+}
+dialog:not([open]) {
+    display: none;
+}
+dialog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: -webkit-fit-content;
+    height: -webkit-fit-content;
+    margin: auto;
+    border: solid;
+    padding: 1em;
+    background: white;
+    color: black;
+}
+dialog::backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.1);
+}

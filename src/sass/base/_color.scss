@@ -1,57 +1,93 @@
-// Farben
-//
-// @package Webapplication
-// @module Base
-// @author Michael Reichart <michael.reichart@gfu.net>
-// @since 2024-06-12
-// @version 1.0.0
-// @see i.e. inspired by ... {link to}
-// @license MIT {https://opensource.org/licenses/MIT}
-// @copyright (c) 2024 Michael Reichart, Cologne
+// Colors
+// CSS Variable
+:root {
+    --primary: hsla(300, 93%, 12%, 1);
+    --on-primary: rgb(250, 204, 250);
+    --secondary: hsla(120, 94%, 33%, 1);
+    --on-secondary: rgb(200, 250, 200);
+    --tertiary: hsla(174, 90%, 37%, 1);
+    --on-tertiary: rgb(2, 47, 43);
+    --neutral: hsla(0, 0%, 50%, 1);
+    --on-neutral: hsla(0, 0%, 85%, 1);
 
-@use "sass:color";
+    --error: hsla(0, 100%, 50%, 1);
+    --on-error: rgb(251, 202, 202);
+    --warning: hsla(50, 100%, 50%, 1);
+    --on-warning: hsl(50, 98%, 23%);
+    --info: hsla(210, 100%, 50%, 1);
+    --on-info: rgb(164, 208, 251);
+    --success: hsla(110, 100%, 50%, 1);
+    --on-success: rgb(21, 124, 1);
 
-@each $color, $value in $colors {
-    .#{$color} {
+    --bright: hsla(0, 0%, 100%, 1);
+    --on-bright: hsla(0, 0%, 15%, 1);
+    --medium: rgb(175, 175, 175);
+    --on-medium: hsla(0, 0%, 15%, 1);
+    --dark: hsla(0, 0%, 0%, 1);
+    --on-dark: hsla(0, 0%, 85%, 1);
+
+    --disabled: var(--neutral);
+    --on-disabled: var(--on-neutral);
+
+    --accred: hsl(360, 84%, 64%);
+    --on-accred: var(--bright);
+
+    --sample: hsla(210, 100%, 50%, 0.2);
+    --sample-dark: hsla(30, 100%, 50%, 0.4);
+    --on-sample: var(--dark);
+
+    --shadow: hsla(0, 0%, 0%, 0.5);
+
+    --link-color: blue;
+    --link-hover: red;
+    --link-visited: purple;
+    --link-active: green;
+}
+
+// schreibe eine Map mit Klassen für alle Farben
+$colors: (
+    primary: var(--primary),
+    on-primary: var(--on-primary),
+    secondary: var(--secondary),
+    on-secondary: var(--on-secondary),
+    tertiary: var(--tertiary),
+    on-tertiary: var(--on-tertiary),
+    neutral: var(--neutral),
+    on-neutral: var(--on-neutral),
+    error: var(--error),
+    on-error: var(--on-error),
+    warning: var(--warning),
+    on-warning: var(--on-warning),
+    info: var(--info),
+    on-info: var(--on-info),
+    success: var(--success),
+    on-success: var(--on-success),
+    bright: var(--bright),
+    on-bright: var(--on-bright),
+    dark: var(--dark),
+    on-dark: var(--on-dark),
+    accred: var(--accred),
+    on-accred: var(--on-accred),
+    shadow: var(--shadow),
+    disabled: var(--disabled),
+);
+
+@each $key, $value in $colors {
+    .bg-#{$key} {
         background-color: $value;
-        @if color.lightness($value) < 50.1% {
-            color: $light-color;
-        } @else {
-            color: $dark-color;
-        }
+    }
+    .text-#{$key} {
+        color: $value;
     }
 }
 
-// Farbaufbau
-// body{
-//     background: green;
-// }
-.example {
-    // Hue (Farbton)
-    // Saturation (Sättigung)
-    // Luminance (Lightness, Helligkeit)
-    // Alpha (Opazität, Transparenz)
-    background-color: hsla(240deg, 100%, 50%, 1);
+:root {
+    --default: 1rem;
+    --big: 2rem;
+    --small: 0.75rem;
 }
 
-
-// Farbfelder - Utility!
-// Submodule: Farben
-.color-fields {
-    @include reset-list;
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: $default-spacer;
-
-    > * {
-        display: block;
-        width: #{$fourth-octave}rem;
-        height: #{$fourth-octave}rem;
-        padding: $half-spacer;
-        @include border-radius($half-spacer * 0.5);
-
-        @include box-shadow(0.25rem);
-    }
+:root.dark {
+    background-color: var(--dark);
+    color: var(--on-dark);
 }

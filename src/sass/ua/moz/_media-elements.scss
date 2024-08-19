@@ -1,0 +1,50 @@
+/* media elements */
+video {
+    object-fit: contain;
+}
+
+video > img:-moz-native-anonymous {
+    /* Video poster images should render with the video element's "object-fit" &
+     "object-position" properties */
+    object-fit: inherit !important;
+    object-position: inherit !important;
+}
+
+audio:not([controls]) {
+    display: none !important;
+}
+
+audio[controls] {
+    /* This ensures that intrinsic sizing can reliably shrinkwrap our
+      controls (which are also always horizontal) and produce a
+      reasonable intrinsic size from them. */
+    writing-mode: horizontal-tb !important;
+}
+
+*|*::-moz-html-canvas-content {
+    display: block !important;
+    /* we want to be an absolute and fixed container */
+    transform: translate(0) !important;
+}
+
+video > .caption-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/**
+ * The pseudo element won't inherit CSS styles from its direct parent, `::cue`
+ * would actually inherit styles from video because it's video's pseudo element.
+ * Therefore, we have to explicitly set some styles which are already defined
+ * in its parent element in vtt.sys.mjs.
+ */
+::cue {
+    color: rgba(255, 255, 255, 1);
+    white-space: pre-line;
+    background-color: rgba(0, 0, 0, 0.8);
+    font: 10px sans-serif;
+    overflow-wrap: break-word;
+    /* TODO : enable unicode-bidi, right now enable it would cause incorrect
+            display direction, maybe related with bug 1558431. */
+}
