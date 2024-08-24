@@ -1,0 +1,69 @@
+:root {
+    --viewport-color: rgba(0, 0, 0, 0.25);
+    --layout-color: rgba(255, 127, 80, 0.55);
+    --grid-color: rgba(4, 167, 249, 0.5);
+    --line-width: 2px;
+}
+// - - - - - - - - - -
+// DEVELOPER ONLY
+// - - - - - - - - - -
+#typography-grid-1 {
+    // Reset
+    margin: 0 auto;
+    padding: 0;
+    // Base
+    width: 420px;
+    // height: 400px;
+
+    .container {
+        // Reset
+        margin: 0;
+        padding: 0;
+
+        // Base
+        width: 100%;
+        height: 100%;
+
+        // Theme
+        p {
+            text-decoration: underline;
+            text-decoration-color: var(--grid-color);
+            text-decoration-thickness: var(--line-width);
+            text-decoration-style: solid;
+        }
+        border: var(--line-width) solid var(--layout-color);
+    }
+    .column {
+        border: 0;
+        border-left: var(--line-width) solid var(--grid-color);
+    }
+}
+
+// - - - - - - - - -
+// STYLES
+// - - - - - - - - -
+#typography-grid-1 {
+    // Base typography
+    font-size: 12px;
+    line-height: 1.5;
+
+    .container {
+        // Layout
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 0.5em;
+
+        // Theme
+        p {
+            text-align: left;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+    }
+    .column {
+        grid-column: span 1;
+        font-size: 1em;
+        line-height: 1.5;
+        text-align: center;
+    }
+}

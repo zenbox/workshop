@@ -10,6 +10,7 @@ function createNavigation() {
         { file: "font.html", text: "Schrift" },
         { file: "grid.html", text: "Raster" },
         { file: "hierarchy.html", text: "Hierarchie" },
+        { file: "color.html", text: "Farbe" },
         { file: "icons.html", text: "Icons" },
     ];
 

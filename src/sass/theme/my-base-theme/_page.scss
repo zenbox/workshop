@@ -1,0 +1,32 @@
+body {
+    > footer {
+        transition: opacity 0.5s;
+        &:active,
+        &:hover {
+            opacity: 1;
+        }
+        position: fixed;
+        bottom: 0;
+        opacity: 0;
+
+        background-color: var(--accred);
+        color: var(--on-accred);
+        font-size: 0.8em;
+
+        a:link,
+        a:visited,
+        a:hover,
+        a:active {
+            color: var(--on-accred);
+        }
+
+        > address {
+            white-space: nowrap;
+        }
+        > nav {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+    }
+}
