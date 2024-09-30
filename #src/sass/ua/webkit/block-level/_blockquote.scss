@@ -1,0 +1,12 @@
+$blockquote-margin-before: 1__qem;
+$blockquote-margin-after: 1em;
+$blockquote-margin-start: 40px;
+$blockquote-margin-end: 40px;
+
+blockquote {
+    display: block;
+    -webkit-margin-before: $blockquote-margin-before;
+    -webkit-margin-after: $blockquote-margin-after;
+    -webkit-margin-start: $blockquote-margin-start;
+    -webkit-margin-end: $blockquote-margin-end;
+}

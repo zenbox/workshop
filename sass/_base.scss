@@ -1,0 +1,20 @@
+// @desc ...
+// @author ...
+// @since ...
+
+// Reset/Grundeinstellungen für das ganze Dokument
+html,
+html * {
+    box-sizing: border-box;
+}
+
+html {
+    // Base / Reset
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+body {
+    margin: 0;
+}

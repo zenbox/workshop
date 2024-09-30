@@ -1,0 +1,25 @@
+// @desc Navigationskomponente
+// @author Michael
+// @since 2024-12-01
+// @version 1.0.0
+
+.nav {
+    // Base / Reset
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    // Layoutanweisungen
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &-row {
+        flex-direction: row;
+    }
+    &-column {
+        flex-direction: column;
+    }
+
+    // States
+}

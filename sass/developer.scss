@@ -1,0 +1,12 @@
+$dev-color-level-1: hsla(194, 100%, 66%, 0.5);
+$dev-color-level-2: hsla(27, 96%, 54%, 0.5);
+
+body {
+    > * {
+        border: 2px solid $dev-color-level-1;
+
+        > * {
+            border: 2px solid $dev-color-level-2;
+        }
+    }
+}

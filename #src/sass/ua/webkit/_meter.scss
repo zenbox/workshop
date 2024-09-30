@@ -1,0 +1,89 @@
+$meter-height: 1em;
+$meter-width: 5em;
+$meter-vertical-align: -0.2em;
+
+$inner-element-height: 100%;
+$inner-element-width: 100%;
+
+$bar-background: linear-gradient(
+    to bottom,
+    #ddd,
+    #eee 20%,
+    #ccc 45%,
+    #ccc 55%,
+    #ddd
+);
+$bar-height: 100%;
+$bar-width: 100%;
+
+$optimum-value-background: linear-gradient(
+    to bottom,
+    #ad7,
+    #cea 20%,
+    #7a3 45%,
+    #7a3 55%,
+    #ad7
+);
+$optimum-value-height: 100%;
+
+$suboptimum-value-background: linear-gradient(
+    to bottom,
+    #fe7,
+    #ffc 20%,
+    #db3 45%,
+    #db3 55%,
+    #fe7
+);
+$suboptimum-value-height: 100%;
+
+$even-less-good-value-background: linear-gradient(
+    to bottom,
+    #f77,
+    #fcc 20%,
+    #d44 45%,
+    #d44 55%,
+    #f77
+);
+$even-less-good-value-height: 100%;
+
+/* meter */
+meter {
+    -webkit-appearance: meter;
+    box-sizing: border-box;
+    display: inline-block;
+    height: $meter-height;
+    width: $meter-width;
+    vertical-align: $meter-vertical-align;
+}
+meter::-webkit-meter-inner-element {
+    -webkit-appearance: inherit;
+    box-sizing: inherit;
+    -webkit-user-modify: read-only !important;
+    height: $inner-element-height;
+    width: $inner-element-width;
+}
+meter::-webkit-meter-bar {
+    background: $bar-background;
+    height: $bar-height;
+    width: $bar-width;
+    -webkit-user-modify: read-only !important;
+    box-sizing: border-box;
+}
+meter::-webkit-meter-optimum-value {
+    background: $optimum-value-background;
+    height: $optimum-value-height;
+    -webkit-user-modify: read-only !important;
+    box-sizing: border-box;
+}
+meter::-webkit-meter-suboptimum-value {
+    background: $suboptimum-value-background;
+    height: $suboptimum-value-height;
+    -webkit-user-modify: read-only !important;
+    box-sizing: border-box;
+}
+meter::-webkit-meter-even-less-good-value {
+    background: $even-less-good-value-background;
+    height: $even-less-good-value-height;
+    -webkit-user-modify: read-only !important;
+    box-sizing: border-box;
+}

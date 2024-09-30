@@ -1,0 +1,86 @@
+@use "sass:math";
+
+$grid-step: $perfect-fourth;
+$font-size: 13px;
+$line-height: $grid-step;
+
+html {
+    font-size: $font-size;
+}
+body {
+    margin-block-start: calc($line-height * 7);
+    padding-block-start: toRem($line-height);
+}
+body {
+    background: repeating-linear-gradient(
+        to bottom,
+        white 0 toRem($line-height),
+        rgba(0, 97, 149, 0.125) toRem($line-height) toRem($line-height * 2)
+    );
+}
+
+h2 {
+    font-size: toRem($octave);
+    line-height: toRem($line-height * 2);
+    margin-block-start: toRem(1);
+    margin-block-end: toRem(math.div($line-height, 3));
+}
+h2 + h2 {
+    margin-block-start: toRem($line-height);
+}
+p,
+pre,
+ol,
+ul,
+dl,
+figure,
+figcaption,
+blockquote,
+address {
+    font-size: toRem(1);
+    line-height: $line-height;
+    margin-block-start: toRem(math.div($line-height, 3));
+    margin-block-end: toRem(math.div($line-height, 3) * 2);
+
+    // margin-block-start: calc(calc(toRem(2) - 1cap) / 2);
+    // margin-block-end: calc(toRem(2) - calc(calc(toRem(2) - 1cap) / 2));
+}
+
+p + p,
+ol + ul,
+ol + ol,
+ol + dl,
+ul + ul,
+ul + ol,
+ul + dl,
+dl + dl {
+    margin-block-start: toRem($line-height);
+    // margin-block-start: calc(calc(toRem(2) - 1cap) / 2);
+}
+
+small,
+figcaption {
+    font-size: toRem(0.75);
+}
+
+// figcaption {
+//     font-size: toRem(0.75); //              0.75rem
+//     line-height: toRem($line-height); //      1.50rem
+//     margin-block-start: toRem(0.25); //     0.25rem
+//     margin-block-end: toRem(0.5); //        0.50rem
+//     // -------------------------------------------
+//     //                                      3.0rem
+// }
+
+article {
+    outline: 1px dotted red;
+
+    line-height: toRem($line-height);
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: baseline;
+
+    padding-block-start: toRem($line-height);
+    margin-block-end: toRem($line-height);
+}

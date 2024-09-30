@@ -1,0 +1,124 @@
+/* leafs */
+
+/* <hr> noshade and color attributes are handled completely by
+ * HTMLHRElement::MapAttributesIntoRule.
+ * https://html.spec.whatwg.org/#the-hr-element-2
+ */
+hr {
+    color: gray;
+    border-width: 1px;
+    border-style: inset;
+    margin-block: 0.5em;
+    margin-inline: auto;
+    overflow: hidden;
+
+    /* FIXME: This is not really per spec */
+    display: block;
+}
+
+hr[size="1"] {
+    border-style: solid none none none;
+}
+
+/* Note that we only intend for the alt content to show up if the image is
+ * broken. But non-broken images/inputs will have a replaced box, and thus we
+ * won't we don't generate the pseudo-element anyways. This prevents
+ * unnecessary reframing when images become broken / non-broken. */
+input[type="image"]::before,
+img::before {
+    content: -moz-alt-content !important;
+    unicode-bidi: isolate;
+}
+
+img[usemap],
+object[usemap] {
+    color: blue;
+}
+
+frameset {
+    display: block !important;
+    overflow: clip;
+    position: static !important;
+    float: none !important;
+    border: none !important;
+}
+
+frame {
+    border-radius: 0 !important;
+}
+
+iframe {
+    border: 2px inset;
+}
+
+spacer {
+    position: static !important;
+    float: none !important;
+}
+
+canvas {
+    user-select: none;
+}
+
+iframe:focus-visible,
+body:focus-visible,
+html:focus-visible {
+    /* These elements historically don't show outlines when focused by default.
+   * We could consider changing that if needed. */
+    outline-style: none;
+}
+
+/* hidden elements: https://html.spec.whatwg.org/#hidden-elements
+ *
+ * Exceptions:
+ *
+ *  * area declaration needs to be !important, see below / bug 135040.  That's
+ *    hacky and broken.
+ *
+ *  * [hidden] is implemented as a presentation attribute to avoid a global
+ *    selector in a UA sheet.
+ */
+base,
+basefont,
+datalist,
+head,
+link,
+meta,
+noembed,
+noframes,
+param,
+rp,
+script,
+style,
+template,
+title {
+    display: none;
+}
+
+area {
+    /* Don't give it frames other than its imageframe */
+    display: none !important;
+}
+
+iframe:fullscreen {
+    /* iframes in full-screen mode don't show a border. */
+    border: none !important;
+    padding: unset !important;
+}
+
+/* https://html.spec.whatwg.org/#the-marquee-element-2 */
+marquee {
+    display: inline-block;
+    text-align: initial;
+    overflow: hidden !important;
+
+    /* See https://github.com/whatwg/html/issues/10249 */
+    inline-size: -moz-available;
+    vertical-align: text-bottom;
+    white-space: nowrap;
+}
+
+marquee:is([direction="up"], [direction="down"]) {
+    block-size: 200px;
+    white-space: unset;
+}

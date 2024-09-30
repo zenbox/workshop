@@ -1,0 +1,18 @@
+.svg {
+    svg text {
+        font-family: Barlow;
+        font-size: 10px;
+        white-space: pre;
+        text-anchor: middle;
+    }
+    svg text:nth-of-type(2) {
+        fill: rgb(255, 255, 255);
+    }
+    svg * {
+        fill: rgb(0, 0, 0);
+    }
+    svg g {
+        stroke: rgb(255, 0, 0);
+        stroke-width: 1;
+    }
+}

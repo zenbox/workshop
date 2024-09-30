@@ -1,0 +1,5 @@
+/* Shadow DOM v1
+ * https://drafts.csswg.org/css-scoping/#slots-in-shadow-tree */
+slot {
+    display: contents;
+}

@@ -1,0 +1,10 @@
+$body-margin: 8px;
+$body-full-page-media-bg-color: rgb(0, 0, 0);
+
+body {
+    display: block;
+    margin: $body-margin;
+}
+body:-webkit-full-page-media {
+    background-color: $body-full-page-media-bg-color;
+}

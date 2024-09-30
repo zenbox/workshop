@@ -1,0 +1,58 @@
+/* inline elements */
+u,
+ins {
+    text-decoration: underline;
+}
+strong,
+b {
+    font-weight: bold;
+}
+i,
+cite,
+em,
+var,
+address,
+dfn {
+    font-style: italic;
+}
+tt,
+code,
+kbd,
+samp {
+    font-family: monospace;
+}
+pre,
+xmp,
+plaintext,
+listing {
+    display: block;
+    font-family: monospace;
+    white-space: pre;
+    margin: 1__qem 0;
+}
+mark {
+    background-color: yellow;
+    color: black;
+}
+big {
+    font-size: larger;
+}
+small {
+    font-size: smaller;
+}
+s,
+strike,
+del {
+    text-decoration: line-through;
+}
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+nobr {
+    white-space: nowrap;
+}

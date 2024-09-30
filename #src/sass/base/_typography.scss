@@ -1,0 +1,272 @@
+// Barlow font family
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-Thin.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 100;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-ExtraLight.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 200;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-Light.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 300;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-Regular.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-Medium.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-SemiBold.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-Bold.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-ExtraBold.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 800;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-Black.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 900;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-Thin.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 100;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-ExtraLight.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 200;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-LightItalic.ttf) format("ttf");
+    font-style: italic;
+    font-weight: 300;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-RegularItalic.ttf) format("ttf");
+    font-style: italic;
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-MediumItalic.ttf) format("ttf");
+    font-style: italic;
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-SemiBoldItalic.ttf) format("ttf");
+    font-style: italic;
+    font-weight: 600;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-BoldItalic.ttf) format("ttf");
+    font-style: italic;
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-ExtraBoldItalic.ttf) format("ttf");
+    font-style: italic;
+    font-weight: 800;
+}
+@font-face {
+    font-family: "Barlow";
+    src: url(../fonts/Barlow/Barlow-BlackItalic.ttf) format("ttf");
+    font-style: italic;
+    font-weight: 900;
+}
+// Atkinson Hyperlegible font family
+@font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url(../fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Regular.ttf)
+        format("ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url(../fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Italic.ttf)
+        format("ttf");
+    font-style: italic;
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url(../fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-Bold.ttf)
+        format("ttf");
+    font-style: normal;
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url(../fonts/AtkinsonHyperlegible/AtkinsonHyperlegible-BoldItalic.ttf)
+        format("ttf");
+    font-style: italic;
+    font-weight: 700;
+}
+// Noto Sans Monospace
+@font-face {
+    font-family: "Noto Sans Mono";
+    src: url(../fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdthwght.ttf)
+        format("ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+// Playfair Display font family
+@font-face {
+    font-family: "Playfair Display";
+    src: url(../fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf) format("ttf");
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: "Playfair Display";
+    src: url(../fonts/PlayfairDisplay/PlayfairDisplay-Italic.ttf) format("ttf");
+    font-style: italic;
+    font-weight: 400;
+}
+
+// Font variables
+$font-family-sans-serif: "Barlow", sans-serif;
+$font-family-serif: "Playfair Display", serif;
+$font-family-monospace: "Noto Sans Mono", monospace;
+$font-family-dyslexic: "Atkinson Hyperlegible", sans-serif;
+$font-size: toPx($s); // The base size from the harmonic-rythmn, i.e. 22
+$line-height: $augmented-fourth;
+$font-weight: 400;
+
+.brand {
+    font-family: $font-family-dyslexic;
+    font-size: toRem($_perfect-fifth);
+    font-weight: 700;
+    line-height: $line-height;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    color: var(--accred);
+}
+
+// Font styles
+html,
+:root {
+    font-family: $font-family-sans-serif;
+    font-size: $font-size; // Basis für 1rem
+    // font-size: clamp(16px, 3vw, 24px); // for a fluid font size
+    line-height: $line-height;
+    font-weight: $font-weight;
+    text-align: left;
+}
+
+article:first-of-type {
+    margin-block-start: toRem(5);
+}
+
+p {
+    hyphens: auto;
+}
+
+.multicolumn-40-60 {
+    column-width: toRem(18);
+}
+
+._10 {
+    background: var(--dark);
+    color: var(--on-dark);
+}
+
+// THE FONT FAMILES
+.monospace {
+    font-family: $font-family-monospace;
+}
+.dyslexic {
+    font-family: $font-family-dyslexic;
+}
+.serif {
+    font-family: $font-family-serif;
+}
+.sans-serif {
+    font-family: $font-family-sans-serif;
+}
+
+// SETTING THE RIGHT FONT SIZE
+// Je größer der Bildschirm, desto größer die Schrift!
+// Voraussetzung ist, das die mobilen Geräte hochauflösende Display haben.
+//
+// Copy:
+//       22px Desktop (4K 2560px!)
+//       18px Tablet
+//       15px Smartphone (auflösungsabhängig)
+
+// @media (resolution: 96dpi) {
+//     html, :root {
+//         font-size: 10px !important;
+//     }
+// }
+// @media (resolution: 192dpi) {
+//     html, :root {
+//         font-size: 30px !important;
+//     }
+
+// }
+
+// @media (max-width: 480px) {
+//     html, :root {
+//         font-size: 10px !important;
+//     }
+
+// }
+
+$font-sizes: (
+    body: 1,
+    p: $unison,
+    h1: $double-octave,
+    h2: $major-tenth,
+    h3: $minor-seventh,
+    h4: $perfect-fifth,
+    h5: $major-third,
+    h6: $unison,
+    small: $_major-third,
+    figcaption: $-major-third,
+    big: $minor-seventh,
+);
+
+@each $name, $size in $font-sizes {
+    #{$name} {
+        font-size: toRem($size);
+    }
+    // #{$name}::after {
+    //     content: " #{$size} rem";
+    //     font-size: toRem($_perfect-fourth);
+    // }
+}
