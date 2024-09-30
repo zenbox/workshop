@@ -67,3 +67,27 @@ wir werden im Laufe des Seminars HTML und CSS Dateien schreiben. Sie können wä
   "editor.formatOnPaste": true,
   "editor.formatOnType": true,
 ```
+
+### .prettierrc
+
+```json
+{
+    "proseWrap": "preserve",
+    "semi": true,
+    "singleQuote": false,
+    "useTabs": false,
+    "tabWidth": 4,
+    "printWidth": 80,
+    "quoteProps": "consistent",
+    "jsxSingleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "bracketSameLine": true,
+    "arrowParens": "always",
+    "htmlWhitespaceSensitivity": "css",
+    "vueIndentScriptAndStyle": false,
+    "endOfLine": "lf",
+    "embeddedLanguageFormatting": "auto",
+    "singleAttributePerLine": true
+}
+```
