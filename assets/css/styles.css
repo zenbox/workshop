@@ -107,11 +107,17 @@ body {
   text-decoration: underline;
 }
 
-.hamburger__menu-is-open {
+#hamburger__menu-is-opened {
   display: none;
 }
-.hamburger__menu-is-closed {
+#hamburger__menu-is-closed {
   display: block;
+}
+#hamburger .hidden {
+  display: none !important;
+}
+#hamburger .visible {
+  display: block !important;
 }
 
 .theme-1 {

@@ -12,17 +12,33 @@
  * @copyright (c) 2024 Michael Reichart, Cologne
  */
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
     // - - - - - - - - - -
-    const hamburger = document.querySelector("#hamburger");
-    const nav = document.querySelector("#nav");
+    const menuButton = document.getElementById("menu-button");
+    const menuIsOpened = document.getElementById("hamburger__menu-is-opened"); // close icon
+    const menuIsClosed = document.getElementById("hamburger__menu-is-closed"); // bars icon
 
-    hamburger.addEventListener("click", function (event) {
-        hamburger.classList.toggle("hamburger--state-opened");
-        // event.target.classList.add('hamburger--state-opened');
-        // event.target.classList.remove('hamburger--state-closed');
+    menuButton.addEventListener("click", (event) => handleNavigation(event));
 
-        nav.classList.toggle("nav--state-opened");
-    });
+    function handleNavigation(event) {
+        event.preventDefault();
+        const main = document.querySelector(".template-1__main");
+        main.classList.toggle("opened");
+
+        if (main.classList.contains("opened")) {
+            menuIsOpened.classList.add("visible"); // close icon
+            menuIsOpened.classList.remove("hidden");
+
+            menuIsClosed.classList.add("hidden"); // bars icon
+            menuIsClosed.classList.remove("visible");
+        } else {
+            menuIsOpened.classList.add("hidden"); // close icon
+            menuIsOpened.classList.remove("visible");
+
+            menuIsClosed.classList.add("visible"); // bars icon
+            menuIsClosed.classList.remove("hidden");
+        }
+    }
+
     // - - - - - - - - - -
 });

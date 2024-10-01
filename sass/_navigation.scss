@@ -42,12 +42,17 @@
 }
 
 // Hamburgermenu States
-
-.hamburger {
-    &__menu-is-open {
+#hamburger {
+    &__menu-is-opened {
         display: none;
     }
     &__menu-is-closed {
         display: block;
+    }
+    .hidden {
+        display: none !important;
+    }
+    .visible {
+        display: block !important;
     }
 }

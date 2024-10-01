@@ -31,7 +31,7 @@
                             href=""
                             id="menu-button">
                             <svg
-                                class="hamburger__menu-is-closed"
+                                id="hamburger__menu-is-closed"
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="24px"
                                 viewBox="0 -960 960 960"
@@ -41,7 +41,7 @@
                                     d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
                             </svg>
                             <svg
-                                class="hamburger__menu-is-open"
+                                id="hamburger__menu-is-opened"
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="24px"
                                 viewBox="0 -960 960 960"
@@ -53,35 +53,7 @@
                         </a>
                     </li>
                 </ul>
-                <!-- - - - -->
-                <script>
-                    const menuButton = document.getElementById("menu-button");
-                    menuButton.addEventListener("click", (event) =>
-                        handleNavigation(event)
-                    );
 
-                    function handleNavigation(event) {
-                        event.preventDefault();
-                        const main =
-                            document.querySelector(".template-1__main");
-                        const menuIsClosed = document.querySelector(
-                            ".hamburger__menu-is-closed"
-                        );
-                        const menuIsOpen = document.querySelector(
-                            ".hamburger__menu-is-open"
-                        );
-
-                        main.classList.toggle("opened");
-
-                        if (main.classList.contains("opened")) {
-                            menuIsClosed.classList.remove("opened");
-                            menuIsOpen.classList.add("opened");
-                        } else {
-                            menuIsClosed.classList.add("opened");
-                            menuIsOpen.classList.remove("opened");
-                        }
-                    }
-                </script>
                 <!-- - - - -->
             </nav>
             <!-- - - - -->
@@ -119,5 +91,7 @@
         <footer class="template-1__footer">
             <address>&copy; 2024 Michael</address>
         </footer>
+
+        <script src="assets/js/hamburger.js"></script>
     </body>
 </html>
