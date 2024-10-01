@@ -6,26 +6,88 @@
 // @version 1.0.0
 
 .template-1 {
-    // Layoutanweisungen
-    display: flex;
-    flex-direction: column;
-    gap:1rem;
+    @media print and (width: 17cm) {
+    }
+    // Default
+    // Lass das HTML mal machen ...
 
-    &__header {
+    // Layout für mobile Geräte
+    @media screen and (max-width: 640px) {
+        // // Navigationen "ausblenden"
+        // .nav {
+        //     display: none;
+        // }
+        // Navigation "zur Seite" schieben
+        display: flex;
+        flex-direction: column;
+
+        main {
+            display: flex;
+            flex-direction: row;
+
+            margin-inline-start: -100vw; // margin-left: -100vw;
+
+            section,
+            nav {
+                flex-basis: 100vw;
+                flex-shrink: 0;
+                flex-grow: 0;
+            }
+
+            // Zustände / States
+            &.opened {
+                margin-inline-start: 0;
+            }
+
+            // Verhalten der Navigation
+            transition-property: margin-inline-start;
+            transition-duration: 0.5s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0s;
+        }
+    }
+    // Layout für große Bildschirme
+    @media screen and (min-width: 641px) {
+        // - - - - - - - - - -
         // Layoutanweisungen
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 1rem;
 
-        min-height: 8rem;
+        &__header {
+            // Layoutanweisungen
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            min-height: 8rem;
+        }
+        &__main {
+            // Layyoutanwesiungen
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            nav {
+                // width: 33.333333%;
+                flex-basis: calc(100% / 3);
+                flex-shrink: 0;
+                flex-grow: 0;
+            }
+        }
+        &__footer {
+            min-height: 5rem;
+        }
+        // - - - - - - - - - -
     }
-    &__main {
-        // Layyoutanwesiungen
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-    }
-    &__footer {
-        min-height: 5rem;
+}
+
+// ID-Selektor, weil der Button keine weitere 
+// Auswirkung hat und temporär ist.
+
+#menu-button{
+    display: none;
+    @media screen and (max-width: 640px) {
+        display: block;
     }
 }

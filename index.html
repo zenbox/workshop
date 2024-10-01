@@ -19,22 +19,56 @@
         <header class="template-1__header">
             <div class="brand">logo</div>
             <!-- - - - -->
-            <nav>
+            <nav id="common-navigation-container">
                 <!-- - - - -->
-                <ul class="nav nav-row">
+                <ul
+                    id="common-navigation"
+                    class="nav nav-row">
                     <li><a href="">Link 1</a></li>
                     <li><a href="">Link 2</a></li>
                     <li><a href="">Link 3</a></li>
+
+                    <li>
+                        <a
+                            href=""
+                            id="menu-button">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="24px"
+                                viewBox="0 -960 960 960"
+                                width="24px"
+                                fill="#5f6368">
+                                <path
+                                    d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                            </svg>
+                        </a>
+                    </li>
                 </ul>
+                <!-- - - - -->
+                <script>
+                    const menuButton = document.getElementById("menu-button");
+                    menuButton.addEventListener("click", (event) =>
+                        handleNavigation(event)
+                    );
+
+                    function handleNavigation(event) {
+                        event.preventDefault();
+                        const main =
+                            document.querySelector(".template-1__main");
+                        main.classList.toggle("opened");
+                    }
+                </script>
                 <!-- - - - -->
             </nav>
             <!-- - - - -->
         </header>
         <main class="template-1__main">
             <!-- - - - -->
-            <nav>
+            <nav id="main-navigation-container">
                 <!-- - - - -->
-                <ul class="nav nav-column">
+                <ul
+                    id="main-navigation"
+                    class="nav nav-column">
                     <li><a href="">Link 1</a></li>
                     <li><a href="">Link 2</a></li>
                     <li><a href="">Link 3</a></li>

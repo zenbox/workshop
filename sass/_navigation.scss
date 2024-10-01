@@ -22,4 +22,21 @@
     }
 
     // States
+    a[href] {
+        text-decoration: none;
+    }
+    a:link {
+        color: $link-color;
+    }
+    a:visited {
+        color: $visited-color;
+    }
+    a:hover {
+        color: $hover-color;
+        text-decoration: underline;
+    }
+    a:active {
+        color: $active-color;
+        text-decoration: underline;
+    }
 }
