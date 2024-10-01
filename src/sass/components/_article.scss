@@ -1,0 +1,27 @@
+// Article Styles
+// @author Michael
+// @since 01/10/2024
+// @version 1.0.0
+
+.article {
+    // Base
+    // Layout
+    &--teaser {
+        font-size: 1.4rem;
+    }
+    &--multicolumn {
+        column-width: 18rem;
+
+        widows: 2; // Witwen / Hurenkinder
+        orphans: 4; // Waisen / Schusterjungen
+        hyphens: auto;
+
+        h2 {
+            margin-block-start: 0;
+            margin-block-end: 1rem;
+
+            break-after: avoid-column;
+        }
+    }
+    // States
+}
