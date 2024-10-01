@@ -114,10 +114,10 @@ body {
   display: block;
 }
 #hamburger .hidden {
-  display: none !important;
+  display: none;
 }
 #hamburger .visible {
-  display: block !important;
+  display: block;
 }
 
 .theme-1 {
