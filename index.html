@@ -31,6 +31,7 @@
                             href=""
                             id="menu-button">
                             <svg
+                                class="hamburger__menu-is-closed"
                                 xmlns="http://www.w3.org/2000/svg"
                                 height="24px"
                                 viewBox="0 -960 960 960"
@@ -38,6 +39,16 @@
                                 fill="#5f6368">
                                 <path
                                     d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+                            </svg>
+                            <svg
+                                class="hamburger__menu-is-open"
+                                xmlns="http://www.w3.org/2000/svg"
+                                height="24px"
+                                viewBox="0 -960 960 960"
+                                width="24px"
+                                fill="#5f6368">
+                                <path
+                                    d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                             </svg>
                         </a>
                     </li>
@@ -53,7 +64,22 @@
                         event.preventDefault();
                         const main =
                             document.querySelector(".template-1__main");
+                        const menuIsClosed = document.querySelector(
+                            ".hamburger__menu-is-closed"
+                        );
+                        const menuIsOpen = document.querySelector(
+                            ".hamburger__menu-is-open"
+                        );
+
                         main.classList.toggle("opened");
+
+                        if (main.classList.contains("opened")) {
+                            menuIsClosed.classList.remove("opened");
+                            menuIsOpen.classList.add("opened");
+                        } else {
+                            menuIsClosed.classList.add("opened");
+                            menuIsOpen.classList.remove("opened");
+                        }
                     }
                 </script>
                 <!-- - - - -->

@@ -107,6 +107,13 @@ body {
   text-decoration: underline;
 }
 
+.hamburger__menu-is-open {
+  display: none;
+}
+.hamburger__menu-is-closed {
+  display: block;
+}
+
 .theme-1 {
   font-family: Barlow, Arial, Helvetica, sans-serif;
   font-size: 16px;

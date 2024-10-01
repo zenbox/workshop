@@ -40,3 +40,14 @@
         text-decoration: underline;
     }
 }
+
+// Hamburgermenu States
+
+.hamburger {
+    &__menu-is-open {
+        display: none;
+    }
+    &__menu-is-closed {
+        display: block;
+    }
+}
