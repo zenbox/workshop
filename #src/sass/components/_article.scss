@@ -1,9 +1,0 @@
-body {
-    counter-reset: step; /* Coutner mit dem Namen "step" wird auf 0 gesetzt */
-}
-
-h2:before {
-    counter-increment: step;
-    content: counter(step) " ";
-    font-size: 5rem;
-}
