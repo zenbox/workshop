@@ -75,6 +75,34 @@ body {
   }
 }
 
+.template-2 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 8rem auto 5rem;
+}
+.template-2__header {
+  grid-column: 1/7;
+  grid-row: 1/2;
+}
+.template-2__main {
+  grid-column: 1/7;
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.template-2__main nav {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.template-2__main section {
+  grid-column: 2/4;
+  grid-row: 1/2;
+}
+.template-2__footer {
+  grid-column: 1/7;
+  grid-row: 3/4;
+}
+
 .nav {
   list-style-type: none;
   padding: 0;
