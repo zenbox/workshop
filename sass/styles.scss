@@ -1,9 +1,10 @@
 // Importer für alle SCSS Dateien
 // Variablen, Mixins und Funktionen
-@import "variables";
+@import "base/variables";
 
 // Base und Reset
-@import "base";
+@import "base/base";
+@import "base/typography";
 
 // Layouts, Templates
 @import "templates/template-1";
