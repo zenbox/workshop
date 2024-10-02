@@ -1,5 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap");
+:root {
+  --color-white: hsla(0, 0%, 85%, 1);
+  --on-color-white: contrast(var(--color-white));
+  --color-grey: hsla(0, 0%, 50%, 1);
+  --color-black: hsla(0, 0%, 15%, 1);
+  --primary-color: hsla(0, 100%, 50%, 1);
+  --secondary-color: hsla(0, 100%, 35%, 1);
+  --tertiary-color: hsla(277, 100%, 50%, 1);
+  --quaternary-color: hsla(211, 100%, 50%, 1);
+  --success-color: hsla(134, 61%, 41%, 1);
+  --info-color: hsla(188, 78%, 41%, 1);
+  --warning-color: hsla(45, 100%, 51%, 1);
+  --danger-color: hsla(354, 70%, 54%, 1);
+  --link-color: hsla(211, 100%, 50%, 1);
+  --visited-color: hsla(277, 100%, 50%, 1);
+  --hover-color: hsla(0, 100%, 35%, 1);
+  --active-color: hsla(0, 100%, 50%, 1);
+}
+
 html,
 html * {
   box-sizing: border-box;
@@ -13,8 +32,8 @@ html {
 
 body {
   margin: 0;
-  background-color: #fff;
-  color: #000;
+  background-color: var(--color-white);
+  color: var(--color-black);
 }
 
 .barlow-thin {
@@ -288,30 +307,25 @@ h2 {
   text-decoration: none;
 }
 .nav a:link {
-  color: #007bff;
+  color: var(--link-color);
 }
 .nav a:visited {
-  color: #9d00ff;
+  color: var(--visited-color);
 }
 .nav a:hover {
-  color: #b30000;
+  color: var(--hover-color);
   text-decoration: underline;
 }
 .nav a:active {
-  color: #ff0000;
+  color: var(--active-color);
   text-decoration: underline;
 }
 
-#hamburger__menu-is-opened {
+.hidden {
   display: none;
 }
-#hamburger__menu-is-closed {
-  display: block;
-}
-#hamburger .hidden {
-  display: none;
-}
-#hamburger .visible {
+
+.visible {
   display: block;
 }
 

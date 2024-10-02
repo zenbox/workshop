@@ -26,33 +26,34 @@
         text-decoration: none;
     }
     a:link {
-        color: $link-color;
+        color: var(--link-color);
     }
     a:visited {
-        color: $visited-color;
+        color: var(--visited-color);
     }
     a:hover {
-        color: $hover-color;
+        color: var(--hover-color);
         text-decoration: underline;
     }
     a:active {
-        color: $active-color;
+        color: var(--active-color);
         text-decoration: underline;
     }
 }
 
 // Hamburgermenu States
-#hamburger {
-    &__menu-is-opened {
-        display: none;
-    }
-    &__menu-is-closed {
-        display: block;
-    }
-    .hidden {
-        display: none;
-    }
-    .visible {
-        display: block;
-    }
+// #hamburger {
+//     &__menu-is-opened {
+//         display: none;
+//     }
+//     &__menu-is-closed {
+//         display: block;
+//     }
+// }
+
+.hidden {
+    display: none;
+}
+.visible {
+    display: block;
 }

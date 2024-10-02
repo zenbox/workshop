@@ -1,0 +1,51 @@
+@function luminance($color) {
+    $r: red($color) / 255;
+    $g: green($color) / 255;
+    $b: blue($color) / 255;
+
+    $r: if($r < 0.03928, $r / 12.92, pow(($r + 0.055) / 1.055, 2.4));
+    $g: if($g < 0.03928, $g / 12.92, pow(($g + 0.055) / 1.055, 2.4));
+    $b: if($b < 0.03928, $b / 12.92, pow(($b + 0.055) / 1.055, 2.4));
+
+    @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+}
+
+// Funktion, die basierend auf der Luminanz entscheidet, ob Weiß oder Schwarz als Textfarbe verwendet wird
+@function contrast-color($background-color) {
+    @if (luminance($background-color) > 0.179) {
+        @return #000000; // Schwarz für helle Hintergründe
+    } @else {
+        @return #ffffff; // Weiß für dunkle Hintergründe
+    }
+}
+
+:root {
+    // Hell-/Dunkelwerte
+    --color-white: hsla(0, 0%, 85%, 1);
+    --on-color-white: #{ contrast(var(--color-white)) };
+
+    --color-grey: hsla(0, 0%, 50%, 1);
+    --color-black: hsla(0, 0%, 15%, 1);
+
+    // Corporate Design Farben
+    --primary-color: hsla(0, 100%, 50%, 1);
+    --secondary-color: hsla(0, 100%, 35%, 1);
+    --tertiary-color: hsla(277, 100%, 50%, 1);
+    --quaternary-color: hsla(211, 100%, 50%, 1);
+
+    // Semantische Farben
+    --success-color: hsla(134, 61%, 41%, 1);
+    --info-color: hsla(188, 78%, 41%, 1);
+    --warning-color: hsla(45, 100%, 51%, 1);
+    --danger-color: hsla(354, 70%, 54%, 1);
+
+    // Zustandsfarben für Links
+    --link-color: hsla(211, 100%, 50%, 1);
+    --visited-color: hsla(277, 100%, 50%, 1);
+    --hover-color: hsla(0, 100%, 35%, 1);
+    --active-color: hsla(0, 100%, 50%, 1);
+}
+
+// Dokumentenfarben
+$document-background-color: var(--color-white);
+$document-text-color: var(--color-black);
