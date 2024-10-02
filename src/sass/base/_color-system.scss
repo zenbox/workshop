@@ -22,10 +22,14 @@
 :root {
     // Hell-/Dunkelwerte
     --color-white: hsla(0, 0%, 85%, 1);
+    --color-white-high-contrast: hsla(0, 0%, 100%, 1);
+
     --on-color-white: #{contrast(var(--color-white))};
 
     --color-grey: hsla(0, 0%, 50%, 1);
+
     --color-black: hsla(0, 0%, 15%, 1);
+    --color-black-high-contrast: hsla(0, 0%, 0%, 1);
 
     // Corporate Design Farben
     --primary-color: hsla(0, 100%, 50%, 1);

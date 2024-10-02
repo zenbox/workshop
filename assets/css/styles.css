@@ -2,9 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap");
 :root {
   --color-white: hsla(0, 0%, 85%, 1);
+  --color-white-high-contrast: hsla(0, 0%, 100%, 1);
   --on-color-white: contrast(var(--color-white));
   --color-grey: hsla(0, 0%, 50%, 1);
   --color-black: hsla(0, 0%, 15%, 1);
+  --color-black-high-contrast: hsla(0, 0%, 0%, 1);
   --primary-color: hsla(0, 100%, 50%, 1);
   --secondary-color: hsla(0, 100%, 35%, 1);
   --tertiary-color: hsla(277, 100%, 50%, 1);
@@ -465,10 +467,38 @@ body::before {
     background-color: var(--color-black);
     color: var(--color-white);
   }
+  .high-contrast {
+    background-color: var(--color-black-high-contrast) !important;
+    color: var(--color-white-high-contrast) !important;
+  }
 }
 @media screen and (prefers-color-scheme: light) {
   body {
     background-color: var(--color-white);
     color: var(--color-black);
   }
+  .high-contrast {
+    background-color: var(--color-white-high-contrast) !important;
+    color: var(--color-black-high-contrast) !important;
+  }
+}
+@media screen and (prefers-contrast: more) {
+  body {
+    background-color: var(--color-black-high-contrast);
+    color: var(--color-white-high-contrast);
+  }
+}
+body > * {
+  border: 2px solid hsla(194, 100%, 66%, 0.5);
+}
+body > * > * {
+  border: 2px solid hsla(27, 96%, 54%, 0.5);
+}
+
+.protanopia {
+  filter: url("#protanopia");
+}
+
+.visus-05 {
+  filter: url("#visus-05");
 }

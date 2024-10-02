@@ -35,6 +35,10 @@ body::before {
         background-color: var(--color-black);
         color: var(--color-white);
     }
+    .high-contrast {
+    background-color: var(--color-black-high-contrast) !important;
+    color: var(--color-white-high-contrast) !important;
+}
 }
 
 @media screen and (prefers-color-scheme: light) {
@@ -43,4 +47,18 @@ body::before {
         background-color: var(--color-white);
         color: var(--color-black);
     }
+    .high-contrast {
+    background-color: var(--color-white-high-contrast) !important;
+    color: var(--color-black-high-contrast) !important;
 }
+}
+
+@media screen and (prefers-contrast: more) {
+    // Dokumentenfarben
+    body {
+        background-color: var(--color-black-high-contrast);
+        color: var(--color-white-high-contrast) ;
+    }
+}
+
+
