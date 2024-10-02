@@ -11,72 +11,92 @@
   --quaternary-color: hsla(211, 100%, 50%, 1);
   --success-color: hsla(134, 61%, 41%, 1);
   --info-color: hsla(188, 78%, 41%, 1);
+  --on-info-color: var(--on-color-black);
   --warning-color: hsla(45, 100%, 51%, 1);
   --error-color: hsla(354, 70%, 54%, 1);
   --link-color: hsla(211, 100%, 50%, 1);
+  --link-color-dark: hsla(211, 100%, 80%, 1);
   --visited-color: hsla(277, 100%, 50%, 1);
+  --visited-color-dark: hsla(277, 100%, 80%, 1);
   --hover-color: hsla(0, 100%, 35%, 1);
+  --hover-color-dark: hsla(0, 100%, 65%, 1);
   --active-color: hsla(0, 100%, 50%, 1);
+  --active-color-dark: hsla(0, 100%, 80%, 1);
 }
 
 .color-white {
   background-color: var(--color-white);
+  color: black;
 }
 
 .color-grey {
   background-color: var(--color-grey);
+  color: black;
 }
 
 .color-black {
   background-color: var(--color-black);
+  color: black;
 }
 
 .color-primary {
   background-color: var(--primary-color);
+  color: black;
 }
 
 .color-secondary {
   background-color: var(--secondary-color);
+  color: black;
 }
 
 .color-tertiary {
   background-color: var(--tertiary-color);
+  color: black;
 }
 
 .color-quaternary {
   background-color: var(--quaternary-color);
+  color: black;
 }
 
 .color-success {
   background-color: var(--success-color);
+  color: black;
 }
 
 .color-info {
   background-color: var(--info-color);
+  color: black;
 }
 
 .color-warning {
   background-color: var(--warning-color);
+  color: black;
 }
 
 .color-error {
   background-color: var(--error-color);
+  color: black;
 }
 
 .color-link {
   background-color: var(--link-color);
+  color: black;
 }
 
 .color-visited {
   background-color: var(--visited-color);
+  color: black;
 }
 
 .color-hover {
   background-color: var(--hover-color);
+  color: black;
 }
 
 .color-active {
   background-color: var(--active-color);
+  color: black;
 }
 
 main figure {
@@ -269,6 +289,11 @@ h2 {
     margin-inline-start: 0;
   }
 }
+@media screen and (max-width: 640px) and (prefers-reduced-motion: reduce) {
+  .template-1 main {
+    transition-duration: 0.001s;
+  }
+}
 @media screen and (min-width: 641px) {
   .template-1 {
     display: flex;
@@ -377,19 +402,37 @@ h2 {
 .nav a[href] {
   text-decoration: none;
 }
-.nav a:link {
-  color: var(--link-color);
+@media (prefers-color-scheme: light) {
+  .nav a:link {
+    color: var(--link-color);
+  }
+  .nav a:visited {
+    color: var(--visited-color);
+  }
+  .nav a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+  }
+  .nav a:active {
+    color: var(--active-color);
+    text-decoration: underline;
+  }
 }
-.nav a:visited {
-  color: var(--visited-color);
-}
-.nav a:hover {
-  color: var(--hover-color);
-  text-decoration: underline;
-}
-.nav a:active {
-  color: var(--active-color);
-  text-decoration: underline;
+@media (prefers-color-scheme: dark) {
+  .nav a:link {
+    color: var(--link-color-dark);
+  }
+  .nav a:visited {
+    color: var(--visited-color-dark);
+  }
+  .nav a:hover {
+    color: var(--hover-color-dark);
+    text-decoration: underline;
+  }
+  .nav a:active {
+    color: var(--active-color-dark);
+    text-decoration: underline;
+  }
 }
 
 .hidden {

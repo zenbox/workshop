@@ -35,15 +35,25 @@
 
     // Semantische Farben
     --success-color: hsla(134, 61%, 41%, 1);
+
     --info-color: hsla(188, 78%, 41%, 1);
+    --on-info-color: var(--on-color-black);
+
     --warning-color: hsla(45, 100%, 51%, 1);
     --error-color: hsla(354, 70%, 54%, 1);
 
     // Zustandsfarben für Links
     --link-color: hsla(211, 100%, 50%, 1);
+    --link-color-dark: hsla(211, 100%, 80%, 1);
+
     --visited-color: hsla(277, 100%, 50%, 1);
+    --visited-color-dark: hsla(277, 100%, 80%, 1);
+
     --hover-color: hsla(0, 100%, 35%, 1);
+    --hover-color-dark: hsla(0, 100%, 65%, 1);
+
     --active-color: hsla(0, 100%, 50%, 1);
+    --active-color-dark: hsla(0, 100%, 80%, 1);
 }
 
 // Generieren von Klasen für alle Farben
@@ -68,6 +78,7 @@ $color-map: (
 @each $color, $value in $color-map {
     .color-#{$color} {
         background-color: $value;
+        color: black;
     }
 
     // .bg-#{$color} {
@@ -88,4 +99,3 @@ main figure {
     height: 3rem;
     border: 1px solid var(--color-black);
 }
-

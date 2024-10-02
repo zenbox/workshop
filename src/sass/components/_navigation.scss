@@ -25,22 +25,41 @@
     a[href] {
         text-decoration: none;
     }
-    a:link {
-        color: var(--link-color);
+
+    @media (prefers-color-scheme: light) {
+        a:link {
+            color: var(--link-color);
+        }
+        a:visited {
+            color: var(--visited-color);
+        }
+        a:hover {
+            color: var(--hover-color);
+            text-decoration: underline;
+        }
+        a:active {
+            color: var(--active-color);
+            text-decoration: underline;
+        }
     }
-    a:visited {
-        color: var(--visited-color);
-    }
-    a:hover {
-        color: var(--hover-color);
-        text-decoration: underline;
-    }
-    a:active {
-        color: var(--active-color);
-        text-decoration: underline;
+
+    @media (prefers-color-scheme: dark) {
+        a:link {
+            color: var(--link-color-dark);
+        }
+        a:visited {
+            color: var(--visited-color-dark);
+        }
+        a:hover {
+            color: var(--hover-color-dark);
+            text-decoration: underline;
+        }
+        a:active {
+            color: var(--active-color-dark);
+            text-decoration: underline;
+        }
     }
 }
-
 // Hamburgermenu States
 // #hamburger {
 //     &__menu-is-opened {
