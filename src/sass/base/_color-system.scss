@@ -22,7 +22,7 @@
 :root {
     // Hell-/Dunkelwerte
     --color-white: hsla(0, 0%, 85%, 1);
-    --on-color-white: #{ contrast(var(--color-white)) };
+    --on-color-white: #{contrast(var(--color-white))};
 
     --color-grey: hsla(0, 0%, 50%, 1);
     --color-black: hsla(0, 0%, 15%, 1);
@@ -49,3 +49,32 @@
 // Dokumentenfarben
 $document-background-color: var(--color-white);
 $document-text-color: var(--color-black);
+
+// Generieren von Klasen für alle Farben
+$color-map: (
+    "white": var(--color-white),
+    "grey": var(--color-grey),
+    "black": var(--color-black),
+    "primary": var(--primary-color),
+    "secondary": var(--secondary-color),
+    "tertiary": var(--tertiary-color),
+    "quaternary": var(--quaternary-color),
+    "success": var(--success-color),
+    "info": var(--info-color),
+    "warning": var(--warning-color),
+    "danger": var(--danger-color),
+    "link": var(--link-color),
+    "visited": var(--visited-color),
+    "hover": var(--hover-color),
+    "active": var(--active-color),
+);
+
+@each $color, $value in $color-map {
+    .color-#{$color} {
+        background-color: $value;
+    }
+
+    // .bg-#{$color} {
+    //     background-color: $value;
+    // }
+}

@@ -19,6 +19,66 @@
   --active-color: hsla(0, 100%, 50%, 1);
 }
 
+.color-white {
+  background-color: var(--color-white);
+}
+
+.color-grey {
+  background-color: var(--color-grey);
+}
+
+.color-black {
+  background-color: var(--color-black);
+}
+
+.color-primary {
+  background-color: var(--primary-color);
+}
+
+.color-secondary {
+  background-color: var(--secondary-color);
+}
+
+.color-tertiary {
+  background-color: var(--tertiary-color);
+}
+
+.color-quaternary {
+  background-color: var(--quaternary-color);
+}
+
+.color-success {
+  background-color: var(--success-color);
+}
+
+.color-info {
+  background-color: var(--info-color);
+}
+
+.color-warning {
+  background-color: var(--warning-color);
+}
+
+.color-danger {
+  background-color: var(--danger-color);
+}
+
+.color-link {
+  background-color: var(--link-color);
+}
+
+.color-visited {
+  background-color: var(--visited-color);
+}
+
+.color-hover {
+  background-color: var(--hover-color);
+}
+
+.color-active {
+  background-color: var(--active-color);
+}
+
 html,
 html * {
   box-sizing: border-box;
