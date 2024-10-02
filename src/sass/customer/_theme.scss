@@ -27,3 +27,20 @@ body::before {
     border-width: 1px;
     border-style: dotted;
 }
+
+// Dark- und Light-Mode
+@media screen and (prefers-color-scheme: dark) {
+    // Dokumentenfarben
+    body {
+        background-color: var(--color-black);
+        color: var(--color-white);
+    }
+}
+
+@media screen and (prefers-color-scheme: light) {
+    // Dokumentenfarben
+    body {
+        background-color: var(--color-white);
+        color: var(--color-black);
+    }
+}

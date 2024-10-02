@@ -105,8 +105,6 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--color-white);
-  color: var(--color-black);
 }
 
 .barlow-thin {
@@ -417,4 +415,17 @@ body::before {
   padding: 0.5rem;
   border-width: 1px;
   border-style: dotted;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--color-black);
+    color: var(--color-white);
+  }
+}
+@media screen and (prefers-color-scheme: light) {
+  body {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
 }

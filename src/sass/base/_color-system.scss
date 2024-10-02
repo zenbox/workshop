@@ -46,10 +46,6 @@
     --active-color: hsla(0, 100%, 50%, 1);
 }
 
-// Dokumentenfarben
-$document-background-color: var(--color-white);
-$document-text-color: var(--color-black);
-
 // Generieren von Klasen für alle Farben
 $color-map: (
     "white": var(--color-white),
@@ -80,7 +76,7 @@ $color-map: (
 }
 
 // Eigentlich eine eigene Kompenenten-SCSS:
-main figure{
+main figure {
     display: flex;
     flex-direction: row;
 
@@ -92,3 +88,4 @@ main figure{
     height: 3rem;
     border: 1px solid var(--color-black);
 }
+
