@@ -12,7 +12,7 @@
   --success-color: hsla(134, 61%, 41%, 1);
   --info-color: hsla(188, 78%, 41%, 1);
   --warning-color: hsla(45, 100%, 51%, 1);
-  --danger-color: hsla(354, 70%, 54%, 1);
+  --error-color: hsla(354, 70%, 54%, 1);
   --link-color: hsla(211, 100%, 50%, 1);
   --visited-color: hsla(277, 100%, 50%, 1);
   --hover-color: hsla(0, 100%, 35%, 1);
@@ -59,8 +59,8 @@
   background-color: var(--warning-color);
 }
 
-.color-danger {
-  background-color: var(--danger-color);
+.color-error {
+  background-color: var(--error-color);
 }
 
 .color-link {

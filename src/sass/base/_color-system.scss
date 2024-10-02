@@ -37,7 +37,7 @@
     --success-color: hsla(134, 61%, 41%, 1);
     --info-color: hsla(188, 78%, 41%, 1);
     --warning-color: hsla(45, 100%, 51%, 1);
-    --danger-color: hsla(354, 70%, 54%, 1);
+    --error-color: hsla(354, 70%, 54%, 1);
 
     // Zustandsfarben für Links
     --link-color: hsla(211, 100%, 50%, 1);
@@ -62,7 +62,7 @@ $color-map: (
     "success": var(--success-color),
     "info": var(--info-color),
     "warning": var(--warning-color),
-    "danger": var(--danger-color),
+    "error": var(--error-color),
     "link": var(--link-color),
     "visited": var(--visited-color),
     "hover": var(--hover-color),
