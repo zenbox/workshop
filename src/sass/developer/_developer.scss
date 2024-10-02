@@ -11,10 +11,40 @@ body {
     }
 }
 
+/* Simulationen für Farbenblindheit */
 .protanopia {
-    filter: url('#protanopia');
+    filter: url("#protanopia");
+}
+
+.deuteranopia {
+    filter: url("#deuteranopia");
+}
+
+.tritanopia {
+    filter: url("#tritanopia");
+}
+
+.color-blind {
+    filter: url("#color-blind");
+}
+
+.achromatopsia {
+    filter: url(#achromatopsia-blur);
+}
+
+/* Visus-Simulationen */
+.visus-07 {
+    filter: url("#visus-07");
 }
 
 .visus-05 {
-    filter: url('#visus-05');
+    filter: url("#visus-05");
+}
+
+.visus-04 {
+    filter: url("#visus-04");
+}
+
+.visus-008 {
+    filter: url("#visus-008");
 }
