@@ -17,3 +17,13 @@
         }
     }
 }
+
+body::before {
+    display: block;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    padding: 0.5rem;
+    border-width: 1px;
+    border-style: dotted;
+}

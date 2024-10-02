@@ -146,6 +146,15 @@ h1 {
   font-weight: 300;
 }
 
+h2 {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
 @media screen and (max-width: 640px) {
   .template-1 {
     display: flex;
@@ -234,6 +243,33 @@ h1 {
   grid-row: 3/4;
 }
 
+.article--teaser {
+  font-size: 1.4rem;
+}
+.article--multicolumn {
+  column-count: 2;
+  column-gap: 5rem;
+  column-rule: 1px dotted black;
+  widows: 2;
+  orphans: 4;
+  hyphens: auto;
+}
+.article--multicolumn h2 {
+  margin-block-start: 0;
+  margin-block-end: 1rem;
+  break-after: avoid-column;
+}
+
+.figure {
+  margin: 0;
+  padding: 0;
+}
+.figure__image--responsive img {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+}
+
 .nav {
   list-style-type: none;
   padding: 0;
@@ -279,24 +315,19 @@ h1 {
   display: block;
 }
 
-.article--teaser {
-  font-size: 1.4rem;
-}
-.article--multicolumn {
-  column-width: 18rem;
-  widows: 2;
-  orphans: 4;
-  hyphens: auto;
-}
-.article--multicolumn h2 {
-  margin-block-start: 0;
-  margin-block-end: 1rem;
-  break-after: avoid-column;
-}
-
 .theme-1 body {
   margin: 0;
 }
 .theme-1 body > * > * {
   padding: 1rem;
+}
+
+body::before {
+  display: block;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 0.5rem;
+  border-width: 1px;
+  border-style: dotted;
 }

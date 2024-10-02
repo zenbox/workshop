@@ -1,0 +1,22 @@
+// Figure Style
+// @author Michael
+// @since 2024-10-01
+// @version 1.0.0
+
+.figure {
+    // Base / reset
+    margin: 0;
+    padding: 0;
+
+    &__image {
+        &--responsive {
+            img {
+                display: block;
+                // max-width: bezieht sich auf die Breite des Bildes
+                // nicht auf die Breite des 'figure'-Elements!
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

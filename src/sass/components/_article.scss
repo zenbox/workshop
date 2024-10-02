@@ -10,7 +10,10 @@
         font-size: 1.4rem;
     }
     &--multicolumn {
-        column-width: 18rem;
+        // column-width: 18rem;
+        column-count: 2;
+        column-gap: 5rem;
+        column-rule: 1px dotted black;
 
         widows: 2; // Witwen / Hurenkinder
         orphans: 4; // Waisen / Schusterjungen

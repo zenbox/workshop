@@ -157,8 +157,16 @@ h1 {
     font-size: 2.5rem; // Root EM
     font-weight: 300;
 }
+h2 {
+    font-size: 1.8rem; // Root EM
+    font-weight: 400;
+}
 
 // Text
 // p {
 //     column-width: 18rem
 // }
+
+.uppercase{
+    text-transform: uppercase;
+}

@@ -11,10 +11,12 @@
 @import "templates/template-2";
 
 // Komponenten
-@import "components/navigation";
 @import "components/article";
+@import "components/figure";
+@import "components/navigation";
 
 // States / Zustände
 
 // Themen
-@import "theme";
+@import "customer/theme";
+// @import "developer/developer";

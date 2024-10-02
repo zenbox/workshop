@@ -7,10 +7,11 @@
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="color-scheme"
+            content="dark light" />
+
         <title>Responsive Layout 1</title>
-        <link
-            rel="stylesheet"
-            href="assets/css/developer.css" />
         <link
             rel="stylesheet"
             href="assets/css/styles.css" />
@@ -74,26 +75,73 @@
             <!-- - - - -->
             <section>
                 <h1>Responsive Layout</h1>
-                <p class="article article--teaser">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Libero harum eveniet corporis quidem voluptatum, ratione
-                    sint dolore tempora optio alias itaque rerum, provident
-                    ipsum!
+                <p
+                    tabindex="1"
+                    class="article article--teaser"
+                    lang="de">
+                    Prompting: Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Libero
+                    <span lang="en"
+                        ><abbr
+                            lang="en"
+                            title="National Aeronautics Space Agency"
+                            class="uppercase"
+                            >Nasa</abbr
+                        >
+                        is one of the best</span
+                    >
+                    harum eveniet corporis quidem voluptatum, ratione sint
+                    dolore tempora optio alias itaque rerum, provident ipsum!
                 </p>
+
+                <article
+                    class="article"
+                    lang="de">
+                    <h2>Responsive Bilder</h2>
+                    <figure class="figure figure__image--responsive">
+                        <picture>
+                            <source
+                                media="(min-width: 800px) and (resolution: 192dpi)"
+                                srcset="https://picsum.photos/id/64/2400/1536"
+                                type="image/jpeg" />
+                            <source
+                                media="(min-width: 800px)"
+                                srcset="https://picsum.photos/id/63/1200/768"
+                                type="image/jpeg" />
+                            <source
+                                media="(min-width: 640px)"
+                                srcset="https://picsum.photos/id/62/490/600"
+                                type="image/jpeg" />
+                            <source
+                                media="(min-width: 480px)"
+                                srcset="https://picsum.photos/id/61/606/480"
+                                type="image/jpeg" />
+                            <img
+                                default
+                                src="https://picsum.photos/id/61/480/320"
+                                alt="Schwarz-Weiß-Foto: Barockstadt an einem Fluß" />
+                        </picture>
+                        <figcaption>
+                            Beschreibung zum Bild Lorem, ipsum dolor sit amet
+                            consectetur adipisicing elit. Eligendi quos velit
+                            dolores qui, voluptas eveniet neque consequuntur
+                            enim odit architecto, commodi odio voluptate
+                            facilis?
+                        </figcaption>
+                    </figure>
+                </article>
 
                 <article class="article article--multicolumn">
                     <h2>Mehrspaltige Textgruppen</h2>
-                    <article>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Libero harum eveniet corporis quidem voluptatum, ratione
-                        sint dolore tempora optio alias itaque rerum, provident
-                        ipsum!
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Libero harum eveniet corporis quidem voluptatum, ratione
-                        sint dolore tempora optio alias itaque rerum, provident
-                        ipsum!
                     </p>
+
+                    <p lang="en">
+                        This is an english text that is not translated.
+                    </p>
+                    <p lang="ko">이것은 번역되지 않은 한국어 텍스트입니다.</p>
+                    <p lang="hu">Ez egy lefordítatlan magyar szöveg.</p>
                 </article>
             </section>
         </main>
