@@ -489,6 +489,58 @@ body::before {
     color: var(--color-white-high-contrast);
   }
 }
+.brand svg {
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.5);
+  transition-property: all;
+  transition-duration: 2500ms;
+  transition-timing-function: cubic-bezier(0.05, 0.8, 0.1, 0.95);
+  transition-delay: 0s;
+}
+
+.brand {
+  perspective: 800px;
+  perspective-origin: 50% 100px;
+}
+
+.brand svg:hover {
+  transform-style: preserve-3d;
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  border-radius: 10rem;
+  animation: firlefanz 2s reverse cubic-bezier(0.05, 0.8, 0.1, 0.95);
+}
+
+@keyframes firlefanz {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    background: red;
+  }
+  75% {
+    background: green;
+  }
+  100% {
+    transform: rotate(360deg) translateZ(100px);
+  }
+}
+.dark-mode body {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+.dark-mode .high-contrast {
+  background-color: var(--color-black-high-contrast) !important;
+  color: var(--color-white-high-contrast) !important;
+}
+
+.light-mode body {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+.light-mode .high-contrast {
+  background-color: var(--color-white-high-contrast) !important;
+  color: var(--color-black-high-contrast) !important;
+}
+
 body > * {
   border: 2px solid hsla(194, 100%, 66%, 0.5);
 }
