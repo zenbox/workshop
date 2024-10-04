@@ -2,104 +2,295 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap");
 :root {
-  --color-white: hsla(0, 0%, 85%, 1);
-  --color-white-high-contrast: hsla(0, 0%, 100%, 1);
-  --on-color-white: contrast(var(--color-white));
-  --color-grey: hsla(0, 0%, 50%, 1);
-  --color-black: hsla(0, 0%, 15%, 1);
-  --color-black-high-contrast: hsla(0, 0%, 0%, 1);
-  --primary-color: hsla(0, 100%, 50%, 1);
-  --secondary-color: hsla(0, 100%, 35%, 1);
-  --tertiary-color: hsla(277, 100%, 50%, 1);
-  --quaternary-color: hsla(211, 100%, 50%, 1);
-  --success-color: hsla(134, 61%, 41%, 1);
-  --info-color: hsla(188, 78%, 41%, 1);
-  --on-info-color: var(--on-color-black);
-  --warning-color: hsla(45, 100%, 51%, 1);
-  --error-color: hsla(354, 70%, 54%, 1);
-  --link-color: hsla(211, 100%, 50%, 1);
-  --link-color-dark: hsla(211, 100%, 80%, 1);
-  --visited-color: hsla(277, 100%, 50%, 1);
-  --visited-color-dark: hsla(277, 100%, 80%, 1);
-  --hover-color: hsla(0, 100%, 35%, 1);
-  --hover-color-dark: hsla(0, 100%, 65%, 1);
-  --active-color: hsla(0, 100%, 50%, 1);
-  --active-color-dark: hsla(0, 100%, 80%, 1);
+  --color-white: hsl(0, 0%, 85%);
+  --on-color-white: #000000;
+  --color-white-high-contrast: hsl(0, 0%, 15%);
+  --on-color-white-high-contrast: #ffffff;
+  --color-grey: hsl(0, 0%, 50%);
+  --on-color-grey: #000000;
+  --color-black: hsl(0, 0%, 15%);
+  --on-color-black: #ffffff;
+  --color-black-high-contrast: hsl(0, 0%, 0%);
+  --on-color-black-high-contrast: #ffffff;
+  --primary-color: rgb(79, 0, 104);
+  --on-primary-color: #ffffff;
+  --secondary-color: rgb(0, 141, 197);
+  --on-secondary-color: #000000;
+  --tertiary-color: rgb(0, 108, 0);
+  --on-tertiary-color: #ffffff;
+  --quaternary-color: rgb(220, 187, 0);
+  --on-quaternary-color: #000000;
+  --success-color: hsl(120, 100%, 70%);
+  --on-success-color: #000000;
+  --info-color: hsl(240, 100%, 70%);
+  --on-info-color: #000000;
+  --warning-color: hsl(60, 100%, 70%);
+  --on-warning-color: #000000;
+  --error-color: hsl(0, 100%, 70%);
+  --on-error-color: #000000;
+  --link-color: hsl(240, 100%, 50%);
+  --on-link-color: #ffffff;
+  --link-color-dark: hsl(240, 100%, 50%);
+  --on-link-color-dark: #ffffff;
+  --visited-color: hsl(240, 100%, 50%);
+  --on-visited-color: #ffffff;
+  --visited-color-dark: hsl(240, 100%, 50%);
+  --on-visited-color-dark: #ffffff;
+  --hover-color: hsl(240, 100%, 50%);
+  --on-hover-color: #ffffff;
+  --hover-color-dark: hsl(240, 100%, 50%);
+  --on-hover-color-dark: #ffffff;
+  --active-color: hsl(240, 100%, 50%);
+  --on-active-color: #ffffff;
+  --active-color-dark: hsl(240, 100%, 50%);
+  --on-active-color-dark: #ffffff;
 }
 
-.color-white {
+.white {
   background-color: var(--color-white);
-  color: black;
+  color: var(--on-color-white);
 }
 
-.color-grey {
+.bg-white {
+  background-color: var(--color-white);
+}
+
+.text-white {
+  color: var(--on-color-white);
+}
+
+.grey {
   background-color: var(--color-grey);
-  color: black;
+  color: var(--on-color-grey);
 }
 
-.color-black {
+.bg-grey {
+  background-color: var(--color-grey);
+}
+
+.text-grey {
+  color: var(--on-color-grey);
+}
+
+.black {
   background-color: var(--color-black);
-  color: black;
+  color: var(--on-color-black);
 }
 
-.color-primary {
+.bg-black {
+  background-color: var(--color-black);
+}
+
+.text-black {
+  color: var(--on-color-black);
+}
+
+.primary {
   background-color: var(--primary-color);
-  color: black;
+  color: var(--on-primary-color);
 }
 
-.color-secondary {
+.bg-primary {
+  background-color: var(--primary-color);
+}
+
+.text-primary {
+  color: var(--on-primary-color);
+}
+
+.secondary {
   background-color: var(--secondary-color);
-  color: black;
+  color: var(--on-secondary-color);
 }
 
-.color-tertiary {
+.bg-secondary {
+  background-color: var(--secondary-color);
+}
+
+.text-secondary {
+  color: var(--on-secondary-color);
+}
+
+.tertiary {
   background-color: var(--tertiary-color);
-  color: black;
+  color: var(--on-tertiary-color);
 }
 
-.color-quaternary {
+.bg-tertiary {
+  background-color: var(--tertiary-color);
+}
+
+.text-tertiary {
+  color: var(--on-tertiary-color);
+}
+
+.quaternary {
   background-color: var(--quaternary-color);
-  color: black;
+  color: var(--on-quaternary-color);
 }
 
-.color-success {
+.bg-quaternary {
+  background-color: var(--quaternary-color);
+}
+
+.text-quaternary {
+  color: var(--on-quaternary-color);
+}
+
+.success {
   background-color: var(--success-color);
-  color: black;
+  color: var(--on-success-color);
 }
 
-.color-info {
+.bg-success {
+  background-color: var(--success-color);
+}
+
+.text-success {
+  color: var(--on-success-color);
+}
+
+.info {
   background-color: var(--info-color);
-  color: black;
+  color: var(--on-info-color);
 }
 
-.color-warning {
+.bg-info {
+  background-color: var(--info-color);
+}
+
+.text-info {
+  color: var(--on-info-color);
+}
+
+.warning {
   background-color: var(--warning-color);
-  color: black;
+  color: var(--on-warning-color);
 }
 
-.color-error {
+.bg-warning {
+  background-color: var(--warning-color);
+}
+
+.text-warning {
+  color: var(--on-warning-color);
+}
+
+.error {
   background-color: var(--error-color);
-  color: black;
+  color: var(--on-error-color);
 }
 
-.color-link {
+.bg-error {
+  background-color: var(--error-color);
+}
+
+.text-error {
+  color: var(--on-error-color);
+}
+
+.link {
   background-color: var(--link-color);
-  color: black;
+  color: var(--on-link-color);
 }
 
-.color-visited {
+.bg-link {
+  background-color: var(--link-color);
+}
+
+.text-link {
+  color: var(--on-link-color);
+}
+
+.link-dark {
+  background-color: var(--link-color-dark);
+  color: var(--on-link-color-dark);
+}
+
+.bg-link-dark {
+  background-color: var(--link-color-dark);
+}
+
+.text-link-dark {
+  color: var(--on-link-color-dark);
+}
+
+.visited {
   background-color: var(--visited-color);
-  color: black;
+  color: var(--on-visited-color);
 }
 
-.color-hover {
+.bg-visited {
+  background-color: var(--visited-color);
+}
+
+.text-visited {
+  color: var(--on-visited-color);
+}
+
+.visited-dark {
+  background-color: var(--visited-color-dark);
+  color: var(--on-visited-color-dark);
+}
+
+.bg-visited-dark {
+  background-color: var(--visited-color-dark);
+}
+
+.text-visited-dark {
+  color: var(--on-visited-color-dark);
+}
+
+.hover {
   background-color: var(--hover-color);
-  color: black;
+  color: var(--on-hover-color);
 }
 
-.color-active {
+.bg-hover {
+  background-color: var(--hover-color);
+}
+
+.text-hover {
+  color: var(--on-hover-color);
+}
+
+.hover-dark {
+  background-color: var(--hover-color-dark);
+  color: var(--on-hover-color-dark);
+}
+
+.bg-hover-dark {
+  background-color: var(--hover-color-dark);
+}
+
+.text-hover-dark {
+  color: var(--on-hover-color-dark);
+}
+
+.active {
   background-color: var(--active-color);
-  color: black;
+  color: var(--on-active-color);
+}
+
+.bg-active {
+  background-color: var(--active-color);
+}
+
+.text-active {
+  color: var(--on-active-color);
+}
+
+.active-dark {
+  background-color: var(--active-color-dark);
+  color: var(--on-active-color-dark);
+}
+
+.bg-active-dark {
+  background-color: var(--active-color-dark);
+}
+
+.text-active-dark {
+  color: var(--on-active-color-dark);
 }
 
 main figure {

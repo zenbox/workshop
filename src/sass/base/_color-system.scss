@@ -21,73 +21,184 @@
 
 :root {
     // Hell-/Dunkelwerte
-    --color-white: hsla(0, 0%, 85%, 1);
-    --color-white-high-contrast: hsla(0, 0%, 100%, 1);
+    $white: hsla(0, 0%, 85%, 1);
+    --color-white: #{$white};
+    --on-color-white: #{contrast-color($white)};
 
-    --on-color-white: #{contrast(var(--color-white))};
+    $black: hsla(0, 0%, 15%, 1);
+    --color-white-high-contrast: #{$black};
+    --on-color-white-high-contrast: #{contrast-color($black)};
 
-    --color-grey: hsla(0, 0%, 50%, 1);
+    $grey: hsla(0, 0%, 50%, 1);
+    --color-grey: #{$grey};
+    --on-color-grey: #{contrast-color($grey)};
 
-    --color-black: hsla(0, 0%, 15%, 1);
-    --color-black-high-contrast: hsla(0, 0%, 0%, 1);
+    $black: hsla(0, 0%, 15%, 1);
+    --color-black: #{$black};
+    --on-color-black: #{contrast-color($black)};
+
+    $black-high-contrast: hsla(0, 0%, 0%, 1);
+    --color-black-high-contrast: #{$black-high-contrast};
+    --on-color-black-high-contrast: #{contrast-color($black-high-contrast)};
 
     // Corporate Design Farben
-    --primary-color: hsla(0, 100%, 50%, 1);
-    --secondary-color: hsla(0, 100%, 35%, 1);
-    --tertiary-color: hsla(277, 100%, 50%, 1);
-    --quaternary-color: hsla(211, 100%, 50%, 1);
+    $primary-color: rgb(79, 0, 104);
+    --primary-color: #{$primary-color};
+    --on-primary-color: #{contrast-color($primary-color)};
 
-    // Semantische Farben
-    --success-color: hsla(134, 61%, 41%, 1);
+    $secondary-color: rgb(0, 141, 197);
+    --secondary-color: #{$secondary-color};
+    --on-secondary-color: #{contrast-color($secondary-color)};
 
-    --info-color: hsla(188, 78%, 41%, 1);
-    --on-info-color: var(--on-color-black);
+    $tertiary-color: rgb(0, 108, 0);
+    --tertiary-color: #{$tertiary-color};
+    --on-tertiary-color: #{contrast-color($tertiary-color)};
 
-    --warning-color: hsla(45, 100%, 51%, 1);
-    --error-color: hsla(354, 70%, 54%, 1);
+    $quaternary-color: rgb(220, 187, 0);
+    --quaternary-color: #{$quaternary-color};
+    --on-quaternary-color: #{contrast-color($quaternary-color)};
 
-    // Zustandsfarben für Links
-    --link-color: hsla(211, 100%, 50%, 1);
-    --link-color-dark: hsla(211, 100%, 80%, 1);
+    $success-color: hsla(120, 100%, 70%, 1);
+    --success-color: #{$success-color};
+    --on-success-color: #{contrast-color($success-color)};
 
-    --visited-color: hsla(277, 100%, 50%, 1);
-    --visited-color-dark: hsla(277, 100%, 80%, 1);
+    $info-color: hsla(240, 100%, 70%, 1);
+    --info-color: #{$info-color};
+    --on-info-color: #{contrast-color($info-color)};
 
-    --hover-color: hsla(0, 100%, 35%, 1);
-    --hover-color-dark: hsla(0, 100%, 65%, 1);
+    $warning-color: hsla(60, 100%, 70%, 1);
+    --warning-color: #{$warning-color};
+    --on-warning-color: #{contrast-color($warning-color)};
 
-    --active-color: hsla(0, 100%, 50%, 1);
-    --active-color-dark: hsla(0, 100%, 80%, 1);
+    $error-color: hsla(0, 100%, 70%, 1);
+    --error-color: #{$error-color};
+    --on-error-color: #{contrast-color($error-color)};
+
+    $link-color: hsla(240, 100%, 50%, 1);
+    --link-color: #{$link-color};
+    --on-link-color: #{contrast-color($link-color)};
+
+    $link-color-dark: hsla(240, 100%, 50%, 1);
+    --link-color-dark: #{$link-color-dark};
+    --on-link-color-dark: #{contrast-color($link-color-dark)};
+
+    $visited-color: hsla(240, 100%, 50%, 1);
+    --visited-color: #{$visited-color};
+    --on-visited-color: #{contrast-color($visited-color)};
+
+    $visited-color-dark: hsla(240, 100%, 50%, 1);
+    --visited-color-dark: #{$visited-color-dark};
+    --on-visited-color-dark: #{contrast-color($visited-color-dark)};
+
+    $hover-color: hsla(240, 100%, 50%, 1);
+    --hover-color: #{$hover-color};
+    --on-hover-color: #{contrast-color($hover-color)};
+
+    $hover-color-dark: hsla(240, 100%, 50%, 1);
+    --hover-color-dark: #{$hover-color-dark};
+    --on-hover-color-dark: #{contrast-color($hover-color-dark)};
+
+    $active-color: hsla(240, 100%, 50%, 1);
+    --active-color: #{$active-color};
+    --on-active-color: #{contrast-color($active-color)};
+
+    $active-color-dark: hsla(240, 100%, 50%, 1);
+    --active-color-dark: #{$active-color-dark};
+    --on-active-color-dark: #{contrast-color($active-color-dark)};
 }
 
-// Generieren von Klasen für alle Farben
+// Generieren von Klassen für alle Farben
 $color-map: (
-    "white": var(--color-white),
-    "grey": var(--color-grey),
-    "black": var(--color-black),
-    "primary": var(--primary-color),
-    "secondary": var(--secondary-color),
-    "tertiary": var(--tertiary-color),
-    "quaternary": var(--quaternary-color),
-    "success": var(--success-color),
-    "info": var(--info-color),
-    "warning": var(--warning-color),
-    "error": var(--error-color),
-    "link": var(--link-color),
-    "visited": var(--visited-color),
-    "hover": var(--hover-color),
-    "active": var(--active-color),
+    "white": (
+        "background-color": var(--color-white),
+        "color": var(--on-color-white),
+    ),
+    "grey": (
+        "background-color": var(--color-grey),
+        "color": var(--on-color-grey),
+    ),
+    "black": (
+        "background-color": var(--color-black),
+        "color": var(--on-color-black),
+    ),
+    "primary": (
+        "background-color": var(--primary-color),
+        "color": var(--on-primary-color),
+    ),
+    "secondary": (
+        "background-color": var(--secondary-color),
+        "color": var(--on-secondary-color),
+    ),
+    "tertiary": (
+        "background-color": var(--tertiary-color),
+        "color": var(--on-tertiary-color),
+    ),
+    "quaternary": (
+        "background-color": var(--quaternary-color),
+        "color": var(--on-quaternary-color),
+    ),
+    "success": (
+        "background-color": var(--success-color),
+        "color": var(--on-success-color),
+    ),
+    "info": (
+        "background-color": var(--info-color),
+        "color": var(--on-info-color),
+    ),
+    "warning": (
+        "background-color": var(--warning-color),
+        "color": var(--on-warning-color),
+    ),
+    "error": (
+        "background-color": var(--error-color),
+        "color": var(--on-error-color),
+    ),
+    "link": (
+        "background-color": var(--link-color),
+        "color": var(--on-link-color),
+    ),
+    "link-dark": (
+        "background-color": var(--link-color-dark),
+        "color": var(--on-link-color-dark),
+    ),
+    "visited": (
+        "background-color": var(--visited-color),
+        "color": var(--on-visited-color),
+    ),
+    "visited-dark": (
+        "background-color": var(--visited-color-dark),
+        "color": var(--on-visited-color-dark),
+    ),
+    "hover": (
+        "background-color": var(--hover-color),
+        "color": var(--on-hover-color),
+    ),
+    "hover-dark": (
+        "background-color": var(--hover-color-dark),
+        "color": var(--on-hover-color-dark),
+    ),
+    "active": (
+        "background-color": var(--active-color),
+        "color": var(--on-active-color),
+    ),
+    "active-dark": (
+        "background-color": var(--active-color-dark),
+        "color": var(--on-active-color-dark),
+    ),
 );
 
-@each $color, $value in $color-map {
-    .color-#{$color} {
-        background-color: $value;
-        color: black;
+// Generierung der Klassen
+@each $color, $map in $color-map {
+    .#{$color} {
+        background-color: map-get($map, "background-color");
+        color: map-get($map, "color");
     }
-
-    // .bg-#{$color} {
-    //     background-color: $value;
-    // }
+    .bg-#{$color} {
+        background-color: map-get($map, "background-color");
+    }
+    .text-#{$color} {
+        color: map-get($map, "color");
+    }
 }
 
 // Eigentlich eine eigene Kompenenten-SCSS:
@@ -103,5 +214,3 @@ main figure {
     height: 3rem;
     border: 1px solid var(--color-black);
 }
-
-
