@@ -1,0 +1,30 @@
+/* Styling der Tooltip-Boxen */
+.semantic-tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 12px;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Blue dotted outline für semantische Tags */
+.blue-outline {
+  outline: 2px dotted blue;
+}
+
+/* Green dotted outline für aria- und role-Attribute */
+.green-outline {
+  outline: 2px dotted green;
+}
+
+/* Purple dotted outline für Tab-Indizes */
+.purple-outline {
+  outline: 2px dotted purple;
+}

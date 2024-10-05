@@ -1,0 +1,15 @@
+{
+    "name": "Font and Contrast Analyzer",
+    "version": "1.0",
+    "description": "Ermittelt verwendete Schriftarten, Mittelhöhe und Michelson-Kontraste auf Webseiten.",
+    "manifest_version": 3,
+    "permissions": ["activeTab", "scripting", "tabs"],
+    "devtools_page": "panel.html",
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"],
+            "css": ["style.css"]
+        }
+    ]
+}

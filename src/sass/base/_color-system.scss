@@ -13,9 +13,9 @@
 // Funktion, die basierend auf der Luminanz entscheidet, ob Weiß oder Schwarz als Textfarbe verwendet wird
 @function contrast-color($background-color) {
     @if (luminance($background-color) > 0.179) {
-        @return #000000; // Schwarz für helle Hintergründe
+        @return hsla(0, 0%, 0%, 0.85); // Schwarz für helle Hintergründe
     } @else {
-        @return #ffffff; // Weiß für dunkle Hintergründe
+        @return hsla(0, 0%, 100%, 0.85); // Weiß für dunkle Hintergründe
     }
 }
 
@@ -62,7 +62,7 @@
     --success-color: #{$success-color};
     --on-success-color: #{contrast-color($success-color)};
 
-    $info-color: hsla(240, 100%, 70%, 1);
+    $info-color: hsla(240, 100%, 40%, 1);
     --info-color: #{$info-color};
     --on-info-color: #{contrast-color($info-color)};
 
