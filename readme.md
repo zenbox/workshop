@@ -1,4 +1,4 @@
-# Willkommen zum SASS Workshop
+# Willkommen zum Bootstrap Workshop
 
 ## Michael Reichart
 

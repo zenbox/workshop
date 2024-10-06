@@ -1,6 +1,0 @@
-body > * {
-  border: 2px solid hsla(194, 100%, 66%, 0.5);
-}
-body > * > * {
-  border: 2px solid hsla(27, 96%, 54%, 0.5);
-}
