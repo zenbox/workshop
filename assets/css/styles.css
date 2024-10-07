@@ -1,0 +1,12 @@
+.dev-show {
+  outline: 3px dotted rgb(200, 0, 200);
+}
+.dev header,
+.dev nav,
+.dev main,
+.dev footer {
+  outline: 3px dotted rgb(0, 200, 200);
+}
+.dev * {
+  box-sizing: border-box;
+}
