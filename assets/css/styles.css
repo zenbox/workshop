@@ -1,12 +1,34 @@
+.my-grid-template {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows:
+        4rem
+        calc(100vh - 4rem);
+    grid-template-areas: "header header header header header header header header header header header header" "nav nav nav nav main main main main main main main main" ;
+    grid-gap: 0.5rem;
+}
+.my-grid-template-header {
+    grid-area: header;
+}
+.my-grid-template-nav {
+    grid-area: nav;
+}
+.my-grid-template-main {
+    grid-area: main;
+}
+.my-grid-template-footer {
+  
+}
+
 .dev-show {
-  outline: 3px dotted rgb(200, 0, 200);
+    outline: 3px dotted rgb(200, 0, 200);
 }
 .dev header,
 .dev nav,
 .dev main,
 .dev footer {
-  outline: 3px dotted rgb(0, 200, 200);
+    outline: 3px dotted rgb(0, 200, 200);
 }
 .dev * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }

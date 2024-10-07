@@ -1,0 +1,29 @@
+$prefix: "my";
+
+.#{$prefix} {
+    &-grid {
+        &-template {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 4rem minmax(calc(100vh - 4rem, auto)) 4rem;
+            grid-template-areas:
+                "header header header header header header header header header header header header"
+                "nav nav nav nav main main main main main main main main"
+                "footer footer footer footer footer footer footer footer footer footer footer footer";
+            grid-gap: 0.5rem;
+
+            &-header {
+                grid-area: header;
+            }
+            &-nav {
+                grid-area: nav;
+            }
+            &-main {
+                grid-area: main;
+            }
+            &-footer {
+                grid-area: footer;
+            }
+        }
+    }
+}
