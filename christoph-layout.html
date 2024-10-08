@@ -15,26 +15,14 @@
     </head>
     <body>
         <!-- NAVBAR -->
-        <nav
-            data-bs-theme="dark"
-            class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg bg-body-secondary">
             <div class="container-fluid">
+                <!-- LOGO -->
                 <a
-                    class="navbar-brand"
+                    class="navbar-brand bg-primary text-white px-3"
                     href="#"
                     >DB Bohrung</a
                 >
-                <!-- BARS BUTTON -->
-                <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
                 <!-- BREADCRUMB -->
                 <nav
@@ -55,30 +43,24 @@
                     </ol>
                 </nav>
 
-                <div
-                    class="collapse navbar-collapse"
-                    id="navbarSupportedContent">
-                    <!-- BREADCRUMB -->
-                    <!-- <nav
-                        class="d-block"
-                        aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#">Library</a>
-                            </li>
-                            <li
-                                class="breadcrumb-item active"
-                                aria-current="page">
-                                Data
-                            </li>
-                        </ol>
-                    </nav> -->
+                <!-- BARS BUTTON -->
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
+                <!-- NAVIGATION-->
+                <div
+                    class="collapse navbar-collapse flex-grow-0"
+                    id="navbarSupportedContent">
                     <!-- NAVIGATION-->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a
                                 class="nav-link active"
@@ -135,7 +117,8 @@
                                 >Disabled</a
                             >
                         </li>
-                    </ul>
+                    </ul> -->
+
                     <!-- SEARCH -->
                     <form
                         class="d-flex"
@@ -151,13 +134,31 @@
                             Search
                         </button>
                     </form>
+
+                    <!-- BUTTONS -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="#"
+                                >Lock</a
+                            >
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="#"
+                                >User</a
+                            >
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
 
-        <!-- ASIDE NAVIGATION -->
         <div class="container-fluid">
             <div class="row flex-nowrap">
+                <!-- ASIDE NAVIGATION -->
                 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
                     <div
                         role="navigation"
@@ -385,114 +386,575 @@
                         </div>
                     </div>
                 </div>
-                <!-- - - - -->
 
+                <!-- MAIN CONTENT -->
                 <main class="col py-3">
-                    <!-- BREADCRUMB -->
-                    <nav
-                        class="d-block"
-                        aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="#">Home</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a href="#">Library</a>
-                            </li>
-                            <li
-                                class="breadcrumb-item active"
-                                aria-current="page">
-                                Data
-                            </li>
-                        </ol>
-                    </nav>
+                    <!-- TABELLE UND FORMULAR-ELEMENTE -->
+                    <!-- <table class="table table-borderless">
+                        <form>
+                            <caption>
+                                Tabellen-Beschriftung, Beschreibung
+                            </caption>
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
+                        </thead>
 
-                    <!-- ARTIKEL -->
-                    <h3>Left Sidebar with Submenus</h3>
-                    <p class="lead">
-                        An example 2-level sidebar with collabsible menu items.
-                        The menu functions like an "accordion" where only a
-                        single menu is be open at a time. While the sidebar
-                        itself is not toggle-able, it does responsively shrink
-                        in width on smaller screens.
-                    </p>
-                    <ul class="list-unstyled">
-                        <li>
-                            <h5>Responsive</h5>
-                            shrinks in width, hides text labels and collapses to
-                            icons only on mobile.
+                            <tbody>
+                                <tr>
+                                    <th>
+                                        <label
+                                            for="bohrbeginn"
+                                            class="form-label"
+                                            >Bohrbeginn:</label
+                                        >
+                                    </th>
+                                    <td>
+                                        <input
+                                            class="form-control"
+                                            type="date"
+                                            name=""
+                                            id="bohrbeginn" />
+                                    </td>
+                                    <th>
+                                        <label
+                                            class="form-label"
+                                            for="bohrende"
+                                            >Bohrende:</label
+                                        >
+                                    </th>
+                                    <td>
+                                        <input
+                                            class="form-control"
+                                            type="date"
+                                            name=""
+                                            id="bohrende" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <label
+                                            for="geologische-unterlagen"
+                                            class="form-label"
+                                            >Geologische Unterlagen:</label
+                                        >
+                                    </th>
+                                    <td colspan="3">
+                                        <select
+                                            id="geologische-unterlagen"
+                                            class="form-control">
+                                            <option>
+                                                Unterlagen vorhanden; noch nicht
+                                                (vollständig) in DB übernommen
+                                            </option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <label
+                                            for="axiale-bohrlochlaenge"
+                                            class="form-label"
+                                            >axiale Bohrlochlänge:</label
+                                        >
+                                    </th>
+                                    <td colspan="3">
+                                        <input
+                                            type="text"
+                                            name=""
+                                            value="15,7"
+                                            class="form-control"
+                                            id="axiale-bohrlochlaenge" />m
+                                        <i
+                                            class="bi bi-question-square-fill"></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <style>.table th { white-space: preserve;}</style> 
+
+                             <tfoot>
+                            <tr>
+                                <td colspan="4">Fußzeile</td>
+                            </tr>
+                        </tfoot>
+                        </form>
+                    </table> -->
+                    <!-- TABS -->
+                    <ul
+                        class="nav nav-underline"
+                        id="myTab"
+                        role="tablist">
+                        <li
+                            class="nav-item"
+                            role="presentation">
+                            <button
+                                class="nav-link"
+                                id="home-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#home-tab-pane"
+                                type="button"
+                                role="tab"
+                                aria-controls="home-tab-pane"
+                                aria-selected="false">
+                                Erstellung
+                            </button>
                         </li>
-                        <li>
-                            <a href="https://www.codeply.com/p/WNpZbrwp4X"
-                                >Example from Codeply</a
-                            >
+                        <li
+                            class="nav-item"
+                            role="presentation">
+                            <button
+                                class="nav-link active"
+                                id="profile-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#profile-tab-pane"
+                                type="button"
+                                role="tab"
+                                aria-controls="profile-tab-pane"
+                                aria-selected="true">
+                                Fortführung
+                            </button>
+                        </li>
+                        <li
+                            class="nav-item"
+                            role="presentation">
+                            <button
+                                class="nav-link"
+                                id="contact-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#contact-tab-pane"
+                                type="button"
+                                role="tab"
+                                aria-controls="contact-tab-pane"
+                                aria-selected="false">
+                                Lage
+                            </button>
+                        </li>
+                        <li
+                            class="nav-item"
+                            role="presentation">
+                            <button
+                                class="nav-link"
+                                id="disabled-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#disabled-tab-pane"
+                                type="button"
+                                role="tab"
+                                aria-controls="disabled-tab-pane"
+                                aria-selected="false"
+                                disabled>
+                                Grubenbau
+                            </button>
                         </li>
                     </ul>
-                    <!-- PLACEHOLDER -->
                     <div
-                        class="card"
-                        aria-hidden="true">
-                        <img
-                            src="https://picsum.photos/id/62/200"
-                            class="card-img-top"
-                            alt="..." />
-                        <div class="card-body">
-                            <h5 class="card-title placeholder-glow">
-                                <span class="placeholder col-6"></span>
-                            </h5>
-                            <p class="card-text placeholder-glow">
-                                <span class="placeholder col-7"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-4"></span>
-                                <span class="placeholder col-6"></span>
-                                <span class="placeholder col-8"></span>
-                            </p>
-                            <a
-                                class="btn btn-primary disabled placeholder col-6"
-                                aria-disabled="true"></a>
+                        class="tab-content"
+                        id="myTabContent">
+                        <div
+                            class="tab-pane fade"
+                            id="home-tab-pane"
+                            role="tabpanel"
+                            aria-labelledby="home-tab"
+                            tabindex="0">
+                            <!-- TAB CONTENT 1-->
+                            <form class="mb-5">
+                                <fieldset>
+                                    <legend>
+                                        Angaben zur Erstellung der Bohrung
+                                    </legend>
+
+                                    <div class="row mb-1">
+                                        <div class="col-2">
+                                            <label
+                                                for="bohrbeginn"
+                                                class="form-label"
+                                                >Bohrbeginn:</label
+                                            >
+                                        </div>
+
+                                        <div class="col-4">
+                                            <input
+                                                class="form-control"
+                                                type="date"
+                                                name=""
+                                                id="bohrbeginn" />
+                                        </div>
+
+                                        <div class="col-2">
+                                            <label
+                                                class="form-label"
+                                                for="bohrende"
+                                                >Bohrende:</label
+                                            >
+                                        </div>
+
+                                        <div class="col-4">
+                                            <input
+                                                class="form-control"
+                                                type="date"
+                                                name=""
+                                                id="bohrende" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <div class="col-4">
+                                            <label
+                                                for="geologische-unterlagen"
+                                                class="form-label"
+                                                >Geologische Unterlagen:</label
+                                            >
+                                        </div>
+                                        <div class="col-8">
+                                            <select
+                                                id="geologische-unterlagen"
+                                                class="form-control">
+                                                <option>
+                                                    Unterlagen vorhanden; noch
+                                                    nicht (vollständig) in DB
+                                                    übernommen
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <!-- LABEL -->
+                                        <div class="col-4">
+                                            <label
+                                                for="axiale-bohrlochlaenge"
+                                                class="form-label"
+                                                >Axiale Bohrlochlänge:</label
+                                            >
+                                        </div>
+
+                                        <!-- INPUT GRUPPE -->
+                                        <div class="col-6">
+                                            <div class="input-group">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Recipient's username"
+                                                    aria-label="Recipient's username"
+                                                    aria-describedby="basic-addon3" />
+                                                <span
+                                                    class="input-group-text"
+                                                    id="basic-addon3"
+                                                    >m</span
+                                                >
+                                            </div>
+                                        </div>
+
+                                        <!-- FRAGEZEICHEN -->
+                                        <div class="col-2">
+                                            <i
+                                                class="bi bi-question-square-fill"></i>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                            <!-- - - - -->
+                        </div>
+                        <div
+                            class="tab-pane fade show active"
+                            id="profile-tab-pane"
+                            role="tabpanel"
+                            aria-labelledby="profile-tab"
+                            tabindex="0">
+                            <!-- TAB CONTENT 2-->
+                            <form>
+                                <div class="row mb-1">
+                                    <div class="col-2">
+                                        <label
+                                            for="profile-tab-erstellt"
+                                            class="form-label"
+                                            >Erstellt:</label
+                                        >
+                                    </div>
+                                    <div class="col-2">
+                                        <input
+                                            class="form-control"
+                                            type="date"
+                                            name=""
+                                            id="profile-tab-erstellt" />
+                                    </div>
+
+                                    <div class="col-2">
+                                        <label
+                                            for="profile-tab-stand"
+                                            class="form-label"
+                                            >Stand:</label
+                                        >
+                                    </div>
+                                    <div class="col-2">
+                                        <input
+                                            class="form-control"
+                                            type="date"
+                                            name=""
+                                            id="profile-tab-stand" />
+                                    </div>
+
+<!-- CHECKBOX -->
+ 
+<!-- CHECKBOX -->
+
+                                    <div class="col-2">
+                                        <label
+                                            for="profile-tab-datum"
+                                            class="form-label"
+                                            >Datum:</label
+                                        >
+                                    </div>
+                                    <div class="col-2">
+                                        <input
+                                            class="form-control"
+                                            type="date"
+                                            name=""
+                                            id="profile-tab-datum" />
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- - - - -->
+                        </div>
+                        <div
+                            class="tab-pane fade"
+                            id="contact-tab-pane"
+                            role="tabpanel"
+                            aria-labelledby="contact-tab"
+                            tabindex="0">
+                            <!-- TAB CONTENT 3-->
+                            3
+                            <!-- - - - -->
+                        </div>
+                        <div
+                            class="tab-pane fade"
+                            id="disabled-tab-pane"
+                            role="tabpanel"
+                            aria-labelledby="disabled-tab"
+                            tabindex="0">
+                            <!-- TAB CONTENT 4-->
+                            4
+                            <!-- - - - -->
                         </div>
                     </div>
+
+                    <!-- AKKORDION -->
+                    <div
+                        class="accordion"
+                        id="accordionPanelsStayOpenExample">
+                        <h2>Überschrift für das Akkordion</h2>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <!-- Zusammenhängende Attribute und Klassen: collapsed, aria-expanded=false, show (im body) -->
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseOne"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseOne">
+                                    Code für die Side-Bar als
+                                    <code>aside</code> Element
+
+                                    <!-- Eigenes Theme -->
+                                    <style>
+                                        .accordion-button code {
+                                            margin-inline: 0.25rem;
+                                            line-height: 1.5rem;
+                                        }
+                                    </style>
+                                </button>
+                            </h2>
+                            <div
+                                id="panelsStayOpen-collapseOne"
+                                class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <strong
+                                        >This is the first item's accordion
+                                        body.</strong
+                                    >
+                                    It is shown by default, until the collapse
+                                    plugin adds the appropriate classes that we
+                                    use to style each element. These classes
+                                    control the overall appearance, as well as
+                                    the showing and hiding via CSS transitions.
+                                    You can modify any of this with custom CSS
+                                    or overriding our default variables. It's
+                                    also worth noting that just about any HTML
+                                    can go within the
+                                    <code>.accordion-body</code>, though the
+                                    transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseTwo"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseTwo">
+                                    Accordion Item #2
+                                </button>
+                            </h2>
+                            <div
+                                id="panelsStayOpen-collapseTwo"
+                                class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <strong
+                                        >This is the second item's accordion
+                                        body.</strong
+                                    >
+                                    It is hidden by default, until the collapse
+                                    plugin adds the appropriate classes that we
+                                    use to style each element. These classes
+                                    control the overall appearance, as well as
+                                    the showing and hiding via CSS transitions.
+                                    You can modify any of this with custom CSS
+                                    or overriding our default variables. It's
+                                    also worth noting that just about any HTML
+                                    can go within the
+                                    <code>.accordion-body</code>, though the
+                                    transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button
+                                    class="accordion-button collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#panelsStayOpen-collapseThree"
+                                    aria-expanded="false"
+                                    aria-controls="panelsStayOpen-collapseThree">
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div
+                                id="panelsStayOpen-collapseThree"
+                                class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <strong
+                                        >This is the third item's accordion
+                                        body.</strong
+                                    >
+                                    It is hidden by default, until the collapse
+                                    plugin adds the appropriate classes that we
+                                    use to style each element. These classes
+                                    control the overall appearance, as well as
+                                    the showing and hiding via CSS transitions.
+                                    You can modify any of this with custom CSS
+                                    or overriding our default variables. It's
+                                    also worth noting that just about any HTML
+                                    can go within the
+                                    <code>.accordion-body</code>, though the
+                                    transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ARTIKEL -->
+                    <article>
+                        <h2 class="mt-5">Left Sidebar with Submenus</h2>
+                        <p class="lead">
+                            An example 2-level sidebar with collabsible menu
+                            items. The menu functions like an "accordion" where
+                            only a single menu is be open at a time. While the
+                            sidebar itself is not toggle-able, it does
+                            responsively shrink in width on smaller screens.
+                        </p>
+                        <ul class="list-unstyled">
+                            <li>
+                                <h5>Responsive</h5>
+                                shrinks in width, hides text labels and
+                                collapses to icons only on mobile.
+                            </li>
+                            <li>
+                                <a href="https://www.codeply.com/p/WNpZbrwp4X"
+                                    >Example from Codeply</a
+                                >
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- PLACEHOLDER -->
+                    <article>
+                        <div
+                            class="card"
+                            aria-hidden="true">
+                            <img
+                                src="https://picsum.photos/id/62/200"
+                                class="card-img-top"
+                                alt="..." />
+                            <div class="card-body">
+                                <h5 class="card-title placeholder-glow">
+                                    <span class="placeholder col-6"></span>
+                                </h5>
+                                <p class="card-text placeholder-glow">
+                                    <span class="placeholder col-7"></span>
+                                    <span class="placeholder col-4"></span>
+                                    <span class="placeholder col-4"></span>
+                                    <span class="placeholder col-6"></span>
+                                    <span class="placeholder col-8"></span>
+                                </p>
+                                <a
+                                    class="btn btn-primary disabled placeholder col-6"
+                                    aria-disabled="true"></a>
+                            </div>
+                        </div>
+                    </article>
                     <!-- -->
-                    <div
-                        class="alert alert-primary"
-                        role="alert">
-                        A simple primary alert—check it out!
-                    </div>
-                    <div
-                        class="alert alert-secondary"
-                        role="alert">
-                        A simple secondary alert—check it out!
-                    </div>
-                    <div
-                        class="alert alert-success"
-                        role="alert">
-                        A simple success alert—check it out!
-                    </div>
-                    <div
-                        class="alert alert-danger"
-                        role="alert">
-                        A simple danger alert—check it out!
-                    </div>
-                    <div
-                        class="alert alert-warning"
-                        role="alert">
-                        A simple warning alert—check it out!
-                    </div>
-                    <div
-                        class="alert alert-info"
-                        role="alert">
-                        A simple info alert—check it out!
-                    </div>
-                    <div
-                        class="alert alert-light"
-                        role="alert">
-                        A simple light alert—check it out!
-                    </div>
-                    <div
-                        class="alert alert-dark"
-                        role="alert">
-                        A simple dark alert—check it out!
-                    </div>
+
+                    <!-- STATUS MELDUNGEN -->
+                    <article>
+                        <div
+                            class="alert alert-primary"
+                            role="alert">
+                            A simple primary alert—check it out!
+                        </div>
+                        <div
+                            class="alert alert-secondary"
+                            role="alert">
+                            A simple secondary alert—check it out!
+                        </div>
+                        <div
+                            class="alert alert-success"
+                            role="alert">
+                            A simple success alert—check it out!
+                        </div>
+                        <div
+                            class="alert alert-danger"
+                            role="alert">
+                            A simple danger alert—check it out!
+                        </div>
+                        <div
+                            class="alert alert-warning"
+                            role="alert">
+                            A simple warning alert—check it out!
+                        </div>
+                        <div
+                            class="alert alert-info"
+                            role="alert">
+                            A simple info alert—check it out!
+                        </div>
+                        <div
+                            class="alert alert-light"
+                            role="alert">
+                            A simple light alert—check it out!
+                        </div>
+                        <div
+                            class="alert alert-dark"
+                            role="alert">
+                            A simple dark alert—check it out!
+                        </div>
+                    </article>
                     <!-- - - - -->
                     <button
                         type="button"
@@ -505,6 +967,7 @@
                 <!-- - - - -->
             </div>
         </div>
+
         <!-- - - - -->
 
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
