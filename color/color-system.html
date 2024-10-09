@@ -23,6 +23,7 @@
                 /* Schriftfarben */
                 --color-text-black: hsla(0, 0%, 0%, 1);
                 --color-text-white: hsla(0, 0%, 100%, 1);
+
                 --color-text-gray-light: hsla(0, 0%, 83%, 1);
                 --color-text-gray-medium: hsla(0, 0%, 50%, 1);
                 --color-text-gray-dark: hsla(0, 0%, 30%, 1);
@@ -150,6 +151,8 @@
 
                 for (let i = 0; i < styles.length; i++) {
                     const name = styles[i];
+                    console.log(name);
+                    
                     if (name.startsWith("--color")) {
                         // Nur Farbvariablen auswählen
                         variables[name] = styles.getPropertyValue(name).trim();
@@ -455,14 +458,17 @@
 
             // Farben anzeigen und CSS-Variablen generieren beim Laden der Seite
             document.addEventListener("DOMContentLoaded", () => {
+                     const variables = getCssVariables();
+        console.log(variables);
+
                 displayColors();
                 generateCssVariables();
-            });
 
-            // Event Listener zum Kopieren
-            document
-                .getElementById("copyButton")
-                .addEventListener("click", copyToClipboard);
+                // Event Listener zum Kopieren
+                document
+                    .getElementById("copyButton")
+                    .addEventListener("click", copyToClipboard);
+            });
         </script>
     </body>
 </html>

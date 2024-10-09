@@ -1,3 +1,45 @@
+/*
+.box {
+  color: to-rgb(red);
+}
+*/
+.bg-bge-blau-1-900 {
+  background-color: #091219;
+}
+
+.bg-bge-blau-1-800 {
+  background-color: #112431;
+}
+
+.bg-bge-blau-1-700 {
+  background-color: #1a374a;
+}
+
+.bg-bge-blau-1-600 {
+  background-color: #224962;
+}
+
+.bg-bge-blau-1-100 {
+  background-color: #d5dee5;
+}
+
+.bg-bge-blau-1-200 {
+  background-color: #aabdca;
+}
+
+.bg-bge-blau-1-300 {
+  background-color: #809db0;
+}
+
+.bg-bge-blau-1-400 {
+  background-color: #557c95;
+}
+
+/*
+.box {
+  @include border-top-radius(0.25rem);
+}
+*/
 .my-grid-template {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

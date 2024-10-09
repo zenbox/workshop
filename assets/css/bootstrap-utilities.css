@@ -3,9 +3,51 @@
  * Copyright 2011-2024 The Bootstrap Authors
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+/*
+.box {
+  color: to-rgb(red);
+}
+*/
+.bg-bge-blau-1-900 {
+  background-color: #091219;
+}
+
+.bg-bge-blau-1-800 {
+  background-color: #112431;
+}
+
+.bg-bge-blau-1-700 {
+  background-color: #1a374a;
+}
+
+.bg-bge-blau-1-600 {
+  background-color: #224962;
+}
+
+.bg-bge-blau-1-100 {
+  background-color: #d5dee5;
+}
+
+.bg-bge-blau-1-200 {
+  background-color: #aabdca;
+}
+
+.bg-bge-blau-1-300 {
+  background-color: #809db0;
+}
+
+.bg-bge-blau-1-400 {
+  background-color: #557c95;
+}
+
+/*
+.box {
+  @include border-top-radius(0.25rem);
+}
+*/
 :root,
 [data-bs-theme=light] {
-  --bs-blue: #0d6efd;
+  --bs-blue: hsl(216, 98%, 52%);
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
   --bs-pink: #d63384;
@@ -29,7 +71,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #0d6efd;
+  --bs-primary: hsl(216, 98%, 52%);
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-tertiary: #dee2e6;
@@ -40,7 +82,7 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 13, 110, 253;
+  --bs-primary-rgb: 13, 109, 253;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
   --bs-tertiary-rgb: 222, 226, 230;
@@ -102,11 +144,11 @@
   --bs-tertiary-bg: #f8f9fa;
   --bs-tertiary-bg-rgb: 248, 249, 250;
   --bs-heading-color: inherit;
-  --bs-link-color: #0d6efd;
-  --bs-link-color-rgb: 13, 110, 253;
+  --bs-link-color: hsl(216, 98%, 52%);
+  --bs-link-color-rgb: 13, 109, 253;
   --bs-link-decoration: underline;
-  --bs-link-hover-color: #0a58ca;
-  --bs-link-hover-color-rgb: 10, 88, 202;
+  --bs-link-hover-color: #0a57ca;
+  --bs-link-hover-color-rgb: 10, 87, 202;
   --bs-code-color: #d63384;
   --bs-highlight-color: #212529;
   --bs-highlight-bg: #fff3cd;
@@ -127,7 +169,7 @@
   --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
   --bs-focus-ring-width: 0.25rem;
   --bs-focus-ring-opacity: 0.25;
-  --bs-focus-ring-color: rgba(13, 110, 253, 0.25);
+  --bs-focus-ring-color: rgba(13, 109, 253, 0.25);
   --bs-form-valid-color: #198754;
   --bs-form-valid-border-color: #198754;
   --bs-form-invalid-color: #dc3545;
@@ -150,7 +192,7 @@
   --bs-tertiary-color-rgb: 222, 226, 230;
   --bs-tertiary-bg: #2b3035;
   --bs-tertiary-bg-rgb: 43, 48, 53;
-  --bs-primary-text-emphasis: #6ea8fe;
+  --bs-primary-text-emphasis: #6ea7fe;
   --bs-secondary-text-emphasis: #a7acb1;
   --bs-success-text-emphasis: #75b798;
   --bs-info-text-emphasis: #6edff6;
@@ -166,7 +208,7 @@
   --bs-danger-bg-subtle: #2c0b0e;
   --bs-light-bg-subtle: #343a40;
   --bs-dark-bg-subtle: #1a1d20;
-  --bs-primary-border-subtle: #084298;
+  --bs-primary-border-subtle: #084198;
   --bs-secondary-border-subtle: #41464b;
   --bs-success-border-subtle: #0f5132;
   --bs-info-border-subtle: #087990;
@@ -175,9 +217,9 @@
   --bs-light-border-subtle: #495057;
   --bs-dark-border-subtle: #343a40;
   --bs-heading-color: inherit;
-  --bs-link-color: #6ea8fe;
+  --bs-link-color: #6ea7fe;
   --bs-link-hover-color: #8bb9fe;
-  --bs-link-color-rgb: 110, 168, 254;
+  --bs-link-color-rgb: 110, 167, 254;
   --bs-link-hover-color-rgb: 139, 185, 254;
   --bs-code-color: #e685b5;
   --bs-highlight-color: #dee2e6;
@@ -256,8 +298,8 @@
   text-decoration-color: RGBA(var(--bs-primary-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
 .link-primary:hover, .link-primary:focus {
-  color: RGBA(10, 88, 202, var(--bs-link-opacity, 1)) !important;
-  text-decoration-color: RGBA(10, 88, 202, var(--bs-link-underline-opacity, 1)) !important;
+  color: RGBA(10, 87, 202, var(--bs-link-opacity, 1)) !important;
+  text-decoration-color: RGBA(10, 87, 202, var(--bs-link-underline-opacity, 1)) !important;
 }
 
 .link-secondary {

@@ -23,7 +23,11 @@
     border-radius: $fallback-border-radius;
   }
 }
-
+/*
+.box {
+  @include border-top-radius(0.25rem);
+}
+*/
 @mixin border-top-radius($radius: $border-radius) {
   @if $enable-rounded {
     border-top-left-radius: valid-radius($radius);

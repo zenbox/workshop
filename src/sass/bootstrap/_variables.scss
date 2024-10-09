@@ -38,7 +38,7 @@ $grays: (
 // fusv-enable
 
 // scss-docs-start color-variables
-$blue: #0d6efd !default;
+$blue: hsl(216, 98%, 52%) !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #d63384 !default;
@@ -72,6 +72,40 @@ $colors: (
     "bge-blau-2": $bge-blau-1,
 ) !default;
 // scss-docs-end colors-map
+
+// Generische Farbstaffelung einer eigenen Farbe
+// tint-color($blue, 80%) 80 -> 20
+// shade-color($blue, 20%) 20 -> 80
+// base-color: bg-bge-blau-1
+
+$bge-blau-1-darken-map: (
+    "900": 80%,
+    "800": 60%,
+    "700": 40%,
+    "600": 20%,
+);
+
+$bge-blau-1-lighten-map: (
+    "100": 80%,
+    "200": 60%,
+    "300": 40%,
+    "400": 20%,
+);
+
+// SASS Iteration über darken-map
+@each $key, $value in $bge-blau-1-darken-map {
+    .bg-bge-blau-1-#{$key} {
+        background-color: shade-color($bge-blau-1, $value);
+    }
+}
+
+// SASS Iteration über lighten-map
+@each $key, $value in $bge-blau-1-lighten-map {
+    .bg-bge-blau-1-#{$key} {
+        background-color: tint-color($bge-blau-1, $value);
+    }
+}
+// - - - - - - - - - -
 
 // The contrast ratio to reach against white, to determine if color changes from "light" to "dark". Acceptable values for WCAG 2.0 are 3, 4.5 and 7.
 // See https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast
