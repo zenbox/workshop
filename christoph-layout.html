@@ -8,10 +8,13 @@
         <title>Bootstrap</title>
         <link
             rel="stylesheet"
-            href="assets/lib/bootstrap-5.3.3/css/bootstrap.css" />
+            href="assets/css/bootstrap.css" />
         <link
             rel="stylesheet"
             href="assets/lib/bootstrap-5.3.3/css/bootstrap-icons.css" />
+        <link
+            rel="stylesheet"
+            href="assets/css/styles.css" />
     </head>
     <body>
         <!-- NAVBAR -->
@@ -389,6 +392,37 @@
 
                 <!-- MAIN CONTENT -->
                 <main class="col py-3">
+                    <article>
+                        <!-- FARBEN -->
+                        <h2>Farben</h2>
+                        <ul class="color-list">
+                            <li class="color-list-box bg-bge-blau-1"></li>
+                            <li class="color-list-box border-bge-blau-1"></li>
+
+                            <!-- - - - -->
+                            <li
+                                class="color-list-box bg-bge-blau-1-subtle"></li>
+                            <!-- - - - -->
+
+                            <li class="color-list-box bg-primary"></li>
+                            <li class="color-list-box bg-primary-subtle"></li>
+                            <li class="color-list-box bg-secondary"></li>
+                            <li class="color-list-box bg-secondary-subtle"></li>
+                            <li class="color-list-box bg-tertiary"></li>
+                            <li class="color-list-box bg-tertiary-subtle"></li>
+                            <li class="color-list-box bg-my-color"></li>
+
+                            <li class="color-list-box bg-danger"></li>
+                            <li class="color-list-box bg-danger-subtle"></li>
+                            <li class="color-list-box bg-success"></li>
+                            <li class="color-list-box bg-success-subtle"></li>
+                            <li class="color-list-box bg-warning"></li>
+                            <li class="color-list-box bg-warning-subtle"></li>
+                            <li class="color-list-box bg-info"></li>
+                            <li class="color-list-box bg-info-subtle"></li>
+                        </ul>
+                    </article>
+
                     <!-- TABELLE UND FORMULAR-ELEMENTE -->
                     <!-- <table class="table table-borderless">
                         <form>
@@ -665,55 +699,140 @@
                             aria-labelledby="profile-tab"
                             tabindex="0">
                             <!-- TAB CONTENT 2-->
-                            <form>
-                                <div class="row mb-1">
-                                    <div class="col-2">
-                                        <label
-                                            for="profile-tab-erstellt"
-                                            class="form-label"
-                                            >Erstellt:</label
-                                        >
-                                    </div>
-                                    <div class="col-2">
-                                        <input
-                                            class="form-control"
-                                            type="date"
-                                            name=""
-                                            id="profile-tab-erstellt" />
+                            <form class="mb-5">
+                                <div class="row">
+                                    <!-- ERSTELLT -->
+                                    <div
+                                        class="mb-1 d-flex justify-content-start flex-wrap">
+                                        <div class="flex-shrink-1 mb-1">
+                                            <label
+                                                for="profile-tab-erstellt"
+                                                class="form-label"
+                                                >Erstellt:</label
+                                            >
+                                        </div>
+                                        <div class="flex-shrink-1">
+                                            <input
+                                                class="form-control w-75 bg-warning-subtle"
+                                                type="date"
+                                                name=""
+                                                id="profile-tab-erstellt" />
+                                        </div>
+
+                                        <!-- STAND -->
+                                        <div class="flex-shrink-1">
+                                            <label
+                                                for="profile-tab-stand"
+                                                class="form-label"
+                                                >Stand:</label
+                                            >
+                                        </div>
+                                        <div class="flex-shrink-1">
+                                            <input
+                                                class="form-control w-75 bg-warning-subtle"
+                                                type="date"
+                                                name=""
+                                                id="profile-tab-stand" />
+                                        </div>
+                                        <div class="flex-shrink-1">
+                                            <input
+                                                class="form-control w-75 bg-danger"
+                                                type="text"
+                                                name=""
+                                                value="Niemeier"
+                                                id="profile-tab-name-1" />
+                                        </div>
+
+                                        <!-- NAME 1 -->
+
+                                        <!-- CHECKBOX VOLLSTÄNDIG-->
+                                        <div class="flex-shrink-1">
+                                            <div
+                                                class="form-check form-check-inline form-check-reverse">
+                                                <label
+                                                    class="form-check-label"
+                                                    for="inlineCheckbox1"
+                                                    >vollständig:</label
+                                                >
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    id="inlineCheckbox1"
+                                                    value="option1" />
+                                            </div>
+                                        </div>
+
+                                        <!-- CHECKBOX FREIGABE-->
+                                        <div class="flex-shrink-1">
+                                            <div
+                                                class="form-check form-check-inline form-check-reverse">
+                                                <label
+                                                    class="form-check-label"
+                                                    for="inlineCheckbox2"
+                                                    >Freigabe:</label
+                                                >
+                                                <input
+                                                    class="form-check-input"
+                                                    type="checkbox"
+                                                    id="inlineCheckbox2"
+                                                    value="option2" />
+                                            </div>
+                                        </div>
+
+                                        <!-- DATUM-->
+                                        <div class="flex-shrink-1">
+                                            <label
+                                                for="profile-tab-datum"
+                                                class="form-label"
+                                                >Datum:</label
+                                            >
+                                        </div>
+                                        <div class="flex-shrink-1">
+                                            <input
+                                                class="form-control w-75"
+                                                type="date"
+                                                name=""
+                                                id="profile-tab-datum" />
+                                        </div>
                                     </div>
 
-                                    <div class="col-2">
-                                        <label
-                                            for="profile-tab-stand"
-                                            class="form-label"
-                                            >Stand:</label
-                                        >
-                                    </div>
-                                    <div class="col-2">
-                                        <input
-                                            class="form-control"
-                                            type="date"
-                                            name=""
-                                            id="profile-tab-stand" />
+                                    <!-- NAME 2 -->
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="flex-shrink-1">
+                                                <input
+                                                    class="form-control w-75 bg-success"
+                                                    type="text"
+                                                    name=""
+                                                    value="StrauchD"
+                                                    id="profile-tab-name-2" />
+                                            </div>
+                                        </div>
                                     </div>
 
-<!-- CHECKBOX -->
- 
-<!-- CHECKBOX -->
-
-                                    <div class="col-2">
-                                        <label
-                                            for="profile-tab-datum"
-                                            class="form-label"
-                                            >Datum:</label
-                                        >
-                                    </div>
-                                    <div class="col-2">
-                                        <input
-                                            class="form-control"
-                                            type="date"
-                                            name=""
-                                            id="profile-tab-datum" />
+                                    <!-- TEXTEINGABE -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="flex-shrink-1">
+                                                <textarea
+                                                    class="form-control my-textarea bg-warning-subtle"
+                                                    id="profile-tab-text"
+                                                    rows="3">
+(Lorem ipsum dolor sit amet.) Lorem ipsum dolor sit, amet consectetur adipisicing elit; [alt] = 00yhh336dehdk; [neu] = jsd834hisfdih
+(Lorem ipsum dolor sit amet.) Lorem ipsum dolor sit, amet consectetur adipisicing elit; [alt] = 00yhh336dehdk; [neu] = jsd834hisfdih
+(Lorem ipsum dolor sit amet.) Lorem ipsum dolor sit, amet consectetur adipisicing elit; [alt] = 00yhh336dehdk; [neu] = jsd834hisfdih
+(Lorem ipsum dolor sit amet.) Lorem ipsum dolor sit, amet consectetur adipisicing elit; [alt] = 00yhh336dehdk; [neu] = jsd834hisfdih
+                                                </textarea>
+                                                <style>
+                                                    .my-textarea {
+                                                        max-width: 100%;
+                                                        min-height: 12rem;
+                                                        resize: vertical
+                                                            horizontal;
+                                                    }
+                                                </style>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

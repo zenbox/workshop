@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farb-Interface</title>
+  <style>
+    :root {
+      --color-1: hsla(0, 100%, 50%, 1);
+      --color-2: hsla(120, 100%, 50%, 1);
+      --color-3: hsla(240, 100%, 50%, 1);
+      --color-4: hsla(60, 100%, 50%, 1);
+      --text-color-black: hsla(0, 0%, 0%, 1);
+      --text-color-white: hsla(0, 0%, 100%, 1);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+
+    .color-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .color-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .color-box {
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #000;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .control-group label {
+      display: inline-block;
+      width: 50px;
+    }
+
+    .control-group input[type="range"] {
+      width: 150px;
+    }
+
+    .control-group input[type="text"] {
+      width: 150px;
+    }
+
+    .contrast-indicator {
+      display: inline-block;
+      margin-left: 10px;
+    }
+
+    .check-icon {
+      color: green;
+      font-size: 1em;
+    }
+
+    .output-container {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .output-container textarea {
+      width: 100%;
+      height: 200px;
+      font-family: monospace;
+      font-size: 0.9em;
+      padding: 10px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    .copy-button {
+      margin-top: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .copy-button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Farb-Interface</h1>
+  <div class="color-container" id="colorContainer">
+    <!-- Farbcontainer wird hier generiert -->
+  </div>
+
+  <div class="output-container">
+    <h2>CSS-Variablen</h2>
+    <textarea id="cssVariablesOutput" readonly></textarea>
+    <button class="copy-button" id="copyButton">Copy</button>
+  </div>
+
+  <script>
+    // Initiale Farben
+    const initialColors = [
+      { name: '--color-1', h: 0, s: 100, l: 50, a: 1 },
+      { name: '--color-2', h: 120, s: 100, l: 50, a: 1 },
+      { name: '--color-3', h: 240, s: 100, l: 50, a: 1 },
+      { name: '--color-4', h: 60, s: 100, l: 50, a: 1 }
+    ];
+
+    // Funktion zur Erstellung der Farb- und Schieberegleranzeige
+    function createInterface() {
+      const colorContainer = document.getElementById('colorContainer');
+
+      initialColors.forEach((color, index) => {
+        // Erstelle das Farbfeld
+        const colorItem = document.createElement('div');
+        colorItem.className = 'color-item';
+
+        const colorBox = document.createElement('div');
+        colorBox.className = 'color-box';
+        colorBox.id = `colorBox-${index}`;
+        colorBox.style.backgroundColor = `hsla(${color.h}, ${color.s}%, ${color.l}%, ${color.a})`;
+
+        const controls = document.createElement('div');
+        controls.className = 'controls';
+
+        // Textfeld für den Variablen-Namen
+        const nameInput = document.createElement('input');
+        nameInput.type = 'text';
+        nameInput.value = color.name;
+        nameInput.dataset.index = index;
+        nameInput.addEventListener('input', handleNameChange);
+
+        controls.appendChild(nameInput);
+
+        const colorInfo = document.createElement('p');
+        colorInfo.id = `colorInfo-${index}`;
+        colorInfo.textContent = `HSLA(${color.h}, ${color.s}%, ${color.l}%, ${color.a})`;
+
+        const contrastInfo = document.createElement('p');
+        contrastInfo.id = `contrastInfo-${index}`;
+
+        // Erstelle die Schieberegler
+        ['h', 's', 'l', 'a'].forEach((prop) => {
+          const controlGroup = document.createElement('div');
+          controlGroup.className = 'control-group';
+
+          const label = document.createElement('label');
+          label.textContent = `${prop.toUpperCase()}: `;
+
+          const input = document.createElement('input');
+          input.type = 'range';
+          input.min = prop === 'h' ? 0 : prop === 'a' ? 0 : 0;
+          input.max = prop === 'h' ? 360 : prop === 'a' ? 1 : 100;
+          input.step = prop === 'a' ? 0.01 : 1;
+          input.value = color[prop];
+          input.dataset.index = index;
+          input.dataset.prop = prop;
+
+          input.addEventListener('input', handleSliderChange);
+
+          controlGroup.appendChild(label);
+          controlGroup.appendChild(input);
+          controls.appendChild(controlGroup);
+        });
+
+        controls.appendChild(colorInfo);
+        controls.appendChild(contrastInfo);
+
+        colorItem.appendChild(colorBox);
+        colorItem.appendChild(controls);
+        colorContainer.appendChild(colorItem);
+      });
+
+      updateDisplay();
+    }
+
+    // Funktion zur Behandlung der Schieberegleränderungen
+    function handleSliderChange(event) {
+      const index = event.target.dataset.index;
+      const prop = event.target.dataset.prop;
+      const value = event.target.value;
+
+      initialColors[index][prop] = prop === 'a' ? parseFloat(value) : parseInt(value);
+      updateDisplay();
+    }
+
+    // Funktion zur Behandlung der Namensänderungen
+    function handleNameChange(event) {
+      const index = event.target.dataset.index;
+      initialColors[index].name = event.target.value;
+      updateDisplay();
+    }
+
+    // Funktion zur Umwandlung von HSLA in RGB
+    function hslaToRgb(h, s, l, a) {
+      s /= 100;
+      l /= 100;
+
+      const c = (1 - Math.abs(2 * l - 1)) * s;
+      const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+      const m = l - c / 2;
+
+      let r = 0, g = 0, b = 0;
+
+      if (h >= 0 && h < 60) {
+        r = c; g = x; b = 0;
+      } else if (h >= 60 && h < 120) {
+        r = x; g = c; b = 0;
+      } else if (h >= 120 && h < 180) {
+        r = 0; g = c; b = x;
+      } else if (h >= 180 && h < 240) {
+        r = 0; g = x; b = c;
+      } else if (h >= 240 && h < 300) {
+        r = x; g = 0; b = c;
+      } else if (h >= 300 && h < 360) {
+        r = c; g = 0; b = x;
+      }
+
+      r = Math.round((r + m) * 255);
+      g = Math.round((g + m) * 255);
+      b = Math.round((b + m) * 255);
+
+      return [r, g, b];
+    }
+
+    // Funktion zur Berechnung des Michelson-Kontrasts
+    function calculateMichelsonContrast(rgb1, rgb2) {
+      const lum1 = calculateLuminance(rgb1);
+      const lum2 = calculateLuminance(rgb2);
+      return (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
+    }
+
+    // Funktion zur Berechnung der relativen Luminanz
+    function calculateLuminance(rgb) {
+      const [r, g, b] = rgb.map(value => {
+        const sRGB = value / 255;
+        return sRGB <= 0.03928 ? sRGB / 12.92 : Math.pow((sRGB + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    }
+
+    // Funktion zur Aktualisierung der Farbanzeige und Kontrastberechnung
+    function updateDisplay() {
+      initialColors.forEach((color, index) => {
+        const [r, g, b] = hslaToRgb(color.h, color.s, color.l, color.a);
+        const rgbBlack = hslaToRgb(0, 0, 0, 1);
+        const rgbWhite = hslaToRgb(0, 0, 100, 1);
+
+        const contrastBlack = calculateMichelsonContrast([r, g, b], rgbBlack);
+        const contrastWhite = calculateMichelsonContrast([r, g, b], rgbWhite);
+
+        const colorBox = document.getElementById(`colorBox-${index}`);
+        const colorInfo = document.getElementById(`colorInfo-${index}`);
+        const contrastInfo = document.getElementById(`contrastInfo-${index}`);
+
+        colorBox.style.backgroundColor = `hsla(${color.h}, ${color.s}%, ${color.l}%, ${color.a})`;
+        colorInfo.textContent = `HSLA(${color.h}, ${color.s}%, ${color.l}%, ${color.a})`;
+
+        const chosenTextColor = contrastBlack >= 4.5 ? 'var(--text-color-black)' : 'var(--text-color-white)';
+
+        contrastInfo.innerHTML = `
+          Kontrast (Schwarz): ${contrastBlack.toFixed(2)} ${contrastBlack >= 4.5 ? '<span class="check-icon">✔️</span>' : ''}<br>
+          Kontrast (Weiß): ${contrastWhite.toFixed(2)} ${contrastWhite >= 4.5 ? '<span class="check-icon">✔️</span>' : ''}
+        `;
+
+        // Setze die CSS-Variablen für die "on-" Farbvariablen
+        initialColors[index].onColor = chosenTextColor;
+      });
+
+      generateCssVariables();
+    }
+
+    // Funktion, um CSS-Variablen für Farben und deren Abstufungen zu erstellen
+    function generateCssVariables() {
+      const cssVariables = initialColors.map(color => {
+        return `${color.name}: hsla(${color.h}, ${color.s}%, ${color.l}%, ${color.a});\n--on-${color.name.slice(2)}: ${color.onColor};`;
+      }).join('\n');
+
+      document.getElementById('cssVariablesOutput').value = cssVariables;
+    }
+
+    function copyToClipboard() {
+      const textarea = document.getElementById('cssVariablesOutput');
+      textarea.select();
+      document.execCommand('copy');
+      alert('CSS-Variablen kopiert!');
+    }
+
+    // Initiales Interface erstellen
+    document.addEventListener('DOMContentLoaded', createInterface);
+
+    // Event Listener zum Kopieren
+    document.getElementById('copyButton').addEventListener('click', copyToClipboard);
+  </script>
+</body>
+</html>

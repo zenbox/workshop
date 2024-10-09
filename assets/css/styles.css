@@ -1,34 +1,50 @@
 .my-grid-template {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows:
-        4rem
-        calc(100vh - 4rem);
-    grid-template-areas: "header header header header header header header header header header header header" "nav nav nav nav main main main main main main main main" ;
-    grid-gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 4rem auto 4rem;
+  grid-template-areas: "header header header header header header header header header header header header" "nav nav nav nav main main main main main main main main" "footer footer footer footer footer footer footer footer footer footer footer footer";
+  grid-gap: 0.5rem;
 }
 .my-grid-template-header {
-    grid-area: header;
+  grid-area: header;
 }
 .my-grid-template-nav {
-    grid-area: nav;
+  grid-area: nav;
 }
 .my-grid-template-main {
-    grid-area: main;
+  grid-area: main;
 }
 .my-grid-template-footer {
-  
+  grid-area: footer;
+}
+
+.color-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.color-list-box {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 0.35rem;
 }
 
 .dev-show {
-    outline: 3px dotted rgb(200, 0, 200);
+  outline: 3px dotted rgb(200, 0, 200);
 }
 .dev header,
 .dev nav,
 .dev main,
 .dev footer {
-    outline: 3px dotted rgb(0, 200, 200);
+  outline: 3px dotted rgb(0, 200, 200);
 }
 .dev * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }

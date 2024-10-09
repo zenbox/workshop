@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Farbanzeige</title>
+        <style>
+            :root {
+                /* Hauptfarben */
+                --color-coal-black: hsla(0, 0%, 17%, 1);
+                --color-ore-brown: hsla(25, 60%, 27%, 1);
+                --color-rock-gray: hsla(0, 0%, 66%, 1);
+                --color-mining-yellow: hsla(51, 100%, 50%, 1);
+
+                /* Semantische Farben */
+                --color-error-red: hsla(0, 78%, 58%, 1);
+                --color-success-green: hsla(160, 50%, 50%, 1);
+                --color-info-blue: hsla(200, 45%, 47%, 1);
+                --color-warning-orange: hsla(29, 87%, 63%, 1);
+
+                /* Schriftfarben */
+                --color-text-black: hsla(0, 0%, 0%, 1);
+                --color-text-white: hsla(0, 0%, 100%, 1);
+                --color-text-gray-light: hsla(0, 0%, 83%, 1);
+                --color-text-gray-medium: hsla(0, 0%, 50%, 1);
+                --color-text-gray-dark: hsla(0, 0%, 30%, 1);
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                padding: 20px;
+                background-color: #f0f0f0;
+            }
+
+            .color-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .color-box {
+                width: 100px;
+                height: 100px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 10px;
+                position: relative;
+            }
+
+            .color-item {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                width: 300px;
+            }
+
+            .color-variant {
+                display: flex;
+                align-items: center;
+                margin-top: 5px;
+            }
+
+            .color-variant-box {
+                width: 60px;
+                height: 60px;
+                margin-right: 10px;
+            }
+
+            .color-info,
+            .variant-info {
+                font-size: 0.8em;
+                line-height: 1.2;
+            }
+
+            .contrast-check {
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .contrast-indicator {
+                width: 10px;
+                height: 10px;
+                display: inline-block;
+            }
+
+            .check-icon {
+                color: green;
+                font-size: 1em;
+            }
+
+            .output-container {
+                margin-top: 20px;
+                position: relative;
+            }
+
+            .output-container textarea {
+                width: 100%;
+                height: 300px;
+                font-family: monospace;
+                font-size: 0.9em;
+                padding: 10px;
+                border: 1px solid #ccc;
+                resize: vertical;
+            }
+
+            .copy-button {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: #4caf50;
+                color: white;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 3px;
+            }
+
+            .copy-button:hover {
+                background: #45a049;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Farben anzeigen</h1>
+        <div
+            class="color-container"
+            id="colorContainer"></div>
+        <div class="output-container">
+            <h2>CSS-Variablen</h2>
+            <textarea
+                id="cssVariablesOutput"
+                readonly></textarea>
+            <button
+                class="copy-button"
+                id="copyButton">
+                Copy
+            </button>
+        </div>
+
+        <script>
+            // Funktion, um alle CSS-Variablen aus :root zu bekommen
+            function getCssVariables() {
+                const styles = getComputedStyle(document.documentElement);
+                const variables = {};
+
+                for (let i = 0; i < styles.length; i++) {
+                    const name = styles[i];
+                    if (name.startsWith("--color")) {
+                        // Nur Farbvariablen auswählen
+                        variables[name] = styles.getPropertyValue(name).trim();
+                    }
+                }
+
+                return variables;
+            }
+
+            // Funktion zur Umwandlung von HSLA in RGB
+            function hslaToRgb(hsla) {
+                const [h, s, l] = hsla
+                    .match(/hsla\((\d+),\s*(\d+)%,\s*(\d+)%/)
+                    .slice(1)
+                    .map(Number);
+                const saturation = s / 100;
+                const lightness = l / 100;
+
+                const c = (1 - Math.abs(2 * lightness - 1)) * saturation;
+                const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+                const m = lightness - c / 2;
+                let r = 0,
+                    g = 0,
+                    b = 0;
+
+                if (0 <= h && h < 60) {
+                    r = c;
+                    g = x;
+                    b = 0;
+                } else if (60 <= h && h < 120) {
+                    r = x;
+                    g = c;
+                    b = 0;
+                } else if (120 <= h && h < 180) {
+                    r = 0;
+                    g = c;
+                    b = x;
+                } else if (180 <= h && h < 240) {
+                    r = 0;
+                    g = x;
+                    b = c;
+                } else if (240 <= h && h < 300) {
+                    r = x;
+                    g = 0;
+                    b = c;
+                } else if (300 <= h && h < 360) {
+                    r = c;
+                    g = 0;
+                    b = x;
+                }
+
+                r = Math.round((r + m) * 255);
+                g = Math.round((g + m) * 255);
+                b = Math.round((b + m) * 255);
+
+                return [r, g, b];
+            }
+
+            // Funktion zur Anpassung der Helligkeit einer RGB-Farbe
+            function adjustBrightness([r, g, b], factor) {
+                const newR = Math.min(255, Math.max(0, r * factor));
+                const newG = Math.min(255, Math.max(0, g * factor));
+                const newB = Math.min(255, Math.max(0, b * factor));
+                return [Math.round(newR), Math.round(newG), Math.round(newB)];
+            }
+
+            // Funktion zur Berechnung der relativen Luminanz
+            function calculateLuminance(rgb) {
+                const [r, g, b] = rgb.map((value) => {
+                    const sRGB = value / 255;
+                    return sRGB <= 0.03928
+                        ? sRGB / 12.92
+                        : Math.pow((sRGB + 0.055) / 1.055, 2.4);
+                });
+                return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+            }
+
+            // Funktion zur Berechnung des Kontrastverhältnisses gemäß WCAG
+            function calculateContrast(rgb1, rgb2) {
+                const lum1 = calculateLuminance(rgb1);
+                const lum2 = calculateLuminance(rgb2);
+                return (
+                    (Math.max(lum1, lum2) + 0.05) /
+                    (Math.min(lum1, lum2) + 0.05)
+                );
+            }
+
+            // Funktion zur Berechnung des Kontrasts zu Schwarz und Weiß
+            function getContrasts(rgb) {
+                const black = hslaToRgb(
+                    getComputedStyle(document.documentElement)
+                        .getPropertyValue("--color-text-black")
+                        .trim()
+                );
+                const white = hslaToRgb(
+                    getComputedStyle(document.documentElement)
+                        .getPropertyValue("--color-text-white")
+                        .trim()
+                );
+
+                const contrastToBlack = calculateContrast(rgb, black);
+                const contrastToWhite = calculateContrast(rgb, white);
+
+                return { black: contrastToBlack, white: contrastToWhite };
+            }
+
+            // Funktion zur Bestimmung der geeigneten Textfarbe
+            function determineTextColor(rgb) {
+                const contrasts = getContrasts(rgb);
+                return contrasts.black >= 4.5
+                    ? "var(--color-text-black)"
+                    : "var(--color-text-white)";
+            }
+
+            // Funktion, um die Farben anzuzeigen
+            function displayColors() {
+                const colorContainer =
+                    document.getElementById("colorContainer");
+                const colors = getCssVariables();
+
+                for (const [name, value] of Object.entries(colors)) {
+                    const colorItem = document.createElement("div");
+                    colorItem.className = "color-item";
+
+                    const colorBox = document.createElement("div");
+                    colorBox.className = "color-box";
+                    colorBox.style.backgroundColor = value;
+
+                    const rgbValues = hslaToRgb(value);
+                    const rgbText = `RGB(${rgbValues[0]}, ${rgbValues[1]}, ${rgbValues[2]})`;
+
+                    const { black: contrastBlack, white: contrastWhite } =
+                        getContrasts(rgbValues);
+
+                    const colorName = document.createElement("p");
+                    colorName.textContent = name;
+
+                    const colorInfo = document.createElement("p");
+                    colorInfo.className = "color-info";
+                    colorInfo.innerHTML = `
+          HSLA: ${value} <br> ${rgbText} <br>
+          <div class="contrast-check">
+            <span class="contrast-indicator" style="background-color: var(--color-text-black);"></span>
+            Kontrast (Schwarz): ${contrastBlack.toFixed(2)} 
+            ${contrastBlack >= 4.5 ? '<span class="check-icon">✔️</span>' : ""}
+          </div>
+          <div class="contrast-check">
+            <span class="contrast-indicator" style="background-color: var(--color-text-white);"></span>
+            Kontrast (Weiß): ${contrastWhite.toFixed(2)} 
+            ${contrastWhite >= 4.5 ? '<span class="check-icon">✔️</span>' : ""}
+          </div>
+        `;
+
+                    // Hellere Variante
+                    const lightVariant = document.createElement("div");
+                    lightVariant.className = "color-variant";
+                    const lightVariantBox = document.createElement("div");
+                    lightVariantBox.className = "color-variant-box";
+                    const lightRgb = adjustBrightness(rgbValues, 1.3);
+                    lightVariantBox.style.backgroundColor = `rgb(${lightRgb[0]}, ${lightRgb[1]}, ${lightRgb[2]})`;
+
+                    const {
+                        black: lightContrastBlack,
+                        white: lightContrastWhite,
+                    } = getContrasts(lightRgb);
+                    const lightVariantText = document.createElement("p");
+                    lightVariantText.className = "variant-info";
+                    lightVariantText.innerHTML = `
+          RGB(${lightRgb[0]}, ${lightRgb[1]}, ${lightRgb[2]}) <br>
+          Kontrast (Schwarz): ${lightContrastBlack.toFixed(2)} ${
+                        lightContrastBlack >= 4.5
+                            ? '<span class="check-icon">✔️</span>'
+                            : ""
+                    } <br>
+          Kontrast (Weiß): ${lightContrastWhite.toFixed(2)} ${
+                        lightContrastWhite >= 4.5
+                            ? '<span class="check-icon">✔️</span>'
+                            : ""
+                    }
+        `;
+                    lightVariant.appendChild(lightVariantBox);
+                    lightVariant.appendChild(lightVariantText);
+
+                    // Dunklere Variante
+                    const darkVariant = document.createElement("div");
+                    darkVariant.className = "color-variant";
+                    const darkVariantBox = document.createElement("div");
+                    darkVariantBox.className = "color-variant-box";
+                    const darkRgb = adjustBrightness(rgbValues, 0.7);
+                    darkVariantBox.style.backgroundColor = `rgb(${darkRgb[0]}, ${darkRgb[1]}, ${darkRgb[2]})`;
+
+                    const {
+                        black: darkContrastBlack,
+                        white: darkContrastWhite,
+                    } = getContrasts(darkRgb);
+                    const darkVariantText = document.createElement("p");
+                    darkVariantText.className = "variant-info";
+                    darkVariantText.innerHTML = `
+          RGB(${darkRgb[0]}, ${darkRgb[1]}, ${darkRgb[2]}) <br>
+          Kontrast (Schwarz): ${darkContrastBlack.toFixed(2)} ${
+                        darkContrastBlack >= 4.5
+                            ? '<span class="check-icon">✔️</span>'
+                            : ""
+                    } <br>
+          Kontrast (Weiß): ${darkContrastWhite.toFixed(2)} ${
+                        darkContrastWhite >= 4.5
+                            ? '<span class="check-icon">✔️</span>'
+                            : ""
+                    }
+        `;
+                    darkVariant.appendChild(darkVariantBox);
+                    darkVariant.appendChild(darkVariantText);
+
+                    colorItem.appendChild(colorBox);
+                    colorItem.appendChild(colorName);
+                    colorItem.appendChild(colorInfo);
+                    colorItem.appendChild(lightVariant);
+                    colorItem.appendChild(darkVariant);
+                    colorContainer.appendChild(colorItem);
+                }
+            }
+
+            // Funktion zur Umwandlung von RGB zu HSLA
+            function rgbToHsla([r, g, b]) {
+                r /= 255;
+                g /= 255;
+                b /= 255;
+
+                const max = Math.max(r, g, b);
+                const min = Math.min(r, g, b);
+                let h,
+                    s,
+                    l = (max + min) / 2;
+
+                if (max === min) {
+                    h = s = 0; // Graustufen
+                } else {
+                    const d = max - min;
+                    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                    switch (max) {
+                        case r:
+                            h = (g - b) / d + (g < b ? 6 : 0);
+                            break;
+                        case g:
+                            h = (b - r) / d + 2;
+                            break;
+                        case b:
+                            h = (r - g) / d + 4;
+                            break;
+                    }
+                    h *= 60;
+                }
+
+                return `hsla(${Math.round(h)}, ${Math.round(
+                    s * 100
+                )}%, ${Math.round(l * 100)}%, 1)`;
+            }
+
+            // Funktion, um CSS-Variablen für Farben und deren Abstufungen zu erstellen
+            function generateCssVariables() {
+                const colors = getCssVariables();
+                let cssVariables = "";
+
+                for (const [name, value] of Object.entries(colors)) {
+                    const baseRgb = hslaToRgb(value);
+                    const lightRgb = adjustBrightness(baseRgb, 1.3);
+                    const darkRgb = adjustBrightness(baseRgb, 0.7);
+
+                    // Hauptfarbe und Textfarbe
+                    const textColor = determineTextColor(baseRgb);
+                    cssVariables += `--on-${name.slice(2)}: ${textColor};\n`;
+
+                    // Helle Variante und Textfarbe
+                    const lightColor = `rgb(${lightRgb[0]}, ${lightRgb[1]}, ${lightRgb[2]})`;
+                    const lightTextColor = determineTextColor(lightRgb);
+                    cssVariables += `--${name.slice(
+                        2
+                    )}-light: ${lightColor};\n`;
+                    cssVariables += `--on-${name.slice(
+                        2
+                    )}-light: ${lightTextColor};\n`;
+
+                    // Dunkle Variante und Textfarbe
+                    const darkColor = `rgb(${darkRgb[0]}, ${darkRgb[1]}, ${darkRgb[2]})`;
+                    const darkTextColor = determineTextColor(darkRgb);
+                    cssVariables += `--${name.slice(2)}-dark: ${darkColor};\n`;
+                    cssVariables += `--on-${name.slice(
+                        2
+                    )}-dark: ${darkTextColor};\n`;
+                }
+
+                document.getElementById("cssVariablesOutput").value =
+                    cssVariables;
+            }
+
+            function copyToClipboard() {
+                const textarea = document.getElementById("cssVariablesOutput");
+                textarea.select();
+                textarea.setSelectionRange(0, 99999); // Für mobile Geräte
+                document.execCommand("copy");
+                alert("CSS-Variablen kopiert!");
+            }
+
+            // Farben anzeigen und CSS-Variablen generieren beim Laden der Seite
+            document.addEventListener("DOMContentLoaded", () => {
+                displayColors();
+                generateCssVariables();
+            });
+
+            // Event Listener zum Kopieren
+            document
+                .getElementById("copyButton")
+                .addEventListener("click", copyToClipboard);
+        </script>
+    </body>
+</html>
