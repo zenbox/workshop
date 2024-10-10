@@ -5564,3 +5564,21 @@ html {
   font-size: 17.5px;
   line-height: 2.5;
 }
+
+h1,
+h2,
+h3 {
+  font-family: Barlow;
+  font-weight: 100;
+}
+
+h4,
+h5,
+h6 {
+  font-family: Barlow;
+  font-weight: 600;
+}
+
+body {
+  font-family: Barlow;
+}
