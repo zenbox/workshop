@@ -30,12 +30,12 @@
                 >
                 <!-- DARKMODE SWITCH MIT ICON -->
                 <button
-                    class="btn btn-outline-primary"
+                    class="btn btn-outline-secondary"
                     type="button"
                     id="dark-mode-switch">
                     <i
                         id="dark-mode-icon"
-                        class="bi bi-moon text-primary"></i>
+                        class="bi bi-moon text-secondary"></i>
                 </button>
 
                 <!-- BREADCRUMB -->
@@ -180,7 +180,7 @@
                         class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
                         <a
                             href="/"
-                            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                            class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-decoration-none">
                             <span class="fs-5 d-none d-sm-inline">Menu</span>
                         </a>
                         <ul
@@ -434,7 +434,7 @@
 
     <a href="#">Link</a> <br />
     <abbr title="Abbreviation">Abbr</abbr> <br />
-    
+
     <cite>Cite</cite> <br />
     <q>Quote</q> <br />
     <dfn>Definition</dfn> <br />
@@ -1400,55 +1400,20 @@
             }
 
             document.addEventListener("DOMContentLoaded", function () {
-                // Baue eine Funktion, die den Darkmode umschaltet
-                function switchDarkMode() {
-                    console.log("switched");
-                    // Hole das HTML-Element, das den Darkmode steuert
+              document.getElementById('dark-mode-switch').addEventListener('click', function() {
+            const htmlElement = document.documentElement;
+            const icon = document.getElementById('dark-mode-icon');
 
-                    // Wenn der Darkmode aktiv ist
-                    if (darkModeSwitch.checked) {
-                        // Schalte den Darkmode aus
-                        document.documentElement.setAttribute(
-                            "data-bs-theme",
-                            "light"
-                        );
-                        // Ändere das Icon zu einem Mond
-                        darkModeIcon.classList.remove("bi-moon-stars-fill");
-                        darkModeIcon.classList.add("bi-sun-fill");
-                    } else {
-                        // Schalte den Darkmode ein
-                        document.documentElement.setAttribute(
-                            "data-bs-theme",
-                            "dark"
-                        );
-                        // Ändere das Icon zu einem Sonne
-                        darkModeIcon.classList.remove("bi-sun-fill");
-                        darkModeIcon.classList.add("bi-moon-stars-fill");
-                    }
-                }
-
-                const darkModeSwitch =
-                    document.getElementById("dark-mode-switch");
-                // Hole das HTML-Element, das den Darkmode steuert
-                const darkModeIcon = document.getElementById("dark-mode-icon");
-
-                darkModeSwitch.addEventListener("click", () => {
-                    darkModeSwitch.setchecked = !darkModeSwitch.checked;
-                    if (darkModeSwitch.checked) {
-                        localStorage.setItem("dark-mode", "true");
-                    } else {
-                        localStorage.setItem("dark-mode", "false");
-                    }
-                    switchDarkMode();
-
-                    document.documentElement.setAttribute(
-                        "data-bs-theme",
-                        window.matchMedia("(prefers-color-scheme: dark)")
-                            .matches
-                            ? "dark"
-                            : "light"
-                    );
-                });
+            if (htmlElement.getAttribute('data-bs-theme') === 'dark') {
+                htmlElement.setAttribute('data-bs-theme', 'light');
+                icon.classList.remove('bi-sun');
+                icon.classList.add('bi-moon');
+            } else {
+                htmlElement.setAttribute('data-bs-theme', 'dark');
+                icon.classList.remove('bi-moon');
+                icon.classList.add('bi-sun');
+            }
+        });
             });
         </script>
     </body>
