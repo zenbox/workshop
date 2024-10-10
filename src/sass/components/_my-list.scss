@@ -1,11 +1,19 @@
 @import "bootstrap/scss/utilities/_flex.scss";
 
+@mixin reset-list() {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .my-list {
     &-default {
-        li {
-            @extend .d-flex;
-            @extend .gap-3;
-            @extend .mb-3;
-        }
+        @include reset-list();
+
+        // li {
+        //     @extend .d-flex;
+        //     @extend .gap-3;
+        //     @extend .mb-3;
+        // }
     }
 }
