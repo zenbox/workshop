@@ -392,7 +392,88 @@
 
                 <!-- MAIN CONTENT -->
                 <main class="col py-3">
-                    <article>
+                    <article class="mb-5">
+                        <!-- FARBEN -->
+                        <h2>Eingabe-Modalitäten</h2>
+                        <i class="bi bi-exclamation-circle-fill"></i>
+                        <i class="bi bi-x-circle-fill"></i>
+                        <i class="bi bi-question-circle-fill"></i>
+                        <i class="bi bi-dash-circle-fill"></i>
+                        <i class="bi bi-check-circle-fill"></i>
+                        <i class="bi bi-pencil-square-fill"></i>
+                        <i class="bi bi-unlock-fill"></i>
+                        <i class="bi bi-lock-fill"></i>
+                        <i class="bi bi-info-circle-fill"></i>
+
+                        <ul class="my-list-default">
+                            <li class="d-flex gap-3 mb-3">
+                                <label
+                                    for="profile-tab-erstellt"
+                                    class="form-label mt-2"
+                                    >Eingabe:</label
+                                >
+
+                                <div class="form-control-icon">
+                                    <i class="bi bi-pencil-fill"></i>
+                                    <input
+                                        class="form-control"
+                                        type="text"
+                                        name=""
+                                        value="Niemeier" />
+                                </div>
+
+                                <input
+                                    class="form-control w-25"
+                                    type="text"
+                                    name=""
+                                    value="Niemeier" />
+                            </li>
+                            <li class="d-flex gap-3 mb-3">
+                                <label
+                                    for="profile-tab-erstellt"
+                                    class="form-label mt-2"
+                                    >Disabled:
+                                </label>
+                                <input
+                                    class="form-control w-25"
+                                    disabled
+                                    type="text"
+                                    name=""
+                                    value="Niemeier" />
+                            </li>
+
+                            <li class="d-flex gap-3 mb-3">
+                                <label
+                                    for="profile-tab-erstellt"
+                                    class="form-label mt-2"
+                                    >Validiert:
+                                </label>
+                                <input
+                                    class="form-control w-25 is-valid text-success"
+                                    type="text"
+                                    name=""
+                                    value="Niemeier" />
+
+                                <input
+                                    class="form-control w-25 is-invalid text-danger"
+                                    type="text"
+                                    name=""
+                                    value="Niemeier" />
+
+                                <!-- bg-success-subtle text-success border-success -->
+                            </li>
+                            <li><p>Feld hat Wert, Eingabe ist abgeschlossen (ist fertig, kennzeichnet fertig)</p></li>
+                            <li><p>Feld hat Wert, Eingabe kann geändert werden (editieren)</p></li>
+                            <li><p>Feld hat Wert, Eingabe muss geändert werden! (Fehler?, Änderung!)</p></li>
+                            <li><p>Feld hat Wert, Eingabe ist gesperrt</p></li>
+                            <li><p>Feld ist leer, Eingabe fehlt noch (fehlt, Fehler)</p></li>
+                            <li><p>Feld ist leer, Eingabe ist optional</p></li>
+                            <li><p>Feld ist leer, Eingabe ist gesperrt</p></li>
+
+                        </ul>
+                    </article>
+
+                    <article class="mb-5">
                         <!-- FARBEN -->
                         <h2>Farben</h2>
                         <ul class="color-list mb-5">
@@ -425,7 +506,7 @@
                             <li class="color-list-box bg-success"></li>
                             <li class="color-list-box bg-success-subtle"></li>
                             <li class="color-list-box bg-warning"></li>
-                            <li class="color-list-box bg-warning-subtle"></li>
+                            <li class="color-list-box"></li>
                             <li class="color-list-box bg-info"></li>
                             <li class="color-list-box bg-info-subtle"></li>
                         </ul>
@@ -525,7 +606,7 @@
                         </tfoot>
                         </form>
                     </table> -->
-                    <article style="border: 2px solid black">
+                    <article>
                         <!-- TABS -->
                         <ul
                             class="nav nav-underline"
@@ -715,142 +796,124 @@
                                 aria-labelledby="profile-tab"
                                 tabindex="0">
                                 <!-- TAB CONTENT 2-->
-                                <form class="mb-5">
+                                <form class="mb-5 d-flex flex-column gap-2">
                                     <!-- ERSTE ZEILE -->
-                                    <div class="row">
+                                    <div class="d-flex gap-3">
                                         <!-- ERSTELLT -->
-                                        <div>
-                                            <label
-                                                for="profile-tab-erstellt"
-                                                class="form-label"
-                                                >Erstellt:</label
-                                            >
 
-                                            <input
-                                                class="form-control w-75 bg-warning-subtle"
-                                                type="date"
-                                                name=""
-                                                id="profile-tab-erstellt" />
-                                        </div>
+                                        <label
+                                            for="profile-tab-erstellt"
+                                            class="form-label mt-2"
+                                            >Erstellt:</label
+                                        >
+                                        <input
+                                            class="form-control w-25"
+                                            type="date"
+                                            name=""
+                                            id="profile-tab-erstellt" />
 
+                                        <!-- CHECKBOX VOLLSTÄNDIG-->
+
+                                        <label
+                                            class="form-check-label mt-2 ms-4"
+                                            for="inlineCheckbox1"
+                                            >vollständig:</label
+                                        >
+                                        <input
+                                            class="form-check-input mt-2"
+                                            type="checkbox"
+                                            id="inlineCheckbox1"
+                                            value="option1" />
+                                    </div>
+
+                                    <!-- ZWEITE ZEILE -->
+                                    <div class="d-flex gap-3">
                                         <!-- STAND -->
-                                        <div>
-                                            <label
-                                                for="profile-tab-stand"
-                                                class="form-label"
-                                                >Stand:</label
-                                            >
-                                            <input
-                                                class="form-control w-75 bg-warning-subtle"
-                                                type="date"
-                                                name=""
-                                                id="profile-tab-stand" />
-                                        </div>
 
-                                        <div>
-                                            <label
-                                                for="profile-tab-name-1"
-                                                class="form-label"
-                                                >Name 1:</label
-                                            ><input
-                                                class="form-control w-75 bg-danger"
-                                                type="text"
-                                                name=""
-                                                value="Niemeier"
-                                                id="profile-tab-name-1" />
-                                        </div>
+                                        <label
+                                            for="profile-tab-stand"
+                                            class="form-label mt-2"
+                                            >Stand:</label
+                                        >
+                                        <input
+                                            class="form-control w-25"
+                                            type="date"
+                                            name=""
+                                            id="profile-tab-stand" />
 
                                         <!-- NAME 1 -->
 
-                                        <!-- CHECKBOX VOLLSTÄNDIG-->
-                                        <div
-                                            class="form-check form-check-inline form-check-reverse">
-                                            <label
-                                                class="form-check-label"
-                                                for="inlineCheckbox1"
-                                                >vollständig:</label
-                                            >
-                                            <input
-                                                class="form-check-input"
-                                                type="checkbox"
-                                                id="inlineCheckbox1"
-                                                value="option1" />
-                                        </div>
+                                        <label
+                                            for="profile-tab-name-1"
+                                            class="form-label mt-2 ms-4"
+                                            >Name 1:</label
+                                        >
+                                        <input
+                                            class="form-control w-25"
+                                            type="text"
+                                            name=""
+                                            value="Niemeier"
+                                            id="profile-tab-name-1" />
+                                    </div>
 
+                                    <!-- DRITTE ZEILE -->
+                                    <div class="d-flex gap-3">
                                         <!-- CHECKBOX FREIGABE-->
-                                        <div
-                                            class="form-check form-check-inline form-check-reverse">
-                                            <label
-                                                class="form-check-label"
-                                                for="inlineCheckbox2"
-                                                >Freigabe:</label
-                                            >
-                                            <input
-                                                class="form-check-input"
-                                                type="checkbox"
-                                                id="inlineCheckbox2"
-                                                value="option2" />
-                                        </div>
+                                        <label
+                                            class="form-check-label mt-2"
+                                            for="inlineCheckbox2"
+                                            >Freigabe:</label
+                                        >
+
+                                        <input
+                                            class="form-check-input mt-2"
+                                            type="checkbox"
+                                            id="inlineCheckbox2"
+                                            value="option2" />
 
                                         <!-- DATUM-->
-                                        <div>
-                                            <label
-                                                for="profile-tab-datum"
-                                                class="form-label"
-                                                >Datum:</label
-                                            >
-
-                                            <input
-                                                class="form-control w-75"
-                                                type="date"
-                                                name=""
-                                                id="profile-tab-datum" />
-                                        </div>
+                                        <label
+                                            for="profile-tab-datum"
+                                            class="form-label mt-2 ms-4"
+                                            >Datum:</label
+                                        >
+                                        <input
+                                            class="form-control w-25"
+                                            type="date"
+                                            name=""
+                                            id="profile-tab-datum" />
 
                                         <!-- NAME 2 -->
-                                        <div class="row">
-                                            <div>
-                                                <label
-                                                    for="profile-tab-name-2"
-                                                    class="form-label"
-                                                    >Name 2:</label
-                                                >
-                                                <input
-                                                    class="form-control w-75 bg-success"
-                                                    type="text"
-                                                    name=""
-                                                    value="StrauchD"
-                                                    id="profile-tab-name-2" />
-                                            </div>
-                                        </div>
+                                        <label
+                                            for="profile-tab-name-2"
+                                            class="form-label mt-2 ms-4"
+                                            >Name 2:</label
+                                        >
+                                        <input
+                                            class="form-control w-25"
+                                            type="text"
+                                            name=""
+                                            value="StrauchD"
+                                            id="profile-tab-name-2" />
+                                    </div>
 
-                                        <!-- TEXTEINGABE -->
-                                        <div class="row">
-                                            <div>
-                                                <label
-                                                    for="profile-tab-text"
-                                                    class="form-label"
-                                                    >Text:</label
-                                                >
-                                                <textarea
-                                                    class="form-control my-textarea bg-warning-subtle"
-                                                    id="profile-tab-text"
-                                                    rows="3">
+                                    <!-- TEXTEINGABE (VIERTE ZEILE)-->
+                                    <div class="d-flex gap-3 flex-column">
+                                        <label
+                                            for="profile-tab-text"
+                                            class="form-label mt-2"
+                                            >Text:</label
+                                        >
+                                        <textarea
+                                            class="form-control my-textarea"
+                                            id="profile-tab-text"
+                                            rows="5">
 (Lorem ipsum dolor sit amet.) Lorem ipsum dolor sit, amet consectetur adipisicing elit; [alt] = 00yhh336dehdk; [neu] = jsd834hisfdih
 (Lorem ipsum dolor sit amet.) Lorem ipsum dolor sit, amet consectetur adipisicing elit; [alt] = 00yhh336dehdk; [neu] = jsd834hisfdih
 (Lorem ipsum dolor sit amet.) Lorem ipsum dolor sit, amet consectetur adipisicing elit; [alt] = 00yhh336dehdk; [neu] = jsd834hisfdih
 (Lorem ipsum dolor sit amet.) Lorem ipsum dolor sit, amet consectetur adipisicing elit; [alt] = 00yhh336dehdk; [neu] = jsd834hisfdih
-                                                </textarea>
-                                                <style>
-                                                    .my-textarea {
-                                                        max-width: 100%;
-                                                        min-height: 12rem;
-                                                        resize: vertical
-                                                            horizontal;
-                                                    }
-                                                </style>
-                                            </div>
-                                        </div>
+                                                </textarea
+                                        >
                                     </div>
                                 </form>
                                 <!-- - - - -->

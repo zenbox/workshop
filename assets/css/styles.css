@@ -78,6 +78,18 @@
   border-radius: 0.35rem;
 }
 
+.form-control-icon {
+  display: flex;
+  align-items: center;
+}
+.form-control-icon i {
+  position: absolute;
+  transform: translateX(0.5rem);
+}
+.form-control-icon input {
+  padding-inline-start: 2rem;
+}
+
 .dev-show {
   outline: 3px dotted rgb(200, 0, 200);
 }

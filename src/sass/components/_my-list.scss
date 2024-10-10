@@ -1,0 +1,11 @@
+@import "bootstrap/scss/utilities/_flex.scss";
+
+.my-list {
+    &-default {
+        li {
+            @extend .d-flex;
+            @extend .gap-3;
+            @extend .mb-3;
+        }
+    }
+}

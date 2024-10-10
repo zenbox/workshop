@@ -1,0 +1,28 @@
+// Formular Ergänzungen
+// 
+// @package Webapplication
+// @module 
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-10-10
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+
+
+.form {
+    &-control {
+        &-icon {
+            display: flex;
+            align-items: center;
+
+            i {
+                position: absolute;
+                transform: translateX(0.5rem);
+            }
+            input {
+                padding-inline-start: 2rem;
+            }
+        }
+    }
+}
