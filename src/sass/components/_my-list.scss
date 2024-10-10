@@ -1,4 +1,19 @@
-// @import "bootstrap/scss/utilities/_flex.scss";
+// * **************************
+// * LÄUFT !!!!!!!!!! :-)
+// * **************************
+
+@import "../bootstrap/functions";
+@import "../bootstrap/variables";
+@import "../bootstrap/variables-dark";
+@import "../bootstrap/maps";
+@import "../bootstrap/mixins";
+@import "../bootstrap/utilities";
+// Layout & components
+@import "../bootstrap/root";
+// Helpers
+@import "../bootstrap/helpers";
+// Utilities
+@import "../bootstrap/utilities/api";
 
 @mixin reset-list() {
     list-style: none;
@@ -9,15 +24,11 @@
 .my-list {
     &-default {
         @include reset-list();
-
         li {
-            margin-block-end: 3rem;
+            @extend .d-flex;
+            @extend .gap-3;
+            @extend .mb-3;
+            border: 1px dotted orange;
         }
-
-        // li {
-        //     @extend .d-flex;
-        //     @extend .gap-3;
-        //     @extend .mb-3;
-        // }
     }
 }
