@@ -394,7 +394,7 @@
                 <main class="col py-3">
                     <article class="mb-5">
                         <!-- FARBEN -->
-                        <h2>Eingabe-Modalitäten</h2>
+                        <h2>Icons</h2>
                         <i class="bi bi-exclamation-circle-fill"></i>
                         <i class="bi bi-x-circle-fill"></i>
                         <i class="bi bi-question-circle-fill"></i>
@@ -404,7 +404,10 @@
                         <i class="bi bi-unlock-fill"></i>
                         <i class="bi bi-lock-fill"></i>
                         <i class="bi bi-info-circle-fill"></i>
+                    </article>
 
+                    <article>
+                        <h2>Eingabe-Modalitäten</h2>
                         <ul class="my-list-default">
                             <li class="d-flex gap-3 mb-3">
                                 <label
@@ -428,6 +431,7 @@
                                     name=""
                                     value="Niemeier" />
                             </li>
+                            <!-- - - - -->
                             <li class="d-flex gap-3 mb-3">
                                 <label
                                     for="profile-tab-erstellt"
@@ -441,7 +445,7 @@
                                     name=""
                                     value="Niemeier" />
                             </li>
-
+                            <!-- - - - -->
                             <li class="d-flex gap-3 mb-3">
                                 <label
                                     for="profile-tab-erstellt"
@@ -459,96 +463,136 @@
                                     type="text"
                                     name=""
                                     value="Niemeier" />
-
-                                <!-- bg-success-subtle text-success border-success -->
                             </li>
-                            <li><p>Feld hat Wert, Eingabe ist abgeschlossen (ist fertig, kennzeichnet fertig)</p>
-                             <div class="form-control-icon">
+                            <!-- - - - -->
+                            <li>
+                                <p>
+                                    Feld hat Wert, Eingabe ist abgeschlossen
+                                    (ist fertig, kennzeichnet fertig)
+                                </p>
+                                <div class="form-control-icon">
                                     <i class="bi bi-check-circle-fill"></i>
                                     <input
                                         class="form-control"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
-                                </div></li>
-                            <li><p>Feld hat Wert, Eingabe kann geändert werden (editieren)</p>
-                             <div class="form-control-icon">
+                                </div>
+                            </li>
+                            <!-- - - - -->
+                            <li>
+                                <p>
+                                    Feld hat Wert, Eingabe kann geändert werden
+                                    (editieren)
+                                </p>
+                                <div class="form-control-icon">
                                     <i class="bi bi-pencil-square"></i>
                                     <input
                                         class="form-control"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
-                                </div></li>
-                            <li><p>Feld hat Wert, Eingabe muss geändert werden! (Fehler)
-                                 <div class="form-control-icon">
+                                </div>
+                            </li>
+                            <!-- - - - -->
+                            <li>
+                                <p>
+                                    Feld hat Wert, Eingabe muss geändert werden!
+                                    (Fehler)
+                                </p>
+                                <div
+                                    class="form-control-icon text-danger border-danger">
                                     <i class="bi bi-x-circle-fill"></i>
                                     <input
-                                        class="form-control"
+                                        class="form-control text-danger border-danger"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
                                 </div>
-                            </p></li>
-                             <li><p>Feld hat Wert, Eingabe muss geändert werden! (Änderung!)
-                                 <div class="form-control-icon">
-                                    <i class="bi bi-exclamation-circle-fill"></i>
+                            </li>
+                            <!-- - - - -->
+                            <li>
+                                <p>
+                                    Feld hat Wert, Eingabe muss geändert werden!
+                                    (Änderung!)
+                                </p>
+                                <div
+                                    class="form-control-icon text-warning border-warning">
+                                    <i
+                                        class="bi bi-exclamation-circle-fill"></i>
                                     <input
-                                        class="form-control"
+                                        class="form-control text-warning border-warning"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
                                 </div>
-                            </p></li>
-                            <li><p>Feld hat Wert, Eingabe ist gesperrt</p>
-                             <div class="form-control-icon">
+                            </li>
+                            <!-- - - - -->
+                            <li>
+                                <p>Feld hat Wert, Eingabe ist gesperrt</p>
+                                <div class="form-control-icon text-secondary">
                                     <i class="bi bi-lock-fill"></i>
                                     <input
-                                        class="form-control"
+                                        disabled
+                                        class="form-control text-secondary"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
-                                </div></li>
-                          
-                                <li><p>Feld ist leer, Eingabe fehlt noch (fehlt)</p>
-                              <div class="form-control-icon">
-                                    <i class="bi bi-exclamation-circle-fill"></i>
+                                </div>
+                            </li>
+                            <!-- - - - -->
+                            <li>
+                                <p>Feld ist leer, Eingabe fehlt noch (fehlt)</p>
+                                <div
+                                    class="form-control-icon text-danger border-danger">
+                                    <i
+                                        class="bi bi-exclamation-circle-fill"></i>
                                     <input
-                                        class="form-control"
+                                        class="form-control text-danger border-danger"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
-                                </div></li>
-
-                                                                <li><p>Feld ist leer, Eingabe fehlt noch (Fehler)</p>
-                              <div class="form-control-icon">
+                                </div>
+                            </li>
+                            <!-- - - - -->
+                            <li>
+                                <p>
+                                    Feld ist leer, Eingabe fehlt noch (Fehler)
+                                </p>
+                                <div
+                                    class="form-control-icon text-danger border-danger">
                                     <i class="bi bi-x-circle-fill"></i>
                                     <input
-                                        class="form-control"
+                                        class="form-control text-danger border-danger bg-danger-subtle"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
-                                </div></li>
-
-                            <li><p>Feld ist leer, Eingabe ist optional</p>
-                             <div class="form-control-icon">
+                                </div>
+                            </li>
+                            <!-- - - - -->
+                            <li>
+                                <p>Feld ist leer, Eingabe ist optional</p>
+                                <div class="form-control-icon">
                                     <i class="bi bi-pencil-square"></i>
                                     <input
                                         class="form-control"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
-                                </div></li>
-                            <li><p>Feld ist leer, Eingabe ist gesperrt</p>
-                             <div class="form-control-icon">
+                                </div>
+                            </li>
+                            <!-- - - - -->
+                            <li>
+                                <p>Feld ist leer, Eingabe ist gesperrt</p>
+                                <div class="form-control-icon">
                                     <i class="bi bi-lock-fill"></i>
                                     <input
                                         class="form-control"
                                         type="text"
                                         name=""
                                         value="Niemeier" />
-                                </div></li>
-
+                                </div>
+                            </li>
                         </ul>
                     </article>
 

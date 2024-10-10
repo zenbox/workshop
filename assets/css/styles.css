@@ -90,6 +90,15 @@
   padding-inline-start: 2rem;
 }
 
+.my-list-default {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.my-list-default li {
+  margin-block-end: 3rem;
+}
+
 .dev-show {
   outline: 3px dotted rgb(200, 0, 200);
 }

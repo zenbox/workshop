@@ -1,4 +1,4 @@
-@import "bootstrap/scss/utilities/_flex.scss";
+// @import "bootstrap/scss/utilities/_flex.scss";
 
 @mixin reset-list() {
     list-style: none;
@@ -9,6 +9,10 @@
 .my-list {
     &-default {
         @include reset-list();
+
+        li {
+            margin-block-end: 3rem;
+        }
 
         // li {
         //     @extend .d-flex;
