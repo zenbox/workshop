@@ -78,6 +78,11 @@
   border-radius: 0.35rem;
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .color-list .color-list-box {
+    border-color: black;
+  }
+}
 .form-control-icon {
   display: flex;
   align-items: center;
@@ -215,7 +220,7 @@
   --mybody-font-family: var(--bs-font-sans-serif);
   --mybody-font-size: 1rem;
   --mybody-font-weight: 400;
-  --mybody-line-height: 1.5;
+  --mybody-line-height: 1.42;
   --mybody-color: #212529;
   --mybody-color-rgb: 33, 37, 41;
   --mybody-bg: #fff;
@@ -1950,7 +1955,7 @@
 }
 
 .lh-base {
-  line-height: 1.5 !important;
+  line-height: 1.42 !important;
 }
 
 .lh-lg {
@@ -5542,10 +5547,6 @@
   padding: 0;
   margin: 0;
 }
-.my-list-default li {
-  border: 1px dotted orange;
-}
-
 .dev-show {
   outline: 3px dotted rgb(200, 0, 200);
 }
@@ -5557,4 +5558,9 @@
 }
 .dev * {
   box-sizing: border-box;
+}
+
+html {
+  font-size: 17.5px;
+  line-height: 2.5;
 }

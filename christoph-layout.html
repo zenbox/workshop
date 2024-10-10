@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="de">
+<html
+    lang="de"
+    data-bs-theme="dark">
     <head>
         <meta charset="utf-8" />
         <meta
@@ -26,6 +28,15 @@
                     href="#"
                     >DB Bohrung</a
                 >
+                <!-- DARKMODE SWITCH MIT ICON -->
+                <button
+                    class="btn btn-outline-primary"
+                    type="button"
+                    id="dark-mode-switch">
+                    <i
+                        id="dark-mode-icon"
+                        class="bi bi-moon text-primary"></i>
+                </button>
 
                 <!-- BREADCRUMB -->
                 <nav
@@ -162,7 +173,8 @@
         <div class="container-fluid">
             <div class="row flex-nowrap">
                 <!-- ASIDE NAVIGATION -->
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div
+                    class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-body-secondary">
                     <div
                         role="navigation"
                         class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
@@ -392,6 +404,54 @@
 
                 <!-- MAIN CONTENT -->
                 <main class="col py-3">
+<article class="mb-5">
+<h2>Typografie</h2>
+
+<p>Normaler Text, Brotschrift, Mengentext, Copy</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat esse maxime ullam quas consectetur nostrum eveniet temporibus, repellendus quasi voluptas inventore ex. Iure enim cumque asperiores similique eveniet sunt, eos ratione molestiae quas natus nemo inventore voluptas delectus blanditiis? Quae mollitia, quasi eligendi dolore facilis harum consequuntur odit minima, similique vitae ipsa voluptas illo cupiditate eaque architecto nisi vero impedit commodi! Minus sequi hic dolores expedita cupiditate quo recusandae dicta distinctio ipsum ex quam, fugiat ut molestias praesentium error quidem dolorum neque necessitatibus odio illum voluptates tempora. Earum voluptatem ipsam harum nam! Minima error, impedit dolor, veniam hic sequi pariatur nisi totam, ipsam ratione dignissimos dolorum voluptatum laboriosam libero? </p>
+<p class="lead">Lead-Text, großer Text, Überschrift, Einleitung</p>
+<p><small>Konsultationstext, Fußnoten, Marginaltext</small></p>
+
+<h1>Überschriften 1</h1>
+<h2>Überschriften 2</h2>
+<h3>Überschriften 3</h3>
+<h4>Überschriften 4</h4>
+<h5>Überschriften 5</h5>
+<h6>Überschriften 6</h6>
+
+
+<p>
+    <strong>Strong</strong> <br />
+    <em>Italic</em> <br />
+    <small>Small</small> <br />
+
+    <mark>Marked</mark> <br />
+    <del>Deleted</del> <br />
+    <ins>Inserted</ins> <br />
+
+    <sub>Subscript</sub> <br />
+    <sup>Superscript</sup> <br />
+
+    <a href="#">Link</a> <br />
+    <abbr title="Abbreviation">Abbr</abbr> <br />
+    
+    <cite>Cite</cite> <br />
+    <q>Quote</q> <br />
+    <dfn>Definition</dfn> <br />
+    <code>Code</code> <br />
+    <samp>Sample</samp> <br />
+    <kbd>Keyboard</kbd> <br />
+    <var>Variable</var> <br />
+    <pre>Preformatted</pre> <br />
+    <address>Address</address> <br />
+    <time datetime="2022-01-01">Time</time> <br />
+    <blockquote>
+        Blockquote
+    </blockquote></p>
+</article >
+
+
+
                     <article class="mb-5">
                         <!-- FARBEN -->
                         <h2>Icons</h2>
@@ -1338,6 +1398,58 @@
                     toastBootstrap.show();
                 });
             }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                // Baue eine Funktion, die den Darkmode umschaltet
+                function switchDarkMode() {
+                    console.log("switched");
+                    // Hole das HTML-Element, das den Darkmode steuert
+
+                    // Wenn der Darkmode aktiv ist
+                    if (darkModeSwitch.checked) {
+                        // Schalte den Darkmode aus
+                        document.documentElement.setAttribute(
+                            "data-bs-theme",
+                            "light"
+                        );
+                        // Ändere das Icon zu einem Mond
+                        darkModeIcon.classList.remove("bi-moon-stars-fill");
+                        darkModeIcon.classList.add("bi-sun-fill");
+                    } else {
+                        // Schalte den Darkmode ein
+                        document.documentElement.setAttribute(
+                            "data-bs-theme",
+                            "dark"
+                        );
+                        // Ändere das Icon zu einem Sonne
+                        darkModeIcon.classList.remove("bi-sun-fill");
+                        darkModeIcon.classList.add("bi-moon-stars-fill");
+                    }
+                }
+
+                const darkModeSwitch =
+                    document.getElementById("dark-mode-switch");
+                // Hole das HTML-Element, das den Darkmode steuert
+                const darkModeIcon = document.getElementById("dark-mode-icon");
+
+                darkModeSwitch.addEventListener("click", () => {
+                    darkModeSwitch.setchecked = !darkModeSwitch.checked;
+                    if (darkModeSwitch.checked) {
+                        localStorage.setItem("dark-mode", "true");
+                    } else {
+                        localStorage.setItem("dark-mode", "false");
+                    }
+                    switchDarkMode();
+
+                    document.documentElement.setAttribute(
+                        "data-bs-theme",
+                        window.matchMedia("(prefers-color-scheme: dark)")
+                            .matches
+                            ? "dark"
+                            : "light"
+                    );
+                });
+            });
         </script>
     </body>
 </html>

@@ -10,9 +10,20 @@
     footer {
         outline: 3px dotted rgb(0, 200, 200);
     }
-    
+
     * {
         box-sizing: border-box;
     }
     // - - -
 }
+
+html {
+    font-size: 17.5px;
+    line-height: 2.5;
+}
+// 0.875 von 17.5 -> 15,3125
+
+// mark {
+//     background-color: red;
+//     color: white;
+// }

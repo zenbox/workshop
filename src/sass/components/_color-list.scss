@@ -31,3 +31,13 @@
         border-radius: $border-radius-lg;
     }
 }
+
+// Darkmode media query
+@media screen and (prefers-color-scheme: dark) {
+    .color-list {
+        // Base theme
+        .color-list-box {
+            border-color: black;
+        }
+    }
+}

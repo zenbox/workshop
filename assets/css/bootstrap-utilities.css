@@ -128,7 +128,7 @@
   --bs-body-font-family: var(--bs-font-sans-serif);
   --bs-body-font-size: 1rem;
   --bs-body-font-weight: 400;
-  --bs-body-line-height: 1.5;
+  --bs-body-line-height: 1.42;
   --bs-body-color: #212529;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg: #fff;
@@ -1863,7 +1863,7 @@
 }
 
 .lh-base {
-  line-height: 1.5 !important;
+  line-height: 1.42 !important;
 }
 
 .lh-lg {
