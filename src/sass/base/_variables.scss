@@ -1,0 +1,31 @@
+
+// Common variables
+$prefix: 'systeams';
+$spacer: 1rem;
+// ...
+
+// Colors
+// Corporate colors
+$primary-color: hsl(207, 100%, 21%); // Blau
+$secondary-color: hsl(180, 40%, 58%); // Türkis
+$tertiary-color: hsl(186, 53%, 89%); // Helles Türkis
+
+// Semantic colors
+$success-color: hsl(120, 100%, 25%); // Grün
+$info-color: hsl(207, 100%, 21%); // Blau
+$warning-color: hsl(42, 100%, 50%); // Gelb
+$danger-color: hsl(0, 100%, 50%); // Rot
+
+// Form Factor Color
+$dark: hsl(0, 0%, 0%); // Schwarz
+$gray: hsl(0, 0%, 20%); // Dunkelgrau
+$light: hsl(0, 0%, 100%); // Weiß
+
+// State colors
+$link-color: hsl(207, 100%, 21%); // Blau
+$visited-color: hsl(207, 100%, 21%); // Blau
+$hover-color: hsl(207, 100%, 21%); // Blau
+$active-color: hsl(120, 100%, 25%); // Grün
+
+$disabled-color: hsl(0, 0%, 70%); // Hellgrau
+$focus-color: hsl(207, 100%, 21%); // Blau
