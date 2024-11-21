@@ -20,6 +20,7 @@ $danger-color: hsl(0, 100%, 50%); // Rot
 $dark: hsl(0, 0%, 0%); // Schwarz
 $gray: hsl(0, 0%, 20%); // Dunkelgrau
 $light: hsl(0, 0%, 100%); // Weiß
+$shadow-color: rgba(0, 0, 0, 0.5); // Schattenfarbe
 
 // State colors
 $link-color: hsl(207, 100%, 21%); // Blau
@@ -29,3 +30,11 @@ $active-color: hsl(120, 100%, 25%); // Grün
 
 $disabled-color: hsl(0, 0%, 70%); // Hellgrau
 $focus-color: hsl(207, 100%, 21%); // Blau
+
+
+// Typography
+$font-family: 'Segoe UI', sans-serif;
+$font-size-base: 16px; // !!!!
+$line-height-base: 1.5;
+
+// ...
