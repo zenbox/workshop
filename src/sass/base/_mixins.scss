@@ -10,7 +10,7 @@
 @mixin box-shadow($level: 1) {
     $x: $level * 5px;
     $y: $x;
-    $blur: $level * 3px;
+    $blur: $level * 6px;
 
     box-shadow: $x $y $blur $shadow-color;
 }

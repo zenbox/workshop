@@ -1,0 +1,54 @@
+.#{$prefix} {
+    &-teaser {
+        // - - -
+        // base / reset
+
+        // LAYOUT / TEMPLATE
+        // display, position gutters ...
+        display: flex;
+        flex-direction: column;
+
+        &-row {
+            flex-direction: row;
+        }
+        &-column {
+            flex-direction: column;
+        }
+
+        // mobile variants
+        @media screen and (max-width: 768px) {
+            display: flex;
+            flex-direction: row;
+        }
+
+        // layout variants
+        &-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-gap: 1rem;
+        }
+
+        // behaviour
+        // interaction, animation, transition ...
+        &,
+        & * {
+            transition-property: all;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-in-out;
+            transition-delay: 0s;
+        }
+        // states
+        &:hover {
+            transform: translate(-$spacer/2, -$spacer/2);
+            @include box-shadow(3);
+        }
+
+        // themes
+        // border, shadow, color ...
+        @media screen and (prefers-color-scheme: dark) {
+            // dark mode
+        }
+
+        // - - -
+    }
+}
