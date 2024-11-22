@@ -1,3 +1,16 @@
+body {
+  margin: 1rem;
+}
+
+section {
+  outline: 1px dotted rgba(241, 65, 65, 0.4666666667);
+}
+
+header, main, footer {
+  outline: 3px dotted rgba(1, 105, 131, 0.8078431373);
+  background: rgba(1, 186, 232, 0.2509803922);
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -322,4 +335,38 @@ body {
   padding: 0;
   background: hsl(0, 0%, 100%);
   color: hsl(0, 0%, 0%);
+}
+
+.systeam-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+.systeam-nav a {
+  text-decoration: none;
+}
+.systeam-nav-stacked {
+  flex-direction: column;
+}
+.systeam-nav a:link {
+  color: hsl(207, 100%, 21%);
+}
+.systeam-nav a:visited {
+  color: hsl(273, 94%, 27%);
+}
+.systeam-nav a:hover {
+  color: hsl(27, 100%, 42%);
+}
+.systeam-nav a:active {
+  color: hsl(357, 94%, 41%);
+}
+.customer-1 {
+  font-family: "Noto Serif", serif;
+}
+.customer-1 a {
+  background-color: magenta;
+  font-weight: 700;
 }

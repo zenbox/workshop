@@ -1,0 +1,53 @@
+// irgendwas
+//
+// @package Webapplication
+// @module Navigation
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-11-21
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+
+.#{$prefix} {
+    // ROOT CLASS
+    &-nav {
+        // - - - - - - - - - -
+        // RESET / BASE
+        @include reset-list();
+
+        a {
+            text-decoration: none;
+        }
+
+        // LAYOUT
+        display: flex;
+        flex-direction: row;
+        gap: $spacer;
+
+        &-stacked {
+            flex-direction: column;
+        }
+
+        // STATES
+        a:link {
+            color: $link-color;
+        }
+        a:visited {
+            color: $visited-color;
+        }
+        a:hover {
+            color: $hover-color;
+        }
+        a:active {
+            color: $active-color;
+        }
+
+        // THEMES / SUBCOMPONENTS
+        &-tabs {
+        }
+        &-pills {
+        }
+        // - - - - - - - - - -
+    }
+}

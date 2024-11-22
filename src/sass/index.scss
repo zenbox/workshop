@@ -1,4 +1,10 @@
 @import "./base/variables";
 @import "./base/mixins";
 
+@import "./themes/development";
+
 @import "./base/index";
+
+@import "./components/index";
+
+@import "./themes/customer-1";
