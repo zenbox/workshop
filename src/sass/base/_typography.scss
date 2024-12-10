@@ -1,0 +1,177 @@
+// Typography
+//
+// @package Webapplication
+// @module Design System
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-12-10
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sixtyfour+Convergence&display=swap');
+
+
+// Typography
+$font-family: Barlow, sans-serif;
+$font-size: 16px;
+$line-height: 1.5;
+
+html {
+    font-family: $font-family;
+    font-size: $font-size;
+    line-height: $line-height;
+}
+
+body {
+}
+
+// Schriftgrößen als Map
+$font-sizes: (
+    h1: 2.5rem,
+    h2: 2rem,
+    h3: 1.75rem,
+    h4: 1.5rem,
+    h5: 1.25rem,
+    h6: 1rem,
+    p: 1rem,
+    small: 0.875rem,
+    big: 1.25rem
+);
+
+// Schriftgrößen
+@each $key, $value in $font-sizes {
+    #{$key} {
+        font-size: $value;
+    }
+}
+
+// Fettung ändern?
+$font-weights: (
+    h1: 100,
+    h2: 200,
+    h3: 300,
+    h4: 700,
+    h5: 700,
+    h6: 700,
+    p: 400,
+    small: 400,
+    big: 400
+);
+
+// Schriftgewichte
+@each $key, $value in $font-weights {
+    #{$key} {
+        font-weight: $value;
+    }
+}
+
+
+
+// Tailwind-like font classes
+.barlow-thin {
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.barlow-extralight {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.barlow-light {
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.barlow-regular {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.barlow-medium {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.barlow-semibold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.barlow-bold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.barlow-extrabold {
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.barlow-black {
+  font-family: "Barlow", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+.barlow-thin-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.barlow-extralight-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.barlow-light-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.barlow-regular-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.barlow-medium-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.barlow-semibold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.barlow-bold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.barlow-extrabold-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.barlow-black-italic {
+  font-family: "Barlow", sans-serif;
+  font-weight: 900;
+  font-style: italic;
+}
