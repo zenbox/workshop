@@ -1,0 +1,47 @@
+// Template 1
+//
+// @package Webapplication
+// @module Design System
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-12-09
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+
+.#{$prefix} {
+    &-template-1 {
+        // Layout
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+        flex-wrap: wrap;
+
+        > header {
+            flex-basis: 100vw;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+        > nav {
+            flex-basis: 25vw;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        > main {
+            flex-basis: 75vw;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        > footer {
+            flex-basis: 100vw;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        // Themes / Skins
+        & > * {
+            border: 1px dotted red;
+        }
+    }
+}
