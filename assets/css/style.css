@@ -665,33 +665,39 @@ big {
   }
 }
 .bw-nav-hamburger {
-  border: 0;
-  background: transparent;
+  background: none;
+  border: none;
+  cursor: pointer;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
+  justify-content: space-between;
   height: 24px;
   width: 30px;
   padding: 0;
+  position: relative;
+  z-index: 101;
   cursor: pointer;
 }
 .bw-nav-hamburger > span {
-  width: 2rem;
+  background-color: rgb(0, 0, 0);
+  border-radius: 2px;
   height: 3px;
-  background: black;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
   transition-property: all;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
   transition-delay: 0s;
 }
 .bw-nav-hamburger-cross > span:first-child {
-  transform: rotate(45deg) translateY(10.5px);
+  transform: translateY(10.5px) rotate(45deg);
 }
 .bw-nav-hamburger-cross > span:nth-child(2) {
-  display: none;
+  opacity: 0;
+  transform: translateX(-10px);
 }
 .bw-nav-hamburger-cross > span:last-child {
-  transform: rotate(-45deg) translateY(-10.5px);
+  transform: translateY(-10.5px) rotate(-45deg);
 }
 .bw-nav-active {
   display: block;

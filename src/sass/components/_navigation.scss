@@ -40,21 +40,26 @@
     // Subcomponents
     &-hamburger {
         // Base
-        border: 0;
-        background: transparent;
+        background: none;
+        border: none;
 
         // Layout
+        cursor: pointer;
         display: flex;
-        justify-content: space-between;
         flex-direction: column;
+        justify-content: space-between;
         height: 24px;
         width: 30px;
         padding: 0;
+        position: relative;
+        z-index: 101;
 
         > span {
-            width: 2rem;
+            background-color: $black;
+            border-radius: 2px;
             height: 3px;
-            background: black;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
 
             // States / behaviours
             @include transition(0.25s);
@@ -64,13 +69,14 @@
 
         &-cross {
             > span:first-child {
-                transform: rotate(45deg) translateY(10.5px);
+                transform: translateY(10.5px) rotate(45deg);
             }
             > span:nth-child(2) {
-                display: none;
+                opacity: 0;
+                transform: translateX(-10px);
             }
             > span:last-child {
-                transform: rotate(-45deg) translateY(-10.5px);
+                transform: translateY(-10.5px) rotate(-45deg);
             }
         }
         // Themes
