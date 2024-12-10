@@ -670,28 +670,33 @@ big {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 0.25rem;
+  height: 24px;
+  width: 30px;
+  padding: 0;
   cursor: pointer;
 }
 .bw-nav-hamburger > span {
   width: 2rem;
-  height: 0.25rem;
+  height: 3px;
   background: black;
+  transition-property: all;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
 }
 .bw-nav-hamburger-cross > span:first-child {
-  transform: rotate(45deg) translateY(0.5rem);
+  transform: rotate(45deg) translateY(10.5px);
 }
 .bw-nav-hamburger-cross > span:nth-child(2) {
   display: none;
 }
 .bw-nav-hamburger-cross > span:last-child {
-  transform: rotate(-45deg) translateY(-0.5rem);
+  transform: rotate(-45deg) translateY(-10.5px);
 }
 .bw-nav-active {
   display: block;
-  height: auto;
+  height: 6rem;
   padding: 0 !important;
-  overflow: visible;
 }
 .bw-nav a:link {
   text-decoration: none;

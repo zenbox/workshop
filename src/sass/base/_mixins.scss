@@ -1,19 +1,17 @@
-// Sass: scss/base/_index.scss
+// Mixins
 // 
 // @package Webapplication
 // @module Design System
 // @author Michael Reichart <michael.reichart@gfu.net>
-// @since 2024-12-09
+// @since 2024-12-10
 // @version 1.0.0
 // @see i.e. inspired by ... {link to}
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2024 Michael Reichart, Cologne
 
-@import "variables";
-@import "mixins";
-
-@import "normalize-8.0.1";
-@import "base";
-
-@import "typography";
-@import "color-system";
+@mixin transition ($t : 0.25s) {
+    transition-property: all;
+    transition-duration: $t;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+}

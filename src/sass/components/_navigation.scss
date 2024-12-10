@@ -47,41 +47,43 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        gap: 0.25rem;
+        height: 24px;
+        width: 30px;
+        padding: 0;
 
         > span {
             width: 2rem;
-            height: 0.25rem;
+            height: 3px;
             background: black;
+
+            // States / behaviours
+            @include transition(0.25s);
         }
 
         // States
+
         &-cross {
             > span:first-child {
-                transform: rotate(45deg) translateY(0.5rem);
+                transform: rotate(45deg) translateY(10.5px);
             }
             > span:nth-child(2) {
                 display: none;
             }
             > span:last-child {
-                transform: rotate(-45deg) translateY(-0.5rem);
+                transform: rotate(-45deg) translateY(-10.5px);
             }
         }
         // Themes
         cursor: pointer;
     }
 
-    // States / behaviours
-    transition-property: all;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-    transition-delay: 0s;
+    // States
+    @include transition(0.5s);
 
     &-active {
         display: block;
-        height: auto;
+        height: 6rem;
         padding: 0 !important;
-        overflow: visible;
     }
 
     a {
