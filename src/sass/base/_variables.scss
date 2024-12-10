@@ -9,6 +9,8 @@
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2024 Michael Reichart, Cologne
 
+@use "sass:map";
+
 // Prefix und defaults
 $prefix: "bw";
 $spacer: 1rem;
@@ -24,4 +26,18 @@ $p-2: $spacer;
 $p-3: $spacer * 1.5;
 $p-4: $spacer * 2;
 
-// Colors
+// Breakpoints
+$breakpoint-list: (
+    xs: 599px,
+    sm: 600px,
+    md: 905px,
+    lg: 1240px,
+    xl: 1440px
+);
+
+// Variablen aus der Map
+$breakpoint-xs: map-get($breakpoint-list, xs);
+$breakpoint-sm: map-get($breakpoint-list, sm);
+$breakpoint-md: map-get($breakpoint-list, md);
+$breakpoint-lg: map-get($breakpoint-list, lg);
+$breakpoint-xl: map-get($breakpoint-list, xl);

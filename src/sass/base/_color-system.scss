@@ -45,5 +45,6 @@ $bw-blue-shades: (
 @each $key, $value in $bw-blue-shades {
     .#{$prefix}-blue-#{$key} {
         background-color: $value;
+        color: $black;
     }
 }

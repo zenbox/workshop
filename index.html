@@ -10,8 +10,15 @@
             rel="stylesheet"
             href="assets/css/style.css" />
     </head>
-    <body class="bw-template-2">
-        <header>header</header>
+    <body class="bw-template-1">
+        <header>
+            <div>logo</div>
+            <button class="bw-nav-hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </header>
 
         <nav>
             <ul class="bw-nav bw-nav-column">
@@ -22,6 +29,25 @@
             </ul>
         </nav>
 
+        <script>
+            const hamburger = document.querySelector(".bw-nav-hamburger");
+            const navigation = document.querySelector("body > nav > ul");
+            let state = false;
+            document
+                .querySelector(".bw-nav-hamburger")
+                .addEventListener("click", () => {
+                    state = !state;
+
+                    if (state) {
+                        hamburger.classList.add("bw-nav-hamburger-cross");
+                        navigation.classList.add("bw-nav-active");
+                    } else {
+                        hamburger.classList.remove("bw-nav-hamburger-cross");
+                        navigation.classList.remove("bw-nav-active");
+                    }
+                });
+        </script>
+
         <main>
             <h1>Headline</h1>
             <p>
@@ -30,7 +56,8 @@
             </p>
 
             <article>
-                <h2>Headline 2</h2>
+                <h2>Color System BW Blue</h2>
+                <p class="bw-blue">BW Blue</p>
                 <p class="bw-blue-100">BW Blue 100</p>
                 <p class="bw-blue-200">BW Blue 200</p>
                 <p class="bw-blue-300">BW Blue 300</p>
