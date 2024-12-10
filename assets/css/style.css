@@ -639,6 +639,12 @@ big {
   grid-row: 3;
 }
 
+.bw-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .bw-nav {
   margin: 0;
   padding: 0;
@@ -677,6 +683,11 @@ big {
   position: relative;
   z-index: 101;
   cursor: pointer;
+}
+@media screen and (min-width: 600px) {
+  .bw-nav-hamburger {
+    display: none;
+  }
 }
 .bw-nav-hamburger > span {
   background-color: rgb(0, 0, 0);

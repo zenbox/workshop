@@ -9,3 +9,10 @@
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2024 Michael Reichart, Cologne
 
+.#{$prefix} {
+    &-header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
