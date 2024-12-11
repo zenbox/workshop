@@ -639,10 +639,22 @@ big {
   grid-row: 3;
 }
 
+.bw-article {
+  max-height: 100vh;
+  overflow: auto;
+  outline: 2px solid orange !important;
+}
+
 .bw-header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.bw-main section {
+  position: sticky;
+  top: 20px;
+  outline: 2px solid steelblue !important;
 }
 
 .bw-nav {
@@ -679,8 +691,8 @@ big {
   justify-content: space-between;
   height: 24px;
   width: 30px;
-  padding: 0;
   position: relative;
+  padding: 0;
   z-index: 101;
   cursor: pointer;
 }
@@ -727,4 +739,19 @@ big {
 }
 .bw-nav a:active {
   color: green;
+}
+
+.bw-table table {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 1rem auto 1rem;
+}
+.bw-table thead,
+.bw-table tbody,
+.bw-table tfoot {
+  outline: 2px solid purple !important;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  height: 20vh;
+  overflow: scroll;
 }

@@ -10,9 +10,12 @@
 // @copyright (c) 2024 Michael Reichart, Cologne
 
 .#{$prefix} {
+    // Base
+    // Layout
     &-header{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
+    // States
 }
