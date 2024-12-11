@@ -1,0 +1,51 @@
+@import "variables";
+
+@import "base";
+
+@import "content-header";
+
+@import "table-header";
+@import "table-body";
+@import "table-footer";
+
+/* Gemeinsame Spaltenbreiten */
+.header-table th:nth-child(1),
+.body-table td:nth-child(1) {
+    width: 15%;
+}
+
+.header-table th:nth-child(2),
+.body-table td:nth-child(2) {
+    width: 35%;
+}
+
+.header-table th:nth-child(3),
+.body-table td:nth-child(3),
+.header-table th:nth-child(4),
+.body-table td:nth-child(4) {
+    width: 25%;
+}
+
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .header-table th,
+    .body-table td {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .content-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .table-footer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,42 @@
+// Base-Styles für Tabellen
+//
+// @package Webapplication
+// @module Table
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2024-12-11
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2024 Michael Reichart, Cologne
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    color: $text-color;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0; /* Wichtig für Firefox */
+    border: 1px solid $border-color;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: $background-color;
+}
