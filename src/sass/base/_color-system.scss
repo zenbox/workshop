@@ -20,7 +20,7 @@ $bw-darkgold: rgb(159, 133, 66);
 
 // Semantic Colors
 $error: rgb(202, 2, 2);
-$success: rgb(17, 196, 17);
+$success: rgb(0, 129, 0);
 $info: $bw-blue;
 $warning: rgb(218, 176, 5);
 
@@ -47,4 +47,22 @@ $bw-blue-shades: (
         background-color: $value;
         color: $black;
     }
+}
+
+// Beispiel für die Verwendung:
+$element-background-color: #f7f7f7;
+
+.element {
+    background-color: $element-background-color;
+    color: contrast-color($element-background-color);
+}
+
+.element-2 {
+    background-color: $element-background-color;
+    color: contrast-text-color($element-background-color);
+}
+
+.success {
+    color: $success;
+    background-color: contrast-color($success);
 }

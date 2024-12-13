@@ -1,0 +1,156 @@
+:root {
+    --color-1: hsla(161, 90%, 32%, 0.95);
+    --color-2: hsla(0, 61%, 45%, 0.95);
+    --color-3: hsl(56, 91%, 40%);
+}
+html {
+    font-family: Barlow;
+    * {
+        font-weight: 300 !important;
+    }
+}
+body {
+    display: flex;
+    justify-content: center;
+
+    background: hsla(129, 6%, 25%, 0.5);
+    color: hsla(0, 0%, 100%, 0.85);
+}
+.card {
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 20rem;
+    min-height: 10rem;
+    margin-block-end: 2rem;
+
+    /* Themes */
+    border: 1px solid rgba(94, 94, 94, 0.64);
+    border-radius: 0.5rem;
+    background-color: white;
+    color: black;
+    box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+}
+
+.linear-gradient {
+    background: linear-gradient(45deg, var(--color-2), var(--color-1));
+}
+
+.multi-color-linear-gradient {
+    background: linear-gradient(
+        to right bottom,
+        var(--color-2),
+        var(--color-1),
+        var(--color-3),
+        var(--color-1),
+        var(--color-2),
+        var(--color-3)
+    );
+}
+
+.stripes {
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--color-2),
+        var(--color-2) 10px,
+        var(--color-1) 10px,
+        var(--color-1) 20px
+    );
+}
+
+.radial-gradient {
+    background: radial-gradient(
+        circle at left top,
+        var(--color-2) 0%,
+        var(--color-1) 100%
+    ),
+    radial-gradient(
+        circle at right bottom,
+        var(--color-2) 0%,
+        var(--color-3) 100%
+    );
+}
+
+.conic-gradient {
+    background: conic-gradient(
+        from 0deg,
+        var(--color-2),
+        var(--color-1),
+        var(--color-2)
+    );
+}
+
+.conic-gradient-2 {
+    background: conic-gradient(
+        var(--color-2) 40%,
+        var(--color-1) 0 70%,
+        var(--color-3) 0
+    );
+}
+.repeating-radial {
+    background: repeating-radial-gradient(
+        circle at center,
+        var(--color-2) 0px,
+        var(--color-2) 20px,
+        var(--color-1) 20px,
+        var(--color-1) 40px
+    );
+}
+
+.geometric {
+            background-color: var(--color-1);
+            background-image: 
+                linear-gradient(
+                 30deg, 
+                 var(--color-2) 12%,
+                 transparent 12.5%,
+                 transparent 87%,
+                 var(--color-2) 87.5%,
+                 var(--color-2)
+                ),
+                linear-gradient(
+                 150deg, 
+                 var(--color-2) 12%,
+                 transparent 12.5%,
+                 transparent 87%, 
+                 var(--color-2) 87.5%, 
+                 var(--color-2)
+                ),
+                linear-gradient(
+                 30deg, 
+                 var(--color-2) 12%,
+                 transparent 12.5%,
+                 transparent 87%,
+                 var(--color-2) 87.5%,
+                 var(--color-2)
+                ),
+                linear-gradient(
+                 150deg, 
+                 var(--color-2) 12%,
+                 transparent 12.5%,
+                 transparent 87%,
+                 var(--color-2) 87.5%,
+                 var(--color-2)
+                ),
+                linear-gradient(
+                 60deg, 
+                 var(--color-3) 25%,
+                 transparent 25.5%,
+                 transparent 75%,
+                 var(--color-3) 75%,
+                 var(--color-3)
+                ),
+                linear-gradient(
+                 60deg, 
+                 var(--color-3) 25%,
+                 transparent 25.5%,
+                 transparent 75%,
+                 var(--color-3) 75%,
+                 var(--color-3)
+                );
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            animation: moveGeometric 20s linear infinite;
+        }

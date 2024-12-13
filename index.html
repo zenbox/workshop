@@ -49,16 +49,74 @@
         </script>
 
         <main class="bw-main">
+            <article>
+                <form>
+                    <fieldset>
+                        <legend>Login</legend>
+
+                        <div class="form-element-group">
+                            <label for="email">E-Mail</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required />
+                            <p class="success">Das hast du gut gemacht!</p>
+                        </div>
+
+                        <style>
+                            label::after {
+                                content: "";
+                                display: block;
+                            }
+                        </style>
+
+                        <div>
+                            <label for="password">Passwort</label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                required />
+                            <p class="success">Das Passwort ist sicher.</p>
+                        </div>
+
+                        <div class="form-element-group">
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required />
+                            <label for="terms">Agb's zustimmen</label>
+                            <p>
+                                Das ist eine Pflichtangabe, ohne Zustimmung
+                                kannst Du sich nicht einloggen.
+                            </p>
+                        </div>
+
+                        <div class="form-element-group">
+                            <button type="reset">Abbrechen</button>
+                            <button type="submit">Login</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </article>
+
             <section>
-                <h1>Headline</h1>
+                <h1 class="element">Headline</h1>
                 <p>
                     Lorem <strong>FETT</strong> ipsum dolor sit amet consectetur
-                    adipisicing elit. Quo corporis ex iure!
+                    adipisicing elit. Quo corporis ex iure! Lorem ipsum dolor
+                    sit amet consectetur adipisicing elit. Voluptates numquam
+                    saepe ducimus rerum ut nesciunt maiores, aliquam eligendi
+                    recusandae. Quasi iste ratione minus, id velit laborum culpa
+                    quia optio dignissimos, reprehenderit laboriosam expedita,
+                    vel voluptates. Sit?
                 </p>
             </section>
 
             <article class="bw-article bw-article-fullheight">
-                <h2>Tabellen</h2>
+                <h2 class="element-2">Tabellen</h2>
                 <table class="bw-table">
                     <thead>
                         <tr>

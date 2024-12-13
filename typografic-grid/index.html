@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html data-theme="light">
+    <head>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <style>
+            :root {
+                /* Basis-Größen */
+                --baseline: 4px;
+                --font-size-base: 16px;
+                --line-height-base: 20px;
+                --font-size-h1: 24px;
+                --line-height-h1: 28px;
+                --font-size-h2: 20px;
+                --line-height-h2: 24px;
+                --container-padding: 16px;
+                --header-height: calc(var(--baseline) * 15);
+                --footer-height: calc(var(--baseline) * 15);
+
+                /* Light-Mode Farben */
+                --color-bg: #ffffff;
+                --color-text: #333333;
+                --color-surface: #f0f0f088;
+                --color-border: #dddddd;
+                --color-accent: #0066ff;
+                --color-hover: #0052cc;
+            }
+
+            /* Dark-Mode Farben */
+            html[data-theme="dark"] {
+                --color-bg: #1a1a1a;
+                --color-text: #ffffff;
+                --color-surface: #33333388;
+                --color-border: #444444;
+                --color-accent: #66a3ff;
+                --color-hover: #80b3ff;
+            }
+
+            @media (min-width: 768px) {
+                :root {
+                    --baseline: 8px;
+                    --font-size-base: 16px;
+                    --line-height-base: 24px;
+                    --font-size-h1: 32px;
+                    --line-height-h1: 40px;
+                    --font-size-h2: 24px;
+                    --line-height-h2: 32px;
+                    --container-padding: 24px;
+                }
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                font-family: system-ui, -apple-system, sans-serif;
+                font-size: var(--font-size-base);
+                line-height: var(--line-height-base);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                background-color: var(--color-bg);
+                color: var(--color-text);
+                transition: background-color 0.3s, color 0.3s;
+            }
+
+            .baseline-grid {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            /* Theme Switcher */
+            .theme-switch {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--color-surface);
+                border: 1px solid var(--color-border);
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                transition: background-color 0.3s;
+            }
+
+            .theme-switch:hover {
+                background: var(--color-border);
+            }
+
+            .theme-switch svg {
+                width: 24px;
+                height: 24px;
+                fill: var(--color-text);
+                transition: fill 0.3s;
+            }
+
+            header {
+                height: var(--header-height);
+                background: var(--color-surface);
+                padding: calc(var(--baseline) * 3);
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            footer {
+                height: var(--footer-height);
+                background: var(--color-surface);
+                padding: calc(var(--baseline) * 3);
+                border-top: 1px solid var(--color-border);
+                margin-top: auto;
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 var(--container-padding);
+                position: relative;
+                z-index: 1;
+                flex: 1;
+            }
+
+            /* Content Layout */
+            .content-wrapper {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--baseline) * 4);
+                padding: calc(var(--baseline) * 6) 0;
+            }
+
+            /* Landscape Mode: Zweispaltig */
+            @media (orientation: landscape) and (min-width: 536px) {
+                .content-wrapper {
+                    flex-direction: row;
+                }
+
+                nav {
+                    width: 250px;
+                    flex-shrink: 0;
+                }
+
+                main {
+                    flex: 1;
+                }
+            }
+
+            /* Navigation Styling */
+            nav {
+                background: var(--color-surface);
+                padding: calc(var(--baseline) * 3);
+                border-radius: 4px;
+            }
+
+            nav ul {
+                list-style: none;
+            }
+
+            nav li {
+                margin-bottom: calc(var(--baseline) * 2);
+            }
+
+            nav a {
+                color: var(--color-text);
+                text-decoration: none;
+                display: block;
+                padding: var(--baseline) 0;
+                transition: color 0.3s;
+            }
+
+            nav a:hover {
+                color: var(--color-accent);
+            }
+
+            /* Typography */
+            h1 {
+                font-size: var(--font-size-h1);
+                line-height: var(--line-height-h1);
+                margin: 0 0 calc(var(--baseline) * 6) 0;
+            }
+
+            h2 {
+                font-size: var(--font-size-h2);
+                line-height: var(--line-height-h2);
+                margin: calc(var(--baseline) * 8) 0 calc(var(--baseline) * 4) 0;
+            }
+
+            p {
+                margin: 0 0 calc(var(--baseline) * 6) 0;
+                max-width: 68ch;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="baseline-grid">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="100%"
+                height="100%"
+                style="position: absolute; top: 0; left: 0">
+                <defs>
+                    <pattern
+                        id="grid-mobile"
+                        width="100%"
+                        height="4"
+                        patternUnits="userSpaceOnUse">
+                        <line
+                            x1="0"
+                            y1="4"
+                            x2="100%"
+                            y2="4"
+                            stroke="#0066ff"
+                            stroke-width="0.5"
+                            stroke-opacity="0.8" />
+                    </pattern>
+                    <pattern
+                        id="grid-desktop"
+                        width="100%"
+                        height="8"
+                        patternUnits="userSpaceOnUse">
+                        <line
+                            x1="0"
+                            y1="8"
+                            x2="100%"
+                            y2="8"
+                            stroke="#0066ff"
+                            stroke-width="0.5"
+                            stroke-opacity="0.8" />
+                    </pattern>
+                </defs>
+
+                <rect
+                    width="100%"
+                    height="100%"
+                    fill="url(#grid-mobile)"
+                    class="mobile-grid" />
+                <rect
+                    width="100%"
+                    height="100%"
+                    fill="url(#grid-desktop)"
+                    class="desktop-grid" />
+
+                <style>
+                    @media (max-width: 767px) {
+                        .desktop-grid {
+                            display: none;
+                        }
+                    }
+                    @media (min-width: 768px) {
+                        .mobile-grid {
+                            display: none;
+                        }
+                    }
+
+                    /* Neue Styles für die Bildgruppe */
+                    .image-group {
+                        margin: calc(var(--baseline) * 6) 0;
+                    }
+
+                    figure {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    /* Bildcontainer mit festem Seitenverhältnis */
+                    .image-container {
+                        position: relative;
+                        width: 100%;
+                        /* Höhe ist ein Vielfaches der Baseline */
+                        height: calc(
+                            var(--baseline) * 60
+                        ); /* 240px/480px je nach Baseline */
+                        background: var(--color-surface);
+                        margin-bottom: calc(var(--baseline) * 3);
+                        border-radius: 4px;
+                        overflow: hidden;
+                    }
+
+                    .image-container img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        display: block;
+                    }
+
+                    figcaption {
+                        font-size: var(--font-size-base);
+                        line-height: var(--line-height-base);
+                        color: var(--color-text);
+                        opacity: 0.8;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                    @media (min-width: 768px) {
+                        .image-group {
+                            margin: calc(var(--baseline) * 8) 0;
+                        }
+
+                        .image-container {
+                            height: calc(
+                                var(--baseline) * 70
+                            ); /* Größeres Bild auf Desktop */
+                        }
+                    }
+
+                    /* Formular-Styles */
+                    .login-form {
+                        max-width: 400px;
+                        margin: calc(var(--baseline) * 6) 0;
+                    }
+
+                    .form-group {
+                        position: relative;
+                        margin-bottom: calc(var(--baseline) * 6);
+                    }
+
+                    .form-label {
+                        position: absolute;
+                        left: calc(var(--baseline) * 3);
+                        top: calc(var(--baseline) * 3);
+                        font-size: var(--font-size-base);
+                        line-height: var(--line-height-base);
+                        color: var(--color-text);
+                        opacity: 0.7;
+                        transition: all 0.2s ease-in-out;
+                        background: var(--color-bg);
+                        padding: 0 calc(var(--baseline) * 1);
+                        pointer-events: none;
+                    }
+
+                    .form-input {
+                        width: 100%;
+                        height: calc(var(--baseline) * 12);
+                        padding: calc(var(--baseline) * 3);
+                        font-size: var(--font-size-base);
+                        line-height: var(--line-height-base);
+                        border: 1px solid var(--color-border);
+                        border-radius: 4px;
+                        background: var(--color-bg);
+                        color: var(--color-text);
+                        transition: border-color 0.2s ease;
+                    }
+
+                    .form-input:focus {
+                        outline: none;
+                        border-color: var(--color-accent);
+                    }
+
+                    /* Schwebendes Label wenn Fokus oder ausgefüllt */
+                    .form-input:focus ~ .form-label,
+                    .form-input:not(:placeholder-shown) ~ .form-label {
+                        transform: translateY(calc(var(--baseline) * -4))
+                            scale(0.85);
+                        color: var(--color-accent);
+                    }
+
+                    /* Checkbox Styling */
+                    .checkbox-group {
+                        margin-bottom: calc(var(--baseline) * 6);
+                        display: flex;
+                        align-items: flex-start;
+                        gap: calc(var(--baseline) * 2);
+                    }
+
+                    .checkbox-input {
+                        margin-top: calc(var(--baseline) * 0.75);
+                        width: calc(var(--baseline) * 4);
+                        height: calc(var(--baseline) * 4);
+                    }
+
+                    .checkbox-label {
+                        font-size: var(--font-size-base);
+                        line-height: var(--line-height-base);
+                        color: var(--color-text);
+                    }
+
+                    /* Button */
+                    .submit-button {
+                        width: 100%;
+                        height: calc(var(--baseline) * 12);
+                        background: var(--color-accent);
+                        color: white;
+                        border: none;
+                        border-radius: 4px;
+                        font-size: var(--font-size-base);
+                        line-height: var(--line-height-base);
+                        cursor: pointer;
+                        transition: background-color 0.2s ease;
+                    }
+
+                    .submit-button:hover {
+                        background: var(--color-hover);
+                    }
+
+                    /* Fehlermeldungen & Erfolgsmeldungen */
+                    .error-message,
+                    .success-message {
+                        font-size: var(--font-size-base);
+                        line-height: var(--line-height-base);
+                        padding: calc(var(--baseline) * 3);
+                        margin-bottom: calc(var(--baseline) * 6);
+                        border-radius: 4px;
+                        display: none;
+                    }
+
+                    .error-message {
+                        background: rgba(255, 0, 0, 0.1);
+                        color: #d32f2f;
+                        border: 1px solid rgba(255, 0, 0, 0.2);
+                    }
+
+                    .success-message {
+                        background: rgba(0, 255, 0, 0.1);
+                        color: #388e3c;
+                        border: 1px solid rgba(0, 255, 0, 0.2);
+                    }
+
+                    .form-input.error {
+                        border-color: #d32f2f;
+                    }
+
+                    .form-input.error ~ .form-label {
+                        color: #d32f2f;
+                    }
+
+                    .error-text {
+                        display: none;
+                        font-size: calc(var(--font-size-base) * 0.875);
+                        line-height: var(--line-height-base);
+                        color: #d32f2f;
+                        margin-top: calc(var(--baseline) * 1);
+                        padding-left: calc(var(--baseline) * 3);
+                    }
+
+                    .form-input.error ~ .error-text {
+                        display: block;
+                    }
+                </style>
+            </svg>
+        </div>
+
+        <button
+            class="theme-switch"
+            aria-label="Theme wechseln"
+            onclick="toggleTheme()">
+            <svg
+                class="light-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24">
+                <path
+                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM12 21.75a.75.75 0 01-.75-.75v-2.25a.75.75 0 011.5 0V21a.75.75 0 01-.75.75zM3 12a.75.75 0 01.75-.75h2.25a.75.75 0 010 1.5H3.75A.75.75 0 013 12zM21 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25A.75.75 0 0121 12zM5.78 5.78a.75.75 0 011.06 0l1.59 1.59a.75.75 0 11-1.06 1.06L5.78 6.84a.75.75 0 010-1.06zM18.22 5.78a.75.75 0 010 1.06l-1.59 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.06 0zM5.78 18.22a.75.75 0 01-1.06 0l-1.59-1.59a.75.75 0 111.06-1.06l1.59 1.59a.75.75 0 010 1.06zM18.22 18.22a.75.75 0 01-1.06 0l-1.59-1.59a.75.75 0 111.06-1.06l1.59 1.59a.75.75 0 010 1.06z" />
+            </svg>
+            <svg
+                class="dark-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                style="display: none">
+                <path
+                    d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+        </button>
+
+        <header>
+            <div class="container">
+                <h1>Seitentitel</h1>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="content-wrapper">
+                <nav>
+                    <ul>
+                        <li><a href="#start">Startseite</a></li>
+                        <li><a href="#ueber">Über uns</a></li>
+                        <li><a href="#leistungen">Leistungen</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </nav>
+
+                <main>
+                    <div>
+                        <h2>Login</h2>
+
+                        <div class="success-message">
+                            Login erfolgreich! Sie werden weitergeleitet...
+                        </div>
+
+                        <div class="error-message">
+                            Login fehlgeschlagen. Bitte überprüfen Sie Ihre
+                            Eingaben.
+                        </div>
+
+                        <form
+                            class="login-form"
+                            id="loginForm"
+                            novalidate>
+                            <!-- - - - -->
+                            <div class="form-group">
+                                <input
+                                    type="email"
+                                    class="form-input"
+                                    id="email"
+                                    placeholder=" "
+                                    required />
+                                <label
+                                    for="email"
+                                    class="form-label"
+                                    >E-Mail</label
+                                >
+                                <div class="error-text">
+                                    Bitte geben Sie eine gültige E-Mail-Adresse
+                                    ein
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input
+                                    type="password"
+                                    class="form-input"
+                                    id="password"
+                                    placeholder=" "
+                                    required
+                                    minlength="8" />
+                                <label
+                                    for="password"
+                                    class="form-label"
+                                    >Passwort</label
+                                >
+                                <div class="error-text">
+                                    Das Passwort muss mindestens 8 Zeichen lang
+                                    sein
+                                </div>
+                            </div>
+
+                            <div class="checkbox-group">
+                                <input
+                                    type="checkbox"
+                                    class="checkbox-input"
+                                    id="terms"
+                                    required />
+                                <label
+                                    for="terms"
+                                    class="checkbox-label">
+                                    Ich akzeptiere die Nutzungsbedingungen und
+                                    Datenschutzrichtlinien
+                                </label>
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="submit-button">
+                                Anmelden
+                            </button>
+                            <!-- - - - -->
+                        </form>
+
+                        <script>
+                            document
+                                .getElementById("loginForm")
+                                .addEventListener("submit", function (e) {
+                                    e.preventDefault();
+
+                                    const email =
+                                        document.getElementById("email");
+                                    const password =
+                                        document.getElementById("password");
+                                    const terms =
+                                        document.getElementById("terms");
+                                    let isValid = true;
+
+                                    // E-Mail Validierung
+                                    if (
+                                        !email.value.match(
+                                            /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                                        )
+                                    ) {
+                                        email.classList.add("error");
+                                        isValid = false;
+                                    } else {
+                                        email.classList.remove("error");
+                                    }
+
+                                    // Passwort Validierung
+                                    if (password.value.length < 8) {
+                                        password.classList.add("error");
+                                        isValid = false;
+                                    } else {
+                                        password.classList.remove("error");
+                                    }
+
+                                    // Terms Validierung
+                                    if (!terms.checked) {
+                                        isValid = false;
+                                        document.querySelector(
+                                            ".error-message"
+                                        ).style.display = "block";
+                                        document.querySelector(
+                                            ".success-message"
+                                        ).style.display = "none";
+                                    }
+
+                                    if (isValid) {
+                                        document.querySelector(
+                                            ".error-message"
+                                        ).style.display = "none";
+                                        document.querySelector(
+                                            ".success-message"
+                                        ).style.display = "block";
+
+                                        // Hier würde normalerweise der Login-Request erfolgen
+                                        console.log(
+                                            "Form is valid, submitting..."
+                                        );
+                                    }
+                                });
+
+                            // Live Validierung
+                            const inputs =
+                                document.querySelectorAll(".form-input");
+                            inputs.forEach((input) => {
+                                input.addEventListener("blur", function () {
+                                    if (
+                                        this.type === "email" &&
+                                        !this.value.match(
+                                            /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                                        )
+                                    ) {
+                                        this.classList.add("error");
+                                    } else if (
+                                        this.type === "password" &&
+                                        this.value.length < 8
+                                    ) {
+                                        this.classList.add("error");
+                                    } else {
+                                        this.classList.remove("error");
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+
+                    <h2>Hauptinhalt</h2>
+                    <p>
+                        Dies ist ein Beispieltext, der das typographische
+                        Register demonstriert. Alle Elemente sind auf einem
+                        variablen Grundlinienraster ausgerichtet, das sich
+                        responsiv an die Bildschirmgröße anpasst.
+                    </p>
+
+                    <div class="image-group">
+                        <figure>
+                            <div class="image-container">
+                                <img
+                                    src="https://picsum.photos/id/52/800/480"
+                                    alt="Ein Beispielbild" />
+                            </div>
+                            <figcaption>
+                                Dies ist die Bildunterschrift, die dem
+                                Grundlinienraster folgt. Sie kann auch über
+                                mehrere Zeilen gehen und bleibt dabei im
+                                Register.
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <h2>Unterüberschrift</h2>
+                    <p>
+                        Ein weiterer Absatz, der die Abstände und Ausrichtung
+                        zeigt. Die Zeilenhöhen und Abstände sind sowohl auf
+                        Desktop als auch auf mobilen Geräten optimal lesbar.
+                    </p>
+
+                    <h2>Responsive Anpassung</h2>
+                    <p>
+                        Das Layout passt sich automatisch an verschiedene
+                        Bildschirmgrößen an. Im Hochformat werden die Navigation
+                        und der Hauptinhalt untereinander angezeigt, im
+                        Querformat nebeneinander.
+                    </p>
+                </main>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 Example</p>
+            </div>
+        </footer>
+
+        <script>
+            // Grid-Height Update Funktion
+            function updateGridHeight() {
+                const gridContainer = document.querySelector(".baseline-grid");
+                if (gridContainer) {
+                    gridContainer.style.height =
+                        document.documentElement.scrollHeight + "px";
+                }
+            }
+
+            // Warten bis das DOM geladen ist
+            document.addEventListener("DOMContentLoaded", function () {
+                updateGridHeight();
+                window.addEventListener("resize", updateGridHeight);
+            });
+
+            // Theme Switch Funktionalität
+            function toggleTheme() {
+                const html = document.documentElement;
+                const sunIcon = document.querySelector(".light-icon");
+                const moonIcon = document.querySelector(".dark-icon");
+
+                if (html.getAttribute("data-theme") === "light") {
+                    html.setAttribute("data-theme", "dark");
+                    sunIcon.style.display = "none";
+                    moonIcon.style.display = "block";
+                } else {
+                    html.setAttribute("data-theme", "light");
+                    sunIcon.style.display = "block";
+                    moonIcon.style.display = "none";
+                }
+
+                localStorage.setItem("theme", html.getAttribute("data-theme"));
+            }
+
+            // Theme aus localStorage wiederherstellen
+            document.addEventListener("DOMContentLoaded", function () {
+                const savedTheme = localStorage.getItem("theme");
+                if (savedTheme) {
+                    document.documentElement.setAttribute(
+                        "data-theme",
+                        savedTheme
+                    );
+                    const sunIcon = document.querySelector(".light-icon");
+                    const moonIcon = document.querySelector(".dark-icon");
+                    if (savedTheme === "dark") {
+                        sunIcon.style.display = "none";
+                        moonIcon.style.display = "block";
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

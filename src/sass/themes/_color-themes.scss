@@ -1,20 +1,11 @@
-// Sass: scss/base/_index.scss
-//
+// Color Themes
+// 
 // @package Webapplication
 // @module Design System
 // @author Michael Reichart <michael.reichart@gfu.net>
-// @since 2024-12-09
+// @since 2024-12-11
 // @version 1.0.0
 // @see i.e. inspired by ... {link to}
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2024 Michael Reichart, Cologne
 
-@import "variables";
-@import "functions";
-@import "mixins";
-
-@import "normalize-8.0.1";
-@import "base";
-
-@import "typography";
-@import "color-system";

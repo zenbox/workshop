@@ -329,7 +329,8 @@ script {
 html {
   font-family: Barlow, sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.443856345;
+  word-spacing: 0em;
 }
 
 h1 {
@@ -557,6 +558,21 @@ big {
   color: rgb(0, 0, 0);
 }
 
+.element {
+  background-color: #f7f7f7;
+  color: #000000;
+}
+
+.element-2 {
+  background-color: #f7f7f7;
+  color: #000000;
+}
+
+.success {
+  color: rgb(0, 129, 0);
+  background-color: #ffffff;
+}
+
 .bw-template-1 > * {
   display: block;
   padding: 0.5rem;
@@ -612,10 +628,6 @@ big {
     flex-shrink: 0;
   }
 }
-.bw-template-1 > * {
-  border: 1px dotted red;
-}
-
 .bw-template-2 {
   display: grid;
   min-height: 100vh;
@@ -642,7 +654,6 @@ big {
 .bw-article {
   max-height: 100vh;
   overflow: auto;
-  outline: 2px solid orange !important;
 }
 
 .bw-header {
@@ -654,7 +665,6 @@ big {
 .bw-main section {
   position: sticky;
   top: 20px;
-  outline: 2px solid steelblue !important;
 }
 
 .bw-nav {
@@ -749,7 +759,6 @@ big {
 .bw-table thead,
 .bw-table tbody,
 .bw-table tfoot {
-  outline: 2px solid purple !important;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   height: 20vh;

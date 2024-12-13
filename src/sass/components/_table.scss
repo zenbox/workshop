@@ -29,8 +29,6 @@
         thead,
         tbody,
         tfoot {
-            outline: 2px solid purple !important;
-
             display: grid;
             grid-template-columns: repeat(1, 1fr);
 
