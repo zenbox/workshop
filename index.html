@@ -14,15 +14,13 @@
         <link
             rel="stylesheet"
             href="assets/css/my-theme.css" />
-        <link
-            rel="stylesheet"
-            href="assets/css/#developer.css" />
+
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     </head>
-    <body>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <body class="d-flex flex-column min-vh-100 justify-content-between">
+        <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container-fluid">
                 <a
                     class="navbar-brand"
@@ -97,25 +95,25 @@
                     </ul>
 
                     <!-- <form
-                        class="d-flex"
-                        role="search">
-                        <input
-                            class="form-control me-2"
-                            type="search"
-                            placeholder="Search"
-                            aria-label="Search" />
-                        <button
-                            class="btn btn-outline-success"
-                            type="submit">
-                            Search
-                        </button>
-                    </form> -->
+                            class="d-flex"
+                            role="search">
+                            <input
+                                class="form-control me-2"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search" />
+                            <button
+                                class="btn btn-outline-success"
+                                type="submit">
+                                Search
+                            </button>
+                        </form> -->
                 </div>
             </div>
         </nav>
 
-        <div class="container p-0">
-            <header class="d-flex justify-content-between">
+        <div class="container-fluid p-0">
+            <header class="d-flex justify-content-between bg-secondary">
                 <!-- - - - -->
                 <img
                     alt=""
@@ -133,6 +131,7 @@
                 data-bs-target="#offcanvasExample"
                 aria-controls="offcanvasExample">
                 <i class="bi bi-list"></i>
+                <span class="material-symbols-outlined">skull</span>
             </button>
         </div>
 
@@ -195,15 +194,336 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container flex-grow-1">
             <main class="row">
-                <h1>Geschäftsstellen-Dienstplan</h1>
+                <h1 class="mt-5">Geschäftsstellen-Dienstplan</h1>
                 <p>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quam voluptas nulla odio? ???
+                    Quam voluptas nulla odio?
                 </p>
-            </main>
 
+                <ul
+                    class="nav nav-tabs"
+                    id="myTab"
+                    role="tablist">
+                    <li
+                        class="nav-item"
+                        role="presentation">
+                        <button
+                            class="nav-link active"
+                            id="home-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#home-tab-pane"
+                            type="button"
+                            role="tab"
+                            aria-controls="home-tab-pane"
+                            aria-selected="true">
+                            Home
+                        </button>
+                    </li>
+                    <li
+                        class="nav-item"
+                        role="presentation">
+                        <button
+                            class="nav-link"
+                            id="profile-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#profile-tab-pane"
+                            type="button"
+                            role="tab"
+                            aria-controls="profile-tab-pane"
+                            aria-selected="false">
+                            Profile
+                        </button>
+                    </li>
+                    <li
+                        class="nav-item"
+                        role="presentation">
+                        <button
+                            class="nav-link"
+                            id="contact-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#contact-tab-pane"
+                            type="button"
+                            role="tab"
+                            aria-controls="contact-tab-pane"
+                            aria-selected="false"
+                            disabled>
+                            Contact
+                        </button>
+                    </li>
+                    <li
+                        class="nav-item"
+                        role="presentation">
+                        <button
+                            class="nav-link"
+                            id="disabled-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#disabled-tab-pane"
+                            type="button"
+                            role="tab"
+                            aria-controls="disabled-tab-pane"
+                            aria-selected="false"
+                            disabled>
+                            Disabled
+                        </button>
+                    </li>
+                </ul>
+
+                <form action="">
+                <div
+                    class="tab-content"
+                    id="myTabContent">
+                    <div
+                        class="tab-pane fade show active"
+                        id="home-tab-pane"
+                        role="tabpanel"
+                        aria-labelledby="home-tab"
+                        tabindex="0">
+                        <!-- - - - -->
+                         <p>Du bist im Schritt 12 von 24</p>
+                        <fieldset>
+                            <legend>Formular Teil 1</legend>
+
+                            <div class="mb-3">
+                                <label
+                                    for="exampleInputEmail1"
+                                    class="form-label"
+                                    >Email address</label
+                                >
+                                <input
+                                    type="email"
+                                    class="form-control"
+                                    id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" />
+                                <div id="emailHelp" class="form-text">
+                                    We'll never share your email with anyone
+                                    else.
+                                </div>
+                        </fieldset>
+                        <!-- - - - -->
+                    </div>
+                    <div
+                        class="tab-pane fade"
+                        id="profile-tab-pane"
+                        role="tabpanel"
+                        aria-labelledby="profile-tab"
+                        tabindex="0">
+                        two ...
+                    </div>
+                    <div
+                        class="tab-pane fade"
+                        id="contact-tab-pane"
+                        role="tabpanel"
+                        aria-labelledby="contact-tab"
+                        tabindex="0">
+                        three ...
+                    </div>
+                    <div
+                        class="tab-pane fade"
+                        id="disabled-tab-pane"
+                        role="tabpanel"
+                        aria-labelledby="disabled-tab"
+                        tabindex="0">
+                        four ...
+                    </div>
+                </div>
+                </form>
+
+<hr class="mt-5 mb-5">
+                
+<form class="container mt-5">
+                    <div class="mb-3">
+                        <label
+                            for="exampleFormControlTextarea1"
+                            class="form-label"
+                            >Example textarea</label
+                        >
+                        <textarea
+                            class="form-control"
+                            id="exampleFormControlTextarea1"
+                            rows="3"></textarea>
+                    </div>
+
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label
+                                for="inputPassword6"
+                                class="col-form-label"
+                                >Password</label
+                            >
+                        </div>
+                        <div class="col-auto">
+                            <input
+                                type="password"
+                                id="inputPassword6"
+                                class="form-control"
+                                aria-describedby="passwordHelpInline" />
+                        </div>
+                        <div class="col-auto">
+                            <span
+                                id="passwordHelpInline"
+                                class="form-text">
+                                Must be 8-20 characters long.
+                            </span>
+                        </div>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Fahrdienst</th>
+                                <th scope="col">Botendienst</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>
+                                    <i
+                                        class="bi bi-check"
+                                        style="
+                                            color: green;
+                                            font-size: 2rem;
+                                        "></i>
+                                </td>
+                                <td>
+                                    <i
+                                        class="bi bi-check"
+                                        style="
+                                            color: green;
+                                            font-size: 2rem;
+                                        "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>
+                                    <i
+                                        class="bi bi-check"
+                                        style="
+                                            color: green;
+                                            font-size: 2rem;
+                                        "></i>
+                                </td>
+                                <td>
+                                    <i
+                                        class="bi bi-check"
+                                        style="
+                                            color: green;
+                                            font-size: 2rem;
+                                        "></i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">Larry the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <ol style="margin: 0; padding: 0; list-style-type: none">
+                        <li>
+                            Person 1
+                            <i
+                                class="bi bi-check"
+                                style="color: green; font-size: 2rem"></i>
+                        </li>
+                        <li>
+                            Person mit langem Namen 2<i
+                                class="bi bi-check"
+                                style="color: green; font-size: 2rem"></i>
+                        </li>
+                    </ol>
+
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="flexCheckDefault" />
+                        <label
+                            class="form-check-label"
+                            for="flexCheckDefault">
+                            Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="flexCheckChecked"
+                            checked />
+                        <label
+                            class="form-check-label"
+                            for="flexCheckChecked">
+                            Checked checkbox
+                        </label>
+                    </div>
+
+                    <div class="form-check form-switch">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id="flexSwitchCheckDefault" />
+                        <label
+                            class="form-check-label"
+                            for="flexSwitchCheckDefault"
+                            >Default switch checkbox input</label
+                        >
+                    </div>
+                    <div class="form-check form-switch">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id="flexSwitchCheckChecked"
+                            checked />
+                        <label
+                            class="form-check-label"
+                            for="flexSwitchCheckChecked"
+                            >Checked switch checkbox input</label
+                        >
+                    </div>
+                    <div class="form-check form-switch">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id="flexSwitchCheckDisabled"
+                            disabled />
+                        <label
+                            class="form-check-label"
+                            for="flexSwitchCheckDisabled"
+                            >Disabled switch checkbox input</label
+                        >
+                    </div>
+                    <div class="form-check form-switch">
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            role="switch"
+                            id="flexSwitchCheckCheckedDisabled"
+                            checked
+                            disabled />
+                        <label
+                            class="form-check-label"
+                            for="flexSwitchCheckCheckedDisabled"
+                            >Disabled checked switch checkbox input</label
+                        >
+                    </div>
+                </form>
+            </main>
+        </div>
+
+        <div class="container-fluid">
             <footer class="row">
                 <div class="col col-sm-12 col-md-4">1</div>
                 <div class="col col-sm-12 col-md-4">2</div>

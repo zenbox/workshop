@@ -1,3 +1,6 @@
+/* Eigene Schriftdateien */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
 /* Eigene Variablen */
 :root {
     --bs-blue: #5b7ea2;
@@ -66,6 +69,7 @@
         "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
         "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
         "Noto Color Emoji";
+        
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
 
