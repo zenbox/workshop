@@ -1,0 +1,37 @@
+/** 
+  *  @desc Typografie: Schriften, Schriftgrößen, Zeilenabstände, Abstände
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2025-05-12
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license 2021 Michael Reichart, copyleft CC BY-NC-SA {https://creativecommons.org/licenses/by-nc-sa/2.0/de/}
+  * @copyright (c) 2025 Michael Reichart, Cologne
+  */
+
+html {
+    font-size: 20px; /* Root EM! */
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    line-height: 1.5;
+    color: #333;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 16px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+}

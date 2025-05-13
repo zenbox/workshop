@@ -1,0 +1,29 @@
+/** 
+  *  @desc Template für Kunde 1 
+  *        All devices fallback: @media screen {}
+  *        Small devices:        @media screen and (max-width:768px) {}
+  *
+  * @package Webapplication
+  * @module  i.e. template
+  * @author  Michael Reichart <michael.reichart@gfu.net>
+  * @author  Christian Kuhn
+  * @since   2025-05-12
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license 2021 Michael Reichart, copyleft CC BY-NC-SA {https://creativecommons.org/licenses/by-nc-sa/2.0/de/}
+  * @copyright (c) 2025 Michael Reichart, Cologne
+  */
+
+body {
+    margin: 0;
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+
+    gap: 1rem;
+}

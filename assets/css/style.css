@@ -1,0 +1,77 @@
+@import url("_normalize.css");
+@import url("_variables.css");
+@import url("_base.css");
+@import url("_typography.css");
+
+@import url("_template-1.css");
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+/* body {
+    margin: 0;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, minmax(2rem, 1fr));
+    grid-template-rows: 4rem, calc(100vh - 7rem), 3rem;
+
+    grid-template-areas:
+        "header header header header"
+        "nav main main main"
+        "footer footer footer footer";
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        grid-template-columns: repeat(2, minmax(2rem, 1fr));
+        grid-template-rows: repeat(3, minmax(2rem, 1fr));
+
+        grid-template-areas:
+            "header header"
+            "nav main"
+            "footer footer";
+    }
+}
+
+
+
+header {
+    background: hsl(240 80% 50% / 0.25);
+
+    grid-area: header;
+
+    &:before {
+        content: "Header";
+    }
+}
+
+main {
+    background: hsl(60 80% 50% / 0.25);
+
+    grid-area: main;
+
+    &:before {
+        content: "Main";
+    }
+}
+
+nav {
+    background: hsl(120 80% 50% / 0.25);
+
+    grid-area: nav;
+
+    &:before {
+        content: "Nav";
+    }
+}
+
+footer {
+    background: hsl(300 80% 50% / 0.25);
+
+    grid-area: footer;
+
+    &:before {
+        content: "Footer";
+    }
+} */
+

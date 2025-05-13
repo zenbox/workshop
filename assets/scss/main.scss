@@ -1,0 +1,39 @@
+// Import Variables
+@import 'variables';
+
+// You can use your variables like this:
+.primary-bg {
+  background-color: $primary;
+  color: white;
+}
+
+.secondary-bg {
+  background-color: $secondary;
+  color: white;
+}
+
+// Button styles example
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  text-decoration: none;
+  display: inline-block;
+  
+  &-primary {
+    background-color: $primary;
+    color: white;
+    
+    &:hover {
+      background-color: darken($primary, 10%);
+    }
+  }
+  
+  &-secondary {
+    background-color: $secondary;
+    color: white;
+    
+    &:hover {
+      background-color: darken($secondary, 10%);
+    }
+  }
+}
