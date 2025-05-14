@@ -1,0 +1,23 @@
+.#{$prefix}-header {
+    // BASE / RESET
+
+    // LAYOUT
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: $breakpoint-sm) {
+        & > nav {
+            display: block;
+            position: absolute;
+            top: 2rem; // TODO besser positionieren
+            width: calc(100% - var(--spacer-lg));
+        }
+    }
+
+    // // DEVELOPER
+    // & > * {
+    //     outline: 2px solid orange;
+    // }
+}

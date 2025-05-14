@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-only Hamburger Button</title>
+    <style>
+        :root {
+            /* Definiere die relativen Positionen in der Viewbox */
+            --line-top-pos: 0.25;    /* 25% von oben */
+            --line-middle-pos: 0.5;  /* 50% (Mitte) */
+            --line-bottom-pos: 0.75; /* 75% von oben */
+        }
+
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .demo-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .hamburger-button {
+            /* Größe als Variable definieren */
+            --size: 40px;
+            /* Viewbox-Größe (muss mit SVG übereinstimmen) */
+            --viewbox: 100;
+            
+            /* Berechnete Werte basierend auf Viewbox-Positionen */
+            --center: calc(var(--viewbox) / 2);
+            --top-offset: calc((var(--line-middle-pos) - var(--line-top-pos)) * var(--viewbox));
+            --bottom-offset: calc((var(--line-middle-pos) - var(--line-bottom-pos)) * var(--viewbox));
+            
+            background: none;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            width: var(--size);
+            height: var(--size);
+            padding: 0;
+            position: relative;
+        }
+
+        /* Verschiedene Größen */
+        .hamburger-button.small {
+            --size: 30px;
+        }
+
+        .hamburger-button.medium {
+            --size: 50px;
+        }
+
+        .hamburger-button.large {
+            --size: 70px;
+        }
+
+        .hamburger-icon {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .hamburger-line {
+            fill: none;
+            stroke: #333;
+            stroke-width: 6;
+            stroke-linecap: round;
+            transform-origin: var(--center) var(--center);
+            transition: all 0.3s ease;
+        }
+
+        /* Animation für aktiven Zustand */
+        .hamburger-button.active .line-top {
+            transform: translateY(var(--top-offset)) scaleX(1.5) rotate(45deg);
+        }
+
+        .hamburger-button.active .line-middle {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger-button.active .line-bottom {
+            transform: translateY(var(--bottom-offset)) rotate(-45deg);
+        }
+
+
+        
+        /* Demo-Styles */
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 10px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS-only Hamburger Button mit calc()</h1>
+    <p>Diese Lösung verwendet nur CSS-Variablen und calc() für die Berechnung der Transformationen.</p>
+
+    <label>Kleine Größe (30px)</label>
+    <button class="hamburger-button small">
+        <svg class="hamburger-icon" viewBox="0 0 100 100">
+            <path class="hamburger-line line-top" d="M20 25h60" />
+            <path class="hamburger-line line-middle" d="M20 50h60" />
+            <path class="hamburger-line line-bottom" d="M20 75h60" />
+        </svg>
+    </button>
+
+    <label>Mittlere Größe (50px)</label>
+    <button class="hamburger-button medium">
+        <svg class="hamburger-icon" viewBox="0 0 100 100">
+            <path class="hamburger-line line-top" d="M20 25h60" />
+            <path class="hamburger-line line-middle" d="M20 50h60" />
+            <path class="hamburger-line line-bottom" d="M20 75h60" />
+        </svg>
+    </button>
+
+    <label>Große Größe (70px)</label>
+    <button class="hamburger-button large">
+        <svg class="hamburger-icon" viewBox="0 0 100 100">
+            <path class="hamburger-line line-top" d="M20 25h60" />
+            <path class="hamburger-line line-middle" d="M20 50h60" />
+            <path class="hamburger-line line-bottom" d="M20 75h60" />
+        </svg>
+    </button>
+
+    <label>Custom mit anderen Proportionen</label>
+    <button class="hamburger-button" style="--size: 60px; --viewbox: 200; --line-top-pos: 0.3; --line-middle-pos: 0.5; --line-bottom-pos: 0.7;">
+        <svg class="hamburger-icon" viewBox="0 0 200 200">
+            <path class="hamburger-line line-top" d="M40 60h120" />
+            <path class="hamburger-line line-middle" d="M40 100h120" />
+            <path class="hamburger-line line-bottom" d="M40 140h120" />
+        </svg>
+    </button>
+
+    <script>
+        // Nur für das Toggle-Verhalten
+        document.querySelectorAll('.hamburger-button').forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

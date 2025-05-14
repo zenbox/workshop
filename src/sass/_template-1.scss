@@ -1,0 +1,26 @@
+.#{$prefix}-template-1 {
+    // BASE / RESET
+    & > * {
+        padding: var(--spacer-md);
+    }
+
+    // LAYOUT (all devices fallback)
+    display: block;
+   
+    // Responsive für kleine Bildschirme
+    @media screen and (max-width: var(--breakpoint-sm)) {
+        display: flex;
+        flex-direction: column;
+
+    }
+    // Responsive für mittlere und größere Bildschirme
+    @media screen and (min-width: calc(var(--breakpoint-sm) + 1px)) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    // DEVELOPER
+    & > * {
+        outline: 2px dotted rgb(1 161 161 / 0.5);
+    }
+}

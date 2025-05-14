@@ -1,0 +1,32 @@
+.#{$prefix}-nav {
+    // BASE / RESET
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    // LAYOUT
+    display: flex;
+    flex-direction: row;
+
+    // Layout Ergänzungsklassen für Ausrichtung!
+    &-row {
+        flex-direction: row;
+    }
+    &-column {
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+        display: flex;
+        flex-direction: column;
+
+        &-row {
+            flex-direction: row !important;
+        }
+        &-column {
+            flex-direction: column !important;
+        }
+    }
+
+    // STATES
+}

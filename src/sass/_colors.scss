@@ -1,0 +1,23 @@
+
+.#{$prefix} {
+
+    &-primary {
+        background: var(--primary) !important;
+        color: var(--on-primary);
+    }
+
+    &-secondary {
+        background: var(--secondary) !important;
+        color: var(--on-secondary);
+    }
+
+    &-tertiary {
+        background: var(--tertiary) !important;
+        color: var(--on-tertiary);
+    }
+
+    &-dark {
+        background: var(--dark) !important;
+        color: var(--on-dark);
+    }
+}
