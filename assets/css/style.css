@@ -1,6 +1,6 @@
 @charset "UTF-8";
 :root {
-  --primary: #2edd3aa6;
+  --primary: #2edd3a;
   --on-primary: var(--white);
   --secondary: #4db3bc !important;
   --on-secondary: var(--white);
@@ -293,7 +293,6 @@ kbd {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: relative; /* Hinzugefügt für korrekte Positionierung des Dropdown-Menüs */
 }
 @media screen and (max-width: 576px) {
   .my-header > nav {
@@ -304,8 +303,6 @@ kbd {
     right: 0;
     width: 100%;
     z-index: 1000;
-    margin-top: 0; /* Kein Abstand zum Header */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichter Schatten für bessere Sichtbarkeit */
   }
 }
 
@@ -397,18 +394,17 @@ kbd {
   transform: translateX(-50%) translateY(var(--bottom-offset)) rotate(-45deg);
 }
 
-/* Menü-Transition und Darstellung für mobile Geräte */
+/* Menü-Transition und Darstellung */
 @media screen and (max-width: 576px) {
-  /* Grundzustand: Menü standardmäßig versteckt */
-  .my-header nav {
+  /* Grundzustand: Menü versteckt */
+  .hamburger-button + nav {
     transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     display: block;
   }
-  
-  /* Aktiver Zustand: Menü anzeigen wenn Button aktiv ist */
+  /* Aktiver Zustand: Menü anzeigen */
   .hamburger-button.active + nav {
     max-height: 500px; /* Genügend Platz für das Menü */
     opacity: 1;
@@ -420,19 +416,16 @@ kbd {
     display: none;
   }
   /* Stellt sicher, dass das Menü auf Desktop immer sichtbar ist */
-  .my-header nav {
-    max-height: none !important;
+  .hamburger-button + * {
     height: auto !important;
     overflow: visible !important;
     opacity: 1 !important;
-    transition: none !important;
   }
 }
 @media screen and (max-width: 576px) {
   .my-nav-container {
     background-color: inherit; /* Erbt Farbe vom Elternelement */
     padding: var(--spacer-md);
-    border-top: none; /* Kein Rand zum Header */
   }
 }
 
@@ -477,5 +470,3 @@ kbd {
 .my-nav a:hover, .my-nav a:focus {
   opacity: 0.8;
 }
-
-/*# sourceMappingURL=style.css.map */
