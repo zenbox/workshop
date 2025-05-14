@@ -11,8 +11,11 @@
         & > nav {
             display: block;
             position: absolute;
-            top: 2rem; // TODO besser positionieren
-            width: calc(100% - var(--spacer-lg));
+            top: 100%; /* Direkt unter dem Header */
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
         }
     }
 

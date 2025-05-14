@@ -293,13 +293,19 @@ kbd {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative; /* Hinzugefügt für korrekte Positionierung des Dropdown-Menüs */
 }
 @media screen and (max-width: 576px) {
   .my-header > nav {
     display: block;
     position: absolute;
-    top: 2rem;
-    width: calc(100% - var(--spacer-lg));
+    top: 100%; /* Direkt unter dem Header */
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    margin-top: 0; /* Kein Abstand zum Header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Leichter Schatten für bessere Sichtbarkeit */
   }
 }
 
@@ -391,47 +397,52 @@ kbd {
   transform: translateX(-50%) translateY(var(--bottom-offset)) rotate(-45deg);
 }
 
-@keyframes navigation {
-  0% {
-    display: none;
-    height: 0;
+/* Menü-Transition und Darstellung für mobile Geräte */
+@media screen and (max-width: 576px) {
+  /* Grundzustand: Menü standardmäßig versteckt */
+  .my-header nav {
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 0;
     opacity: 0;
     overflow: hidden;
-  }
-  1% {
     display: block;
   }
-  100% {
-    height: auto;
+  
+  /* Aktiver Zustand: Menü anzeigen wenn Button aktiv ist */
+  .hamburger-button.active + nav {
+    max-height: 500px; /* Genügend Platz für das Menü */
     opacity: 1;
-    overflow: hidden;
   }
 }
-.hamburger-button.active + * {
-  animation-name: navigation;
-  animation-duration: 2.5s;
-  animation-timing-function: ease-out;
-  animation-direction: normal;
-  animation-fill-mode: forwards;
-  overflow: hidden;
-}
-
-.hamburger-button + * {
-  height: 0;
-  overflow: hidden;
-}
-
+/* Desktop: Hamburger ausblenden und Menü immer anzeigen */
 @media screen and (min-width: 576px) {
   .hamburger-button {
     display: none;
   }
+  /* Stellt sicher, dass das Menü auf Desktop immer sichtbar ist */
+  .my-header nav {
+    max-height: none !important;
+    height: auto !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
 }
+@media screen and (max-width: 576px) {
+  .my-nav-container {
+    background-color: inherit; /* Erbt Farbe vom Elternelement */
+    padding: var(--spacer-md);
+    border-top: none; /* Kein Rand zum Header */
+  }
+}
+
 .my-nav {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: row;
+  gap: var(--spacer-md); /* Abstand zwischen Links */
 }
 .my-nav-row {
   flex-direction: row;
@@ -443,6 +454,7 @@ kbd {
   .my-nav {
     display: flex;
     flex-direction: column;
+    gap: var(--spacer-lg); /* Größerer Abstand bei mobiler Ansicht */
   }
   .my-nav-row {
     flex-direction: row !important;
@@ -450,4 +462,20 @@ kbd {
   .my-nav-column {
     flex-direction: column !important;
   }
+  .my-nav a {
+    display: block;
+    padding: var(--spacer-md) 0;
+    text-align: center;
+  }
 }
+.my-nav a {
+  text-decoration: none;
+  color: currentColor;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+.my-nav a:hover, .my-nav a:focus {
+  opacity: 0.8;
+}
+
+/*# sourceMappingURL=style.css.map */

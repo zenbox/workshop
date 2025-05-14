@@ -1,3 +1,11 @@
+.#{$prefix}-nav-container {
+    // Für mobile Geräte
+    @media screen and (max-width: $breakpoint-sm) {
+        background-color: inherit; /* Erbt Farbe vom Elternelement */
+        padding: var(--spacer-md);
+    }
+}
+
 .#{$prefix}-nav {
     // BASE / RESET
     list-style: none;
@@ -7,6 +15,7 @@
     // LAYOUT
     display: flex;
     flex-direction: row;
+    gap: var(--spacer-md); /* Abstand zwischen Links */
 
     // Layout Ergänzungsklassen für Ausrichtung!
     &-row {
@@ -19,6 +28,7 @@
     @media screen and (max-width: $breakpoint-sm) {
         display: flex;
         flex-direction: column;
+        gap: var(--spacer-lg); /* Größerer Abstand bei mobiler Ansicht */
 
         &-row {
             flex-direction: row !important;
@@ -26,7 +36,24 @@
         &-column {
             flex-direction: column !important;
         }
+        
+        // Styling für die Links im Mobile-Modus
+        a {
+            display: block;
+            padding: var(--spacer-md) 0;
+            text-align: center;
+        }
     }
 
-    // STATES
+    // Links stylen
+    a {
+        text-decoration: none;
+        color: currentColor;
+        font-weight: 500;
+        transition: opacity 0.2s ease;
+        
+        &:hover, &:focus {
+            opacity: 0.8;
+        }
+    }
 }

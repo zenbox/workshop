@@ -89,39 +89,34 @@
     transform: translateX(-50%) translateY(var(--bottom-offset)) rotate(-45deg);
 }
 
-@keyframes navigation {
-    0% {
-        display: none;
-        height: 0;
+/* Menü-Transition und Darstellung */
+@media screen and (max-width: #{$breakpoint-sm}) {
+    /* Grundzustand: Menü versteckt */
+    .hamburger-button + nav {
+        transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+        max-height: 0;
         opacity: 0;
         overflow: hidden;
-    }
-    1% {
         display: block;
     }
-    100% {
-        height: auto;
+
+    /* Aktiver Zustand: Menü anzeigen */
+    .hamburger-button.active + nav {
+        max-height: 500px; /* Genügend Platz für das Menü */
         opacity: 1;
-        overflow: hidden;
     }
 }
 
-.hamburger-button.active + * {
-    animation-name: navigation;
-    animation-duration: 2.5s;
-    animation-timing-function: ease-out;
-    animation-direction: normal;
-    animation-fill-mode: forwards;
-    overflow: hidden;
-}
-
-.hamburger-button + * {
-    height: 0;
-    overflow: hidden;
-}
-
-@media screen and (min-width: #{$breakpoint-sm}  ) {
+/* Desktop: Hamburger ausblenden und Menü immer anzeigen */
+@media screen and (min-width: #{$breakpoint-sm}) {
     .hamburger-button {
         display: none;
+    }
+    
+    /* Stellt sicher, dass das Menü auf Desktop immer sichtbar ist */
+    .hamburger-button + * {
+        height: auto !important;
+        overflow: visible !important;
+        opacity: 1 !important;
     }
 }

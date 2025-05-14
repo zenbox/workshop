@@ -18,19 +18,19 @@
                     style="height: 2rem" />
             </div>
 
-            <button class="hamburger-button small">
+            <button class="hamburger-button small" aria-label="Menü öffnen" aria-expanded="false">
                 <span class="hamburger-line line-top"></span>
                 <span class="hamburger-line line-middle"></span>
                 <span class="hamburger-line line-bottom"></span>
             </button>
-
-            <nav class="my-primary">
+            
+            <nav class="my-nav-container my-primary">
                 <ul class="my-nav">
-                    <li><a href="">Link 1</a></li>
-                    <li><a href="">Link 2</a></li>
-                    <li><a href="">Link 3</a></li>
-                    <li><a href="">Link 4</a></li>
-                    <li><a href="">Link 5</a></li>
+                    <li><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                    <li><a href="#">Link 4</a></li>
+                    <li><a href="#">Link 5</a></li>
                 </ul>
             </nav>
         </header>
@@ -68,10 +68,18 @@
         </footer>
 
         <script>
-            // Nur für das Toggle-Verhalten
+            // Hamburger-Menü Funktionalität
             document.querySelectorAll(".hamburger-button").forEach((button) => {
                 button.addEventListener("click", () => {
+                    const isActive = button.classList.contains("active");
                     button.classList.toggle("active");
+                    
+                    // Accessibility: Update aria attributes
+                    button.setAttribute("aria-expanded", !isActive);
+                    button.setAttribute("aria-label", isActive ? "Menü öffnen" : "Menü schließen");
+                    
+                    // Nav wird durch CSS automatisch angezeigt wenn Button active ist
+                    // Die Animation wird durch die +* Selektoren in _hamburger.scss gesteuert
                 });
             });
         </script>
