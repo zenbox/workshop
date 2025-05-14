@@ -12,7 +12,11 @@
     </head>
     <body class="my-template-1">
         <header class="my-header my-primary">
-            <div class="my-logo">logo</div>
+            <div class="my-logo">
+                <img
+                    src="assets/figures/shou.svg"
+                    style="height: 2rem" />
+            </div>
 
             <button class="hamburger-button small">
                 <span class="hamburger-line line-top"></span>
@@ -65,9 +69,9 @@
 
         <script>
             // Nur für das Toggle-Verhalten
-            document.querySelectorAll('.hamburger-button').forEach(button => {
-                button.addEventListener('click', () => {
-                    button.classList.toggle('active');
+            document.querySelectorAll(".hamburger-button").forEach((button) => {
+                button.addEventListener("click", () => {
+                    button.classList.toggle("active");
                 });
             });
         </script>
