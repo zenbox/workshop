@@ -8,6 +8,8 @@
     align-items: center;
 
     @media screen and (max-width: $breakpoint-sm) {
+        position: relative; /* Ensure relative positioning for the header */
+        
         & > nav {
             display: block;
             position: absolute;
@@ -16,6 +18,7 @@
             right: 0;
             width: 100%;
             z-index: 1000;
+            margin-top: 0; /* Remove any margin that might create a gap */
         }
     }
 

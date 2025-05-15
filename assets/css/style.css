@@ -295,6 +295,10 @@ kbd {
   align-items: center;
 }
 @media screen and (max-width: 576px) {
+  .my-header {
+    position: relative; /* Ensure relative positioning for the header */
+  }
+  
   .my-header > nav {
     display: block;
     position: absolute;
@@ -303,6 +307,7 @@ kbd {
     right: 0;
     width: 100%;
     z-index: 1000;
+    margin-top: 0; /* Remove any margin that might create a gap */
   }
 }
 
@@ -403,6 +408,8 @@ kbd {
     opacity: 0;
     overflow: hidden;
     display: block;
+    border-top: 0; /* Ensure no border/space between header and menu */
+    margin-top: 0; /* Remove any margin */
   }
   /* Aktiver Zustand: Menü anzeigen */
   .hamburger-button.active + nav {
@@ -426,6 +433,7 @@ kbd {
   .my-nav-container {
     background-color: inherit; /* Erbt Farbe vom Elternelement */
     padding: var(--spacer-md);
+    border-top: none; /* Ensure no border between header and nav */
   }
 }
 

@@ -98,6 +98,8 @@
         opacity: 0;
         overflow: hidden;
         display: block;
+        border-top: 0; /* Ensure no border/space between header and menu */
+        margin-top: 0; /* Remove any margin */
     }
 
     /* Aktiver Zustand: Menü anzeigen */
