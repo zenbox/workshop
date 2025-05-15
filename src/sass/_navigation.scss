@@ -3,6 +3,7 @@
     @media screen and (max-width: $breakpoint-sm) {
         background-color: inherit; /* Erbt Farbe vom Elternelement */
         padding: var(--spacer-md);
+        border-top: none; /* Ensure no border between header and nav */
     }
 }
 
@@ -36,7 +37,7 @@
         &-column {
             flex-direction: column !important;
         }
-        
+
         // Styling für die Links im Mobile-Modus
         a {
             display: block;
@@ -51,8 +52,9 @@
         color: currentColor;
         font-weight: 500;
         transition: opacity 0.2s ease;
-        
-        &:hover, &:focus {
+
+        &:hover,
+        &:focus {
             opacity: 0.8;
         }
     }
