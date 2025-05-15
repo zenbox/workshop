@@ -1,6 +1,9 @@
 /* Variablen */
+main {
+  background:red !important;
+}
 
-.my-slider{
+:root {
 --slider-height: 600px;
 --control-size: 48px;
 --dot-size: 12px;
@@ -17,7 +20,7 @@
 --color-white: #ffffff;
 }
 
-// Screenreader-only Klasse
+/* Screenreader-only Klasse */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -149,7 +152,7 @@
         }
     }
     
-    /* buttons */
+    /* Buttons */
     &__button {
         width:  var(--control-size);
         height:  var(--control-size);
