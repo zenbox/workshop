@@ -18,12 +18,15 @@
                     style="height: 2rem" />
             </div>
 
-            <button class="hamburger-button small" aria-label="Menü öffnen" aria-expanded="false">
+            <button
+                class="hamburger-button small"
+                aria-label="Menü öffnen"
+                aria-expanded="false">
                 <span class="hamburger-line line-top"></span>
                 <span class="hamburger-line line-middle"></span>
                 <span class="hamburger-line line-bottom"></span>
             </button>
-            
+
             <nav class="my-nav-container my-primary">
                 <ul class="my-nav">
                     <li><a href="#">Link 1</a></li>
@@ -34,7 +37,7 @@
                 </ul>
             </nav>
         </header>
-				
+
         <main>
             <h1>Responsive Layout</h1>
             <p>
@@ -57,18 +60,206 @@
                     <li class="my-dark">Dark Color</li>
                 </ul>
             </article>
+
+            <section
+                class="my-slider"
+                role="region"
+                aria-label="Bilder-Carousel"
+                aria-roledescription="carousel">
+                <div class="my-slider__viewport">
+                    <ul
+                        class="my-slider__slides"
+                        role="list">
+                        <li
+                            class="my-slider__slide"
+                            role="listitem"
+                            aria-label="Slide 1 von 4"
+                            data-slide="0">
+                            <img
+                                src="https://picsum.photos/id/1/1200/600"
+                                alt="Sonnenuntergang am Meer"
+                                loading="lazy" />
+                            <div class="my-slider__content">
+                                <h2>Willkommen bei unserem Unternehmen</h2>
+                                <p>
+                                    Entdecken Sie unsere innovativen Lösungen
+                                    für Ihre digitale Transformation.
+                                </p>
+                            </div>
+                        </li>
+                        <li
+                            class="my-slider__slide"
+                            role="listitem"
+                            aria-label="Slide 2 von 4"
+                            data-slide="1">
+                            <img
+                                src="https://picsum.photos/id/2/1200/600"
+                                alt="Moderne Büroräume"
+                                loading="lazy" />
+                            <div class="my-slider__content">
+                                <h2>Unsere Vision</h2>
+                                <p>
+                                    Wir gestalten die Zukunft durch nachhaltige
+                                    Technologie und Innovation.
+                                </p>
+                            </div>
+                        </li>
+                        <li
+                            class="my-slider__slide"
+                            role="listitem"
+                            aria-label="Slide 3 von 4"
+                            data-slide="2">
+                            <img
+                                src="https://picsum.photos/id/3/1200/600"
+                                alt="Team bei der Arbeit"
+                                loading="lazy" />
+                            <div class="my-slider__content">
+                                <h2>Unser Team</h2>
+                                <p>
+                                    Lernen Sie die Menschen kennen, die unsere
+                                    Vision Wirklichkeit werden lassen.
+                                </p>
+                            </div>
+                        </li>
+                        <li
+                            class="my-slider__slide"
+                            role="listitem"
+                            aria-label="Slide 4 von 4"
+                            data-slide="3">
+                            <img
+                                src="https://picsum.photos/id/4/1200/600"
+                                alt="Technologie-Konzept"
+                                loading="lazy" />
+                            <div class="my-slider__content">
+                                <h2>Kontaktieren Sie uns</h2>
+                                <p>
+                                    Lassen Sie uns gemeinsam Ihre Ideen
+                                    verwirklichen.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="my-slider__controls">
+                    <button
+                        class="my-slider__button my-slider__button--prev"
+                        type="button"
+                        aria-label="Vorheriges Bild"
+                        aria-controls="slider-viewport">
+                        <span
+                            class="material-icons"
+                            aria-hidden="true"
+                            >navigate_before</span
+                        >
+                    </button>
+
+                    <button
+                        class="my-slider__button my-slider__button--next"
+                        type="button"
+                        aria-label="Nächstes Bild"
+                        aria-controls="slider-viewport">
+                        <span
+                            class="material-icons"
+                            aria-hidden="true"
+                            >navigate_next</span
+                        >
+                    </button>
+
+                    <button
+                        class="my-slider__button my-slider__button--play"
+                        type="button"
+                        aria-label="Automatisches Abspielen starten"
+                        aria-pressed="false">
+                        <span
+                            class="material-icons"
+                            aria-hidden="true"
+                            >play_arrow</span
+                        >
+                        <span
+                            class="material-icons"
+                            aria-hidden="true"
+                            style="display: none"
+                            >pause</span
+                        >
+                    </button>
+                </div>
+
+                <nav
+                    class="my-slider__pagination"
+                    role="navigation"
+                    aria-label="Slider Pagination">
+                    <ul
+                        class="my-slider__dots"
+                        role="list">
+                        <li role="listitem">
+                            <button
+                                class="my-slider__dot my-slider__dot--active"
+                                type="button"
+                                aria-label="Gehe zu Slide 1"
+                                aria-current="true"
+                                data-slide="0">
+                                <span class="sr-only">Slide 1</span>
+                            </button>
+                        </li>
+                        <li role="listitem">
+                            <button
+                                class="my-slider__dot"
+                                type="button"
+                                aria-label="Gehe zu Slide 2"
+                                data-slide="1">
+                                <span class="sr-only">Slide 2</span>
+                            </button>
+                        </li>
+                        <li role="listitem">
+                            <button
+                                class="my-slider__dot"
+                                type="button"
+                                aria-label="Gehe zu Slide 3"
+                                data-slide="2">
+                                <span class="sr-only">Slide 3</span>
+                            </button>
+                        </li>
+                        <li role="listitem">
+                            <button
+                                class="my-slider__dot"
+                                type="button"
+                                aria-label="Gehe zu Slide 4"
+                                data-slide="3">
+                                <span class="sr-only">Slide 4</span>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div
+                    class="my-slider__status"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true">
+                    <span class="sr-only">Aktueller Slide: 1 von 4</span>
+                </div>
+            </section>
         </main>
-				
+
         <footer>
             <address class="my-address my-tertiary">
-							<ol class="my-card-container">								
-                <li class="my-card my-t-center my-white my-shadow">lorem ipsum 1</li>
-                <li class="my-card my-t-center my-white my-shadow">lorem ipsum 2</li>
-                <li class="my-card my-t-center my-white my-shadow">lorem ipsum 3</li>
-                <li class="my-card my-t-center my-white my-shadow my-w-100">lorem ipsum 4</li>					
-						  </ol>
-						</address>
- 
+                <ol class="my-card-container">
+                    <li class="my-card ">
+                        lorem ipsum 1
+                    </li>
+                    <li class="my-card ">
+                        lorem ipsum 2
+                    </li>
+                    <li class="my-card ">
+                        lorem ipsum 3
+                    </li>
+                    <li class="my-card ">
+                        lorem ipsum 4
+                    </li>
+                </ol>
+            </address>
+
             <nav class="my-dark">
                 <ul class="my-nav my-nav-row">
                     <li><a href="#">Link 1</a></li>
@@ -77,21 +268,6 @@
             </nav>
         </footer>
 
-        <script>
-            // Hamburger-Menü Funktionalität
-            document.querySelectorAll(".hamburger-button").forEach((button) => {
-                button.addEventListener("click", () => {
-                    const isActive = button.classList.contains("active");
-                    button.classList.toggle("active");
-                    
-                    // Accessibility: Update aria attributes
-                    button.setAttribute("aria-expanded", !isActive);
-                    button.setAttribute("aria-label", isActive ? "Menü öffnen" : "Menü schließen");
-                    
-                    // Nav wird durch CSS automatisch angezeigt wenn Button active ist
-                    // Die Animation wird durch die +* Selektoren in _hamburger.scss gesteuert
-                });
-            });
-        </script>
+        <script src="assets/js/script.js"></script>
     </body>
 </html>

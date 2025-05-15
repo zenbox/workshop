@@ -6,12 +6,13 @@
 @import "base";
 @import "typography";
 @import "colors";
+@import "utilities";
 
 // TEMPLATES
 @import "template-1";
 
 // COMPONENTS
-@imporr "card";
+@import "card";
 @import "color-fields";
 @import "header";
 @import "hamburger";

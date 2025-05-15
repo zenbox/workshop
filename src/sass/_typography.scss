@@ -143,6 +143,25 @@
     src: url("../fonts/barlow-v12-latin-900italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
+/* material-icons-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/material-icons-v143-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* material-icons-outlined-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: "Material Icons Outlined";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/material-icons-outlined-v109-latin-regular.woff2")
+        format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
 // Schrift (CSS Variablen)
 :root {
     --font-size: #{$font-size};
@@ -156,10 +175,12 @@
 html {
     font-size: var(--font-size, 16px);
 }
+
 body {
     line-height: var(--line-height, 1.5);
     font-family: var(--font-family-sans-serif, sans-serif);
 }
+
 h1,
 h2,
 h3 {
@@ -177,4 +198,34 @@ code,
 tt,
 kbd {
     font-family: var(--font-family-monospace, monospace);
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--font-size, 24px);
+    line-height: 1;
+    text-decoration: inherit;
+    text-align: center;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+}
+
+.material-icons-outlined {
+    font-family: "Material Icons Outlined";
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--font-size, 24px);
+    line-height: 1;
+    text-decoration: inherit;
+    text-align: center;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
 }

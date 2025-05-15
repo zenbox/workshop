@@ -1,38 +1,31 @@
+
 .#{$prefix}-card {
     &-container {
         list-style: none;
         margin: 0;
         padding: 0;
+        padding-block: var(--spacer-xl);
 
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        gap: 1rem;
+        flex-wrap: wrap;
+        row-gap: 1rem;
     }
 
     border: 1px solid grey;
     border-radius: 3px;
     padding: 0.25rem;
-}
 
-// TODO: nach _utilites.scss verschieben
-.#{prefix} {
-    &-w-100 {
-        width: 100%;
-        flex-basis: 100%;
-        flex-grow: 0;
-        flex-shrink: 0;
-    }
+    // @extend ist einen SASS Funktion, die Klassen aus anderen Dateien 
+    // importiert und sie in der aktuellen Datei anwendet. So muss im HTML 
+    // keine Klassenliste geschrieben werden, die Wartung, bzw. das Refactoring
+    // wird stark vereinfacht.
+    @extend .#{$prefix}-t-center;
+    @extend .#{$prefix}-shadow;
+    @extend .#{$prefix}-white;
 
-    &-t-center {
-        text-align: center;
-    }
-
-    &-shadow {
-        box-shadow: 0.5rem 0.5rem 1rem #00000044;
-    }
-
-    &-white {
-        background-color: white;
+    &:last-child {
+        @extend .#{$prefix}-w-100;
     }
 }
