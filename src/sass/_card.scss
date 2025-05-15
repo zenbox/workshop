@@ -1,0 +1,38 @@
+.#{$prefix}-card {
+    &-container {
+        list-style: none;
+        margin:0;
+        padding: 0;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        gap: 1rem;
+    }
+
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 0.25rem;
+}
+
+// TODO: nach _utilites.scss verschieben
+.#{prefix} {
+    &-w-100 {
+        width: 100%;
+        flex-basis: 100%;
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    &-t-center {
+	      text-align: center;
+    }
+
+    &-shadow {
+        box-shadow: 0.5rem 0.5rem 1rem #00000044;
+    }
+
+    &-white {
+        background-color: white;
+    }
+}

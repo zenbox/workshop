@@ -1,6 +1,6 @@
 @charset "UTF-8";
 :root {
-  --primary: #2edd3aa6;
+  --primary: hsla(8 80 60 / 0.85);
   --on-primary: var(--white);
   --secondary: #4db3bc !important;
   --on-secondary: var(--white);
@@ -477,5 +477,45 @@ kbd {
 .my-nav a:hover, .my-nav a:focus {
   opacity: 0.8;
 }
+
+
+.my-card-container {
+    list-style: none;
+    margin:0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+		row-gap: 1rem;
+}
+
+.my-card {
+	  border: 1px solid grey;
+    border-radius: 3px;
+    padding: 0.25rem;
+}
+
+.my-w-100 {
+    width: calc(100% - 2rem);
+    flex-basis: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.my-shadow {
+    box-shadow: 0.5rem 0.5rem 1rem #00000044;
+}
+
+.my-t-center {
+	  text-align: center;
+}
+
+
+.my-white {
+    background-color: white;
+}
+
 
 /*# sourceMappingURL=style.css.map */
