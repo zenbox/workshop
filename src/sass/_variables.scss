@@ -2,41 +2,6 @@
 $font-size: 18px;
 $prefix: "my";
 
-// Farben (CSS Variablen)
-:root {
-    // Corporate Farben
-    --primary: #2edd3a;
-    --on-primary: var(--white);
-
-    --secondary: #4db3bc !important;
-    --on-secondary: var(--white);
-
-    --tertiary: #e0e0e0;
-    --on-tertiary: var(--black);
-
-    // Semantische Farben
-    --success: #28a745;
-    --info: #17a2b8;
-    --warning: #ffc107;
-    --danger: #dc3545;
-
-    // Systemische Farben
-    --light: hsl(0, 0%, 85%);
-    --on-light: var(--black);
-
-    --dark: hsl(0, 0%, 20%);
-    --on-dark: var(--white);
-
-    --white: hsl(0, 0%, 100%);
-    --black: hsl(0, 0%, 0%);
-    --grey: hsl(0, 0%, 50%);
-
-    --border-color: hsl(0, 0%, 80%);
-    --shadow-color: rgba(0, 0, 0, 0.3);
-
-    --shadow: 0px 2px 18px 0px var(--shadow-color);
-}
-
 // Layout, Abstände (CSS Variablen)
 :root {
     // +++++++++++++++

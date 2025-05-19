@@ -1,23 +1,224 @@
+// Calculates a black/white contrast color
+// - - - - - - - - - -
+@function bwContrast($color) {
+  // Convert to RGB
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+  
+  // Normalize RGB-Values
+  $r: if($r <= 10, $r / 255, pow(($r / 255 + 0.055) / 1.055, 2.4));
+  $g: if($g <= 10, $g / 255, pow(($g / 255 + 0.055) / 1.055, 2.4));
+  $b: if($b <= 10, $b / 255, pow(($b / 255 + 0.055) / 1.055, 2.4));
+  
+  $luminance: 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+  
+  @if ($luminance > 0.5) {
+    @return $black;
+  } @else {
+    @return $white;
+  }
+}
+
+// Calculates a same colored contrast color
+// - - - - - - - - - -
+@function coloredContrast($color, $minContrast: 4.5) {
+  // Convert to HSL (Hue, Saturation, Lightness)
+  $hue: hue($color);
+  $saturation: saturation($color);
+  $lightness: lightness($color);
+  
+  // Calculate the contrast ratio
+  @function contrast-ratio($l1, $l2) {
+    $l1: $l1 + 0.05;
+    $l2: $l2 + 0.05;
+    @return if($l1 > $l2, $l1 / $l2, $l2 / $l1);
+  }
+  
+  // Convert the lightness (0-100%) to relative luminance (0-1)
+  @function luminance-from-lightness($l) {
+    $l: $l / 100;
+    @return if($l <= 0.03928, $l / 12.92, pow(($l + 0.055) / 1.055, 2.4));
+  }
+  
+  $primLuminance: luminance-from-lightness($lightness);
+  $newColor: $color;
+  $newLightness: $lightness;
+  
+  // Determine whether we need to make the color lighter or darker
+  $direction: if($lightness > 50, -1, 1); // Darker for light colors, lighter for dark ones
+  
+  // Gradually adjust the brightness until sufficient contrast is achieved
+  @for $i from 1 through 20 {
+    // Adjust lightness (in 5% steps)
+    $newLightness: min(max($newLightness + ($direction * 5), 0), 100);
+    $newColor: hsl($hue, $saturation, $newLightness);
+    
+    // Calculate luminance of the new color
+    $newLuminance: luminance-from-lightness($newLightness);
+    
+    // Calculate contrast ratio
+    $ratio: contrast-ratio($primLuminance, $newLuminance);
+    
+    // Exit when sufficient contrast is achieved or limits are reached
+    @if ($ratio >= $minContrast or $newLightness <= 0 or $newLightness >= 100) {
+      @return $newColor;
+    }
+  }
+  
+  // Fallback to black or white if sufficient contrast cannot be achieved in the same hue
+  @return if($lightness > 50, darken($color, 60%), lighten($color, 60%));
+}
+
+// Farben (SASS Variablen)
+// Vorteil: mit SASS können umfangreiche Berechnungen
+// durchgeführt werden. 
+// - - - - - - - - - -
+$black: hsl(0, 0%, 0%);
+$grey: hsl(0, 0%, 50%);
+$white: hsl(0, 0%, 100%);
+$dark: hsl(0, 0%, 15%);
+$light: hsl(0, 0%, 85%);
+
+$primary: #2edd3a;
+$secondary: #4db3bc;
+$tertiary: #e0e0e0;
+
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+
+$onPrimary: bwContrast($primary);
+$onSecondary: bwContrast($secondary);
+$onTertiary: bwContrast($tertiary);
+
+$onDark: bwContrast($dark);
+$onLight: bwContrast($light);
+$onBlack: bwContrast($black);
+$onGrey: bwContrast($grey);
+$onWhite: bwContrast($white);
+
+$onSuccess: coloredContrast($success);
+$onInfo: coloredContrast($info);
+$onWarning: coloredContrast($warning);
+$onDanger: coloredContrast($danger);
+
+
+// Farben (CSS Variablen)
+// Vorteil: können noch im Browser verändert werden
+:root {
+    // Systemische Farben
+    // - - - - - - - - - -
+    --light: #{$light};
+    --on-light: #{$onLight
+
+    --dark: #{$dark};
+    --on-dark: #{$onDark};
+
+    --white: #{$white};
+    --on-white: #{$onWhite};
+
+    --black: #{$black};
+    --on-black: #{$onBlack};
+
+    --grey: #{$grey};
+    --on-grey: #{$onGrey};
+
+    // Corporate Farben
+    // - - - - - - - - - -
+    --primary: #{$primary};
+    --on-primary: #{$onPrimary};
+
+    --secondary: #{$secondary};
+    --on-secondary: #{$onSecondary};
+
+    --tertiary: #{$tertiary};
+    --on-tertiary: #{$onTertiary};
+
+    // Semantische Farben
+    // - - - - - - - - - -
+    --success: #{$success};
+    --on-white: #{$onWhite};
+
+    --info: #{$info};
+    --on-info: #{$onInfo};
+
+    --warning: #{$warning};
+    --on-warning: #{$onWarning};
+
+    --danger: #{$danger};
+    --on-danger: #{$onDanger};
+
+
+    // Designelemente
+    // - - - - - - - - - -
+    --border-color: hsl(0, 0%, 80%);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    --shadow: 0px 2px 18px 0px var(--shadow-color);
+}
 
 .#{$prefix} {
 
     &-primary {
-        background: var(--primary) !important;
+        background: var(--primary);
         color: var(--on-primary);
     }
 
     &-secondary {
-        background: var(--secondary) !important;
+        background: var(--secondary);
         color: var(--on-secondary);
     }
 
     &-tertiary {
-        background: var(--tertiary) !important;
+        background: var(--tertiary);
         color: var(--on-tertiary);
     }
 
+    &-light {
+        background: var(--light);
+        color: var(--on-light);
+    }
+
     &-dark {
-        background: var(--dark) !important;
+        background: var(--dark);
         color: var(--on-dark);
     }
+
+    &-white {
+        background: var(--white);
+        color: var(--on-white);
+    }
+
+    &-grey {
+        background: var(--grey);
+        color: var(--on-grey);
+    }
+
+    &-black {
+        background: var(--black);
+        color: var(--on-black);
+    }
+
+    &-info {
+        background: var(--info);
+        color: var(--on-info);
+    }
+
+    &-warning {
+        background: var(--warning);
+        color: var(--on-warning);
+    }
+
+    &-error {
+        background: var(--error);
+        color: var(--on-error);
+    }
+
+    &-success {
+        background: var(--success);
+        color: var(--on-success);
+    }
+
 }
