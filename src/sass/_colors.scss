@@ -19,6 +19,27 @@
     @return $white;
   }
 }
+  
+// Calculate the contrast ratio
+// - - - - - - - - - -
+  @function contrast-ratio($l1, $l2) {
+    $l1: $l1 + 0.05;
+    $l2: $l2 + 0.05;
+    @return if($l1 > $l2, $l1 / $l2, $l2 / $l1);
+  }
+
+    // Convert the lightness (0-100%) to relative luminance (0-1)
+    // - - - - - - - - - -
+    @function luminance-from-lightness($l) {
+      // Ensure $l is unitless and in [0,1]
+      $l: if(unit($l) == "%", $l / 100%, $l);
+      
+      // Convert to a number and ensure it's unitless
+      $l: 0 + $l;
+      
+      // Apply the luminance formula
+      @return if($l <= 0.03928, $l / 12.92, pow(($l + 0.055) / 1.055, 2.4));
+    }
 
 // Calculates a same colored contrast color
 // - - - - - - - - - -
@@ -27,19 +48,6 @@
   $hue: hue($color);
   $saturation: saturation($color);
   $lightness: lightness($color);
-  
-  // Calculate the contrast ratio
-  @function contrast-ratio($l1, $l2) {
-    $l1: $l1 + 0.05;
-    $l2: $l2 + 0.05;
-    @return if($l1 > $l2, $l1 / $l2, $l2 / $l1);
-  }
-  
-  // Convert the lightness (0-100%) to relative luminance (0-1)
-  @function luminance-from-lightness($l) {
-    $l: $l / 100;
-    @return if($l <= 0.03928, $l / 12.92, pow(($l + 0.055) / 1.055, 2.4));
-  }
   
   $primLuminance: luminance-from-lightness($lightness);
   $newColor: $color;
@@ -78,16 +86,16 @@ $black: hsl(0, 0%, 0%);
 $grey: hsl(0, 0%, 50%);
 $white: hsl(0, 0%, 100%);
 $dark: hsl(0, 0%, 15%);
-$light: hsl(0, 0%, 85%);
+$light: hsl(0, 0%, 90%);
 
-$primary: #2edd3a;
+$primary: #088e54;
 $secondary: #4db3bc;
 $tertiary: #e0e0e0;
 
-$success: #28a745;
-$info: #17a2b8;
-$warning: #ffc107;
-$danger: #dc3545;
+$success: #0b992c;
+$info: #0b8fa4;
+$warning: #d6a30a;
+$danger: #a70e1e;
 
 $onPrimary: bwContrast($primary);
 $onSecondary: bwContrast($secondary);
@@ -111,7 +119,7 @@ $onDanger: coloredContrast($danger);
     // Systemische Farben
     // - - - - - - - - - -
     --light: #{$light};
-    --on-light: #{$onLight
+    --on-light: #{$onLight};
 
     --dark: #{$dark};
     --on-dark: #{$onDark};
@@ -147,8 +155,8 @@ $onDanger: coloredContrast($danger);
     --warning: #{$warning};
     --on-warning: #{$onWarning};
 
-    --danger: #{$danger};
-    --on-danger: #{$onDanger};
+    --error: #{$danger};
+    --on-error: #{$onDanger};
 
 
     // Designelemente

@@ -1,28 +1,5 @@
 @charset "UTF-8";
 :root {
-  --primary: #2edd3a;
-  --on-primary: var(--white);
-  --secondary: #4db3bc !important;
-  --on-secondary: var(--white);
-  --tertiary: #e0e0e0;
-  --on-tertiary: var(--black);
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: hsl(0, 0%, 85%);
-  --on-light: var(--black);
-  --dark: hsl(0, 0%, 20%);
-  --on-dark: var(--white);
-  --white: hsl(0, 0%, 100%);
-  --black: hsl(0, 0%, 0%);
-  --grey: hsl(0, 0%, 50%);
-  --border-color: hsl(0, 0%, 80%);
-  --shadow-color: rgba(0, 0, 0, 0.3);
-  --shadow: 0px 2px 18px 0px var(--shadow-color);
-}
-
-:root {
   --spacer: 0.25rem;
   --spacer-sm: calc(var(--spacer) * 0.5);
   --spacer-md: calc(var(--spacer) * 1);
@@ -276,21 +253,83 @@ kbd {
   direction: ltr;
 }
 
+:root {
+  --light: hsl(0, 0%, 90%);
+  --on-light: hsl(0, 0%, 0%);
+  --dark: hsl(0, 0%, 15%);
+  --on-dark: hsl(0, 0%, 100%);
+  --white: hsl(0, 0%, 100%);
+  --on-white: hsl(0, 0%, 0%);
+  --black: hsl(0, 0%, 0%);
+  --on-black: hsl(0, 0%, 100%);
+  --grey: hsl(0, 0%, 50%);
+  --on-grey: hsl(0, 0%, 100%);
+  --primary: #088e54;
+  --on-primary: hsl(0, 0%, 100%);
+  --secondary: #4db3bc;
+  --on-secondary: hsl(0, 0%, 100%);
+  --tertiary: #e0e0e0;
+  --on-tertiary: hsl(0, 0%, 0%);
+  --success: #0b992c;
+  --on-white: hsl(0, 0%, 0%);
+  --info: #0b8fa4;
+  --on-info: hsl(188.2352941176, 87.4285714286%, 84.3137254902%);
+  --warning: #d6a30a;
+  --on-warning: hsl(45, 91.0714285714%, 98.9215686275%);
+  --error: #a70e1e;
+  --on-error: hsl(353.7254901961, 84.5303867403%, 85.4901960784%);
+  --border-color: hsl(0, 0%, 80%);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow: 0px 2px 18px 0px var(--shadow-color);
+}
+
 .my-primary {
-  background: var(--primary) !important;
+  background: var(--primary);
   color: var(--on-primary);
 }
 .my-secondary {
-  background: var(--secondary) !important;
+  background: var(--secondary);
   color: var(--on-secondary);
 }
 .my-tertiary {
-  background: var(--tertiary) !important;
+  background: var(--tertiary);
   color: var(--on-tertiary);
 }
+.my-light {
+  background: var(--light);
+  color: var(--on-light);
+}
 .my-dark {
-  background: var(--dark) !important;
+  background: var(--dark);
   color: var(--on-dark);
+}
+.my-white, .my-card {
+  background: var(--white);
+  color: var(--on-white);
+}
+.my-grey {
+  background: var(--grey);
+  color: var(--on-grey);
+}
+.my-black {
+  background: var(--black);
+  color: var(--on-black);
+}
+.my-info {
+  background: var(--info);
+  color: var(--on-info);
+}
+.my-warning {
+  background: var(--warning);
+  color: var(--on-warning);
+}
+.my-error {
+  background: var(--error);
+  color: var(--on-error);
+}
+.my-success {
+  background: var(--success);
+  color: var(--on-success);
 }
 
 .my-w-100, .my-card:last-child {
@@ -373,9 +412,6 @@ kbd {
   width: 100px;
   height: 100px;
   padding: var(--spacer-sm);
-}
-.my-color-fields > * {
-  background-color: var(--grey);
 }
 
 .my-header {
