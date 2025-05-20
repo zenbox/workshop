@@ -26,6 +26,10 @@ img {
   height: auto;
 }
 
+section {
+  margin: 1rem;
+}
+
 /* barlow-100 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -264,20 +268,20 @@ kbd {
   --on-black: hsl(0, 0%, 100%);
   --grey: hsl(0, 0%, 50%);
   --on-grey: hsl(0, 0%, 100%);
-  --primary: #088e54;
+  --primary: #530db4;
   --on-primary: hsl(0, 0%, 100%);
   --secondary: #4db3bc;
   --on-secondary: hsl(0, 0%, 100%);
   --tertiary: #e0e0e0;
   --on-tertiary: hsl(0, 0%, 0%);
-  --success: #0b992c;
-  --on-white: hsl(0, 0%, 0%);
-  --info: #0b8fa4;
-  --on-info: hsl(188.2352941176, 87.4285714286%, 84.3137254902%);
-  --warning: #d6a30a;
-  --on-warning: hsl(45, 91.0714285714%, 98.9215686275%);
-  --error: #a70e1e;
-  --on-error: hsl(353.7254901961, 84.5303867403%, 85.4901960784%);
+  --success: hsl(133.9436619718, 86.5853658537%, 77.1568627451%);
+  --on-white: #0b992c;
+  --info: hsl(188.2352941176, 87.4285714286%, 84.3137254902%);
+  --on-info: #0b8fa4;
+  --warning: hsl(45, 91.0714285714%, 98.9215686275%);
+  --on-warning: #d6a30a;
+  --error: hsl(354, 71.4285714286%, 72.4509803922%);
+  --on-error: #78141e;
   --border-color: hsl(0, 0%, 80%);
   --shadow-color: rgba(0, 0, 0, 0.3);
   --shadow: 0px 2px 18px 0px var(--shadow-color);
@@ -358,6 +362,221 @@ kbd {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+:root {
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 2px;
+  --focus-outline-color: var(--primary);
+  --focus-animation-duration: 0.3s;
+  --focus-pulse-opacity-min: 0.4;
+  --focus-pulse-opacity-max: 0.8;
+  --focus-glow-blur: 4px;
+  --focus-glow-spread: 0px;
+  --focus-scale: 1.02;
+  --focus-transition: all var(--focus-animation-duration) cubic-bezier(0.19, 1, 0.22, 1);
+  --contrast-multiplier: 1;
+  --contrast-intensity: 100%;
+}
+
+@keyframes focus-pulse {
+  0% {
+    box-shadow: 0 0 0 var(--focus-outline-width) rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-min));
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1.5) rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-max)), 0 0 var(--focus-glow-blur) var(--focus-glow-spread) rgba(var(--focus-outline-color-rgb), 0.25);
+    transform: scale(var(--focus-scale));
+  }
+  100% {
+    box-shadow: 0 0 0 var(--focus-outline-width) rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-min));
+    transform: scale(1);
+  }
+}
+@keyframes focus-outline-pulse {
+  0% {
+    outline-offset: var(--focus-outline-offset);
+    outline-color: rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-min));
+  }
+  50% {
+    outline-offset: calc(var(--focus-outline-offset) * 1.5);
+    outline-color: rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-max));
+  }
+  100% {
+    outline-offset: var(--focus-outline-offset);
+    outline-color: rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-min));
+  }
+}
+:root, .contrast-normal {
+  --contrast-multiplier: 1;
+  --contrast-intensity: 100%;
+  --focus-outline-color-rgb: 8, 142, 84;
+}
+:root .focus-visible, :root :focus-visible, .contrast-normal .focus-visible, .contrast-normal :focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  transition: var(--focus-transition);
+  animation: focus-outline-pulse 1.5s infinite;
+}
+
+.contrast-dark {
+  --white: #1a1a1a;
+  --light: #1a1a1a;
+  --dark: white;
+  --black: #e6e6e6;
+  --grey: #7f7f7f;
+  --primary: #8436f1;
+  --secondary: #97d3d8;
+  --tertiary: #2e2e2e;
+  --success: #10e041;
+  --info: #10ceec;
+  --warning: #f6c637;
+  --error: #ba1f2e;
+  --on-white: white;
+  --on-light: white;
+  --on-dark: black;
+  --on-black: black;
+  --border-color: hsl(0, 0%, 30%);
+  --shadow-color: rgba(0, 0, 0, 0.8);
+  --focus-outline-color-rgb: 25, 180, 115;
+}
+.contrast-dark .focus-visible, .contrast-dark :focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  transition: var(--focus-transition);
+  animation: focus-outline-pulse 1.5s infinite;
+  box-shadow: 0 0 var(--focus-glow-blur) 0 var(--focus-outline-color);
+}
+
+.contrast-high {
+  --contrast-multiplier: 1.5;
+  --contrast-intensity: 150%;
+  --white: hsl(0, 0%, 100%);
+  --light: hsl(0, 0%, 100%);
+  --dark: hsl(0, 0%, 0%);
+  --black: hsl(0, 0%, 0%);
+  --grey: #404040;
+  --primary: #3c008e;
+  --secondary: #1aafbc;
+  --tertiary: hsl(0, 0%, 0%);
+  --success: #00711a;
+  --info: #006b7c;
+  --warning: #ad8200;
+  --error: #590009;
+  --on-white: hsl(0, 0%, 0%);
+  --on-light: hsl(0, 0%, 0%);
+  --on-dark: hsl(0, 0%, 100%);
+  --on-black: hsl(0, 0%, 100%);
+  --border-color: hsl(0, 0%, 0%);
+  --shadow-color: rgba(0, 0, 0, 0.9);
+  --focus-outline-color-rgb: 0, 0, 0;
+  --focus-outline-width: 3px;
+  --focus-outline-offset: 3px;
+}
+.contrast-high .focus-visible, .contrast-high :focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  transition: var(--focus-transition);
+  animation: focus-outline-pulse 2s infinite;
+  box-shadow: none;
+}
+
+.contrast-higher {
+  --contrast-multiplier: 2;
+  --contrast-intensity: 200%;
+  --white: hsl(0, 0%, 100%);
+  --light: hsl(0, 0%, 100%);
+  --dark: hsl(0, 0%, 0%);
+  --black: hsl(0, 0%, 0%);
+  --grey: hsl(0, 0%, 0%);
+  --primary: hsl(0, 0%, 0%);
+  --secondary: hsl(0, 0%, 0%);
+  --tertiary: hsl(0, 0%, 0%);
+  --success: hsl(0, 0%, 0%);
+  --info: hsl(0, 0%, 0%);
+  --warning: hsl(0, 0%, 0%);
+  --error: hsl(0, 0%, 0%);
+  --on-white: hsl(0, 0%, 0%);
+  --on-light: hsl(0, 0%, 0%);
+  --on-dark: hsl(0, 0%, 100%);
+  --on-black: hsl(0, 0%, 100%);
+  --on-primary: hsl(0, 0%, 100%);
+  --on-secondary: hsl(0, 0%, 100%);
+  --on-tertiary: hsl(0, 0%, 100%);
+  --on-success: hsl(0, 0%, 100%);
+  --on-info: hsl(0, 0%, 100%);
+  --on-warning: hsl(0, 0%, 100%);
+  --on-error: hsl(0, 0%, 100%);
+  --border-color: hsl(0, 0%, 0%);
+  --shadow-color: rgba(0, 0, 0, 1);
+  --focus-outline-color-rgb: 0, 0, 0;
+  --focus-outline-width: 4px;
+  --focus-outline-offset: 4px;
+}
+.contrast-higher .focus-visible, .contrast-higher :focus-visible {
+  outline: var(--focus-outline-width) dashed var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+  transition: none;
+  animation: none;
+  box-shadow: none;
+}
+.contrast-higher a:link, .contrast-higher a:visited {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+}
+.contrast-higher button, .contrast-higher input, .contrast-higher select, .contrast-higher textarea {
+  border: 2px solid var(--black) !important;
+}
+
+.my-focus-pulse {
+  transition: var(--focus-transition);
+}
+.my-focus-pulse:focus-visible {
+  animation: focus-pulse 2s infinite;
+  outline: none;
+}
+
+.my-focus-outline {
+  transition: var(--focus-transition);
+}
+.my-focus-outline:focus-visible {
+  animation: focus-outline-pulse 2s infinite;
+  outline: var(--focus-outline-width) solid var(--focus-outline-color);
+  outline-offset: var(--focus-outline-offset);
+}
+
+.my-contrast-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.my-contrast-toggle button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  background-color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  transition: var(--focus-transition);
+}
+.my-contrast-toggle button:hover {
+  transform: scale(1.1);
+}
+.my-contrast-toggle button:focus-visible {
+  animation: focus-pulse 2s infinite;
+  outline: none;
+}
+.my-contrast-toggle button.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary);
 }
 
 .my-template-1 {
@@ -602,6 +821,350 @@ kbd {
 }
 .my-nav a:hover, .my-nav a:focus {
   opacity: 0.8;
+}
+
+.my-payment {
+  --input-border-color: var(--border-color);
+  --input-border-radius: 4px;
+  --input-padding: var(--spacer-lg);
+  --input-focus-shadow: 0 0 0 2px rgba(8, 142, 84, 0.25);
+  --feedback-font-size: 0.85rem;
+  --card-icon-size: 32px;
+}
+.my-payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-lg);
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: var(--spacer-xl);
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+.contrast-dark .my-payment-form {
+  background-color: var(--dark);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-color);
+}
+.contrast-higher .my-payment-form {
+  background-color: var(--white);
+  border: 3px solid var(--black);
+  box-shadow: none;
+}
+.my-payment-header {
+  text-align: center;
+  margin-bottom: var(--spacer-lg);
+  padding-bottom: var(--spacer-lg);
+  border-bottom: 1px solid var(--border-color);
+}
+.contrast-higher .my-payment-header {
+  border-bottom: 2px solid var(--black);
+}
+.my-payment-title {
+  margin: 0 0 var(--spacer-md);
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+.contrast-higher .my-payment-title {
+  color: var(--black);
+  font-weight: 700;
+}
+.my-payment-group {
+  position: relative;
+  margin-bottom: var(--spacer-lg);
+}
+.my-payment-label {
+  display: block;
+  margin-bottom: var(--spacer-md);
+  font-weight: 500;
+  color: var(--dark);
+}
+.contrast-dark .my-payment-label {
+  color: var(--light);
+}
+.contrast-higher .my-payment-label {
+  color: var(--black);
+  font-weight: 700;
+  text-decoration: underline;
+}
+.my-payment-input {
+  width: 100%;
+  padding: var(--input-padding);
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  font-size: 1rem;
+  transition: var(--focus-transition, all 0.2s ease);
+  background-color: var(--white);
+  color: var(--dark);
+}
+.my-payment-input:focus-visible {
+  outline: none;
+  border-color: var(--focus-outline-color, var(--info));
+  animation: focus-pulse 2s infinite;
+}
+.contrast-high .my-payment-input:focus-visible, .contrast-higher .my-payment-input:focus-visible {
+  border-color: var(--black);
+  border-width: 2px;
+}
+
+.my-payment-input.is-invalid {
+  border-color: var(--error);
+  background-color: rgba(167, 14, 30, 0.03);
+}
+.contrast-higher .my-payment-input.is-invalid {
+  border: 3px dashed var(--black);
+  background-color: var(--white);
+}
+.my-payment-input.is-valid {
+  border-color: var(--success);
+  background-color: rgba(11, 153, 44, 0.03);
+}
+.contrast-higher .my-payment-input.is-valid {
+  border: 3px solid var(--black);
+  background-color: var(--white);
+}
+.contrast-dark .my-payment-input {
+  background-color: var(--dark);
+  color: var(--light);
+  border-color: var(--light);
+}
+.contrast-high .my-payment-input {
+  border: 2px solid var(--black);
+}
+.contrast-higher .my-payment-input {
+  border: 2px solid var(--black);
+  font-weight: bold;
+}
+.my-payment-card-number {
+  position: relative;
+}
+.my-payment-card-number .card-icon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--card-icon-size);
+  height: var(--card-icon-size);
+  opacity: 0.7;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+.contrast-dark .my-payment-card-number .card-icon {
+  color: var(--light);
+}
+.contrast-high .my-payment-card-number .card-icon, .contrast-higher .my-payment-card-number .card-icon {
+  color: var(--black);
+  opacity: 1;
+  font-weight: bold;
+}
+.my-payment-row {
+  display: flex;
+  gap: var(--spacer-lg);
+}
+@media (max-width: 576px) {
+  .my-payment-row {
+    flex-direction: column;
+  }
+}
+.my-payment-row .my-payment-group {
+  flex: 1;
+}
+.my-payment-feedback {
+  display: block;
+  margin-top: var(--spacer-sm);
+  font-size: var(--feedback-font-size);
+  padding: var(--spacer-sm);
+  border-radius: var(--input-border-radius);
+}
+.my-payment-feedback.valid {
+  color: var(--on-success);
+  background-color: var(--success);
+}
+.contrast-higher .my-payment-feedback.valid {
+  color: var(--white);
+  background-color: var(--black);
+  border: 2px solid var(--black);
+  font-weight: bold;
+}
+.my-payment-feedback.invalid {
+  color: var(--on-error);
+  background-color: var(--error);
+}
+.contrast-higher .my-payment-feedback.invalid {
+  color: var(--white);
+  background-color: var(--black);
+  border: 2px dashed var(--black);
+  font-weight: bold;
+}
+.my-payment-feedback.info {
+  color: var(--on-info);
+  background-color: var(--info);
+}
+.contrast-higher .my-payment-feedback.info {
+  color: var(--white);
+  background-color: var(--black);
+  border: 2px dotted var(--black);
+}
+.my-payment-submit {
+  display: block;
+  width: 100%;
+  padding: var(--spacer-lg);
+  border: none;
+  border-radius: var(--input-border-radius);
+  background-color: var(--success);
+  color: var(--on-success);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--focus-transition, all 0.2s ease-in-out);
+  margin-top: var(--spacer-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.my-payment-submit:hover {
+  background-color: #098125;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.contrast-higher .my-payment-submit:hover {
+  transform: none;
+  background-color: var(--black);
+  box-shadow: none;
+}
+.my-payment-submit:focus-visible {
+  animation: focus-pulse 2s infinite;
+  outline: none;
+}
+.contrast-high .my-payment-submit:focus-visible, .contrast-higher .my-payment-submit:focus-visible {
+  animation: none;
+  outline: 3px solid var(--black);
+  outline-offset: 3px;
+}
+
+.my-payment-submit:disabled {
+  background-color: var(--grey);
+  color: var(--on-grey);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+.contrast-higher .my-payment-submit:disabled {
+  background-color: var(--white);
+  color: var(--black);
+  border: 2px solid var(--black);
+  opacity: 0.5;
+}
+.contrast-dark .my-payment-submit {
+  background-color: var(--success);
+  box-shadow: 0 0 10px rgba(11, 153, 44, 0.3);
+}
+.contrast-high .my-payment-submit {
+  box-shadow: none;
+  border: 2px solid var(--black);
+}
+.contrast-higher .my-payment-submit {
+  background-color: var(--black);
+  color: var(--white);
+  border: 3px solid var(--black);
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.my-payment-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.my-payment-contrast-switcher {
+  display: flex;
+  gap: var(--spacer-sm);
+  margin-top: var(--spacer-lg);
+  justify-content: center;
+}
+.my-payment-contrast-switcher button {
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--input-border-radius);
+  padding: var(--spacer-sm) var(--spacer-md);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: var(--focus-transition, all 0.2s ease);
+}
+.my-payment-contrast-switcher button:hover {
+  border-color: var(--primary);
+}
+.my-payment-contrast-switcher button:focus-visible {
+  animation: focus-outline-pulse 2s infinite;
+  outline: var(--focus-outline-width, 2px) solid var(--focus-outline-color, var(--primary));
+  outline-offset: var(--focus-outline-offset, 2px);
+}
+.my-payment-contrast-switcher button.active {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border-color: var(--primary);
+}
+.contrast-higher .my-payment-contrast-switcher button.active {
+  background-color: var(--black);
+  color: var(--white);
+  border-color: var(--black);
+}
+.contrast-higher .my-payment-contrast-switcher button {
+  border: 2px solid var(--black);
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes focus-pulse {
+  0% {
+    box-shadow: 0 0 0 2px rgba(11, 143, 164, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(11, 143, 164, 0.5), 0 0 4px 0 rgba(11, 143, 164, 0.25);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(11, 143, 164, 0.25);
+    transform: scale(1);
+  }
+}
+@keyframes focus-outline-pulse {
+  0% {
+    outline-offset: 2px;
+    outline-color: rgba(11, 143, 164, 0.4);
+  }
+  50% {
+    outline-offset: 4px;
+    outline-color: rgba(11, 143, 164, 0.8);
+  }
+  100% {
+    outline-offset: 2px;
+    outline-color: rgba(11, 143, 164, 0.4);
+  }
+}
+.my-payment-feedback {
+  animation: fadeIn 0.3s ease-in-out;
 }
 
 .my-slider {

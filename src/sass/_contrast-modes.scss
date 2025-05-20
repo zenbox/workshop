@@ -1,0 +1,287 @@
+// Kontrast-Modi und Fokus-Animationen
+// Bietet verschiedene Kontrastmodi für bessere Zugänglichkeit
+
+// Basis-Variablen für Fokusstile
+:root {
+  // Fokus-Animation Variablen
+  --focus-outline-width: 2px;
+  --focus-outline-offset: 2px;
+  --focus-outline-color: var(--primary);
+  --focus-animation-duration: 0.3s;
+  --focus-pulse-opacity-min: 0.4;
+  --focus-pulse-opacity-max: 0.8;
+  --focus-glow-blur: 4px;
+  --focus-glow-spread: 0px;
+  --focus-scale: 1.02;
+  --focus-transition: all var(--focus-animation-duration) cubic-bezier(0.19, 1, 0.22, 1);
+  
+  // Basis-Kontrasteinstellungen
+  --contrast-multiplier: 1;
+  --contrast-intensity: 100%;
+}
+
+// Fokus-Animationen (Keyframes)
+@keyframes focus-pulse {
+  0% {
+    box-shadow: 0 0 0 var(--focus-outline-width) rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-min));
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1.5) rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-max)),
+                0 0 var(--focus-glow-blur) var(--focus-glow-spread) rgba(var(--focus-outline-color-rgb), 0.25);
+    transform: scale(var(--focus-scale));
+  }
+  100% {
+    box-shadow: 0 0 0 var(--focus-outline-width) rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-min));
+    transform: scale(1);
+  }
+}
+
+@keyframes focus-outline-pulse {
+  0% {
+    outline-offset: var(--focus-outline-offset);
+    outline-color: rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-min));
+  }
+  50% {
+    outline-offset: calc(var(--focus-outline-offset) * 1.5);
+    outline-color: rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-max));
+  }
+  100% {
+    outline-offset: var(--focus-outline-offset);
+    outline-color: rgba(var(--focus-outline-color-rgb), var(--focus-pulse-opacity-min));
+  }
+}
+
+// Kontrast-Modi
+
+// Normal (Standard)
+:root, .contrast-normal {
+  --contrast-multiplier: 1;
+  --contrast-intensity: 100%;
+  
+  // RGB-Varianten der Farben für Animationen
+  --focus-outline-color-rgb: 8, 142, 84; // RGB von $primary
+  
+  // Fokus-Stil für normalen Kontrast
+  .focus-visible, :focus-visible {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+    transition: var(--focus-transition);
+    animation: focus-outline-pulse 1.5s infinite;
+  }
+}
+
+// Dark Mode
+.contrast-dark {
+  // Dunkle Hintergrundfarbe
+  --white: #{darken($white, 90%)};
+  --light: #{darken($light, 80%)};
+  --dark: #{lighten($dark, 90%)};
+  --black: #{lighten($black, 90%)};
+  --grey: #{invert($grey)};
+  
+  // Angepasste Farben
+  --primary: #{lighten($primary, 20%)};
+  --secondary: #{lighten($secondary, 20%)};
+  --tertiary: #{darken($tertiary, 70%)};
+  
+  // Sematische Farben verstärken
+  --success: #{lighten($success, 15%)};
+  --info: #{lighten($info, 15%)};
+  --warning: #{lighten($warning, 15%)};
+  --error: #{lighten($danger, 15%)};
+  
+  // Kontrastfarben entsprechend anpassen
+  --on-white: #{invert($onWhite)};
+  --on-light: #{invert($onLight)};
+  --on-dark: #{invert($onDark)};
+  --on-black: #{invert($onBlack)};
+  
+  // Design-Elemente anpassen
+  --border-color: hsl(0, 0%, 30%);
+  --shadow-color: rgba(0, 0, 0, 0.8);
+  
+  // RGB-Varianten für Animationen
+  --focus-outline-color-rgb: 25, 180, 115; // Helleres Grün für Dark Mode
+  
+  // Fokus-Stil für Dark Mode
+  .focus-visible, :focus-visible {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+    transition: var(--focus-transition);
+    animation: focus-outline-pulse 1.5s infinite;
+    box-shadow: 0 0 var(--focus-glow-blur) 0 var(--focus-outline-color);
+  }
+}
+
+// High Contrast Mode
+.contrast-high {
+  --contrast-multiplier: 1.5;
+  --contrast-intensity: 150%;
+  
+  // Mehr Kontrast zwischen Farben
+  --white: #{$white};
+  --light: #{$white};
+  --dark: #{$black};
+  --black: #{$black};
+  --grey: #{darken($grey, 25%)};
+  
+  // Stärkere primäre Farben
+  --primary: #{saturate(darken($primary, 10%), 30%)};
+  --secondary: #{saturate(darken($secondary, 10%), 30%)};
+  --tertiary: #{$black};
+  
+  // Semantische Farben verstärken
+  --success: #{saturate(darken($success, 10%), 30%)};
+  --info: #{saturate(darken($info, 10%), 30%)};
+  --warning: #{saturate(darken($warning, 10%), 30%)};
+  --error: #{saturate(darken($danger, 10%), 30%)};
+  
+  // Stärkere Kontrastfarben
+  --on-white: #{$black};
+  --on-light: #{$black};
+  --on-dark: #{$white};
+  --on-black: #{$white};
+  
+  // Design-Elemente anpassen
+  --border-color: #{$black};
+  --shadow-color: rgba(0, 0, 0, 0.9);
+  
+  // RGB-Varianten für Animationen
+  --focus-outline-color-rgb: 0, 0, 0; // Schwarzer Fokusrahmen für hohen Kontrast
+  --focus-outline-width: 3px;
+  --focus-outline-offset: 3px;
+  
+  // Fokus-Stil für High Contrast
+  .focus-visible, :focus-visible {
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+    transition: var(--focus-transition);
+    animation: focus-outline-pulse 2s infinite;
+    box-shadow: none; // Keine Schatten für klaren Kontrast
+  }
+}
+
+// Higher Contrast Mode (für Sehbehinderungen)
+.contrast-higher {
+  --contrast-multiplier: 2;
+  --contrast-intensity: 200%;
+  
+  // Maximaler Kontrast - nur Schwarz/Weiß
+  --white: #{$white};
+  --light: #{$white};
+  --dark: #{$black};
+  --black: #{$black};
+  --grey: #{$black};
+  
+  // Alle Farben auf Schwarz/Weiß reduzieren
+  --primary: #{$black};
+  --secondary: #{$black};
+  --tertiary: #{$black};
+  
+  // Semantische Farben auf Schwarz
+  --success: #{$black};
+  --info: #{$black};
+  --warning: #{$black};
+  --error: #{$black};
+  
+  // Alle Text-Kontraste maximieren
+  --on-white: #{$black};
+  --on-light: #{$black};
+  --on-dark: #{$white};
+  --on-black: #{$white};
+  --on-primary: #{$white};
+  --on-secondary: #{$white};
+  --on-tertiary: #{$white};
+  --on-success: #{$white};
+  --on-info: #{$white};
+  --on-warning: #{$white};
+  --on-error: #{$white};
+  
+  // Klare Designelement-Kontraste
+  --border-color: #{$black};
+  --shadow-color: rgba(0, 0, 0, 1);
+  
+  // RGB-Varianten für Animationen
+  --focus-outline-color-rgb: 0, 0, 0; // Schwarzer Fokusrahmen
+  --focus-outline-width: 4px;
+  --focus-outline-offset: 4px;
+  
+  // Fokus-Stil für Higher Contrast
+  .focus-visible, :focus-visible {
+    outline: var(--focus-outline-width) dashed var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+    transition: none; // Keine Übergänge für maximale Klarheit
+    animation: none; // Keine Animationen für maximale Klarheit
+    box-shadow: none;
+  }
+  
+  // Zusätzliche Zugänglichkeitserweiterungen
+  a:link, a:visited {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+  }
+  
+  button, input, select, textarea {
+    border: 2px solid var(--black) !important;
+  }
+}
+
+// Spezifische Fokusklassen für gezielte Anwendung
+.#{$prefix}-focus-pulse {
+  transition: var(--focus-transition);
+  
+  &:focus-visible {
+    animation: focus-pulse 2s infinite;
+    outline: none;
+  }
+}
+
+.#{$prefix}-focus-outline {
+  transition: var(--focus-transition);
+  
+  &:focus-visible {
+    animation: focus-outline-pulse 2s infinite;
+    outline: var(--focus-outline-width) solid var(--focus-outline-color);
+    outline-offset: var(--focus-outline-offset);
+  }
+}
+
+// Kontrastmodus-Umschalter-Funktionalität
+.#{$prefix}-contrast-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background-color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: var(--focus-transition);
+    
+    &:hover {
+      transform: scale(1.1);
+    }
+    
+    &:focus-visible {
+      animation: focus-pulse 2s infinite;
+      outline: none;
+    }
+    
+    &.active {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+  }
+}

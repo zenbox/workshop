@@ -1,0 +1,407 @@
+// Payment component styling
+// Reusable payment form with validation states
+
+.#{$prefix}-payment {
+  --input-border-color: var(--border-color);
+  --input-border-radius: 4px;
+  --input-padding: var(--spacer-lg);
+  --input-focus-shadow: 0 0 0 2px rgba(8, 142, 84, 0.25);
+  --feedback-font-size: 0.85rem;
+  --card-icon-size: 32px;
+  
+  &-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacer-lg);
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: var(--spacer-xl);
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    
+    // Passt Formularhintergrund für Kontrastmodi an
+    .contrast-dark & {
+      background-color: var(--dark);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-color);
+    }
+    
+    .contrast-higher & {
+      background-color: var(--white);
+      border: 3px solid var(--black);
+      box-shadow: none;
+    }
+  }
+
+  &-header {
+    text-align: center;
+    margin-bottom: var(--spacer-lg);
+    padding-bottom: var(--spacer-lg);
+    border-bottom: 1px solid var(--border-color);
+    
+    .contrast-higher & {
+      border-bottom: 2px solid var(--black);
+    }
+  }
+
+  &-title {
+    margin: 0 0 var(--spacer-md);
+    font-size: 1.5rem;
+    color: var(--primary);
+    
+    .contrast-higher & {
+      color: var(--black);
+      font-weight: 700;
+    }
+  }
+
+  &-group {
+    position: relative;
+    margin-bottom: var(--spacer-lg);
+  }
+
+  &-label {
+    display: block;
+    margin-bottom: var(--spacer-md);
+    font-weight: 500;
+    color: var(--dark);
+    
+    .contrast-dark & {
+      color: var(--light);
+    }
+    
+    .contrast-higher & {
+      color: var(--black);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+  }
+  
+  &-input {
+    width: 100%;
+    padding: var(--input-padding);
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--input-border-radius);
+    font-size: 1rem;
+    transition: var(--focus-transition, all 0.2s ease);
+    background-color: var(--white);
+    color: var(--dark);
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--focus-outline-color, var(--info));
+      
+      // Animation basierend auf Kontrastmodus
+      animation: focus-pulse 2s infinite;
+      
+      @at-root .contrast-high &, .contrast-higher & {
+        border-color: var(--black);
+        border-width: 2px;
+      }
+    }
+    
+    &.is-invalid {
+      border-color: var(--error);
+      background-color: rgba(167, 14, 30, 0.03); // light error background
+      
+      .contrast-higher & {
+        border: 3px dashed var(--black);
+        background-color: var(--white);
+      }
+    }
+    
+    &.is-valid {
+      border-color: var(--success);
+      background-color: rgba(11, 153, 44, 0.03); // light success background
+      
+      .contrast-higher & {
+        border: 3px solid var(--black);
+        background-color: var(--white);
+      }
+    }
+    
+    // Kontrastmodus-Anpassungen
+    .contrast-dark & {
+      background-color: var(--dark);
+      color: var(--light);
+      border-color: var(--light);
+    }
+    
+    .contrast-high & {
+      border: 2px solid var(--black);
+    }
+    
+    .contrast-higher & {
+      border: 2px solid var(--black);
+      font-weight: bold;
+    }
+  }
+
+  // Card number specific styles
+  &-card-number {
+    position: relative;
+    
+    .card-icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: var(--card-icon-size);
+      height: var(--card-icon-size);
+      opacity: 0.7;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      
+      .contrast-dark & {
+        color: var(--light);
+      }
+      
+      .contrast-high &, .contrast-higher & {
+        color: var(--black);
+        opacity: 1;
+        font-weight: bold;
+      }
+    }
+  }
+
+  // Two column layout for expiry and CVV
+  &-row {
+    display: flex;
+    gap: var(--spacer-lg);
+    
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+    }
+    
+    .#{$prefix}-payment-group {
+      flex: 1;
+    }
+  }
+
+  // Feedback messages
+  &-feedback {
+    display: block;
+    margin-top: var(--spacer-sm);
+    font-size: var(--feedback-font-size);
+    padding: var(--spacer-sm);
+    border-radius: var(--input-border-radius);
+    
+    &.valid {
+      color: var(--on-success);
+      background-color: var(--success);
+      
+      .contrast-higher & {
+        color: var(--white);
+        background-color: var(--black);
+        border: 2px solid var(--black);
+        font-weight: bold;
+      }
+    }
+    
+    &.invalid {
+      color: var(--on-error);
+      background-color: var(--error);
+      
+      .contrast-higher & {
+        color: var(--white);
+        background-color: var(--black);
+        border: 2px dashed var(--black);
+        font-weight: bold;
+      }
+    }
+    
+    &.info {
+      color: var(--on-info);
+      background-color: var(--info);
+      
+      .contrast-higher & {
+        color: var(--white);
+        background-color: var(--black);
+        border: 2px dotted var(--black);
+      }
+    }
+  }
+
+  // Submit button
+  &-submit {
+    display: block;
+    width: 100%;
+    padding: var(--spacer-lg);
+    border: none;
+    border-radius: var(--input-border-radius);
+    background-color: var(--success);
+    color: var(--on-success);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--focus-transition, all 0.2s ease-in-out);
+    margin-top: var(--spacer-xl);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    &:hover {
+      background-color: darken($success, 5%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      
+      .contrast-higher & {
+        transform: none;
+        background-color: var(--black);
+        box-shadow: none;
+      }
+    }
+    
+    &:focus-visible {
+      // Animation basierend auf Kontrastmodus
+      animation: focus-pulse 2s infinite;
+      outline: none;
+      
+      @at-root .contrast-high &, .contrast-higher & {
+        animation: none;
+        outline: 3px solid var(--black);
+        outline-offset: 3px;
+      }
+    }
+    
+    &:disabled {
+      background-color: var(--grey);
+      color: var(--on-grey);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+      
+      .contrast-higher & {
+        background-color: var(--white);
+        color: var(--black);
+        border: 2px solid var(--black);
+        opacity: 0.5;
+      }
+    }
+    
+    // Kontrastmodus-Anpassungen
+    .contrast-dark & {
+      background-color: var(--success);
+      box-shadow: 0 0 10px rgba(11, 153, 44, 0.3);
+    }
+    
+    .contrast-high & {
+      box-shadow: none;
+      border: 2px solid var(--black);
+    }
+    
+    .contrast-higher & {
+      background-color: var(--black);
+      color: var(--white);
+      border: 3px solid var(--black);
+      box-shadow: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  }
+
+  // Accessibility enhancements
+  &-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  // Kontrastmodusschalter für das Formular
+  &-contrast-switcher {
+    display: flex;
+    gap: var(--spacer-sm);
+    margin-top: var(--spacer-lg);
+    justify-content: center;
+    
+    button {
+      background: none;
+      border: 1px solid var(--border-color);
+      border-radius: var(--input-border-radius);
+      padding: var(--spacer-sm) var(--spacer-md);
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: var(--focus-transition, all 0.2s ease);
+      
+      &:hover {
+        border-color: var(--primary);
+      }
+      
+      &:focus-visible {
+        animation: focus-outline-pulse 2s infinite;
+        outline: var(--focus-outline-width, 2px) solid var(--focus-outline-color, var(--primary));
+        outline-offset: var(--focus-outline-offset, 2px);
+      }
+      
+      &.active {
+        background-color: var(--primary);
+        color: var(--on-primary);
+        border-color: var(--primary);
+        
+        .contrast-higher & {
+          background-color: var(--black);
+          color: var(--white);
+          border-color: var(--black);
+        }
+      }
+      
+      .contrast-higher & {
+        border: 2px solid var(--black);
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+// Animationen für Feedback-Meldungen und Fokus
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// Fokus-Animationen (wenn globales Contrast-Modul nicht geladen)
+@keyframes focus-pulse {
+  0% {
+    box-shadow: 0 0 0 2px rgba(11, 143, 164, 0.25);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(11, 143, 164, 0.5), 
+                0 0 4px 0 rgba(11, 143, 164, 0.25);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(11, 143, 164, 0.25);
+    transform: scale(1);
+  }
+}
+
+@keyframes focus-outline-pulse {
+  0% {
+    outline-offset: 2px;
+    outline-color: rgba(11, 143, 164, 0.4);
+  }
+  50% {
+    outline-offset: 4px;
+    outline-color: rgba(11, 143, 164, 0.8);
+  }
+  100% {
+    outline-offset: 2px;
+    outline-color: rgba(11, 143, 164, 0.4);
+  }
+}
+
+.#{$prefix}-payment-feedback {
+  animation: fadeIn 0.3s ease-in-out;
+}

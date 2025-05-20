@@ -39,17 +39,21 @@
         </header>
 
         <main>
-            <h1>Responsive Layout</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <article>
+            <section>
+                <h1>Responsive Layout</h1>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </p>
+            </section>
+
+            <section>
                 <h2>Farben</h2>
                 <p>Hier sind alle im CSS hinterlegten Farben zu sehen.</p>
 
@@ -58,16 +62,16 @@
                     <li class="my-secondary">Secondary Color</li>
                     <li class="my-tertiary">Tertiary Color</li>
                     <li class="my-dark">Dark</li>
-										<li class="my-light">Light</li>
-									  <li class="my-black">Black</li>
-										<li class="my-grey">Grey</li>
-										<li class="my-white">White</li>
-										<li class="my-success">Success Color</li>
-										<li class="my-error">Error Color</li>
-										<li class="my-warning">Warning Color</li>
-										<li class="my-info">Info Color</li>
+                    <li class="my-light">Light</li>
+                    <li class="my-black">Black</li>
+                    <li class="my-grey">Grey</li>
+                    <li class="my-white">White</li>
+                    <li class="my-success">Success Color</li>
+                    <li class="my-error">Error Color</li>
+                    <li class="my-warning">Warning Color</li>
+                    <li class="my-info">Info Color</li>
                 </ul>
-            </article>
+            </section>
 
             <section
                 class="my-slider"
@@ -248,30 +252,174 @@
                     <span class="sr-only">Aktueller Slide: 1 von 4</span>
                 </div>
             </section>
+
+            <section
+                class="my-payment-form"
+                id="paymentForm">
+                <div class="my-payment-header">
+                    <h2 class="my-payment-title">Zahlungsinformationen</h2>
+                    <p>Geben Sie Ihre Kreditkartendaten ein</p>
+                </div>
+
+                <form
+                    id="creditCardForm"
+                    novalidate>
+                    <div class="my-payment-group">
+                        <label
+                            for="cardNumber"
+                            class="my-payment-label"
+                            >Kreditkartennummer</label
+                        >
+                        <div class="my-payment-card-number">
+                            <input
+                                type="text"
+                                id="cardNumber"
+                                class="my-payment-input"
+                                placeholder="1234 5678 9012 3456"
+                                autocomplete="cc-number"
+                                aria-describedby="cardNumberFeedback"
+                                maxlength="19"
+                                required />
+                            <div
+                                class="card-icon"
+                                id="cardTypeIcon"
+                                aria-hidden="true"></div>
+                        </div>
+                        <div
+                            id="cardNumberFeedback"
+                            class="my-payment-feedback info">
+                            Geben Sie eine gültige 16-stellige
+                            Kreditkartennummer ein.
+                        </div>
+                    </div>
+
+                    <div class="my-payment-row">
+                        <div class="my-payment-group">
+                            <label
+                                for="expiryDate"
+                                class="my-payment-label"
+                                >Gültig bis</label
+                            >
+                            <input
+                                type="text"
+                                id="expiryDate"
+                                class="my-payment-input"
+                                placeholder="MM/JJ"
+                                autocomplete="cc-exp"
+                                aria-describedby="expiryFeedback"
+                                maxlength="5"
+                                required />
+                            <div
+                                id="expiryFeedback"
+                                class="my-payment-feedback info">
+                                Format: MM/JJ (z.B. 12/25)
+                            </div>
+                        </div>
+
+                        <div class="my-payment-group">
+                            <label
+                                for="cvv"
+                                class="my-payment-label"
+                                >Sicherheitscode (CVV)</label
+                            >
+                            <input
+                                type="text"
+                                id="cvv"
+                                class="my-payment-input"
+                                placeholder="123"
+                                autocomplete="cc-csc"
+                                aria-describedby="cvvFeedback"
+                                maxlength="4"
+                                required />
+                            <div
+                                id="cvvFeedback"
+                                class="my-payment-feedback info">
+                                3-4 stelliger Code auf der Rückseite Ihrer Karte
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="my-payment-group">
+                        <label
+                            for="cardholderName"
+                            class="my-payment-label"
+                            >Name des Karteninhabers</label
+                        >
+                        <input
+                            type="text"
+                            id="cardholderName"
+                            class="my-payment-input"
+                            placeholder="Name auf der Karte"
+                            autocomplete="cc-name"
+                            aria-describedby="nameFeedback"
+                            required />
+                        <div
+                            id="nameFeedback"
+                            class="my-payment-feedback info">
+                            Name wie auf der Karte angegeben
+                        </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="my-payment-submit"
+                        id="submitButton"
+                        disabled>
+                        Zahlung abschließen
+                    </button>
+
+                    <!-- Status-Meldungen für Screenreader -->
+                    <div
+                        aria-live="polite"
+                        class="my-payment-sr-only"
+                        id="validationStatus"></div>
+                </form>
+            </section>
         </main>
 
         <footer>
             <address class="my-address my-tertiary">
                 <ol class="my-card-container">
-                    <li class="my-card ">
-                        lorem ipsum 1
-                    </li>
-                    <li class="my-card ">
-                        lorem ipsum 2
-                    </li>
-                    <li class="my-card ">
-                        lorem ipsum 3
-                    </li>
-                    <li class="my-card ">
-                        lorem ipsum 4
-                    </li>
+                    <li class="my-card">lorem ipsum 1</li>
+                    <li class="my-card">lorem ipsum 2</li>
+                    <li class="my-card">lorem ipsum 3</li>
+                    <li class="my-card">lorem ipsum 4</li>
                 </ol>
             </address>
 
             <nav class="my-dark">
-                <ul class="my-nav my-nav-row">
+                <ul class="my-nav my-nav-row my-payment-contrast-switcher">
                     <li><a href="#">Link 1</a></li>
                     <li><a href="#">Link 2</a></li>
+
+                    <li>
+                        <a href="#"
+                            class="contrast-btn active"
+                            data-mode="normal">
+                            Normal
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="contrast-btn"
+                            data-mode="dark">
+                            Dark
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="contrast-btn"
+                            data-mode="high">
+                            High Contrast
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="contrast-btn"
+                            data-mode="higher">
+                            Höchster Kontrast
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </footer>
