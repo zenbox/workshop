@@ -31,7 +31,14 @@
 
         > header,
         .#{$prefix}-footer {
-            background: yellow;
+            
+        }
+
+        > header {
+            height: $headerHeight;
+        }
+        > footer {
+            height: $footerHeight;
         }
 
         > header,
@@ -41,7 +48,7 @@
         }
 
         > main {
-            max-height: calc(100% - 5rem);
+            max-height: calc(100% - #{$headerHeight} - #{$footerHeight});
             flex-basis: 50%;
             flex-grow: 1;
             flex-shrink: 1;
@@ -53,8 +60,6 @@
             flex-basis: 25%;
             flex-grow: 1;
             flex-shrink: 1;
-
-            background: lightcoral;
         }
 
         > header {

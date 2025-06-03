@@ -1,8 +1,7 @@
-
 // VARIABLES 2 CONFIGURE
-// 
+//
 // @package Webapplication
-// @module 
+// @module
 // @author Michael Reichart <michael.reichart@gfu.net>
 // @since 2025-06-03
 // @version 1.0.0
@@ -10,6 +9,8 @@
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2025 Michael Reichart, Cologne
 
-
-$prefix: 'ui';
+$prefix: "ui";
 $borderWidth: 1px solid #e0e0e0;
+
+$headerHeight: 3rem;
+$footerHeight: 3rem;

@@ -28,9 +28,11 @@ body {
   justify-content: space-between;
   align-items: stretch;
 }
-.ui-template-1 .ui-container > header,
-.ui-template-1 .ui-container .ui-footer {
-  background: yellow;
+.ui-template-1 .ui-container > header {
+  height: 3rem;
+}
+.ui-template-1 .ui-container > footer {
+  height: 3rem;
 }
 .ui-template-1 .ui-container > header,
 .ui-template-1 .ui-container > footer {
@@ -38,7 +40,7 @@ body {
   flex-basis: 100%;
 }
 .ui-template-1 .ui-container > main {
-  max-height: calc(100% - 5rem);
+  max-height: calc(100% - 3rem - 3rem);
   flex-basis: 50%;
   flex-grow: 1;
   flex-shrink: 1;
@@ -49,7 +51,6 @@ body {
   flex-basis: 25%;
   flex-grow: 1;
   flex-shrink: 1;
-  background: lightcoral;
 }
 .ui-template-1 .ui-container > header {
   order: 1;
@@ -87,4 +88,12 @@ body {
   border-style: solid;
   border-color: #e0e0e0;
   border-color: hsl(180, 96%, 40%);
+}
+
+header, footer {
+  background: hsla(180, 96%, 40%, 0.25);
+}
+
+nav, aside {
+  background: hsla(180, 96%, 40%, 0.1);
 }
