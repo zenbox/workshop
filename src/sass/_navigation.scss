@@ -1,0 +1,35 @@
+// NAVIGATION COMPONENT
+//
+// @package Webapplication
+// @module
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-06-03
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
+
+/* - - - - - - - - - -
+ * NAVIGATION
+ * - - - - - - - - - - */
+
+.#{$prefix}-nav {
+    // BASE / RESET
+    @include list-reset();
+
+    // LAYOUT
+    display: flex;
+    flex-direction: row;
+
+    &-row {
+        flex-direction: row;
+    }
+    &-column {
+        flex-direction: column;
+    }
+
+    // STATES
+    // THEME
+}
+
+/* - - - - - - - - - - */
