@@ -1,103 +1,31 @@
 <!DOCTYPE html>
-<html lang="de" data-theme="light">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsives Layout</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-</head>
-<body>
-  <header class="menubar">
-    <button class="menu-toggle" aria-label="Menü öffnen">
-      <span class="material-icons">menu</span>
-    </button>
-<nav class="main-menu" aria-label="Hauptmenü">
-  <div class="backdrop"></div>
-  <ul>
-    <li><a href="#"><span class="material-icons">home</span> Start</a></li>
-    <li><a href="#"><span class="material-icons">info</span> Info</a></li>
-    <li><a href="#"><span class="material-icons">article</span> Artikel</a></li>
-    <li><a href="#"><span class="material-icons">mail</span> Kontakt</a></li>
-  </ul>
-</nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <article>
-        <h1>Willkommen!</h1>
-        <p>Dies ist ein responsives Beispiel-Layout mit modernem Design.</p>
-      </article>
-    </section>
-
-    <section class="cards">
-      <a href="#" class="card"><img src="https://placehold.co/300" alt=""><h2>Card 1</h2></a>
-      <a href="#" class="card"><img src="https://placehold.co/300" alt=""><h2>Card 2</h2></a>
-      <a href="#" class="card"><img src="https://placehold.co/300" alt=""><h2>Card 3</h2></a>
-      <a href="#" class="card"><img src="https://placehold.co/300" alt=""><h2>Card 4</h2></a>
-    </section>
-
-<section class="slider" aria-label="Bilderslider">
-  <button class="prev" aria-label="Zurück"><span class="material-icons">chevron_left</span></button>
-  <div class="slides">
-    
-    <picture>
-      <source srcset="https://placehold.co/1200" media="(min-width: 1200px)">
-      <source srcset="https://placehold.co/900" media="(min-width: 901px)">
-      <source srcset="https://placehold.co/600" media="(min-width: 601px)">
-      <img src="https://placehold.co/300" alt="Slide 1">
-    </picture>
-
-    <picture>
-      <source srcset="https://placehold.co/1200" media="(min-width: 1200px)">
-      <source srcset="https://placehold.co/900" media="(min-width: 901px)">
-      <source srcset="https://placehold.co/600" media="(min-width: 601px)">
-      <img src="https://placehold.co/300" alt="Slide 2">
-    </picture>
-    
-    <picture>
-      <source srcset="https://placehold.co/1200" media="(min-width: 1200px)">
-      <source srcset="https://placehold.co/900" media="(min-width: 901px)">
-      <source srcset="https://placehold.co/600" media="(min-width: 601px)">
-      <img src="https://placehold.co/300" alt="Slide 3">
-    </picture>
-
-
-    <!-- Weitere Slides analog -->
-
-  </div>
-  <button class="next" aria-label="Weiter"><span class="material-icons">chevron_right</span></button>
-</section>
-  </main>
-
-  <footer class="footer">
-    <nav class="sitemap" aria-label="Sitemap">
-      <ul>
-        <li><a href="#">Impressum</a></li>
-        <li><a href="#">Datenschutz</a></li>
-        <li><a href="#">Barrierefreiheit</a></li>
-      </ul>
-    </nav>
-    
-    <div class="theme-switcher">
-  <button data-theme-button="light" onclick="setTheme('light')" aria-label="Helles Design">
-    <span class="material-icons">light_mode</span>
-  </button>
-  <button data-theme-button="dark" onclick="setTheme('dark')" aria-label="Dunkles Design">
-    <span class="material-icons">dark_mode</span>
-  </button>
-  <button data-theme-button="high-contrast" onclick="setTheme('high-contrast')" aria-label="Hoher Kontrast">
-    <span class="material-icons">contrast</span>
-  </button>
-</div>
-
-    <div class="social">
-      <a href="#" aria-label="Twitter"><span class="material-icons">alternate_email</span></a>
-      <a href="#" aria-label="Instagram"><span class="material-icons">camera_alt</span></a>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>holy grail layout flexbox</title>
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+    </head>
+    <body class="template-1">
+        <div class="container">
+            <header>header</header>
+            <main>
+                main
+                <article>
+                    <h1>Überschrift</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Quis, libero tempora. Doloribus provident earum,
+                        odio asperiores perspiciatis in.
+                    </p>
+                </article>
+            </main>
+            <aside>aside</aside>
+            <footer>footer</footer>
+        </div>
+    </body>
 </html>

@@ -1,26 +1,18 @@
-.#{$prefix}-template-1 {
-    // BASE / RESET
-    & > * {
-        padding: var(--spacer-md);
-    }
+// TEMPLATE-1
+//
+// @package Webapplication
+// @module
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-06-03
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
 
-    // LAYOUT (all devices fallback)
-    display: block;
-   
-    // Responsive für kleine Bildschirme
-    @media screen and (max-width: var(--breakpoint-sm)) {
+// BASE - NAMESPACE
+.template-1 {
+    // nested cbase container
+    .container {
         display: flex;
-        flex-direction: column;
-
-    }
-    // Responsive für mittlere und größere Bildschirme
-    @media screen and (min-width: calc(var(--breakpoint-sm) + 1px)) {
-        display: flex;
-        flex-direction: column;
-    }
-
-    // DEVELOPER
-    & > * {
-        outline: 2px dotted rgb(1 161 161 / 0.5);
     }
 }
