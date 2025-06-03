@@ -1,2 +1,27 @@
+/** UI Stylesheet for Webapplication
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2025-06-03
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2025 Michael Reichart, Cologne
+  */
 
+// BASE
+@import "variables";
+@import "mixins";
+@import "base";
+
+// LAYOUT
 @import "template-1";
+
+// MODULES / COMPONENTS
+@import "input";
+
+// STATES
+
+// THEME
+@import "developer";

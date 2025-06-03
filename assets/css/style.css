@@ -1,3 +1,82 @@
-.template-1 .container {
+/** UI Stylesheet for Webapplication
+  *
+  * @package Webapplication
+  * @module i.e. header
+  * @author Michael Reichart <michael.reichart@gfu.net>
+  * @since 2025-06-03
+  * @version 1.0.0
+  * @see i.e. inspired by ... {link to}
+  * @license MIT {https://opensource.org/licenses/MIT}
+  * @copyright (c) 2025 Michael Reichart, Cologne
+  */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.ui-template-1 .ui-container {
+  max-width: 100vw;
+  min-height: 100vh;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.ui-template-1 .ui-container > header,
+.ui-template-1 .ui-container .ui-footer {
+  background: yellow;
+}
+.ui-template-1 .ui-container > header,
+.ui-template-1 .ui-container > footer {
+  flex-basis: 100%;
+}
+.ui-template-1 .ui-container > main {
+  flex-basis: 50%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.ui-template-1 .ui-container > nav,
+.ui-template-1 .ui-container > aside {
+  flex-basis: 25%;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.ui-template-1 .ui-container > header {
+  order: 1;
+}
+.ui-template-1 .ui-container > nav {
+  order: 2;
+}
+.ui-template-1 .ui-container > main {
+  order: 3;
+}
+.ui-template-1 .ui-container > aside {
+  order: 4;
+}
+.ui-template-1 .ui-container > footer {
+  order: 5;
+}
+.ui-template-1 .ui-container > * {
+  padding-inline: 0.25rem;
+}
+
+.ui-input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e0e0e0;
+}
+
+.ui-container {
+  border-width: 1px solid #e0e0e0;
+  border-style: solid;
+  border-color: #e0e0e0;
+  border-color: green;
+}
+.ui-container > * {
+  border-width: 1px solid #e0e0e0;
+  border-style: solid;
+  border-color: #e0e0e0;
+  border-color: hsl(180, 96%, 40%);
 }
