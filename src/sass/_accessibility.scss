@@ -1,0 +1,69 @@
+// ACCESSIBILITY
+//
+// @package Webapplication
+// @module
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-06-04
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
+
+* {
+    // transition-property: paddin, outline-color, outline-width;
+    // transition-duration: 1s;
+    // transition-timing-function: ease-in-out;
+    // transition-delay: 0s;
+
+    outline-width: 3px;
+    outline-style: solid;
+    outline-color: transparent;
+    outline-offset: 2px;
+    padding: var(--spacing-xs);
+}
+
+*:focus {
+    animation-name: focus-animation;
+    animation-duration: 2s; // 20s ist sehr lang, reduziert auf 2s
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes focus-animation {
+    0% {
+        outline-color: transparent;
+        outline-width: 0px;
+        opacity: 0; // Verwende opacity statt display
+    }
+
+    1% {
+        opacity: 1; // Verwende opacity statt display
+    }
+
+    25% {
+        outline-color: red;
+        outline-width: 3px;
+        opacity: 1;
+    }
+
+    50% {
+        outline-color: orange;
+        outline-width: 3px;
+        opacity: 1;
+    }
+
+    75% {
+        outline-color: yellow;
+        outline-width: 3px;
+        opacity: 1;
+    }
+
+    100% {
+        outline-color: var(--color-focus);
+        outline-width: 3px;
+        opacity: 1;
+    }
+}
+
+// Transformation
+//  transform(translateX(0), translateY(0), scale(1), rotate(0deg));

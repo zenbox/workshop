@@ -20,6 +20,7 @@
     // LAYOUT
     display: flex;
     flex-direction: row;
+    gap: var(--spacing-md);
 
     &-row {
         flex-direction: row;
@@ -29,7 +30,31 @@
     }
 
     // STATES
+    a {
+        &:link {
+            text-decoration: none;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
+        &:link {
+            color: var(--color-white);
+        }
+        &:visited {
+            color: var(--color-primary-light);
+        }
+        &:hover {
+            color: var(--color-primary-dark);
+        }
+        &:active {
+            color: var(--color-primary);
+        }
+    }
+
     // THEME
+    a {
+        color: var(--color-white);
+    }
 }
 
 /* - - - - - - - - - - */
