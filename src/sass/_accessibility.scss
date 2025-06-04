@@ -19,7 +19,7 @@
     outline-style: solid;
     outline-color: transparent;
     outline-offset: 2px;
-    padding: var(--spacing-xs);
+    // padding: var(--spacing-xs);
 }
 
 *:focus {
@@ -70,6 +70,19 @@
         opacity: 1;
     }
 }
-
+.d-none {
+    display: none !important;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; // Added to prevent text wrapping
+    border: 0;
+}
 // Transformation
 //  transform(translateX(0), translateY(0), scale(1), rotate(0deg));

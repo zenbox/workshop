@@ -1,0 +1,40 @@
+// HERO
+//
+// @package Webapplication
+// @module
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-06-04
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
+
+.#{$prefix}-hero {
+    // BASE
+
+    // LAYOUT
+    
+    // (SUB-)MODULES
+    &-content {
+        // BASE
+        // LAYOUT
+        display: block;
+        position: absolute;
+        margin-block-start: -12.4rem;
+        padding-inline: var(--spacing-lg);
+        // THEME
+        color: red;
+        background:transparent;
+
+        filter: grayscale(1);
+        backdrop-filter: blur(15px);
+
+        transition: filter 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+
+        &:hover {
+            filter: grayscale(0);
+        }
+    }
+    // STATES
+    // THEME
+}

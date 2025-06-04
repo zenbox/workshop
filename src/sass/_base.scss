@@ -1,7 +1,7 @@
 // BASTE STYLES
-// 
+//
 // @package Webapplication
-// @module 
+// @module
 // @author Michael Reichart <michael.reichart@gfu.net>
 // @since 2025-06-03
 // @version 1.0.0
@@ -16,4 +16,14 @@
 body {
     // LAYOUT
     margin: 0;
+}
+
+img.responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
 }
