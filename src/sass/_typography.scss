@@ -1,0 +1,24 @@
+// TYPOGRAPHY, FONTS, AND TEXT STYLES
+// 
+// @package Webapplication
+// @module 
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-06-03
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
+
+// BASE
+body {
+    font-family: 'Barlow', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+
+// THEME
+body {
+    color: var(--color-text);
+    background-color: var(--color-light-gray);
+    overflow-x: hidden;
+}

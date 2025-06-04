@@ -28,38 +28,77 @@
     // LARGE DEVICES
     @media screen and (min-width: 600px) {
         .#{$prefix}-container {
-            // Large devices layout
-            height: 100vh;
-            max-height: 100vh;
-            min-height: 100vh;
-            max-width: 100vw;
-
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            grid-template-rows: 5rem auto 3rem;
+            min-height: 100vh;
+            grid-template-areas:
+                "header header header"
+                "nav main aside"
+                "footer footer footer";
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: var(--grid-nav-width) 1fr var(
+                    --grid-aside-width
+                );
+            gap: var(--spacing-md);
+            max-width: var(--grid-max-width);
+            margin: 0 auto;
+            padding: var(--spacing-md);
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-container);
 
-            > header {
-                grid-column: 1 / 4;
-                grid-row: 1 / 2;
+            // LAYOUT
+            header {
+                grid-area: header;
+                padding: var(--spacing-xl);
+                position: relative;
             }
-            > nav {
-                grid-column: 1 / 2;
-                grid-row: 2 / 3;
-            }
-            > main {
-                overflow: auto;
 
-                grid-column: 2 / 3;
-                grid-row: 2 / 3;
+            nav {
+                grid-area: nav;
+                padding: var(--spacing-lg);
             }
-            > aside {
-                grid-column: 3 / 4;
-                grid-row: 2 / 3;
+
+            aside {
+                grid-area: aside;
+                padding: var(--spacing-lg);
             }
-            > footer {
-                grid-column: 1 / 4;
-                grid-row: 3 / 4;
+
+            footer {
+                grid-area: footer;
+                padding: var(--spacing-lg);
             }
+
+            // // Large devices layout
+            // height: 100vh;
+            // max-height: 100vh;
+            // min-height: 100vh;
+            // max-width: 100vw;
+
+            // display: grid;
+            // grid-template-columns: 1fr 2fr 1fr;
+            // grid-template-rows: 5rem auto 3rem;
+
+            // > header {
+            //     grid-column: 1 / 4;
+            //     grid-row: 1 / 2;
+            // }
+            // > nav {
+            //     grid-column: 1 / 2;
+            //     grid-row: 2 / 3;
+            // }
+            // > main {
+            //     overflow: auto;
+
+            //     grid-column: 2 / 3;
+            //     grid-row: 2 / 3;
+            // }
+            // > aside {
+            //     grid-column: 3 / 4;
+            //     grid-row: 2 / 3;
+            // }
+            // > footer {
+            //     grid-column: 1 / 4;
+            //     grid-row: 3 / 4;
+            // }
         }
 
         footer {

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout - CSS Flexbox</title>
+    <style>
+        /* ========================================
+           RESET UND GRUNDLAGEN
+        ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* ========================================
+           HOLY GRAIL LAYOUT - CSS FLEXBOX
+        ======================================== */
+        
+        /* Hauptcontainer - vertikales Flexbox Layout */
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            gap: 1rem;
+        }
+
+        /* Content-Wrapper für den mittleren Bereich */
+        .content-wrapper {
+            display: flex;
+            flex: 1; /* Nimmt den verfügbaren Raum zwischen Header und Footer */
+            gap: 1rem;
+        }
+
+        /* ========================================
+           FLEXBOX-BEREICHE DEFINIEREN
+        ======================================== */
+        
+        .header {
+            /* Header bleibt oben und nimmt nur benötigten Platz */
+            flex: 0 0 auto;
+        }
+
+        .nav {
+            /* Navigation: feste Breite, flexible Höhe */
+            flex: 0 0 200px;
+            order: 1; /* Reihenfolge im Flexbox-Layout */
+        }
+
+        .main {
+            /* Hauptinhalt: nimmt verfügbaren Platz */
+            flex: 1;
+            order: 2;
+        }
+
+        .aside {
+            /* Sidebar: feste Breite, flexible Höhe */
+            flex: 0 0 200px;
+            order: 3;
+        }
+
+        .footer {
+            /* Footer bleibt unten und nimmt nur benötigten Platz */
+            flex: 0 0 auto;
+        }
+
+        /* ========================================
+           STYLING DER KOMPONENTEN
+        ======================================== */
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: #2c3e50;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            /* Flexbox für interne Navigation */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav h2 {
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+            font-size: 1.2rem;
+        }
+
+        .nav ul {
+            list-style: none;
+            /* Navigation-Liste als Flexbox */
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav a {
+            color: #bdc3c7;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav a:hover {
+            background-color: #34495e;
+            color: white;
+        }
+
+        .main {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Flexbox für internen Inhalt */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .main p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .aside {
+            background: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            /* Flexbox für Sidebar-Widgets */
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .aside h3 {
+            color: #2c3e50;
+            margin-bottom: 0;
+        }
+
+        .aside .widget {
+            background: white;
+            padding: 1rem;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background: #34495e;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN - FLEXBOX APPROACH
+        ======================================== */
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.5rem;
+                gap: 0.5rem;
+            }
+            
+            .content-wrapper {
+                /* Auf kleinen Bildschirmen: Spalten stapeln */
+                flex-direction: column;
+            }
+            
+            .nav {
+                /* Navigation wird zur vollen Breite */
+                flex: 0 0 auto;
+                order: 1;
+            }
+            
+            .nav ul {
+                /* Navigation horizontal auf Tablets */
+                flex-direction: row;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            
+            .main {
+                /* Hauptinhalt nimmt vollen Platz */
+                flex: 1;
+                order: 2;
+            }
+            
+            .aside {
+                /* Sidebar wird zur vollen Breite */
+                flex: 0 0 auto;
+                order: 3;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.25rem;
+            }
+            
+            .nav ul {
+                /* Navigation vertikal auf Handys */
+                flex-direction: column;
+            }
+            
+            .header,
+            .nav,
+            .main,
+            .aside,
+            .footer {
+                padding: 1rem;
+            }
+            
+            .aside {
+                /* Widgets horizontal auf sehr kleinen Bildschirmen */
+                flex-direction: row;
+                overflow-x: auto;
+            }
+            
+            .aside .widget {
+                flex: 0 0 250px;
+            }
+        }
+
+        /* ========================================
+           ZUSÄTZLICHE FLEXBOX-UTILITIES
+        ======================================== */
+        
+        /* Hilfsklassen für Flexbox-Ausrichtung */
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flex-between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .flex-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         HTML STRUKTUR - HOLY GRAIL LAYOUT
+    ======================================== -->
+    
+    <div class="container">
+        <!-- Header Bereich -->
+        <header class="header">
+            <h1>Holy Grail Layout</h1>
+            <p>CSS Flexbox Implementation</p>
+        </header>
+
+        <!-- Content Wrapper für das mittlere Layout -->
+        <div class="content-wrapper">
+            <!-- Navigation Bereich -->
+            <nav class="nav">
+                <h2>Navigation</h2>
+                <ul>
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#services">Leistungen</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+
+            <!-- Hauptinhalt Bereich -->
+            <main class="main">
+                <h2>Hauptinhalt</h2>
+                <p>
+                    Das Holy Grail Layout mit CSS Flexbox bietet eine robuste und flexible 
+                    Lösung für das klassische Drei-Spalten-Layout. Flexbox ermöglicht es, 
+                    komplexe Layouts mit weniger Code zu erstellen als traditionelle Methoden.
+                </p>
+                <p>
+                    Im Gegensatz zu CSS Grid, das zweidimensional arbeitet, ist Flexbox 
+                    eindimensional und eignet sich hervorragend für die Ausrichtung von 
+                    Elementen in einer Reihe oder Spalte. Für das Holy Grail Layout 
+                    kombinieren wir vertikale und horizontale Flexbox-Container.
+                </p>
+                <p>
+                    Diese Implementierung nutzt verschachtelte Flexbox-Container: Der 
+                    Hauptcontainer ist vertikal ausgerichtet (Header, Content, Footer), 
+                    während der Content-Wrapper horizontal ausgerichtet ist (Nav, Main, Aside).
+                </p>
+                <p>
+                    Die Responsive-Funktionalität wird durch das Ändern der Flex-Direction 
+                    erreicht - von horizontal zu vertikal auf kleineren Bildschirmen.
+                </p>
+            </main>
+
+            <!-- Sidebar Bereich -->
+            <aside class="aside">
+                <h3>Sidebar</h3>
+                <div class="widget">
+                    <h4>Flexbox Widget</h4>
+                    <p>Diese Sidebar verwendet Flexbox für die Anordnung der Widgets mit automatischem Spacing.</p>
+                </div>
+                <div class="widget">
+                    <h4>Responsive Design</h4>
+                    <p>Auf mobilen Geräten stapeln sich die Bereiche automatisch für optimale Lesbarkeit.</p>
+                </div>
+                <div class="widget">
+                    <h4>Flexibilität</h4>
+                    <p>Flexbox bietet große Flexibilität bei der Ausrichtung und Verteilung von Elementen.</p>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Footer Bereich -->
+        <footer class="footer">
+            <p>&copy; 2025 Holy Grail Layout Demo. Erstellt mit CSS Flexbox.</p>
+        </footer>
+    </div>
+
+    <script>
+        // ========================================
+        // JAVASCRIPT - FLEXBOX INTERAKTIVITÄT
+        // ========================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Holy Grail Layout mit CSS Flexbox geladen');
+            
+            // Navigation mit Flexbox-Animationen
+            const navLinks = document.querySelectorAll('.nav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Alle Links zurücksetzen
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Flexbox-Animation
+                    this.style.transform = 'scale(0.95)';
+                    this.style.transition = 'transform 0.2s ease';
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+
+            // Sidebar Widgets - Flexbox Interaktion
+            const widgets = document.querySelectorAll('.widget');
+            
+            widgets.forEach(widget => {
+                widget.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                widget.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+
+            // Flexbox Layout-Info
+            function logFlexboxInfo() {
+                const container = document.querySelector('.container');
+                const contentWrapper = document.querySelector('.content-wrapper');
+                
+                console.log('Container Flex Direction:', 
+                    window.getComputedStyle(container).flexDirection);
+                console.log('Content Wrapper Flex Direction:', 
+                    window.getComputedStyle(contentWrapper).flexDirection);
+            }
+
+            // Layout-Demo Funktion
+            function toggleLayoutDirection() {
+                const contentWrapper = document.querySelector('.content-wrapper');
+                const currentDirection = window.getComputedStyle(contentWrapper).flexDirection;
+                
+                if (currentDirection === 'row') {
+                    contentWrapper.style.flexDirection = 'column';
+                    console.log('Layout geändert zu: Vertikal');
+                } else {
+                    contentWrapper.style.flexDirection = 'row';
+                    console.log('Layout geändert zu: Horizontal');
+                }
+            }
+
+            // Event Listener für Resize
+            window.addEventListener('resize', function() {
+                const width = window.innerWidth;
+                console.log(`Bildschirmbreite: ${width}px`);
+                
+                // Flexbox reagiert automatisch, aber wir können zusätzliche Aktionen ausführen
+                if (width <= 768) {
+                    console.log('Mobile Ansicht aktiv - Flexbox stapelt automatisch');
+                } else {
+                    console.log('Desktop Ansicht aktiv - Flexbox horizontal');
+                }
+            });
+
+            // Initial Layout-Info ausgeben
+            logFlexboxInfo();
+            
+            // Demo-Funktion für Entwickler (kann über Konsole aufgerufen werden)
+            window.toggleLayout = toggleLayoutDirection;
+            window.flexboxInfo = logFlexboxInfo;
+            
+            console.log('Verfügbare Funktionen:');
+            console.log('- toggleLayout(): Wechselt zwischen horizontalem und vertikalem Layout');
+            console.log('- flexboxInfo(): Zeigt aktuelle Flexbox-Eigenschaften');
+        });
+
+        // Utility-Funktion: Flexbox-Eigenschaften eines Elements anzeigen
+        function showFlexProperties(selector) {
+            const element = document.querySelector(selector);
+            if (element) {
+                const styles = window.getComputedStyle(element);
+                console.log(`Flexbox-Eigenschaften für ${selector}:`);
+                console.log('- display:', styles.display);
+                console.log('- flex-direction:', styles.flexDirection);
+                console.log('- justify-content:', styles.justifyContent);
+                console.log('- align-items:', styles.alignItems);
+                console.log('- flex:', styles.flex);
+                console.log('- flex-grow:', styles.flexGrow);
+                console.log('- flex-shrink:', styles.flexShrink);
+                console.log('- flex-basis:', styles.flexBasis);
+            }
+        }
+
+        // Globale Utility-Funktion verfügbar machen
+        window.showFlexProperties = showFlexProperties;
+    </script>
+</body>
+</html>

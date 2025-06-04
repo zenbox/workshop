@@ -10,12 +10,7 @@
 // @copyright (c) 2025 Michael Reichart, Cologne
 
 .#{$prefix}-container {
-    @include border($borderWidth);
-    border-color: green;
-     > * {
-        @include border($borderWidth);
-        border-color: hsl(180, 96%, 40%);
-    }
+
 }
 
 header, footer { background:hsla(180 96 40 / 0.25); }

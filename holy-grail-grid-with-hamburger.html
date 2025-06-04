@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Grail Layout - Hamburger Menu</title>
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <style>
+        /* ========================================
+           KONFIGURATION & CSS CUSTOM PROPERTIES
+        ======================================== */
+        :root {
+            /* Schriftgrößen */
+            font-size: 14px;
+            
+            /* Abstände */
+            --spacing-xs: 0.25rem;   /* 4px */
+            --spacing-sm: 0.5rem;    /* 8px */
+            --spacing-md: 1rem;      /* 16px */
+            --spacing-lg: 1.5rem;    /* 24px */
+            --spacing-xl: 2rem;      /* 32px */
+            --spacing-xxl: 4rem;     /* 64px */
+            
+            /* Border Radius */
+            --border-radius: 0.6rem;
+            --border-radius-sm: calc(var(--border-radius) / 2);
+            --border-radius-xs: calc(var(--border-radius) / 3);
+            --border-radius-xxs: calc(var(--border-radius) / 8);
+            
+            /* Primäre Farben */
+            --color-primary: #667eea;
+            --color-primary-dark: #764ba2;
+            --color-secondary: #2c3e50;
+            --color-secondary-light: #34495e;
+            
+            /* Neutrale Farben */
+            --color-white: #ffffff;
+            --color-light-gray: #f4f4f4;
+            --color-medium-gray: #ecf0f1;
+            --color-dark-gray: #bdc3c7;
+            --color-text: #333333;
+            
+            /* Overlay Farben */
+            --color-overlay-dark: rgba(0, 0, 0, 0.5);
+            --color-overlay-light: rgba(255, 255, 255, 0.1);
+            --color-gradient-overlay: rgba(102, 126, 234, 0.7);
+            --color-gradient-overlay-end: rgba(118, 75, 162, 0.7);
+            
+            /* Schatten */
+            --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 4px 15px rgba(0, 0, 0, 0.2);
+            --shadow-nav: 4px 0 15px rgba(0, 0, 0, 0.3);
+            --shadow-container: 0 0 20px rgba(0, 0, 0, 0.1);
+            
+            /* Text Schatten */
+            --text-shadow-light: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            --text-shadow-medium: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            
+            /* Grid Layout */
+            --grid-nav-width: 250px;
+            --grid-aside-width: 220px;
+            --grid-mobile-nav-width: 280px;
+            --grid-mobile-nav-width-small: 260px;
+            --grid-max-width: 1400px;
+            
+            /* Hero Höhen */
+            --hero-height-desktop: 300px;
+            --hero-height-tablet: 250px;
+            --hero-height-mobile: 200px;
+            
+            /* Transitions */
+            --transition-fast: 0.3s ease;
+            --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s ease;
+        }
+
+        /* ========================================
+           RESET UND GRUNDLAGEN
+        ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-light-gray);
+            overflow-x: hidden;
+        }
+
+        /* ========================================
+           HOLY GRAIL LAYOUT - CSS GRID
+        ======================================== */
+        
+        .container {
+            display: grid;
+            min-height: 100vh;
+            grid-template-areas: 
+                "header header header"
+                "nav main aside"
+                "footer footer footer";
+            grid-template-rows: auto 1fr auto;
+            grid-template-columns: var(--grid-nav-width) 1fr var(--grid-aside-width);
+            gap: var(--spacing-md);
+            max-width: var(--grid-max-width);
+            margin: 0 auto;
+            padding: var(--spacing-md);
+            background-color: var(--color-white);
+            box-shadow: var(--shadow-container);
+        }
+
+        /* ========================================
+           HAMBURGER BUTTON (versteckt auf Desktop)
+        ======================================== */
+        
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: var(--spacing-md);
+            left: var(--spacing-md);
+            z-index: 1001;
+            background: var(--color-secondary);
+            border: none;
+            border-radius: var(--border-radius-sm);
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .hamburger:hover {
+            background: var(--color-secondary-light);
+            transform: scale(1.05);
+        }
+
+        .hamburger:active {
+            transform: scale(0.95);
+        }
+
+        /* Hamburger Icon Animation */
+        .hamburger-icon {
+            width: 1.5rem;
+            height: 1.125rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-line {
+            width: 100%;
+            height: 3px;
+            background: var(--color-white);
+            border-radius: var(--border-radius-xxs);
+            transition: all var(--transition-fast);
+            transform-origin: center;
+        }
+
+        /* Animiertes X wenn geöffnet */
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translateY(7px);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translateY(-7px);
+        }
+
+        /* ========================================
+           GRID-BEREICHE
+        ======================================== */
+        
+        .header {
+            grid-area: header;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: var(--color-white);
+            padding: var(--spacing-xl);
+            text-align: center;
+            border-radius: var(--border-radius-sm);
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .nav {
+            grid-area: nav;
+            background: var(--color-secondary);
+            color: var(--color-white);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-sm);
+            transition: transform var(--transition-fast);
+        }
+
+        .nav h2 {
+            margin-bottom: var(--spacing-md);
+            color: var(--color-medium-gray);
+            font-size: 1.2rem;
+        }
+
+        .nav ul {
+            list-style: none;
+        }
+
+        .nav li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* ========================================
+           MATERIAL SYMBOLS STYLING
+        ======================================== */
+        
+        .material-symbols-outlined {
+            vertical-align: middle;
+            margin-right: var(--spacing-sm);
+            font-size: 20px;
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 20;
+        }
+
+        .nav a {
+            color: var(--color-dark-gray);
+            text-decoration: none;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            border-radius: var(--border-radius-xs);
+            transition: all var(--transition-fast);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--color-overlay-light), transparent);
+            transition: left var(--transition-slow);
+        }
+
+        .nav a:hover::before {
+            left: 100%;
+        }
+
+        .nav a:hover {
+            background-color: var(--color-secondary-light);
+            color: var(--color-white);
+            transform: translateX(5px);
+        }
+
+        .main {
+            grid-area: main;
+            background: var(--color-white);
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-medium);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        
+        .hero {
+            position: relative;
+            height: var(--hero-height-desktop);
+            background: linear-gradient(
+                45deg, 
+                var(--color-gradient-overlay), 
+                var(--color-gradient-overlay-end)
+            ), url('https://picsum.photos/id/1/1200/600');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--color-white);
+            margin: 0;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 600px;
+            padding: var(--spacing-xl);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            font-weight: 700;
+            text-shadow: var(--text-shadow-medium);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            opacity: 0.95;
+            text-shadow: var(--text-shadow-light);
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        /* ========================================
+           MAIN ARTICLE CONTENT
+        ======================================== */
+        
+        .main-article {
+            padding: var(--spacing-xl);
+            flex: 1;
+        }
+
+        .main h2 {
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-md);
+            font-size: 2rem;
+        }
+
+        .main p {
+            margin-bottom: var(--spacing-md);
+            text-align: justify;
+        }
+
+        .aside {
+            grid-area: aside;
+            background: var(--color-medium-gray);
+            padding: var(--spacing-lg);
+            border-radius: var(--border-radius-sm);
+        }
+
+        .aside h3 {
+            color: var(--color-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .aside .widget {
+            background: var(--color-white);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border-radius: var(--border-radius-xs);
+            box-shadow: var(--shadow-light);
+            transition: transform var(--transition-fast);
+        }
+
+        .aside .widget:hover {
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            grid-area: footer;
+            background: var(--color-secondary-light);
+            color: var(--color-white);
+            padding: var(--spacing-lg);
+            text-align: center;
+            border-radius: var(--border-radius-sm);
+        }
+
+        /* ========================================
+           OVERLAY FÜR MOBILE NAVIGATION
+        ======================================== */
+        
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--color-overlay-dark);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+        }
+
+        .nav-overlay.active {
+            opacity: 1;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN MIT HAMBURGER MENU
+        ======================================== */
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .container {
+                grid-template-areas: 
+                    "header"
+                    "main"
+                    "aside"
+                    "footer";
+                grid-template-columns: 1fr;
+                padding: var(--spacing-sm);
+                gap: var(--spacing-sm);
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                left: calc(-1 * var(--grid-mobile-nav-width));
+                width: var(--grid-mobile-nav-width);
+                height: 100vh;
+                z-index: 1000;
+                padding: var(--spacing-xxl) var(--spacing-lg) var(--spacing-lg);
+                border-radius: 0;
+                box-shadow: var(--shadow-nav);
+                transition: left var(--transition-smooth);
+                overflow-y: auto;
+            }
+
+            .nav.active {
+                left: 0;
+            }
+
+            .nav.active ~ .nav-overlay {
+                display: block;
+            }
+
+            .header {
+                padding: var(--spacing-lg);
+                padding-left: var(--spacing-xxl);
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero {
+                height: var(--hero-height-tablet);
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-content {
+                padding: var(--spacing-lg);
+            }
+
+            .hero {
+                height: var(--hero-height-mobile);
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .hero-content {
+                padding: var(--spacing-md);
+            }
+
+            .main h2 {
+                font-size: 1.5rem;
+            }
+
+            .main-article,
+            .aside,
+            .footer {
+                padding: var(--spacing-md);
+            }
+
+            .nav a {
+                padding: var(--spacing-md) 0.75rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: var(--spacing-xs);
+            }
+
+            .hamburger {
+                top: var(--spacing-sm);
+                left: var(--spacing-sm);
+                padding: 0.625rem;
+            }
+
+            .hamburger-icon {
+                width: 1.25rem;
+                height: 0.9375rem;
+            }
+
+            .nav {
+                width: var(--grid-mobile-nav-width-small);
+                left: calc(-1 * var(--grid-mobile-nav-width));
+            }
+
+            .header {
+                padding: var(--spacing-md);
+                padding-left: 3.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .nav h2 {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ========================================
+           ANIMATIONEN UND EFFEKTE
+        ======================================== */
+        
+        .main, .aside {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hamburger.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: var(--shadow-heavy); }
+            50% { box-shadow: 0 4px 15px rgba(44, 62, 80, 0.4); }
+            100% { box-shadow: var(--shadow-heavy); }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         HAMBURGER BUTTON
+    ======================================== -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menü öffnen">
+        <div class="hamburger-icon">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+    </button>
+
+    <!-- ========================================
+         MAIN CONTAINER
+    ======================================== -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Holy Grail Layout</h1>
+            <p>Mit responsivem Hamburger-Menü</p>
+        </header>
+
+        <!-- Navigation mit Flyout -->
+        <nav class="nav" id="navigation">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="#home"><span class="material-symbols-outlined">home</span>Startseite</a></li>
+                <li><a href="#about"><span class="material-symbols-outlined">group</span>Über uns</a></li>
+                <li><a href="#services"><span class="material-symbols-outlined">settings</span>Leistungen</a></li>
+                <li><a href="#portfolio"><span class="material-symbols-outlined">work</span>Portfolio</a></li>
+                <li><a href="#blog"><span class="material-symbols-outlined">article</span>Blog</a></li>
+                <li><a href="#contact"><span class="material-symbols-outlined">mail</span>Kontakt</a></li>
+                <li><a href="#support"><span class="material-symbols-outlined">skull</span>Support</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hauptinhalt mit Hero und Article -->
+        <main class="main">
+            <!-- Hero Section -->
+            <article class="hero">
+                <div class="hero-content">
+                    <h1>Modernes Web Design</h1>
+                    <p>Responsive Design-Prinzipien für eine optimale Benutzererfahrung.</p>
+                </div>
+            </article>
+
+            <!-- Main Content Article -->
+            <article class="main-article">
+                <h2>Responsives Holy Grail Layout</h2>
+                <p>
+                    Dieses Layout kombiniert das klassische Holy Grail Design mit moderner 
+                    mobiler Navigation. Auf großen Bildschirmen sehen Sie das traditionelle 
+                    drei-Spalten-Layout mit fester Navigation links und Sidebar rechts.
+                </p>
+                <p>
+                    Auf kleineren Geräten (Tablets und Smartphones) wird die Navigation 
+                    automatisch in ein Hamburger-Menü umgewandelt. Das Flyout-Menü gleitet 
+                    elegant von links herein und bietet eine optimale mobile Benutzererfahrung.
+                </p>
+                <p>
+                    Das Hamburger-Icon animiert sich zu einem X-Symbol wenn das Menü geöffnet 
+                    ist. Ein halbtransparenter Overlay sorgt dafür, dass der Fokus auf der 
+                    Navigation liegt. Ein Klick außerhalb des Menüs oder auf das X schließt 
+                    die Navigation wieder.
+                </p>
+                <p>
+                    Die Navigation verwendet moderne CSS-Transitions und Cubic-Bezier-Kurven 
+                    für flüssige Animationen. Alle Interaktionen sind touch-optimiert und 
+                    bieten haptisches Feedback durch Hover- und Active-States.
+                </p>
+                <p>
+                    Diese Implementierung ist vollständig barrierefrei und unterstützt 
+                    Tastaturnavigation sowie Screen Reader. Das Layout passt sich automatisch 
+                    an verschiedene Bildschirmgrößen an ohne JavaScript-Framework-Abhängigkeiten.
+                </p>
+            </article>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="aside">
+            <h3>Mobile Features</h3>
+            <div class="widget">
+                <h4><span class="material-symbols-outlined" style="vertical-align: middle; margin-right: var(--spacing-sm);">menu</span>Hamburger Menu</h4>
+                <p>Responsive Navigation mit smooth Slide-In Animation</p>
+            </div>
+            <div class="widget">
+                <h4><span class="material-symbols-outlined" style="vertical-align: middle; margin-right: var(--spacing-sm);">touch_app</span>Touch Optimiert</h4>
+                <p>Große Touch-Targets und intuitive Gesten</p>
+            </div>
+            <div class="widget">
+                <h4><span class="material-symbols-outlined" style="vertical-align: middle; margin-right: var(--spacing-sm);">speed</span>Performance</h4>
+                <p>CSS-only Animationen ohne JavaScript-Framework</p>
+            </div>
+            <div class="widget">
+                <h4><span class="material-symbols-outlined" style="vertical-align: middle; margin-right: var(--spacing-sm);">accessibility</span>Accessible</h4>
+                <p>Tastaturnavigation und Screen Reader Support</p>
+            </div>
+        </aside>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Responsive Holy Grail Layout. Mobile-first Design.</p>
+        </footer>
+    </div>
+
+    <!-- Overlay für Mobile Navigation -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <script>
+        // ========================================
+        // HAMBURGER MENU FUNCTIONALITY
+        // ========================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerBtn = document.getElementById('hamburgerBtn');
+            const navigation = document.getElementById('navigation');
+            const navOverlay = document.getElementById('navOverlay');
+            const navLinks = document.querySelectorAll('.nav a');
+
+            let isMenuOpen = false;
+
+            // Hamburger Button Click Handler
+            hamburgerBtn.addEventListener('click', function() {
+                toggleMenu();
+            });
+
+            // Overlay Click Handler - schließt das Menü
+            navOverlay.addEventListener('click', function() {
+                if (isMenuOpen) {
+                    closeMenu();
+                }
+            });
+
+            // Navigation Link Click Handler - schließt Menü auf Mobile
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Visual feedback
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                    
+                    // Auf Mobile: Menü schließen nach Link-Click
+                    if (window.innerWidth <= 768) {
+                        setTimeout(() => {
+                            closeMenu();
+                        }, 200);
+                    }
+                    
+                    // Aktiven Link markieren
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    console.log('Navigation:', this.textContent);
+                });
+            });
+
+            // ESC-Taste schließt das Menü
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && isMenuOpen) {
+                    closeMenu();
+                }
+            });
+
+            // Resize Handler - schließt Menü wenn wieder Desktop-Größe
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768 && isMenuOpen) {
+                    closeMenu();
+                }
+            });
+
+            // Menu Toggle Function
+            function toggleMenu() {
+                if (isMenuOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            }
+
+            // Open Menu Function
+            function openMenu() {
+                isMenuOpen = true;
+                hamburgerBtn.classList.add('active');
+                navigation.classList.add('active');
+                navOverlay.classList.add('active');
+                navOverlay.style.display = 'block';
+                
+                // Accessibility
+                hamburgerBtn.setAttribute('aria-label', 'Menü schließen');
+                navigation.setAttribute('aria-hidden', 'false');
+                
+                // Body Scroll verhindern
+                document.body.style.overflow = 'hidden';
+                
+                console.log('Menu opened');
+            }
+
+            // Close Menu Function
+            function closeMenu() {
+                isMenuOpen = false;
+                hamburgerBtn.classList.remove('active');
+                navigation.classList.remove('active');
+                navOverlay.classList.remove('active');
+                
+                // Delay für smooth animation
+                setTimeout(() => {
+                    navOverlay.style.display = 'none';
+                }, 300);
+                
+                // Accessibility
+                hamburgerBtn.setAttribute('aria-label', 'Menü öffnen');
+                navigation.setAttribute('aria-hidden', 'true');
+                
+                // Body Scroll wieder erlauben
+                document.body.style.overflow = '';
+                
+                console.log('Menu closed');
+            }
+
+            // Touch Gestures für Mobile (optional)
+            let touchStartX = 0;
+            let touchStartY = 0;
+
+            document.addEventListener('touchstart', function(e) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+            });
+
+            document.addEventListener('touchend', function(e) {
+                if (!isMenuOpen) return;
+                
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+                
+                const deltaX = touchStartX - touchEndX;
+                const deltaY = Math.abs(touchStartY - touchEndY);
+                
+                // Swipe left to close menu (nur wenn horizontal swipe)
+                if (deltaX > 50 && deltaY < 100) {
+                    closeMenu();
+                }
+            });
+
+            // Initial Setup
+            function initializeMenu() {
+                if (window.innerWidth <= 768) {
+                    hamburgerBtn.classList.add('pulse');
+                    // Remove pulse after 3 seconds
+                    setTimeout(() => {
+                        hamburgerBtn.classList.remove('pulse');
+                    }, 3000);
+                }
+                
+                navigation.setAttribute('aria-hidden', 'true');
+                console.log('Hamburger menu initialized');
+            }
+
+            // Performance Monitor
+            function logPerformance() {
+                const navigation = performance.getEntriesByType('navigation')[0];
+                console.log(`Page load: ${Math.round(navigation.loadEventEnd)}ms`);
+                
+                // Menu animation performance
+                let animationStart;
+                function measureAnimation() {
+                    if (!animationStart) {
+                        animationStart = performance.now();
+                    }
+                    const elapsed = performance.now() - animationStart;
+                    if (elapsed < 300) { // Animation duration
+                        requestAnimationFrame(measureAnimation);
+                    } else {
+                        console.log(`Menu animation: ${Math.round(elapsed)}ms`);
+                        animationStart = null;
+                    }
+                }
+                
+                // Start measuring on menu toggle
+                hamburgerBtn.addEventListener('click', () => {
+                    requestAnimationFrame(measureAnimation);
+                });
+            }
+
+            // Initialize everything
+            initializeMenu();
+            logPerformance();
+            
+            console.log('Holy Grail Layout with Hamburger Menu loaded');
+            console.log('Features: Responsive Grid, Mobile Navigation, Touch Gestures, Accessibility');
+        });
+
+        // Utility Functions for Debugging
+        window.menuDebug = {
+            openMenu: () => document.getElementById('hamburgerBtn').click(),
+            closeMenu: () => document.getElementById('navOverlay').click(),
+            toggleMenu: () => document.getElementById('hamburgerBtn').click(),
+            getMenuState: () => document.getElementById('navigation').classList.contains('active')
+        };
+    </script>
+</body>
+</html>
