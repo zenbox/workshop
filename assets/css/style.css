@@ -277,11 +277,16 @@ h3 {
 
 *:focus {
   animation-name: focus-animation;
-  animation-duration: 2s;
+  animation-duration: 0.2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *:focus {
+    animation-duration: 0.01s;
+  }
+}
 @keyframes focus-animation {
   0% {
     outline-color: transparent;
