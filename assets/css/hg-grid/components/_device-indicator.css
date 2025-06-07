@@ -19,6 +19,7 @@
 /* BASE THEME */
 .device-indicator {
     background: var(--color-secondary);
+    opacity: 0.5;
     color: var(--color-white);
     font-size: 1.75rem;
     border-radius: var(--border-radius);
