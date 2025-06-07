@@ -21,34 +21,34 @@
     --border-radius-xxs: calc(var(--border-radius) / 8);
 
     /* BASE THEME – Primäre Farben */
-    --color-primary: #667eea;
-    --color-primary-dark: #764ba2;
-    --color-secondary: #2c3e50;
-    --color-secondary-light: #34495e;
+    --color-primary: hsl(129, 97%, 27%);
+    --color-primary-dark: hsl(170, 37%, 46%);
+    --color-secondary: hsl(210, 29%, 24%);
+    --color-secondary-light: hsl(210, 29%, 29%);
 
     /* BASE THEME – Neutrale Farben */
-    --color-white: #ffffff;
-    --color-light-gray: #f4f4f4;
-    --color-medium-gray: #ecf0f1;
-    --color-dark-gray: #bdc3c7;
-    --color-text: #333333;
+    --color-white: hsl(0, 0%, 100%);
+    --color-light-gray: hsl(0, 0%, 96%);
+    --color-medium-gray: hsl(192, 15%, 94%);
+    --color-dark-gray: hsl(204, 8%, 76%);
+    --color-text: hsl(0, 0%, 20%);
 
     /* BASE THEME – Overlay Farben */
-    --color-overlay-dark: rgba(0, 0, 0, 0.5);
-    --color-overlay-light: rgba(255, 255, 255, 0.1);
-    --color-gradient-overlay: rgba(102, 126, 234, 0.7);
-    --color-gradient-overlay-end: rgba(118, 75, 162, 0.7);
+    --color-overlay-dark: hsla(0, 0%, 0%, 0.5);
+    --color-overlay-light: hsla(0, 0%, 100%, 0.1);
+    --color-gradient-overlay: hsla(229, 76%, 66%, 0.1);
+    --color-gradient-overlay-end: hsla(270, 37%, 46%, 0.1);
 
     /* BASE THEME – Schatten */
-    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-medium: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --shadow-heavy: 0 4px 15px rgba(0, 0, 0, 0.2);
-    --shadow-nav: 4px 0 15px rgba(0, 0, 0, 0.3);
-    --shadow-container: 0 0 20px rgba(0, 0, 0, 0.1);
+    --shadow-light: 0 1px 3px hsla(0, 0%, 0%, 0.1);
+    --shadow-medium: 0 2px 10px hsla(0, 0%, 0%, 0.1);
+    --shadow-heavy: 0 4px 15px hsla(0, 0%, 0%, 0.2);
+    --shadow-nav: 4px 0 15px hsla(0, 0%, 0%, 0.3);
+    --shadow-container: 0 0 20px hsla(0, 0%, 0%, 0.1);
 
     /* BASE THEME – Text Schatten */
-    --text-shadow-light: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    --text-shadow-medium: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    --text-shadow-light: 1px 1px 2px hsla(0, 0%, 0%, 0.3);
+    --text-shadow-medium: 2px 2px 4px hsla(0, 0%, 0%, 0.3);
 
     /* LAYOUT – Grid Layout Maße */
     --grid-nav-width: 250px;
