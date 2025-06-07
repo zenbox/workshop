@@ -58,16 +58,16 @@
     --grid-max-width: 1400px;
 
     /* LAYOUT – Hero Section Höhe */
-    --hero-height-desktop: 300px;
-    --hero-height-tablet: 250px;
-    --hero-height-mobile: 200px;
+    --hero-height-desktop: 500px;
+    --hero-height-tablet: 350px;
+    --hero-height-mobile: 300px;
 
     /* BASE THEME – Transitionen */
     --transition-fast: 0.3s ease;
     --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 0.5s ease;
 
-       /* LAYOUT – Breakpoints */
-       --breakpoint-mobile: 480px;
-       --breakpoint-tablet: 768px;
+    /* LAYOUT – Breakpoints */
+    --breakpoint-mobile: 480px;
+    --breakpoint-tablet: 768px;
 }

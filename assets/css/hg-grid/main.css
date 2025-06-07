@@ -18,9 +18,9 @@
 @import 'layout/_footer.css';
 
 /* COMPONENTS */
+@import 'components/_device-indicator.css';
 @import 'components/_hamburger.css';
 @import 'components/_hero.css';
 
 /* UTILITIES */
-/* @import '_responsive.css'; */
 @import '_animations.css';

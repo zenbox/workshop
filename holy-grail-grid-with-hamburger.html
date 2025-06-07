@@ -13,18 +13,36 @@
         <link
             rel="stylesheet"
             href="assets/css/hg-grid/main.css" />
-        
     </head>
     <body>
         <!-- ========================================
+         DEVICE INDICATOR
+    ======================================== -->
+        <div
+            class="device-indicator"
+            aria-hidden="true">
+            <span class="material-symbols-outlined icon desktop"
+                >desktop_windows</span
+            >
+            <span class="material-symbols-outlined icon tablet"
+                >tablet_mac</span
+            >
+            <span class="material-symbols-outlined icon mobile"
+                >smartphone</span
+            >
+        </div>
+
+        <!-- ========================================
          HAMBURGER BUTTON
     ======================================== -->
-    <button class="hamburger-button small" id="hamburgerBtn" aria-label="Menü umschalten">
-        <span class="hamburger-line line-top"></span>
-        <span class="hamburger-line line-middle"></span>
-        <span class="hamburger-line line-bottom"></span>
-      </button>
-      
+        <button
+            class="hamburger-button small"
+            id="hamburgerBtn"
+            aria-label="Menü umschalten">
+            <span class="hamburger-line line-top"></span>
+            <span class="hamburger-line line-middle"></span>
+            <span class="hamburger-line line-bottom"></span>
+        </button>
 
         <!-- ========================================
          MAIN CONTAINER
@@ -99,6 +117,7 @@
                             Responsive Design-Prinzipien für eine optimale
                             Benutzererfahrung.
                         </p>
+                        <button class="hero-cta">call to action</button>
                     </div>
                 </article>
 
@@ -419,6 +438,5 @@
                         .classList.contains("active"),
             };
         </script>
-        
     </body>
 </html>
