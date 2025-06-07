@@ -1,0 +1,53 @@
+/* ========================================
+   LAYOUT – HAUPTBEREICH
+======================================== */
+
+/* LAYOUT */
+.main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* BASE */
+.main-article {
+    flex: 1;
+}
+
+/* BASE THEME */
+.main {
+    background: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-medium);
+}
+
+.main-article {
+    padding: var(--spacing-xl);
+}
+
+.main h2 {
+    font-size: 2rem;
+    color: var(--color-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.main p {
+    margin-bottom: var(--spacing-md);
+    text-align: justify;
+}
+
+/* Responsive – Tablet */
+@media (max-width: 768px) {
+    .main-article {
+        padding: var(--spacing-md);
+    }
+
+    .main h2 {
+        font-size: 1.5rem;
+    }
+
+    .main p {
+        font-size: 1rem;
+    }
+}

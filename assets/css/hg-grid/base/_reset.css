@@ -1,0 +1,24 @@
+/* ========================================
+   BASE – RESET UND GRUNDSTILE
+======================================== */
+
+/* BASE: Reset & Box-Modell */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BASE: Scrollverhalten & Schrift */
+html {
+    scroll-behavior: smooth;
+}
+
+/* BASE: Schrift und Text */
+body {
+    font-family: Barlow, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-light-gray);
+    overflow-x: hidden;
+}

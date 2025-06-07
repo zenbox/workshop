@@ -1,0 +1,136 @@
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+/* TABLET & SMALL DESKTOP */
+@media (max-width: 768px) {
+    /* LAYOUT */
+    .container {
+        grid-template-areas:
+            "header"
+            "main"
+            "aside"
+            "footer";
+        grid-template-columns: 1fr;
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+
+    .nav {
+        position: fixed;
+        top: 0;
+        left: calc(-1 * var(--grid-mobile-nav-width));
+        width: var(--grid-mobile-nav-width);
+        height: 100vh;
+        z-index: 1000;
+        padding: var(--spacing-xxl) var(--spacing-lg) var(--spacing-lg);
+        border-radius: 0;
+        box-shadow: var(--shadow-nav);
+        transition: left var(--transition-smooth);
+        overflow-y: auto;
+    }
+
+    .nav.active {
+        left: 0;
+    }
+
+    .nav.active ~ .nav-overlay {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .header {
+        padding: var(--spacing-lg);
+        padding-left: var(--spacing-xxl);
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero {
+        height: var(--hero-height-tablet);
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .hero-content {
+        padding: var(--spacing-lg);
+    }
+
+    .main h2 {
+        font-size: 1.5rem;
+    }
+
+    .main-article,
+    .aside,
+    .footer {
+        padding: var(--spacing-md);
+    }
+
+    .nav a {
+        padding: var(--spacing-md) 0.75rem;
+        font-size: 1.1rem;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .container {
+        padding: var(--spacing-xs);
+    }
+
+    .hamburger {
+        top: var(--spacing-sm);
+        left: var(--spacing-sm);
+        padding: 0.625rem;
+    }
+
+    .hamburger-icon {
+        width: 1.25rem;
+        height: 0.9375rem;
+    }
+
+    .nav {
+        width: var(--grid-mobile-nav-width-small);
+        left: calc(-1 * var(--grid-mobile-nav-width));
+    }
+
+    .header {
+        padding: var(--spacing-md);
+        padding-left: 3.5rem;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .nav h2 {
+        font-size: 1.1rem;
+    }
+
+    .hero {
+        height: var(--hero-height-mobile);
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-content {
+        padding: var(--spacing-md);
+    }
+}

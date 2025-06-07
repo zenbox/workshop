@@ -1,0 +1,26 @@
+/* ========================================
+   MASTER STYLESHEET – main.css (bzw. main.scss)
+   Importreihenfolge nach SMACSS
+======================================== */
+
+/* BASE */
+@import '_variables.css';  
+@import '_fonts.css';
+@import 'base/_reset.css'; 
+@import 'base/_icons.css'; 
+
+/* LAYOUT */
+@import 'layout/_container.css';
+@import 'layout/_header.css';
+@import 'layout/_nav.css';
+@import 'layout/_main.css';
+@import 'layout/_aside.css';
+@import 'layout/_footer.css';
+
+/* COMPONENTS */
+@import 'components/_hamburger.css';
+@import 'components/_hero.css';
+
+/* UTILITIES */
+/* @import '_responsive.css'; */
+@import '_animations.css';

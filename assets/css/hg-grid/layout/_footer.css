@@ -1,0 +1,24 @@
+/* ========================================
+   LAYOUT – FOOTER
+======================================== */
+
+/* LAYOUT */
+.footer {
+    grid-area: footer;
+    padding: var(--spacing-lg);
+    text-align: center;
+    border-radius: var(--border-radius-sm);
+}
+
+/* BASE THEME */
+.footer {
+    background: var(--color-secondary-light);
+    color: var(--color-white);
+}
+
+/* Responsive – Tablet */
+@media (max-width: 768px) {
+    .footer {
+        padding: var(--spacing-md);
+    }
+}

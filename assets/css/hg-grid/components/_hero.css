@@ -1,0 +1,88 @@
+/* ========================================
+   COMPONENT – HERO SECTION
+======================================== */
+
+/* LAYOUT */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    height: var(--hero-height-desktop);
+}
+
+.hero-content {
+    z-index: 2;
+    max-width: 600px;
+    padding: var(--spacing-xl);
+}
+
+/* BASE THEME */
+.hero {
+    background: linear-gradient(
+            45deg,
+            var(--color-gradient-overlay),
+            var(--color-gradient-overlay-end)
+        ),
+        url("https://picsum.photos/id/1/1200/600");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--color-white);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    font-weight: 700;
+    text-shadow: var(--text-shadow-medium);
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    opacity: 0.95;
+    text-shadow: var(--text-shadow-light);
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+/* Responsive – Tablet */
+@media (max-width: 768px) {
+    .hero {
+        height: var(--hero-height-tablet);
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .hero-content {
+        padding: var(--spacing-lg);
+    }
+}
+
+/* Responsive – Mobile */
+@media (max-width: 480px) {
+    .hero {
+        height: var(--hero-height-mobile);
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .hero-content {
+        padding: var(--spacing-md);
+    }
+}
