@@ -1,60 +1,55 @@
-// NAVIGATION COMPONENT
+// Navigation Styles
 //
 // @package Webapplication
-// @module
+// @module NAVIGATION
 // @author Michael Reichart <michael.reichart@gfu.net>
-// @since 2025-06-03
+// @since 2025-09-02
 // @version 1.0.0
 // @see i.e. inspired by ... {link to}
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2025 Michael Reichart, Cologne
 
-/* - - - - - - - - - -
- * NAVIGATION
- * - - - - - - - - - - */
+.#{$prefix} {
+    &-nav {
+        // Base
+        // Layout
+        @media (min-width: 600px) {
+            position: fixed;
+            top: 0;
+            left: calc(-1 * #{$navigation-width-600});
+            width: $navigation-width-600;
+            height: 100vh;
+            opacity: 0;
+            box-shadow: 0 0 30px black;
+        }
 
-.#{$prefix}-nav {
-    // BASE / RESET
-    @include list-reset();
+        // Behaviour
+        transition-property: left;
+        transition-duration: 250ms;
+        transition-timing-function: $default-transition-timing-function;
+        transition-delay: $default-transition-delay;
+        transition-behavior: smooth; // ?? (e.g. 'auto', 'smooth')
 
-    // LAYOUT
-    display: flex;
-    flex-direction: row;
-    gap: var(--spacing-md);
+        @media (prefers-reduced-motion: reduce) {
+            transition-duration: 0.01s;
+            transition-timing-function: none;
+        }
 
-    &-row {
-        flex-direction: row;
-    }
-    &-column {
-        flex-direction: column;
-    }
+        // animation-name: navigation-movement;
+        // animation-duration: 250ms;
+        // animation-timing-function: $default-transition-timing-function;
+        // animation-delay: $default-transition-delay;
 
-    // STATES
-    a {
-        &:link {
-            text-decoration: none;
+        // States
+        @media (min-width: 600px) {
+            &-active {
+                left: 0;
+                background-color: oklch(50% 0.1 240 / 0.9);
+                opacity: 1;
+            }
         }
-        &:hover {
-            text-decoration: underline;
-        }
-        &:link {
-            color: var(--color-white);
-        }
-        &:visited {
-            color: var(--color-primary-light);
-        }
-        &:hover {
-            color: var(--color-primary-dark);
-        }
-        &:active {
-            color: var(--color-primary);
-        }
-    }
 
-    // THEME
-    a {
-        color: var(--color-white);
+        // Theme
+        background: oklch(50% 0.1 240 / 0.5);
     }
 }
-
-/* - - - - - - - - - - */

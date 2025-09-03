@@ -1,33 +1,31 @@
-/** UI Stylesheet for Webapplication
-  *
-  * @package Webapplication
-  * @module i.e. header
-  * @author Michael Reichart <michael.reichart@gfu.net>
-  * @since 2025-06-03
-  * @version 1.0.0
-  * @see i.e. inspired by ... {link to}
-  * @license MIT {https://opensource.org/licenses/MIT}
-  * @copyright (c) 2025 Michael Reichart, Cologne
-  */
+//
+//
+// @package Webapplication
+// @module Collector
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-09-01
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
 
-// BASE
+// Base section
 @import "variables";
-@import "mixins";
+@import "colors";
+
+@import "normalize";
 @import "base";
-@import "typography";
 
-// LAYOUT
-@import "template-1";
-@import "template-2";
+// Layout section
+@import "template-grid";
 
-// MODULES / COMPONENTS
-@import "hero";
-@import "input";
+// Modules section (UI Components)
+@import "footer";
+@import "hamburger";
 @import "navigation";
 
-// STATES
-@import "accessibility";
+// State section
+@import "animation";
 
-// THEME
-@import "theme-1";
-// @import "developer";
+// Theme section (Customer!)
+@import "customer-1/typography";

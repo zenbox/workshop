@@ -1,0 +1,56 @@
+// Navigation Styles
+// 
+// @package Webapplication
+// @module COLORS
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-09-02
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
+
+// General colors
+$color-white: hsl(0, 0%, 100%);
+$color-black: hsl(0, 0%, 0%);
+$color-grey: hsl(0, 0%, 50%);
+
+$color-red: hsl(0, 100%, 50%);
+$color-orange: hsl(30, 100%, 50%);
+$color-yellow: hsl(60, 100%, 50%);
+$color-green: hsl(129, 97%, 27%);
+$color-blue: hsl(210, 100%, 50%);
+$color-purple: hsl(270, 100%, 50%);
+$color-pink: hsl(330, 100%, 50%);
+
+// Corporate colors
+$color-primary: hsl(129, 97%, 27%);
+$color-secondary: hsl(210, 29%, 24%);
+$color-tertiary: hsl(340, 82%, 52%);
+$color-quaternary: hsl(50, 100%, 50%);
+
+$color-on-primary: hsl(0, 0%, 100%);
+$color-on-secondary: hsl(0, 0%, 100%);
+
+// Sematic colors
+$color-success: $color-green;
+$color-warning: $color-orange;
+$color-error: $color-red;
+$color-info: $color-blue;
+
+
+
+
+
+
+$color-primary-dark: hsl(170, 37%, 46%);
+$color-secondary-light: hsl(210, 29%, 29%);
+
+
+header {
+    background: $color-primary;
+    color: $color-on-primary;
+}
+footer {
+    background: $color-secondary;
+    color: $color-on-secondary;
+}

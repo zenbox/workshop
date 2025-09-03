@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html
+    lang="de-DE"
+    class="customer-1">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+    </head>
+    <body class="app-container">
+        <!-- Skiplink Navigation -->
+        <div style="display: none">
+            <a href="#page-header">Skip to header</a>
+            <a href="#page-main-content">Skip to main content</a>
+            <a href="#page-footer">Skip to footer</a>
+        </div>
+        <!-- End Skiplink Navigation -->
+
+        <!-- ========================================
+         HAMBURGER BUTTON
+    ======================================== -->
+        <button
+            class="hamburger-button small"
+            id="hamburgerBtn"
+            aria-label="Menü umschalten">
+            <span class="hamburger-line line-top"></span>
+            <span class="hamburger-line line-middle"></span>
+            <span class="hamburger-line line-bottom"></span>
+        </button>
+
+        <header id="page-header">
+            <!--
+            Nicht-semantischen Elemente sind:
+            div, span, u, b, i
+            -->
+            <div class="brand">logo</div>
+            <nav>header navigation</nav>
+        </header>
+
+        <nav id="navigation" class="app-nav">Navigation</nav>
+
+        <main id="page-main-content">
+            <h1>Hallo Welt!</h1>
+            <p lang="la">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas
+                atque sapiente possimus adipisci ipsam? Dolorem, voluptate
+                velit. Odit.
+            </p>
+            <p>Noch ein Absatz</p>
+        </main>
+
+        <aside>Aside</aside>
+
+        <footer
+            id="page-footer"
+            class="app-footer row">
+            <nav>
+                <ul>
+                    <li><a href="">Link 1</a></li>
+                    <li><a href="">Link 2</a></li>
+                    <li><a href="">Link 3</a></li>
+                    <li><a href="">Link 4</a></li>
+                    <li><a href="">Link 5</a></li>
+                    <li><a href="">Link 6</a></li>
+                    <li><a href="">Link 7</a></li>
+                    <li><a href="">Link 8</a></li>
+                </ul>
+            </nav>
+            <address>
+                &copy; <time datetime="2025">2025</time> Deine Firma
+                Irgendwostraße 123, 123456 Einestadt Kontakt:
+                <a href="mailto:info@yourcompany.com">info@deinefirma.de</a>
+            </address>
+        </footer>
+
+        <script>
+            // ========================================
+            // HAMBURGER MENU FUNCTIONALITY
+            // ========================================
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const hamburgerBtn = document.getElementById("hamburgerBtn");
+                const navigation = document.getElementById("navigation");
+                const navOverlay = document.getElementById("navOverlay");
+                const navLinks = document.querySelectorAll(".nav a");
+
+                let isMenuOpen = false;
+
+                // Hamburger Button Click Handler
+                hamburgerBtn.addEventListener("click", function () {
+                    toggleMenu();
+                });
+
+                // Overlay Click Handler - schließt das Menü
+                // navOverlay.addEventListener("click", function () {
+                //     if (isMenuOpen) {
+                //         closeMenu();
+                //     }
+                // });
+
+                // Navigation Link Click Handler - schließt Menü auf Mobile
+                navLinks.forEach((link) => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+
+                        // Visual feedback
+                        this.style.transform = "scale(0.95)";
+                        setTimeout(() => {
+                            this.style.transform = "";
+                        }, 150);
+
+                        // Auf Mobile: Menü schließen nach Link-Click
+                        if (window.innerWidth <= 768) {
+                            setTimeout(() => {
+                                closeMenu();
+                            }, 200);
+                        }
+
+                        // Aktiven Link markieren
+                        navLinks.forEach((l) => l.classList.remove("app-nav-active"));
+                        this.classList.add("app-nav-active");
+
+                        console.log("Navigation:", this.textContent);
+                    });
+                });
+
+                // ESC-Taste schließt das Menü
+                document.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape" && isMenuOpen) {
+                        closeMenu();
+                    }
+                });
+
+                // Resize Handler - schließt Menü wenn wieder Desktop-Größe
+                window.addEventListener("resize", function () {
+                    if (window.innerWidth > 768 && isMenuOpen) {
+                        closeMenu();
+                    }
+                });
+
+                // Menu Toggle Function
+                function toggleMenu() {
+                    if (isMenuOpen) {
+                        closeMenu();
+                    } else {
+                        openMenu();
+                    }
+                }
+
+                // Open Menu Function
+                function openMenu() {
+                    isMenuOpen = true;
+                    hamburgerBtn.classList.add("app-nav-active");
+                    navigation.classList.add("app-nav-active");
+                    // navOverlay.classList.add("app-nav-active");
+                    // navOverlay.style.display = "block";
+
+                    // Accessibility
+                    hamburgerBtn.setAttribute("aria-label", "Menü schließen");
+                    navigation.setAttribute("aria-hidden", "false");
+
+                    // Body Scroll verhindern
+                    document.body.style.overflow = "hidden";
+
+                    console.log("Menu opened");
+                }
+
+                // Close Menu Function
+                function closeMenu() {
+                    isMenuOpen = false;
+                    hamburgerBtn.classList.remove("app-nav-active");
+                    navigation.classList.remove("app-nav-active");
+                    // navOverlay.classList.remove("app-nav-active");
+
+                    // Delay für smooth animation
+                    // setTimeout(() => {
+                    //     navOverlay.style.display = "none";
+                    // }, 300);
+
+                    // Accessibility
+                    hamburgerBtn.setAttribute("aria-label", "Menü öffnen");
+                    navigation.setAttribute("aria-hidden", "true");
+
+                    // Body Scroll wieder erlauben
+                    document.body.style.overflow = "";
+
+                    console.log("Menu closed");
+                }
+
+                // Touch Gestures für Mobile (optional)
+                let touchStartX = 0;
+                let touchStartY = 0;
+
+                document.addEventListener("touchstart", function (e) {
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                });
+
+                document.addEventListener("touchend", function (e) {
+                    if (!isMenuOpen) return;
+
+                    const touchEndX = e.changedTouches[0].clientX;
+                    const touchEndY = e.changedTouches[0].clientY;
+
+                    const deltaX = touchStartX - touchEndX;
+                    const deltaY = Math.abs(touchStartY - touchEndY);
+
+                    // Swipe left to close menu (nur wenn horizontal swipe)
+                    if (deltaX > 50 && deltaY < 100) {
+                        closeMenu();
+                    }
+                });
+
+                // Initial Setup
+                function initializeMenu() {
+                    if (window.innerWidth <= 768) {
+                        hamburgerBtn.classList.add("pulse");
+                        // Remove pulse after 3 seconds
+                        setTimeout(() => {
+                            hamburgerBtn.classList.remove("pulse");
+                        }, 3000);
+                    }
+
+                    navigation.setAttribute("aria-hidden", "true");
+                    console.log("Hamburger menu initialized");
+                }
+
+                // Performance Monitor
+                function logPerformance() {
+                    const navigation =
+                        performance.getEntriesByType("navigation")[0];
+                    console.log(
+                        `Page load: ${Math.round(navigation.loadEventEnd)}ms`
+                    );
+
+                    // Menu animation performance
+                    let animationStart;
+                    function measureAnimation() {
+                        if (!animationStart) {
+                            animationStart = performance.now();
+                        }
+                        const elapsed = performance.now() - animationStart;
+                        if (elapsed < 300) {
+                            // Animation duration
+                            requestAnimationFrame(measureAnimation);
+                        } else {
+                            console.log(
+                                `Menu animation: ${Math.round(elapsed)}ms`
+                            );
+                            animationStart = null;
+                        }
+                    }
+
+                    // Start measuring on menu toggle
+                    hamburgerBtn.addEventListener("click", () => {
+                        requestAnimationFrame(measureAnimation);
+                    });
+                }
+
+                // Initialize everything
+                initializeMenu();
+                logPerformance();
+
+                console.log("Holy Grail Layout with Hamburger Menu loaded");
+                console.log(
+                    "Features: Responsive Grid, Mobile Navigation, Touch Gestures, Accessibility"
+                );
+            });
+
+            // Utility Functions for Debugging
+            window.menuDebug = {
+                openMenu: () => document.getElementById("hamburgerBtn").click(),
+                closeMenu: () => document.getElementById("navOverlay").click(),
+                toggleMenu: () =>
+                    document.getElementById("hamburgerBtn").click(),
+                getMenuState: () =>
+                    document
+                        .getElementById("navigation")
+                        .classList.contains("app-nav-active"),
+            };
+        </script>
+    </body>
+</html>

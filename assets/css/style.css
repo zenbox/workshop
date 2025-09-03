@@ -1,382 +1,690 @@
 @charset "UTF-8";
-/** UI Stylesheet for Webapplication
-  *
-  * @package Webapplication
-  * @module i.e. header
-  * @author Michael Reichart <michael.reichart@gfu.net>
-  * @since 2025-06-03
-  * @version 1.0.0
-  * @see i.e. inspired by ... {link to}
-  * @license MIT {https://opensource.org/licenses/MIT}
-  * @copyright (c) 2025 Michael Reichart, Cologne
-  */
+@import url("https://fonts.googleapis.com/css2?family=Asimovian&display=swap");
 :root {
-  /* Abstände */
-  --spacing-xs: 0.25rem;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-xxl: 4rem;
-  /* Border Radius */
+  /* BASE THEME – Schriftgrößen */
+  font-size: 14px;
+  /* BASE THEME – Abstände */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 1.5rem; /* 24px */
+  --spacing-xl: 2rem; /* 32px */
+  --spacing-xxl: 4rem; /* 64px */
+  /* BASE THEME – Border Radius */
   --border-radius: 0.6rem;
   --border-radius-sm: calc(var(--border-radius) / 2);
   --border-radius-xs: calc(var(--border-radius) / 3);
   --border-radius-xxs: calc(var(--border-radius) / 8);
-  /* Primäre Farben Corporate! */
-  --color-primary: #0f31c8;
-  --color-on-primary: #9da1b6;
-  --color-primary-dark: #02197c;
-  --color-secondary: #2c3e50;
-  --color-secondary-light: #34495e;
-  /* Semantische Farben */
-  --color-success: #2ecc71; /* Grün */
-  --color-success-light: #27ae60;
-  --color-warning: #f39c12; /* Orange */
-  --color-warning-light: #e67e22;
-  --color-error: #e74c3c; /* Rot */
-  --color-error-light: #c0392b;
-  --color-info: #3498db; /* Blau */
-  --color-info-light: #2980b9;
-  --color-focus: #d1d5e7; /* Fokus Farbe */
-  /* Neutrale Farben */
-  --color-white: #ffffff;
-  --color-light-gray: #f4f4f4;
-  --color-medium-gray: #ecf0f1;
-  --color-dark-gray: #bdc3c7;
-  --color-text: #333333;
-  /* Overlay Farben */
-  --color-overlay-dark: rgba(0, 0, 0, 0.5);
-  --color-overlay-light: rgba(255, 255, 255, 0.1);
-  --color-gradient-overlay: rgba(102, 126, 234, 0.7);
-  --color-gradient-overlay-end: rgba(118, 75, 162, 0.7);
-  /* Schatten */
-  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-medium: 0 2px 10px rgba(0, 0, 0, 0.1);
-  --shadow-heavy: 0 4px 15px rgba(0, 0, 0, 0.2);
-  --shadow-nav: 4px 0 15px rgba(0, 0, 0, 0.3);
-  --shadow-container: 0 0 20px rgba(0, 0, 0, 0.1);
-  /* Text Schatten */
-  --text-shadow-light: 1px 1px 2px rgba(0, 0, 0, 0.3);
-  --text-shadow-medium: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  /* Grid Layout */
+  /* BASE THEME – Primäre Farben */
+  --color-primary: hsl(129, 97%, 27%);
+  --color-primary-dark: hsl(170, 37%, 46%);
+  --color-secondary: hsl(210, 29%, 24%);
+  --color-secondary-light: hsl(210, 29%, 29%);
+  /* BASE THEME – Neutrale Farben */
+  --color-white: hsl(0, 0%, 100%);
+  --color-light-gray: hsl(0, 0%, 96%);
+  --color-medium-gray: hsl(192, 15%, 94%);
+  --color-dark-gray: hsl(204, 8%, 76%);
+  --color-black: hsl(0, 0%, 0%);
+  --color-text: hsl(0, 0%, 20%);
+  /* BASE THEME – Overlay Farben */
+  --color-overlay-dark: hsla(0, 0%, 0%, 0.5);
+  --color-overlay-light: hsla(0, 0%, 100%, 0.1);
+  --color-gradient-overlay: hsla(229, 76%, 66%, 0.1);
+  --color-gradient-overlay-end: hsla(270, 37%, 46%, 0.1);
+  /* BASE THEME – Schatten */
+  --shadow-light: 0 1px 3px hsla(0, 0%, 0%, 0.1);
+  --shadow-medium: 0 2px 10px hsla(0, 0%, 0%, 0.1);
+  --shadow-heavy: 0 4px 15px hsla(0, 0%, 0%, 0.2);
+  --shadow-nav: 4px 0 15px hsla(0, 0%, 0%, 0.3);
+  --shadow-container: 0 0 20px hsla(0, 0%, 0%, 0.1);
+  /* BASE THEME – Text Schatten */
+  --text-shadow-light: 1px 1px 2px hsla(0, 0%, 0%, 0.3);
+  --text-shadow-medium: 2px 2px 4px hsla(0, 0%, 0%, 0.3);
+  /* LAYOUT – Grid Layout Maße */
   --grid-nav-width: 250px;
   --grid-aside-width: 220px;
   --grid-mobile-nav-width: 280px;
   --grid-mobile-nav-width-small: 260px;
   --grid-max-width: 1400px;
-  /* Hero Höhen */
-  --hero-height-desktop: 300px;
-  --hero-height-tablet: 250px;
-  --hero-height-mobile: 200px;
-  /* Transitions */
+  /* LAYOUT – Hero Section Höhe */
+  --hero-height-desktop: 500px;
+  --hero-height-tablet: 350px;
+  --hero-height-mobile: 300px;
+  /* BASE THEME – Transitionen */
   --transition-fast: 0.3s ease;
   --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 0.5s ease;
+  /* LAYOUT – Breakpoints */
+  --breakpoint-mobile: 480px;
+  --breakpoint-tablet: 768px;
+}
+
+header {
+  background: hsl(129, 97%, 27%);
+  color: hsl(0, 0%, 100%);
+}
+
+footer {
+  background: hsl(210, 29%, 24%);
+  color: hsl(0, 0%, 100%);
+}
+
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+/* Document
+   ========================================================================== */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/* Sections
+   ========================================================================== */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/* Grouping content
+   ========================================================================== */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/* Text-level semantics
+   ========================================================================== */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+/**
+ * Remove the border on images inside links in IE 10.
+ */
+img {
+  border-style: none;
+}
+
+/* Forms
+   ========================================================================== */
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input { /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
+ */
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the odd appearance in Chrome and Safari.
+ * 2. Correct the outline style in Safari.
+ */
+[type=search] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/* Interactive
+   ========================================================================== */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/* Misc
+   ========================================================================== */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
 }
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-}
-
-img.responsive {
-  max-width: 100%;
-  height: auto;
-}
-
-figure {
-  margin: 0;
-  padding: 0;
-}
-
 html {
+  font-family: Arial, sans-serif;
   font-size: 16px;
 }
 
-html {
-  font-size: clamp(0.8125rem, 0.463rem + 0.9709vw, 1.3125rem);
-}
-
 body {
-  font-family: Barlow, sans-serif;
-  line-height: 1.5;
+  line-height: 1.2;
 }
 
-h1 {
-  font-size: 3rem;
-}
-
-h2 {
-  font-size: 2.25rem;
-}
-
-h3 {
-  font-size: 1.75rem;
-}
-
-.ui-template-1 .ui-container {
-  max-width: 100vw;
-  height: 100vh;
-  max-height: 100vh;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: stretch;
-}
-.ui-template-1 .ui-container > header {
-  height: 3rem;
-}
-.ui-template-1 .ui-container > footer {
-  height: 3rem;
-}
-.ui-template-1 .ui-container > header,
-.ui-template-1 .ui-container > footer {
-  max-height: 25%;
-  flex-basis: 100%;
-}
-.ui-template-1 .ui-container > main {
-  max-height: calc(100% - 3rem - 3rem);
-  flex-basis: 50%;
-  flex-grow: 1;
-  flex-shrink: 1;
-  overflow: auto;
-}
-.ui-template-1 .ui-container > nav,
-.ui-template-1 .ui-container > aside {
-  flex-basis: 25%;
-  flex-grow: 1;
-  flex-shrink: 1;
-}
-.ui-template-1 .ui-container > header {
-  order: 1;
-}
-.ui-template-1 .ui-container > nav {
-  order: 2;
-}
-.ui-template-1 .ui-container > main {
-  order: 3;
-}
-.ui-template-1 .ui-container > aside {
-  order: 4;
-}
-.ui-template-1 .ui-container > footer {
-  order: 5;
-}
-.ui-template-1 .ui-container > * {
-  padding-inline: 0.25rem;
-}
-
-.ui-template-2 .ui-container {
-  display: block;
-}
-@media screen and (max-width: 599px) {
-  .ui-template-2 .ui-container {
-    display: flex;
-    flex-direction: column;
-  }
-}
-@media screen and (min-width: 600px) {
-  .ui-template-2 .ui-container {
-    display: grid;
-    min-height: 100vh;
-    grid-template-areas: "header header header" "nav main aside" "footer footer footer";
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: var(--grid-nav-width) 1fr var(--grid-aside-width);
-    gap: var(--spacing-md);
-    max-width: var(--grid-max-width);
-    margin: 0 auto;
-    padding: var(--spacing-md);
-    background-color: var(--color-white);
-    box-shadow: var(--shadow-container);
-  }
-  .ui-template-2 .ui-container header {
-    grid-area: header;
-    padding: var(--spacing-xl);
-    position: relative;
-  }
-  .ui-template-2 .ui-container nav {
-    grid-area: nav;
-    padding: var(--spacing-lg);
-  }
-  .ui-template-2 .ui-container aside {
-    grid-area: aside;
-    padding: var(--spacing-lg);
-  }
-  .ui-template-2 .ui-container footer {
-    grid-area: footer;
-    padding: var(--spacing-lg);
-  }
-  .ui-template-2 footer {
-    display: block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-}
-@media screen and (min-width: 960px) {
-  .ui-template-2 .ui-container {
-    grid-template-columns: 1fr 3fr 1fr;
-  }
-}
-@media screen and (min-width: 1920px) {
-  .ui-template-2 .ui-container {
-    grid-template-columns: 1fr 4fr 1fr;
-  }
-}
-
-.ui-hero-content {
-  display: block;
-  position: absolute;
-  margin-block-start: -12.4rem;
-  padding-inline: var(--spacing-lg);
-  color: red;
-  background: transparent;
-  filter: grayscale(1);
-  backdrop-filter: blur(15px);
-  transition: filter 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
-}
-.ui-hero-content:hover {
-  filter: grayscale(0);
-}
-
-.ui-input {
-  border-width: 1px;
-  border-style: solid;
-  border-color: #e0e0e0;
-}
-
-/* - - - - - - - - - -
- * NAVIGATION
- * - - - - - - - - - - */
-.ui-nav {
+nav ul {
   list-style: none;
-  margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: row;
-  gap: var(--spacing-md);
-}
-.ui-nav-row {
-  flex-direction: row;
-}
-.ui-nav-column {
-  flex-direction: column;
-}
-.ui-nav a:link {
-  text-decoration: none;
-}
-.ui-nav a:hover {
-  text-decoration: underline;
-}
-.ui-nav a:link {
-  color: var(--color-white);
-}
-.ui-nav a:visited {
-  color: var(--color-primary-light);
-}
-.ui-nav a:hover {
-  color: var(--color-primary-dark);
-}
-.ui-nav a:active {
-  color: var(--color-primary);
-}
-.ui-nav a {
-  color: var(--color-white);
+  margin: 0;
 }
 
-/* - - - - - - - - - - */
-* {
-  outline-width: 3px;
-  outline-style: solid;
-  outline-color: transparent;
-  outline-offset: 2px;
-}
+/* ... */
+.app-container {
+  /**
+  * Breakpoints from material.io
 
-*:focus {
-  animation-name: focus-animation;
-  animation-duration: 0.2s;
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
+  xs, extra-small: 0px
+  sm, small: 600px
+  md, medium: 900px
+  lg, large: 1200px
+  xl, extra-large: 1536px
+  */
 }
-
-@media (prefers-reduced-motion: reduce) {
-  *:focus {
-    animation-duration: 0.01s;
+@media (min-width: 600px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-areas: "header" "main" "aside" "footer";
   }
 }
-@keyframes focus-animation {
-  0% {
-    outline-color: transparent;
-    outline-width: 0px;
+@media (min-width: 900px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 10rem auto auto;
+    gap: 0.125rem;
+    grid-template-areas: "header header header header header header header header" "nav nav main main main main aside aside" "footer footer footer footer footer footer footer footer";
+  }
+}
+.app-container > header {
+  grid-area: header;
+}
+.app-container nav {
+  grid-area: nav;
+}
+.app-container main {
+  grid-area: main;
+}
+.app-container aside {
+  grid-area: aside;
+}
+.app-container > footer {
+  grid-area: footer;
+}
+
+#page-footer {
+  display: block;
+}
+
+.app-footer.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+/* ========================================
+   COMPONENT – PARAMETRISCHER HAMBURGER BUTTON
+======================================== */
+/* BASE THEME – SVG-ähnliche Positionsdefinitionen */
+:root {
+  --line-top-pos: 0.25; /* 25% von oben */
+  --line-middle-pos: 0.5; /* 50% (Mitte) */
+  --line-bottom-pos: 0.75; /* 75% von oben */
+}
+
+/* BASE */
+.hamburger-button {
+  background: white;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  left: var(--spacing-md) !important;
+  top: var(--spacing-md);
+  overflow: hidden;
+}
+
+/* LAYOUT – Größe, Positionen, Offsets */
+.hamburger-button {
+  --size: 40px;
+  --line-height: calc(var(--size) * 0.06);
+  --line-width: calc(var(--size) * 0.8);
+  --top-position: calc(
+      var(--size) * var(--line-top-pos) - var(--line-height) / 2
+  );
+  --middle-position: calc(
+      var(--size) * var(--line-middle-pos) - var(--line-height) / 2
+  );
+  --bottom-position: calc(
+      var(--size) * var(--line-bottom-pos) - var(--line-height) / 2
+  );
+  --top-offset: calc(var(--middle-position) - var(--top-position));
+  --bottom-offset: calc(var(--middle-position) - var(--bottom-position));
+  width: var(--size);
+  height: var(--size);
+  z-index: 1100;
+}
+
+/* BASE THEME – Linienstil */
+.hamburger-line {
+  position: absolute;
+  width: var(--line-width);
+  height: var(--line-height);
+  background-color: var(--color-black);
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease;
+  border-radius: calc(var(--line-height) / 2);
+}
+
+/* LAYOUT – Linienpositionen */
+.line-top {
+  top: var(--top-position);
+}
+
+.line-middle {
+  top: var(--middle-position);
+}
+
+.line-bottom {
+  top: var(--bottom-position);
+}
+
+/* STATE – Aktive Animation */
+.hamburger-button.app-nav-active .line-top {
+  transform: translateX(-50%) translateY(var(--top-offset)) rotate(45deg);
+}
+
+.hamburger-button.app-nav-active .line-middle {
+  opacity: 0;
+  transform: translateX(-50%) scaleX(0);
+}
+
+.hamburger-button.app-nav-active .line-bottom {
+  transform: translateX(-50%) translateY(var(--bottom-offset)) rotate(-45deg);
+}
+
+/* VARIATIONEN – Größenskalierung */
+.hamburger-button.small {
+  --size: 30px;
+}
+
+.hamburger-button.medium {
+  --size: 50px;
+}
+
+.hamburger-button.large {
+  --size: 70px;
+}
+
+/* Responsive – optional Sichtbarkeit bei Breakpoints */
+@media (max-width: 899px) {
+  .hamburger-button {
+    display: block;
+  }
+}
+@media (min-width: 900px) {
+  .hamburger-button {
+    display: none;
+  }
+}
+/* Sievers Honor
+ * The most elegant burger recipe
+*/
+#hamburgerBtn {
+  border-radius: 6px;
+  border: none;
+  padding: 5px;
+  width: 3rem;
+  height: 3rem;
+  background-color: lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  cursor: pointer;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 100;
+}
+#hamburgerBtn .hamburger-line {
+  width: 100%;
+  height: 3px;
+  border-radius: 25%;
+  background-color: white;
+  display: block;
+  transition: transform 0.3s ease;
+}
+#hamburgerBtn:has(+ .navigation-main-active) {
+  justify-content: center;
+  align-items: center;
+}
+#hamburgerBtn:has(+ .navigation-main-active) .hamburger-line {
+  position: absolute;
+}
+#hamburgerBtn:has(+ .navigation-main-active) .line-top {
+  transform: rotate(45deg);
+}
+#hamburgerBtn:has(+ .navigation-main-active) .line-middle {
+  transform: rotateY(90deg);
+}
+#hamburgerBtn:has(+ .navigation-main-active) .line-bottom {
+  transform: rotate(-45deg);
+}
+
+.app-nav {
+  transition-property: left;
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  transition-behavior: smooth;
+  background: oklch(50% 0.1 240deg / 0.5);
+}
+@media (min-width: 600px) {
+  .app-nav {
+    position: fixed;
+    top: 0;
+    left: calc(-1 * 33vw);
+    width: 33vw;
+    height: 100vh;
     opacity: 0;
+    box-shadow: 0 0 30px black;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .app-nav {
+    transition-duration: 0.01s;
+    transition-timing-function: none;
+  }
+}
+@media (min-width: 600px) {
+  .app-nav-active {
+    left: 0;
+    background-color: oklch(50% 0.1 240deg / 0.9);
+    opacity: 1;
+  }
+}
+
+@keyframes navigation-movement {
+  0% {
+    left: -100vw;
+    opacity: 0;
+    display: none;
   }
   1% {
-    opacity: 1;
+    display: block;
   }
-  25% {
-    outline-color: red;
-    outline-width: 3px;
-    opacity: 1;
+  15% {
+    background: red;
   }
-  50% {
-    outline-color: orange;
-    outline-width: 3px;
-    opacity: 1;
-  }
-  75% {
-    outline-color: yellow;
-    outline-width: 3px;
-    opacity: 1;
+  80% {
+    background: yellow;
   }
   100% {
-    outline-color: var(--color-focus);
-    outline-width: 3px;
+    left: 0;
     opacity: 1;
   }
 }
-.d-none {
-  display: none !important;
+html,
+.customer-1 {
+  font-family: "Barlow", sans-serif;
+  font-size: clamp(16px, 1.5vw, 24px);
 }
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+html body,
+.customer-1 body {
+  line-height: 1.31;
+  width: 100vw;
+  min-height: 100vh;
 }
-
-header {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-  color: var(--color-white);
-  text-align: center;
-  border-radius: var(--border-radius-sm);
+html h1,
+.customer-1 h1 {
+  font-size: 3rem;
 }
-
-nav {
-  background: var(--color-secondary);
-  color: var(--color-white);
-  border-radius: var(--border-radius-sm);
-  transition: transform var(--transition-fast);
+html h2,
+.customer-1 h2 {
+  font-size: 2.5rem;
 }
-
-aside {
-  background: var(--color-medium-gray);
-  border-radius: var(--border-radius-sm);
+html h3,
+.customer-1 h3 {
+  font-size: 2rem;
 }
-
-footer {
-  background: var(--color-secondary-light);
-  color: var(--color-white);
+html h1,
+html h2,
+html h3,
+.customer-1 h1,
+.customer-1 h2,
+.customer-1 h3 {
+  font-family: Asimovian;
 }

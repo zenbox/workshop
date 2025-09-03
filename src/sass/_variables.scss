@@ -1,129 +1,106 @@
-// VARIABLES 2 CONFIGURE
+//
 //
 // @package Webapplication
-// @module
+// @module COMMON
 // @author Michael Reichart <michael.reichart@gfu.net>
-// @since 2025-06-03
+// @since 2025-09-01
 // @version 1.0.0
 // @see i.e. inspired by ... {link to}
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2025 Michael Reichart, Cologne
 
-// + + + + + + + + + +
-// CSS VARIABLES
-// to be rendered while compiling SASS to CSS
-// + + + + + + + + + +
+// Prefix to generate unique class names
+$prefix: "app";
 
-$prefix: "ui";
-$borderWidth: 1px solid #e0e0e0;
+// Abstände
+$spacer: 0.25rem;
 
-$headerHeight: 3rem;
-$footerHeight: 3rem;
+$spacer-sm: $spacer / 2;
+$spacer-lg: $spacer * 2;
+$spacer-xl: $spacer * 3;
+$spacer-xxl: $spacer * 4;
 
-// + + + + + + + + + +
-// SASS VARIABLES
-// to be rendered in CSS
-// + + + + + + + + + +
+// Behaviours
+$default-transition-property: left;
+$default-transition-duration: 3s;
+$default-transition-timing-function: ease-out; // acceleration / deceleration
+$default-transition-delay: 0s;
 
-$color-primary: #0f31c8;
-$color-primary-dark: #02197c;
+// Template measurements
+$navigation-width-600: 33vw;
+
+// Per Iteration spacer-Werte erzeugen
+// @for $i from 1 through 6 {
+//   $spacer-#{$i}: $spacer * $i;
+// }
 
 :root {
-    // html!
-    // /* Schriftgrößen */
-    // font-size: 14px;
+    /* BASE THEME – Schriftgrößen */
+    font-size: 14px;
 
-    /* Abstände */
-    --spacing-xs: 0.25rem; 
-    --spacing-sm: 0.5rem; 
-    --spacing-md: 1rem; 
-    --spacing-lg: 1.5rem; 
-    --spacing-xl: 2rem; 
-    --spacing-xxl: 4rem; 
+    /* BASE THEME – Abstände */
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem; /* 8px */
+    --spacing-md: 1rem; /* 16px */
+    --spacing-lg: 1.5rem; /* 24px */
+    --spacing-xl: 2rem; /* 32px */
+    --spacing-xxl: 4rem; /* 64px */
 
-    /* Border Radius */
+    /* BASE THEME – Border Radius */
     --border-radius: 0.6rem;
     --border-radius-sm: calc(var(--border-radius) / 2);
     --border-radius-xs: calc(var(--border-radius) / 3);
     --border-radius-xxs: calc(var(--border-radius) / 8);
 
-    /* Primäre Farben Corporate! */
-    --color-primary: #{$color-primary};
-    --color-on-primary: #9da1b6;
+    /* BASE THEME – Primäre Farben */
+    --color-primary: hsl(129, 97%, 27%);
+    --color-primary-dark: hsl(170, 37%, 46%);
+    --color-secondary: hsl(210, 29%, 24%);
+    --color-secondary-light: hsl(210, 29%, 29%);
 
-    --color-primary-dark: #{$color-primary-dark};
-    --color-secondary: #2c3e50;
-    --color-secondary-light: #34495e;
+    /* BASE THEME – Neutrale Farben */
+    --color-white: hsl(0, 0%, 100%);
+    --color-light-gray: hsl(0, 0%, 96%);
+    --color-medium-gray: hsl(192, 15%, 94%);
+    --color-dark-gray: hsl(204, 8%, 76%);
+    --color-black: hsl(0, 0%, 0%);
+    --color-text: hsl(0, 0%, 20%);
 
-    /* Semantische Farben */
-    --color-success: #2ecc71; /* Grün */
-    --color-success-light: #27ae60;
-    --color-warning: #f39c12; /* Orange */
-    --color-warning-light: #e67e22;
-    --color-error: #e74c3c; /* Rot */
-    --color-error-light: #c0392b;
-    --color-info: #3498db; /* Blau */
-    --color-info-light: #2980b9;
+    /* BASE THEME – Overlay Farben */
+    --color-overlay-dark: hsla(0, 0%, 0%, 0.5);
+    --color-overlay-light: hsla(0, 0%, 100%, 0.1);
+    --color-gradient-overlay: hsla(229, 76%, 66%, 0.1);
+    --color-gradient-overlay-end: hsla(270, 37%, 46%, 0.1);
 
-    --color-focus: #d1d5e7; /* Fokus Farbe */
+    /* BASE THEME – Schatten */
+    --shadow-light: 0 1px 3px hsla(0, 0%, 0%, 0.1);
+    --shadow-medium: 0 2px 10px hsla(0, 0%, 0%, 0.1);
+    --shadow-heavy: 0 4px 15px hsla(0, 0%, 0%, 0.2);
+    --shadow-nav: 4px 0 15px hsla(0, 0%, 0%, 0.3);
+    --shadow-container: 0 0 20px hsla(0, 0%, 0%, 0.1);
 
-    /* Neutrale Farben */
-    --color-white: #ffffff;
-    --color-light-gray: #f4f4f4;
-    --color-medium-gray: #ecf0f1;
-    --color-dark-gray: #bdc3c7;
-    --color-text: #333333;
+    /* BASE THEME – Text Schatten */
+    --text-shadow-light: 1px 1px 2px hsla(0, 0%, 0%, 0.3);
+    --text-shadow-medium: 2px 2px 4px hsla(0, 0%, 0%, 0.3);
 
-    /* Overlay Farben */
-    --color-overlay-dark: rgba(0, 0, 0, 0.5);
-    --color-overlay-light: rgba(255, 255, 255, 0.1);
-    --color-gradient-overlay: rgba(102, 126, 234, 0.7);
-    --color-gradient-overlay-end: rgba(118, 75, 162, 0.7);
-
-    /* Schatten */
-    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-medium: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --shadow-heavy: 0 4px 15px rgba(0, 0, 0, 0.2);
-    --shadow-nav: 4px 0 15px rgba(0, 0, 0, 0.3);
-    --shadow-container: 0 0 20px rgba(0, 0, 0, 0.1);
-
-    /* Text Schatten */
-    --text-shadow-light: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    --text-shadow-medium: 2px 2px 4px rgba(0, 0, 0, 0.3);
-
-    /* Grid Layout */
+    /* LAYOUT – Grid Layout Maße */
     --grid-nav-width: 250px;
     --grid-aside-width: 220px;
     --grid-mobile-nav-width: 280px;
     --grid-mobile-nav-width-small: 260px;
     --grid-max-width: 1400px;
 
-    /* Hero Höhen */
-    --hero-height-desktop: 300px;
-    --hero-height-tablet: 250px;
-    --hero-height-mobile: 200px;
+    /* LAYOUT – Hero Section Höhe */
+    --hero-height-desktop: 500px;
+    --hero-height-tablet: 350px;
+    --hero-height-mobile: 300px;
 
-    /* Transitions */
+    /* BASE THEME – Transitionen */
     --transition-fast: 0.3s ease;
     --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 0.5s ease;
-}
 
-@media screen {
-    // All devices fallback
-
-    // Extra-small
-    @media (max-width: 599px) {
-    }
-    // Small (tablet)
-    @media (min-width: 600px) {
-    }
-    @media (min-width: 905px) {
-    }
-    // Medium (laptop)
-    @media (min-width: 1240px) {
-    }
-    // Large (desktop)
-    @media (min-width: 1440px) {
-    }
+    /* LAYOUT – Breakpoints */
+    --breakpoint-mobile: 480px;
+    --breakpoint-tablet: 768px;
 }

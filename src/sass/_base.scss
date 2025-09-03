@@ -1,9 +1,9 @@
-// BASTE STYLES
+//
 //
 // @package Webapplication
-// @module
+// @module BASE
 // @author Michael Reichart <michael.reichart@gfu.net>
-// @since 2025-06-03
+// @since 2025-09-01
 // @version 1.0.0
 // @see i.e. inspired by ... {link to}
 // @license MIT {https://opensource.org/licenses/MIT}
@@ -13,17 +13,19 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: Arial, sans-serif;
+    font-size: 16px; // Basis für ein root em (rem); Browser-Standard, barrierefrei sind eher 18px
+}
+
 body {
-    // LAYOUT
-    margin: 0;
+    line-height: 1.2; // Browser-Standard, barrierefrei sind eher 1.5
 }
 
-img.responsive {
-    max-width: 100%;
-    height: auto;
-}
-
-figure {
-    margin: 0;
+nav ul {
+    list-style: none;
     padding: 0;
+    margin: 0;
 }
+
+/* ... */
