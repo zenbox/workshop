@@ -9,6 +9,9 @@
 // @license MIT {https://opensource.org/licenses/MIT}
 // @copyright (c) 2025 Michael Reichart, Cologne
 
+// Font Awesome
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css");
+
 * {
     box-sizing: border-box;
 }
@@ -29,3 +32,20 @@ nav ul {
 }
 
 /* ... */
+
+
+// Responsive typography
+.multicolumn{
+    text-justify: inter-word;
+    word-wrap: break-word;
+    
+    
+    text-align: left;
+    column-width: 20em;
+    column-gap: 2em;
+    column-rule: 2px dotted black;
+    orphans: 2;
+    widows: 2;
+
+    hyphens: auto;
+}

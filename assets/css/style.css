@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Asimovian&display=swap");
 :root {
   /* BASE THEME – Schriftgrößen */
@@ -61,7 +62,7 @@
 }
 
 header {
-  background: hsl(129, 97%, 27%);
+  background: oklch(54.405% 0.17772 143.641deg);
   color: hsl(0, 0%, 100%);
 }
 
@@ -399,6 +400,18 @@ nav ul {
 }
 
 /* ... */
+.multicolumn {
+  text-justify: inter-word;
+  word-wrap: break-word;
+  text-align: left;
+  column-width: 20em;
+  column-gap: 2em;
+  column-rule: 2px dotted black;
+  orphans: 2;
+  widows: 2;
+  hyphens: auto;
+}
+
 .app-container {
   /**
   * Breakpoints from material.io
@@ -604,6 +617,67 @@ nav ul {
   transform: rotate(-45deg);
 }
 
+.app-image-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.app-form-login {
+  margin-block: 3rem;
+}
+.app-form-login label::before {
+  content: " ";
+  display: block;
+  height: 0.5em;
+  margin-block-end: 0.5em;
+}
+.app-form-login button {
+  display: block;
+  margin-block-start: 0.5em;
+  padding-inline: 1rem;
+}
+.app-form-login input[type=password]:focus ~ [class*=hint] {
+  outline: 2px solid steelblue;
+  display: block;
+}
+.app-form-login input[type=password]:user-valid ~ [class*=success] {
+  display: block;
+  outline: 2px solid hsl(129, 97%, 27%);
+}
+.app-form-login input[type=password]:user-invalid ~ [class*=error] {
+  display: block;
+  outline: 2px solid hsl(0, 100%, 50%);
+}
+.app-form-login-error {
+  color: hsl(0, 100%, 50%);
+  font-size: 0.875rem;
+  display: block;
+}
+.app-form-login-success {
+  color: hsl(129, 97%, 27%);
+  font-size: 0.875rem;
+  display: block;
+}
+.app-form-login-hint {
+  color: hsl(210, 100%, 50%);
+  font-size: 0.875rem;
+  display: block;
+}
+.app-form-login-hint--permanent {
+  color: hsl(210, 100%, 50%);
+  display: block;
+}
+.app-form-login-warning {
+  color: hsl(30, 100%, 50%);
+  font-size: 0.875rem;
+  display: block;
+}
+@media (prefers-contrast: more) {
+  .app-form-login-warning {
+    color: black;
+  }
+}
+
 .app-nav {
   transition-property: left;
   transition-duration: 250ms;
@@ -635,6 +709,23 @@ nav ul {
     background-color: oklch(50% 0.1 240deg / 0.9);
     opacity: 1;
   }
+}
+
+.app-svg {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  stroke-linejoin: round;
+  stroke-miterlimit: 2;
+  width: 240px;
+  height: auto;
+}
+.app-svg .red {
+  fill: rebeccapurple;
+  translate: 20rem;
+  rotate: 5deg;
+}
+.app-svg .red:hover {
+  fill: cyan;
 }
 
 @keyframes navigation-movement {

@@ -1,0 +1,36 @@
+//
+//
+// @package Webapplication
+// @module FIGURES
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-09-03
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
+
+.#{$prefix} {
+    &-svg {
+        // Base
+        fill-rule: evenodd;
+        clip-rule: evenodd;
+        stroke-linejoin: round;
+        stroke-miterlimit: 2;
+
+        // Layout
+        width: 240px;
+        height: auto;
+
+        // States
+        .red {
+            fill: rebeccapurple;
+
+            translate: 20rem;
+            rotate: 5deg;
+        }
+
+        .red:hover {
+            fill: cyan;
+        }
+    }
+}

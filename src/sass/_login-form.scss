@@ -1,0 +1,76 @@
+// Login Form Styles
+//
+// @package Webapplication
+// @module FORM
+// @author Michael Reichart <michael.reichart@gfu.net>
+// @since 2025-09-03
+// @version 1.0.0
+// @see i.e. inspired by ... {link to}
+// @license MIT {https://opensource.org/licenses/MIT}
+// @copyright (c) 2025 Michael Reichart, Cologne
+
+.#{$prefix} {
+    &-form-login {
+        // Base
+        // Layout
+        margin-block: 3rem;
+
+        label::before {
+            content: " ";
+            display: block;
+            height: 0.5em;
+            margin-block-end: 0.5em;
+        }
+        button {
+            display: block;
+            margin-block-start: 0.5em;
+            padding-inline: 1rem;
+        }
+        // States
+        input[type="password"] {
+            &:focus ~ [class*="hint"] {
+                outline: 2px solid steelblue;
+                display: block;
+            }
+            &:user-valid ~ [class*="success"] {
+                display: block;
+                outline: 2px solid $color-success;
+            }
+            &:user-invalid ~ [class*="error"] {
+                display: block;
+                outline: 2px solid $color-error;
+            }
+        }
+
+        &-error {
+            color: $color-error;
+            font-size: 0.875rem;
+            display: block;
+        }
+        &-success {
+            color: $color-success;
+            font-size: 0.875rem;
+            display: block;
+        }
+
+        &-hint {
+            color: $color-info;
+            font-size: 0.875rem;
+            display: block;
+
+            &--permanent {
+                color: $color-info;
+                display: block;
+            }
+        }
+
+        &-warning {
+            color: $color-warning;
+            @media (prefers-contrast: more) {
+                color: $color-warning-high-contrast;
+            }
+            font-size: 0.875rem;
+            display: block;
+        }
+    }
+}

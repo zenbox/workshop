@@ -23,7 +23,7 @@ $color-purple: hsl(270, 100%, 50%);
 $color-pink: hsl(330, 100%, 50%);
 
 // Corporate colors
-$color-primary: hsl(129, 97%, 27%);
+$color-primary: oklch(54.405% 0.17772 143.641);
 $color-secondary: hsl(210, 29%, 24%);
 $color-tertiary: hsl(340, 82%, 52%);
 $color-quaternary: hsl(50, 100%, 50%);
@@ -32,15 +32,20 @@ $color-on-primary: hsl(0, 0%, 100%);
 $color-on-secondary: hsl(0, 0%, 100%);
 
 // Sematic colors
-$color-success: $color-green;
-$color-warning: $color-orange;
-$color-error: $color-red;
-$color-info: $color-blue;
+$color-success: hsl(129, 97%, 27%);
+$color-warning: hsl(30, 100%, 50%);
+$color-error: hsl(0, 100%, 50%);
+$color-info: hsl(210, 100%, 50%);
 
+// High contrast colors
+$color-warning-high-contrast: black;
+// ...
 
-
-
-
+// Lab Farben mit oklch
+// $color-primary-lab: oklch(0.5, 0.5, 0.5);
+// $color-secondary-lab: oklch(0.5, 0.5, 0.5);
+// $color-tertiary-lab: oklch(0.5, 0.5, 0.5);
+// $color-quaternary-lab: oklch(0.5, 0.5, 0.5);
 
 $color-primary-dark: hsl(170, 37%, 46%);
 $color-secondary-light: hsl(210, 29%, 29%);
