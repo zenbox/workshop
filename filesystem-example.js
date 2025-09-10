@@ -5,7 +5,7 @@
  * @package Webapplication
  * @module FS
  * @author Michael <michael.reichart@gfu.net>
- * @version v1.0.1325
+ * @version v1.1.0
  * @since 2025-09-10
  * @see i.e. inspired by ... {link to}
  * @license MIT {https://opensource.org/licenses/MIT}
