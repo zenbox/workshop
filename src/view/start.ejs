@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title><%= title %></title>
+        <link
+            href="assets/css/style.css"
+            rel="stylesheet" />
+    </head>
+    <body>
+        <%- include("partials/header") -%>
+
+        <nav >
+            <ul class="column">
+                <li><a href="sheeps">sheeps</a></li>
+                <li>Two</li>
+                <li>Three</li>
+            </ul>
+        </nav>
+
+        <main>
+            <h1><%= title %></h1>
+            <p><%= message %></p>
+        </main>
+
+        <%- include("partials/footer") -%>
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>

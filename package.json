@@ -1,0 +1,34 @@
+{
+    "name": "app-workshop",
+    "version": "1.0.0",
+    "description": "Eine Web-Applikation mit Routes und Templates ...",
+    "keywords": [
+        "app",
+        "express",
+        "request",
+        "routes",
+        "..."
+    ],
+    "homepage": "https://github.com/zenbox/workshop#readme",
+    "bugs": {
+        "url": "https://github.com/zenbox/workshop/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zenbox/workshop.git"
+    },
+    "license": "ISC",
+    "author": "Michael Reichart",
+    "type": "module",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "body-parser": "^2.2.0",
+        "ejs": "^3.1.10",
+        "express": "^5.1.0",
+        "pug": "^3.0.3",
+        "sqlite3": "^5.1.7"
+    }
+}
