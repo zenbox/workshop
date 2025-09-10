@@ -39,6 +39,10 @@ app.set("views", path.join(path.resolve(), "./src/view"));
 // built a web service conform path
 app.use(express.static(path.join(path.resolve(), "public")));
 
+// Can read from request body (POST, PUT/PATCH)
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 // Dynamic routes
 app.use("/start", startRoute);
 app.use("/sheeps", sheepsRoute);

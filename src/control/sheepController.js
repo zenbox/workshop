@@ -10,9 +10,10 @@
  * @copyright (c) 2025 Michael Reichart, Cologne
  */
 
-const sqlite3 = require("sqlite3").verbose();
+// const sqlite3 = require("sqlite3").verbose();
+import  sqlite3 from "sqlite3";
 
-class SheepsController {
+export default class SheepsController {
     /**
      * @desc defines the path to ....
      *
@@ -47,6 +48,7 @@ class SheepsController {
         return new Promise((resolve, reject) => {
             // - - - -
             const db = this.getDatabase();
+            console.log(db);
             db.all("SELECT * FROM sheeps WHERE 1 ORDER BY id", (err, rows) => {
                 // - - - -
                 if (err) {
@@ -61,7 +63,12 @@ class SheepsController {
         // - - - -
     }
 
+
+    deleteSheep(id) { }
+    putSheep(id) { }
+    patchSheep(id) { }
+
     _privateMethod() {}
 }
 
-// module.exports. ist "optional"
+// module.exports.SheepsController = SheepsController;
