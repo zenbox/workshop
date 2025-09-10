@@ -60,4 +60,8 @@ class SheepsController {
         });
         // - - - -
     }
+
+    _privateMethod() {}
 }
+
+// module.exports. ist "optional"

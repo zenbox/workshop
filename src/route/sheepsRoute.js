@@ -11,7 +11,7 @@
  */
 
 import express from "express";
-import "./src/control/sheepsController.cjs";
+import "./../control/sheepController.cjs";
 
 const sheepsRoute = express.Router();
 
