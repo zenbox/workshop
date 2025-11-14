@@ -1,0 +1,22 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^5.1.0",
+        "knex": "^3.1.0",
+        "sqlite3": "^5.1.7"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Michael Reichart",
+    "license": "ISC",
+    "type": "module",
+    "devDependencies": {
+        "morgan": "^1.10.1"
+    }
+}
