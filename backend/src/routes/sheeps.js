@@ -32,7 +32,7 @@ let sheeps = [
 
 // GET /api/sheeps/
 // ! async ergänzen und listSheeps verwenden!
-r.get("/", async (req, res) => {
+r.get("/", async (_, res) => {
     let sheeps = await listSheeps();
     res.status(200).json(sheeps);
 });
@@ -60,12 +60,12 @@ r.post("/", async (req, res) => {
 });
 
 // PUT /api/sheeps/:id -> SCHAF AKTUALISIEREN
-r.put("/:id", (req, res) => {});
+r.put("/:id", (_, res) => {});
 
 // PATCH /api/sheeps/:id -> SCHAF TEILAKTUALISIEREN
-r.patch("/:id", (req, res) => {});
+r.patch("/:id", (_, res) => {});
 
 // DELETE /api/sheeps/:id -> SCHAF LÖSCHEN
-r.delete("/:id", (req, res) => {});
+r.delete("/:id", (_, res) => {});
 
 export default r;
