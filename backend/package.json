@@ -10,13 +10,19 @@
         "sqlite3": "^5.1.7"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js",
+        "test:e2e": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --runInBand test/frontend.e2e.test.js",
+        "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" && printf '\\033[32mESLint: Alles richtig gemacht, Dude!\\033[0m\\n'"
     },
     "keywords": [],
     "author": "Michael Reichart",
     "license": "ISC",
     "type": "module",
     "devDependencies": {
-        "morgan": "^1.10.1"
+        "@jest/globals": "^29.7.0",
+        "eslint": "^9.39.1",
+        "morgan": "^1.10.1",
+        "supertest": "^7.1.4"
     }
 }
