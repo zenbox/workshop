@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/zenbox/workshop#readme",
     "dependencies": {
-        "express": "^5.1.0"
+        "express": "^5.2.0"
     },
     "devDependencies": {
         "@eslint/js": "^9.10.0",
