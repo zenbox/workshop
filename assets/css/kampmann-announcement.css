@@ -1,0 +1,16 @@
+#kampmann-announcement {
+    /* Temporary styles */
+    border: 2px dotted lime;
+
+    /* Layout styles */
+    display: block;
+    width: 300px;
+    height: 600px;
+
+    /* Typography */
+    font-family: Circular, sans-serif;
+
+    h2 {
+        border: 2px dotted lime;
+    }
+}

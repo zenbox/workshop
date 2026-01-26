@@ -6,7 +6,13 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
         <title>Titel der Seite - Firmenname</title>
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link
+            rel="stylesheet"
+            href="assets/css/style.css" />
+
+        <link
+            rel="stylesheet"
+            href="assets/css/kampmann-announcement.css" />
     </head>
     <body>
         <header>
@@ -14,8 +20,33 @@
                 src="logo.png"
                 alt="Logo der Firma" />
         </header>
-<!-- Anzeige -->
-<!-- /Anzeige -->
+        <!-- Anzeige -->
+        <div id="kampmann-announcement">
+            <section>
+                <h2>Patienten und Angestellte schützen</h2>
+                <p>mit dem Luftreiniger für die Grippesaison</p>
+                <img
+                    src="https://picsum.photos/id/5/120/250"
+                    alt="Abbildung eines Luftreinigers KA 520." />
+                <div class="kampmann-badge">
+                    <p>
+                        Mit
+                        <abbr title="High Efficiency Particulate Air "
+                            >Hepa</abbr
+                        >-Filter<br />
+                        <small>entfernt 99,995% aller Viren und Keime</small>
+                    </p>
+                </div>
+                <button>Jetzt bestellen</button>
+                <footer>
+                    <a href="https://www.ka-520.de">www.KA-520.de</a>
+                    <img
+                        src="assets/figures/kampann-logo.png"
+                        alt="Logo der Firma Kampmann" />
+                </footer>
+            </section>
+        </div>
+        <!-- /Anzeige -->
         <nav>
             <ul>
                 <li><a href="#">link 1</a></li>
@@ -27,7 +58,7 @@
         </nav>
 
         <main>
-            <h1>Das ist der Titel der Seite</h1>
+            <h1 class="red">Das ist der Titel der Seite</h1>
             <article>
                 <h2>Das ist dann eine Überschrift für den Inhalt</h2>
                 <p>
@@ -92,7 +123,11 @@
         <footer>
             <address>
                 &copy; 2026 Meine Firma,
-                <a href="mailto: michael.reichart@gfu.net">Michael</a>
+                <a
+                    class="red"
+                    href="mailto: michael.reichart@gfu.net"
+                    >Michael</a
+                >
             </address>
         </footer>
     </body>
