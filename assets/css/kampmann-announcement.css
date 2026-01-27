@@ -105,7 +105,7 @@ html {
             transition-delay: 0s;
 
             animation-name: kampmann-badge-spin;
-            animation-duration: 150ms;
+            animation-duration: 3s;
             animation-timing-function: ease-in-out;
             animation-iteration-count: infinite;
         }
@@ -113,25 +113,25 @@ html {
             transform: translate(-2px, -2px);
             box-shadow: 5px 5px 15px #000000cc;
         }
-        
-        @keyframes kampmann-badge-spin {
-            0% {
-                transform: rotate(0deg);
-                background: red;
-            }
-            50% {
-                transform: rotate(90deg);
-                background: yellow;
-            }
-            100% {
-                transform: rotate(0deg);
-                background: green;
-            }
-        }
-        
+
     }
     /* Development styles */
     & > * > * {
         outline: 2px dotted red;
+    }
+}
+
+@keyframes kampmann-badge-spin {
+    0% {
+        transform: rotate(-10deg);
+        background: rgba(0, 255, 47, 0.5);
+    }
+    50% {
+        transform: rotate(20deg);
+        background: rgb(2, 162, 18);
+    }
+    100% {
+        transform: rotate(-10deg);
+        background: rgba(0, 255, 47, 0.5);
     }
 }
