@@ -1,142 +1,207 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
-        <title>Titel der Seite - Firmenname</title>
-        <link
-            rel="stylesheet"
-            href="assets/css/style.css" />
+        <title>Document</title>
+        <style>
+            /* h1 { font-family: sans-serif;} */
+            .red {
+                color: red;
+            }
+            .green {
+                color: green;
+            }
+            .bold {
+                font-weight: 700;
+            }
+            .active {
+                outline: 2px dotted blue;
+            }
+            main {
+                margin-block-end: 3rem;
+                opacity: 0.25;
+            }
 
-        <link
-            rel="stylesheet"
-            href="assets/css/kampmann-announcement.css" />
+            form {
+                font-family: Barlow;
+                fieldset {
+                    border: 2px solid black;
+                    border-radius: 0.25rem;
+                }
+                legend {
+                    font-size: 1.5rem;
+                }
+            }
+        </style>
     </head>
     <body>
-        <header>
-            <img
-                src="logo.png"
-                alt="Logo der Firma" />
-        </header>
-        <!-- Anzeige -->
-        <div id="kampmann-announcement">
-            <section>
-                <div>
-                    <h2>Patienten und Angestellte schützen</h2>
-                    <p>mit dem Luftreiniger für die Grippesaison</p>
-                    <!-- <img
-                    src="https://picsum.photos/id/5/120/250"
-                    alt="Abbildung eines Luftreinigers KA 520." /> -->
-                </div>
-                <div>
-                    <div class="kampmann-badge">
-                        <p>
-                            Mit
-                            <abbr title="High Efficiency Particulate Air "
-                                >Hepa</abbr
-                            >-Filter<br />
-                            <small
-                                >entfernt 99,995% aller Viren und Keime</small
-                            >
-                        </p>
-                    </div>
-                    <button>Jetzt bestellen</button>
-                    <footer>
-                        <a href="https://www.ka-520.de">www.KA-520.de</a>
-                        <img
-                            src="assets/figures/kampann-logo.png"
-                            alt="Logo der Firma Kampmann" />
-                    </footer>
-                </div>
-            </section>
-        </div>
-        <!-- /Anzeige -->
-        <nav>
-            <ul>
-                <li><a href="#">link 1</a></li>
-                <li><a href="#">link 2</a></li>
-                <li><a href="#">link 3</a></li>
-                <li><a href="#">link 4</a></li>
-                <li><a href="#">link 5</a></li>
-            </ul>
-        </nav>
-
         <main>
-            <h1 class="red">Das ist der Titel der Seite</h1>
-            <article>
-                <h2>Das ist dann eine Überschrift für den Inhalt</h2>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Laborum optio expedita, libero dicta iure recusandae earum
-                    fugiat nesciunt, sint beatae, tempora nam soluta
-                    praesentium. Eveniet dolorum commodi cumque incidunt. Iusto
-                    voluptates labore saepe! Architecto repellendus consequuntur
-                    pariatur molestias dicta qui tenetur reprehenderit, eveniet
-                    quia atque magni neque voluptatibus.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Iure in quos molestias sit veniam. Perspiciatis, ab possimus
-                    unde iusto quam obcaecati fuga asperiores ducimus!
-                </p>
+            <h1>HTML Dokument</h1>
+            <p
+                id="myId"
+                class="red">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, voluptatum.
+            </p>
+            <p>DOM - Document Object Model</p>
 
-                <ul>
-                    <li>Erster Listenpunkt</li>
-                    <li>Zweiter Listenpunkt</li>
-                    <li>Dritter Listenpunkt</li>
-                </ul>
-            </article>
+            <div id="gen123xyz">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Quisquam, voluptatum.
+            </div>
         </main>
 
-        <aside aria-label="contemporary">
-            <p>
-                In andere Texte eingebunden -
-                <a
-                    href="https://kampmann.de"
-                    title="taucht bei Mouseover auf"
-                    >Zur Webseite der Firma Kampmann</a
-                >
+        <aside>
+            <!-- - - - - - - - - - - -->
+            <style>
+                [data-id="loginForm"] {
+                    button,
+                    label {
+                        display: block;
+                        margin-block-start: 1rem;
+                    }
+                }
+            </style>
+            <!-- - - - - - - - - - - -->
+            <form
+                id="login-form-123"
+                data-id="loginForm"
+                action="">
+                <fieldset>
+                    <legend>Login</legend>
 
-                Sind alles Inline-Elemente:
-                <strong>Text der wichtig ist</strong>,
-                <em>Text der betont werden soll.</em>.
-            </p>
+                    <label for="">Email</label>
+                    <input
+                        type="email"
+                        name=""
+                        id="" />
 
-            <p>
-                Text vor dem Bild
-                <img
-                    src="https://picsum.photos/id/22/300/100"
-                    alt="" />
-                Text nach den Bild.
-            </p>
+                    <label for="">Passwort</label>
+                    <input
+                        type="password"
+                        name=""
+                        id="" />
+
+                    <button>Jetzt einloggen</button>
+                </fieldset>
+            </form>
+            <!-- - - - - - - - - - - -->
+            <script>
+                // Ereignisse
+                document.addEventListener("DOMContentLoaded", (event) => {
+                    console.clear()
+                    // - - - - - - - - - -
+                    // ES Modulen?
+                    // import, export
+                    // ES Classes?
+                    // class ... {}
+
+                    // Setup, Konfiguration
+                    // Model, API, Interface
+
+                    // Daten- und DOM-Ereignisse
+                    // User Interaktionen
+                    // Server-Interaktionen
+
+                    // - - - - - - - - - -
+                })
+            </script>
+            <!-- - - - - - - - - - - -->
         </aside>
 
-        <aside aria-label="illustration">
-            <figure>
-                <img
-                    src="https://picsum.photos/id/22/300/100"
-                    alt="" />
-                <figcaption>
-                    Text zum Bild Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Quo nemo ratione exercitationem eius dicta
-                    autem adipisci eos fuga.
-                </figcaption>
-            </figure>
-        </aside>
+        <script>
+            // klassische Funktionssyntax
+            function doSth1() {}
 
-        <footer>
-            <address>
-                &copy; 2026 Meine Firma,
-                <a
-                    class="red"
-                    href="mailto: michael.reichart@gfu.net"
-                    >Michael</a
-                >
-            </address>
-        </footer>
+            // Arrow Function
+            const doSth2 = () => {}
+            const doSth3 = (param) => result // (param) => {return result}
 
-        ul>li*3
+            // Wenn ALLES geladen ist: DOM, Bilder, externe Files ...
+            window.addEventListener("load", () => {
+                console.log("Window is ready!")
+            })
+
+            // Wenn das HTML im Arbeitsspeicher steht
+            document.addEventListener("DOMContentLoaded", (event) => {
+                // - - - - - - - - - -
+                const obj = window.document.querySelector("h1")
+
+                obj.style.fontFamily = "sans-serif"
+
+                console.log(obj)
+                console.dir(obj)
+
+                const arr = document.querySelectorAll(".red") // Array
+                console.log(arr)
+
+                // Klassenselektor
+                document.getElementsByClassName("red")
+                // ID-Selektor
+                document.getElementById("myId")
+
+                // - - - - - - - - - -
+            })
+
+            // DOM verändern, aufbauen und löschen
+            document.addEventListener("DOMContentLoaded", (event) => {
+                console.clear()
+                // - - - - - - - - - -
+                const myDiv = document.getElementById("gen123xyz")
+
+                // HTML Attribute (allgemein) hinzufügen
+                myDiv.setAttribute("title", "neuer Wert")
+                myDiv.setAttribute("title", "neuer Wert, überarbeitet")
+                // myDiv.removeAttribute("title")
+
+                myDiv.title = "1234567"
+                myDiv.myAttribute = "123"
+                myDiv.myAttribute = "456"
+                console.log(myDiv.title)
+                console.dir(myDiv)
+
+                // Klassen und Data manipulieren
+                myDiv.classList.add("green")
+                myDiv.classList.add("bold")
+                myDiv.classList.remove("green")
+                myDiv.classList.toggle("active")
+                // myDiv.classList.toggle("active")
+
+                myDiv.dataset.myAttribute = 123
+                myDiv.dataset.id = 123
+                myDiv.dataset.target = 123
+                myDiv.dataset.state = 123
+
+                // Elemente herstellen
+                const newElement = document.createElement("span")
+                newElement.id = "myId-2"
+
+                newElement.textContent = "eine <i>Textergänzung</i>"
+                newElement.innerText = "<i>was altes</i>"
+                newElement.innerHTML = "<u>neues</u> <i>Textergänzung</i>"
+
+                // Anführungzeichen
+                // "<p class=\"green\">Grün</p>"
+                // '<p class="green">Grün</p>'
+
+                // String Literal
+                const h1 = document.querySelector("h1")
+                let value = `
+                <u>
+                    ${h1.textContent} neue Textergänzung
+                    <i>eine Zeile 2</i>
+                    dritte Zeile
+                </u>
+                `
+                myDiv.innerHTML = value
+
+                document.querySelector("h1").appendChild(newElement)
+                // ... .parentNode.insertBefore und weitere -> Forschungauftrag!
+                // - - - - - - - - - -
+            })
+        </script>
     </body>
 </html>
