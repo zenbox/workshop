@@ -94,7 +94,7 @@
             <script>
                 // Ereignisse
                 document.addEventListener("DOMContentLoaded", (event) => {
-                    console.clear()
+                    console.clear();
                     // - - - - - - - - - -
                     // ES Modulen?
                     // import, export
@@ -102,15 +102,17 @@
                     // class ... {}
 
                     // 1. Setup, Konfiguration
-                    const loginForm = document.querySelector("#login-form-123")
+                    const loginForm = document.querySelector("#login-form-123");
+                    
                     const emailInput =
-                        loginForm.querySelector("input[type=email]")
+                        loginForm.querySelector("input[type=email]");
+
                     const passwordInput = loginForm.querySelector(
                         "input[type=password]"
-                    )
+                    );
                     const loginButton = loginForm.querySelector(
                         "button[type=submit]"
-                    )
+                    );
 
                     // 2. Model, API, Interface
                     const loginComponent = {
@@ -118,32 +120,28 @@
 
                         onLogin: (event) => {
                             // den Browser an der Verarbeitung hindern
-                            event.preventDefault()
-
-                            // Programmlogik
-                            // ...
-
-                            loginComponent.log("Login erfolgreich")
+                            event.preventDefault();
+                            loginComponent.log("Login erfolgreich");
                         },
 
                         log: (message) => console.log(message),
-                    }
+                    };
 
                     // PROGRAMMSTEUERUNG, CONTROL
                     // Daten- und DOM-Ereignisse
                     // User Interaktionen
                     // 1. Abschicken des Formulars
-                    loginForm.addEventListener("submit", loginComponent.onLogin)
+                    loginForm.addEventListener(
+                        "submit",
+                        loginComponent.onLogin
+                    );
 
-                    loginButton.addEventListener(
-                        "click",
-                        loginComponent.log("Button geklickt.")
-                    )
+        
 
                     // 3. Server-Interaktionen
 
                     // - - - - - - - - - -
-                })
+                });
             </script>
             <!-- - - - - - - - - - - -->
             <!-- - - - - - - - - - - -->
@@ -155,91 +153,91 @@
             function doSth1() {}
 
             // Arrow Function
-            const doSth2 = () => {}
-            const doSth3 = (param) => result // (param) => {return result}
+            const doSth2 = () => {};
+            const doSth3 = (param) => result; // (param) => {return result}
 
             // Wenn ALLES geladen ist: DOM, Bilder, externe Files ...
             window.addEventListener("load", () => {
-                console.log("Window is ready!")
-            })
+                console.log("Window is ready!");
+            });
 
             // Wenn das HTML im Arbeitsspeicher steht
             document.addEventListener("DOMContentLoaded", (event) => {
                 // - - - - - - - - - -
-                const obj = window.document.querySelector("h1")
+                const obj = window.document.querySelector("h1");
 
-                obj.style.fontFamily = "sans-serif"
+                obj.style.fontFamily = "sans-serif";
 
-                console.log(obj)
-                console.dir(obj)
+                console.log(obj);
+                console.dir(obj);
 
-                const arr = document.querySelectorAll(".red") // Array
-                console.log(arr)
+                const arr = document.querySelectorAll(".red"); // Array
+                console.log(arr);
 
                 // Klassenselektor
-                document.getElementsByClassName("red")
+                document.getElementsByClassName("red");
                 // ID-Selektor
-                document.getElementById("myId")
+                document.getElementById("myId");
 
                 // - - - - - - - - - -
-            })
+            });
 
             // DOM verändern, aufbauen und löschen
             document.addEventListener("DOMContentLoaded", (event) => {
-                console.clear()
+                console.clear();
                 // - - - - - - - - - -
-                const myDiv = document.getElementById("gen123xyz")
+                const myDiv = document.getElementById("gen123xyz");
 
                 // HTML Attribute (allgemein) hinzufügen
-                myDiv.setAttribute("title", "neuer Wert")
-                myDiv.setAttribute("title", "neuer Wert, überarbeitet")
+                myDiv.setAttribute("title", "neuer Wert");
+                myDiv.setAttribute("title", "neuer Wert, überarbeitet");
                 // myDiv.removeAttribute("title")
 
-                myDiv.title = "1234567"
-                myDiv.myAttribute = "123"
-                myDiv.myAttribute = "456"
-                console.log(myDiv.title)
-                console.dir(myDiv)
+                myDiv.title = "1234567";
+                myDiv.myAttribute = "123";
+                myDiv.myAttribute = "456";
+                console.log(myDiv.title);
+                console.dir(myDiv);
 
                 // Klassen und Data manipulieren
-                myDiv.classList.add("green")
-                myDiv.classList.add("bold")
-                myDiv.classList.remove("green")
-                myDiv.classList.toggle("active")
+                myDiv.classList.add("green");
+                myDiv.classList.add("bold");
+                myDiv.classList.remove("green");
+                myDiv.classList.toggle("active");
                 // myDiv.classList.toggle("active")
 
-                myDiv.dataset.myAttribute = 123
-                myDiv.dataset.id = 123
-                myDiv.dataset.target = 123
-                myDiv.dataset.state = 123
+                myDiv.dataset.myAttribute = 123;
+                myDiv.dataset.id = 123;
+                myDiv.dataset.target = 123;
+                myDiv.dataset.state = 123;
 
                 // Elemente herstellen
-                const newElement = document.createElement("span")
-                newElement.id = "myId-2"
+                const newElement = document.createElement("span");
+                newElement.id = "myId-2";
 
-                newElement.textContent = "eine <i>Textergänzung</i>"
-                newElement.innerText = "<i>was altes</i>"
-                newElement.innerHTML = "<u>neues</u> <i>Textergänzung</i>"
+                newElement.textContent = "eine <i>Textergänzung</i>";
+                newElement.innerText = "<i>was altes</i>";
+                newElement.innerHTML = "<u>neues</u> <i>Textergänzung</i>";
 
                 // Anführungzeichen
                 // "<p class=\"green\">Grün</p>"
                 // '<p class="green">Grün</p>'
 
                 // String Literal
-                const h1 = document.querySelector("h1")
+                const h1 = document.querySelector("h1");
                 let value = `
                 <u>
                     ${h1.textContent} neue Textergänzung
                     <i>eine Zeile 2</i>
                     dritte Zeile
                 </u>
-                `
-                myDiv.innerHTML = value
+                `;
+                myDiv.innerHTML = value;
 
-                document.querySelector("h1").appendChild(newElement)
+                document.querySelector("h1").appendChild(newElement);
                 // ... .parentNode.insertBefore und weitere -> Forschungauftrag!
                 // - - - - - - - - - -
-            })
+            });
         </script>
     </body>
 </html>
