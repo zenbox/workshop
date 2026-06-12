@@ -1,19 +1,33 @@
 # Milestones für heute
 
 1. DOM Teil
+
 - [x] DOM verstehen
-- [x] Elemente selektieren 
+- [x] Elemente selektieren
 - [x] DOM manipulieren
 - [x] DOM bauen (Forschungsarbeit!)
 
 2. Ereignissteuerung
-- [ ] Event Listener verstehen
-- [ ] Event Listener hinzufügen
 
-3. Blick von oben
-- [ ] Architektur von Javascript Programmen (ES6)
-- [ ] Beispiele: Content, Formular, Objekteinbindung
-  
-4. Javascript als Bibliothek
+- [x] Event Listener verstehen
+- [x] Event Listener hinzufügen
+- [x] Event Listener entfernen
+
+3. Serverkommunikation
+
+- [ ] fetch()
+- [ ] ajax ... (eigentlich veraltet)
+- [ ] Asynchronizität
+- [ ] Websockets (Echtzeit)
+
+4. Blick von oben
+
+- [x] Architektur von Javascript Programmen (ES6)
+    - Module und Klassen
+    - Funktions-Objekte, Kapselung, Namespaces, Domänen
+- [x] Beispiele: Content, Formular, Objekteinbindung
+
+5. Javascript als Bibliothek
+
 - Geolocation
-- OpenMap
+- OpenStreetMap

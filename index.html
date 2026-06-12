@@ -38,6 +38,29 @@
         </style>
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><a href="#">page 1</a></li>
+                <li><a href="#">page 2</a></li>
+                <li><a href="#">page 3</a></li>
+            </ul>
+        </nav>
+
+        <script>
+
+const myFormComponent = {}
+
+const form = document.querySelector("form")
+
+            form.addEventListener("click", (event) => {
+                event.preventDefault();
+                console.log(event.target);
+            });
+
+            form.removeEventListener("click");
+
+        </script>
+
         <main>
             <h1>HTML Dokument</h1>
             <p
@@ -103,7 +126,7 @@
 
                     // 1. Setup, Konfiguration
                     const loginForm = document.querySelector("#login-form-123");
-                    
+
                     const emailInput =
                         loginForm.querySelector("input[type=email]");
 
@@ -121,10 +144,9 @@
                         onLogin: (event) => {
                             // den Browser an der Verarbeitung hindern
                             event.preventDefault();
-   
-                        },
 
-      
+                            console.log(event);
+                        },
                     };
 
                     // PROGRAMMSTEUERUNG, CONTROL
@@ -135,8 +157,6 @@
                         "submit",
                         loginComponent.onLogin
                     );
-
-        
 
                     // 3. Server-Interaktionen
 
