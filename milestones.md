@@ -15,10 +15,10 @@
 
 3. Serverkommunikation
 
-- [ ] fetch()
-- [ ] ajax ... (eigentlich veraltet)
-- [ ] Asynchronizität
-- [ ] Websockets (Echtzeit)
+- [x] fetch() (GeoJSON, ReST, SOAP/XML)
+- [ ] ajax (Asychronous Javascript And XML ) ... (eigentlich veraltet)
+- [x] Asynchronizität (Forschungsarbeit!)
+- [x] Websockets (Echtzeit) (Forschungsarbeit!)
 
 4. Blick von oben
 
