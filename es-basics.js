@@ -61,10 +61,14 @@ console.log(c);
 
 const arr = [true, "zwei", 3];
 
+// Referenz (Zeiger) auf Wertesammlungen
 const obj = {
-    a: true,
+    a: true, // key: value - Paar
     b: "zwei",
-    c: 3
+    c: 3,
+    fn: () => { },
+    obj: {},
+    arr: []
 }
 
 // Funktionen
@@ -83,4 +87,10 @@ let myFnNo15 = () => {
  }
 
 
+// Objektorientierung
+class MyClass { }
+ 
+// Funktionsorientierung
+
+// => Ecma-Script - Module!
 

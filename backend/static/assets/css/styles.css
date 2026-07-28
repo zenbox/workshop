@@ -1,0 +1,16 @@
+/** Default Styles
+ *
+ * @description A simple stylesheet
+ *
+ * @package MySoftware
+ * @module styles
+ * @author Michael Reichart <michael.reichart@gfu.net>
+ * @version 1.0.0
+ * @since 1.0.0 || 2026-07-28
+ * @license MIT
+ * @copyright ...
+ */
+
+html {
+    font-family: Barlow, sans-serif;
+}
