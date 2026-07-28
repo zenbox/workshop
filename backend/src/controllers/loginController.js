@@ -24,18 +24,21 @@ import express, { response } from "express";
 const getLoginData = (request, response, next) => {
     // Ausgabe konfigurieren
     const view = "loginView";
-    const data = {myData : undefined}
+    const data = { myData: undefined };
 
     // Generische Response
-    response.status(200).render(view, data)
-}
+    response.status(200).render(view, data);
+};
 
-export { getLoginData }
+const showUserData = (request, response, next) => {
+    // Ausgabe konfigurieren
+    const view = "loginView";
+    const data = { myData: undefined };
 
+    // Generische Response
+    response.status(200).render(view, data);
+};
 
-
-
+export { getLoginData, showUserData };
 
 // Objektorientierter Ansatz für den Controller
-
-

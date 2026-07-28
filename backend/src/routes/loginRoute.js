@@ -21,7 +21,7 @@
 import express, { Router } from "express";
 
 // 1.3 Eigene Module (Libraries)
-import { getLoginData } from "../controllers/loginController.js";
+import { getLoginData, showUserData } from "../controllers/loginController.js";
 
 // 2.1 Variablendeklaration
 // keine
@@ -30,6 +30,7 @@ import { getLoginData } from "../controllers/loginController.js";
 const router = express.Router();
 
 router.get("/", getLoginData);
+router.post("/enter", showUserData);
 
 // Am Ende der Route wollen wir
 // reponse.status(200).render(view, data)))

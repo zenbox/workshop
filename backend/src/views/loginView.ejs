@@ -14,12 +14,13 @@
     <body>
         <h1>Login Template</h1>
         <% if ( myData === undefined) { %>
-            <form action="">
+            <form action="login/enter" method="post">
                 <fieldset>
                     <legend>Login</legend>
                     <label for="login-email">E-Mail</label>
-                    <input  id="login-email" type="email">
-                    <button>login</button></fieldset>
+                    <input  id="login-email" name="email" type="email" autocomplete="off" value="michael@domain.org">
+                    <button>login</button>
+                </fieldset>
             </form>
         <% } else { %>
             <output>Wilkommen Michael <%= user.email %></output>
