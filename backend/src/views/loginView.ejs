@@ -1,0 +1,35 @@
+<!-- Embedded Javascript as Template Language -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Login - My Company Webservices</title>
+        <link
+            rel="stylesheet"
+            href="/assets/css/styles.css" />
+    </head>
+    <body>
+        <h1>Login Template</h1>
+        <% if ( myData === undefined) { %>
+            <form action="">
+                <fieldset>
+                    <legend>Login</legend>
+                    <label for="login-email">E-Mail</label>
+                    <input  id="login-email" type="email">
+                    <button>login</button></fieldset>
+            </form>
+        <% } else { %>
+            <output>Wilkommen Michael <%= user.email %></output>
+        <% } %>
+        <nav>
+            <ul>
+                <li><a href="#">link 1</a></li>
+                <li><a href="#">link 2</a></li>
+                <li><a href="#">link 3</a></li>
+            </ul>
+        </nav>
+    </body>
+</html>

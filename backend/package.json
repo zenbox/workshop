@@ -25,6 +25,10 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
-        "express": "^5.2.1"
+        "ejs": "^6.0.1",
+        "express": "^5.2.1",
+        "handlebars": "^4.7.9",
+        "mustache": "^4.2.0",
+        "pug": "^3.0.4"
     }
 }

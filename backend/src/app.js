@@ -35,19 +35,23 @@ const app = express();
 app.use(express.static(path.resolve("./static")));
 // NICHT app.use(path.resolve("./static"));
 
-// app.set
+// Templating setzen
+app.set("view engine", "ejs"); // "pug", "mustache", "handlebars"
+app.set("views", path.resolve("./src/views"));
+
+// - - - - - - - - - -
+// - - - - - - - - - -
 
 // Main Routes
 app.use("/login", loginRoute);
 
-
-// 3. Funktionen
-const handleRequest = (request, response) => {
-    response.writeHead(200, { "Content-Type": "text/plain" });
-    response.write("Hello ");
-    response.write("World ");
-    response.end();
-};
+// // 3. Funktionen
+// const handleRequest = (request, response) => {
+//     response.writeHead(200, { "Content-Type": "text/plain" });
+//     response.write("Hello ");
+//     response.write("World ");
+//     response.end();
+// };
 
 // // 4. Programmausführung (Event-getrieben)
 // const server = http.createServer(handleRequest);
