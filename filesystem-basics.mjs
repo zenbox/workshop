@@ -41,6 +41,21 @@ try {
 }
 
 // Log-Datei schreiben
+async function writeLog() {
+    const fileHandle = await open("log.txt", "a"); //a (append), x (extend), w (write)
+    const line = `log entry ${new Date().toISOString()}\n`;
+
+    fileHandle.write(line);
+    fileHandle.close();
+
+    console.log("Datei geschrieben, bzw angehängt.");
+}
+
+try {
+    await writeLog();
+} catch (error) {
+    console.warn("hat nicht geklappt.");
+}
 
 // Änderungen beaobachten und etwas auslösen
 // Websockets!
