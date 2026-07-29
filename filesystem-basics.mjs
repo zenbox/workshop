@@ -42,7 +42,7 @@ try {
 
 // Log-Datei schreiben
 async function writeLog() {
-    const fileHandle = await open("log.txt", "a"); //a (append), x (extend), w (write)
+    const fileHandle = await open("log.txt", "a"); // a (append), x (extend), w (write)
     const line = `log entry ${new Date().toISOString()}\n`;
 
     fileHandle.write(line);
@@ -58,4 +58,17 @@ try {
 }
 
 // Änderungen beaobachten und etwas auslösen
-// Websockets!
+async function watchDirectory(dir = "./") {
+    try {
+        const watcher = watch(dir, { recursive: false });
+
+        for await (const event of watcher) {
+            console.log(`[watch] ${event.eventType} ${event.filename} `);
+        }
+    } catch (error) {
+        console.warn("hat nicht geklappt.");
+    }
+}
+
+setInterval(writeLog, 5000);
+watchDirectory();
