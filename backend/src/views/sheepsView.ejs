@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Sheeps</title>
+    </head>
+    <body>
+        <script>
+            const BASE = "http://localhost:3000/api/sheeps";
+
+            // Alle laden
+            const all = await fetch(BASE).then((r) => r.json());
+            console.table(all);
+
+            // Einen laden
+            const one = await fetch(`${BASE}/1`).then((r) => r.json());
+            console.log(one);
+
+            // Anlegen
+            const created = await fetch(BASE, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: "Fluffy" }),
+            }).then((r) => r.json());
+            console.log("Angelegt:", created);
+
+            // Aktualisieren
+            const updated = await fetch(`${BASE}/${created.id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: "Fluffy Jr." }),
+            }).then((r) => r.json());
+            console.log("Aktualisiert:", updated);
+
+            // Löschen
+            await fetch(`${BASE}/${created.id}`, { method: "DELETE" });
+            console.log("Gelöscht");
+        </script>
+    </body>
+</html>

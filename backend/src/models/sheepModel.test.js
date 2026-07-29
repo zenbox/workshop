@@ -1,5 +1,5 @@
 // test.js
-import sheepModel from "./sheep.model.js";
+import sheepModel from "./sheepModel.js";
 
 // Init + alle Operationen nacheinander
 async function run() {
