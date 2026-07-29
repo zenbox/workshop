@@ -40,7 +40,8 @@ app.use(express.static(path.resolve("./static")));
 
 // JSON-Parser für body-Daten setzen
 app.use(express.json()); // früher: body_parser als externes Modul
-// application/x-www-form-urlencoded setzen und komplexe Daten parsen
+// application/x-www-form-urlencoded setzen und komplexe Daten parsen,
+// ist Pflicht bei POST forms-Requests
 app.use(express.urlencoded({ extended: true }));
 
 // Templating setzen
