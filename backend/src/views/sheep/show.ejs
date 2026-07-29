@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/assets/css/styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+        <title><%= title %></title>
+    </head>
+    <body>
+        <a
+            href="/sheep"
+            class="btn-back">
+            <span class="material-symbols-outlined">arrow_back</span> Zurück zur
+            Liste
+        </a>
+
+        <h1><%= sheep.name %></h1>
+        <p>ID: <%= sheep.id %></p>
+
+        <div class="actions">
+            <button
+                class="btn-edit"
+                onclick="startEdit()">
+                <span class="material-symbols-outlined">edit</span> Bearbeiten
+            </button>
+            <button
+                class="btn-delete"
+                onclick="deleteSheep()">
+                <span class="material-symbols-outlined">delete</span> Löschen
+            </button>
+        </div>
+
+        <!-- Inline-Edit Formular (initial versteckt) -->
+        <form
+            id="edit-form"
+            hidden>
+            <input
+                type="text"
+                id="input-name"
+                value="<%= sheep.name %>" />
+            <button
+                type="button"
+                class="btn-save"
+                onclick="saveEdit()">
+                <span class="material-symbols-outlined">save</span> Speichern
+            </button>
+            <button
+                type="button"
+                class="btn-cancel"
+                onclick="cancelEdit()">
+                <span class="material-symbols-outlined">close</span> Abbrechen
+            </button>
+        </form>
+
+        <div id="toast"></div>
+
+        <script>
+            const API  = "/api/sheeps";
+            const ID   = <%= sheep.id %>;
+
+            // --- Toast ---
+            function toast(msg, color = "#333") {
+                const el = document.getElementById("toast");
+                el.textContent = msg;
+                el.style.background = color;
+                el.classList.add("show");
+                setTimeout(() => el.classList.remove("show"), 2500);
+            }
+
+            // --- Edit starten ---
+            function startEdit() {
+                document.querySelector(".actions").hidden = true;
+                document.getElementById("edit-form").hidden = false;
+                document.getElementById("input-name").focus();
+            }
+
+            // --- Edit abbrechen ---
+            function cancelEdit() {
+                document.getElementById("edit-form").hidden = true;
+                document.querySelector(".actions").hidden = false;
+            }
+
+            // --- Speichern ---
+            async function saveEdit() {
+                const name = document.getElementById("input-name").value.trim();
+                if (!name) return toast("Name darf nicht leer sein.", "#f59e0b");
+
+                try {
+                    const res = await fetch(`${API}/${ID}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ name }),
+                    });
+
+                    if (!res.ok) throw new Error(await res.text());
+
+                    const updated = await res.json();
+                    document.querySelector("h1").textContent = updated.name;
+                    document.title = updated.name;
+                    cancelEdit();
+                    toast("Gespeichert!", "#22c55e");
+
+                } catch (err) {
+                    toast("Fehler: " + err.message, "#ef4444");
+                }
+            }
+
+            // --- Löschen ---
+            async function deleteSheep() {
+                if (!confirm(`„<%= sheep.name %>" wirklich löschen?`)) return;
+
+                try {
+                    const res = await fetch(`${API}/${ID}`, { method: "DELETE" });
+                    if (!res.ok) throw new Error(await res.text());
+
+                    window.location.href = "/sheep";
+
+                } catch (err) {
+                    toast("Fehler: " + err.message, "#ef4444");
+                }
+            }
+        </script>
+    </body>
+</html>

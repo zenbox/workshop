@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/assets/css/styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+        <title><%= title %></title>
+        
+    </head>
+    <body>
+
+        <main>
+            <h1><%= title %></h1>
+
+            <table id="sheep-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% sheeps.forEach(sheep => { %>
+                    <tr data-id="<%= sheep.id %>">
+                        <td><%= sheep.id %></td>
+                        <td class="cell-name"><%= sheep.name %></td>
+                        <td>
+                            <a href="/sheep/<%= sheep.id %>" class="btn-show">
+                                <span class="material-symbols-outlined">list</span> Detail
+                            </a>
+                            <button class="btn-edit" onclick="startEdit(this)">
+                                <span class="material-symbols-outlined">edit</span> Bearbeiten
+                            </button>
+                            <button class="btn-delete" onclick="deleteSheep(this)">
+                                <span class="material-symbols-outlined">delete</span> Löschen
+                            </button>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+
+            <button class="btn-add" onclick="addRow()">
+                <span class="material-symbols-outlined">add</span> Neues Schaf
+            </button>
+        </main>
+
+        <footer>
+            <span class="material-symbols-outlined">error</span>
+            <a href="/sheep/error-test">Fehlerseite anzeigen</a>
+        </footer>
+
+        <div id="toast"></div>
+
+        <script>
+            const API = "/api/sheeps";
+
+            // --- Toast ---
+            function toast(msg, color = "#333") {
+                const el = document.getElementById("toast");
+                el.textContent = msg;
+                el.style.background = color;
+                el.classList.add("show");
+                setTimeout(() => el.classList.remove("show"), 2500);
+            }
+
+            // --- Edit starten ---
+            function startEdit(btn) {
+                const row  = btn.closest("tr");
+                const cell = row.querySelector(".cell-name");
+                const name = cell.textContent.trim();
+
+                cell.innerHTML = `<input type="text" value="${name}" />`;
+
+                row.querySelector("td:last-child").innerHTML = `
+                    <button class="btn-save" onclick="saveEdit(this)">
+                        <span class="material-symbols-outlined">save</span> Speichern
+                    </button>
+                    <button class="btn-cancel" onclick="cancelEdit(this, '${name}')">
+                        <span class="material-symbols-outlined">close</span> Abbrechen
+                    </button>
+                `;
+            }
+
+            // --- Edit abbrechen ---
+            function cancelEdit(btn, originalName) {
+                const row = btn.closest("tr");
+                row.querySelector(".cell-name").textContent = originalName;
+                row.querySelector("td:last-child").innerHTML = editButtons(row.dataset.id);
+            }
+
+            // --- Speichern ---
+            async function saveEdit(btn) {
+                const row  = btn.closest("tr");
+                const id   = row.dataset.id;
+                const name = row.querySelector("input").value.trim();
+
+                if (!name) return toast("Name darf nicht leer sein.", "#f59e0b");
+
+                try {
+                    const res = await fetch(`${API}/${id}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ name }),
+                    });
+
+                    if (!res.ok) throw new Error(await res.text());
+
+                    const updated = await res.json();
+                    row.querySelector(".cell-name").textContent = updated.name;
+                    row.querySelector("td:last-child").innerHTML = editButtons(id);
+                    toast("Gespeichert!", "#22c55e");
+
+                } catch (err) {
+                    toast("Fehler: " + err.message, "#ef4444");
+                }
+            }
+
+            // --- Löschen ---
+            async function deleteSheep(btn) {
+                const row  = btn.closest("tr");
+                const id   = row.dataset.id;
+                const name = row.querySelector(".cell-name").textContent.trim();
+
+                if (!confirm(`„${name}" wirklich löschen?`)) return;
+
+                try {
+                    const res = await fetch(`${API}/${id}`, { method: "DELETE" });
+                    if (!res.ok) throw new Error(await res.text());
+
+                    row.remove();
+                    toast("Gelöscht!", "#ef4444");
+
+                } catch (err) {
+                    toast("Fehler: " + err.message, "#ef4444");
+                }
+            }
+
+            // --- Neues Schaf ---
+            function addRow() {
+                const tbody = document.querySelector("#sheep-table tbody");
+                const row   = document.createElement("tr");
+                row.dataset.id = "new";
+                row.innerHTML = `
+                    <td>–</td>
+                    <td class="cell-name"><input type="text" placeholder="Name eingeben …" /></td>
+                    <td>
+                        <button class="btn-save" onclick="saveNew(this)">
+                            <span class="material-symbols-outlined">save</span> Anlegen
+                        </button>
+                        <button class="btn-cancel" onclick="this.closest('tr').remove()">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+                row.querySelector("input").focus();
+            }
+
+            // --- Neues Schaf speichern ---
+            async function saveNew(btn) {
+                const row  = btn.closest("tr");
+                const name = row.querySelector("input").value.trim();
+
+                if (!name) return toast("Name darf nicht leer sein.", "#f59e0b");
+
+                try {
+                    const res = await fetch(API, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ name }),
+                    });
+
+                    if (!res.ok) throw new Error(await res.text());
+
+                    const sheep = await res.json();
+                    row.dataset.id = sheep.id;
+                    row.querySelector("td:first-child").textContent = sheep.id;
+                    row.querySelector(".cell-name").textContent = sheep.name;
+                    row.querySelector("td:last-child").innerHTML = editButtons(sheep.id);
+                    toast("Angelegt!", "#22c55e");
+
+                } catch (err) {
+                    toast("Fehler: " + err.message, "#ef4444");
+                }
+            }
+
+            // --- Button-Template ---
+            function editButtons(id) {
+                return `
+                    <a href="/sheep/${id}" class="btn-show">
+                        <span class="material-symbols-outlined">list</span> Detail
+                    </a>
+                    <button class="btn-edit" onclick="startEdit(this)">
+                        <span class="material-symbols-outlined">edit</span> Bearbeiten
+                    </button>
+                    <button class="btn-delete" onclick="deleteSheep(this)">
+                        <span class="material-symbols-outlined">delete</span> Löschen
+                    </button>
+                `;
+            }
+        </script>
+
+    </body>
+</html>

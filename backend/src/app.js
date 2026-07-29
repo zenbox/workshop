@@ -22,8 +22,10 @@ import path from "node:path";
 import express from "express";
 import cors from "cors";
 
-// 1.3 Eigene Module (Libraries)
+// 1.3 Eigene Module – ergänzen
 import loginRoute from "./routes/loginRoute.js";
+import sheepRoute from "./routes/sheepRoute.js";
+import sheepApiRoute from "./routes/sheepApiRoute.js"; // ← NEU
 
 // 2.1 Variablendeklaration
 const PORT = process.env.PORT || 3000;
@@ -52,8 +54,10 @@ app.set("views", path.resolve("./src/views"));
 // - - - - - - - - - -
 
 // Main Routes
+// Main Routes
 app.use("/login", loginRoute);
-app.use("/sheep", sheepRoute);
+app.use("/sheep", sheepRoute); // EJS-Views bleiben
+app.use("/api/sheeps", sheepApiRoute); // ← NEU REST API
 
 // // 3. Funktionen
 // const handleRequest = (request, response) => {
