@@ -33,7 +33,23 @@ const getLoginData = (request, response, next) => {
 const showUserData = (request, response, next) => {
     // Ausgabe konfigurieren
     const view = "loginView";
-    const data = { myData: undefined };
+
+    console.clear();
+    // console.dir(request.host);
+    // console.dir(request.hostname);
+    // console.dir(request.method);
+    console.dir(request.body); // JSON!
+    // console.dir(request.params);
+    // console.dir(request.query);
+
+    // eigentlich aus request.body
+    const data = {
+        myData: {
+            user: {
+                email: "michael@domain.org",
+            },
+        },
+    };
 
     // Generische Response
     response.status(200).render(view, data);

@@ -20,6 +20,7 @@ import path from "node:path";
 
 // 1.2 Externe Libraries
 import express from "express";
+import cors from "cors";
 
 // 1.3 Eigene Module (Libraries)
 import loginRoute from "./routes/loginRoute.js";
@@ -31,9 +32,16 @@ const HOST = process.env.HOST || "localhost";
 const app = express();
 
 // 2.2 Konfiguration
+// Cross Origin Policy setzen
+app.use(cors({ origin: true, credentials: true }));
+
 // Statische Route für alles, was der Server ausliefern soll, ohne Middleware!
 app.use(express.static(path.resolve("./static")));
-// NICHT app.use(path.resolve("./static"));
+
+// JSON-Parser für body-Daten setzen
+app.use(express.json()); // früher: body_parser als externes Modul
+// application/x-www-form-urlencoded setzen und komplexe Daten parsen
+app.use(express.urlencoded({ extended: true }));
 
 // Templating setzen
 app.set("view engine", "ejs"); // "pug", "mustache", "handlebars"
