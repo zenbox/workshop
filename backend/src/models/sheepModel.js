@@ -20,7 +20,24 @@ class SheepModel {
      */
     constructor() {}
 
-    async init() {}
+    async init() {
+        const exists = await db.schema.hasTable(this.#table);
+
+        if (!exists) {
+            await db.schema.createTable(this.#table, (table) => {
+                table.increments("id").primary();
+                table.string("name").notNullable();
+            });
+
+            await db(this.#table).insert([
+                { name: "Dolly" },
+                { name: "Shaun" },
+                { name: "Wooly" },
+            ]);
+        }
+
+        return this; // Ermöglicht Method Chaining
+    }
 
     /**
      *
@@ -62,7 +79,7 @@ class SheepModel {
     /**
      *
      * @param {*} id
-     * 
+     *
      * TODO: Testfähigkeit herstellen, Rückgabe fehlt!
      */
     async delete(id) {

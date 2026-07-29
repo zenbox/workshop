@@ -4,10 +4,12 @@
  * @module
  * @author Michael <michael.reichart@gfu.net>
  * @version v1.0.0
- * @since 2025-11-13
+ * @since 2026-07-29
  * @see i.e. inspired by ... {link to}
  * @license MIT {https://opensource.org/licenses/MIT}
- * @copyright (c) 2025 Michael Reichart, Cologne
+ * @copyright (c) 2026 Michael Reichart, Cologne
+ * 
+ * TODO: npm warn deprecated prebuild-install@7.1.3: No longer maintained. 
  */
 
 import knex from "knex"; // Knex ist ein SQL Query Builder für Node.js
