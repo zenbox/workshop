@@ -53,6 +53,7 @@ app.set("views", path.resolve("./src/views"));
 
 // Main Routes
 app.use("/login", loginRoute);
+app.use("/sheep", sheepRoute);
 
 // // 3. Funktionen
 // const handleRequest = (request, response) => {
