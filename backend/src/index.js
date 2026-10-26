@@ -14,16 +14,15 @@
 // 0. Interpreter-Anweisung
 "use strict";
 
-// 1. ES Modul Importe
+// Lernkontext 1.1: ES-Module und eingebaute Node.js-Module.
 import http from "node:http";
 // require "http";
-
 
 // 2. Variablendeklaration und Konfiguration
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || "localhost";
 
-// 3. Funktionen
+// Lernkontext 1.3: Ein nativer HTTP-Request wird direkt beantwortet.
 const handleRequest = (request, response) => {
     response.writeHead(200, { "Content-Type": "text/plain" });
     response.write("Hello ");

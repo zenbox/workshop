@@ -9,12 +9,15 @@
  * @copyright ...
  */
 
-import { readFile, open, watch } from "node:fs/promises";
-import { resolve } from "node:path";
+import { readFile, open } from "node:fs/promises";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-// CSV Datei einlesen
+const projectRoot = dirname(fileURLToPath(import.meta.url));
+
+// Lernkontext 1.2: Eine Datei asynchron lesen und den Fehler am Aufrufer behandeln.
 async function readCSV(filePath) {
-    const content = await readFile(resolve(filePath), "utf-8");
+    const content = await readFile(filePath, "utf-8");
 
     // Text zerlegen und zurückgeben
     const [headerLine, ...rows] = content.trim().split("\n");
@@ -32,43 +35,21 @@ async function readCSV(filePath) {
     return data;
 }
 
-// Aufruf von async -> try-catch!!
-try {
-    await readCSV("./data.csv");
-} catch (error) {
-    console.error(error);
-    console.warn("Datei nicht gefunden!");
-}
-
-// Log-Datei schreiben
+// Lernkontext 1.2: Datei-Handles werden auch bei Fehlern geschlossen.
 async function writeLog() {
-    const fileHandle = await open("log.txt", "a"); // a (append), x (extend), w (write)
-    const line = `log entry ${new Date().toISOString()}\n`;
-
-    fileHandle.write(line);
-    fileHandle.close();
-
-    console.log("Datei geschrieben, bzw angehängt.");
+    const fileHandle = await open(join(projectRoot, "log.txt"), "a");
+    try {
+        await fileHandle.appendFile(`log entry ${new Date().toISOString()}\n`);
+    } finally {
+        await fileHandle.close();
+    }
+    console.log("Eine Logzeile wurde angehängt.");
 }
 
 try {
+    await readCSV(join(projectRoot, "data.csv"));
     await writeLog();
 } catch (error) {
-    console.warn("hat nicht geklappt.");
+    console.error("Dateiübung fehlgeschlagen:", error);
+    process.exitCode = 1;
 }
-
-// Änderungen beaobachten und etwas auslösen
-async function watchDirectory(dir = "./") {
-    try {
-        const watcher = watch(dir, { recursive: false });
-
-        for await (const event of watcher) {
-            console.log(`[watch] ${event.eventType} ${event.filename} `);
-        }
-    } catch (error) {
-        console.warn("hat nicht geklappt.");
-    }
-}
-
-setInterval(writeLog, 5000);
-watchDirectory();

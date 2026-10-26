@@ -1,0 +1,1933 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/assets/css/styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+        <title>Weidebuch – Node.js-Lernprojekt</title>
+        <style>
+            :root {
+                color-scheme: light;
+                --ink: #202a23;
+                --muted: #68736b;
+                --line: #dce2da;
+                --paper: #fff;
+                --canvas: #f4f6f2;
+                --green: #315c43;
+                --green-dark: #234432;
+                --green-pale: #e7efe7;
+                --gold: #d7a24a;
+                --danger: #a13c36;
+                --focus: #1769aa;
+                font-family: Inter, "Open Sans", system-ui, sans-serif;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+                background: var(--canvas);
+                color: var(--ink);
+                line-height: 1.5;
+            }
+            button,
+            input,
+            select {
+                font: inherit;
+            }
+            button {
+                color: inherit;
+            }
+            button:focus-visible,
+            input:focus-visible,
+            select:focus-visible,
+            a:focus-visible {
+                outline: 3px solid var(--focus);
+                outline-offset: 2px;
+            }
+            .site-header {
+                background: var(--paper);
+                border-bottom: 1px solid var(--line);
+            }
+            .header-inner,
+            .page,
+            .footer-inner {
+                width: min(1120px, calc(100% - 40px));
+                margin: 0 auto;
+            }
+            .header-inner {
+                min-height: 68px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 20px;
+            }
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 11px;
+                min-width: 0;
+            }
+            .brand-mark {
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: var(--green-pale);
+                color: var(--green);
+                display: grid;
+                place-items: center;
+                font-size: 20px;
+            }
+            .brand-name {
+                font-weight: 750;
+                letter-spacing: -0.025em;
+            }
+            .brand-sub {
+                display: block;
+                color: var(--muted);
+                font-size: 12px;
+                font-weight: 450;
+            }
+            .header-actions {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+            .session-note {
+                color: var(--muted);
+                font-size: 12px;
+                white-space: nowrap;
+            }
+            .account-button,
+            .button {
+                border: 1px solid var(--line);
+                background: white;
+                min-height: 40px;
+                padding: 8px 12px;
+                border-radius: 5px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                text-decoration: none;
+                cursor: pointer;
+            }
+            .account-button:hover,
+            .button:hover {
+                background: #f7f9f6;
+                border-color: #aeb9ae;
+            }
+            .button-primary {
+                background: var(--green);
+                color: #fff;
+                border-color: var(--green);
+                font-weight: 650;
+            }
+            .button-primary:hover {
+                background: var(--green-dark);
+                border-color: var(--green-dark);
+            }
+            .button-quiet {
+                background: transparent;
+            }
+            .button-danger {
+                color: var(--danger);
+            }
+            .button-small {
+                min-height: 34px;
+                padding: 5px 9px;
+                font-size: 13px;
+            }
+            .button-icon {
+                width: 36px;
+                height: 36px;
+                padding: 0;
+            }
+            .page {
+                padding: 28px 0 48px;
+            }
+            .eyebrow {
+                color: var(--green);
+                text-transform: uppercase;
+                letter-spacing: 0.11em;
+                font-size: 11px;
+                font-weight: 750;
+            }
+            .intro {
+                display: flex;
+                justify-content: space-between;
+                align-items: end;
+                gap: 24px;
+                margin-bottom: 22px;
+            }
+            h1 {
+                font-size: clamp(26px, 4vw, 36px);
+                line-height: 1.13;
+                letter-spacing: -0.04em;
+                margin: 5px 0 7px;
+            }
+            h2 {
+                font-size: 21px;
+                line-height: 1.25;
+                margin: 0;
+                letter-spacing: -0.025em;
+            }
+            h3 {
+                font-size: 16px;
+                margin: 0 0 6px;
+            }
+            p {
+                margin: 0;
+            }
+            .lead {
+                color: var(--muted);
+                max-width: 690px;
+            }
+            .tabs {
+                display: flex;
+                gap: 4px;
+                border-bottom: 1px solid var(--line);
+                margin-bottom: 20px;
+            }
+            .tab {
+                border: 0;
+                border-bottom: 3px solid transparent;
+                background: transparent;
+                padding: 10px 15px 9px;
+                color: var(--muted);
+                cursor: pointer;
+                font-weight: 650;
+            }
+            .tab[aria-selected="true"] {
+                color: var(--green);
+                border-bottom-color: var(--green);
+            }
+            .demo-banner {
+                background: #f8f0df;
+                border: 1px solid #ead8b6;
+                color: #59431f;
+                padding: 10px 13px;
+                font-size: 13px;
+                margin: 0 0 18px;
+                display: flex;
+                gap: 9px;
+                align-items: flex-start;
+            }
+            .demo-banner i {
+                font-size: 17px;
+                margin-top: 1px;
+            }
+            .workspace {
+                display: grid;
+                grid-template-columns: minmax(280px, 0.9fr) minmax(
+                        360px,
+                        1.35fr
+                    );
+                border: 1px solid var(--line);
+                background: var(--paper);
+                min-height: 525px;
+            }
+            .list-pane {
+                border-right: 1px solid var(--line);
+                min-width: 0;
+            }
+            .pane-header {
+                padding: 18px 18px 14px;
+                border-bottom: 1px solid var(--line);
+            }
+            .pane-title-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                margin-bottom: 13px;
+            }
+            .count {
+                color: var(--muted);
+                font-size: 13px;
+                white-space: nowrap;
+            }
+            .filters {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 130px;
+                gap: 8px;
+            }
+            .input-wrap {
+                position: relative;
+            }
+            .input-wrap i {
+                position: absolute;
+                left: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--muted);
+            }
+            .control,
+            .input-wrap input {
+                width: 100%;
+                min-height: 38px;
+                border: 1px solid #cbd3cb;
+                border-radius: 4px;
+                padding: 7px 9px;
+                background: white;
+                color: var(--ink);
+            }
+            .input-wrap input {
+                padding-left: 32px;
+            }
+            .sheep-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .sheep-row {
+                display: grid;
+                grid-template-columns: 46px minmax(0, 1fr) auto;
+                align-items: center;
+                width: 100%;
+                gap: 11px;
+                padding: 12px 17px;
+                border: 0;
+                border-bottom: 1px solid #edf0ec;
+                background: white;
+                text-align: left;
+                cursor: pointer;
+            }
+            .sheep-row:hover {
+                background: #f8faf7;
+            }
+            .sheep-row[aria-current="true"] {
+                background: #f0f5ef;
+                box-shadow: inset 3px 0 0 var(--green);
+            }
+            .sheep-avatar {
+                width: 44px;
+                height: 44px;
+                display: block;
+                flex: none;
+            }
+            .row-name {
+                display: block;
+                font-weight: 700;
+                line-height: 1.25;
+            }
+            .row-meta {
+                display: block;
+                color: var(--muted);
+                font-size: 12px;
+                margin-top: 3px;
+            }
+            .row-age {
+                color: var(--muted);
+                font-size: 12px;
+                white-space: nowrap;
+            }
+            .empty-list {
+                padding: 24px 18px;
+                color: var(--muted);
+                font-size: 14px;
+            }
+            .detail-pane {
+                padding: 23px clamp(18px, 4vw, 36px);
+                min-width: 0;
+            }
+            .detail-kicker {
+                color: var(--muted);
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
+            .sheep-profile {
+                display: flex;
+                align-items: center;
+                gap: 17px;
+                border-bottom: 1px solid var(--line);
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+            }
+            .sheep-profile .sheep-avatar {
+                width: 78px;
+                height: 78px;
+            }
+            .profile-title {
+                font-size: 27px;
+                letter-spacing: -0.035em;
+                margin: 0 0 3px;
+            }
+            .profile-sub {
+                color: var(--muted);
+            }
+            .detail-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin: 0 0 24px;
+            }
+            .facts {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                border-top: 1px solid var(--line);
+                border-left: 1px solid var(--line);
+            }
+            .fact {
+                padding: 12px 14px;
+                border-right: 1px solid var(--line);
+                border-bottom: 1px solid var(--line);
+            }
+            .fact dt {
+                color: var(--muted);
+                font-size: 12px;
+                margin-bottom: 3px;
+            }
+            .fact dd {
+                margin: 0;
+                font-weight: 650;
+            }
+            .generated-note {
+                margin-top: 15px;
+                color: var(--muted);
+                font-size: 12px;
+                display: flex;
+                gap: 6px;
+                align-items: center;
+            }
+            .empty-detail {
+                min-height: 300px;
+                display: grid;
+                place-content: center;
+                text-align: center;
+                color: var(--muted);
+                gap: 8px;
+            }
+            .empty-detail i {
+                font-size: 28px;
+                color: var(--green);
+            }
+            .form-heading {
+                margin-bottom: 17px;
+            }
+            .form-heading p {
+                color: var(--muted);
+                font-size: 13px;
+                margin-top: 5px;
+            }
+            .sheep-form {
+                display: grid;
+                gap: 13px;
+                max-width: 470px;
+            }
+            .field label {
+                display: block;
+                font-size: 13px;
+                font-weight: 650;
+                margin-bottom: 5px;
+            }
+            .field-hint {
+                font-size: 11px;
+                color: var(--muted);
+                margin-top: 4px;
+            }
+            .form-icon-preview {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                padding: 8px 10px;
+                border: 1px solid var(--line);
+                background: #fafbf9;
+                font-size: 13px;
+                color: var(--muted);
+            }
+            .form-icon-preview .sheep-avatar {
+                width: 38px;
+                height: 38px;
+            }
+            .form-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                padding-top: 5px;
+            }
+            .event-panel {
+                border: 1px solid var(--line);
+                background: var(--paper);
+                margin-top: 18px;
+            }
+            .event-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 12px;
+                padding: 12px 15px;
+                border-bottom: 1px solid var(--line);
+            }
+            .event-header h2 {
+                font-size: 14px;
+                letter-spacing: 0;
+            }
+            .event-state {
+                font-size: 11px;
+                color: #765a2d;
+                background: #f8f0df;
+                padding: 3px 7px;
+                border-radius: 3px;
+            }
+            .event-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+            .event-list li {
+                padding: 9px 15px;
+                border-bottom: 1px solid #edf0ec;
+                font-size: 12px;
+                display: flex;
+                justify-content: space-between;
+                gap: 12px;
+            }
+            .event-list li:last-child {
+                border-bottom: 0;
+            }
+            .event-time {
+                color: var(--muted);
+                white-space: nowrap;
+            }
+            .course-view {
+                display: none;
+            }
+            .course-view.active,
+            .herd-view.active {
+                display: block;
+            }
+            .course-intro {
+                margin-bottom: 20px;
+            }
+            .course-intro p {
+                color: var(--muted);
+                margin-top: 7px;
+                max-width: 800px;
+            }
+            .day-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+                margin: 18px 0 24px;
+            }
+            .day {
+                background: var(--green);
+                color: white;
+                padding: 15px 16px;
+                min-height: 122px;
+            }
+            .day-label {
+                color: #d9e6d9;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                font-size: 10px;
+                font-weight: 750;
+            }
+            .day h3 {
+                margin: 7px 0 5px;
+            }
+            .day p {
+                color: #e5eee5;
+                font-size: 13px;
+            }
+            .section-label {
+                font-size: 12px;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--green);
+                font-weight: 750;
+                margin: 26px 0 11px;
+            }
+            .step-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                counter-reset: steps;
+                border-top: 1px solid var(--line);
+            }
+            .step {
+                counter-increment: steps;
+                display: grid;
+                grid-template-columns: 48px minmax(0, 1fr) minmax(190px, 0.75fr);
+                gap: 15px;
+                padding: 17px 0;
+                border-bottom: 1px solid var(--line);
+            }
+            .step-number {
+                width: 33px;
+                height: 33px;
+                display: grid;
+                place-items: center;
+                border-radius: 50%;
+                background: var(--green-pale);
+                color: var(--green);
+                font-weight: 750;
+            }
+            .step h3 {
+                margin: 1px 0 5px;
+            }
+            .step p,
+            .step li {
+                font-size: 13px;
+                color: var(--muted);
+            }
+            .step ul {
+                padding-left: 18px;
+                margin: 5px 0 0;
+            }
+            .deliverable {
+                border-left: 2px solid #bdcbbd;
+                padding-left: 12px;
+                font-size: 12px;
+                color: var(--muted);
+            }
+            .deliverable strong {
+                display: block;
+                color: var(--ink);
+                margin-bottom: 4px;
+            }
+            code,
+            .code-block {
+                font-family: "JetBrains Mono", ui-monospace, monospace;
+                font-size: 12px;
+            }
+            .code-block {
+                white-space: pre-wrap;
+                overflow-wrap: anywhere;
+                background: #202a23;
+                color: #e4eee5;
+                padding: 17px;
+                line-height: 1.65;
+                margin: 10px 0 0;
+            }
+            .architecture-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 18px;
+                margin-top: 12px;
+            }
+            .architecture-block {
+                border: 1px solid var(--line);
+                background: white;
+                padding: 16px;
+                min-width: 0;
+            }
+            .architecture-block p {
+                color: var(--muted);
+                font-size: 13px;
+                margin-top: 7px;
+            }
+            .scope-note {
+                border-left: 3px solid var(--gold);
+                background: #fbf7ee;
+                padding: 13px 15px;
+                color: #574a32;
+                font-size: 13px;
+                margin: 18px 0;
+            }
+            .check-list {
+                list-style: none;
+                padding: 0;
+                margin: 10px 0 0;
+            }
+            .check-list li {
+                padding: 5px 0;
+                font-size: 13px;
+            }
+            .check-list i {
+                color: var(--green);
+                margin-right: 7px;
+            }
+            .site-footer {
+                margin: 0;
+                padding: 0;
+                display: block;
+                border-top: 1px solid var(--line);
+                background: #fff;
+                color: var(--muted);
+                font-size: 12px;
+            }
+            .footer-inner {
+                padding: 15px 0;
+                display: flex;
+                justify-content: space-between;
+                gap: 15px;
+            }
+            dialog {
+                width: min(420px, calc(100% - 30px));
+                border: 1px solid var(--line);
+                border-radius: 6px;
+                padding: 0;
+                color: var(--ink);
+                box-shadow: 0 18px 60px #19251d38;
+            }
+            dialog::backdrop {
+                background: #14201980;
+            }
+            .dialog-inner {
+                padding: 22px;
+            }
+            .dialog-inner h2 {
+                margin-bottom: 6px;
+            }
+            .dialog-copy {
+                color: var(--muted);
+                font-size: 13px;
+                margin-bottom: 16px;
+            }
+            .dialog-actions {
+                display: flex;
+                justify-content: flex-end;
+                gap: 8px;
+                margin-top: 16px;
+            }
+            .toast {
+                position: fixed;
+                bottom: 18px;
+                left: 50%;
+                transform: translateX(-50%);
+                max-width: calc(100% - 30px);
+                background: var(--ink);
+                color: white;
+                padding: 10px 15px;
+                font-size: 13px;
+                border-radius: 4px;
+                box-shadow: 0 4px 18px #0002;
+                z-index: 10;
+            }
+            .toast[hidden] {
+                display: none;
+            }
+            .signed-out {
+                display: none;
+                border: 1px solid var(--line);
+                background: white;
+                padding: 28px;
+                text-align: center;
+                margin-top: 18px;
+            }
+            .signed-out.active {
+                display: block;
+            }
+            [hidden] {
+                display: none !important;
+            }
+            @media (max-width: 760px) {
+                .header-inner,
+                .page,
+                .footer-inner {
+                    width: min(100% - 28px, 620px);
+                }
+                .session-note {
+                    display: none;
+                }
+                .intro {
+                    align-items: flex-start;
+                    flex-direction: column;
+                    gap: 12px;
+                }
+                .workspace {
+                    grid-template-columns: 1fr;
+                }
+                .list-pane {
+                    border-right: 0;
+                    border-bottom: 1px solid var(--line);
+                }
+                .detail-pane {
+                    min-height: 300px;
+                }
+                .day-grid {
+                    grid-template-columns: 1fr;
+                }
+                .day {
+                    min-height: auto;
+                }
+                .step {
+                    grid-template-columns: 40px minmax(0, 1fr);
+                }
+                .deliverable {
+                    grid-column: 2;
+                }
+                .architecture-grid {
+                    grid-template-columns: 1fr;
+                }
+                .footer-inner {
+                    flex-direction: column;
+                }
+            }
+            @media (max-width: 430px) {
+                .header-inner {
+                    min-height: 60px;
+                }
+                .brand-sub {
+                    display: none;
+                }
+                .brand-mark {
+                    width: 32px;
+                    height: 32px;
+                }
+                .account-button .account-label {
+                    display: none;
+                }
+                .page {
+                    padding-top: 21px;
+                }
+                .filters {
+                    grid-template-columns: 1fr;
+                }
+                .facts {
+                    grid-template-columns: 1fr 1fr;
+                }
+                .event-list li {
+                    flex-direction: column;
+                    gap: 2px;
+                }
+                .tabs {
+                    overflow-x: auto;
+                }
+                .tab {
+                    white-space: nowrap;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                *,
+                *::before,
+                *::after {
+                    scroll-behavior: auto !important;
+                    animation-duration: 0.01ms !important;
+                    transition-duration: 0.01ms !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="header-inner">
+                <div class="brand">
+                    <span
+                        class="brand-mark"
+                        aria-hidden="true"
+                        ><i class="ph ph-sheep"></i
+                    ></span>
+                    <div>
+                        <span class="brand-name">Weidebuch</span
+                        ><span class="brand-sub"
+                            >Node.js-Lernprojekt · Backend zuerst</span
+                        >
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <span
+                        class="session-note"
+                        id="connectionStatus"
+                        ><i
+                            class="ph ph-plug"
+                            aria-hidden="true"></i>
+                        Backend: wird verbunden</span
+                    >
+                    <button
+                        type="button"
+                        class="account-button"
+                        id="accountButton"
+                        aria-haspopup="dialog">
+                        <i
+                            class="ph ph-user-circle"
+                            aria-hidden="true"></i
+                        ><span
+                            id="accountName"
+                            class="account-label"
+                            >Anmelden</span
+                        ><i
+                            class="ph ph-caret-down"
+                            aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="page">
+            <div class="intro">
+                <div>
+                    <div class="eyebrow">
+                        Durchgängiges Praxisprojekt · 3 Tage
+                    </div>
+                    <h1>Eine Herde. Ein Backend.</h1>
+                    <p class="lead">
+                        Die Schafverwaltung wächst mit dem Kurs: vom ersten
+                        Node.js-Modul über persistentes CRUD bis zu Anmeldung
+                        und Live-Updates.
+                    </p>
+                </div>
+            </div>
+            <nav
+                class="tabs"
+                aria-label="Projektbereiche">
+                <button
+                    type="button"
+                    class="tab"
+                    id="tabHerd"
+                    aria-selected="true"
+                    aria-controls="herdView">
+                    <i
+                        class="ph ph-list-bullets"
+                        aria-hidden="true"></i>
+                    Schafbestand
+                </button>
+                <button
+                    type="button"
+                    class="tab"
+                    id="tabCourse"
+                    aria-selected="false"
+                    aria-controls="courseView">
+                    <i
+                        class="ph ph-map-trifold"
+                        aria-hidden="true"></i>
+                    Kurskonzept
+                </button>
+            </nav>
+
+            <section
+                id="herdView"
+                class="herd-view active"
+                aria-labelledby="tabHerd">
+                <div
+                    class="demo-banner"
+                    role="note">
+                    <i
+                        class="ph ph-info"
+                        aria-hidden="true"></i>
+                    <p>
+                        <strong>Weidebuch:</strong> Deine Herde wird
+                        serverseitig in SQLite gespeichert. Anmeldung und
+                        Live-Updates laufen über denselben Node.js-Origin.
+                    </p>
+                </div>
+                <div
+                    id="signedOut"
+                    class="signed-out">
+                    <h2>Bitte anmelden</h2>
+                    <p
+                        class="lead"
+                        style="margin: 8px auto 15px">
+                        Die Herde ist nur nach dem Login sichtbar. Erstelle ein
+                        Lernkonto oder melde dich mit deinem Konto an.
+                    </p>
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="signInFromEmpty">
+                        <i
+                            class="ph ph-sign-in"
+                            aria-hidden="true"></i>
+                        Anmelden
+                    </button>
+                </div>
+                <div id="appContent">
+                    <div class="workspace">
+                        <section
+                            class="list-pane"
+                            aria-labelledby="listHeading">
+                            <div class="pane-header">
+                                <div class="pane-title-row">
+                                    <div>
+                                        <h2 id="listHeading">Meine Herde</h2>
+                                        <span
+                                            class="count"
+                                            id="herdCount"
+                                            >0 Schafe</span
+                                        >
+                                    </div>
+                                    <button
+                                        type="button"
+                                        class="button button-primary button-small"
+                                        id="addSheep">
+                                        <i
+                                            class="ph ph-plus"
+                                            aria-hidden="true"></i>
+                                        Anlegen
+                                    </button>
+                                </div>
+                                <div class="filters">
+                                    <label class="input-wrap"
+                                        ><span
+                                            class="visually-hidden"
+                                            hidden
+                                            >Schafe suchen</span
+                                        ><i
+                                            class="ph ph-magnifying-glass"
+                                            aria-hidden="true"></i
+                                        ><input
+                                            id="search"
+                                            type="search"
+                                            placeholder="Name oder Rasse suchen"
+                                            aria-label="Name oder Rasse suchen"
+                                    /></label>
+                                    <label
+                                        ><span
+                                            class="visually-hidden"
+                                            hidden
+                                            >Rasse filtern</span
+                                        ><select
+                                            id="breedFilter"
+                                            class="control"
+                                            aria-label="Nach Rasse filtern">
+                                            <option value="">
+                                                Alle Rassen
+                                            </option>
+                                            <option>Merino</option>
+                                            <option>Ouessant</option>
+                                            <option>Texel</option>
+                                            <option>Heidschnucke</option>
+                                            <option>Suffolk</option>
+                                            <option>Coburger Fuchsschaf</option>
+                                        </select></label
+                                    >
+                                </div>
+                            </div>
+                            <ul
+                                id="sheepList"
+                                class="sheep-list"
+                                aria-label="Schafliste"></ul>
+                        </section>
+                        <section
+                            id="detailPane"
+                            class="detail-pane"
+                            aria-label="Schafdetails"
+                            aria-live="polite"></section>
+                    </div>
+                    <section
+                        class="event-panel"
+                        aria-labelledby="eventHeading">
+                        <div class="event-header">
+                            <h2 id="eventHeading">
+                                <i
+                                    class="ph ph-broadcast"
+                                    aria-hidden="true"></i>
+                                Ereignisprotokoll
+                            </h2>
+                            <span
+                                class="event-state"
+                                id="eventState"
+                                >Socket.IO wird verbunden</span
+                            >
+                        </div>
+                        <ul
+                            id="eventList"
+                            class="event-list"
+                            aria-live="polite"></ul>
+                    </section>
+                </div>
+            </section>
+
+            <section
+                id="courseView"
+                class="course-view"
+                aria-labelledby="courseHeading">
+                <div class="course-intro">
+                    <div class="eyebrow">Lernpfad & Architektur</div>
+                    <h2 id="courseHeading">
+                        Vom HTTP-Request zur live synchronisierten Herde
+                    </h2>
+                    <p>
+                        Jeder Kursschritt erweitert dieselbe Anwendung. So sehen
+                        die Teilnehmenden, warum ein Modul, eine Datenbank oder
+                        eine Session gebraucht wird – und wo es in der
+                        Gesamtarchitektur sitzt.
+                    </p>
+                </div>
+                <div
+                    class="day-grid"
+                    aria-label="Drei-Tage-Übersicht">
+                    <article class="day">
+                        <span class="day-label">Tag 1</span>
+                        <h3>Node.js verstehen</h3>
+                        <p>
+                            Projekt, Module, Event Loop, asynchrone Datei- und
+                            HTTP-Arbeit.
+                        </p>
+                    </article>
+                    <article class="day">
+                        <span class="day-label">Tag 2</span>
+                        <h3>API & Daten</h3>
+                        <p>
+                            Express, REST, Validierung und persistentes CRUD mit
+                            SQLite.
+                        </p>
+                    </article>
+                    <article class="day">
+                        <span class="day-label">Tag 3</span>
+                        <h3>Identität & Live</h3>
+                        <p>
+                            Passwort-Login, Session-Cookie, Socket.IO, Tests und
+                            Deployment.
+                        </p>
+                    </article>
+                </div>
+
+                <div class="section-label">Schrittweise Umsetzung</div>
+                <ol class="step-list">
+                    <li class="step">
+                        <span class="step-number">0</span>
+                        <div>
+                            <h3>Domäne und gemeinsames Ziel</h3>
+                            <p>
+                                Ein Schaf hat Kosename, Rasse, Alter und
+                                Geschlecht. Die Oberfläche leitet ein
+                                Inline-SVG-Icon aus der Datensatz-ID ab; Nutzer
+                                sehen ausschließlich ihre eigenen Schafe.
+                            </p>
+                            <ul>
+                                <li>
+                                    Einzelansicht und Herdenliste als sichtbare
+                                    Akzeptanzkriterien
+                                </li>
+                                <li>
+                                    Die View bleibt semantisches HTML und
+                                    spricht die JSON-API
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="deliverable">
+                            <strong>Ergebnis</strong>Ein kleines, klares
+                            Domänenmodell und eine fertige Oberfläche, an der
+                            jede Backend-Stufe geprüft werden kann.
+                        </div>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">1</span>
+                        <div>
+                            <h3>Node.js, Module und asynchrone Grundlagen</h3>
+                            <p>
+                                Das Projekt verwendet ES-Module
+                                (<code>import</code>/<code>export</code>) wie in
+                                der Agenda. CommonJS lässt sich vergleichend
+                                einordnen.
+                            </p>
+                            <ul>
+                                <li>
+                                    <code>src/index.js</code> startet den
+                                    nativen HTTP-Checkpoint;
+                                    <code>src/app.js</code> liefert später
+                                    <code>GET /health</code>
+                                </li>
+                                <li>
+                                    <code>filesystem-basics.mjs</code> liest CSV
+                                    und hängt einmalig eine Logzeile an
+                                </li>
+                                <li>
+                                    Event Loop, Promises,
+                                    <code>async/await</code> und
+                                    Fehlerbehandlung nachvollziehen
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="deliverable">
+                            <strong>Ergebnis</strong>Ein laufender Server, klare
+                            Modulgrenzen und der erste Request. Die Dateiübung
+                            vermittelt <code>fs/promises</code>; Anwendungsdaten
+                            liegen später in SQLite.
+                        </div>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">2</span>
+                        <div>
+                            <h3>HTTP und Express-API für CRUD</h3>
+                            <p>
+                                HTTP-Methoden, Statuscodes, JSON, Routen,
+                                Middleware und Fehlerbehandlung an der
+                                Schafverwaltung nachvollziehen.
+                            </p>
+                            <ul>
+                                <li>
+                                    <code>GET /api/sheep</code> und
+                                    <code>GET /api/sheep/:id</code>
+                                </li>
+                                <li>
+                                    <code>POST</code> anlegen,
+                                    <code>PATCH</code> bearbeiten,
+                                    <code>DELETE</code> löschen
+                                </li>
+                                <li>
+                                    Duplizieren als
+                                    <code>POST /api/sheep/:id/duplicate</code>
+                                </li>
+                                <li>
+                                    Serverseitig Pflichtfelder, Alter und
+                                    erlaubte Werte validieren
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="deliverable">
+                            <strong>Ergebnis</strong>Die UI spricht die
+                            geschützte REST-API; Routes, Controller und Model
+                            bleiben getrennt.
+                        </div>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">3</span>
+                        <div>
+                            <h3>SQLite und persistentes Model</h3>
+                            <p>
+                                Das Model kapselt asynchrone Knex-Abfragen mit
+                                gebundenen Parametern; Routes und View bleiben
+                                unverändert.
+                            </p>
+                            <ul>
+                                <li>
+                                    Bestehende Tabelle <code>sheeps</code> und
+                                    neue Nutzerbeziehung nachvollziehen
+                                </li>
+                                <li>
+                                    Schema-Initialisierung ergänzt fehlende
+                                    Felder ohne Datenlöschung
+                                </li>
+                                <li>
+                                    Nach Neustart prüfen, dass Herden erhalten
+                                    bleiben
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="deliverable">
+                            <strong>Ergebnis</strong>Knex verwendet das
+                            installierte <code>sqlite3</code>-Paket. Im
+                            Workspace liegt kein bereitgestelltes SQL-Skript;
+                            die additive Einrichtung läuft über
+                            <code>npm run db:init</code>.
+                        </div>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">4</span>
+                        <div>
+                            <h3>Passwort-Login und Session-Cookie</h3>
+                            <p>
+                                Authentifizierung vor geschützte Routen setzen.
+                                Das Passwort wird nicht im Klartext gespeichert;
+                                beim Login wird ein serverseitiger
+                                Session-Eintrag erzeugt.
+                            </p>
+                            <ul>
+                                <li>
+                                    <code>POST /api/auth/login</code>,
+                                    <code>GET /api/auth/me</code>,
+                                    <code>POST /api/auth/logout</code>
+                                </li>
+                                <li>
+                                    Passwort mit <code>crypto.scrypt</code> samt
+                                    Salt ableiten; Session-ID nach Login
+                                    erneuern
+                                </li>
+                                <li>
+                                    Cookie enthält nur die Session-ID:
+                                    <code>HttpOnly</code>,
+                                    <code>SameSite=Lax</code>, im
+                                    Produktivbetrieb <code>Secure</code>
+                                </li>
+                                <li>
+                                    Jede Schafabfrage auf die authentifizierte
+                                    <code>user_id</code> begrenzen
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="deliverable">
+                            <strong>Ergebnis</strong>Geschützte Herden pro
+                            Nutzer. Session-Speicher (z. B. SQLite) statt
+                            flüchtigem In-Memory-Store; Logout zerstört die
+                            Session serverseitig.
+                        </div>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">5</span>
+                        <div>
+                            <h3>Multiuser und WebSockets</h3>
+                            <p>
+                                Nach erfolgreich gespeicherter Änderung sendet
+                                der Server ein Ereignis. Andere angemeldete
+                                Clients aktualisieren Liste und Detailansicht
+                                ohne Neuladen.
+                            </p>
+                            <ul>
+                                <li>
+                                    Socket.IO am selben HTTP-Server betreiben
+                                </li>
+                                <li>
+                                    Socket-Verbindung an dieselbe
+                                    Session/Auth-Prüfung binden
+                                </li>
+                                <li>
+                                    Pro Nutzer einen serverseitig zugewiesenen
+                                    Raum verwenden
+                                </li>
+                                <li>
+                                    Ereignisse: <code>sheep:created</code>,
+                                    <code>sheep:updated</code>,
+                                    <code>sheep:deleted</code>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="deliverable">
+                            <strong>Ergebnis</strong>Live-Updates bleiben auf
+                            berechtigte Nutzer beschränkt. Der Client darf weder
+                            Raum noch Nutzer-ID selbst bestimmen.
+                        </div>
+                    </li>
+                    <li class="step">
+                        <span class="step-number">6</span>
+                        <div>
+                            <h3>Sicherheit, Tests und Betrieb</h3>
+                            <p>
+                                Die letzten Kursinhalte direkt auf das Projekt
+                                anwenden: Datenvalidierung,
+                                SQL-Injection-Schutz, XSS-sichere Ausgabe,
+                                CSRF-Schutz für Cookie-authentifizierte
+                                Änderungen sowie sichere Fehlerantworten.
+                            </p>
+                            <ul>
+                                <li>
+                                    Service- und API-Tests mit
+                                    <code>node:test</code> und separater
+                                    Test-Datenbank
+                                </li>
+                                <li>
+                                    Manueller Mehrbrowser-Test: zwei Nutzer,
+                                    getrennte Rechte, Live-Änderung
+                                </li>
+                                <li>
+                                    HTTPS in der Bereitstellung,
+                                    Umgebungsvariablen, Logs und Health-Check
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="deliverable">
+                            <strong>Ergebnis</strong>Ein überprüfbarer
+                            End-to-End-Ablauf statt einer lose angehängten
+                            Deployment-Demo.
+                        </div>
+                    </li>
+                </ol>
+
+                <div class="section-label">Zielarchitektur</div>
+                <div class="architecture-grid">
+                    <article class="architecture-block">
+                        <h3>Code-Aufteilung</h3>
+                        <p>
+                            Die Ausschnitte zeigen die tatsächlich laufenden
+                            Module.
+                        </p>
+                        <pre class="code-block">
+backend/src/
+    app.js                    # Express, HTTP, Socket.IO
+    routes/authRoute.js       # Auth-URLs
+    routes/sheepApiRoute.js   # REST-URLs
+    controllers/              # Request und Response
+    middleware/               # Session, CSRF, Fehler
+    models/                   # SQLite und Fachzugriff
+    initDb.js                  # additive Einrichtung
+backend/static/              # CSS und Assets
+frontend/weidebuch.nodejs.html # View und Browser-JS</pre
+                        >
+                    </article>
+                    <article class="architecture-block">
+                        <h3>Datenmodell</h3>
+                        <p>
+                            Icons werden aus der ID als Inline-SVG erzeugt;
+                            dafür gibt es kein zusätzliches Feld.
+                        </p>
+                        <pre class="code-block">
+users
+    id, email UNIQUE, password_hash, created_at
+
+sheeps (bestehende Tabelle erweitert)
+    id, user_id → users.id
+    name, breed, age, sex
+
+sessions
+    session_hash, user_id, csrf_token, expires_at
+    Cookie im Browser: nur die zufällige Session-ID</pre
+                        >
+                    </article>
+                </div>
+                <div class="scope-note">
+                    <strong>Bereitgestellte Materialien:</strong> Die Agenda
+                    setzt SQLite voraus; EJS/Pug sind optional und werden für
+                    die statische HTML-View nicht verwendet. Ein SQL-Skript ist
+                    im aktuellen Workspace nicht vorhanden. Socket.IO ergänzt
+                    die JSON-API um authentifizierte Live-Updates.
+                </div>
+                <div class="section-label">Abschlusskriterien</div>
+                <ul class="check-list">
+                    <li>
+                        <i
+                            class="ph ph-check-circle"
+                            aria-hidden="true"></i>
+                        CRUD, Einzel- und Listenansicht funktionieren nach
+                        Server-Neustart weiter.
+                    </li>
+                    <li>
+                        <i
+                            class="ph ph-check-circle"
+                            aria-hidden="true"></i>
+                        Login und Session-Cookie schützen die API; Nutzer sehen
+                        ausschließlich ihre eigene Herde.
+                    </li>
+                    <li>
+                        <i
+                            class="ph ph-check-circle"
+                            aria-hidden="true"></i>
+                        Änderungen eines Clients erscheinen bei berechtigten
+                        weiteren Clients live.
+                    </li>
+                    <li>
+                        <i
+                            class="ph ph-check-circle"
+                            aria-hidden="true"></i>
+                        Die Icon-Zuordnung erfolgt automatisch und lässt sich
+                        ohne Bild-Upload testen.
+                    </li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <span>Weidebuch · Node.js-Praxisprojekt</span
+                ><span>Backend in Etappen · Frontend bewusst schlank</span>
+            </div>
+        </footer>
+
+        <dialog
+            id="loginDialog"
+            aria-labelledby="loginTitle">
+            <form
+                id="loginForm"
+                class="dialog-inner">
+                <h2 id="loginTitle">Anmelden</h2>
+                <p class="dialog-copy">
+                    Melde dich an oder erstelle ein Lernkonto. Passwörter werden
+                    nur als Hash gespeichert.
+                </p>
+                <div class="field">
+                    <label for="accountEmail">E-Mail-Adresse</label
+                    ><input
+                        id="accountEmail"
+                        class="control"
+                        type="email"
+                        autocomplete="username"
+                        required
+                        maxlength="254" />
+                </div>
+                <div
+                    class="field"
+                    style="margin-top: 12px">
+                    <label for="accountPassword">Passwort</label
+                    ><input
+                        id="accountPassword"
+                        class="control"
+                        type="password"
+                        autocomplete="current-password"
+                        required
+                        minlength="12"
+                        maxlength="256" />
+                </div>
+                <div class="dialog-actions">
+                    <button
+                        type="button"
+                        class="button"
+                        id="cancelLogin">
+                        Abbrechen</button
+                    ><button
+                        type="button"
+                        class="button"
+                        id="registerButton">
+                        Konto erstellen</button
+                    ><button
+                        type="submit"
+                        class="button button-primary">
+                        <i
+                            class="ph ph-sign-in"
+                            aria-hidden="true"></i>
+                        Anmelden
+                    </button>
+                </div>
+            </form>
+        </dialog>
+        <div
+            id="toast"
+            class="toast"
+            role="status"
+            aria-live="polite"
+            hidden></div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            (() => {
+                const palettes = [
+                    {
+                        bg: "#e8efe5",
+                        fleece: "#fffdf6",
+                        shade: "#e7dfcf",
+                        face: "#76513d",
+                        nose: "#d49b83",
+                    },
+                    {
+                        bg: "#f5e9da",
+                        fleece: "#fbf1df",
+                        shade: "#e7cda6",
+                        face: "#5b4538",
+                        nose: "#c88775",
+                    },
+                    {
+                        bg: "#e6edf1",
+                        fleece: "#f9fbfa",
+                        shade: "#d7e0e2",
+                        face: "#584c44",
+                        nose: "#cf9684",
+                    },
+                    {
+                        bg: "#f2e8e9",
+                        fleece: "#fff8f5",
+                        shade: "#e6d4d7",
+                        face: "#6a504d",
+                        nose: "#d29490",
+                    },
+                    {
+                        bg: "#efeede",
+                        fleece: "#fbf7e5",
+                        shade: "#e4ddb8",
+                        face: "#635344",
+                        nose: "#c68e76",
+                    },
+                    {
+                        bg: "#e7eee9",
+                        fleece: "#f7f7f2",
+                        shade: "#d1ded5",
+                        face: "#493f38",
+                        nose: "#c58472",
+                    },
+                ];
+                const iconNames = [
+                    "Wiese",
+                    "Morgenlicht",
+                    "Kiesel",
+                    "Heide",
+                    "Sommergras",
+                    "Waldsaum",
+                ];
+                const sheepSvg = (seed, className = "sheep-avatar") => {
+                    const p = palettes[Math.abs(seed) % palettes.length];
+                    return `<svg class="${className}" viewBox="0 0 64 64" role="img" aria-label="Schaf-Icon ${iconNames[Math.abs(seed) % iconNames.length]}"><circle cx="32" cy="32" r="30" fill="${p.bg}"/><g stroke="${p.face}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 42v8m10-7v8m10-8v8m8-14v14" fill="none"/><path d="M15 31c-3-4 0-9 5-9 0-6 8-8 11-3 4-5 12-3 12 3 6-1 9 5 6 9l-3 8H18z" fill="${p.fleece}"/><circle cx="19" cy="28" r="6" fill="${p.fleece}"/><circle cx="27" cy="23" r="7" fill="${p.fleece}"/><circle cx="37" cy="23" r="7" fill="${p.fleece}"/><circle cx="45" cy="28" r="6" fill="${p.fleece}"/><circle cx="24" cy="34" r="7" fill="${p.fleece}"/><circle cx="36" cy="34" r="8" fill="${p.fleece}"/><path d="M43 25c2-4 7-5 10-2l3 5-2 9c-2 5-9 6-12 2l-3-5 1-6z" fill="${p.face}"/><path d="M43 25l-5-4m15 2 4-4" fill="none"/><ellipse cx="53" cy="35" rx="4" ry="2.7" fill="${p.nose}" stroke="none"/><circle cx="49" cy="29" r="1.1" fill="#fff" stroke="none"/><path d="M18 34c2 2 4 2 6 1m12 2c2 1 4 1 6 0" fill="none" stroke="${p.shade}"/></g></svg>`;
+                };
+                const events = [];
+                let sheep = [];
+                let currentUser = null;
+                let csrfToken = null;
+                let socket = null;
+                let selectedId = null;
+                let editingId = null;
+                let signedIn = false;
+                let toastTimer;
+                const $ = (selector) => document.querySelector(selector);
+                const safe = (value) =>
+                    String(value).replace(
+                        /[&<>"']/g,
+                        (char) =>
+                            ({
+                                "&": "&amp;",
+                                "<": "&lt;",
+                                ">": "&gt;",
+                                '"': "&quot;",
+                                "'": "&#39;",
+                            })[char]
+                    );
+                const currentHerd = () => sheep;
+                const findSheep = (id) =>
+                    currentHerd().find((s) => s.id === Number(id));
+                const ageLabel = (age) =>
+                    `${age} ${Number(age) === 1 ? "Jahr" : "Jahre"}`;
+                // Lernkontext 2.1: Die View spricht ausschließlich HTTP und JSON.
+                async function api(url, options = {}) {
+                    const method = options.method ?? "GET";
+                    const headers = { ...options.headers };
+                    if (options.body)
+                        headers["Content-Type"] = "application/json";
+                    if (method !== "GET" && csrfToken)
+                        headers["X-CSRF-Token"] = csrfToken;
+                    const response = await fetch(url, {
+                        ...options,
+                        method,
+                        headers,
+                        credentials: "same-origin",
+                    });
+                    const data =
+                        response.status === 204
+                            ? null
+                            : await response.json().catch(() => null);
+                    if (!response.ok) {
+                        const error = new Error(
+                            data?.error ??
+                                `Anfrage fehlgeschlagen (${response.status})`
+                        );
+                        error.status = response.status;
+                        throw error;
+                    }
+                    return data;
+                }
+                function toast(message) {
+                    const el = $("#toast");
+                    el.textContent = message;
+                    el.hidden = false;
+                    clearTimeout(toastTimer);
+                    toastTimer = setTimeout(() => {
+                        el.hidden = true;
+                    }, 2600);
+                }
+                function logEvent(text) {
+                    events.unshift({
+                        text,
+                        time: new Date().toLocaleTimeString("de-DE", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                        }),
+                    });
+                    events.splice(4);
+                    renderEvents();
+                }
+                function renderEvents() {
+                    $("#eventList").innerHTML = events
+                        .map(
+                            (event) =>
+                                `<li><span>${safe(event.text)}</span><span class="event-time">${safe(event.time)}</span></li>`
+                        )
+                        .join("");
+                }
+                function renderList() {
+                    const search = $("#search")
+                        .value.trim()
+                        .toLocaleLowerCase("de-DE");
+                    const breed = $("#breedFilter").value;
+                    const visible = currentHerd().filter(
+                        (s) =>
+                            (!search ||
+                                `${s.name} ${s.breed}`
+                                    .toLocaleLowerCase("de-DE")
+                                    .includes(search)) &&
+                            (!breed || s.breed === breed)
+                    );
+                    $("#herdCount").textContent =
+                        `${currentHerd().length} ${currentHerd().length === 1 ? "Schaf" : "Schafe"}`;
+                    if (!visible.some((s) => s.id === selectedId))
+                        selectedId = visible[0]?.id ?? null;
+                    $("#sheepList").innerHTML = visible.length
+                        ? visible
+                              .map(
+                                  (s) =>
+                                      `<li><button type="button" class="sheep-row" data-select="${s.id}" aria-current="${s.id === selectedId}">${sheepSvg(s.id)}<span><span class="row-name">${safe(s.name)}</span><span class="row-meta">${safe(s.breed)} · ${safe(s.sex)}</span></span><span class="row-age">${ageLabel(s.age)}</span></button></li>`
+                              )
+                              .join("")
+                        : `<li class="empty-list">${currentHerd().length ? "Keine passenden Schafe gefunden." : "Noch keine Schafe in dieser Herde."}</li>`;
+                    renderDetail();
+                }
+                async function loadSheep() {
+                    $("#connectionStatus").textContent = "Herde wird geladen";
+                    sheep = await api("/api/sheep");
+                    $("#connectionStatus").textContent = "Backend verbunden";
+                    renderList();
+                }
+                function connectSocket() {
+                    if (!window.io) {
+                        $("#eventState").textContent =
+                            "Socket.IO nicht verfügbar";
+                        return;
+                    }
+                    socket = window.io();
+                    socket.on("connect", () => {
+                        $("#eventState").textContent = "Live verbunden";
+                    });
+                    socket.on("disconnect", () => {
+                        $("#eventState").textContent = "Live getrennt";
+                    });
+                    socket.on("connect_error", () => {
+                        $("#eventState").textContent =
+                            "Live-Verbindung fehlgeschlagen";
+                    });
+                    const actions = {
+                        "sheep:created": "neu angelegt",
+                        "sheep:updated": "bearbeitet",
+                        "sheep:deleted": "gelöscht",
+                    };
+                    for (const [eventName, action] of Object.entries(actions)) {
+                        socket.on(eventName, (item) => {
+                            logEvent(`${item.name} wurde ${action}.`);
+                            loadSheep().catch((error) => toast(error.message));
+                        });
+                    }
+                }
+                function renderDetail() {
+                    const sheep = findSheep(selectedId);
+                    const pane = $("#detailPane");
+                    if (editingId !== null) {
+                        const item =
+                            editingId === "new" ? null : findSheep(editingId);
+                        const previewSeed = item?.id ?? Date.now();
+                        pane.innerHTML = `<div class="form-heading"><div class="detail-kicker">${item ? "Schaf bearbeiten" : "Neues Schaf"}</div><h2>${item ? `Daten von ${safe(item.name)} ändern` : "Ein Schaf zur Herde hinzufügen"}</h2><p>Das Icon wird beim Speichern automatisch aus der Sammlung zugeordnet.</p></div>
+                            <form id="sheepForm" class="sheep-form">
+                                <div class="form-icon-preview">${sheepSvg(previewSeed)}<span><strong>Automatisches Schaf-Icon</strong><br />Icon-Variante wird aus der Sammlung gewählt.</span></div>
+                                <div class="field"><label for="sheepName">Kosename</label><input class="control" id="sheepName" name="name" required maxlength="40" autocomplete="off" value="${safe(item?.name ?? "")}" placeholder="z. B. Lotti" /></div>
+                                <div class="field"><label for="sheepBreed">Rasse</label><select class="control" id="sheepBreed" name="breed" required>${["Merino", "Ouessant", "Texel", "Heidschnucke", "Suffolk", "Coburger Fuchsschaf"].map((b) => `<option${item?.breed === b ? " selected" : ""}>${b}</option>`).join("")}</select></div>
+                                <div class="field"><label for="sheepAge">Alter in Jahren</label><input class="control" id="sheepAge" name="age" type="number" min="0" max="25" step="1" required value="${safe(item?.age ?? 1)}" /></div>
+                                <div class="field"><label for="sheepSex">Geschlecht</label><select class="control" id="sheepSex" name="sex" required><option${item?.sex === "Weiblich" ? " selected" : ""}>Weiblich</option><option${item?.sex === "Männlich" ? " selected" : ""}>Männlich</option></select></div>
+                                <div class="form-actions"><button class="button button-primary" type="submit"><i class="ph ph-floppy-disk" aria-hidden="true"></i> ${item ? "Änderungen speichern" : "Schaf anlegen"}</button><button class="button" type="button" id="cancelEdit">Abbrechen</button></div>
+                            </form>`;
+                        $("#sheepForm").addEventListener("submit", saveSheep);
+                        $("#cancelEdit").addEventListener("click", () => {
+                            editingId = null;
+                            renderList();
+                        });
+                        return;
+                    }
+                    if (!sheep) {
+                        pane.innerHTML = `<div class="empty-detail"><i class="ph ph-sheep" aria-hidden="true"></i><h2>${currentHerd().length ? "Keine Auswahl" : "Die Herde ist noch leer"}</h2><p>${currentHerd().length ? "Wähle ein Schaf in der Liste aus." : "Lege das erste Schaf an, um mit CRUD zu starten."}</p>${currentHerd().length ? "" : '<button type="button" class="button button-primary" id="emptyAdd"><i class="ph ph-plus" aria-hidden="true"></i> Erstes Schaf anlegen</button>'}</div>`;
+                        $("#emptyAdd")?.addEventListener("click", () => {
+                            editingId = "new";
+                            renderDetail();
+                            $("#sheepName").focus();
+                        });
+                        return;
+                    }
+                    pane.innerHTML = `<div class="detail-kicker">Einzelansicht · Schaf-ID ${sheep.id}</div>
+                        <div class="sheep-profile">${sheepSvg(sheep.id)}<div><h2 class="profile-title">${safe(sheep.name)}</h2><p class="profile-sub">${safe(sheep.breed)}</p></div></div>
+                        <div class="detail-actions"><button type="button" class="button button-small" id="editSheep"><i class="ph ph-pencil-simple" aria-hidden="true"></i> Bearbeiten</button><button type="button" class="button button-small" id="duplicateSheep"><i class="ph ph-copy" aria-hidden="true"></i> Duplizieren</button><button type="button" class="button button-small button-danger" id="deleteSheep"><i class="ph ph-trash" aria-hidden="true"></i> Löschen</button></div>
+                        <dl class="facts"><div class="fact"><dt>Kosename</dt><dd>${safe(sheep.name)}</dd></div><div class="fact"><dt>Rasse</dt><dd>${safe(sheep.breed)}</dd></div><div class="fact"><dt>Alter</dt><dd>${ageLabel(sheep.age)}</dd></div><div class="fact"><dt>Geschlecht</dt><dd>${safe(sheep.sex)}</dd></div></dl>
+                        <p class="generated-note"><i class="ph ph-image" aria-hidden="true"></i> Icon automatisch zugeordnet · Sammlung „${iconNames[sheep.id % iconNames.length]}“</p>`;
+                    $("#editSheep").addEventListener("click", () => {
+                        editingId = sheep.id;
+                        renderDetail();
+                        $("#sheepName").focus();
+                    });
+                    $("#duplicateSheep").addEventListener("click", () =>
+                        duplicateSheep(sheep)
+                    );
+                    $("#deleteSheep").addEventListener("click", () =>
+                        deleteSheep(sheep)
+                    );
+                }
+                async function saveSheep(event) {
+                    event.preventDefault();
+                    const form = new FormData(event.currentTarget);
+                    const name = String(form.get("name")).trim();
+                    const age = Number(form.get("age"));
+                    if (
+                        !name ||
+                        !Number.isInteger(age) ||
+                        age < 0 ||
+                        age > 25
+                    ) {
+                        toast("Bitte Name und Alter korrekt eingeben.");
+                        return;
+                    }
+                    const payload = {
+                        name,
+                        breed: String(form.get("breed")),
+                        age,
+                        sex: String(form.get("sex")),
+                    };
+                    try {
+                        const isNew = editingId === "new";
+                        const saved = await api(
+                            isNew ? "/api/sheep" : `/api/sheep/${editingId}`,
+                            {
+                                method: isNew ? "POST" : "PATCH",
+                                body: JSON.stringify(payload),
+                            }
+                        );
+                        selectedId = saved.id;
+                        editingId = null;
+                        await loadSheep();
+                        toast(
+                            isNew
+                                ? `${saved.name} wurde angelegt.`
+                                : "Änderungen gespeichert."
+                        );
+                    } catch (error) {
+                        toast(error.message);
+                    }
+                }
+                async function duplicateSheep(source) {
+                    try {
+                        const copy = await api(
+                            `/api/sheep/${source.id}/duplicate`,
+                            { method: "POST" }
+                        );
+                        selectedId = copy.id;
+                        await loadSheep();
+                        toast("Kopie wurde angelegt.");
+                    } catch (error) {
+                        toast(error.message);
+                    }
+                }
+                async function deleteSheep(sheep) {
+                    if (
+                        !window.confirm(
+                            `„${sheep.name}“ wirklich aus der Herde löschen?`
+                        )
+                    )
+                        return;
+                    try {
+                        await api(`/api/sheep/${sheep.id}`, {
+                            method: "DELETE",
+                        });
+                        selectedId = null;
+                        await loadSheep();
+                        toast("Schaf wurde gelöscht.");
+                    } catch (error) {
+                        toast(error.message);
+                    }
+                }
+                function renderAccount() {
+                    $("#accountName").textContent = signedIn
+                        ? currentUser.email
+                        : "Anmelden";
+                    $("#accountButton").setAttribute(
+                        "aria-label",
+                        signedIn
+                            ? `Angemeldet als ${currentUser.email}. Abmelden`
+                            : "Anmelden"
+                    );
+                    $("#appContent").hidden = !signedIn;
+                    $("#signedOut").classList.toggle("active", !signedIn);
+                }
+                function openLogin() {
+                    $("#accountPassword").value = "";
+                    $("#loginDialog").showModal();
+                }
+                $("#tabHerd").addEventListener("click", () => setTab("herd"));
+                $("#tabCourse").addEventListener("click", () =>
+                    setTab("course")
+                );
+                function setTab(tab) {
+                    const isHerd = tab === "herd";
+                    $("#tabHerd").setAttribute("aria-selected", String(isHerd));
+                    $("#tabCourse").setAttribute(
+                        "aria-selected",
+                        String(!isHerd)
+                    );
+                    $("#herdView").classList.toggle("active", isHerd);
+                    $("#courseView").classList.toggle("active", !isHerd);
+                }
+                $("#search").addEventListener("input", renderList);
+                $("#breedFilter").addEventListener("change", renderList);
+                $("#sheepList").addEventListener("click", (event) => {
+                    const row = event.target.closest("[data-select]");
+                    if (!row) return;
+                    selectedId = Number(row.dataset.select);
+                    editingId = null;
+                    renderList();
+                });
+                $("#addSheep").addEventListener("click", () => {
+                    editingId = "new";
+                    renderDetail();
+                    $("#sheepName").focus();
+                });
+                $("#accountButton").addEventListener("click", () => {
+                    if (!signedIn) {
+                        openLogin();
+                        return;
+                    }
+                    api("/api/auth/logout", { method: "POST" })
+                        .then(() => {
+                            socket?.disconnect();
+                            socket = null;
+                            csrfToken = null;
+                            currentUser = null;
+                            sheep = [];
+                            signedIn = false;
+                            renderAccount();
+                            renderList();
+                            $("#connectionStatus").textContent = "Abgemeldet";
+                            toast("Du wurdest abgemeldet.");
+                        })
+                        .catch((error) => toast(error.message));
+                });
+                $("#signInFromEmpty").addEventListener("click", openLogin);
+                $("#cancelLogin").addEventListener("click", () =>
+                    $("#loginDialog").close()
+                );
+                async function authenticate(endpoint) {
+                    const credentials = {
+                        email: $("#accountEmail").value,
+                        password: $("#accountPassword").value,
+                    };
+                    const result = await api(endpoint, {
+                        method: "POST",
+                        body: JSON.stringify(credentials),
+                    });
+                    currentUser = result.user;
+                    csrfToken = result.csrfToken;
+                    signedIn = true;
+                    editingId = null;
+                    $("#loginDialog").close();
+                    renderAccount();
+                    await loadSheep();
+                    connectSocket();
+                    toast(
+                        endpoint.endsWith("register")
+                            ? "Konto erstellt."
+                            : "Angemeldet."
+                    );
+                }
+                $("#loginForm").addEventListener("submit", async (event) => {
+                    event.preventDefault();
+                    try {
+                        await authenticate("/api/auth/login");
+                    } catch (error) {
+                        toast(error.message);
+                    }
+                });
+                $("#registerButton").addEventListener("click", async () => {
+                    if (!$("#loginForm").reportValidity()) return;
+                    try {
+                        await authenticate("/api/auth/register");
+                    } catch (error) {
+                        toast(error.message);
+                    }
+                });
+                async function initialize() {
+                    renderAccount();
+                    renderList();
+                    renderEvents();
+                    try {
+                        const session = await api("/api/auth/me");
+                        currentUser = session.user;
+                        csrfToken = session.csrfToken;
+                        signedIn = true;
+                        renderAccount();
+                        await loadSheep();
+                        connectSocket();
+                    } catch (error) {
+                        if (error.status === 401) {
+                            $("#connectionStatus").textContent =
+                                "Backend bereit";
+                            $("#eventState").textContent =
+                                "Nach Anmeldung verbunden";
+                        } else {
+                            $("#connectionStatus").textContent =
+                                "Backend nicht erreichbar";
+                            $("#eventState").textContent =
+                                "Keine Live-Verbindung";
+                            toast(error.message);
+                        }
+                    }
+                }
+                initialize();
+            })();
+        </script>
+    </body>
+</html>

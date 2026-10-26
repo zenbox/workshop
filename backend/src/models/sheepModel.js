@@ -1,109 +1,56 @@
-/** Sheep Datenmodell (Klassen-Version)
- *
- * @package Database
- * @module
- * @author Michael <michael.reichart@gfu.net>
- * @version v2.0.0
- * @since 2025-11-13
- * @license MIT {https://opensource.org/licenses/MIT}
- * @copyright (c) 2025 Michael Reichart, Cologne
- */
-
 import db from "./db.js";
 
+const fields = ["name", "breed", "age", "sex"];
+
+function editableValues(data) {
+    return Object.fromEntries(
+        fields
+            .filter((field) => field in data)
+            .map((field) => [field, data[field]])
+    );
+}
+
 class SheepModel {
-    #table = "sheeps"; // für mich neu?!
-    // bisher _table als Syntax für "private" Variablen
-
-    /**
-     * @constructor
-     */
-    constructor() {}
-
-    async init() {
-        const exists = await db.schema.hasTable(this.#table);
-
-        if (!exists) {
-            await db.schema.createTable(this.#table, (table) => {
-                table.increments("id").primary();
-                table.string("name").notNullable();
-            });
-
-            await db(this.#table).insert([
-                { name: "Dolly" },
-                { name: "Shaun" },
-                { name: "Wooly" },
-            ]);
-        }
-
-        return this; // Ermöglicht Method Chaining
+    // Lernkontext 2.3: Knex bindet Werte als Parameter; user_id begrenzt jeden Datenzugriff.
+    list(userId) {
+        return db("sheeps")
+            .select("id", ...fields)
+            .where({ user_id: userId })
+            .orderBy("name", "asc");
     }
 
-    /**
-     *
-     * @returns rows <array>
-     */
-    async list() {
-        return await db(this.#table).select("*").orderBy("name", "asc");
+    find(userId, id) {
+        return db("sheeps")
+            .select("id", ...fields)
+            .where({ user_id: userId, id })
+            .first();
     }
 
-    /**
-     *
-     * @param {*} id
-     * @returns row
-     */
-    async load(id) {
-        return await db(this.#table).where({ id }).first();
+    async create(userId, data) {
+        const [id] = await db("sheeps").insert({
+            user_id: userId,
+            ...editableValues(data),
+        });
+        return this.find(userId, id);
     }
 
-    /**
-     * @param {*} data
-     * @returns id
-     */
-    async create(data) {
-        const [id] = await db(this.#table).insert(data);
-        return await this.load(id);
-    }
-    1;
-    /**
-     *
-     * @param {*} id
-     * @param {*} data
-     * @returns id
-     */
-    async update(id, data) {
-        await db(this.#table).where({ id }).update(data);
-        return await this.load(id);
+    async update(userId, id, data) {
+        const changed = await db("sheeps")
+            .where({ user_id: userId, id })
+            .update(editableValues(data));
+        return changed ? this.find(userId, id) : null;
     }
 
-    /**
-     *
-     * @param {*} id
-     *
-     * TODO: Testfähigkeit herstellen, Rückgabe fehlt!
-     */
-    async delete(id) {
-        await db(this.#table).where({ id }).del();
+    async duplicate(userId, id) {
+        const sheep = await this.find(userId, id);
+        if (!sheep) return null;
+        const copyName = `${sheep.name.slice(0, 32)} (Kopie)`;
+        return this.create(userId, { ...sheep, name: copyName });
+    }
+
+    async remove(userId, id) {
+        return db("sheeps").where({ user_id: userId, id }).del();
     }
 }
 
-// Singleton-Pattern: Export als    e i n e   Instanz für die ganze App.
-const sheep = new SheepModel();
-export default sheep;
-
-/*
-// Einzelne Schaf-Instanzenklasse
-class Sheep { 
-    constructor(id, name) { }
-    
-    get id() {
-        return this.#id;
-    }
-
-    set name(name) {
-        this.#name = name;
-    }
-}
-
-export default Sheep;
-*/
+export default new SheepModel();

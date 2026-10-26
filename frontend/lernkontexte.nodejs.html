@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/assets/css/styles.css" />
+        <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+        <title>Node.js MVC – Frontend und Lernkontexte</title>
+        <style>
+            :root {
+                color-scheme: light;
+                --ink: #202923;
+                --muted: #667168;
+                --line: #dce3dc;
+                --paper: #fff;
+                --canvas: #f4f6f3;
+                --green: #315c43;
+                --green-dark: #244633;
+                --green-pale: #e8efe8;
+                --gold: #e6bd71;
+                --red: #a43c35;
+                --blue: #1769aa;
+                font-family: Inter, "Open Sans", system-ui, sans-serif;
+            }
+            * { box-sizing: border-box; }
+            body { margin: 0; color: var(--ink); background: var(--canvas); line-height: 1.5; }
+            button, input, select, textarea { font: inherit; }
+            button { color: inherit; }
+            button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+            .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+            .site-header { background: var(--paper); border-bottom: 1px solid var(--line); }
+            .header-inner { min-height: 66px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+            .brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
+            .brand-icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--green-pale); color: var(--green); font-size: 19px; }
+            .brand strong { display: block; letter-spacing: -.02em; }
+            .brand small { display: block; color: var(--muted); font-size: 12px; }
+            .header-status { color: var(--muted); font-size: 12px; display: flex; gap: 7px; align-items: center; }
+            .dot { width: 8px; height: 8px; border-radius: 50%; background: #849087; display: inline-block; }
+            .dot.online { background: #43875a; }
+            .page { padding: 27px 0 48px; }
+            .eyebrow { color: var(--green); font-weight: 750; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
+            h1 { font-size: clamp(27px, 4vw, 37px); line-height: 1.12; letter-spacing: -.04em; margin: 5px 0 8px; }
+            h2 { margin: 0; font-size: 21px; line-height: 1.25; letter-spacing: -.025em; }
+            h3 { margin: 0 0 6px; font-size: 16px; }
+            p { margin: 0; }
+            .lead { max-width: 790px; color: var(--muted); }
+            .page-head { margin-bottom: 20px; }
+            .nav-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 0 0 19px; }
+            .tab { border: 0; border-bottom: 3px solid transparent; background: transparent; padding: 10px 14px 9px; color: var(--muted); cursor: pointer; font-weight: 650; }
+            .tab[aria-selected="true"] { border-bottom-color: var(--green); color: var(--green); }
+            .notice { background: #f8f0df; border: 1px solid #ead8b6; color: #594623; padding: 10px 13px; font-size: 13px; display: flex; gap: 9px; align-items: flex-start; margin-bottom: 16px; }
+            .notice i { font-size: 17px; margin-top: 1px; }
+            .toolbar { background: var(--paper); border: 1px solid var(--line); border-bottom: 0; padding: 11px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+            .mode-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 5px; padding: 3px; gap: 3px; background: #f7f9f6; }
+            .mode-switch button { border: 0; background: transparent; border-radius: 3px; padding: 6px 9px; cursor: pointer; font-size: 12px; color: var(--muted); }
+            .mode-switch button[aria-pressed="true"] { background: var(--green); color: white; }
+            .toolbar-right { display: flex; align-items: center; gap: 10px; min-width: 0; }
+            .backend-state { color: var(--muted); font-size: 12px; white-space: nowrap; }
+            .button { min-height: 39px; padding: 8px 12px; display: inline-flex; gap: 8px; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 4px; background: white; text-decoration: none; cursor: pointer; }
+            .button:hover { background: #f7f9f6; border-color: #aeb9ae; }
+            .button-primary { color: white; background: var(--green); border-color: var(--green); font-weight: 650; }
+            .button-primary:hover { background: var(--green-dark); border-color: var(--green-dark); }
+            .button-small { min-height: 34px; padding: 5px 9px; font-size: 13px; }
+            .button-danger { color: var(--red); }
+            .button:disabled { opacity: .55; cursor: not-allowed; }
+            .workspace { display: grid; grid-template-columns: minmax(280px, .9fr) minmax(360px, 1.35fr); min-height: 500px; background: white; border: 1px solid var(--line); }
+            .list-pane { border-right: 1px solid var(--line); min-width: 0; }
+            .list-head { padding: 17px 17px 13px; border-bottom: 1px solid var(--line); }
+            .list-head-top { display: flex; justify-content: space-between; gap: 9px; align-items: center; margin-bottom: 12px; }
+            .count { color: var(--muted); font-size: 12px; }
+            .filters { display: grid; grid-template-columns: minmax(0, 1fr) 125px; gap: 8px; }
+            .search-wrap { position: relative; }
+            .search-wrap i { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+            .control, .search-wrap input { width: 100%; min-height: 37px; padding: 7px 9px; border: 1px solid #cbd3cb; border-radius: 4px; background: white; color: var(--ink); }
+            .search-wrap input { padding-left: 32px; }
+            .record-list { list-style: none; padding: 0; margin: 0; }
+            .record-row { display: grid; grid-template-columns: 35px minmax(0, 1fr) auto; align-items: center; width: 100%; gap: 10px; padding: 12px 16px; border: 0; border-bottom: 1px solid #edf0ec; background: white; text-align: left; cursor: pointer; }
+            .record-row:hover { background: #f8faf7; }
+            .record-row[aria-current="true"] { background: #f0f5ef; box-shadow: inset 3px 0 0 var(--green); }
+            .record-symbol { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 4px; color: var(--green); background: var(--green-pale); font-size: 17px; }
+            .record-title { display: block; font-weight: 700; line-height: 1.3; }
+            .record-meta { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; }
+            .status-pill { display: inline-flex; align-items: center; gap: 5px; padding: 3px 7px; border-radius: 3px; background: #eef1ed; color: #526057; font-size: 11px; white-space: nowrap; }
+            .status-pill.work { background: #edf2f8; color: #405c7c; }
+            .status-pill.done { background: #e7f1e8; color: #336142; }
+            .empty-list { padding: 22px 16px; color: var(--muted); font-size: 13px; }
+            .detail-pane { padding: 24px clamp(18px, 4vw, 36px); min-width: 0; }
+            .detail-kicker { color: var(--muted); font-size: 12px; margin-bottom: 9px; }
+            .detail-top { display: flex; gap: 13px; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 18px; }
+            .detail-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 6px; background: var(--green-pale); color: var(--green); font-size: 23px; flex: none; }
+            .detail-title { font-size: 25px; margin: 0 0 3px; letter-spacing: -.03em; }
+            .detail-sub { color: var(--muted); font-size: 13px; }
+            .detail-actions { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 21px; }
+            .facts { border-top: 1px solid var(--line); border-left: 1px solid var(--line); display: grid; grid-template-columns: repeat(2, 1fr); }
+            .fact { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 11px 13px; }
+            .fact dt { color: var(--muted); font-size: 12px; margin-bottom: 3px; }
+            .fact dd { margin: 0; font-weight: 650; }
+            .description { color: var(--muted); font-size: 13px; margin-top: 15px; }
+            .detail-empty { min-height: 300px; display: grid; align-content: center; justify-items: center; text-align: center; gap: 9px; color: var(--muted); }
+            .detail-empty i { font-size: 27px; color: var(--green); }
+            .edit-form { display: grid; gap: 12px; max-width: 470px; }
+            .form-heading { margin-bottom: 16px; }
+            .form-heading p { color: var(--muted); font-size: 13px; margin-top: 5px; }
+            .field label { display: block; font-size: 13px; font-weight: 650; margin-bottom: 5px; }
+            textarea.control { min-height: 74px; resize: vertical; }
+            .form-actions { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 3px; }
+            .event-panel { background: white; border: 1px solid var(--line); border-top: 0; }
+            .event-head { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 10px 14px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+            .event-head h2 { font-size: 13px; letter-spacing: 0; }
+            .event-mode { color: #765a2d; background: #f8f0df; padding: 3px 7px; border-radius: 3px; font-size: 11px; }
+            .event-list { padding: 0; margin: 0; list-style: none; }
+            .event-list li { padding: 8px 14px; border-bottom: 1px solid #edf0ec; display: flex; justify-content: space-between; gap: 10px; font-size: 12px; }
+            .event-list li:last-child { border-bottom: 0; }
+            .event-time { color: var(--muted); white-space: nowrap; }
+            .api-gate { border: 1px solid var(--line); background: white; padding: 28px; text-align: center; }
+            .api-gate p { color: var(--muted); margin: 8px auto 15px; max-width: 520px; font-size: 14px; }
+            .course-view { display: none; }
+            .course-view.active, .app-view.active { display: block; }
+            .course-view > .lead { margin: 7px 0 18px; }
+            .day-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; margin: 18px 0 21px; }
+            .day-card { background: var(--green); color: white; min-height: 108px; padding: 14px 15px; }
+            .day-card small { color: #d9e6d9; text-transform: uppercase; letter-spacing: .1em; font-size: 10px; font-weight: 750; }
+            .day-card h3 { margin: 6px 0 4px; }
+            .day-card p { color: #e4ede5; font-size: 12px; }
+            .day-heading { margin: 26px 0 11px; padding-bottom: 7px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
+            .day-heading h2 { font-size: 18px; }
+            .day-heading span { color: var(--muted); font-size: 12px; }
+            .context { background: white; border: 1px solid var(--line); margin-bottom: 11px; }
+            .context-head { display: flex; align-items: flex-start; gap: 12px; padding: 15px 16px 12px; border-bottom: 1px solid #edf0ec; }
+            .context-number { background: var(--green-pale); color: var(--green); font-weight: 750; font-size: 12px; padding: 4px 7px; border-radius: 3px; flex: none; }
+            .context-head h3 { margin: 0 0 4px; }
+            .context-head p { color: var(--muted); font-size: 13px; }
+            .context-body { padding: 14px 16px 16px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(230px, .8fr); gap: 17px; }
+            .code-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; font-weight: 700; }
+            pre { margin: 0; max-width: 100%; overflow: auto; background: #202923; color: #e6efe7; border-radius: 3px; padding: 13px; font: 12px/1.55 "JetBrains Mono", ui-monospace, monospace; tab-size: 2; }
+            code { font-family: "JetBrains Mono", ui-monospace, monospace; font-size: .95em; }
+            .connection-note { border-left: 2px solid #a9baa9; padding: 2px 0 2px 12px; color: var(--muted); font-size: 13px; }
+            .connection-note strong { display: block; color: var(--ink); margin-bottom: 5px; }
+            .connection-note code { color: var(--green-dark); overflow-wrap: anywhere; }
+            .provided-note { background: #f3f6f2; border: 1px solid var(--line); padding: 12px 14px; color: var(--muted); font-size: 13px; margin: 15px 0; }
+            .provided-note strong { color: var(--ink); }
+            .architecture { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+            .architecture article { background: white; border: 1px solid var(--line); padding: 15px; }
+            .architecture p { color: var(--muted); font-size: 13px; margin-top: 5px; }
+            .flow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 13px; }
+            .flow span { background: var(--green-pale); color: var(--green-dark); padding: 5px 8px; font-size: 12px; border-radius: 3px; }
+            .flow i { color: var(--muted); font-size: 13px; }
+            .footer { border-top: 1px solid var(--line); background: white; color: var(--muted); font-size: 12px; }
+            .footer-inner { padding: 14px 0; display: flex; justify-content: space-between; gap: 12px; }
+            dialog { width: min(430px, calc(100% - 28px)); padding: 0; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); box-shadow: 0 18px 60px #19251d38; }
+            dialog::backdrop { background: #14201980; }
+            .dialog-inner { padding: 22px; }
+            .dialog-inner h2 { margin-bottom: 7px; }
+            .dialog-copy { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
+            .dialog-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+            .toast { position: fixed; z-index: 10; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--ink); color: white; padding: 10px 15px; border-radius: 4px; font-size: 13px; max-width: calc(100% - 28px); box-shadow: 0 4px 18px #0002; }
+            .toast[hidden] { display: none; }
+            [hidden] { display: none !important; }
+            @media (max-width: 760px) {
+                .shell { width: min(100% - 28px, 620px); }
+                .header-status { display: none; }
+                .workspace { grid-template-columns: 1fr; }
+                .list-pane { border-right: 0; border-bottom: 1px solid var(--line); }
+                .detail-pane { min-height: 280px; }
+                .context-body { grid-template-columns: 1fr; }
+                .day-grid { grid-template-columns: 1fr; }
+                .day-card { min-height: 0; }
+                .architecture { grid-template-columns: 1fr; }
+                .toolbar { align-items: flex-start; flex-direction: column; }
+                .toolbar-right { width: 100%; justify-content: space-between; }
+                .footer-inner { flex-direction: column; }
+            }
+            @media (max-width: 440px) {
+                .filters { grid-template-columns: 1fr; }
+                .facts { grid-template-columns: 1fr 1fr; }
+                .event-list li { flex-direction: column; gap: 2px; }
+                .event-head { align-items: flex-start; flex-direction: column; }
+                .nav-tabs { overflow-x: auto; }
+                .tab { white-space: nowrap; }
+                .mode-switch button { padding: 6px 7px; }
+                .backend-state { white-space: normal; text-align: right; }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+            }
+        </style>
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="shell header-inner">
+                <div class="brand"><span class="brand-icon" aria-hidden="true"><i class="ph ph-circles-three-plus"></i></span><div><strong>Backend-Lernwerkstatt</strong><small>Starter-Frontend · MVC-orientiert</small></div></div>
+                <div class="header-status"><span class="dot" id="headerDot"></span><span id="headerStatus">Vorschau im Arbeitsspeicher</span></div>
+            </div>
+        </header>
+
+        <main class="shell page">
+            <div class="page-head">
+                <div class="eyebrow">Node.js · drei Tage · ein durchgängiges Beispiel</div>
+                <h1>Das Frontend steht. Jetzt wächst das Backend.</h1>
+                <p class="lead">HTML und CSS sind vorbereitet. Die Lernkontexte zeigen Schritt für Schritt, wie Browseraktionen über Routes und Controller mit Models, SQLite, Sessions und Socket.IO verbunden werden.</p>
+            </div>
+            <nav class="nav-tabs" aria-label="Projektbereiche">
+                <button class="tab" id="tabApp" type="button" aria-selected="true" aria-controls="appView"><i class="ph ph-layout" aria-hidden="true"></i> Anwendungsvorschau</button>
+                <button class="tab" id="tabLearning" type="button" aria-selected="false" aria-controls="learningView"><i class="ph ph-list-numbers" aria-hidden="true"></i> Lernkontexte & Backend-Andockpunkte</button>
+            </nav>
+
+            <section id="appView" class="app-view active" aria-labelledby="tabApp">
+                <div class="notice" role="note"><i class="ph ph-info" aria-hidden="true"></i><p><strong>Bereitgestelltes Lernmaterial:</strong> Diese neutrale CRUD-Oberfläche und das Datenbank-Schema werden zur Verfügung gestellt. Im Kurs entsteht das Backend; die Beispieldaten dieser Vorschau werden nicht dauerhaft gespeichert.</p></div>
+                <div class="toolbar">
+                    <div class="mode-switch" aria-label="Verbindungsmodus">
+                        <button id="demoMode" type="button" aria-pressed="true">UI-Vorschau</button>
+                        <button id="apiMode" type="button" aria-pressed="false">Backend testen</button>
+                    </div>
+                    <div class="toolbar-right">
+                        <span class="backend-state" id="backendState">Demo-Daten · keine Anmeldung</span>
+                        <button class="button button-small" id="accountButton" type="button"><i class="ph ph-user-circle" aria-hidden="true"></i><span id="accountLabel">Demo-Nutzer</span></button>
+                    </div>
+                </div>
+                <div id="apiGate" class="api-gate" hidden>
+                    <h2>Anmeldung erforderlich</h2>
+                    <p>Im Backend-Modus lädt die Anwendung die geschützte Liste vom Server. Melde dich mit einem im Backend angelegten Testkonto an. Der Browser sendet das Session-Cookie mit den API-Anfragen automatisch an denselben Origin.</p>
+                    <button class="button button-primary" type="button" id="openLogin"><i class="ph ph-sign-in" aria-hidden="true"></i> Am Backend anmelden</button>
+                </div>
+                <div id="workspaceWrap">
+                    <div class="workspace">
+                        <section class="list-pane" aria-labelledby="listHeading">
+                            <div class="list-head">
+                                <div class="list-head-top"><div><h2 id="listHeading">Datensätze</h2><span id="recordCount" class="count">0 Einträge</span></div><button class="button button-primary button-small" id="addRecord" type="button"><i class="ph ph-plus" aria-hidden="true"></i> Neu</button></div>
+                                <div class="filters">
+                                    <label class="search-wrap"><i class="ph ph-magnifying-glass" aria-hidden="true"></i><input id="search" type="search" placeholder="Titel oder Bereich suchen" aria-label="Datensätze suchen" /></label>
+                                    <select id="statusFilter" class="control" aria-label="Nach Status filtern"><option value="">Alle Status</option><option>Offen</option><option>In Arbeit</option><option>Erledigt</option></select>
+                                </div>
+                            </div>
+                            <ul id="recordList" class="record-list" aria-label="Datensatzliste"></ul>
+                        </section>
+                        <section id="detailPane" class="detail-pane" aria-label="Einzelansicht" aria-live="polite"></section>
+                    </div>
+                    <section class="event-panel" aria-labelledby="eventHeading">
+                        <div class="event-head"><h2 id="eventHeading"><i class="ph ph-broadcast" aria-hidden="true"></i> Änderungsereignisse</h2><span id="eventMode" class="event-mode">lokale Vorschau · kein WebSocket</span></div>
+                        <ul id="eventList" class="event-list" aria-live="polite"></ul>
+                    </section>
+                </div>
+            </section>
+
+            <section id="learningView" class="course-view" aria-labelledby="learningHeading" hidden>
+                <div class="eyebrow">Fertiges Frontend · Backend schrittweise ergänzen</div>
+                <h2 id="learningHeading">Lernkontexte mit konkreten Andockpunkten</h2>
+                <p class="lead">Jeder Abschnitt nennt den sichtbaren UI-Anlass, den passenden JavaScript-Aufruf und den Weg durch die MVC-Schichten. Die API-Pfade sind ein konsistenter Vorschlag für den Kurs.</p>
+                <div class="day-grid" aria-label="Tagesübersicht">
+                    <article class="day-card"><small>Tag 1</small><h3>Node.js & HTTP</h3><p>Serverstart, Health-Check und asynchrone Abläufe.</p></article>
+                    <article class="day-card"><small>Tag 2</small><h3>MVC, CRUD & SQLite</h3><p>Die vorbereitete View an Controller und Model anbinden.</p></article>
+                    <article class="day-card"><small>Tag 3</small><h3>Sessions & Live</h3><p>Login, Cookie, Zugriffsschutz und WebSocket-Updates.</p></article>
+                </div>
+                <div class="provided-note"><strong>Was ist schon fertig?</strong> <code>index.html</code> und CSS mit Liste, Detailansicht, Formularen und Statusmeldungen sowie das SQL-Schema zum Anlegen der Datenbank. Die Teilnehmenden konzentrieren sich auf Node.js, Express, Controller, Models, API und Verbindung zur Datenbank. Die DDL muss nicht entworfen werden.</div>
+
+                <div class="day-heading"><h2>Tag 1 · Node.js & HTTP</h2><span>Von der Browseraktion zur ersten Antwort</span></div>
+                <article class="context">
+                    <header class="context-head"><span class="context-number">1.1</span><div><h3>Health-Check: HTML-Oberfläche spricht den Server an</h3><p>Am ersten Tag reicht eine kleine Antwort. Der feste UI-Baustein wird nicht umgebaut; ein JavaScript-Aufruf prüft, ob der Node.js-Server erreichbar ist.</p></div></header>
+                    <div class="context-body"><div><div class="code-label">Browser-JavaScript · fetch</div><pre><code>// UI → GET /api/health
+// Tag 1: nativer node:http-Handler liefert zunächst { status: "ok" }.
+async function checkBackend() {
+  const response = await fetch("/api/health");
+  if (!response.ok) throw new Error("Backend nicht erreichbar");
+  return response.json();
+}</code></pre></div><aside class="connection-note"><strong>Backend-Andockpunkt</strong><code>GET /api/health</code> wird zuerst im nativen HTTP-Server beantwortet. Später kann derselbe Pfad über Express laufen. Der Health-Check hängt nicht an einer Route für fachliche Daten.</aside></div>
+                </article>
+                <article class="context">
+                    <header class="context-head"><span class="context-number">1.2</span><div><h3>Asynchrone Dateiübung bleibt serverseitig</h3><p>Die fs-Übung vermittelt Promises und Fehlerbehandlung. Der Browser greift nie direkt auf Serverdateien zu; ein Backend-Modul führt die Dateioperation aus.</p></div></header>
+                    <div class="context-body"><div><div class="code-label">Node.js-Modul · nicht im Browser</div><pre><code>import { readFile, writeFile } from "node:fs/promises";
+
+// Backend-Modul: wird später von einem Controller
+// oder Service aufgerufen, nicht von der HTML-Seite.
+export async function readText(path) {
+  return readFile(path, "utf8");
+}
+
+export async function writeText(path, text) {
+  return writeFile(path, text, "utf8");
+}</code></pre></div><aside class="connection-note"><strong>Backend-Andockpunkt</strong>Am Kurstag zuerst isoliert ausführen. Wird die Übung über HTTP gezeigt, ruft ein Controller dieses Modul auf und gibt nur eine kontrollierte Antwort zurück. Die eigentlichen Datensätze landen später in SQLite, nicht in Dateien.</aside></div>
+                </article>
+
+                <div class="day-heading"><h2>Tag 2 · MVC, CRUD & SQLite</h2><span>Dieselbe View erhält echte API-Daten</span></div>
+                <article class="context">
+                    <header class="context-head"><span class="context-number">2.1</span><div><h3>Route → Controller → Model: Liste laden</h3><p>Der Browser kennt nur den API-Vertrag. Express-Routen ordnen Anfragen zu; der Controller koordiniert und das Model liefert Daten.</p></div></header>
+                    <div class="context-body"><div><div class="code-label">Express-MVC · Ausschnitt</div><pre><code>// routes/entryRoutes.js
+router.get("/", entryController.list);
+
+// controllers/entryController.js
+export async function list(req, res, next) {
+  try {
+    const entries = await EntryModel.findAll();
+    res.json(entries);
+  } catch (error) {
+    next(error); // zentrale Fehler-Middleware
+  }
+}
+
+// Browser: GET /api/entries → JSON für die vorhandene Liste</code></pre></div><aside class="connection-note"><strong>Backend-Andockpunkt</strong>Mount: <code>app.use("/api/entries", entryRoutes)</code>. Die Route bleibt dünn. Der Controller ruft das Model auf und bestimmt die HTTP-Antwort; die bereitgestellte HTML-Datei rendert das zurückgegebene JSON.</aside></div>
+                </article>
+                <article class="context">
+                    <header class="context-head"><span class="context-number">2.2</span><div><h3>Formulare und Aktionen auf CRUD abbilden</h3><p>Die vorbereiteten Buttons für Neu, Bearbeiten, Duplizieren und Löschen rufen passende Endpunkte auf. Es ist kein Frontend-Neubau nötig.</p></div></header>
+                    <div class="context-body"><div><div class="code-label">Browser-JavaScript · Request helper</div><pre><code>async function sendJSON(url, method, body) {
+  const response = await fetch(url, {
+    method,
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: body ? JSON.stringify(body) : undefined
+  });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.status === 204 ? null : response.json();
+}
+
+// Create: POST /api/entries
+// Update: PATCH /api/entries/:id
+// Duplicate: POST /api/entries/:id/duplicate
+// Delete: DELETE /api/entries/:id</code></pre></div><aside class="connection-note"><strong>Backend-Andockpunkt</strong>Jeder Aufruf landet auf einer gleichnamigen Route. Die Route übergibt an <code>entryController.create/update/duplicate/remove</code>; der Controller prüft Eingaben und ruft die jeweilige Model-Funktion auf. Der Controller gibt passende Statuscodes zurück.</aside></div>
+                </article>
+                <article class="context">
+                    <header class="context-head"><span class="context-number">2.3</span><div><h3>SQLite einsetzen, ohne das Frontend zu ändern</h3><p>Das mitgelieferte SQL-Skript legt Tabellen und Beziehungen an. Danach ersetzt das Model die bisherigen Beispieldaten durch Datenbankzugriffe.</p></div></header>
+                    <div class="context-body"><div><div class="code-label">Model · API-Vertrag bleibt stabil</div><pre><code>// models/EntryModel.js
+// db ist die im Kurs eingerichtete SQLite-Verbindung.
+export function findAll() {
+  return db.all(
+    "SELECT id, title, category, status, priority, description FROM entries ORDER BY id DESC"
+  );
+}
+
+// Der Controller wartet mit await auf das Model.
+// Die View ruft weiterhin GET /api/entries auf.</code></pre></div><aside class="connection-note"><strong>Backend-Andockpunkt</strong>SQL-Datei: bereitgestellt. Im Kurs wird sie ausgeführt und ihr Schema nachvollzogen. Die Model-Funktionen verwenden parametrisierte Abfragen für Erstellen, Ändern und Löschen. Die Browser-View bleibt unverändert, solange JSON-Form und API-Vertrag gleich bleiben.</aside></div>
+                </article>
+
+                <div class="day-heading"><h2>Tag 3 · Anmeldung, Echtzeit & Sicherheit</h2><span>Die Anwendung wird nutzerbezogen und live</span></div>
+                <article class="context">
+                    <header class="context-head"><span class="context-number">3.1</span><div><h3>Login und serverseitige Session</h3><p>Die View sendet Zugangsdaten einmal an den Login-Endpunkt. Das Backend prüft das Passwort und setzt ein Session-Cookie; JavaScript liest das Cookie nicht aus.</p></div></header>
+                    <div class="context-body"><div><div class="code-label">Browser-JavaScript · Cookie bleibt HttpOnly</div><pre><code>async function login(email, password) {
+  return sendJSON("/api/auth/login", "POST", { email, password });
+}
+
+// Geschützte Anfrage: same-origin sendet das Session-Cookie.
+const entries = await fetch("/api/entries", {
+  credentials: "same-origin"
+}).then(response => response.json());</code></pre></div><aside class="connection-note"><strong>Backend-Andockpunkt</strong><code>POST /api/auth/login</code> → Auth-Controller → Passwortprüfung → Session-Store. Cookie-Optionen setzt der Server (<code>HttpOnly</code>, <code>SameSite</code>, in Produktion <code>Secure</code>). Auth-Middleware schützt Routen; Models filtern nach der Nutzer-ID aus der Session.</aside></div>
+                </article>
+                <article class="context">
+                    <header class="context-head"><span class="context-number">3.2</span><div><h3>Socket.IO für berechtigte Live-Updates</h3><p>Nach einer erfolgreichen Änderung aktualisieren verbundene Browser ihre Liste. Die View fragt die aktuelle Liste neu ab, statt ungeprüfte Daten zu übernehmen.</p></div></header>
+                    <div class="context-body"><div><div class="code-label">Browser-JavaScript · Socket.IO Client</div><pre><code>const socket = io({ withCredentials: true });
+
+socket.on("entry:created", () => loadEntries());
+socket.on("entry:updated", () => loadEntries());
+socket.on("entry:deleted", () => loadEntries());
+
+// Socket-Verbindung schließen bei Logout:
+socket.disconnect();</code></pre></div><aside class="connection-note"><strong>Backend-Andockpunkt</strong>Socket.IO verwendet denselben HTTP-Server und dieselbe Session-Prüfung. Erst nach dem Datenbank-Commit sendet der Controller ein Ereignis. Der Server weist den Socket einem autorisierten Nutzer-Raum zu; der Client bestimmt weder Nutzer-ID noch Raum.</aside></div>
+                </article>
+                <article class="context">
+                    <header class="context-head"><span class="context-number">3.3</span><div><h3>Fehler, Sicherheit und Abschlussprüfung</h3><p>Das Frontend zeigt Fehler verständlich an. Verbindliche Validierung, Rechteprüfung und sichere Ausgabe bleiben Aufgaben des Backends.</p></div></header>
+                    <div class="context-body"><div><div class="code-label">Browser-JavaScript · Antwort prüfen</div><pre><code>try {
+  const entry = await sendJSON("/api/entries", "POST", formData);
+  showMessage("Gespeichert");
+} catch (error) {
+  // UI-Hinweis ist Komfort, kein Ersatz für
+  // Validierung im Controller.
+  showMessage("Speichern nicht möglich. Eingaben prüfen.");
+}</code></pre></div><aside class="connection-note"><strong>Backend-Andockpunkt</strong>Mit `node:test` und Testdatenbank prüfen: gültige/ungültige Eingaben, nicht angemeldet, fremder Datensatz, CRUD und zwei getrennte Sessions. SQL parametrieren, HTML-Ausgabe escapen, Cookie-Auth gegen CSRF absichern und Berechtigungen serverseitig erzwingen.</aside></div>
+                </article>
+
+                <div class="day-heading"><h2>Verbindlicher Datenfluss</h2><span>MVC bleibt über alle Tage sichtbar</span></div>
+                <div class="architecture">
+                    <article><h3>HTTP und Datenbank</h3><p>Die View kennt URL und JSON-Vertrag. Sie kennt weder SQL noch SQLite-Dateipfade.</p><div class="flow" aria-label="Datenfluss"><span>HTML / JS</span><i class="ph ph-arrow-right" aria-hidden="true"></i><span>Route</span><i class="ph ph-arrow-right" aria-hidden="true"></i><span>Controller</span><i class="ph ph-arrow-right" aria-hidden="true"></i><span>Model</span><i class="ph ph-arrow-right" aria-hidden="true"></i><span>SQLite</span></div></article>
+                    <article><h3>Was Lernende umsetzen</h3><p>Serverstart, Express-Routen, Controller, Model-Aufrufe, Auth-Middleware, API-Fehlerbehandlung und WebSocket-Verhalten. HTML/CSS und Schema-DDL sind Lernmaterial, keine Coding-Aufgaben.</p></article>
+                </div>
+            </section>
+        </main>
+        <footer class="footer"><div class="shell footer-inner"><span>Node.js · MVC-orientiertes Arbeitsbeispiel</span><span>HTML/CSS und Schema-SQL bereitgestellt</span></div></footer>
+
+        <dialog id="loginDialog" aria-labelledby="loginTitle">
+            <form class="dialog-inner" id="loginForm">
+                <h2 id="loginTitle">Am Backend anmelden</h2>
+                <p class="dialog-copy" id="loginCopy">Im UI-Modus wird die Anmeldung nur simuliert. Im Backend-Modus werden die Daten an den Login-Endpunkt gesendet.</p>
+                <div class="field"><label for="email">E-Mail</label><input class="control" id="email" type="email" autocomplete="username" required placeholder="name@example.test" /></div>
+                <div class="field" style="margin-top:11px"><label for="password">Passwort</label><input class="control" id="password" type="password" autocomplete="current-password" required /></div>
+                <div class="dialog-actions"><button class="button" type="button" id="cancelLogin">Abbrechen</button><button class="button button-primary" type="submit"><i class="ph ph-sign-in" aria-hidden="true"></i> Anmelden</button></div>
+            </form>
+        </dialog>
+        <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+        <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+        <script>
+            (() => {
+                const demoSeed = [
+                    { id: 1, title: 'Schnittstellenplan', category: 'Planung', status: 'In Arbeit', priority: 'Hoch', description: 'Abhängigkeiten zwischen den API-Bereichen festhalten.' },
+                    { id: 2, title: 'Testdaten', category: 'Qualität', status: 'Offen', priority: 'Normal', description: 'Repräsentative Fälle für die ersten Controller-Tests sammeln.' },
+                    { id: 3, title: 'Release-Check', category: 'Betrieb', status: 'Erledigt', priority: 'Normal', description: 'Konfiguration, Health-Check und Startskript prüfen.' },
+                    { id: 4, title: 'API-Konzept', category: 'Entwicklung', status: 'In Arbeit', priority: 'Hoch', description: 'Endpunkte und JSON-Antworten dokumentieren.' }
+                ];
+                let demoEntries = demoSeed.map(entry => ({ ...entry }));
+                let entries = demoEntries;
+                let selectedId = 1;
+                let editingId = null;
+                let nextId = 100;
+                let mode = 'demo';
+                let user = { authenticated: true, name: 'Demo-Nutzer' };
+                let socket = null;
+                let toastTimer;
+                const events = [
+                    { text: 'Vorschau gestartet. Daten liegen nur im Arbeitsspeicher.', time: 'Hinweis' },
+                    { text: 'Im Backend-Modus verbindet diese View mit /api/entries.', time: 'Info' }
+                ];
+                const $ = selector => document.querySelector(selector);
+                const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+                const idEquals = (a, b) => String(a) === String(b);
+                const categoryIcon = category => ({ 'Planung': 'ph-compass', 'Qualität': 'ph-check-circle', 'Betrieb': 'ph-gear', 'Entwicklung': 'ph-code' }[category] || 'ph-file-text');
+                function toast(text) {
+                    $('#toast').textContent = text; $('#toast').hidden = false;
+                    clearTimeout(toastTimer); toastTimer = setTimeout(() => { $('#toast').hidden = true; }, 2800);
+                }
+                function log(text, time = new Date().toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })) {
+                    events.unshift({ text, time }); events.splice(4); renderEvents();
+                }
+                function renderEvents() {
+                    $('#eventList').innerHTML = events.map(event => `<li><span>${escapeHtml(event.text)}</span><span class="event-time">${escapeHtml(event.time)}</span></li>`).join('');
+                }
+                function filteredEntries() {
+                    const query = $('#search').value.trim().toLocaleLowerCase('de-DE');
+                    const status = $('#statusFilter').value;
+                    return entries.filter(entry => (!query || `${entry.title} ${entry.category}`.toLocaleLowerCase('de-DE').includes(query)) && (!status || entry.status === status));
+                }
+                function renderList() {
+                    const visible = filteredEntries();
+                    $('#recordCount').textContent = `${entries.length} ${entries.length === 1 ? 'Eintrag' : 'Einträge'}`;
+                    if (!visible.some(entry => idEquals(entry.id, selectedId))) selectedId = visible[0]?.id ?? null;
+                    $('#recordList').innerHTML = visible.length ? visible.map(entry => `<li><button class="record-row" type="button" data-select="${escapeHtml(entry.id)}" aria-current="${idEquals(entry.id, selectedId)}"><span class="record-symbol" aria-hidden="true"><i class="ph ${categoryIcon(entry.category)}"></i></span><span><span class="record-title">${escapeHtml(entry.title)}</span><span class="record-meta">${escapeHtml(entry.category)} · ${escapeHtml(entry.priority)}</span></span><span class="status-pill ${entry.status === 'Erledigt' ? 'done' : entry.status === 'In Arbeit' ? 'work' : ''}">${escapeHtml(entry.status)}</span></button></li>`).join('') : '<li class="empty-list">Keine passenden Datensätze.</li>';
+                    renderDetail();
+                }
+                function renderDetail() {
+                    const entry = entries.find(item => idEquals(item.id, selectedId));
+                    const pane = $('#detailPane');
+                    if (editingId !== null) {
+                        const record = editingId === 'new' ? null : entries.find(item => idEquals(item.id, editingId));
+                        pane.innerHTML = `<div class="form-heading"><div class="detail-kicker">${record ? 'Datensatz bearbeiten' : 'Neuer Datensatz'}</div><h2>${record ? escapeHtml(record.title) : 'Eintrag anlegen'}</h2><p>Dieses Formular und seine Styles sind vorbereitet. Im Kurs wird der Submit-Handler an die API angebunden.</p></div>
+                            <form id="entryForm" class="edit-form">
+                                <div class="field"><label for="entryTitle">Titel</label><input class="control" id="entryTitle" name="title" maxlength="80" required value="${escapeHtml(record?.title ?? '')}" /></div>
+                                <div class="field"><label for="entryCategory">Bereich</label><select class="control" id="entryCategory" name="category">${['Planung', 'Entwicklung', 'Qualität', 'Betrieb', 'Dokumentation'].map(item => `<option${record?.category === item ? ' selected' : ''}>${item}</option>`).join('')}</select></div>
+                                <div class="field"><label for="entryStatus">Status</label><select class="control" id="entryStatus" name="status">${['Offen', 'In Arbeit', 'Erledigt'].map(item => `<option${record?.status === item ? ' selected' : ''}>${item}</option>`).join('')}</select></div>
+                                <div class="field"><label for="entryPriority">Priorität</label><select class="control" id="entryPriority" name="priority">${['Normal', 'Hoch', 'Niedrig'].map(item => `<option${record?.priority === item ? ' selected' : ''}>${item}</option>`).join('')}</select></div>
+                                <div class="field"><label for="entryDescription">Beschreibung</label><textarea class="control" id="entryDescription" name="description" maxlength="500">${escapeHtml(record?.description ?? '')}</textarea></div>
+                                <div class="form-actions"><button class="button button-primary" type="submit"><i class="ph ph-floppy-disk" aria-hidden="true"></i> ${record ? 'Änderungen speichern' : 'Anlegen'}</button><button class="button" type="button" id="cancelEdit">Abbrechen</button></div>
+                            </form>`;
+                        $('#entryForm').addEventListener('submit', saveEntry);
+                        $('#cancelEdit').addEventListener('click', () => { editingId = null; renderList(); });
+                        return;
+                    }
+                    if (!entry) {
+                        pane.innerHTML = `<div class="detail-empty"><i class="ph ph-files" aria-hidden="true"></i><h2>Keine Auswahl</h2><p>Wähle einen Eintrag oder lege einen neuen an.</p>${entries.length ? '' : '<button id="emptyAdd" class="button button-primary" type="button"><i class="ph ph-plus" aria-hidden="true"></i> Ersten Eintrag anlegen</button>'}</div>`;
+                        $('#emptyAdd')?.addEventListener('click', () => { editingId = 'new'; renderDetail(); $('#entryTitle').focus(); });
+                        return;
+                    }
+                    pane.innerHTML = `<div class="detail-kicker">Einzelansicht · Datensatz ${escapeHtml(entry.id)}</div>
+                        <div class="detail-top"><span class="detail-icon" aria-hidden="true"><i class="ph ${categoryIcon(entry.category)}"></i></span><div><h2 class="detail-title">${escapeHtml(entry.title)}</h2><p class="detail-sub">${escapeHtml(entry.category)}</p></div></div>
+                        <div class="detail-actions"><button id="editEntry" class="button button-small" type="button"><i class="ph ph-pencil-simple" aria-hidden="true"></i> Bearbeiten</button><button id="duplicateEntry" class="button button-small" type="button"><i class="ph ph-copy" aria-hidden="true"></i> Duplizieren</button><button id="deleteEntry" class="button button-small button-danger" type="button"><i class="ph ph-trash" aria-hidden="true"></i> Löschen</button></div>
+                        <dl class="facts"><div class="fact"><dt>Status</dt><dd>${escapeHtml(entry.status)}</dd></div><div class="fact"><dt>Priorität</dt><dd>${escapeHtml(entry.priority)}</dd></div><div class="fact"><dt>Bereich</dt><dd>${escapeHtml(entry.category)}</dd></div><div class="fact"><dt>Datensatz-ID</dt><dd>${escapeHtml(entry.id)}</dd></div></dl>
+                        <p class="description">${escapeHtml(entry.description || 'Keine Beschreibung hinterlegt.')}</p>`;
+                    $('#editEntry').addEventListener('click', () => { editingId = entry.id; renderDetail(); $('#entryTitle').focus(); });
+                    $('#duplicateEntry').addEventListener('click', () => duplicateEntry(entry));
+                    $('#deleteEntry').addEventListener('click', () => deleteEntry(entry));
+                }
+                async function requestJSON(url, options = {}) {
+                    const headers = { ...(options.body ? { 'Content-Type': 'application/json' } : {}), ...(options.headers || {}) };
+                    const response = await fetch(url, { ...options, headers, credentials: 'same-origin' });
+                    const text = await response.text();
+                    let data = null;
+                    if (text) { try { data = JSON.parse(text); } catch { data = { message: text }; } }
+                    if (!response.ok) throw new Error(data?.message || data?.error || `Anfrage fehlgeschlagen (${response.status})`);
+                    return data;
+                }
+                async function loadEntries(silent = false) {
+                    if (mode === 'demo') { entries = demoEntries; renderList(); return; }
+                    try {
+                        const result = await requestJSON('/api/entries');
+                        entries = Array.isArray(result) ? result : (result.items || []);
+                        renderList();
+                        if (!silent) setBackendStatus('Backend verbunden', true);
+                    } catch (error) {
+                        setBackendStatus(error.message, false);
+                        if (!silent) toast(`Backend-Aufruf fehlgeschlagen: ${error.message}`);
+                    }
+                }
+                function setBackendStatus(text, online) {
+                    $('#backendState').textContent = text;
+                    $('#headerStatus').textContent = text;
+                    $('#headerDot').classList.toggle('online', Boolean(online));
+                }
+                function renderMode() {
+                    const demo = mode === 'demo';
+                    $('#demoMode').setAttribute('aria-pressed', String(demo));
+                    $('#apiMode').setAttribute('aria-pressed', String(!demo));
+                    $('#workspaceWrap').hidden = !demo && !user.authenticated;
+                    $('#apiGate').hidden = demo || user.authenticated;
+                    $('#accountLabel').textContent = demo ? 'Demo-Nutzer' : (user.name || (user.authenticated ? 'Angemeldet' : 'Anmelden'));
+                    $('#backendState').textContent = demo ? 'Demo-Daten · keine Anmeldung' : (user.authenticated ? 'Session aktiv' : 'Nicht angemeldet');
+                    $('#headerStatus').textContent = demo ? 'Vorschau im Arbeitsspeicher' : (user.authenticated ? 'Session aktiv' : 'Backend-Modus · Login erforderlich');
+                    $('#headerDot').classList.toggle('online', !demo && user.authenticated);
+                    $('#eventMode').textContent = demo ? 'lokale Vorschau · kein WebSocket' : (socket?.connected ? 'Socket.IO verbunden' : 'Backend-Modus');
+                    renderList();
+                }
+                function stopSocket() {
+                    if (socket) { socket.disconnect(); socket = null; }
+                    $('#eventMode').textContent = mode === 'demo' ? 'lokale Vorschau · kein WebSocket' : 'Backend-Modus';
+                }
+                function startSocket() {
+                    stopSocket();
+                    if (mode !== 'api' || !user.authenticated) return;
+                    if (typeof window.io !== 'function') { toast('Socket.IO Client ist nicht verfügbar.'); return; }
+                    socket = window.io({ withCredentials: true });
+                    socket.on('connect', () => { $('#eventMode').textContent = 'Socket.IO verbunden'; log('Socket.IO-Verbindung aufgebaut.'); });
+                    socket.on('connect_error', () => { $('#eventMode').textContent = 'Socket.IO nicht verbunden'; });
+                    for (const eventName of ['entry:created', 'entry:updated', 'entry:deleted']) {
+                        socket.on(eventName, () => { log(`Echtzeitereignis empfangen: ${eventName}`); loadEntries(true); });
+                    }
+                }
+                async function setMode(nextMode) {
+                    stopSocket();
+                    mode = nextMode;
+                    editingId = null;
+                    if (mode === 'demo') {
+                        user = { authenticated: true, name: 'Demo-Nutzer' };
+                        entries = demoEntries;
+                        setBackendStatus('Vorschau im Arbeitsspeicher', false);
+                        log('Zur lokalen Vorschau gewechselt.');
+                        renderMode();
+                        return;
+                    }
+                    user = { authenticated: false, name: '' };
+                    renderMode();
+                    setBackendStatus('Prüfe /api/auth/me …', false);
+                    try {
+                        const session = await requestJSON('/api/auth/me');
+                        user = { authenticated: true, name: session.name || session.email || 'Angemeldet' };
+                        await loadEntries(true); startSocket(); renderMode();
+                        log('Bestehende Backend-Session erkannt.');
+                    } catch (error) {
+                        renderMode(); setBackendStatus('Backend nicht verbunden oder Login erforderlich', false);
+                        if (error.message.includes('(401)') || error.message.toLowerCase().includes('unauthorized')) toast('Bitte am Backend anmelden.');
+                        else toast('Backend noch nicht erreichbar. Server starten und erneut versuchen.');
+                    }
+                }
+                async function saveEntry(event) {
+                    event.preventDefault();
+                    const form = new FormData(event.currentTarget);
+                    const payload = Object.fromEntries(['title', 'category', 'status', 'priority', 'description'].map(key => [key, String(form.get(key) || '').trim()]));
+                    if (!payload.title) { toast('Bitte einen Titel eingeben.'); return; }
+                    try {
+                        if (mode === 'demo') {
+                            if (editingId === 'new') {
+                                const record = { id: nextId++, ...payload }; demoEntries.unshift(record); selectedId = record.id; log(`Demo: Eintrag angelegt – ${record.title}`);
+                            } else {
+                                const record = demoEntries.find(item => idEquals(item.id, editingId)); Object.assign(record, payload); selectedId = record.id; log(`Demo: Eintrag bearbeitet – ${record.title}`);
+                            }
+                            entries = demoEntries;
+                        } else {
+                            const isNew = editingId === 'new';
+                            const path = isNew ? '/api/entries' : `/api/entries/${encodeURIComponent(editingId)}`;
+                            const saved = await requestJSON(path, { method: isNew ? 'POST' : 'PATCH', body: JSON.stringify(payload) });
+                            selectedId = (saved?.id ?? editingId);
+                            log(isNew ? `Backend: Eintrag angelegt – ${payload.title}` : `Backend: Eintrag geändert – ${payload.title}`);
+                            await loadEntries(true);
+                        }
+                        editingId = null; renderList(); toast('Änderungen gespeichert.');
+                    } catch (error) { toast(`Speichern fehlgeschlagen: ${error.message}`); }
+                }
+                async function duplicateEntry(entry) {
+                    try {
+                        if (mode === 'demo') {
+                            const copy = { ...entry, id: nextId++, title: `${entry.title} (Kopie)` }; demoEntries.unshift(copy); selectedId = copy.id; entries = demoEntries;
+                        } else {
+                            const copy = await requestJSON(`/api/entries/${encodeURIComponent(entry.id)}/duplicate`, { method: 'POST' }); selectedId = copy?.id ?? entry.id; await loadEntries(true);
+                        }
+                        renderList(); log(`Eintrag dupliziert: ${entry.title}`); toast('Kopie angelegt.');
+                    } catch (error) { toast(`Duplizieren fehlgeschlagen: ${error.message}`); }
+                }
+                async function deleteEntry(entry) {
+                    if (!window.confirm(`„${entry.title}“ wirklich löschen?`)) return;
+                    try {
+                        if (mode === 'demo') { demoEntries = demoEntries.filter(item => !idEquals(item.id, entry.id)); entries = demoEntries; }
+                        else await requestJSON(`/api/entries/${encodeURIComponent(entry.id)}`, { method: 'DELETE' });
+                        selectedId = null; await loadEntries(true); renderList(); log(`Eintrag gelöscht: ${entry.title}`); toast('Eintrag gelöscht.');
+                    } catch (error) { toast(`Löschen fehlgeschlagen: ${error.message}`); }
+                }
+                function setTab(tab) {
+                    const app = tab === 'app';
+                    $('#tabApp').setAttribute('aria-selected', String(app)); $('#tabLearning').setAttribute('aria-selected', String(!app));
+                    $('#appView').classList.toggle('active', app); $('#learningView').classList.toggle('active', !app);
+                    $('#learningView').hidden = app;
+                }
+                $('#tabApp').addEventListener('click', () => setTab('app'));
+                $('#tabLearning').addEventListener('click', () => setTab('learning'));
+                $('#demoMode').addEventListener('click', () => setMode('demo'));
+                $('#apiMode').addEventListener('click', () => setMode('api'));
+                $('#search').addEventListener('input', renderList);
+                $('#statusFilter').addEventListener('change', renderList);
+                $('#recordList').addEventListener('click', event => {
+                    const row = event.target.closest('[data-select]'); if (!row) return;
+                    selectedId = row.dataset.select; editingId = null; renderList();
+                    if (mode === 'api') requestJSON(`/api/entries/${encodeURIComponent(selectedId)}`).catch(error => toast(`Einzelansicht: ${error.message}`));
+                });
+                $('#addRecord').addEventListener('click', () => { editingId = 'new'; renderDetail(); $('#entryTitle').focus(); });
+                $('#accountButton').addEventListener('click', async () => {
+                    if (!user.authenticated && mode === 'api') { $('#loginDialog').showModal(); return; }
+                    if (mode === 'demo') { $('#loginCopy').textContent = 'Demo-Modus: beliebige Zugangsdaten zeigen nur den visuellen Login-Zustand; es wird keine Session erzeugt.'; $('#loginDialog').showModal(); return; }
+                    if (!window.confirm('Backend-Session beenden?')) return;
+                    try { await requestJSON('/api/auth/logout', { method: 'POST' }); }
+                    catch (error) { toast(`Logout-Anfrage: ${error.message}`); }
+                    stopSocket(); user = { authenticated: false, name: '' }; renderMode(); toast('Abgemeldet.');
+                });
+                $('#openLogin').addEventListener('click', () => { $('#loginCopy').textContent = 'Die Daten werden an POST /api/auth/login gesendet. Das Backend prüft das Passwort und setzt das Session-Cookie.'; $('#loginDialog').showModal(); });
+                $('#cancelLogin').addEventListener('click', () => $('#loginDialog').close());
+                $('#loginForm').addEventListener('submit', async event => {
+                    event.preventDefault();
+                    const email = $('#email').value.trim(), password = $('#password').value;
+                    if (mode === 'demo') {
+                        $('#loginDialog').close(); log('Demo-Login angezeigt; keine Authentifizierung ausgeführt.'); toast('Demo-Modus: Passwortprüfung ist nicht aktiv.'); return;
+                    }
+                    try {
+                        const session = await requestJSON('/api/auth/login', { method: 'POST', body: JSON.stringify({ email, password }) });
+                        user = { authenticated: true, name: session.name || session.email || email };
+                        $('#loginDialog').close(); await loadEntries(true); startSocket(); renderMode(); log(`Backend-Session gestartet: ${user.name}`); toast('Anmeldung erfolgreich.');
+                    } catch (error) { toast(`Anmeldung fehlgeschlagen: ${error.message}`); }
+                });
+                renderEvents(); renderMode();
+            })();
+        </script>
+    </body>
+</html>
