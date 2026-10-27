@@ -127,7 +127,9 @@ document.getElementById('user').addEventListener('change', (e) => {
 
 
 const socket = io({ auth: { userId: USER } });
-socket.on('sheep:changed', () => location.reload());
+socket.on('sheep:changed', ({ action } = {}) => {
+  if (['created', 'updated', 'deleted'].includes(action)) location.reload();
+});
 // <<<<<<<
 
     const form = document.getElementById('form');

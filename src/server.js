@@ -62,16 +62,16 @@ export async function startServer({
     const database = await Database.open(dbFile);
     const sheepModel = new SheepModel(database);
 
-    // Schultern des Socket-Servers an einen neuen HTTP-Server
-    const httpServer = http.createServer();
-    const io = new SocketServer(httpServer);
+    let io;
 
-    const publish = (userId) => io.to(roomFor(userID)).emit("sheep:changed");
+    // ! [Übergibt die Benutzer-ID an denselben Raum, dem der Socket beim Verbinden beitritt]
+    const publish = (userId, action) =>
+        io.to(roomFor({ userId })).emit("sheep:changed", { action });
 
     const app = createApp({ sheepModel, publish });
-
-    // Verküpfen beider https-Services)
-    httpServer.on("request", app);
+    // ! [Registriert Express vor Socket.IO, damit dessen Request-Wrapper es nur als Fallback aufruft]
+    const httpServer = http.createServer(app);
+    io = new SocketServer(httpServer);
 
     // Wenn irgendein Client versucht über `ws://`zu verbinden
     io.on("connection", (socket) => {
@@ -83,7 +83,8 @@ export async function startServer({
         socket.join(roomFor({ userId }));
     });
 
-    const server = app.listen(port, host, () => {
+    // ! [Startet denselben HTTP-Server, an den Socket.IO und Express gebunden sind]
+    const server = httpServer.listen(port, host, () => {
         console.log(`Server running at http://${host}:${port}/`);
     });
 

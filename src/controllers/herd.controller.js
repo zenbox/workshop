@@ -65,7 +65,11 @@ export class HerdController {
         try {
             const userId = getUserId(req);
             const rows = await this.sheepModel.list(userId);
-            res.render("sheep/index", { sheep: rows.map(toView) });
+            // ! [Übergibt die aktuelle Benutzer-ID, damit Twig gültiges Client-JavaScript rendert]
+            res.render("sheep/index", {
+                sheep: rows.map(toView),
+                currentUser: userId,
+            });
         } catch (err) {
             next(err);
         }
@@ -93,6 +97,7 @@ export class HerdController {
             const { value, error } = parseSheep(req.body);
             if (error) return res.status(422).json({ error });
             const row = await this.sheepModel.create(userId, value);
+            this.publish(userId, "created");
             res.status(201).json({ data: toView(row) });
         } catch (err) {
             next(err);
@@ -112,6 +117,7 @@ export class HerdController {
             const row = await this.sheepModel.update(userId, id, value);
             if (!row)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
+            this.publish(userId, "updated");
             res.json({ data: toView(row) });
         } catch (err) {
             next(err);
@@ -129,6 +135,7 @@ export class HerdController {
                 : false;
             if (!deleted)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
+            this.publish(userId, "deleted");
             res.status(204).end();
         } catch (err) {
             next(err);
