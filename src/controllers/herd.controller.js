@@ -27,7 +27,7 @@ export class HerdController {
             const rows = await this.sheepModel.list(this.userId);
             console.log("Schafe geladen:", rows.length);
             const sheep = rows.map(toView);
-            res.render("sheep-index", { sheep });
+            res.render("sheep/index", { sheep });
         } catch (err) {
             next(err);
         }
