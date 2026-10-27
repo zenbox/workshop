@@ -13,6 +13,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+    <!-- >>>>>>> -->
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<!-- <<<<<<< -->
+
   <style>
     /* Nur Schrift und Farben, sonst kein Layout */
     body { font-family: Barlow, sans-serif; color: #000; background: #fff; }
@@ -20,6 +25,8 @@
     th, td { border: 1px solid #000; padding: 0.25rem 0.5rem; text-align: left; }
     dialog { color: #000; background: #fff; border: 1px solid #000; }
   </style>
+
+
 </head>
 <body>
   <h1>Schafe</h1>
@@ -28,6 +35,14 @@
     <button type="button" id="new">
       <i class="ph ph-plus" aria-hidden="true"></i> Neues Schaf
     </button>
+
+<!-- >>>>>>> -->
+<label for="user">Benutzer</label>
+<select id="user">
+  <option value="1" {{ currentUser == 1 ? 'selected' }}>Demo</option>
+  <option value="2" {{ currentUser == 2 ? 'selected' }}>Jonas</option>
+</select>
+<!-- <<<<<<< -->
 
     <p id="error" role="alert" hidden></p>
 
@@ -102,6 +117,19 @@
     // >>>>>>>
     const API = '/herd';
 
+    // >>>>>>>
+const USER = {{ currentUser }};
+
+
+document.getElementById('user').addEventListener('change', (e) => {
+  location.search = `?user=${e.target.value}`;
+});
+
+
+const socket = io({ auth: { userId: USER } });
+socket.on('sheep:changed', () => location.reload());
+// <<<<<<<
+
     const form = document.getElementById('form');
     const dlg = document.getElementById('dlg');
     const title = document.getElementById('dlg-title');
@@ -123,7 +151,12 @@
     async function api(method, url, body) {
       const res = await fetch(url, {
         method,
-        headers: body ? { 'Content-Type': 'application/json' } : {},
+    // >>>>>>>
+headers: {
+  'X-User-Id': String(USER),
+  ...(body ? { 'Content-Type': 'application/json' } : {}),
+},
+// <<<<<<<
         body: body ? JSON.stringify(body) : undefined,
       });
       if (res.status === 204) return null;
