@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1" />
+        <title>Schafe</title>
+        <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com" />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap"
+            rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+        <style>
+            /* Nur Schrift und Farben, sonst kein Layout */
+            body {
+                font-family: Barlow, sans-serif;
+                color: #000;
+                background: #fff;
+            }
+            table {
+                border-collapse: collapse;
+            }
+            th,
+            td {
+                border: 1px solid #000;
+                padding: 0.25rem 0.5rem;
+                text-align: left;
+            }
+            dialog {
+                color: #000;
+                background: #fff;
+                border: 1px solid #000;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Schafe</h1>
+
+        <main>
+            <button
+                type="button"
+                id="new">
+                <i
+                    class="ph ph-plus"
+                    aria-hidden="true"></i>
+                Neues Schaf
+            </button>
+
+            <table>
+                <caption>
+                    Herde
+                </caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Rasse</th>
+                        <th scope="col">Alter</th>
+                        <th scope="col">Geschlecht</th>
+                        <th scope="col"><span hidden>Aktionen</span></th>
+                    </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+            </table>
+        </main>
+
+        <dialog
+            id="dlg"
+            aria-labelledby="dlg-title">
+            <form
+                id="form"
+                method="dialog">
+                <h2 id="dlg-title">Neues Schaf</h2>
+
+                <p>
+                    <label for="name">Name</label><br />
+                    <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        required
+                        maxlength="50"
+                        pattern=".*\S.*" />
+                </p>
+                <p>
+                    <label for="breed">Rasse</label><br />
+                    <input
+                        id="breed"
+                        name="breed"
+                        type="text"
+                        required
+                        maxlength="50"
+                        pattern=".*\S.*" />
+                </p>
+                <p>
+                    <label for="age">Alter</label><br />
+                    <input
+                        id="age"
+                        name="age"
+                        type="number"
+                        required
+                        min="0"
+                        max="25"
+                        step="1" />
+                </p>
+                <p>
+                    <label for="gender">Geschlecht</label><br />
+                    <select
+                        id="gender"
+                        name="gender"
+                        required>
+                        <option value="female">weiblich</option>
+                        <option value="male">männlich</option>
+                    </select>
+                </p>
+
+                <p>
+                    <button
+                        type="submit"
+                        value="save">
+                        <i
+                            class="ph ph-floppy-disk"
+                            aria-hidden="true"></i>
+                        Speichern
+                    </button>
+                    <button
+                        type="button"
+                        id="cancel">
+                        <i
+                            class="ph ph-x"
+                            aria-hidden="true"></i>
+                        Abbrechen
+                    </button>
+                </p>
+            </form>
+        </dialog>
+
+        <script>
+            // Datenhaltung im Speicher. Für die Anbindung an die API hier die Funktionen
+            // load(), save() und remove() durch fetch('/api/sheep') ersetzen.
+            const GENDER = { female: "weiblich", male: "männlich" };
+
+            let sheep = [
+                {
+                    id: 1,
+                    name: "Mara",
+                    breed: "Merino",
+                    age: 4,
+                    gender: "female",
+                },
+                {
+                    id: 2,
+                    name: "Jonas",
+                    breed: "Texel",
+                    age: 2,
+                    gender: "male",
+                },
+                {
+                    id: 3,
+                    name: "Berta",
+                    breed: "Skudde",
+                    age: 7,
+                    gender: "female",
+                },
+            ];
+            let nextId = 4;
+            let editingId = null;
+
+            const rows = document.getElementById("rows");
+            const dlg = document.getElementById("dlg");
+            const form = document.getElementById("form");
+            const title = document.getElementById("dlg-title");
+
+            function cell(text) {
+                const td = document.createElement("td");
+                td.textContent = text;
+                return td;
+            }
+
+            function iconButton(icon, label, onClick) {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.title = label;
+                btn.setAttribute("aria-label", label);
+                btn.innerHTML = `<i class="ph ph-${icon}" aria-hidden="true"></i>`;
+                btn.addEventListener("click", onClick);
+                return btn;
+            }
+
+            function rowFor(s) {
+                const tr = document.createElement("tr");
+                const actions = document.createElement("td");
+                actions.append(
+                    iconButton("pencil-simple", `${s.name} bearbeiten`, () =>
+                        openDialog(s)
+                    ),
+                    iconButton("trash", `${s.name} löschen`, () => remove(s.id))
+                );
+                tr.append(
+                    cell(s.name),
+                    cell(s.breed),
+                    cell(s.age),
+                    cell(GENDER[s.gender]),
+                    actions
+                );
+                return tr;
+            }
+
+            function render() {
+                rows.replaceChildren(...sheep.map(rowFor));
+            }
+
+            function openDialog(s = null) {
+                editingId = s ? s.id : null;
+                form.reset();
+                title.textContent = s ? "Schaf bearbeiten" : "Neues Schaf";
+                if (s) {
+                    form.elements.name.value = s.name;
+                    form.elements.breed.value = s.breed;
+                    form.elements.age.value = s.age;
+                    form.elements.gender.value = s.gender;
+                }
+                dlg.showModal();
+                form.elements.name.focus();
+            }
+
+            function remove(id) {
+                const s = sheep.find((x) => x.id === id);
+                if (!s || !confirm(`${s.name} löschen?`)) return;
+                sheep = sheep.filter((x) => x.id !== id);
+                render();
+            }
+
+            // method="dialog": nach dem Absenden schließt sich der Dialog automatisch
+            form.addEventListener("submit", () => {
+                const data = {
+                    name: form.elements.name.value.trim(),
+                    breed: form.elements.breed.value.trim(),
+                    age: Number(form.elements.age.value),
+                    gender: form.elements.gender.value,
+                };
+                if (editingId === null) {
+                    sheep.push({ id: nextId++, ...data });
+                } else {
+                    Object.assign(
+                        sheep.find((x) => x.id === editingId),
+                        data
+                    );
+                }
+                render();
+            });
+
+            document
+                .getElementById("new")
+                .addEventListener("click", () => openDialog());
+            document
+                .getElementById("cancel")
+                .addEventListener("click", () => dlg.close());
+
+            render();
+        </script>
+    </body>
+</html>

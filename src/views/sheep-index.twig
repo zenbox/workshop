@@ -1,0 +1,254 @@
+{# src/views/sheep/index.twig
+   Erwartet: sheep = Liste aus SheepModel.list(userId)
+   Die Zeilen werden serverseitig gerendert. Änderungen laufen über die REST-API
+   (GET/POST /api/sheep, PATCH/DELETE /api/sheep/:id); danach wird die Liste neu geladen. #}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Schafe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <style>
+    /* Nur Schrift und Farben, sonst kein Layout */
+    body { font-family: Barlow, sans-serif; color: #000; background: #fff; }
+    table { border-collapse: collapse; }
+    th, td { border: 1px solid #000; padding: 0.25rem 0.5rem; text-align: left; }
+    dialog { color: #000; background: #fff; border: 1px solid #000; }
+  </style>
+</head>
+<body>
+  <h1>Schafe</h1>
+
+  <main>
+    <button type="button" id="new">
+      <i class="ph ph-plus" aria-hidden="true"></i> Neues Schaf
+    </button>
+
+    <p id="error" role="alert" hidden></p>
+
+    <table>
+      <caption>Herde</caption>
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Rasse</th>
+          <th scope="col">Alter</th>
+          <th scope="col">Geschlecht</th>
+          <th scope="col"><span hidden>Aktionen</span></th>
+        </tr>
+      </thead>
+      <tbody id="rows">
+        {% for s in sheep %}
+        <tr data-id="{{ s.id }}">
+          <td>{{ s.name }}</td>
+          <td>{{ s.breed }}</td>
+          <td>{{ s.age }}</td>
+          <td>{{ s.gender == 'female' ? 'weiblich' : 'männlich' }}</td>
+          <td>
+            <button type="button" data-action="edit" title="{{ s.name }} bearbeiten" aria-label="{{ s.name }} bearbeiten">
+              <i class="ph ph-pencil-simple" aria-hidden="true"></i>
+            </button>
+            <button type="button" data-action="delete" title="{{ s.name }} löschen" aria-label="{{ s.name }} löschen">
+              <i class="ph ph-trash" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </main>
+
+  {# Zeilenvorlage für die Aktualisierung per JavaScript nach API-Aufrufen #}
+  <template id="row-tpl">
+    <tr>
+      <td data-field="name"></td>
+      <td data-field="breed"></td>
+      <td data-field="age"></td>
+      <td data-field="gender"></td>
+      <td>
+        <button type="button" data-action="edit">
+          <i class="ph ph-pencil-simple" aria-hidden="true"></i>
+        </button>
+        <button type="button" data-action="delete">
+          <i class="ph ph-trash" aria-hidden="true"></i>
+        </button>
+      </td>
+    </tr>
+  </template>
+
+  <dialog id="dlg" aria-labelledby="dlg-title">
+    <form id="form">
+      <h2 id="dlg-title">Neues Schaf</h2>
+
+      <p>
+        <label for="name">Name</label><br>
+        <input id="name" name="name" type="text" required maxlength="50" pattern=".*\S.*">
+      </p>
+      <p>
+        <label for="breed">Rasse</label><br>
+        <input id="breed" name="breed" type="text" required maxlength="50" pattern=".*\S.*">
+      </p>
+      <p>
+        <label for="age">Alter</label><br>
+        <input id="age" name="age" type="number" required min="0" max="25" step="1">
+      </p>
+      <p>
+        <label for="gender">Geschlecht</label><br>
+        <select id="gender" name="gender" required>
+          <option value="female">weiblich</option>
+          <option value="male">männlich</option>
+        </select>
+      </p>
+
+      <p>
+        <button type="submit">
+          <i class="ph ph-floppy-disk" aria-hidden="true"></i> Speichern
+        </button>
+        <button type="button" id="cancel">
+          <i class="ph ph-x" aria-hidden="true"></i> Abbrechen
+        </button>
+      </p>
+    </form>
+  </dialog>
+
+  <script>
+    const API = '/api/sheep';
+    const GENDER = { female: 'weiblich', male: 'männlich' };
+
+    const tbody = document.getElementById('rows');
+    const rowTpl = document.getElementById('row-tpl');
+    const dlg = document.getElementById('dlg');
+    const form = document.getElementById('form');
+    const title = document.getElementById('dlg-title');
+    const errorEl = document.getElementById('error');
+
+    let sheep = [];
+    let editingId = null;
+
+    function showError(message) {
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+    }
+
+    function clearError() {
+      errorEl.textContent = '';
+      errorEl.hidden = true;
+    }
+
+    // Einheitlicher Aufruf der REST-API. Erwartet die Hülle { data: ... }.
+    async function api(method, url, body) {
+      const res = await fetch(url, {
+        method,
+        headers: body ? { 'Content-Type': 'application/json' } : {},
+        body: body ? JSON.stringify(body) : undefined,
+      });
+      if (res.status === 204) return null;
+      const json = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(json?.error ?? `Fehler ${res.status}`);
+      return json?.data ?? null;
+    }
+
+    function rowFor(s) {
+      const tr = rowTpl.content.firstElementChild.cloneNode(true);
+      tr.dataset.id = s.id;
+      tr.querySelector('[data-field="name"]').textContent = s.name;
+      tr.querySelector('[data-field="breed"]').textContent = s.breed;
+      tr.querySelector('[data-field="age"]').textContent = s.age;
+      tr.querySelector('[data-field="gender"]').textContent = GENDER[s.gender];
+
+      const edit = tr.querySelector('[data-action="edit"]');
+      const del = tr.querySelector('[data-action="delete"]');
+      edit.title = edit.ariaLabel = `${s.name} bearbeiten`;
+      del.title = del.ariaLabel = `${s.name} löschen`;
+      return tr;
+    }
+
+    function render() {
+      tbody.replaceChildren(...sheep.map(rowFor));
+    }
+
+    async function load() {
+      sheep = await api('GET', API) ?? [];
+      render();
+    }
+
+    function openDialog(s = null) {
+      clearError();
+      editingId = s ? s.id : null;
+      form.reset();
+      title.textContent = s ? 'Schaf bearbeiten' : 'Neues Schaf';
+      if (s) {
+        form.elements.name.value = s.name;
+        form.elements.breed.value = s.breed;
+        form.elements.age.value = s.age;
+        form.elements.gender.value = s.gender;
+      }
+      dlg.showModal();
+      form.elements.name.focus();
+    }
+
+    async function remove(id) {
+      const s = sheep.find(x => x.id === id);
+      if (!s || !confirm(`${s.name} löschen?`)) return;
+      try {
+        clearError();
+        await api('DELETE', `${API}/${id}`);
+        await load();
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    // Ereignisdelegation: ein Listener für alle Zeilen
+    tbody.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      const tr = e.target.closest('tr');
+      if (!btn || !tr) return;
+      const id = Number(tr.dataset.id);
+      if (btn.dataset.action === 'edit') {
+        const s = sheep.find(x => x.id === id);
+        if (s) openDialog(s);
+      } else if (btn.dataset.action === 'delete') {
+        remove(id);
+      }
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      const body = {
+        name: form.elements.name.value.trim(),
+        breed: form.elements.breed.value.trim(),
+        age: Number(form.elements.age.value),
+        gender: form.elements.gender.value,
+      };
+      try {
+        clearError();
+        if (editingId === null) {
+          await api('POST', API, body);
+        } else {
+          // PATCH erwartet alle vier Fachdaten
+          await api('PATCH', `${API}/${editingId}`, body);
+        }
+        dlg.close();
+        await load();
+      } catch (err) {
+        showError(err.message);
+      }
+    });
+
+    document.getElementById('new').addEventListener('click', () => openDialog());
+    document.getElementById('cancel').addEventListener('click', () => dlg.close());
+
+    // Server-gerenderte Zeilen sind sofort sichtbar, danach übernimmt die API
+    load().catch((err) => showError(err.message));
+  </script>
+</body>
+</html>
