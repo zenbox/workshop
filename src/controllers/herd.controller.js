@@ -14,6 +14,8 @@ function getUserId(req) {
 function toView(row) {
     return {
         id: row.id,
+        userId: row.user_id,
+        ownerName: row.owner_name,
         name: row.name,
         breed: row.breed,
         age: row.age,
@@ -64,7 +66,7 @@ export class HerdController {
     list = async (req, res, next) => {
         try {
             const userId = getUserId(req);
-            const rows = await this.sheepModel.list(userId);
+            const rows = await this.sheepModel.listAll();
             // ! [Übergibt die aktuelle Benutzer-ID, damit Twig gültiges Client-JavaScript rendert]
             res.render("sheep/index", {
                 sheep: rows.map(toView),
@@ -97,7 +99,7 @@ export class HerdController {
             const { value, error } = parseSheep(req.body);
             if (error) return res.status(422).json({ error });
             const row = await this.sheepModel.create(userId, value);
-            this.publish(userId, "created");
+            this.publish(userId, "created", row);
             res.status(201).json({ data: toView(row) });
         } catch (err) {
             next(err);
@@ -117,7 +119,7 @@ export class HerdController {
             const row = await this.sheepModel.update(userId, id, value);
             if (!row)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
-            this.publish(userId, "updated");
+            this.publish(userId, "updated", row);
             res.json({ data: toView(row) });
         } catch (err) {
             next(err);
@@ -130,12 +132,13 @@ export class HerdController {
             const id = parseId(req.params.id);
             const userId = getUserId(req);
 
-            const deleted = id
+            const row = id ? await this.sheepModel.get(userId, id) : null;
+            const deleted = row
                 ? await this.sheepModel.delete(userId, id)
                 : false;
             if (!deleted)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
-            this.publish(userId, "deleted");
+            this.publish(userId, "deleted", row);
             res.status(204).end();
         } catch (err) {
             next(err);

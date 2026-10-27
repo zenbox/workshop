@@ -2,7 +2,7 @@
    Erwartet: sheep = Liste aus HerdController.list (Felder: id, name, breed, age, gender, genderLabel)
    Änderungen laufen über die REST-API unter /herd:
    POST /herd, GET /herd/:id, PUT /herd/:id, DELETE /herd/:id
-   Nach jeder Änderung lädt die Seite neu, die Tabelle bleibt serverseitig gerendert. #}
+  Socket-Ereignisse halten die globale Tabelle und Aktivität live aktuell. #}
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -19,11 +19,17 @@
 <!-- <<<<<<< -->
 
   <style>
-    /* Nur Schrift und Farben, sonst kein Layout */
     body { font-family: Barlow, sans-serif; color: #000; background: #fff; }
     table { border-collapse: collapse; }
     th, td { border: 1px solid #000; padding: 0.25rem 0.5rem; text-align: left; }
     dialog { color: #000; background: #fff; border: 1px solid #000; }
+    .live-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1rem; }
+    .live-list { display: grid; gap: 0.4rem; max-height: 15rem; overflow: auto; padding: 0; list-style: none; }
+    .bubble { max-width: 85%; padding: 0.4rem 0.7rem; border-radius: 1rem; background: #edf1f3; overflow-wrap: anywhere; }
+    .chat-bubble.mine { margin-left: auto; background: #d9f1e4; }
+    .chat-bubble.theirs { margin-right: auto; background: #edf1f3; }
+    #chat-form { display: flex; gap: 0.4rem; }
+    #chat-text { flex: 1; min-width: 0; }
   </style>
 
 
@@ -54,6 +60,7 @@
           <th scope="col">Rasse</th>
           <th scope="col">Alter</th>
           <th scope="col">Geschlecht</th>
+          <th scope="col">Besitzer</th>
           <th scope="col"><span hidden>Aktionen</span></th>
         </tr>
       </thead>
@@ -64,18 +71,42 @@
           <td>{{ s.breed }}</td>
           <td>{{ s.age }}</td>
           <td>{{ s.genderLabel }}</td>
+          <td>{{ s.ownerName }}</td>
           <td>
+            {% if s.userId == currentUser %}
             <button type="button" data-action="edit" title="{{ s.name }} bearbeiten" aria-label="{{ s.name }} bearbeiten">
               <i class="ph ph-pencil-simple" aria-hidden="true"></i>
             </button>
             <button type="button" data-action="delete" title="{{ s.name }} löschen" aria-label="{{ s.name }} löschen">
               <i class="ph ph-trash" aria-hidden="true"></i>
             </button>
+            {% endif %}
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
+
+    <div class="live-panels">
+      <section aria-labelledby="activity-title">
+        <h2 id="activity-title">Live-Aktivität</h2>
+        <p id="connection-status" role="status">Verbinde …</p>
+        <p id="online-users">Niemand online</p>
+        <ol id="activity-list" class="live-list" aria-live="polite"></ol>
+      </section>
+
+      <section aria-labelledby="chat-title">
+        <h2 id="chat-title">Chat</h2>
+        <ol id="chat-list" class="live-list" aria-live="polite"></ol>
+        <form id="chat-form">
+          <label for="chat-text" hidden>Nachricht</label>
+          <input id="chat-text" name="message" type="text" maxlength="500" autocomplete="off" required>
+          <button type="submit" aria-label="Nachricht senden" title="Nachricht senden">
+            <i class="ph ph-paper-plane-right" aria-hidden="true"></i>
+          </button>
+        </form>
+      </section>
+    </div>
   </main>
 
   <dialog id="dlg" aria-labelledby="dlg-title">
@@ -127,8 +158,124 @@ document.getElementById('user').addEventListener('change', (e) => {
 
 
 const socket = io({ auth: { userId: USER } });
-socket.on('sheep:changed', ({ action } = {}) => {
-  if (['created', 'updated', 'deleted'].includes(action)) location.reload();
+
+const activityList = document.getElementById('activity-list');
+const chatList = document.getElementById('chat-list');
+const chatForm = document.getElementById('chat-form');
+const chatText = document.getElementById('chat-text');
+const onlineUsers = document.getElementById('online-users');
+const connectionStatus = document.getElementById('connection-status');
+let activeUsers = [];
+
+function appendBubble(list, text, className) {
+  const item = document.createElement('li');
+  item.className = className;
+  item.textContent = text;
+  list.append(item);
+  while (list.children.length > 100) list.firstElementChild.remove();
+  list.scrollTop = list.scrollHeight;
+}
+
+function activityText(activity) {
+  if (activity.type === 'presence') {
+    return activity.action === 'joined'
+      ? `${activity.userName} ist online.`
+      : `${activity.userName} ist offline.`;
+  }
+  const actions = { created: 'hat ein Schaf angelegt', updated: 'hat ein Schaf verändert', deleted: 'hat ein Schaf gelöscht' };
+  return `${activity.userName} ${actions[activity.action] ?? 'hat ein Schaf geändert'}: ${activity.sheepName}`;
+}
+
+function showActivity(activity) {
+  appendBubble(activityList, activityText(activity), 'bubble');
+}
+
+function showChatMessage(message) {
+  const side = message.userId === USER ? 'mine' : 'theirs';
+  appendBubble(chatList, `${message.userName}: ${message.text}`, `bubble chat-bubble ${side}`);
+}
+
+function showOnlineUsers(users) {
+  onlineUsers.textContent = users.length
+    ? `Online: ${users.map((user) => user.userName).join(', ')}`
+    : 'Niemand online';
+}
+
+function makeSheepRow(sheep) {
+  const row = document.createElement('tr');
+  row.dataset.id = sheep.id;
+  [sheep.name, sheep.breed, sheep.age, sheep.genderLabel, sheep.ownerName].forEach((value) => {
+    const cell = document.createElement('td');
+    cell.textContent = value;
+    row.append(cell);
+  });
+
+  const actions = document.createElement('td');
+  if (sheep.userId === USER) {
+    for (const [action, icon, label] of [
+      ['edit', 'pencil-simple', 'bearbeiten'],
+      ['delete', 'trash', 'löschen'],
+    ]) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.action = action;
+      button.title = `${sheep.name} ${label}`;
+      button.setAttribute('aria-label', button.title);
+      const glyph = document.createElement('i');
+      glyph.className = `ph ph-${icon}`;
+      glyph.setAttribute('aria-hidden', 'true');
+      button.append(glyph);
+      actions.append(button);
+    }
+  }
+  row.append(actions);
+  return row;
+}
+
+function applySheepChange(activity) {
+  const row = [...document.getElementById('rows').children]
+    .find((item) => item.dataset.id === String(activity.sheep.id));
+  if (activity.action === 'deleted') {
+    row?.remove();
+  } else {
+    const updatedRow = makeSheepRow(activity.sheep);
+    if (row) row.replaceWith(updatedRow);
+    else document.getElementById('rows').append(updatedRow);
+  }
+}
+
+socket.on('connect', () => { connectionStatus.textContent = 'Verbunden'; });
+socket.on('disconnect', () => { connectionStatus.textContent = 'Verbindung getrennt'; });
+socket.on('activity:history', (items) => {
+  activityList.replaceChildren();
+  items.forEach(showActivity);
+});
+socket.on('activity:message', (activity) => {
+  showActivity(activity);
+  if (activity.type === 'presence') {
+    activeUsers = activity.action === 'joined'
+      ? [...activeUsers.filter((user) => user.userId !== activity.userId), { userId: activity.userId, userName: activity.userName }]
+      : activeUsers.filter((user) => user.userId !== activity.userId);
+    showOnlineUsers(activeUsers);
+  }
+  if (activity.type === 'sheep') applySheepChange(activity);
+});
+socket.on('presence:state', (users) => {
+  activeUsers = users;
+  showOnlineUsers(activeUsers);
+});
+socket.on('chat:history', (messages) => {
+  chatList.replaceChildren();
+  messages.forEach(showChatMessage);
+});
+socket.on('chat:message', showChatMessage);
+
+chatForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const text = chatText.value.trim();
+  if (!text || !socket.connected) return;
+  socket.emit('chat:send', text);
+  chatText.value = '';
 });
 // <<<<<<<
 
@@ -196,7 +343,6 @@ headers: {
       try {
         clearError();
         await api('DELETE', `${API}/${id}`);
-        location.reload();
       } catch (err) {
         showError(err.message);
       }
@@ -232,7 +378,6 @@ headers: {
           await api('PUT', `${API}/${editingId}`, body);
         }
         dlg.close();
-        location.reload();
       } catch (err) {
         showError(err.message);
       }

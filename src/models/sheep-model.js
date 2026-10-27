@@ -11,6 +11,15 @@ export class SheepModel {
         );
     }
 
+    listAll() {
+        return this.db.all(
+            `SELECT sheep.*, users.name AS owner_name
+             FROM sheep
+             JOIN users ON users.id = sheep.user_id
+             ORDER BY sheep.id`
+        );
+    }
+
     get(userId, id) {
         return this.db.get(
             "SELECT * FROM sheep WHERE id = ? AND user_id = ?",
