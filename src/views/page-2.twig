@@ -1,0 +1,19 @@
+{# src/views/page-2.twig
+   Wird von app.js mit res.render("page-2", { message }) gerendert.
+   Twig escaped Variablen automatisch, {{ message }} ist sicher. #}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seite 2</title>
+    {# Absolute Pfade: funktionieren auch auf Unterseiten #}
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <h1>Seite 2</h1>
+    <p>{{ message }}</p>
+    <p><a href="/">Zurück zur Startseite</a></p>
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>

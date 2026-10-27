@@ -1,0 +1,37 @@
+{
+    "name": "sheep",
+    "version": "1.0.0",
+    "description": "a simple sheep list application",
+    "keywords": [
+        "sheeps",
+        "crud",
+        "routes"
+    ],
+    "homepage": "https://github.com/zenbox/workshop#readme",
+    "bugs": {
+        "url": "https://github.com/zenbox/workshop/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zenbox/workshop.git"
+    },
+    "license": "MIT",
+    "author": "Michael Reichart",
+    "type": "module",
+    "main": "app.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "dependencies": {
+        "express": "^5.3.0",
+        "twig": "^3.0.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
+    }
+}
