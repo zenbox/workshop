@@ -3,11 +3,8 @@ import { fileURLToPath } from "node:url";
 import express from "express";
 import { Database } from "./db/index.js";
 import { SheepModel } from "./models/sheep-model.js";
-
-// >>>>>>>
 import { HerdController } from "./controllers/herd.controller.js";
 import { createHerdRouter } from "./routes/herd.routes.js";
-// <<<<<<<
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -22,6 +19,11 @@ export function createApp({ sheepModel } = {}) {
     // Statische Dateien aus static/
     app.use(express.static(path.join(__dirname, "..", "static")));
 
+    // >>>>>>>
+    // JSON-Body für die REST-API, begrenzt auf 16 KiB
+    app.use(express.json({ limit: "16kb" }));
+    // <<<<<<<
+
     // Twig-Templates aus src/views
     app.set("views", path.join(__dirname, "views"));
     app.set("view engine", "twig");
@@ -30,11 +32,9 @@ export function createApp({ sheepModel } = {}) {
         res.render("page-2", { message: "Hallo vom Server!" });
     });
 
-    // >>>>>>>
     // Verdrahtung: Model -> Controller -> Router
     const herdController = new HerdController({ sheepModel });
     app.use("/herd", createHerdRouter(herdController));
-    // <<<<<<<
 
     // Fehler-Handler immer zuletzt registrieren
     app.use((err, req, res, next) => {

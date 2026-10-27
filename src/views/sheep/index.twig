@@ -1,7 +1,8 @@
 {# src/views/sheep/index.twig
-   Erwartet: sheep = Liste aus SheepModel.list(userId)
-   Die Zeilen werden serverseitig gerendert. Änderungen laufen über die REST-API
-   (GET/POST /api/sheep, PATCH/DELETE /api/sheep/:id); danach wird die Liste neu geladen. #}
+   Erwartet: sheep = Liste aus HerdController.list (Felder: id, name, breed, age, gender, genderLabel)
+   Änderungen laufen über die REST-API unter /herd:
+   POST /herd, GET /herd/:id, PUT /herd/:id, DELETE /herd/:id
+   Nach jeder Änderung lädt die Seite neu, die Tabelle bleibt serverseitig gerendert. #}
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -62,24 +63,6 @@
     </table>
   </main>
 
-  {# Zeilenvorlage für die Aktualisierung per JavaScript nach API-Aufrufen #}
-  <template id="row-tpl">
-    <tr>
-      <td data-field="name"></td>
-      <td data-field="breed"></td>
-      <td data-field="age"></td>
-      <td data-field="gender"></td>
-      <td>
-        <button type="button" data-action="edit">
-          <i class="ph ph-pencil-simple" aria-hidden="true"></i>
-        </button>
-        <button type="button" data-action="delete">
-          <i class="ph ph-trash" aria-hidden="true"></i>
-        </button>
-      </td>
-    </tr>
-  </template>
-
   <dialog id="dlg" aria-labelledby="dlg-title">
     <form id="form">
       <h2 id="dlg-title">Neues Schaf</h2>
@@ -116,17 +99,14 @@
   </dialog>
 
   <script>
-    const API = '/api/sheep';
-    const GENDER = { female: 'weiblich', male: 'männlich' };
+    // >>>>>>>
+    const API = '/herd';
 
-    const tbody = document.getElementById('rows');
-    const rowTpl = document.getElementById('row-tpl');
-    const dlg = document.getElementById('dlg');
     const form = document.getElementById('form');
+    const dlg = document.getElementById('dlg');
     const title = document.getElementById('dlg-title');
     const errorEl = document.getElementById('error');
 
-    let sheep = [];
     let editingId = null;
 
     function showError(message) {
@@ -139,7 +119,7 @@
       errorEl.hidden = true;
     }
 
-    // Einheitlicher Aufruf der REST-API. Erwartet die Hülle { data: ... }.
+    // REST-Aufruf. Bei Erfolg { data: ... } oder 204 ohne Inhalt.
     async function api(method, url, body) {
       const res = await fetch(url, {
         method,
@@ -150,30 +130,6 @@
       const json = await res.json().catch(() => null);
       if (!res.ok) throw new Error(json?.error ?? `Fehler ${res.status}`);
       return json?.data ?? null;
-    }
-
-    function rowFor(s) {
-      const tr = rowTpl.content.firstElementChild.cloneNode(true);
-      tr.dataset.id = s.id;
-      tr.querySelector('[data-field="name"]').textContent = s.name;
-      tr.querySelector('[data-field="breed"]').textContent = s.breed;
-      tr.querySelector('[data-field="age"]').textContent = s.age;
-      tr.querySelector('[data-field="gender"]').textContent = GENDER[s.gender];
-
-      const edit = tr.querySelector('[data-action="edit"]');
-      const del = tr.querySelector('[data-action="delete"]');
-      edit.title = edit.ariaLabel = `${s.name} bearbeiten`;
-      del.title = del.ariaLabel = `${s.name} löschen`;
-      return tr;
-    }
-
-    function render() {
-      tbody.replaceChildren(...sheep.map(rowFor));
-    }
-
-    async function load() {
-      sheep = await api('GET', API) ?? [];
-      render();
     }
 
     function openDialog(s = null) {
@@ -191,30 +147,34 @@
       form.elements.name.focus();
     }
 
-    async function remove(id) {
-      const s = sheep.find(x => x.id === id);
-      if (!s || !confirm(`${s.name} löschen?`)) return;
+    async function edit(id) {
       try {
         clearError();
-        await api('DELETE', `${API}/${id}`);
-        await load();
+        openDialog(await api('GET', `${API}/${id}`));
       } catch (err) {
         showError(err.message);
       }
     }
 
-    // Ereignisdelegation: ein Listener für alle Zeilen
-    tbody.addEventListener('click', (e) => {
+    async function remove(id, name) {
+      if (!confirm(`${name} löschen?`)) return;
+      try {
+        clearError();
+        await api('DELETE', `${API}/${id}`);
+        location.reload();
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+
+    // Ein Listener für alle Zeilen
+    document.getElementById('rows').addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       const tr = e.target.closest('tr');
       if (!btn || !tr) return;
       const id = Number(tr.dataset.id);
-      if (btn.dataset.action === 'edit') {
-        const s = sheep.find(x => x.id === id);
-        if (s) openDialog(s);
-      } else if (btn.dataset.action === 'delete') {
-        remove(id);
-      }
+      if (btn.dataset.action === 'edit') edit(id);
+      if (btn.dataset.action === 'delete') remove(id, tr.cells[0].textContent);
     });
 
     form.addEventListener('submit', async (e) => {
@@ -234,11 +194,10 @@
         if (editingId === null) {
           await api('POST', API, body);
         } else {
-          // PATCH erwartet alle vier Fachdaten
-          await api('PATCH', `${API}/${editingId}`, body);
+          await api('PUT', `${API}/${editingId}`, body);
         }
         dlg.close();
-        await load();
+        location.reload();
       } catch (err) {
         showError(err.message);
       }
@@ -246,9 +205,7 @@
 
     document.getElementById('new').addEventListener('click', () => openDialog());
     document.getElementById('cancel').addEventListener('click', () => dlg.close());
-
-    // Server-gerenderte Zeilen sind sofort sichtbar, danach übernimmt die API
-    load().catch((err) => showError(err.message));
+    // <<<<<<<
   </script>
 </body>
 </html>

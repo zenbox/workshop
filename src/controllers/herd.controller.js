@@ -1,4 +1,5 @@
 const GENDER_LABELS = { female: "weiblich", male: "männlich" };
+const GENDERS = Object.keys(GENDER_LABELS);
 
 // Fester Demo-Benutzer, bis die Anmeldung in v4 kommt
 const DEMO_USER_ID = 1;
@@ -15,21 +16,110 @@ function toView(row) {
     };
 }
 
+// >>>>>>>
+// Eingaben prüfen und bereinigen (wird später in den Service verschoben)
+function parseSheep(body = {}) {
+    const name = typeof body.name === "string" ? body.name.trim() : "";
+    const breed = typeof body.breed === "string" ? body.breed.trim() : "";
+    const age = body.age === "" || body.age == null ? NaN : Number(body.age);
+
+    if (!name || name.length > 50) {
+        return { error: "Name ist erforderlich (max. 50 Zeichen)." };
+    }
+    if (!breed || breed.length > 50) {
+        return { error: "Rasse ist erforderlich (max. 50 Zeichen)." };
+    }
+    if (!Number.isInteger(age) || age < 0 || age > 25) {
+        return { error: "Alter muss eine ganze Zahl von 0 bis 25 sein." };
+    }
+    if (!GENDERS.includes(body.gender)) {
+        return { error: "Geschlecht ist ungültig." };
+    }
+
+    return { value: { name, breed, age, gender: body.gender } };
+}
+
+// Ungültige IDs gelten wie nicht gefundene Datensätze
+function parseId(raw) {
+    const id = Number(raw);
+    return Number.isInteger(id) && id > 0 ? id : null;
+}
+// <<<<<<<
+
 export class HerdController {
     constructor({ sheepModel, userId = DEMO_USER_ID }) {
         this.sheepModel = sheepModel;
         this.userId = userId;
     }
 
-    // Arrow-Funktion als Feld, damit `this` beim Übergeben an Express erhalten bleibt
+    // Arrow-Funktionen als Felder, damit `this` beim Übergeben an Express erhalten bleibt
+
+    // GET /herd (HTML)
     list = async (req, res, next) => {
         try {
             const rows = await this.sheepModel.list(this.userId);
-            console.log("Schafe geladen:", rows.length);
-            const sheep = rows.map(toView);
-            res.render("sheep/index", { sheep });
+            res.render("sheep/index", { sheep: rows.map(toView) });
         } catch (err) {
             next(err);
         }
     };
+
+    // >>>>>>>
+    // GET /herd/:id (JSON)
+    get = async (req, res, next) => {
+        try {
+            const id = parseId(req.params.id);
+            const row = id ? await this.sheepModel.get(this.userId, id) : null;
+            if (!row)
+                return res.status(404).json({ error: "Schaf nicht gefunden." });
+            res.json({ data: toView(row) });
+        } catch (err) {
+            next(err);
+        }
+    };
+
+    // POST /herd (JSON)
+    create = async (req, res, next) => {
+        try {
+            const { value, error } = parseSheep(req.body);
+            if (error) return res.status(422).json({ error });
+            const row = await this.sheepModel.create(this.userId, value);
+            res.status(201).json({ data: toView(row) });
+        } catch (err) {
+            next(err);
+        }
+    };
+
+    // PUT /herd/:id (vollständige Ersetzung der Fachdaten)
+    update = async (req, res, next) => {
+        try {
+            const id = parseId(req.params.id);
+            if (!id)
+                return res.status(404).json({ error: "Schaf nicht gefunden." });
+            const { value, error } = parseSheep(req.body);
+            if (error) return res.status(422).json({ error });
+            const row = await this.sheepModel.update(this.userId, id, value);
+            if (!row)
+                return res.status(404).json({ error: "Schaf nicht gefunden." });
+            res.json({ data: toView(row) });
+        } catch (err) {
+            next(err);
+        }
+    };
+
+    // DELETE /herd/:id
+    delete = async (req, res, next) => {
+        try {
+            const id = parseId(req.params.id);
+            const deleted = id
+                ? await this.sheepModel.delete(this.userId, id)
+                : false;
+            if (!deleted)
+                return res.status(404).json({ error: "Schaf nicht gefunden." });
+            res.status(204).end();
+        } catch (err) {
+            next(err);
+        }
+    };
+    // <<<<<<<
 }
