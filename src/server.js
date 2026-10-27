@@ -6,14 +6,22 @@ import { SheepModel } from "./models/sheep-model.js";
 import { HerdController } from "./controllers/herd.controller.js";
 import { createHerdRouter } from "./routes/herd.routes.js";
 
+import http from "node:http";
+import { Server as SocketServer } from "socket.io";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const HOST = "localhost";
 export const PORT = 3000;
 export const DB_FILE = path.join(__dirname, "..", "data", "workshop.sqlite");
 
+const DEMO_USER_ID = 1;
+const KNOWN_USER_IDS = [1, 2];
+const roomFor = ({ userId }) => `user: ${userId}`;
+
 // Baut die App mit injiziertem Model, startet aber keinen Server
-export function createApp({ sheepModel } = {}) {
+// Für die Mehrbenutzerfähigkeit wird eine Publish-Funktion übergeben, die Ereignisse an die Clients weiterleitet.
+export function createApp({ sheepModel, publish = () => {} } = {}) {
     const app = express();
 
     // Statische Dateien aus static/
@@ -33,7 +41,7 @@ export function createApp({ sheepModel } = {}) {
     });
 
     // Verdrahtung: Model -> Controller -> Router
-    const herdController = new HerdController({ sheepModel });
+    const herdController = new HerdController({ sheepModel, publish });
     app.use("/herd", createHerdRouter(herdController));
 
     // Fehler-Handler immer zuletzt registrieren
@@ -53,11 +61,31 @@ export async function startServer({
 } = {}) {
     const database = await Database.open(dbFile);
     const sheepModel = new SheepModel(database);
-    const app = createApp({ sheepModel });
+
+    // Schultern des Socket-Servers an einen neuen HTTP-Server
+    const httpServer = http.createServer();
+    const io = new SocketServer(httpServer);
+
+    const publish = (userId) => io.to(roomFor(userID)).emit("sheep:changed");
+
+    const app = createApp({ sheepModel, publish });
+
+    // Verküpfen beider https-Services)
+    httpServer.on("request", app);
+
+    // Wenn irgendein Client versucht über `ws://`zu verbinden
+    io.on("connection", (socket) => {
+        const requested = Number(socket.handshake.auth?.userId);
+        const userId = KNOWN_USER_IDS.includes(requested)
+            ? requested
+            : DEMO_USER_ID;
+
+        socket.join(roomFor({ userId }));
+    });
 
     const server = app.listen(port, host, () => {
         console.log(`Server running at http://${host}:${port}/`);
     });
 
-    return { server, database };
+    return { server, database, io };
 }

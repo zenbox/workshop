@@ -4,6 +4,12 @@ const GENDERS = Object.keys(GENDER_LABELS);
 // Fester Demo-Benutzer, bis die Anmeldung in v4 kommt
 const DEMO_USER_ID = 1;
 
+// Benutzer aus der Anfrage: ?user=2 (Seite) oder Header X-User-Id (API)
+function getUserId(req) {
+    const id = Number(req.query.user ?? req.get("X-User-Id") ?? DEMO_USER_ID);
+    return Number.isInteger(id) && id > 0 ? id : DEMO_USER_ID;
+}
+
 // Datensatz aus der Datenbank in das Format für die Ansicht bringen
 function toView(row) {
     return {
@@ -47,9 +53,9 @@ function parseId(raw) {
 // <<<<<<<
 
 export class HerdController {
-    constructor({ sheepModel, userId = DEMO_USER_ID }) {
+    constructor({ sheepModel, publish = () => {} }) {
         this.sheepModel = sheepModel;
-        this.userId = userId;
+        this.publish = publish;
     }
 
     // Arrow-Funktionen als Felder, damit `this` beim Übergeben an Express erhalten bleibt
@@ -57,7 +63,8 @@ export class HerdController {
     // GET /herd (HTML)
     list = async (req, res, next) => {
         try {
-            const rows = await this.sheepModel.list(this.userId);
+            const userId = getUserId(req);
+            const rows = await this.sheepModel.list(userId);
             res.render("sheep/index", { sheep: rows.map(toView) });
         } catch (err) {
             next(err);
@@ -69,7 +76,8 @@ export class HerdController {
     get = async (req, res, next) => {
         try {
             const id = parseId(req.params.id);
-            const row = id ? await this.sheepModel.get(this.userId, id) : null;
+            const userId = getUserId(req);
+            const row = id ? await this.sheepModel.get(userId, id) : null;
             if (!row)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
             res.json({ data: toView(row) });
@@ -81,9 +89,10 @@ export class HerdController {
     // POST /herd (JSON)
     create = async (req, res, next) => {
         try {
+            const userId = getUserId(req);
             const { value, error } = parseSheep(req.body);
             if (error) return res.status(422).json({ error });
-            const row = await this.sheepModel.create(this.userId, value);
+            const row = await this.sheepModel.create(userId, value);
             res.status(201).json({ data: toView(row) });
         } catch (err) {
             next(err);
@@ -96,9 +105,11 @@ export class HerdController {
             const id = parseId(req.params.id);
             if (!id)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
+            const userId = getUserId(req);
+
             const { value, error } = parseSheep(req.body);
             if (error) return res.status(422).json({ error });
-            const row = await this.sheepModel.update(this.userId, id, value);
+            const row = await this.sheepModel.update(userId, id, value);
             if (!row)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
             res.json({ data: toView(row) });
@@ -111,8 +122,10 @@ export class HerdController {
     delete = async (req, res, next) => {
         try {
             const id = parseId(req.params.id);
+            const userId = getUserId(req);
+
             const deleted = id
-                ? await this.sheepModel.delete(this.userId, id)
+                ? await this.sheepModel.delete(userId, id)
                 : false;
             if (!deleted)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
