@@ -4,14 +4,16 @@ import express from "express";
 import { Database } from "./db/index.js";
 import { SheepModel } from "./models/sheep-model.js";
 
+// >>>>>>>
+import { HerdController } from "./controllers/herd.controller.js";
+import { createHerdRouter } from "./routes/herd.routes.js";
+// <<<<<<<
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const HOST = "localhost";
 export const PORT = 3000;
 export const DB_FILE = path.join(__dirname, "..", "data", "workshop.sqlite");
-
-// Fester Demo-Benutzer, bis die Anmeldung in v4 kommt
-const DEMO_USER_ID = 1;
 
 // Baut die App mit injiziertem Model, startet aber keinen Server
 export function createApp({ sheepModel } = {}) {
@@ -28,15 +30,11 @@ export function createApp({ sheepModel } = {}) {
         res.render("page-2", { message: "Hallo vom Server!" });
     });
 
-    // Herde aus der Datenbank laden und als HTML anzeigen
-    app.get("/herde", async (req, res, next) => {
-        try {
-            const sheep = await sheepModel.list(DEMO_USER_ID);
-            res.render("sheep/index", { sheep });
-        } catch (err) {
-            next(err);
-        }
-    });
+    // >>>>>>>
+    // Verdrahtung: Model -> Controller -> Router
+    const herdController = new HerdController({ sheepModel });
+    app.use("/herd", createHerdRouter(herdController));
+    // <<<<<<<
 
     // Fehler-Handler immer zuletzt registrieren
     app.use((err, req, res, next) => {

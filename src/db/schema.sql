@@ -18,5 +18,16 @@ CREATE TABLE IF NOT EXISTS sheep (
 
 CREATE INDEX IF NOT EXISTS idx_sheep_user ON sheep(user_id);
 
--- Demo-Konto, bleibt vorerst fest (Auth kommt in v4)
+-- Demo-Konto zuerst, weil die Schafe darauf verweisen (Auth kommt in v4)
 INSERT OR IGNORE INTO users (id, name) VALUES (1, 'Demo');
+
+-- Beispiel-Herde für Demo-Benutzer 1
+INSERT INTO sheep (user_id, name, breed, age, gender)
+SELECT 1, name, breed, age, gender FROM (
+  SELECT 'Mara'  AS name, 'Merino'              AS breed, 4 AS age, 'female' AS gender UNION ALL
+  SELECT 'Jonas',  'Texel',               2, 'male'   UNION ALL
+  SELECT 'Berta',  'Skudde',              7, 'female' UNION ALL
+  SELECT 'Emil',   'Coburger Fuchsschaf', 1, 'male'   UNION ALL
+  SELECT 'Lotte',  'Schwarzkopfschaf',    5, 'female'
+)
+WHERE NOT EXISTS (SELECT 1 FROM sheep);
