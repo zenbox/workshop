@@ -1,18 +1,59 @@
 # Login-Controller und auth-Router
 
+Stand: 28.10.2026. **Herden sind global sichtbar, aber nur nach Anmeldung.**
+Alle Angemeldeten sehen Schafe, Aktivitaeten, Chat und Praesenz. Nur der
+Besitzer darf eigene Schafe aendern oder loeschen. Die fruehere Idee privater
+Herden ist veraltet. Die Codebloecke unten zeigen Ausschnitte; verbindlich
+sind die verlinkten vollstaendigen Quelldateien.
+
+## Implementierte Bausteine
+
+- [x] [Datenbankinitialisierung](../src/db/index.js) ergaenzt alte Tabellen datenbewahrend um `email` und `password_hash`,
+- [ ] normalisiert E-Mails
+- [ ] und legt einen eindeutigen Index an. 
+- [x] Der Ablauf ist wiederholbar; vorhandene IDs und
+  Schafe bleiben erhalten. 
+- [ ] Noch nicht eingerichtete Konten haben NULL in den
+  Login-Spalten und koennen sich nicht anmelden.
+- [Passwort-Service](../src/services/passwordService.js): asynchrones Scrypt
+  mit zufaelligem Salt, konstantes Kostenprofil und sicherer Hashvergleich.
+- [UserModel](../src/models/user-model.js),
+  [AuthController](../src/controllers/auth-controller.js),
+  [Auth-Router](../src/routes/auth.js) und
+  [Auth-Middleware](../src/middleware/auth.js): Login, `/auth/me`, CSRF und Logout.
+- [Socket-Authentifizierung](../src/middleware/socket-auth.js) nutzt dieselbe
+  Session-Middleware und denselben SQLite-Store wie HTTP. Anonyme Verbindungen
+  und fremde Origins werden abgewiesen. Vor Socket-Ein-/Ausgaben wird die
+  Session geprueft; Logout, erneuter Login und Ablauf trennen offene Sockets.
+- [HerdController](../src/controllers/herd.controller.js) verwendet nur die
+  Session-Identitaet. Liste und Einzelabruf sind global, Schreiboperationen
+  bleiben im SQL besitzergebunden. Nicht erlaubte Schreibzugriffe liefern 404.
+- [Browser-Client](../src/views/sheep/index.twig) holt den Token ueber `/auth/me`,
+  sendet `X-CSRF-Token` bei Mutationen und verbindet Socket.IO ohne Demo-ID.
+  Ein Logout-Button ist vorhanden; eine neue Login-Oberflaeche gehoert nicht
+  zu diesem Schritt. Fuer eine Browser-Anmeldung den JSON-Login im selben
+  Browser ausfuehren; ein curl-Cookie wird nicht automatisch uebernommen.
+
 ## Ziel
 
 Die Anmeldung besteht aus drei Teilen, die nacheinander laufen. Jeder Teil hat eine Aufgabe:
 
 1. **Middleware validateLogin:** prüft nur die Form der Eingabe. Sie kennt keine Benutzer.
 2. **Controller login:** prüft das Passwort und legt bei Erfolg die Session an.
-3. **Middleware requireAuth:** lässt später nur angemeldete Anfragen zu /herd.
+3. **Middleware requireAuth:** lässt nur angemeldete Anfragen zu /herd.
+
+Origin- und CSRF-Pruefung sichern zusaetzlich die schreibenden Browser-Anfragen.
+Socket.IO besitzt eine eigene Session-Pruefung; der HTTP-Guard allein reicht nicht.
 
 Der Ablauf eines Login-Requests:
 
 POST /auth/login -> express.json() Body lesen -> session() Session laden (noch leer) -> validateLogin Form prüfen (Middleware) -> AuthController.login Passwort prüfen, Session setzen (Controller) -> Antwort mit Cookie
 
-**Voraussetzungen:** Schritte 1 bis 4 sind umgesetzt. Die Tabelle users hat email und password_hash, passwordService.js existiert mit hashPassword() und verifyPassword(), und die Session-Middleware läuft.
+**Voraussetzungen:** `SESSION_SECRET` setzen und Demo-Zugaenge wie unten
+einrichten. Schema-Erweiterung, Passwort-Service und Session-Integration sind
+implementiert. Ein geaendertes `CREATE TABLE IF NOT EXISTS` allein wuerde eine
+bestehende Datenbank nicht migrieren; deshalb gibt es den separaten
+transaktionalen Migrationsschritt beim Oeffnen.
 
 ---
 
@@ -48,7 +89,9 @@ export class UserModel {
 }
 ```
 
-**Erklärung:** Der Hash verlässt das Model nicht. Die Funktion liefert ihn nur an den Login, weil dort die Prüfung stattfindet.
+**Erklärung:** Der Hash bleibt serverintern. Das Model gibt ihn an den
+Login-Controller weiter, aber niemals an den Browser. `findById()` liefert
+fuer `/auth/me` ausschliesslich oeffentliche Benutzerdaten ohne Hash.
 
 ---
 
@@ -57,7 +100,7 @@ export class UserModel {
 **Zeigen:** Die erste Middleware in der Kette. Sie entscheidet, ob die Anfrage weitergereicht wird.
 
 ```
-// src/middleware/validate-login.js
+// src/middleware/auth.js (Ausschnitt)
 
 export function validateLogin(req, res, next) {
 
@@ -73,7 +116,7 @@ export function validateLogin(req, res, next) {
 
         password === "" ||
 
-        email.length > 254 ||
+        email.trim().length > 254 ||
 
         password.length > 200;
 
@@ -111,7 +154,7 @@ import crypto from "node:crypto";
 
 import { hashPassword, verifyPassword } from "../services/passwordService.js";
 
-// Vergleichshash für unbekannte E-Mails, damit die Antwortzeit gleich bleibt
+// Vergleichshash fuer unbekannte E-Mails mit demselben Kostenprofil
 
 const DUMMY_HASH = await hashPassword("kein-konto");
 
@@ -200,10 +243,15 @@ export class AuthController {
 
 **Erklärung:**
 
-- **Dummy-Hash:** Ohne ihn würde der Server bei unbekannten E-Mails sofort antworten. Mit Zeitmessung könnte jemand so herausfinden, welche Konten existieren.
+- **Dummy-Hash:** Reduziert auffaellige Laufzeitunterschiede zwischen unbekannten
+  Konten und falschen Passwoertern. Identische Antwortzeiten garantiert er nicht.
 - **regenerate:** Die Session-ID wird vor dem Login erneuert. Hätte ein Angreifer vorher eine ID gesetzt, ist sie danach wertlos.
 - **save vor der Antwort:** Die Session muss in der Datenbank stehen, bevor der Browser das Cookie bekommt. Sonst kann die nächste Anfrage die Session nicht finden.
-- **CSRF-Token:** Es wird im Session-Speicher abgelegt. Der Browser bekommt es einmal in der Antwort. Der Server prüft später, ob der Header dazu passt.
+- **CSRF-Token:** Liegt in der Session und kommt bei Login sowie `/auth/me`
+  zum Browser. Schreibende Herd-Anfragen und Logout muessen ihn als
+  `X-CSRF-Token` senden, sonst 403. Der Token schuetzt nicht den Login selbst:
+  Dieser akzeptiert JSON und prueft vorhandene Origin-/Fetch-Metadata-Header.
+  Nicht-Browser-Clients wie curl duerfen ohne Origin arbeiten.
 
 ---
 
@@ -216,15 +264,17 @@ export class AuthController {
 
 import express from "express";
 
-import { validateLogin } from "../middleware/validate-login.js";
+import { validateLogin, requireAuth, requireCsrf } from "../middleware/auth.js";
 
-export function createAuthRouter(authController) {
+export function createAuthRouter(authController, originCheck) {
 
     const router = express.Router();
 
     // Kette: erst Eingabe prüfen, dann den Controller aufrufen
 
-    router.post("/login", validateLogin, authController.login);
+    router.post("/login", originCheck, validateLogin, authController.login);
+    router.get("/me", requireAuth, authController.me);
+    router.post("/logout", requireAuth, originCheck, requireCsrf, authController.logout);
 
     return router;
 
@@ -258,7 +308,7 @@ import { AuthController } from "./controllers/auth-controller.js";
 
 import { createAuthRouter } from "./routes/auth.js";
 
-import { requireAuth } from "./middleware/auth.js";
+import { requireAuth, requireCsrf, createOriginCheck } from "./middleware/auth.js";
 
 // createApp(): userModel zusätzlich übergeben
 
@@ -268,11 +318,12 @@ export function createApp({ sheepModel, userModel, publish = () => {}, sessionSt
 
     const authController = new AuthController({ userModel });
 
-    app.use("/auth", createAuthRouter(authController));
+    const originCheck = createOriginCheck("http://localhost:3000");
+    app.use("/auth", createAuthRouter(authController, originCheck));
 
     // Auth-Guard steht vor dem Herd-Router
 
-    app.use("/herd", requireAuth, createHerdRouter(herdController));
+    app.use("/herd", requireAuth, originCheck, requireCsrf, createHerdRouter(herdController));
 
     // ... Fehler-Handler bleibt zuletzt ...
 
@@ -307,7 +358,8 @@ function getUserId(req) {
 }
 ```
 
-In list die Liste auf den Benutzer begrenzen:
+In `list` bleibt die Liste global. Nur die Identitaet fuer Bearbeitungsrechte
+kommt aus der Session:
 
 ```
 list = async (req, res, next) => {
@@ -316,15 +368,11 @@ list = async (req, res, next) => {
 
         const userId = getUserId(req);
 
-        const rows = await this.sheepModel.list(userId);
+        const rows = await this.sheepModel.listAll();
 
         res.render("sheep/index", {
 
-            sheep: rows.map((row) =>
-
-                toView({ ...row, owner_name: req.session.userName })
-
-            ),
+            sheep: rows.map(toView),
 
             currentUser: userId,
 
@@ -339,59 +387,95 @@ list = async (req, res, next) => {
 };
 ```
 
-**Erklärung:** `listAll()` zeigte alle Herden. list(userId) zeigt nur die eigene. Die Mandantentrennung entsteht durch die Session, nicht durch einen Parameter aus der URL.
+**Erklärung:** `listAll()` zeigt gewollt alle Herden. `getPublic(id)` liefert
+ein einzelnes Schaf fuer jeden Angemeldeten. `update(userId, id, ...)` und
+`delete(userId, id)` pruefen weiterhin `user_id` im SQL. Sichtbare Daten sind
+nicht automatisch veraenderbare Daten. URL, Header, Body und Socket-Handshake
+duerfen keine Benutzeridentitaet festlegen.
 
 ---
 
-## Prüfung mit curl
+## Einrichtung und Pruefung
 
-Demo-Zugangsdaten stammen aus den Umgebungsvariablen aus Schritt 1, Migration 2. Hier stehen Platzhalter.
+Vorhandene Zugangsdaten werden nicht ueberschrieben. Demo-Zugaenge werden
+optional aus `DEMO_USER_EMAIL` / `DEMO_USER_PASSWORD` fuer ID 1 und
+`DEMO_SECOND_USER_EMAIL` / `DEMO_SECOND_USER_PASSWORD` fuer ID 2 eingerichtet.
+Jeweils beide Werte setzen oder beide weglassen. Die Passwoerter landen nur
+als Scrypt-Hash in der Datenbank. Dieselben Werte beim erneuten Start sind
+erlaubt; andere Werte fuer ein eingerichtetes Konto brechen den Start ab.
+Bestehende Namen und Schafe werden nicht geaendert. Der Login verwendet die
+E-Mail, keinen zusaetzlichen `username`.
 
-```
-# Server starten
+Fuer den ersten lokalen Start im Terminal (Werte in derselben Shell behalten):
 
-SESSION_SECRET=geheim DEMO_USER_EMAIL=mara@example.org DEMO_USER_PASSWORD=... node app.js
-```
-
-Die Tests in dieser Reihenfolge:
-
-```
-# 1. Ohne Login: 401
-
-curl -i http://localhost:3000/herd
-
-# 2. Falsches Passwort: 401
-
-curl -i -H "Content-Type: application/json" \
-
-  -d '{"email":"mara@example.org","password":"falsch"}' \
-
-  http://localhost:3000/auth/login
-
-# 3. Leere Eingabe: 422
-
-curl -i -H "Content-Type: application/json" \
-
-  -d '{"email":""}' http://localhost:3000/auth/login
-
-# 4. Richtiger Login: 200, Cookie wird gespeichert
-
-curl -i -c jar.txt -H "Content-Type: application/json" \
-
-  -d '{"email":"mara@example.org","password":"..."}' \
-
-  http://localhost:3000/auth/login
-
-# 5. Mit Cookie: Herde ist sichtbar
-
-curl -b jar.txt http://localhost:3000/herd
-
-# 6. ?user=2 hat keine Wirkung mehr
-
-curl -b jar.txt "http://localhost:3000/herd?user=2"
+```bash
+export SESSION_SECRET="$(node -e 'process.stdout.write(require("node:crypto").randomBytes(32).toString("hex"))')"
+export DEMO_USER_EMAIL='demo@example.test'
+export DEMO_USER_PASSWORD="$(node -e 'process.stdout.write(require("node:crypto").randomBytes(24).toString("hex"))')"
+export DEMO_SECOND_USER_EMAIL='jonas@example.test'
+export DEMO_SECOND_USER_PASSWORD="$(node -e 'process.stdout.write(require("node:crypto").randomBytes(24).toString("hex"))')"
+node app.js
 ```
 
-**Erwartung:** Test 1 und 2 liefern 401, Test 3 liefert 422, Test 4 liefert 200 mit Set-Cookie, Test 5 zeigt die Herde von Mara, und Test 6 zeigt dieselbe Herde wie Test 5.
+In derselben Shell nach Stoppen des Servers mit `node app.js` erneut starten;
+Passwoerter nicht bei jedem Start neu generieren. In einer zweiten Shell die
+identischen lokalen Demo-Umgebungswerte verwenden. Alternativ lokal und nicht
+versioniert konfigurieren und mit `npm run env` laden. Keine Secrets ausgeben
+oder einchecken. Ohne gesetzte Demo-Werte bleiben eingerichtete Konten nutzbar.
+
+Der Standard-Origin ist `http://localhost:3000`. Bei anderer Browser-Adresse
+`APP_ORIGIN` exakt passend setzen, z.B. nicht `localhost` und `127.0.0.1`
+vermischen. `NODE_ENV=production` erfordert HTTPS fuer das Secure-Cookie;
+Proxy-Vertrauen muss zur echten Infrastruktur passen.
+
+Die folgenden Befehle benoetigen die Demo-Umgebungswerte in ihrer Shell.
+`curl --json` setzt einen aktuellen curl-Client voraus. Login-Antwort und
+Cookie bleiben in einem temporaeren Ordner, nicht in der vorhandenen `jar.txt`.
+
+```bash
+base='http://localhost:3000'
+tmpdir="$(mktemp -d)"
+trap 'rm -rf "$tmpdir"' EXIT
+
+# 401 ohne Anmeldung, 422 fuer fehlende Eingaben, 401 fuer falsches Passwort
+curl -s -o /dev/null -w '%{http_code}\n' "$base/herd"
+curl -s -o /dev/null -w '%{http_code}\n' --json '{"email":""}' "$base/auth/login"
+curl -s -o /dev/null -w '%{http_code}\n' \
+    --json '{"email":"demo@example.test","password":"falsch"}' "$base/auth/login"
+
+# 200 und Cookie; Antwort mit Token nicht ins Terminal schreiben
+curl -s -o "$tmpdir/login.json" -w '%{http_code}\n' -c "$tmpdir/cookies" \
+    --json "$(node -e 'process.stdout.write(JSON.stringify({email: process.env.DEMO_USER_EMAIL, password: process.env.DEMO_USER_PASSWORD}))')" \
+    "$base/auth/login"
+csrf_token="$(node -e 'process.stdout.write(JSON.parse(require("node:fs").readFileSync(process.argv[1], "utf8")).data.csrfToken)' "$tmpdir/login.json")"
+
+# Globale Herde bleibt bei fremder Query-/Header-ID dieselbe (jeweils 200)
+curl -s -o /dev/null -w '%{http_code}\n' -b "$tmpdir/cookies" "$base/herd"
+curl -s -o /dev/null -w '%{http_code}\n' -b "$tmpdir/cookies" \
+    -H 'X-User-Id: 2' "$base/herd?user=2"
+
+# Fehlender CSRF-Token: 403, Logout mit Token: 204, danach Herde: 401
+curl -s -o /dev/null -w '%{http_code}\n' -b "$tmpdir/cookies" --json '{}' "$base/auth/logout"
+curl -s -o /dev/null -w '%{http_code}\n' -b "$tmpdir/cookies" \
+    -H "X-CSRF-Token: $csrf_token" --json '{}' "$base/auth/logout"
+curl -s -o /dev/null -w '%{http_code}\n' -b "$tmpdir/cookies" "$base/herd"
+rm -rf "$tmpdir"
+trap - EXIT
+unset csrf_token
+```
+
+## Automatisierte Abnahme und Grenzen
+
+`npm test` fuehrt [elf Tests](../tests/auth.test.js) mit temporaeren
+SQLite-Datenbanken und Testbenutzern aus; Arbeitsdatenbank, `.env` und Cookies
+werden nicht benoetigt. Abgedeckt sind Hashes, Migration/Seeding, Login-Fehler,
+400/413 bei Parserfehlern, Session-Regeneration, sofortiger Folgezugriff,
+globale Sichtbarkeit, Schreibrechte, CSRF, Logout, DB-/Store-Fehler sowie echte
+WebSocket-/Polling-Verbindungen mit gefaelschten IDs, Origin-Pruefung und Ablauf.
+
+Kein Produktions-Sicherheitsaudit: Login-Versuchsbegrenzung und die echte
+HTTPS-/Proxy-Konfiguration muessen vor oeffentlichem Betrieb ergaenzt bzw.
+geprueft werden. SameSite ist zusaetzliche Abwehr, nicht der gesamte CSRF-Schutz.
 
 ---
 

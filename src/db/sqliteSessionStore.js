@@ -12,7 +12,7 @@ export class SqliteSessionStore extends Store {
         this.db
             .get("SELECT data, expires_at FROM sessions WHERE sid = ?", sid)
             .then((row) => {
-                if (!row || row.expires_at < Date.now())
+                if (!row || row.expires_at <= Date.now())
                     return callback(null, null);
                 callback(null, JSON.parse(row.data));
             })
@@ -38,13 +38,16 @@ export class SqliteSessionStore extends Store {
     destroy(sid, callback) {
         this.db
             .run("DELETE FROM sessions WHERE sid = ?", sid)
-            .then(() => callback?.(null))
+            .then(() => {
+                this.emit("session:destroy", sid);
+                callback?.(null);
+            })
             .catch(callback);
     }
 
     cleanup() {
         return this.db.run(
-            "DELETE FROM sessions WHERE expires_at < ?",
+            "DELETE FROM sessions WHERE expires_at <= ?",
             Date.now()
         );
     }

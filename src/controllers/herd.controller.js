@@ -1,13 +1,8 @@
 const GENDER_LABELS = { female: "weiblich", male: "männlich" };
 const GENDERS = Object.keys(GENDER_LABELS);
 
-// Fester Demo-Benutzer, bis die Anmeldung in v4 kommt
-const DEMO_USER_ID = 1;
-
-// Benutzer aus der Anfrage: ?user=2 (Seite) oder Header X-User-Id (API)
 function getUserId(req) {
-    const id = Number(req.query.user ?? req.get("X-User-Id") ?? DEMO_USER_ID);
-    return Number.isInteger(id) && id > 0 ? id : DEMO_USER_ID;
+    return req.session.userId;
 }
 
 // Datensatz aus der Datenbank in das Format für die Ansicht bringen
@@ -82,8 +77,7 @@ export class HerdController {
     get = async (req, res, next) => {
         try {
             const id = parseId(req.params.id);
-            const userId = getUserId(req);
-            const row = id ? await this.sheepModel.get(userId, id) : null;
+            const row = id ? await this.sheepModel.getPublic(id) : null;
             if (!row)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
             res.json({ data: toView(row) });
@@ -99,7 +93,7 @@ export class HerdController {
             const { value, error } = parseSheep(req.body);
             if (error) return res.status(422).json({ error });
             const row = await this.sheepModel.create(userId, value);
-            this.publish(userId, "created", row);
+            this.publish(userId, "created", row, req.session.userName);
             res.status(201).json({ data: toView(row) });
         } catch (err) {
             next(err);
@@ -119,7 +113,7 @@ export class HerdController {
             const row = await this.sheepModel.update(userId, id, value);
             if (!row)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
-            this.publish(userId, "updated", row);
+            this.publish(userId, "updated", row, req.session.userName);
             res.json({ data: toView(row) });
         } catch (err) {
             next(err);
@@ -138,7 +132,7 @@ export class HerdController {
                 : false;
             if (!deleted)
                 return res.status(404).json({ error: "Schaf nicht gefunden." });
-            this.publish(userId, "deleted", row);
+            this.publish(userId, "deleted", row, req.session.userName);
             res.status(204).end();
         } catch (err) {
             next(err);

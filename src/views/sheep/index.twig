@@ -15,15 +15,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
 
     <!-- TODO >>>>>>> -->
-<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <!-- TODO <<<<<<< -->
 
   <style>
     body { font-family: Barlow, sans-serif; color: #000; background: #fff; }
     table { border-collapse: collapse; }
+    .herd-table { max-width: 100%; overflow-x: auto; }
     th, td { border: 1px solid #000; padding: 0.25rem 0.5rem; text-align: left; }
     dialog { color: #000; background: #fff; border: 1px solid #000; }
-    .live-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1rem; }
+    .live-panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; }
     .live-list { display: grid; gap: 0.4rem; max-height: 15rem; overflow: auto; padding: 0; list-style: none; }
     .bubble { max-width: 85%; padding: 0.4rem 0.7rem; border-radius: 1rem; background: #edf1f3; overflow-wrap: anywhere; }
     .chat-bubble.mine { margin-left: auto; background: #d9f1e4; }
@@ -35,23 +36,30 @@
 
 </head>
 <body>
-  <h1>Schafe</h1>
-
+  <h1>Schafe lala</h1>
+  
+<!-- - - - - - - - - - - -->
+<button id="chuck-joke">Bitte einen Chuck Witz</button>
+<script>
+  document.getElementById("chuck-joke").addEventListener("click", async () => {
+    const response = await fetch("/chuck");
+    const data = await response.json();
+    alert(data.joke);
+  });
+</script>
+<!-- - - - - - - - - - - -->
   <main>
     <button type="button" id="new">
       <i class="ph ph-plus" aria-hidden="true"></i> Neues Schaf
     </button>
 
-<!-- TODO >>>>>>> -->
-<label for="user">Benutzer</label>
-<select id="user">
-  <option value="1" {{ currentUser == 1 ? 'selected' }}>Demo</option>
-  <option value="2" {{ currentUser == 2 ? 'selected' }}>Jonas</option>
-</select>
-<!-- TODO <<<<<<< -->
+    <button type="button" id="logout" title="Abmelden" aria-label="Abmelden">
+      <i class="ph ph-sign-out" aria-hidden="true"></i>
+    </button>
 
     <p id="error" role="alert" hidden></p>
 
+    <div class="herd-table">
     <table>
       <caption>Herde</caption>
       <thead>
@@ -86,6 +94,7 @@
         {% endfor %}
       </tbody>
     </table>
+    </div>
 
     <div class="live-panels">
       <section aria-labelledby="activity-title">
@@ -151,13 +160,18 @@
     // >>>>>>>
 const USER = {{ currentUser }};
 
-
-document.getElementById('user').addEventListener('change', (e) => {
-  location.search = `?user=${e.target.value}`;
-});
-
-
-const socket = io({ auth: { userId: USER } });
+const socket = io({ autoConnect: false });
+const sessionReady = fetch('/auth/me', { credentials: 'same-origin', cache: 'no-store' })
+  .then(async (response) => {
+    if (!response.ok) throw new Error('Bitte erneut anmelden.');
+    const { data } = await response.json();
+    if (data.id !== USER) {
+      location.reload();
+      throw new Error('Die Anmeldung hat sich geaendert.');
+    }
+    return data;
+  });
+sessionReady.then(() => socket.connect()).catch((error) => showError(error.message));
 
 const activityList = document.getElementById('activity-list');
 const chatList = document.getElementById('chat-list');
@@ -247,6 +261,7 @@ function applySheepChange(activity) {
 // TODO >>>>>>>
 socket.on('connect', () => { connectionStatus.textContent = 'Verbunden'; });
 socket.on('disconnect', () => { connectionStatus.textContent = 'Verbindung getrennt'; });
+socket.on('connect_error', () => { connectionStatus.textContent = 'Bitte erneut anmelden.'; });
 
 socket.on('activity:history', (items) => {
   activityList.replaceChildren();
@@ -302,14 +317,14 @@ chatForm.addEventListener('submit', (event) => {
 
     // REST-Aufruf. Bei Erfolg { data: ... } oder 204 ohne Inhalt.
     async function api(method, url, body) {
+      const session = await sessionReady;
       const res = await fetch(url, {
         method,
-    // >>>>>>>
-headers: {
-  'X-User-Id': String(USER),
-  ...(body ? { 'Content-Type': 'application/json' } : {}),
-},
-// <<<<<<<
+        credentials: 'same-origin',
+        headers: {
+          ...(!['GET', 'HEAD'].includes(method) ? { 'X-CSRF-Token': session.csrfToken } : {}),
+          ...(body ? { 'Content-Type': 'application/json' } : {}),
+        },
         body: body ? JSON.stringify(body) : undefined,
       });
       if (res.status === 204) return null;
@@ -317,6 +332,16 @@ headers: {
       if (!res.ok) throw new Error(json?.error ?? `Fehler ${res.status}`);
       return json?.data ?? null;
     }
+
+    document.getElementById('logout').addEventListener('click', async () => {
+      try {
+        await api('POST', '/auth/logout', {});
+        socket.disconnect();
+        location.assign('/');
+      } catch (error) {
+        showError(error.message);
+      }
+    });
 
     function openDialog(s = null) {
       clearError();

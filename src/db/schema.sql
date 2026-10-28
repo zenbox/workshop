@@ -1,6 +1,8 @@
 CREATE TABLE IF NOT EXISTS users (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   name       TEXT NOT NULL CHECK (length(trim(name)) > 0),
+  email      TEXT NOT NULL UNIQUE,
+  password_hash TEXT,
   created_at TEXT NOT NULL DEFAULT (datetime('now'))
 );
 
@@ -18,7 +20,6 @@ CREATE TABLE IF NOT EXISTS sheep (
 
 CREATE INDEX IF NOT EXISTS idx_sheep_user ON sheep(user_id);
 
--- Demo-Konto zuerst, weil die Schafe darauf verweisen (Auth kommt in v4)
 INSERT OR IGNORE INTO users (id, name) VALUES (1, 'Demo'), (2, 'Jonas');
 
 -- Beispiel-Herde für Demo-Benutzer 1

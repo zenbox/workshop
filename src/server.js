@@ -1,40 +1,63 @@
+// native node.js Module
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import http from "node:http";
+
+// npm Libs
 import express from "express";
-import { Database } from "./db/index.js";
+import cors from "cors";
+import { Server as SocketServer } from "socket.io";
+
+// Eigene libs / eigene Module
+import { createChuckRouter } from "./routes/chuck.route.js";
+
+import { Database, seedDemoUsers } from "./db/index.js";
 import { SheepModel } from "./models/sheep-model.js";
+import { UserModel } from "./models/user-model.js";
+import { AuthController } from "./controllers/auth-controller.js";
+import { createAuthRouter } from "./routes/auth.js";
+import {
+    createOriginCheck,
+    requireAuth,
+    requireCsrf,
+} from "./middleware/auth.js";
 import { HerdController } from "./controllers/herd.controller.js";
 import { createHerdRouter } from "./routes/herd.routes.js";
 
 import { SqliteSessionStore } from "./db/sqliteSessionStore.js";
 import { createSessionMiddleware } from "./middleware/session.js";
+import { createSocketAccess } from "./middleware/socket-auth.js";
 
-import http from "node:http";
-import { Server as SocketServer } from "socket.io";
+// import { errorHandler } from "./middleware/errorHandler.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const HOST = "localhost";
-export const PORT = 3000;
+export const PORT = 3010;
 export const DB_FILE = path.join(__dirname, "..", "data", "workshop.sqlite");
 
-const DEMO_USER_ID = 1;
-const KNOWN_USER_IDS = [1, 2];
-const USER_NAMES = new Map([
-    [1, "Demo"],
-    [2, "Jonas"],
-]);
 const GENDER_LABELS = { female: "weiblich", male: "männlich" };
 const LIVE_HISTORY_LIMIT = 100;
-
-function userNameFor(userId) {
-    return USER_NAMES.get(userId) ?? `User ${userId}`;
-}
 
 // Baut die App mit injiziertem Model, startet aber keinen Server
 // Für die Mehrbenutzerfähigkeit wird eine Publish-Funktion übergeben, die Ereignisse an die Clients weiterleitet.
 
-export function createApp({ sheepModel, publish = () => {}, sessionStore }) {
+/*
+Laufende Prozesse im Betriebssystem
+Node-Prozesse, z. B. der Server:
+
+Windows (PowerShell): Get-Process node
+macOS/Linux: ps aux | grep node */
+
+export function createApp({
+    sheepModel,
+    userModel,
+    publish = () => {},
+    sessionStore,
+    sessionMiddleware,
+    origin = "http://localhost:3000",
+    onSessionEnd,
+}) {
     const app = express();
 
     // Statische Dateien aus static/
@@ -44,10 +67,11 @@ export function createApp({ sheepModel, publish = () => {}, sessionStore }) {
     app.use(express.json({ limit: "16kb" }));
 
     app.use(
-        createSessionMiddleware({
-            store: sessionStore,
-            secret: process.env.SESSION_SECRET,
-        })
+        sessionMiddleware ??
+            createSessionMiddleware({
+                store: sessionStore,
+                secret: process.env.SESSION_SECRET,
+            })
     );
 
     // Twig-Templates aus src/views
@@ -58,6 +82,8 @@ export function createApp({ sheepModel, publish = () => {}, sessionStore }) {
         res.render("page-2", { message: "Hallo vom Server!" });
     });
 
+    app.use("/chuck", createChuckRouter());
+
     // ? delete: >>>>>>>>>>
     app.get("/demo/zaehler", (req, res) => {
         req.session.zaehler = (req.session.zaehler ?? 0) + 1;
@@ -66,14 +92,29 @@ export function createApp({ sheepModel, publish = () => {}, sessionStore }) {
     // ? <<<<<<<<<<
 
     // Verdrahtung: Model -> Controller -> Router
+    const originCheck = createOriginCheck(origin);
+    const authController = new AuthController({ userModel, onSessionEnd });
+    app.use("/auth", createAuthRouter(authController, originCheck));
     const herdController = new HerdController({ sheepModel, publish });
-    app.use("/herd", createHerdRouter(herdController));
+    app.use(
+        "/herd",
+        requireAuth,
+        originCheck,
+        requireCsrf,
+        createHerdRouter(herdController)
+    );
 
+    // ? delete: >>>>>>>>>>
     // Fehler-Handler immer zuletzt registrieren
     app.use((err, req, res, next) => {
-        console.error(err);
-        res.status(500).send("Interner Fehler");
+        const [statusCode, message] = {
+            "entity.too.large": [413, "Anfrage zu gross."],
+            "entity.parse.failed": [400, "Ungueltiges JSON."],
+        }[err.type] ?? [500, "Interner Fehler"];
+        res.status(statusCode).json({ error: message });
     });
+
+    // app.use(errorHandler);
 
     return app;
 }
@@ -83,20 +124,38 @@ export async function startServer({
     host = HOST,
     port = PORT,
     dbFile = DB_FILE,
+    sessionSecret = process.env.SESSION_SECRET,
+    origin = process.env.APP_ORIGIN ?? `http://${host}:${port}`,
+    demoUsers = process.env,
 } = {}) {
     const database = await Database.open(dbFile);
     const sheepModel = new SheepModel(database);
+    const userModel = new UserModel(database);
 
     const sessionStore = new SqliteSessionStore(database.db);
-    sessionStore.cleanup(); // abgelaufene Sessions beim Start entfernen
+    let sessionMiddleware;
+    try {
+        await seedDemoUsers(database.db, demoUsers);
+        await sessionStore.cleanup();
+        sessionMiddleware = createSessionMiddleware({
+            store: sessionStore,
+            secret: sessionSecret,
+        });
+    } catch (error) {
+        await database.close();
+        throw error;
+    }
 
     let io;
+    let socketAccess;
     const activityHistory = [];
     const chatHistory = [];
     const onlineUsers = new Map();
+    const userNames = new Map();
+    const userNameFor = (userId) => userNames.get(userId) ?? `User ${userId}`;
 
     const broadcastPresence = () =>
-        io.emit(
+        socketAccess.emit(
             "presence:state",
             [...onlineUsers.keys()].map((id) => ({
                 userId: id,
@@ -108,20 +167,20 @@ export async function startServer({
         activityHistory.push(activity);
         if (activityHistory.length > LIVE_HISTORY_LIMIT)
             activityHistory.shift();
-        io.emit("activity:message", activity);
+        socketAccess.emit("activity:message", activity);
     };
 
-    const publish = (userId, action, sheep) =>
+    const publish = (userId, action, sheep, userName) =>
         announceActivity({
             type: "sheep",
             userId,
-            userName: userNameFor(userId),
+            userName,
             action,
             sheepName: sheep.name,
             sheep: {
                 id: sheep.id,
                 userId,
-                ownerName: userNameFor(userId),
+                ownerName: userName,
                 name: sheep.name,
                 breed: sheep.breed,
                 age: sheep.age,
@@ -131,26 +190,38 @@ export async function startServer({
             createdAt: new Date().toISOString(),
         });
 
-    // const app = createApp({ sheepModel, publish });
-    // TODO >>>>>>>>>>
-    const app = createApp({ sheepModel, publish, sessionStore });
-    // TODO <<<<<<<<<<
+    const app = createApp({
+        sheepModel,
+        userModel,
+        publish,
+        sessionStore,
+        sessionMiddleware,
+        origin,
+        onSessionEnd: (sessionId) => socketAccess?.disconnectSession(sessionId),
+    });
 
     // ! [Registriert Express vor Socket.IO, damit dessen Request-Wrapper es nur als Fallback aufruft]
     const httpServer = http.createServer(app);
-    io = new SocketServer(httpServer);
+    io = new SocketServer(httpServer, {
+        allowRequest: (req, callback) =>
+            callback(
+                null,
+                !req.headers.origin || req.headers.origin === origin
+            ),
+    });
+    socketAccess = createSocketAccess({
+        io,
+        sessionMiddleware,
+        sessionStore,
+        origin,
+    });
 
     // Wenn irgendein Client versucht über `ws://`zu verbinden
     io.on("connection", (socket) => {
-        const requested = Number(socket.handshake.auth?.userId);
-        const userId = KNOWN_USER_IDS.includes(requested)
-            ? requested
-            : DEMO_USER_ID;
-        const userName = userNameFor(userId);
+        const { userId, userName } = socket.data;
+        userNames.set(userId, userName);
         const connections = onlineUsers.get(userId) ?? 0;
 
-        socket.data.userId = userId;
-        socket.data.userName = userName;
         onlineUsers.set(userId, connections + 1);
         socket.emit("activity:history", activityHistory);
         socket.emit("chat:history", chatHistory);
@@ -179,7 +250,7 @@ export async function startServer({
             };
             chatHistory.push(message);
             if (chatHistory.length > LIVE_HISTORY_LIMIT) chatHistory.shift();
-            io.emit("chat:message", message);
+            socketAccess.emit("chat:message", message);
         });
 
         socket.on("disconnect", () => {
@@ -202,9 +273,20 @@ export async function startServer({
     });
 
     // ! [Startet denselben HTTP-Server, an den Socket.IO und Express gebunden sind]
-    const server = httpServer.listen(port, host, () => {
-        console.log(`Server running at http://${host}:${port}/`);
-    });
-
-    return { server, database, io };
+    const server = httpServer;
+    try {
+        await new Promise((resolve, reject) => {
+            server.once("error", reject);
+            server.listen(port, host, () => {
+                server.off("error", reject);
+                resolve();
+            });
+        });
+    } catch (error) {
+        io.close();
+        await database.close();
+        throw error;
+    }
+    console.log(`Server running at http://${host}:${server.address().port}/`);
+    return { server, database, io, sessionStore };
 }

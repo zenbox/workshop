@@ -23,12 +23,13 @@
         "doc": "docs"
     },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "node --test tests/*.test.js",
         "start": "node app.js",
-        "dev": "SESSION_SECRET=geheim nodemon app.js",
+        "dev": "nodemon app.js",
         "env": "nodemon --env-file=.env app.js"
     },
     "dependencies": {
+        "cors": "^2.8.6",
         "express": "^5.3.0",
         "express-session": "^1.19.0",
         "socket.io": "^4.8.4",
@@ -37,6 +38,7 @@
         "twig": "^3.0.0"
     },
     "devDependencies": {
-        "nodemon": "^3.1.14"
+        "nodemon": "^3.1.14",
+        "socket.io-client": "^4.8.4"
     }
 }

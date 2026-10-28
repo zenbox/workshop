@@ -28,6 +28,14 @@ export class SheepModel {
         );
     }
 
+    getPublic(id) {
+        return this.db.get(
+            `SELECT sheep.*, users.name AS owner_name FROM sheep
+             JOIN users ON users.id = sheep.user_id WHERE sheep.id = ?`,
+            id
+        );
+    }
+
     async create(userId, { name, breed, age, gender, iconKey = "sheep" }) {
         // Werte werden gebunden (?), nicht per String zusammengesetzt
         const result = await this.db.run(
