@@ -14,9 +14,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
 
-    <!-- >>>>>>> -->
+    <!-- TODO >>>>>>> -->
 <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
-<!-- <<<<<<< -->
+<!-- TODO <<<<<<< -->
 
   <style>
     body { font-family: Barlow, sans-serif; color: #000; background: #fff; }
@@ -42,13 +42,13 @@
       <i class="ph ph-plus" aria-hidden="true"></i> Neues Schaf
     </button>
 
-<!-- >>>>>>> -->
+<!-- TODO >>>>>>> -->
 <label for="user">Benutzer</label>
 <select id="user">
   <option value="1" {{ currentUser == 1 ? 'selected' }}>Demo</option>
   <option value="2" {{ currentUser == 2 ? 'selected' }}>Jonas</option>
 </select>
-<!-- <<<<<<< -->
+<!-- TODO <<<<<<< -->
 
     <p id="error" role="alert" hidden></p>
 
@@ -244,12 +244,15 @@ function applySheepChange(activity) {
   }
 }
 
+// TODO >>>>>>>
 socket.on('connect', () => { connectionStatus.textContent = 'Verbunden'; });
 socket.on('disconnect', () => { connectionStatus.textContent = 'Verbindung getrennt'; });
+
 socket.on('activity:history', (items) => {
   activityList.replaceChildren();
   items.forEach(showActivity);
 });
+
 socket.on('activity:message', (activity) => {
   showActivity(activity);
   if (activity.type === 'presence') {
@@ -260,6 +263,7 @@ socket.on('activity:message', (activity) => {
   }
   if (activity.type === 'sheep') applySheepChange(activity);
 });
+
 socket.on('presence:state', (users) => {
   activeUsers = users;
   showOnlineUsers(activeUsers);
@@ -277,7 +281,7 @@ chatForm.addEventListener('submit', (event) => {
   socket.emit('chat:send', text);
   chatText.value = '';
 });
-// <<<<<<<
+// TODO <<<<<<<
 
     const form = document.getElementById('form');
     const dlg = document.getElementById('dlg');

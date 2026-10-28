@@ -6,6 +6,9 @@ import { SheepModel } from "./models/sheep-model.js";
 import { HerdController } from "./controllers/herd.controller.js";
 import { createHerdRouter } from "./routes/herd.routes.js";
 
+import { SqliteSessionStore } from "./db/sqliteSessionStore.js";
+import { createSessionMiddleware } from "./middleware/session.js";
+
 import http from "node:http";
 import { Server as SocketServer } from "socket.io";
 
@@ -30,16 +33,22 @@ function userNameFor(userId) {
 
 // Baut die App mit injiziertem Model, startet aber keinen Server
 // Für die Mehrbenutzerfähigkeit wird eine Publish-Funktion übergeben, die Ereignisse an die Clients weiterleitet.
-export function createApp({ sheepModel, publish = () => {} } = {}) {
+
+export function createApp({ sheepModel, publish = () => {}, sessionStore }) {
     const app = express();
 
     // Statische Dateien aus static/
     app.use(express.static(path.join(__dirname, "..", "static")));
 
-    // >>>>>>>
     // JSON-Body für die REST-API, begrenzt auf 16 KiB
     app.use(express.json({ limit: "16kb" }));
-    // <<<<<<<
+
+    app.use(
+        createSessionMiddleware({
+            store: sessionStore,
+            secret: process.env.SESSION_SECRET,
+        })
+    );
 
     // Twig-Templates aus src/views
     app.set("views", path.join(__dirname, "views"));
@@ -48,6 +57,13 @@ export function createApp({ sheepModel, publish = () => {} } = {}) {
     app.get("/page-2", (req, res) => {
         res.render("page-2", { message: "Hallo vom Server!" });
     });
+
+    // ? delete: >>>>>>>>>>
+    app.get("/demo/zaehler", (req, res) => {
+        req.session.zaehler = (req.session.zaehler ?? 0) + 1;
+        res.json({ zaehler: req.session.zaehler });
+    });
+    // ? <<<<<<<<<<
 
     // Verdrahtung: Model -> Controller -> Router
     const herdController = new HerdController({ sheepModel, publish });
@@ -71,10 +87,14 @@ export async function startServer({
     const database = await Database.open(dbFile);
     const sheepModel = new SheepModel(database);
 
+    const sessionStore = new SqliteSessionStore(database.db);
+    sessionStore.cleanup(); // abgelaufene Sessions beim Start entfernen
+
     let io;
     const activityHistory = [];
     const chatHistory = [];
     const onlineUsers = new Map();
+
     const broadcastPresence = () =>
         io.emit(
             "presence:state",
@@ -111,7 +131,11 @@ export async function startServer({
             createdAt: new Date().toISOString(),
         });
 
-    const app = createApp({ sheepModel, publish });
+    // const app = createApp({ sheepModel, publish });
+    // TODO >>>>>>>>>>
+    const app = createApp({ sheepModel, publish, sessionStore });
+    // TODO <<<<<<<<<<
+
     // ! [Registriert Express vor Socket.IO, damit dessen Request-Wrapper es nur als Fallback aufruft]
     const httpServer = http.createServer(app);
     io = new SocketServer(httpServer);
