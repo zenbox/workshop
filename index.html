@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <title>Ein einfaches Bootstrap-Layout</title>
+        <link
+            rel="stylesheet"
+            href="assets/css/bootstrap.css" />
+    </head>
+    <body class="container">
+        <header class="row">
+            <div class="col">logo</div>
+            <div class="col">idle</div>
+            <div class="col">nav</div>
+        </header>
+
+        <div class="row">
+            <nav class="col-3">nav</nav>
+            <main class="col-9">
+                <article>
+                    <h1>Überschrift</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nihil magnam harum iure enim? Aperiam ducimus eveniet veritatis laborum rerum, id fugit labore vel inventore accusamus illo corrupti, reprehenderit dignissimos porro est voluptatem recusandae, numquam sed a dicta obcaecati debitis. Voluptatibus dicta provident totam corrupti nihil amet nesciunt vero autem quidem. Asperiores voluptatibus, vitae quam consequatur adipisci totam earum eaque, accusamus ex voluptatum corrupti.</p>
+                </article>
+            </main>
+        </div>
+
+        <footer class="row">
+            <div class="col">left</div>
+            <div class="col">right</div>
+        </footer>
+
+        <style>
+            body {
+                outline: 2px solid darkgreen;
+            }
+            body > * {
+                outline: 2px solid cyan;
+            }
+            body > * > * {
+                outline: 2px solid orange;
+            }
+            body > * > * > * {
+                outline: 2px solid rebeccapurple;
+            }
+        </style>
+
+        <script src="assets/vendor/bootstrap/bootstrap.js"></script>
+    </body>
+</html>
