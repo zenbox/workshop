@@ -1,0 +1,26 @@
+:root {
+    --custom-spacer: 1rem;
+}
+
+.#{$custom-prefix} {
+    // Layout
+    &grid {
+        display: grid;
+        grid-template-columns: 30% 50% 20%;
+        grid-template-rows: repeat(8, 1fr);
+        column-gap: calc(var(--custom-spacer) / 2); // CSS 4!
+        row-gap: calc(var(--custom-spacer) / 2); // CSS 4!
+
+        // Components (Block)
+        &__component {
+            outline: 2px dotted grey;
+        }
+
+        // Elements 
+        &__element {
+            &__input-group .form-label {
+                text-transform: uppercase;
+            }
+        }
+    }
+}

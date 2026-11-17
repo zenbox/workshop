@@ -4,3 +4,21 @@
 .custom-dev .custom-grid {
   background: hsla(0, 0%, 70%, 0.25);
 }
+
+:root {
+  --custom-spacer: 1rem;
+}
+
+.custom-grid {
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+  grid-template-rows: repeat(8, 1fr);
+  column-gap: calc(var(--custom-spacer) / 2);
+  row-gap: calc(var(--custom-spacer) / 2);
+}
+.custom-grid__component {
+  outline: 2px dotted grey;
+}
+.custom-grid__element__input-group .form-label {
+  text-transform: uppercase;
+}

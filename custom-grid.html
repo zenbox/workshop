@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en" class="custom-dev">
+<html
+    lang="en"
+    class="custom-dev">
     <head>
         <meta charset="UTF-8" />
         <meta
@@ -9,15 +11,41 @@
         <link
             rel="stylesheet"
             href="assets/css/bootstrap.css" />
+        <!-- <link
+            rel="stylesheet"
+            href="assets/css/custom-bs.css" /> -->
         <link
             rel="stylesheet"
             href="assets/css/custom.css" />
     </head>
 
     <body>
+        <form id="custom-form">
         <div class="custom-grid">
-            Custom Grid Content
-        </div>
+                <!-- - - - - - - - - - --->
+                <div class="custom-grid__element">
+                    <!-- - - - -->
+                    <div id="jump-to" class="custom-grid__element__input-group">
+                        <label
+                            for="custom-form-control-input1"
+                            class="form-label"
+                            >4a.  surveyed ground operations</label
+                        ><p>date (dd/mm/yy)</p>
+                        <input
+                            type="date"
+                            lang="en-US"
+                            class="form-control form-control-sm"
+                            id="custom-form-control-input1"
+                            placeholder="name@example.com" />
+                    </div>
+                    <!-- - - - -->
+                </div>
+                <div class="custom-grid__component">2</div>
+                <div class="custom-grid__component">3</div>
+                <!-- - - - - - - - - - --->
+            </div>
+        </form>
+       
         <script src="assets/vendor/bootstrap/bootstrap.bundle.js"></script>
     </body>
 </html>

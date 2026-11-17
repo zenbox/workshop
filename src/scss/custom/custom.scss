@@ -1,3 +1,16 @@
+// Das, was global da sein muss:
+@import "variables";
+
 // Developer only
 // remove before production
 @import "dev";
+
+// Reset, Reboot, Normalize etc.
+
+// Meine Templates
+@import "grid";
+
+// Meine Komponenten
+// @import "grid-component";
+
+// Meine Themes, Skins
