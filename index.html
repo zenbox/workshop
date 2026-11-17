@@ -18,14 +18,110 @@
         </header>
 
         <div class="row">
-            <nav class="col-3">nav</nav>
-            <main class="col-9">
+            <nav class="col-5">nav</nav>
+            <main class="col-20">
                 <article>
                     <h1>Überschrift</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nihil magnam harum iure enim? Aperiam ducimus eveniet veritatis laborum rerum, id fugit labore vel inventore accusamus illo corrupti, reprehenderit dignissimos porro est voluptatem recusandae, numquam sed a dicta obcaecati debitis. Voluptatibus dicta provident totam corrupti nihil amet nesciunt vero autem quidem. Asperiores voluptatibus, vitae quam consequatur adipisci totam earum eaque, accusamus ex voluptatum corrupti.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dolores nihil magnam harum iure enim? Aperiam ducimus
+                        eveniet veritatis laborum rerum, id fugit labore vel
+                        inventore accusamus illo corrupti, reprehenderit
+                        dignissimos porro est voluptatem recusandae, numquam sed
+                        a dicta obcaecati debitis. Voluptatibus dicta provident
+                        totam corrupti nihil amet nesciunt vero autem quidem.
+                        Asperiores voluptatibus, vitae quam consequatur adipisci
+                        totam earum eaque, accusamus ex voluptatum corrupti.
+                    </p>
                 </article>
             </main>
         </div>
+
+        <!-- - - - - - - - - - - -->
+        <style>
+            :root {
+                --spacer: 1rem;
+            }
+            .my-container {
+                /* display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                text-align: center; 
+
+                row-gap: var(--spacer); */
+
+                display: grid;
+                grid-template-columns: repeat(3, auto);
+                grid-template-rows: auto;
+                grid-gap: var(--spacer);
+
+                > *:nth-child(1) {
+                    flex-basis: 40%;
+                    flex-grow: 0;
+                    flex-shrink: 0;
+                }
+                > *:nth-child(2) {
+                    flex-basis: 60%;
+                    flex-grow: 1;
+                    flex-shrink: 1;
+                }
+
+                > *:nth-child(5) {
+                    grid-column: 2 / 4;
+                }
+
+                > * {
+                    background: hsla(0, 0%, 0%, 0.15);
+                    outline: 1px solid gray;
+                }
+            }
+        </style>
+        <!-- - - - - - - - - - - -->
+        <article class="my-container">
+            <div>eins</div>
+            <div>zwei</div>
+            <div>drei<br />drei.zwei</div>
+            <div>vier</div>
+            <div>fünf</div>
+        </article>
+
+        <article>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Spalte 1</th>
+                        <th>Spalte 2</th>
+                        <th>Spalte 3</th>
+                    </tr>
+                </thead>
+
+                <tfoot>
+                    <tr>
+                        <td colspan="3">footer</td>
+                    </tr>
+                </tfoot>
+                
+                <tbody>
+                    <tr>
+                        <td>Inhalt 1</td>
+                        <td>Inhalt 2</td>
+                        <td>Inhalt 3</td>
+                    </tr>
+                    <tr>
+                        <td>Inhalt 1</td>
+                        <td>Inhalt 2</td>
+                        <td>Inhalt 3</td>
+                    </tr>
+                </tbody>
+
+                <caption>
+                    Tabellenunterschrift
+                </caption>
+            </table>
+        </article>
+
+        <!-- - - - - - - - - - - -->
 
         <footer class="row">
             <div class="col">left</div>
@@ -34,16 +130,16 @@
 
         <style>
             body {
-                outline: 2px solid darkgreen;
+                background: hsla(120, 100%, 20%, 0.15);
             }
             body > * {
-                outline: 2px solid cyan;
+                background: hsla(180, 100%, 50%, 0.15);
             }
             body > * > * {
-                outline: 2px solid orange;
+                background: hsla(39, 100%, 50%, 0.15);
             }
             body > * > * > * {
-                outline: 2px solid rebeccapurple;
+                background: hsla(270, 100%, 50%, 0.15);
             }
         </style>
 

@@ -1,0 +1,14 @@
+// Allgemeiner Konfigurationsbereich
+$custom-prefix: "custom-";
+
+// Marker für Layout-Entwicklung
+
+.#{$custom-prefix} {
+    &dev {
+        background: hsla(0, 0%, 90%, 0.25);
+
+        .#{$custom-prefix}grid {
+            background: hsla(0, 0%, 70%, 0.25);
+        }
+    }
+}
