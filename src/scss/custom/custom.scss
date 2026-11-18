@@ -1,5 +1,6 @@
 // Das, was global da sein muss:
 @import "variables";
+@import "bs-overrides";
 
 // Developer only
 // remove before production
@@ -7,10 +8,12 @@
 
 // Reset, Reboot, Normalize etc.
 
-// Meine Templates
+//Meine Basics
+@import "typography";
+
+// Meine Templates und Basics
 @import "grid";
 
 // Meine Komponenten
-// @import "grid-component";
 
 // Meine Themes, Skins

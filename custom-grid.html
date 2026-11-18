@@ -1,19 +1,17 @@
 <!doctype html>
 <html
     lang="en"
-    class="custom-dev">
+    class="custom-dev my-font">
     <head>
         <meta charset="UTF-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
         <title>Custom Grid</title>
-        <link
-            rel="stylesheet"
-            href="assets/css/bootstrap.css" />
         <!-- <link
             rel="stylesheet"
-            href="assets/css/custom-bs.css" /> -->
+            href="assets/css/bootstrap.css" /> -->
+
         <link
             rel="stylesheet"
             href="assets/css/custom.css" />
@@ -21,20 +19,24 @@
 
     <body>
         <form id="custom-form">
-        <div class="custom-grid">
+            <div class="custom-grid">
                 <!-- - - - - - - - - - --->
                 <div class="custom-grid__element">
                     <!-- - - - -->
-                    <div id="jump-to" class="custom-grid__element__input-group">
+                    <div
+                        id="jump-to"
+                        class="custom-grid__element__input-group">
                         <label
                             for="custom-form-control-input1"
                             class="form-label"
-                            >4a.  surveyed ground operations</label
-                        ><p>date (dd/mm/yy)</p>
+                            ><b>4a.</b> surveyed
+                            <strong>ground</strong> operations</label
+                        >
+                        <p>date (dd/mm/yy)</p>
                         <input
                             type="date"
                             lang="en-US"
-                            class="form-control form-control-sm"
+                            class="form-control form-control-sm text-center"
                             id="custom-form-control-input1"
                             placeholder="name@example.com" />
                     </div>
@@ -45,7 +47,7 @@
                 <!-- - - - - - - - - - --->
             </div>
         </form>
-       
+
         <script src="assets/vendor/bootstrap/bootstrap.bundle.js"></script>
     </body>
 </html>

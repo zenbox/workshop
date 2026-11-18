@@ -1,5 +1,3 @@
-
-
 // Marker für Layout-Entwicklung
 
 .#{$custom-prefix} {
@@ -8,6 +6,11 @@
 
         .#{$custom-prefix}grid {
             background: hsla(0, 0%, 70%, 0.25);
+        }
+    }
+    &grid {
+        &__component {
+            outline: 2px dotted grey;
         }
     }
 }

@@ -1,0 +1,8 @@
+// Seit BS 5: Erst die Bootstrap Funktionen
+@import "../bootstrap/functions";
+
+// Dann die eignenen Variablen
+@import "bs-variables-overrides";
+
+// Zum Schluss Bootstrap selbst importieren
+@import "../bootstrap/bootstrap.scss";
