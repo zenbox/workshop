@@ -1,0 +1,68 @@
+.#{$custom-prefix} {
+    &page {
+        width: 100cqw;
+        height: calc(100cqh - 3rem);
+        background: linear-gradient(45deg, #ffffff, #e0e0e0);
+
+        &:not(.tab-pane),
+        &.tab-pane.active {
+            display: grid;
+        }
+
+        grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.5fr) minmax(0, 2fr);
+        grid-template-rows: auto;
+    }
+
+    // FORM LAYOUT
+    &page > form {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        min-width: 0;
+        padding: 0;
+    }
+
+    // FORM KOMPONENTE
+    &page > form > .custom-column {
+        min-width: 0;
+        outline: 2px dotted lightgrey;
+        padding: 0.5rem;
+
+        &:nth-child(even) {
+            background: hsla(0, 79%, 72%, 0.15);
+        }
+        &:nth-child(odd) {
+            background: hsla(195, 53%, 79%, 0.15);
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            text-transform: uppercase;
+        }
+
+        input {
+            min-width: 0;
+            max-width: 100%;
+        }
+button{
+    width: 4cqw;
+    height: 4cqw;
+    border-radius: 50px;
+    border-style:solid;border-width: 1;
+    border-color: lightgrey;
+}
+        // TYPOGRAFIE
+         label {
+            font-size: clamp(0.6rem, 1vw, 1rem);
+            line-height: 1.25vw
+        }
+    }
+}
+
+@media print{
+    * {border: 0;}
+} 

@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/assets/css/styles.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+        <title>Teilnehmende erfassen</title>
+        <style>
+            .app-grid {
+                display: grid;
+                grid-template-rows: repeat(4, auto);
+                gap: 1rem;
+            }
+            .grid-row {
+                position: relative;
+                padding: 1rem;
+                border: 1px solid var(--bs-border-color);
+                border-radius: 0.5rem;
+                background: var(--bs-body-bg);
+                transition: background-color 0.15s ease;
+            }
+            .app-grid:not(.inline-mode) .grid-row {
+                cursor: pointer;
+            }
+            .app-grid:not(.inline-mode) .grid-row:hover,
+            .app-grid:not(.inline-mode) .grid-row:focus-visible {
+                background: var(--bs-tertiary-bg);
+                outline: 2px solid var(--bs-primary);
+                outline-offset: 2px;
+            }
+            .edit-icon {
+                position: absolute;
+                top: 0.5rem;
+                right: 0.5rem;
+                color: var(--bs-secondary-color);
+            }
+            .inline-mode .edit-icon {
+                display: none;
+            }
+            .row-form {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1rem;
+                margin: 0;
+            }
+            .field-block {
+                min-width: 0;
+                margin: 0;
+            }
+            .field-block legend {
+                font-size: 0.875rem;
+                font-weight: 600;
+            }
+            .signature-cell {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                min-height: 7rem;
+                padding: 0.5rem;
+                border: 1px dashed var(--bs-border-color);
+                border-radius: 0.375rem;
+            }
+            .signature-cell img {
+                max-width: 100%;
+                max-height: 6rem;
+            }
+            .signature-cell .sig-empty {
+                font-size: 0.875rem;
+                color: var(--bs-secondary-color);
+            }
+            .sign-btn {
+                display: none;
+            }
+            .inline-mode .sign-btn {
+                display: inline-block;
+            }
+            .info-btn .material-symbols-outlined {
+                font-size: 1rem;
+                vertical-align: middle;
+            }
+            .signature-pad {
+                display: block;
+                width: 100%;
+                height: 7rem;
+                border: 1px solid var(--bs-border-color);
+                border-radius: 0.375rem;
+                background: #fff;
+                touch-action: none;
+                cursor: crosshair;
+            }
+            @media (max-width: 768px) {
+                .row-form {
+                    grid-template-columns: 1fr;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                .grid-row {
+                    transition: none;
+                }
+            }
+
+            /* Dialog */
+            #editor {
+                width: min(56rem, calc(100vw - 2rem));
+                max-height: calc(100dvh - 2rem);
+                padding: 0;
+                border: 0;
+                border-radius: 0.5rem;
+                background: var(--bs-body-bg);
+                color: var(--bs-body-color);
+                box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+                overflow: auto;
+                overscroll-behavior: contain;
+            }
+            #editor::backdrop {
+                background: rgba(0, 0, 0, 0.45);
+            }
+            .editor-head,
+            .editor-footer {
+                padding: 1rem;
+            }
+            #editor-slot {
+                padding: 0 1rem;
+            }
+            #editor-slot .grid-row {
+                padding: 0;
+                border: 0;
+                background: transparent;
+            }
+            .editor-footer {
+                position: sticky;
+                bottom: 0;
+                background: var(--bs-body-bg);
+                border-top: 1px solid var(--bs-border-color);
+                padding-bottom: max(1rem, env(safe-area-inset-bottom));
+            }
+            @media (max-width: 575.98px) {
+                #editor {
+                    width: 100vw;
+                    max-width: 100vw;
+                    height: 100vh;
+                    height: 100dvh;
+                    max-height: none;
+                    margin: 0;
+                    border-radius: 0;
+                    box-shadow: none;
+                }
+            }
+            /* iOS zoomt bei Feldern unter 16 px */
+            #editor .form-control,
+            #editor .form-select {
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+    <body class="bg-body-tertiary">
+        <!-- >>>>>>> -->
+        <main class="container py-4" id="app">
+            <header class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+                <h1 class="h4 mb-0">Teilnehmende erfassen</h1>
+                <button type="button" class="btn btn-outline-secondary btn-sm" id="mode-toggle" aria-pressed="true">Dialogmodus: an</button>
+            </header>
+
+            <ul class="nav nav-tabs nav-fill mb-4" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tab-1" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#pane-1" aria-controls="pane-1" aria-selected="true">Seite 1</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-2" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#pane-2" aria-controls="pane-2" aria-selected="false">Seite 2</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-3" type="button" role="tab" data-bs-toggle="tab" data-bs-target="#pane-3" aria-controls="pane-3" aria-selected="false">Seite 3</button>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="pane-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
+                    <h2 class="h6 mb-3">Person und Termin</h2>
+                    <div class="app-grid" data-page="1"></div>
+                </div>
+                <div class="tab-pane" id="pane-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0">
+                    <h2 class="h6 mb-3">Kontakt und Optionen</h2>
+                    <div class="app-grid" data-page="2"></div>
+                </div>
+                <div class="tab-pane" id="pane-3" role="tabpanel" aria-labelledby="tab-3" tabindex="0">
+                    <h2 class="h6 mb-3">Vorkenntnisse und Rechnung</h2>
+                    <div class="app-grid" data-page="3"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Vorlage Seite 1: eine Zeile (Formular mit 3 Spalten) -->
+        <template id="tpl-page-1">
+            <div class="grid-row" role="button" tabindex="0" aria-haspopup="dialog">
+                <span class="material-symbols-outlined edit-icon" aria-hidden="true">edit</span>
+                <form class="row-form">
+                    <fieldset class="field-block">
+                        <legend>Person</legend>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <label class="form-label small mb-1" for="vorname">Vorname</label>
+                                <input class="form-control form-control-sm" id="vorname" name="vorname" type="text" required minlength="2" />
+                                <div class="invalid-feedback">Bitte einen Vornamen mit mindestens 2 Zeichen eingeben.</div>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small mb-1" for="nachname">Nachname</label>
+                                <input class="form-control form-control-sm" id="nachname" name="nachname" type="text" required />
+                                <div class="invalid-feedback">Bitte den Nachnamen eingeben.</div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="email">E-Mail</label>
+                                <input class="form-control form-control-sm" id="email" name="email" type="email" required />
+                                <div class="invalid-feedback">Bitte eine gültige E-Mail-Adresse eingeben.</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="field-block">
+                        <legend>Termin</legend>
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="seminar">Seminar</label>
+                                <select class="form-select form-select-sm" id="seminar" name="seminar" required>
+                                    <option value="">Bitte wählen</option>
+                                    <option>Projektmanagement Grundlagen</option>
+                                    <option>Python für Einsteiger</option>
+                                    <option>Scrum Master</option>
+                                </select>
+                                <div class="invalid-feedback">Bitte ein Seminar auswählen.</div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="hotel" name="hotel" />
+                                    <label class="form-check-label" for="hotel">Hotel buchen</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small mb-1" for="anreise">Anreise</label>
+                                <input class="form-control form-control-sm" id="anreise" name="anreise" type="date" data-role="anreise" />
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label small mb-1" for="abreise">Abreise</label>
+                                <input class="form-control form-control-sm" id="abreise" name="abreise" type="date" data-role="abreise" />
+                                <div class="invalid-feedback">Die Abreise muss nach der Anreise liegen.</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="signature-cell">
+                        <img alt="Unterschrift" hidden />
+                        <span class="sig-empty">Nicht unterzeichnet</span>
+                        <button type="button" class="btn btn-outline-primary btn-sm sign-btn">Unterschreiben</button>
+                    </div>
+                </form>
+            </div>
+        </template>
+
+        <!-- Vorlage Seite 2 -->
+        <template id="tpl-page-2">
+            <div class="grid-row" role="button" tabindex="0" aria-haspopup="dialog">
+                <span class="material-symbols-outlined edit-icon" aria-hidden="true">edit</span>
+                <form class="row-form">
+                    <fieldset class="field-block">
+                        <legend>Kontakt</legend>
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="telefon">Telefon</label>
+                                <input class="form-control form-control-sm" id="telefon" name="telefon" type="tel" required pattern="\+?[0-9 ()/-]{6,}" />
+                                <div class="invalid-feedback">Bitte eine gültige Telefonnummer eingeben, z. B. +49 30 123456.</div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="abteilung">Abteilung</label>
+                                <select class="form-select form-select-sm" id="abteilung" name="abteilung" required>
+                                    <option value="">Bitte wählen</option>
+                                    <option>Personal</option>
+                                    <option>IT</option>
+                                    <option>Vertrieb</option>
+                                </select>
+                                <div class="invalid-feedback">Bitte eine Abteilung wählen.</div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="agb" name="agb" required />
+                                    <label class="form-check-label" for="agb">Teilnahmebedingungen akzeptieren</label>
+                                    <div class="invalid-feedback">Bitte die Teilnahmebedingungen akzeptieren.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="field-block">
+                        <legend>Optionen</legend>
+                        <div class="form-check form-switch mb-2">
+                            <input class="form-check-input" type="checkbox" role="switch" id="shuttle" name="shuttle" />
+                            <label class="form-check-label" for="shuttle">Shuttle-Service nutzen</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="vegetarisch" name="vegetarisch" />
+                            <label class="form-check-label" for="vegetarisch">Vegetarisch</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="vegan" name="vegan" />
+                            <label class="form-check-label" for="vegan">Vegan</label>
+                        </div>
+                    </fieldset>
+                    <div class="signature-cell">
+                        <img alt="Unterschrift" hidden />
+                        <span class="sig-empty">Nicht unterzeichnet</span>
+                        <button type="button" class="btn btn-outline-primary btn-sm sign-btn">Unterschreiben</button>
+                    </div>
+                </form>
+            </div>
+        </template>
+
+        <!-- Vorlage Seite 3 -->
+        <template id="tpl-page-3">
+            <div class="grid-row" role="button" tabindex="0" aria-haspopup="dialog">
+                <span class="material-symbols-outlined edit-icon" aria-hidden="true">edit</span>
+                <form class="row-form">
+                    <fieldset class="field-block">
+                        <legend>Vorkenntnisse</legend>
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="erfahrung">Erfahrung</label>
+                                <select class="form-select form-select-sm" id="erfahrung" name="erfahrung" required>
+                                    <option value="">Bitte wählen</option>
+                                    <option>Einsteiger</option>
+                                    <option>Fortgeschritten</option>
+                                    <option>Experte</option>
+                                </select>
+                                <div class="invalid-feedback">Bitte die Erfahrung angeben.</div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="allergien">Allergien und Unverträglichkeiten</label>
+                                <textarea class="form-control form-control-sm" id="allergien" name="allergien" rows="3" maxlength="200"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="field-block">
+                        <legend>Rechnung</legend>
+                        <div class="row g-2">
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="firma">Firma</label>
+                                <input class="form-control form-control-sm" id="firma" name="firma" type="text" />
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="kostenstelle">Kostenstelle</label>
+                                <input class="form-control form-control-sm" id="kostenstelle" name="kostenstelle" type="text" required pattern="[0-9]{4,8}" />
+                                <div class="invalid-feedback">Die Kostenstelle besteht aus 4 bis 8 Ziffern.</div>
+                            </div>
+                            <div class="col-4">
+                                <label class="form-label small mb-1" for="plz">PLZ</label>
+                                <input class="form-control form-control-sm" id="plz" name="plz" type="text" required pattern="[0-9]{5}" />
+                                <div class="invalid-feedback">Fünfstellige PLZ eingeben.</div>
+                            </div>
+                            <div class="col-8">
+                                <label class="form-label small mb-1" for="ort">Ort</label>
+                                <input class="form-control form-control-sm" id="ort" name="ort" type="text" required />
+                                <div class="invalid-feedback">Bitte den Ort eingeben.</div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label small mb-1" for="zahlungsart">Zahlungsart</label>
+                                <select class="form-select form-select-sm" id="zahlungsart" name="zahlungsart" required>
+                                    <option value="">Bitte wählen</option>
+                                    <option>Überweisung</option>
+                                    <option>Firmenkreditkarte</option>
+                                </select>
+                                <div class="invalid-feedback">Bitte eine Zahlungsart wählen.</div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="signature-cell">
+                        <img alt="Unterschrift" hidden />
+                        <span class="sig-empty">Nicht unterzeichnet</span>
+                        <button type="button" class="btn btn-outline-primary btn-sm sign-btn">Unterschreiben</button>
+                    </div>
+                </form>
+            </div>
+        </template>
+
+        <!-- Dialog: Kopie des Formulars einer Zeile -->
+        <dialog id="editor" aria-labelledby="editor-title">
+            <div class="editor-head d-flex justify-content-between align-items-center">
+                <h2 id="editor-title" class="h5 mb-0">Bearbeiten</h2>
+                <button type="button" class="btn-close" id="editor-close" aria-label="Schließen"></button>
+            </div>
+            <div id="editor-slot"></div>
+            <div class="editor-footer d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-outline-secondary" id="editor-cancel">Abbrechen</button>
+                <button type="button" class="btn btn-primary" id="editor-confirm">Bestätigen und signieren</button>
+            </div>
+        </dialog>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            const app = document.getElementById('app');
+            const modeToggle = document.getElementById('mode-toggle');
+            const editor = document.getElementById('editor');
+            const editorSlot = document.getElementById('editor-slot');
+            const editorTitle = document.getElementById('editor-title');
+
+            // Infotexte je Feldname (name-Attribut)
+            const INFO = {
+                vorname: 'Vorname laut Ausweis. Wird für die Teilnahmebescheinigung verwendet.',
+                nachname: 'Nachname wie im Personalausweis.',
+                email: 'Hierhin gehen Seminarunterlagen und die Terminbestätigung.',
+                seminar: 'Gebuchtes Seminar. Die Termine stehen in der Seminarübersicht.',
+                hotel: 'Die GFU reserviert das Partnerhotel zu Sonderkonditionen.',
+                anreise: 'Erster Übernachtungstag.',
+                abreise: 'Letzter Übernachtungstag. Muss nach der Anreise liegen.',
+                telefon: 'Für kurzfristige Rückfragen zum Seminar. Bitte mit Ländervorwahl eingeben.',
+                abteilung: 'Interne Zuordnung für Auswertungen. Nicht öffentlich.',
+                agb: 'Pflichtangabe. Die Teilnahmebedingungen stehen auf der Webseite zum Download bereit.',
+                shuttle: 'Kostenloser Shuttle zwischen dem Schulungszentrum, dem Bahnhof Köln Messe/Deutz und den Vertragshotels.',
+                vegetarisch: 'Wird nur für die Verpflegung im Schulungszentrum genutzt.',
+                vegan: 'Bitte nur wählen, wenn vegane Verpflegung benötigt wird.',
+                erfahrung: 'Hilft dem Dozenten, die Inhalte passend auszurichten.',
+                allergien: 'Unverträglichkeiten für die Verpflegung im Schulungszentrum. Maximal 200 Zeichen.',
+                firma: 'Name des Rechnungsempfängers. Die Rechnung kommt erst nach dem Seminar.',
+                kostenstelle: 'Vier- bis achtstellig, ohne Leerzeichen.',
+                plz: 'Fünfstellige Postleitzahl der Rechnungsanschrift.',
+                ort: 'Ort der Rechnungsanschrift.',
+                zahlungsart: 'Keine Vorkasse. Die Rechnung kommt nach dem erfolgreichen Seminar.',
+            };
+
+            const FIELDS = 'input, select, textarea';
+            let dialogMode = true;
+            let activeRow = null;
+            let dialogForm = null;
+            let pad = null;
+
+            const allRows = () => app.querySelectorAll('.grid-row');
+            const fieldsIn = (root) => root.querySelectorAll(FIELDS);
+
+            function readValues(nodes) {
+                return [...nodes].map((el) => (el.type === 'checkbox' ? el.checked : el.value));
+            }
+
+            function writeValues(nodes, values) {
+                [...nodes].forEach((el, i) => {
+                    if (values[i] === undefined) return;
+                    if (el.type === 'checkbox') {
+                        el.checked = values[i];
+                    } else {
+                        el.value = values[i];
+                    }
+                });
+            }
+
+            // Macht IDs und Labels eindeutig
+            function prefixIds(root, prefix) {
+                root.querySelectorAll('[id]').forEach((el) => (el.id = prefix + el.id));
+                root.querySelectorAll('label[for]').forEach((l) => (l.htmlFor = prefix + l.htmlFor));
+            }
+
+            // Zeilen aus den Seitenvorlagen erzeugen: je Seite vier Zeilen
+            for (let page = 1; page <= 3; page++) {
+                const tpl = document.getElementById(`tpl-page-${page}`);
+                const grid = app.querySelector(`.app-grid[data-page="${page}"]`);
+                for (let r = 1; r <= 4; r++) {
+                    const fragment = tpl.content.cloneNode(true);
+                    const row = fragment.querySelector('.grid-row');
+                    prefixIds(row, `p${page}-r${r}-`);
+                    row.setAttribute('aria-label', `Seite ${page}, Teilnehmende ${r}`);
+                    grid.appendChild(fragment);
+                }
+            }
+
+            // Fügt je Feld einen (i)-Button und einen Infotext hinzu
+            function addInfoButtons(root) {
+                root.querySelectorAll('input[name], select[name], textarea[name]').forEach((el) => {
+                    const text = INFO[el.name];
+                    const label = root.querySelector(`label[for="${el.id}"]`);
+                    if (!text || !label) return;
+
+                    const infoId = `${el.id}-info`;
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'btn btn-link btn-sm p-0 ms-1 align-baseline info-btn';
+                    btn.setAttribute('aria-label', `Info: ${label.textContent.trim()}`);
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.setAttribute('aria-controls', infoId);
+                    btn.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">info</span>';
+
+                    const info = document.createElement('div');
+                    info.id = infoId;
+                    info.className = 'form-text mb-1';
+                    info.hidden = true;
+                    info.textContent = text;
+
+                    label.after(btn);
+                    btn.after(info);
+                });
+            }
+
+            function onInfoClick(e) {
+                const btn = e.target.closest('.info-btn');
+                if (!btn) return;
+                const info = document.getElementById(btn.getAttribute('aria-controls'));
+                const open = btn.getAttribute('aria-expanded') !== 'true';
+                btn.setAttribute('aria-expanded', String(open));
+                info.hidden = !open;
+            }
+
+            // Eigene Regel: Abreise nach Anreise
+            function validateDates(form) {
+                const anreise = form.querySelector('[data-role="anreise"]');
+                const abreise = form.querySelector('[data-role="abreise"]');
+                if (!anreise || !abreise) return;
+                const ungueltig = anreise.value && abreise.value && abreise.value < anreise.value;
+                abreise.setCustomValidity(ungueltig ? 'ungueltig' : '');
+            }
+
+            // Unterschriftsfeld
+            function createPad(canvas, errorEl) {
+                const ctx = canvas.getContext('2d');
+                let drawing = false;
+                let last = null;
+                let ink = false;
+
+                const pos = (e) => {
+                    const r = canvas.getBoundingClientRect();
+                    return { x: e.clientX - r.left, y: e.clientY - r.top };
+                };
+                canvas.addEventListener('pointerdown', (e) => {
+                    drawing = true;
+                    last = pos(e);
+                    canvas.setPointerCapture(e.pointerId);
+                });
+                canvas.addEventListener('pointermove', (e) => {
+                    if (!drawing) return;
+                    const p = pos(e);
+                    ctx.beginPath();
+                    ctx.moveTo(last.x, last.y);
+                    ctx.lineTo(p.x, p.y);
+                    ctx.lineWidth = 2;
+                    ctx.lineCap = 'round';
+                    ctx.strokeStyle = '#111';
+                    ctx.stroke();
+                    last = p;
+                    ink = true;
+                    errorEl.hidden = true;
+                });
+                const stop = () => (drawing = false);
+                canvas.addEventListener('pointerup', stop);
+                canvas.addEventListener('pointercancel', stop);
+
+                function load(dataUrl) {
+                    const ratio = window.devicePixelRatio || 1;
+                    const w = canvas.clientWidth;
+                    const h = canvas.clientHeight;
+                    canvas.width = w * ratio;
+                    canvas.height = h * ratio;
+                    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+                    ctx.clearRect(0, 0, w, h);
+                    ink = false;
+                    if (dataUrl) {
+                        const img = new Image();
+                        img.onload = () => {
+                            ctx.drawImage(img, 0, 0, w, h);
+                            ink = true;
+                        };
+                        img.src = dataUrl;
+                    }
+                }
+
+                return {
+                    load,
+                    clear: () => load(''),
+                    isEmpty: () => !ink,
+                    showError: () => (errorEl.hidden = false),
+                    toDataUrl: () => canvas.toDataURL('image/png'),
+                };
+            }
+
+            // Ersetzt die Unterschriftsspalte im Dialog durch ein Zeichenfeld
+            function buildSignatureCell(cell) {
+                cell.replaceChildren();
+                const canvas = document.createElement('canvas');
+                canvas.className = 'signature-pad';
+                canvas.setAttribute('role', 'img');
+                canvas.setAttribute('aria-label', 'Unterschriftsfeld. Mit Maus oder Finger unterschreiben.');
+
+                const clearBtn = document.createElement('button');
+                clearBtn.type = 'button';
+                clearBtn.className = 'btn btn-outline-secondary btn-sm';
+                clearBtn.textContent = 'Löschen';
+
+                const err = document.createElement('span');
+                err.className = 'small text-danger';
+                err.hidden = true;
+                err.textContent = 'Bitte unterschreiben.';
+
+                cell.append(canvas, clearBtn, err);
+                const newPad = createPad(canvas, err);
+                clearBtn.addEventListener('click', () => newPad.clear());
+                return newPad;
+            }
+
+            function openEditor(row) {
+                activeRow = row;
+
+                // Kopie des Formulars für den Dialog
+                const clone = row.cloneNode(true);
+                ['role', 'tabindex', 'aria-haspopup', 'aria-label'].forEach((a) => clone.removeAttribute(a));
+                clone.querySelector('.edit-icon')?.remove();
+                prefixIds(clone, 'd-');
+
+                dialogForm = clone.querySelector('.row-form');
+                dialogForm.inert = false;
+                dialogForm.noValidate = true;
+                dialogForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    confirmEdit();
+                });
+                dialogForm.addEventListener('input', () => validateDates(dialogForm));
+                dialogForm.addEventListener('change', () => validateDates(dialogForm));
+                dialogForm.addEventListener('click', onInfoClick);
+
+                writeValues(fieldsIn(clone), readValues(fieldsIn(row)));
+                addInfoButtons(clone);
+                pad = buildSignatureCell(clone.querySelector('.signature-cell'));
+
+                editorTitle.textContent = `Bearbeiten: ${row.getAttribute('aria-label')}`;
+                editorSlot.replaceChildren(clone);
+                validateDates(dialogForm);
+                editor.showModal();
+                pad.load(row.dataset.signature || '');
+
+                if (window.matchMedia('(pointer: fine)').matches) {
+                    dialogForm.querySelector('input, select')?.focus();
+                }
+            }
+
+            function confirmEdit() {
+                if (!dialogForm) return;
+                dialogForm.classList.add('was-validated');
+                validateDates(dialogForm);
+
+                const invalid = dialogForm.querySelector(':invalid');
+                if (invalid) {
+                    invalid.focus();
+                    return;
+                }
+                if (pad.isEmpty()) {
+                    pad.showError();
+                    return;
+                }
+
+                // Werte und Unterschrift zurück in die Zeile
+                writeValues(fieldsIn(activeRow), readValues(fieldsIn(dialogForm)));
+                const dataUrl = pad.toDataUrl();
+                activeRow.dataset.signature = dataUrl;
+                const img = activeRow.querySelector('.signature-cell img');
+                img.src = dataUrl;
+                img.hidden = false;
+                activeRow.querySelector('.sig-empty').hidden = true;
+
+                editor.close();
+            }
+
+            // Zeile öffnen: im Dialogmodus überall, im Inline-Modus über den Unterschreiben-Button
+            app.addEventListener('click', (e) => {
+                const row = e.target.closest('.grid-row');
+                if (!row) return;
+                if (dialogMode || e.target.closest('.sign-btn')) openEditor(row);
+            });
+            app.addEventListener('keydown', (e) => {
+                const row = e.target.closest('.grid-row');
+                if (!dialogMode || !row || e.target !== row) return;
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openEditor(row);
+                }
+            });
+
+            function applyMode() {
+                app.querySelectorAll('.app-grid').forEach((grid) => grid.classList.toggle('inline-mode', !dialogMode));
+                allRows().forEach((row) => {
+                    row.querySelector('.row-form').inert = dialogMode;
+                    if (dialogMode) {
+                        row.setAttribute('role', 'button');
+                        row.setAttribute('aria-haspopup', 'dialog');
+                        row.tabIndex = 0;
+                    } else {
+                        row.removeAttribute('role');
+                        row.removeAttribute('aria-haspopup');
+                        row.removeAttribute('tabindex');
+                    }
+                });
+                modeToggle.setAttribute('aria-pressed', String(dialogMode));
+                modeToggle.textContent = dialogMode ? 'Dialogmodus: an' : 'Dialogmodus: aus';
+            }
+
+            modeToggle.addEventListener('click', () => {
+                dialogMode = !dialogMode;
+                applyMode();
+            });
+
+            document.getElementById('editor-close').addEventListener('click', () => editor.close());
+            document.getElementById('editor-cancel').addEventListener('click', () => editor.close());
+            document.getElementById('editor-confirm').addEventListener('click', confirmEdit);
+            editor.addEventListener('close', () => {
+                editorSlot.replaceChildren();
+                dialogForm = null;
+                pad = null;
+                activeRow?.focus();
+            });
+
+            applyMode();
+        </script>
+        <!-- <<<<<<< -->
+    </body>
+</html>
