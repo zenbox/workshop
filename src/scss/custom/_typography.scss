@@ -4,7 +4,7 @@
 :root {
     font-size: $custom-font-size-base; // Basis für rem
 
-    p,
+/*     p,
     input,
     textarea,
     select,
@@ -16,7 +16,7 @@
         line-height: 1;
         margin: 0;
         padding: 0;
-    }
+    } */
 }
 
 .#{$custom-prefix} {

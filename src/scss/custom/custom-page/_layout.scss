@@ -9,7 +9,10 @@
             display: grid;
         }
 
-        grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.5fr) minmax(0, 2fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(
+                0,
+                0.5fr
+            ) minmax(0, 2fr);
         grid-template-rows: auto;
     }
 
@@ -20,6 +23,12 @@
         grid-template-columns: subgrid;
         min-width: 0;
         padding: 0;
+
+        // TYPOGRAFIE
+        h2 {
+            font-size: clamp(1rem, 2vw, 2rem);
+            line-height: 1.5;
+        }
     }
 
     // FORM KOMPONENTE
@@ -48,21 +57,24 @@
             min-width: 0;
             max-width: 100%;
         }
-button{
-    width: 4cqw;
-    height: 4cqw;
-    border-radius: 50px;
-    border-style:solid;border-width: 1;
-    border-color: lightgrey;
-}
+        button {
+            width: 4cqw;
+            height: 4cqw;
+            border-radius: 50px;
+            border-style: solid;
+            border-width: 1;
+            border-color: lightgrey;
+        }
         // TYPOGRAFIE
-         label {
+        label {
             font-size: clamp(0.6rem, 1vw, 1rem);
-            line-height: 1.25vw
+            line-height: 1.25vw;
         }
     }
 }
 
-@media print{
-    * {border: 0;}
-} 
+@media print {
+    * {
+        border: 0;
+    }
+}
