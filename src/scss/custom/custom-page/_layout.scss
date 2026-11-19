@@ -9,15 +9,14 @@
             display: grid;
         }
 
-        grid-template-columns: minmax(0, 1fr) minmax(0, 4fr) minmax(
-                0,
-                0.5fr
-            ) minmax(0, 2fr);
+        grid-template-columns:
+            minmax(0, 1fr) minmax(0, 4fr) minmax(0, 0.5fr)
+            minmax(0, 2fr);
         grid-template-rows: auto;
     }
 
     // FORM LAYOUT
-    &page > form {
+    &page form {
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
@@ -25,10 +24,17 @@
         padding: 0;
 
         // TYPOGRAFIE
-        h2 {
-            font-size: clamp(1rem, 2vw, 2rem);
-            line-height: 1.5;
+        h2,
+        label,
+        input,
+        p,
+        .remark,
+        select, legend {
+            font-size: clamp(0.6rem, 1vi, 1rem);
+            line-height: 1.35;
         }
+
+        select{background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='none' stroke='%23000' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");}
     }
 
     // FORM KOMPONENTE
@@ -49,7 +55,7 @@
             flex-direction: column;
         }
 
-        label {
+        label, legend {
             text-transform: uppercase;
         }
 
@@ -65,11 +71,6 @@
             border-width: 1;
             border-color: lightgrey;
         }
-        // TYPOGRAFIE
-        label {
-            font-size: clamp(0.6rem, 1vw, 1rem);
-            line-height: 1.25vw;
-        }
     }
 }
 
@@ -78,3 +79,13 @@
         border: 0;
     }
 }
+
+// TEMPORÄR
+form {
+    border: 2px dotted #000 !important;
+}
+
+
+// :-)
+    
+[class^="col-"] > label {display: block;}

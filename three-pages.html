@@ -79,21 +79,19 @@
 
                 <!-- FORM ROW  -->
                 <form
-                    style="border: 2px solid #000"
                     class="container-fluid needs-validation"
                     novalidate
                     id="page-1-form-1">
-
                     <!-- COLUMN -->
                     <fieldset class="custom-column">
                         <!-- - - - -->
                         <label for="field-4a"
-                            >4a.surveyed ground operations<br />date
-                            (dd/mm/yyyy)</label
+                            >4a. date surveyed ground operations </label
                         ><input
                             type="date"
                             id="field-4a"
                             name="field-4a" />
+                        <p class="remark print-only">(dd/mm/yyyy)</p>
                         <!-- - - - -->
                     </fieldset>
                     <!-- /COLUMN-->
@@ -160,7 +158,6 @@
 
                 <!-- FORM ROW  -->
                 <form
-                    style="border: 2px solid #000"
                     class="container-fluid needs-validation"
                     novalidate
                     id="page-1-form-2">
@@ -211,19 +208,54 @@
 
                     <!-- COLUMN -->
                     <fieldset class="custom-column">
-                        <button type="submit">ok</button>
+                        <select
+                            class="p-1 form-select"
+                            aria-label="Default select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
                     </fieldset>
                     <!-- /COLUMN -->
 
                     <!-- COLUMN -->
                     <fieldset class="custom-column">
                         <!-- - - - -->
-
-                        <label for="page-1-form-2-field-5">label</label
-                        ><input
-                            type="text"
-                            id="page-1-form-2-field-5"
-                            name="field-5" />
+                        <div class="row">
+                            <div class="col">
+                                <legend>Farben</legend>
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col">
+                                <label>
+                                    <input
+                                        type="radio"
+                                        id="page-1-form-2-field-5-a"
+                                        name="field-5" />
+                                    Rot</label
+                                >
+                            </div>
+                            <div class="col">
+                                <label>
+                                    <input
+                                        type="radio"
+                                        id="page-1-form-2-field-5-b"
+                                        name="field-5" />
+                                    Grün</label
+                                >
+                            </div>
+                            <div class="col  ms-auto" >
+                                <label>
+                                    <input
+                                        type="checkbox"
+                                        id="page-1-form-2-field-5-c"
+                                        name="field-5" />
+                                    Blau</label
+                                >
+                            </div>
+                        </div>
 
                         <!-- - - - -->
                     </fieldset>
@@ -233,7 +265,6 @@
 
                 <!-- FORM ROW  -->
                 <form
-                    style="border: 2px solid #000"
                     class="container-fluid needs-validation"
                     novalidate
                     id="page-1-form-3">
@@ -306,7 +337,6 @@
 
                 <!-- FORM ROW  -->
                 <form
-                    style="border: 2px solid #000"
                     class="container-fluid needs-validation"
                     novalidate
                     id="page-1-form-4">
@@ -386,21 +416,37 @@
                 role="tabpanel"
                 aria-labelledby="page-2-tab"
                 tabindex="0">
-                <div>
+                <!-- FORM ROW  -->
+                <form
+                    class="container-fluid needs-validation"
+                    novalidate
+                    id="page-2-form-1">
                     <!-- - - - -->
                     Two.one
                     <!-- - - - -->
-                </div>
-                <div>
+                </form>
+                <!-- /FORM ROW -->
+
+                <!-- FORM ROW  -->
+                <form
+                    class="container-fluid needs-validation"
+                    novalidate
+                    id="page-2-form-2">
                     <!-- - - - -->
                     Two.two
                     <!-- - - - -->
-                </div>
-                <div>
+                </form>
+                <!-- /FORM ROW -->
+                <!-- FORM ROW  -->
+                <form
+                    class="container-fluid needs-validation"
+                    novalidate
+                    id="page-2-form-3">
                     <!-- - - - -->
                     Two.three
                     <!-- - - - -->
-                </div>
+                </form>
+                <!-- /FORM ROW -->
             </div>
 
             <!-- TAB PANE  -->
