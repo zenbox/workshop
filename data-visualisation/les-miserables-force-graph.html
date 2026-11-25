@@ -1,0 +1,1173 @@
+<!doctype html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="/assets/css/styles.css" />
+        <title>Les Misérables: Figurennetzwerk (D3 Force-Graph)</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                color: #1a1a1a;
+                background: #ffffff;
+                line-height: 1.5;
+            }
+            main {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem 1.25rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+                margin: 0 0 0.25rem;
+            }
+            h2 {
+                font-size: 1.1rem;
+                margin: 0 0 0.6rem;
+            }
+            p.lead {
+                margin: 0 0 1.25rem;
+                color: #4a4a4a;
+            }
+            .layout {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) 320px;
+                gap: 1.25rem;
+                align-items: start;
+            }
+            .panel {
+                border: 1px solid #d9d9d9;
+                border-radius: 6px;
+                padding: 1rem;
+            }
+            .graph-panel {
+                position: relative;
+                padding: 0.5rem;
+            }
+            #graph svg {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+            .node circle {
+                stroke: #ffffff;
+                stroke-width: 1.5;
+                cursor: pointer;
+                transition: opacity 0.2s ease;
+            }
+            .node:focus {
+                outline: none;
+            }
+            .node:focus circle {
+                stroke: #b7791f;
+                stroke-width: 3;
+            }
+            .node.is-selected circle {
+                stroke: #b7791f;
+                stroke-width: 3;
+            }
+            .node-label {
+                font-size: 11px;
+                fill: #1a1a1a;
+                paint-order: stroke;
+                stroke: #ffffff;
+                stroke-width: 3px;
+                stroke-linejoin: round;
+                pointer-events: none;
+                text-anchor: middle;
+            }
+            .link {
+                transition: stroke-opacity 0.2s ease;
+            }
+            .dim {
+                opacity: 0.12;
+            }
+            .legend {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.3rem 0.9rem;
+                margin: 0.75rem 0 0;
+                padding: 0;
+                list-style: none;
+                font-size: 0.85rem;
+            }
+            .legend li {
+                display: flex;
+                align-items: center;
+                gap: 0.35rem;
+            }
+            .swatch {
+                width: 0.8rem;
+                height: 0.8rem;
+                border-radius: 50%;
+                display: inline-block;
+            }
+            .note {
+                font-size: 0.85rem;
+                color: #5a5a5a;
+                margin: 0.75rem 0 0;
+            }
+            .controls {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                gap: 0.5rem;
+                margin: 0 0 0.75rem;
+            }
+            .controls label {
+                font-size: 0.9rem;
+                font-weight: bold;
+            }
+            select {
+                font: inherit;
+                font-size: 0.9rem;
+                padding: 0.3rem 0.5rem;
+                border: 1px solid #8a939c;
+                border-radius: 4px;
+                background: #ffffff;
+            }
+            select:focus-visible,
+            .person-btn:focus-visible,
+            .node:focus-visible {
+                outline: 3px solid #b7791f;
+                outline-offset: 2px;
+            }
+            .people-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                max-height: 470px;
+                overflow-y: auto;
+            }
+            .person-btn {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 0.5rem;
+                text-align: left;
+                font: inherit;
+                font-size: 0.9rem;
+                padding: 0.4rem 0.5rem;
+                border: 0;
+                border-bottom: 1px solid #e3e3e3;
+                background: #ffffff;
+                cursor: pointer;
+            }
+            .person-btn:hover {
+                background: #f4f6f8;
+            }
+            .person-btn[aria-pressed="true"] {
+                background: #fff6e0;
+            }
+            .person-meta {
+                color: #5a5a5a;
+                font-size: 0.8rem;
+                white-space: nowrap;
+                font-variant-numeric: tabular-nums;
+            }
+            .detail dl {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                gap: 0.2rem 0.6rem;
+                margin: 0 0 0.75rem;
+                font-size: 0.9rem;
+            }
+            .detail dt {
+                color: #5a5a5a;
+            }
+            .detail dd {
+                margin: 0;
+                font-variant-numeric: tabular-nums;
+            }
+            .detail ol {
+                margin: 0;
+                padding-left: 1.2rem;
+                font-size: 0.9rem;
+            }
+            .detail .empty {
+                color: #5a5a5a;
+                font-size: 0.9rem;
+                margin: 0;
+            }
+            .status {
+                color: #4a4a4a;
+                font-size: 0.95rem;
+            }
+            .error {
+                color: #b00020;
+                font-weight: bold;
+            }
+            @media (max-width: 900px) {
+                .layout {
+                    grid-template-columns: 1fr;
+                }
+            }
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    transition: none !important;
+                    animation: none !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main id="main-content">
+            <h1>Les Misérables: Figurennetzwerk</h1>
+            <p class="lead">
+                Wer tritt mit wem auf? Die Kreisgröße zeigt die Anzahl der
+                Begegnungen. Ein Klick auf eine Figur zeigt Details und hebt
+                ihre Verbindungen hervor.
+            </p>
+
+            <div class="layout">
+                <section
+                    class="panel graph-panel"
+                    aria-labelledby="graph-heading">
+                    <h2
+                        id="graph-heading"
+                        class="visually-hidden"
+                        style="
+                            position: absolute;
+                            width: 1px;
+                            height: 1px;
+                            overflow: hidden;
+                            clip: rect(0 0 0 0);
+                        ">
+                        Netzwerkgrafik
+                    </h2>
+                    <div
+                        id="status-wrap"
+                        style="padding: 0.5rem">
+                        <p
+                            class="status"
+                            id="status">
+                            Grafik wird geladen ...
+                        </p>
+                    </div>
+                    <div id="graph"></div>
+                    <ul
+                        class="legend"
+                        id="legend"
+                        aria-label="Legende der Gruppen"></ul>
+                    <p class="note">
+                        Begegnungen = Summe der Verbindungsgewichte einer Figur
+                        (gemeinsame Auftritte laut Datensatz). Verbindungen =
+                        Anzahl unterschiedlicher Figuren, mit denen sie
+                        auftritt. Die Gruppen stammen aus dem Datensatz und sind
+                        nicht benannt. Ziehen einer Figur fixiert sie kurz.
+                        Hintergrund anklicken hebt die Auswahl auf.
+                    </p>
+                </section>
+
+                <aside>
+                    <section
+                        class="panel"
+                        aria-labelledby="list-heading"
+                        style="margin-bottom: 1.25rem">
+                        <h2 id="list-heading">Figuren</h2>
+                        <div class="controls">
+                            <label for="sort">Sortieren nach:</label>
+                            <select id="sort">
+                                <option value="enc">
+                                    Begegnungen (absteigend)
+                                </option>
+                                <option value="deg">
+                                    Verbindungen (absteigend)
+                                </option>
+                                <option value="name">Name (A bis Z)</option>
+                                <option value="group">Gruppe</option>
+                            </select>
+                        </div>
+                        <ul
+                            class="people-list"
+                            id="people"></ul>
+                    </section>
+
+                    <section
+                        class="panel detail"
+                        aria-live="polite"
+                        aria-labelledby="detail-heading">
+                        <h2 id="detail-heading">Details</h2>
+                        <div id="detail">
+                            <p class="empty">
+                                Eine Figur auswählen, um Details zu sehen.
+                            </p>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script>
+            // >>>>>>>
+            var graphData = {
+                nodes: [
+                    { name: "Myriel", group: 1 },
+                    { name: "Napoleon", group: 1 },
+                    { name: "Mlle.Baptistine", group: 1 },
+                    { name: "Mme.Magloire", group: 1 },
+                    { name: "CountessdeLo", group: 1 },
+                    { name: "Geborand", group: 1 },
+                    { name: "Champtercier", group: 1 },
+                    { name: "Cravatte", group: 1 },
+                    { name: "Count", group: 1 },
+                    { name: "OldMan", group: 1 },
+                    { name: "Labarre", group: 2 },
+                    { name: "Valjean", group: 2 },
+                    { name: "Marguerite", group: 3 },
+                    { name: "Mme.deR", group: 2 },
+                    { name: "Isabeau", group: 2 },
+                    { name: "Gervais", group: 2 },
+                    { name: "Tholomyes", group: 3 },
+                    { name: "Listolier", group: 3 },
+                    { name: "Fameuil", group: 3 },
+                    { name: "Blacheville", group: 3 },
+                    { name: "Favourite", group: 3 },
+                    { name: "Dahlia", group: 3 },
+                    { name: "Zephine", group: 3 },
+                    { name: "Fantine", group: 3 },
+                    { name: "Mme.Thenardier", group: 4 },
+                    { name: "Thenardier", group: 4 },
+                    { name: "Cosette", group: 5 },
+                    { name: "Javert", group: 4 },
+                    { name: "Fauchelevent", group: 0 },
+                    { name: "Bamatabois", group: 2 },
+                    { name: "Perpetue", group: 3 },
+                    { name: "Simplice", group: 2 },
+                    { name: "Scaufflaire", group: 2 },
+                    { name: "Woman1", group: 2 },
+                    { name: "Judge", group: 2 },
+                    { name: "Champmathieu", group: 2 },
+                    { name: "Brevet", group: 2 },
+                    { name: "Chenildieu", group: 2 },
+                    { name: "Cochepaille", group: 2 },
+                    { name: "Pontmercy", group: 4 },
+                    { name: "Boulatruelle", group: 6 },
+                    { name: "Eponine", group: 4 },
+                    { name: "Anzelma", group: 4 },
+                    { name: "Woman2", group: 5 },
+                    { name: "MotherInnocent", group: 0 },
+                    { name: "Gribier", group: 0 },
+                    { name: "Jondrette", group: 7 },
+                    { name: "Mme.Burgon", group: 7 },
+                    { name: "Gavroche", group: 8 },
+                    { name: "Gillenormand", group: 5 },
+                    { name: "Magnon", group: 5 },
+                    { name: "Mlle.Gillenormand", group: 5 },
+                    { name: "Mme.Pontmercy", group: 5 },
+                    { name: "Mlle.Vaubois", group: 5 },
+                    { name: "Lt.Gillenormand", group: 5 },
+                    { name: "Marius", group: 8 },
+                    { name: "BaronessT", group: 5 },
+                    { name: "Mabeuf", group: 8 },
+                    { name: "Enjolras", group: 8 },
+                    { name: "Combeferre", group: 8 },
+                    { name: "Prouvaire", group: 8 },
+                    { name: "Feuilly", group: 8 },
+                    { name: "Courfeyrac", group: 8 },
+                    { name: "Bahorel", group: 8 },
+                    { name: "Bossuet", group: 8 },
+                    { name: "Joly", group: 8 },
+                    { name: "Grantaire", group: 8 },
+                    { name: "MotherPlutarch", group: 9 },
+                    { name: "Gueulemer", group: 4 },
+                    { name: "Babet", group: 4 },
+                    { name: "Claquesous", group: 4 },
+                    { name: "Montparnasse", group: 4 },
+                    { name: "Toussaint", group: 5 },
+                    { name: "Child1", group: 10 },
+                    { name: "Child2", group: 10 },
+                    { name: "Brujon", group: 4 },
+                    { name: "Mme.Hucheloup", group: 8 },
+                ],
+                links: [
+                    { source: 1, target: 0, value: 1 },
+                    { source: 2, target: 0, value: 8 },
+                    { source: 3, target: 0, value: 10 },
+                    { source: 3, target: 2, value: 6 },
+                    { source: 4, target: 0, value: 1 },
+                    { source: 5, target: 0, value: 1 },
+                    { source: 6, target: 0, value: 1 },
+                    { source: 7, target: 0, value: 1 },
+                    { source: 8, target: 0, value: 2 },
+                    { source: 9, target: 0, value: 1 },
+                    { source: 11, target: 10, value: 1 },
+                    { source: 11, target: 3, value: 3 },
+                    { source: 11, target: 2, value: 3 },
+                    { source: 11, target: 0, value: 5 },
+                    { source: 12, target: 11, value: 1 },
+                    { source: 13, target: 11, value: 1 },
+                    { source: 14, target: 11, value: 1 },
+                    { source: 15, target: 11, value: 1 },
+                    { source: 17, target: 16, value: 4 },
+                    { source: 18, target: 16, value: 4 },
+                    { source: 18, target: 17, value: 4 },
+                    { source: 19, target: 16, value: 4 },
+                    { source: 19, target: 17, value: 4 },
+                    { source: 19, target: 18, value: 4 },
+                    { source: 20, target: 16, value: 3 },
+                    { source: 20, target: 17, value: 3 },
+                    { source: 20, target: 18, value: 3 },
+                    { source: 20, target: 19, value: 4 },
+                    { source: 21, target: 16, value: 3 },
+                    { source: 21, target: 17, value: 3 },
+                    { source: 21, target: 18, value: 3 },
+                    { source: 21, target: 19, value: 3 },
+                    { source: 21, target: 20, value: 5 },
+                    { source: 22, target: 16, value: 3 },
+                    { source: 22, target: 17, value: 3 },
+                    { source: 22, target: 18, value: 3 },
+                    { source: 22, target: 19, value: 3 },
+                    { source: 22, target: 20, value: 4 },
+                    { source: 22, target: 21, value: 4 },
+                    { source: 23, target: 16, value: 3 },
+                    { source: 23, target: 17, value: 3 },
+                    { source: 23, target: 18, value: 3 },
+                    { source: 23, target: 19, value: 3 },
+                    { source: 23, target: 20, value: 4 },
+                    { source: 23, target: 21, value: 4 },
+                    { source: 23, target: 22, value: 4 },
+                    { source: 23, target: 12, value: 2 },
+                    { source: 23, target: 11, value: 9 },
+                    { source: 24, target: 23, value: 2 },
+                    { source: 24, target: 11, value: 7 },
+                    { source: 25, target: 24, value: 13 },
+                    { source: 25, target: 23, value: 1 },
+                    { source: 25, target: 11, value: 12 },
+                    { source: 26, target: 24, value: 4 },
+                    { source: 26, target: 11, value: 31 },
+                    { source: 26, target: 16, value: 1 },
+                    { source: 26, target: 25, value: 1 },
+                    { source: 27, target: 11, value: 17 },
+                    { source: 27, target: 23, value: 5 },
+                    { source: 27, target: 25, value: 5 },
+                    { source: 27, target: 24, value: 1 },
+                    { source: 27, target: 26, value: 1 },
+                    { source: 28, target: 11, value: 8 },
+                    { source: 28, target: 27, value: 1 },
+                    { source: 29, target: 23, value: 1 },
+                    { source: 29, target: 27, value: 1 },
+                    { source: 29, target: 11, value: 2 },
+                    { source: 30, target: 23, value: 1 },
+                    { source: 31, target: 30, value: 2 },
+                    { source: 31, target: 11, value: 3 },
+                    { source: 31, target: 23, value: 2 },
+                    { source: 31, target: 27, value: 1 },
+                    { source: 32, target: 11, value: 1 },
+                    { source: 33, target: 11, value: 2 },
+                    { source: 33, target: 27, value: 1 },
+                    { source: 34, target: 11, value: 3 },
+                    { source: 34, target: 29, value: 2 },
+                    { source: 35, target: 11, value: 3 },
+                    { source: 35, target: 34, value: 3 },
+                    { source: 35, target: 29, value: 2 },
+                    { source: 36, target: 34, value: 2 },
+                    { source: 36, target: 35, value: 2 },
+                    { source: 36, target: 11, value: 2 },
+                    { source: 36, target: 29, value: 1 },
+                    { source: 37, target: 34, value: 2 },
+                    { source: 37, target: 35, value: 2 },
+                    { source: 37, target: 36, value: 2 },
+                    { source: 37, target: 11, value: 2 },
+                    { source: 37, target: 29, value: 1 },
+                    { source: 38, target: 34, value: 2 },
+                    { source: 38, target: 35, value: 2 },
+                    { source: 38, target: 36, value: 2 },
+                    { source: 38, target: 37, value: 2 },
+                    { source: 38, target: 11, value: 2 },
+                    { source: 38, target: 29, value: 1 },
+                    { source: 39, target: 25, value: 1 },
+                    { source: 40, target: 25, value: 1 },
+                    { source: 41, target: 24, value: 2 },
+                    { source: 41, target: 25, value: 3 },
+                    { source: 42, target: 41, value: 2 },
+                    { source: 42, target: 25, value: 2 },
+                    { source: 42, target: 24, value: 1 },
+                    { source: 43, target: 11, value: 3 },
+                    { source: 43, target: 26, value: 1 },
+                    { source: 43, target: 27, value: 1 },
+                    { source: 44, target: 28, value: 3 },
+                    { source: 44, target: 11, value: 1 },
+                    { source: 45, target: 28, value: 2 },
+                    { source: 47, target: 46, value: 1 },
+                    { source: 48, target: 47, value: 2 },
+                    { source: 48, target: 25, value: 1 },
+                    { source: 48, target: 27, value: 1 },
+                    { source: 48, target: 11, value: 1 },
+                    { source: 49, target: 26, value: 3 },
+                    { source: 49, target: 11, value: 2 },
+                    { source: 50, target: 49, value: 1 },
+                    { source: 50, target: 24, value: 1 },
+                    { source: 51, target: 49, value: 9 },
+                    { source: 51, target: 26, value: 2 },
+                    { source: 51, target: 11, value: 2 },
+                    { source: 52, target: 51, value: 1 },
+                    { source: 52, target: 39, value: 1 },
+                    { source: 53, target: 51, value: 1 },
+                    { source: 54, target: 51, value: 2 },
+                    { source: 54, target: 49, value: 1 },
+                    { source: 54, target: 26, value: 1 },
+                    { source: 55, target: 51, value: 6 },
+                    { source: 55, target: 49, value: 12 },
+                    { source: 55, target: 39, value: 1 },
+                    { source: 55, target: 54, value: 1 },
+                    { source: 55, target: 26, value: 21 },
+                    { source: 55, target: 11, value: 19 },
+                    { source: 55, target: 16, value: 1 },
+                    { source: 55, target: 25, value: 2 },
+                    { source: 55, target: 41, value: 5 },
+                    { source: 55, target: 48, value: 4 },
+                    { source: 56, target: 49, value: 1 },
+                    { source: 56, target: 55, value: 1 },
+                    { source: 57, target: 55, value: 1 },
+                    { source: 57, target: 41, value: 1 },
+                    { source: 57, target: 48, value: 1 },
+                    { source: 58, target: 55, value: 7 },
+                    { source: 58, target: 48, value: 7 },
+                    { source: 58, target: 27, value: 6 },
+                    { source: 58, target: 57, value: 1 },
+                    { source: 58, target: 11, value: 4 },
+                    { source: 59, target: 58, value: 15 },
+                    { source: 59, target: 55, value: 5 },
+                    { source: 59, target: 48, value: 6 },
+                    { source: 59, target: 57, value: 2 },
+                    { source: 60, target: 48, value: 1 },
+                    { source: 60, target: 58, value: 4 },
+                    { source: 60, target: 59, value: 2 },
+                    { source: 61, target: 48, value: 2 },
+                    { source: 61, target: 58, value: 6 },
+                    { source: 61, target: 60, value: 2 },
+                    { source: 61, target: 59, value: 5 },
+                    { source: 61, target: 57, value: 1 },
+                    { source: 61, target: 55, value: 1 },
+                    { source: 62, target: 55, value: 9 },
+                    { source: 62, target: 58, value: 17 },
+                    { source: 62, target: 59, value: 13 },
+                    { source: 62, target: 48, value: 7 },
+                    { source: 62, target: 57, value: 2 },
+                    { source: 62, target: 41, value: 1 },
+                    { source: 62, target: 61, value: 6 },
+                    { source: 62, target: 60, value: 3 },
+                    { source: 63, target: 59, value: 5 },
+                    { source: 63, target: 48, value: 5 },
+                    { source: 63, target: 62, value: 6 },
+                    { source: 63, target: 57, value: 2 },
+                    { source: 63, target: 58, value: 4 },
+                    { source: 63, target: 61, value: 3 },
+                    { source: 63, target: 60, value: 2 },
+                    { source: 63, target: 55, value: 1 },
+                    { source: 64, target: 55, value: 5 },
+                    { source: 64, target: 62, value: 12 },
+                    { source: 64, target: 48, value: 5 },
+                    { source: 64, target: 63, value: 4 },
+                    { source: 64, target: 58, value: 10 },
+                    { source: 64, target: 61, value: 6 },
+                    { source: 64, target: 60, value: 2 },
+                    { source: 64, target: 59, value: 9 },
+                    { source: 64, target: 57, value: 1 },
+                    { source: 64, target: 11, value: 1 },
+                    { source: 65, target: 63, value: 5 },
+                    { source: 65, target: 64, value: 7 },
+                    { source: 65, target: 48, value: 3 },
+                    { source: 65, target: 62, value: 5 },
+                    { source: 65, target: 58, value: 5 },
+                    { source: 65, target: 61, value: 5 },
+                    { source: 65, target: 60, value: 2 },
+                    { source: 65, target: 59, value: 5 },
+                    { source: 65, target: 57, value: 1 },
+                    { source: 65, target: 55, value: 2 },
+                    { source: 66, target: 64, value: 3 },
+                    { source: 66, target: 58, value: 3 },
+                    { source: 66, target: 59, value: 1 },
+                    { source: 66, target: 62, value: 2 },
+                    { source: 66, target: 65, value: 2 },
+                    { source: 66, target: 48, value: 1 },
+                    { source: 66, target: 63, value: 1 },
+                    { source: 66, target: 61, value: 1 },
+                    { source: 66, target: 60, value: 1 },
+                    { source: 67, target: 57, value: 3 },
+                    { source: 68, target: 25, value: 5 },
+                    { source: 68, target: 11, value: 1 },
+                    { source: 68, target: 24, value: 1 },
+                    { source: 68, target: 27, value: 1 },
+                    { source: 68, target: 48, value: 1 },
+                    { source: 68, target: 41, value: 1 },
+                    { source: 69, target: 25, value: 6 },
+                    { source: 69, target: 68, value: 6 },
+                    { source: 69, target: 11, value: 1 },
+                    { source: 69, target: 24, value: 1 },
+                    { source: 69, target: 27, value: 2 },
+                    { source: 69, target: 48, value: 1 },
+                    { source: 69, target: 41, value: 1 },
+                    { source: 70, target: 25, value: 4 },
+                    { source: 70, target: 69, value: 4 },
+                    { source: 70, target: 68, value: 4 },
+                    { source: 70, target: 11, value: 1 },
+                    { source: 70, target: 24, value: 1 },
+                    { source: 70, target: 27, value: 1 },
+                    { source: 70, target: 41, value: 1 },
+                    { source: 70, target: 58, value: 1 },
+                    { source: 71, target: 27, value: 1 },
+                    { source: 71, target: 69, value: 2 },
+                    { source: 71, target: 68, value: 2 },
+                    { source: 71, target: 70, value: 2 },
+                    { source: 71, target: 11, value: 1 },
+                    { source: 71, target: 48, value: 1 },
+                    { source: 71, target: 41, value: 1 },
+                    { source: 71, target: 25, value: 1 },
+                    { source: 72, target: 26, value: 2 },
+                    { source: 72, target: 27, value: 1 },
+                    { source: 72, target: 11, value: 1 },
+                    { source: 73, target: 48, value: 2 },
+                    { source: 74, target: 48, value: 2 },
+                    { source: 74, target: 73, value: 3 },
+                    { source: 75, target: 69, value: 3 },
+                    { source: 75, target: 68, value: 3 },
+                    { source: 75, target: 25, value: 3 },
+                    { source: 75, target: 48, value: 1 },
+                    { source: 75, target: 41, value: 1 },
+                    { source: 75, target: 70, value: 1 },
+                    { source: 75, target: 71, value: 1 },
+                    { source: 76, target: 64, value: 1 },
+                    { source: 76, target: 65, value: 1 },
+                    { source: 76, target: 66, value: 1 },
+                    { source: 76, target: 63, value: 1 },
+                    { source: 76, target: 62, value: 1 },
+                    { source: 76, target: 48, value: 1 },
+                    { source: 76, target: 58, value: 1 },
+                ],
+            };
+            // <<<<<<<
+
+            (function () {
+                var status = document.getElementById("status");
+                var graphEl = document.getElementById("graph");
+                var legendEl = document.getElementById("legend");
+                var listEl = document.getElementById("people");
+                var sortSel = document.getElementById("sort");
+                var detailEl = document.getElementById("detail");
+
+                if (!window.d3) {
+                    status.textContent = "D3 konnte nicht geladen werden.";
+                    status.className = "status error";
+                    return;
+                }
+
+                var color = d3
+                    .scaleOrdinal(d3.schemeTableau10)
+                    .domain(d3.range(11));
+                var nodes = graphData.nodes.map(function (d, i) {
+                    return { id: i, name: d.name, group: d.group };
+                });
+
+                // Kennzahlen je Figur, einmal berechnet
+                var stats = nodes.map(function () {
+                    return { encounters: 0, degree: 0, partners: [] };
+                });
+                graphData.links.forEach(function (l) {
+                    stats[l.source].encounters += l.value;
+                    stats[l.target].encounters += l.value;
+                    stats[l.source].degree += 1;
+                    stats[l.target].degree += 1;
+                    stats[l.source].partners.push({
+                        id: l.target,
+                        value: l.value,
+                    });
+                    stats[l.target].partners.push({
+                        id: l.source,
+                        value: l.value,
+                    });
+                });
+                stats.forEach(function (s) {
+                    s.partners.sort(function (a, b) {
+                        return b.value - a.value;
+                    });
+                });
+
+                // Die Top-15-Figuren erhalten dauerhaft ein Etikett
+                var labelIds = {};
+                nodes
+                    .slice()
+                    .sort(function (a, b) {
+                        return stats[b.id].encounters - stats[a.id].encounters;
+                    })
+                    .slice(0, 15)
+                    .forEach(function (d) {
+                        labelIds[d.id] = true;
+                    });
+
+                var selected = null;
+                var hovered = null;
+                var sim = null;
+                var curW = 0;
+                var curH = 0;
+                var nodeSel = null;
+                var linkSel = null;
+                var rScale = d3
+                    .scaleSqrt()
+                    .domain(
+                        d3.extent(stats, function (s) {
+                            return s.encounters;
+                        })
+                    )
+                    .range([4, 22]);
+
+                // Legende
+                d3.range(11).forEach(function (g) {
+                    var li = document.createElement("li");
+                    var sw = document.createElement("span");
+                    sw.className = "swatch";
+                    sw.style.background = color(g);
+                    li.appendChild(sw);
+                    li.appendChild(document.createTextNode("Gruppe " + g));
+                    legendEl.appendChild(li);
+                });
+
+                function sortedIds() {
+                    var ids = nodes.map(function (d) {
+                        return d.id;
+                    });
+                    var mode = sortSel.value;
+                    ids.sort(function (a, b) {
+                        var A = stats[a],
+                            B = stats[b];
+                        if (mode === "enc") {
+                            return (
+                                B.encounters - A.encounters ||
+                                nodes[a].name.localeCompare(nodes[b].name, "de")
+                            );
+                        }
+                        if (mode === "deg") {
+                            return (
+                                B.degree - A.degree ||
+                                B.encounters - A.encounters
+                            );
+                        }
+                        if (mode === "group") {
+                            return (
+                                nodes[a].group - nodes[b].group ||
+                                nodes[a].name.localeCompare(nodes[b].name, "de")
+                            );
+                        }
+                        return nodes[a].name.localeCompare(nodes[b].name, "de");
+                    });
+                    return ids;
+                }
+
+                function renderList() {
+                    listEl.innerHTML = "";
+                    sortedIds().forEach(function (id) {
+                        var n = nodes[id];
+                        var li = document.createElement("li");
+                        var btn = document.createElement("button");
+                        btn.type = "button";
+                        btn.className = "person-btn";
+                        btn.setAttribute(
+                            "aria-pressed",
+                            id === selected ? "true" : "false"
+                        );
+                        btn.dataset.id = id;
+                        var name = document.createElement("span");
+                        name.textContent = n.name;
+                        var meta = document.createElement("span");
+                        meta.className = "person-meta";
+                        meta.textContent =
+                            stats[id].encounters + " / " + stats[id].degree;
+                        btn.appendChild(name);
+                        btn.appendChild(meta);
+                        btn.setAttribute(
+                            "aria-label",
+                            n.name +
+                                ", Begegnungen " +
+                                stats[id].encounters +
+                                ", Verbindungen " +
+                                stats[id].degree +
+                                ", Gruppe " +
+                                n.group
+                        );
+                        btn.addEventListener("click", function () {
+                            selectNode(id);
+                        });
+                        li.appendChild(btn);
+                        listEl.appendChild(li);
+                    });
+                }
+
+                function renderDetail() {
+                    if (selected === null) {
+                        detailEl.innerHTML =
+                            '<p class="empty">Eine Figur auswählen, um Details zu sehen.</p>';
+                        return;
+                    }
+                    var n = nodes[selected];
+                    var s = stats[selected];
+                    var top = s.partners.slice(0, 5);
+                    var strongest = s.partners[0];
+                    var html =
+                        '<h3 style="margin:0 0 0.5rem;font-size:1.05rem;color:#1f4e79;"></h3>';
+                    html +=
+                        "<dl>" +
+                        "<dt>Gruppe</dt><dd>" +
+                        n.group +
+                        "</dd>" +
+                        "<dt>Begegnungen</dt><dd>" +
+                        s.encounters +
+                        "</dd>" +
+                        "<dt>Verbindungen</dt><dd>" +
+                        s.degree +
+                        " Figuren</dd>" +
+                        "<dt>Stärkste Verbindung</dt><dd>" +
+                        (strongest
+                            ? nodes[strongest.id].name +
+                              " (" +
+                              strongest.value +
+                              ")"
+                            : "keine") +
+                        "</dd>" +
+                        "</dl>";
+                    html +=
+                        '<p style="margin:0 0 0.3rem;font-weight:bold;font-size:0.9rem;">Top 5 Begegnungspartner</p><ol></ol>';
+                    detailEl.innerHTML = html;
+                    detailEl.querySelector("h3").textContent = n.name;
+                    var ol = detailEl.querySelector("ol");
+                    top.forEach(function (p) {
+                        var li = document.createElement("li");
+                        li.textContent =
+                            nodes[p.id].name + " (" + p.value + ")";
+                        ol.appendChild(li);
+                    });
+                }
+
+                function applyHighlight() {
+                    var focus = hovered !== null ? hovered : selected;
+                    var keep = null;
+                    if (focus !== null) {
+                        keep = {};
+                        keep[focus] = true;
+                        stats[focus].partners.forEach(function (p) {
+                            keep[p.id] = true;
+                        });
+                    }
+                    if (!nodeSel) {
+                        return;
+                    }
+                    nodeSel.classed("dim", function (d) {
+                        return keep !== null && !keep[d.id];
+                    });
+                    nodeSel.classed("is-selected", function (d) {
+                        return d.id === selected;
+                    });
+                    nodeSel
+                        .select(".node-label")
+                        .style("display", function (d) {
+                            return labelIds[d.id] || d.id === focus
+                                ? null
+                                : "none";
+                        });
+                    linkSel.classed("dim", function (d) {
+                        return (
+                            focus !== null &&
+                            d.source.id !== focus &&
+                            d.target.id !== focus
+                        );
+                    });
+                }
+
+                function selectNode(id) {
+                    selected = id === selected ? null : id;
+                    renderList();
+                    renderDetail();
+                    applyHighlight();
+                }
+
+                // >>>>>>>
+                // Die gewählte Sortierung bestimmt die Zielpositionen der Figuren im Graphen
+                function applyLayout(width, height) {
+                    var ids = sortedIds();
+                    var n = ids.length;
+                    var mode = sortSel.value;
+                    var tx = {};
+                    var ty = {};
+                    if (mode === "group") {
+                        // Gruppen als Cluster auf einem Kreis
+                        ids.forEach(function (id) {
+                            var a =
+                                (2 * Math.PI * nodes[id].group) / 11 -
+                                Math.PI / 2;
+                            tx[id] = width / 2 + Math.cos(a) * width * 0.32;
+                            ty[id] = height / 2 + Math.sin(a) * height * 0.32;
+                        });
+                    } else if (mode === "name") {
+                        // Alphabetisches Raster, A oben links
+                        var cols = 8;
+                        var rows = Math.ceil(n / cols);
+                        ids.forEach(function (id, i) {
+                            var col = i % cols;
+                            var row = Math.floor(i / cols);
+                            tx[id] = 60 + (col * (width - 120)) / (cols - 1);
+                            ty[id] =
+                                60 +
+                                (row * (height - 120)) / Math.max(rows - 1, 1);
+                        });
+                    } else {
+                        // Rang nach Begegnungen oder Verbindungen: Spirale, Platz 1 in der Mitte
+                        var maxR = Math.min(width, height) * 0.42;
+                        ids.forEach(function (id, i) {
+                            var r = maxR * Math.sqrt((i + 0.5) / n);
+                            var a = i * 2.39996;
+                            tx[id] = width / 2 + Math.cos(a) * r;
+                            ty[id] = height / 2 + Math.sin(a) * r;
+                        });
+                    }
+                    sim.force("center", null);
+                    sim.force(
+                        "posX",
+                        d3
+                            .forceX(function (d) {
+                                return tx[d.id];
+                            })
+                            .strength(0.35)
+                    );
+                    sim.force(
+                        "posY",
+                        d3
+                            .forceY(function (d) {
+                                return ty[d.id];
+                            })
+                            .strength(0.35)
+                    );
+                    sim.alpha(0.9).restart();
+                }
+                // <<<<<<<
+
+                function renderGraph() {
+                    if (sim) {
+                        sim.stop();
+                    }
+                    graphEl.innerHTML = "";
+                    var width = Math.max(graphEl.clientWidth, 320);
+                    var height = Math.min(
+                        Math.max(Math.round(width * 0.72), 460),
+                        640
+                    );
+                    curW = width;
+                    curH = height;
+
+                    var svg = d3
+                        .select(graphEl)
+                        .append("svg")
+                        .attr("viewBox", "0 0 " + width + " " + height)
+                        .attr("role", "img")
+                        .attr(
+                            "aria-label",
+                            "Netzwerk der Figuren aus Les Misérables. Kreisgröße nach Anzahl der Begegnungen."
+                        );
+
+                    svg.on("click", function (event) {
+                        if (event.target === this) {
+                            selectNode(selected);
+                            selected = null;
+                            renderList();
+                            renderDetail();
+                            applyHighlight();
+                        }
+                    });
+
+                    var ln = graphData.links.map(function (l) {
+                        return {
+                            source: l.source,
+                            target: l.target,
+                            value: l.value,
+                        };
+                    });
+                    var nd = nodes.map(function (d) {
+                        return Object.assign({}, d);
+                    });
+                    function radius(id) {
+                        return rScale(stats[id].encounters);
+                    }
+
+                    linkSel = svg
+                        .append("g")
+                        .attr("stroke", "#9aa3ad")
+                        .attr("stroke-opacity", 0.55)
+                        .selectAll("line")
+                        .data(ln)
+                        .join("line")
+                        .attr("class", "link")
+                        .attr("stroke-width", function (d) {
+                            return Math.sqrt(d.value);
+                        });
+
+                    nodeSel = svg
+                        .append("g")
+                        .selectAll("g")
+                        .data(nd)
+                        .join("g")
+                        .attr("class", "node")
+                        .attr("tabindex", 0)
+                        .attr("role", "button")
+                        .attr("aria-label", function (d) {
+                            return (
+                                d.name +
+                                ", Begegnungen " +
+                                stats[d.id].encounters +
+                                ", Verbindungen " +
+                                stats[d.id].degree +
+                                ", Gruppe " +
+                                d.group
+                            );
+                        })
+                        .on("click", function (event, d) {
+                            event.stopPropagation();
+                            selectNode(d.id);
+                        })
+                        .on("keydown", function (event, d) {
+                            if (event.key === "Enter" || event.key === " ") {
+                                event.preventDefault();
+                                selectNode(d.id);
+                            }
+                        })
+                        .on("mouseenter", function (event, d) {
+                            hovered = d.id;
+                            applyHighlight();
+                        })
+                        .on("mouseleave", function () {
+                            hovered = null;
+                            applyHighlight();
+                        })
+                        .call(
+                            d3
+                                .drag()
+                                .on("start", function (event, d) {
+                                    if (!event.active) {
+                                        sim.alphaTarget(0.3).restart();
+                                    }
+                                    d.fx = d.x;
+                                    d.fy = d.y;
+                                })
+                                .on("drag", function (event, d) {
+                                    d.fx = event.x;
+                                    d.fy = event.y;
+                                })
+                                .on("end", function (event, d) {
+                                    if (!event.active) {
+                                        sim.alphaTarget(0);
+                                    }
+                                    d.fx = null;
+                                    d.fy = null;
+                                })
+                        );
+
+                    nodeSel
+                        .append("circle")
+                        .attr("r", function (d) {
+                            return radius(d.id);
+                        })
+                        .attr("fill", function (d) {
+                            return color(d.group);
+                        })
+                        .append("title")
+                        .text(function (d) {
+                            return (
+                                d.name +
+                                ": " +
+                                stats[d.id].encounters +
+                                " Begegnungen, " +
+                                stats[d.id].degree +
+                                " Verbindungen"
+                            );
+                        });
+
+                    nodeSel
+                        .append("text")
+                        .attr("class", "node-label")
+                        .attr("y", function (d) {
+                            return radius(d.id) + 12;
+                        })
+                        .text(function (d) {
+                            return d.name;
+                        });
+
+                    sim = d3
+                        .forceSimulation(nd)
+                        .force(
+                            "link",
+                            d3
+                                .forceLink(ln)
+                                .id(function (d) {
+                                    return d.id;
+                                })
+                                .distance(38)
+                                .strength(0.5)
+                        )
+                        .force("charge", d3.forceManyBody().strength(-170))
+                        .force("center", d3.forceCenter(width / 2, height / 2))
+                        .force(
+                            "collide",
+                            d3.forceCollide().radius(function (d) {
+                                return radius(d.id) + 3;
+                            })
+                        )
+                        .on("tick", function () {
+                            linkSel
+                                .attr("x1", function (d) {
+                                    return d.source.x;
+                                })
+                                .attr("y1", function (d) {
+                                    return d.source.y;
+                                })
+                                .attr("x2", function (d) {
+                                    return d.target.x;
+                                })
+                                .attr("y2", function (d) {
+                                    return d.target.y;
+                                });
+                            nodeSel.attr("transform", function (d) {
+                                return "translate(" + d.x + "," + d.y + ")";
+                            });
+                        });
+
+                    // >>>>>>>
+                    applyLayout(width, height);
+                    // <<<<<<<
+                    applyHighlight();
+                }
+
+                // >>>>>>>
+                sortSel.addEventListener("change", function () {
+                    renderList();
+                    if (sim) {
+                        applyLayout(curW, curH);
+                    }
+                });
+                // <<<<<<<
+                renderList();
+                renderDetail();
+
+                try {
+                    renderGraph();
+                    status.parentNode.remove();
+                } catch (err) {
+                    status.textContent =
+                        "Fehler beim Zeichnen der Grafik: " +
+                        (err && err.message ? err.message : err);
+                    status.className = "status error";
+                }
+
+                var resizeTimer = null;
+                window.addEventListener("resize", function () {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(renderGraph, 150);
+                });
+            })();
+        </script>
+    </body>
+</html>

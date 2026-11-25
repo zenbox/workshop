@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Energiefluss: Verbrenner vs. Elektroauto</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                color: #1a1a1a;
+                background: #ffffff;
+                line-height: 1.5;
+            }
+            main {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 2rem 1.25rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+                margin: 0 0 0.25rem;
+            }
+            p.lead {
+                margin: 0 0 1.5rem;
+                color: #4a4a4a;
+            }
+            .diagram-wrapper {
+                overflow-x: auto;
+                border: 1px solid #d9d9d9;
+                border-radius: 6px;
+                padding: 1rem;
+            }
+            .mermaid {
+                min-width: 720px;
+                margin: 0;
+            }
+            .status {
+                color: #4a4a4a;
+                font-size: 0.95rem;
+            }
+            .error {
+                color: #b00020;
+                font-weight: bold;
+            }
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    transition: none !important;
+                    animation: none !important;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main id="main-content">
+            <h1>Energiefluss: Verbrenner vs. Elektroauto</h1>
+            <p class="lead">Wo geht die Energie verloren, und wie viel erreicht das Rad? Angaben in Prozent der eingesetzten Energie.</p>
+
+            <div class="diagram-wrapper">
+                <p class="status" id="status">Diagramm wird geladen ...</p>
+                <!-- >>>>>>> -->
+                <pre class="mermaid" id="sankey">
+---
+config:
+  sankey:
+    showValues: true
+    width: 1000
+    height: 620
+    nodeAlignment: left
+---
+sankey-beta
+"Kraftstoff (Verbrenner)","Motor-Verluste (Abwärme)",65
+"Kraftstoff (Verbrenner)","Mechanische Energie",35
+"Mechanische Energie","Getriebeverluste",5
+"Mechanische Energie","Nebenverbraucher (Verbrenner)",5
+"Mechanische Energie","Vortrieb am Rad (Verbrenner)",25
+"Vortrieb am Rad (Verbrenner)","Rollwiderstand (Verbrenner)",10
+"Vortrieb am Rad (Verbrenner)","Luftwiderstand (Verbrenner)",10
+"Vortrieb am Rad (Verbrenner)","Bremsverluste (Verbrenner)",5
+"Batterie (BEV)","Lade- &amp; Inverterverluste",8
+"Batterie (BEV)","Elektromotor &amp; Getriebe",92
+"Elektromotor &amp; Getriebe","Motor- &amp; Getriebeverluste",12
+"Elektromotor &amp; Getriebe","Nebenverbraucher (BEV)",10
+"Elektromotor &amp; Getriebe","Vortrieb am Rad (BEV)",70
+"Vortrieb am Rad (BEV)","Rollwiderstand (BEV)",25
+"Vortrieb am Rad (BEV)","Luftwiderstand (BEV)",30
+"Vortrieb am Rad (BEV)","Bremsverluste (Reibung)",5
+"Vortrieb am Rad (BEV)","Rekuperation (Rückgewinnung)",10
+</pre>
+                <!-- <<<<<<< -->
+            </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"></script>
+        <script>
+            (function () {
+                var status = document.getElementById('status');
+                var el = document.getElementById('sankey');
+                if (!window.mermaid) {
+                    status.textContent = 'Mermaid konnte nicht geladen werden.';
+                    status.className = 'error';
+                    return;
+                }
+
+                // Der Sankey-Parser von Mermaid akzeptiert nur ASCII-Zeichen.
+                // Nicht-ASCII-Zeichen (ä, ö, ü, ß ...) werden daher vor dem Parsen
+                // als ~uXXXX~ maskiert und nach dem Rendern im SVG zurückgesetzt.
+                el.textContent = el.textContent.replace(/[^\x00-\x7E]/g, function (ch) {
+                    return '~u' + ch.charCodeAt(0).toString(16) + '~';
+                });
+                function unmask(s) {
+                    return s.replace(/~u([0-9a-f]+)~/g, function (_, hex) {
+                        return String.fromCharCode(parseInt(hex, 16));
+                    });
+                }
+
+                mermaid.initialize({
+                    startOnLoad: false,
+                    securityLevel: 'strict',
+                    theme: 'base'
+                });
+                mermaid.run({ nodes: [el] }).then(function () {
+                    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+                    var n;
+                    while ((n = walker.nextNode())) {
+                        if (n.nodeValue.indexOf('~u') !== -1) n.nodeValue = unmask(n.nodeValue);
+                    }
+                    status.remove();
+                }).catch(function (err) {
+                    status.textContent = 'Fehler beim Rendern: ' + (err && err.message ? err.message : err);
+                    status.className = 'error';
+                });
+            })();
+        </script>
+    </body>
+</html>

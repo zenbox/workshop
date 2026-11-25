@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/assets/css/styles.css" />
+        <title>Verkehrsströme einer Stadt (synthetische Daten)</title>
+        <style>
+            body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #ffffff; line-height: 1.5; }
+            main { max-width: 1200px; margin: 0 auto; padding: 2rem 1.25rem; }
+            h1 { font-size: 1.6rem; margin: 0 0 0.2rem; }
+            p.lead { margin: 0 0 1.25rem; color: #4a4a4a; }
+            h2 { font-size: 1.05rem; margin: 0 0 0.6rem; }
+            .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.9rem; margin: 0 0 1.25rem; }
+            .kpi { border: 1px solid #d9d9d9; border-radius: 6px; padding: 0.8rem 1rem; }
+            .kpi .label { font-size: 0.85rem; color: #5a5a5a; margin: 0; }
+            .kpi .value { font-size: 1.4rem; font-weight: bold; margin: 0.1rem 0 0; font-variant-numeric: tabular-nums; }
+            .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; margin: 0 0 1rem; }
+            .controls label { font-size: 0.95rem; font-weight: bold; }
+            .controls input[type="range"] { width: 240px; }
+            .toggle, .play { font: inherit; font-size: 0.95rem; padding: 0.4rem 0.9rem; border: 1px solid #1f4e79; border-radius: 4px; background: #ffffff; color: #1f4e79; cursor: pointer; }
+            .toggle[aria-pressed="true"] { background: #1f4e79; color: #ffffff; }
+            select { font: inherit; font-size: 0.95rem; padding: 0.35rem 0.5rem; border: 1px solid #8a939c; border-radius: 4px; }
+            button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #b7791f; outline-offset: 2px; }
+            .layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 1.25rem; align-items: start; }
+            .panel { border: 1px solid #d9d9d9; border-radius: 6px; padding: 1rem; }
+            #map-wrap { position: relative; }
+            #map { display: block; width: 100%; height: auto; max-width: 620px; margin: 0 auto; }
+            .legend-bar { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #5a5a5a; margin: 0.6rem 0 0; }
+            .legend-grad { width: 180px; height: 10px; border-radius: 2px; background: linear-gradient(to right, #ffffcc, #fd8d3c, #800026); }
+            #bars svg { display: block; width: 100%; height: auto; }
+            .bar { cursor: pointer; }
+            .bar:hover { opacity: 0.8; }
+            table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 0.75rem; }
+            th, td { padding: 0.35rem 0.4rem; border-bottom: 1px solid #e3e3e3; text-align: left; }
+            td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+            .note { font-size: 0.85rem; color: #5a5a5a; margin: 0.6rem 0 0; }
+            @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+            @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+        </style>
+    </head>
+    <body>
+        <main id="main-content">
+            <h1>Verkehrsströme einer Stadt</h1>
+            <p class="lead">Synthetische Fahrtdaten einer fiktiven Stadt. Zeigt Wohn- und Arbeitsorte, Pendelspitzen und Freizeitverkehr über den Tag.</p>
+
+            <div class="kpis">
+                <div class="kpi"><p class="label">Fahrten gesamt</p><p class="value" id="kpi-total"></p></div>
+                <div class="kpi"><p class="label">Fahrten in gewählter Stunde</p><p class="value" id="kpi-hour"></p></div>
+                <div class="kpi"><p class="label">Spitzenstunde</p><p class="value" id="kpi-peak"></p></div>
+            </div>
+
+            <div class="controls" role="group" aria-label="Steuerung">
+                <label for="hour">Uhrzeit: <span id="hour-label" aria-live="polite"></span></label>
+                <input type="range" id="hour" min="0" max="23" step="1" value="8" />
+                <button type="button" class="play" id="play" aria-pressed="false">Abspielen</button>
+                <label for="metric">Ansicht:</label>
+                <select id="metric">
+                    <option value="origin">Abfahrten (Herkunft)</option>
+                    <option value="dest">Ankünfte (Ziel)</option>
+                </select>
+            </div>
+
+            <div class="layout">
+                <section class="panel" aria-labelledby="map-h">
+                    <h2 id="map-h">Verkehrsdichte (Hexagone)</h2>
+                    <div id="map-wrap">
+                        <canvas id="map" role="img" aria-label="Hexagonkarte der Fahrten"></canvas>
+                    </div>
+                    <div class="legend-bar"><span>wenige</span><span class="legend-grad"></span><span>viele Fahrten</span></div>
+                    <p class="note">Hexagone mit Fahrten pro Zelle. Die Farbe nutzt eine Wurzelskala, damit auch kleinere Zellen sichtbar bleiben.</p>
+                </section>
+
+                <aside>
+                    <section class="panel" style="margin-bottom:1.25rem;" aria-labelledby="bars-h">
+                        <h2 id="bars-h">Fahrten je Stunde</h2>
+                        <div id="bars"></div>
+                        <p class="note">Ein Klick auf eine Stunde wählt sie aus.</p>
+                    </section>
+
+                    <section class="panel" aria-labelledby="flows-h">
+                        <h2 id="flows-h">Stärkste Stadtteil-Verbindungen</h2>
+                        <table>
+                            <thead><tr><th scope="col">Von → Nach</th><th scope="col" class="num">Fahrten</th></tr></thead>
+                            <tbody id="flows"></tbody>
+                        </table>
+                    </section>
+                </aside>
+            </div>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script>
+            // >>>>>>>
+            var CONFIG = { trips: 200000, seed: 42, hexSize: 0.028 };
+
+            // Synthetische Stadt in Einheitskoordinaten 0..1
+            var RESIDENTIAL = [
+                { x: 0.25, y: 0.30, s: 0.09, w: 0.25 },
+                { x: 0.75, y: 0.28, s: 0.08, w: 0.20 },
+                { x: 0.20, y: 0.72, s: 0.10, w: 0.20 },
+                { x: 0.80, y: 0.75, s: 0.09, w: 0.20 },
+                { x: 0.50, y: 0.12, s: 0.06, w: 0.15 }
+            ];
+            var WORK = [
+                { x: 0.50, y: 0.50, s: 0.07, w: 0.50 },
+                { x: 0.35, y: 0.45, s: 0.05, w: 0.25 },
+                { x: 0.68, y: 0.60, s: 0.06, w: 0.25 }
+            ];
+            var DISTRICTS = [
+                { name: "Zentrum", x: 0.50, y: 0.50 },
+                { name: "Nord",    x: 0.50, y: 0.12 },
+                { name: "Ost",     x: 0.82, y: 0.50 },
+                { name: "Süd",     x: 0.50, y: 0.88 },
+                { name: "West",    x: 0.18, y: 0.50 },
+                { name: "Hafen",   x: 0.80, y: 0.22 }
+            ];
+            // <<<<<<<
+
+            (function () {
+                if (!window.d3) { return; }
+                var SIZE = CONFIG.hexSize;
+                var SQ3 = Math.sqrt(3);
+
+                function mulberry32(a) {
+                    return function () {
+                        a |= 0; a = a + 0x6D2B79F5 | 0;
+                        var t = Math.imul(a ^ a >>> 15, 1 | a);
+                        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+                        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+                    };
+                }
+                var rnd = mulberry32(CONFIG.seed);
+                function gauss() {
+                    var u = 0;
+                    while (u === 0) { u = rnd(); }
+                    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * rnd());
+                }
+                function clamp(v) { return Math.min(0.97, Math.max(0.03, v)); }
+                function pickWeighted(list) {
+                    var total = 0;
+                    list.forEach(function (c) { total += c.w; });
+                    var r = rnd() * total;
+                    for (var i = 0; i < list.length; i++) {
+                        r -= list[i].w;
+                        if (r <= 0) { return list[i]; }
+                    }
+                    return list[list.length - 1];
+                }
+                function samplePoint(c) { return [clamp(c.x + gauss() * c.s), clamp(c.y + gauss() * c.s)]; }
+                function districtOf(p) {
+                    var best = 0, bd = Infinity;
+                    DISTRICTS.forEach(function (d, i) {
+                        var dd = (d.x - p[0]) * (d.x - p[0]) + (d.y - p[1]) * (d.y - p[1]);
+                        if (dd < bd) { bd = dd; best = i; }
+                    });
+                    return best;
+                }
+
+                // Pointy-top Hexagon-Zuordnung (kubische Koordinaten)
+                function hexKey(x, y) {
+                    var xf = (SQ3 / 3 * x - y / 3) / SIZE;
+                    var zf = (2 / 3 * y) / SIZE;
+                    var yf = -xf - zf;
+                    var rx = Math.round(xf), ry = Math.round(yf), rz = Math.round(zf);
+                    var dx = Math.abs(rx - xf), dy = Math.abs(ry - yf), dz = Math.abs(rz - zf);
+                    if (dx > dy && dx > dz) { rx = -ry - rz; }
+                    else if (dy > dz) { ry = -rx - rz; }
+                    else { rz = -rx - ry; }
+                    return rx + "," + rz;
+                }
+
+                // Daten erzeugen und vorab aggregieren
+                var originHex = [], destHex = [], od = [], hourTotals = [];
+                for (var h = 0; h < 24; h++) {
+                    originHex.push(new Map());
+                    destHex.push(new Map());
+                    hourTotals.push(0);
+                    var m = [];
+                    for (var a = 0; a < 6; a++) { m.push([0, 0, 0, 0, 0, 0]); }
+                    od.push(m);
+                }
+                var ALL = RESIDENTIAL.concat(WORK);
+                function addTrip(hourFloat, o, d) {
+                    var hr = ((Math.floor(hourFloat) % 24) + 24) % 24;
+                    var ko = hexKey(o[0], o[1]), kd = hexKey(d[0], d[1]);
+                    originHex[hr].set(ko, (originHex[hr].get(ko) || 0) + 1);
+                    destHex[hr].set(kd, (destHex[hr].get(kd) || 0) + 1);
+                    od[hr][districtOf(o)][districtOf(d)]++;
+                    hourTotals[hr]++;
+                }
+
+                var generated = 0;
+                while (generated < CONFIG.trips) {
+                    if (rnd() < 0.6) {
+                        // Pendeln: Wohnort -> Arbeitsort am Morgen, zurück am Abend
+                        var home = samplePoint(pickWeighted(RESIDENTIAL));
+                        var work = samplePoint(pickWeighted(WORK));
+                        addTrip(7.8 + gauss() * 0.9, home, work);
+                        addTrip(17 + gauss() * 1.1, work, home);
+                        generated += 2;
+                    } else {
+                        // Freizeit: tagsüber und am Abend, beliebige Ziele
+                        var from = rnd() < 0.5 ? samplePoint(pickWeighted(RESIDENTIAL)) : samplePoint(pickWeighted(WORK));
+                        var to = samplePoint(pickWeighted(ALL));
+                        var t = rnd() < 0.4 ? 19.5 + gauss() * 1.2 : 13 + gauss() * 3.5;
+                        addTrip(t, from, to);
+                        generated += 1;
+                    }
+                }
+
+                var maxCell = 0;
+                originHex.concat(destHex).forEach(function (map) {
+                    map.forEach(function (v) { if (v > maxCell) { maxCell = v; } });
+                });
+                var total = d3.sum(hourTotals);
+                var peakHour = d3.maxIndex(hourTotals);
+
+                // UI-Zustand
+                var state = { hour: 8, metric: "origin", playing: null };
+                var canvas = document.getElementById("map");
+                var ctx = canvas.getContext("2d");
+                var colorScale = d3.scaleSequentialSqrt(d3.interpolateYlOrRd).domain([0, maxCell]);
+                var hourInput = document.getElementById("hour");
+                var hourLabel = document.getElementById("hour-label");
+                var metricSel = document.getElementById("metric");
+                var playBtn = document.getElementById("play");
+
+                document.getElementById("kpi-total").textContent = total.toLocaleString("de-DE");
+                document.getElementById("kpi-peak").textContent = String(peakHour).padStart(2, "0") + ":00 Uhr";
+
+                function drawMap() {
+                    var W = Math.min(canvas.parentNode.clientWidth, 620);
+                    var dpr = window.devicePixelRatio || 1;
+                    canvas.width = W * dpr;
+                    canvas.height = W * dpr;
+                    canvas.style.width = W + "px";
+                    canvas.style.height = W + "px";
+                    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+                    ctx.clearRect(0, 0, W, W);
+                    ctx.fillStyle = "#fbfbfc";
+                    ctx.fillRect(0, 0, W, W);
+
+                    var map = state.metric === "origin" ? originHex[state.hour] : destHex[state.hour];
+                    var r = SIZE * W * 0.96;
+                    map.forEach(function (count, key) {
+                        var qr = key.split(",");
+                        var q = Number(qr[0]), rr = Number(qr[1]);
+                        var cx = SIZE * SQ3 * (q + rr / 2) * W;
+                        var cy = SIZE * 1.5 * rr * W;
+                        ctx.beginPath();
+                        for (var i = 0; i < 6; i++) {
+                            var ang = Math.PI / 180 * (60 * i - 30);
+                            var px = cx + r * Math.cos(ang), py = cy + r * Math.sin(ang);
+                            if (i === 0) { ctx.moveTo(px, py); } else { ctx.lineTo(px, py); }
+                        }
+                        ctx.closePath();
+                        ctx.fillStyle = colorScale(count);
+                        ctx.fill();
+                    });
+
+                    ctx.font = "600 12px Arial";
+                    ctx.fillStyle = "#1a1a1a";
+                    ctx.textAlign = "center";
+                    DISTRICTS.forEach(function (d) {
+                        ctx.fillText(d.name, d.x * W, d.y * W);
+                    });
+
+                    var hourText = String(state.hour).padStart(2, "0") + ":00 Uhr";
+                    canvas.setAttribute("aria-label", "Hexagonkarte der Fahrten, " +
+                        (state.metric === "origin" ? "Abfahrten" : "Ankünfte") + " um " + hourText);
+                }
+
+                function drawBars() {
+                    var el = document.getElementById("bars");
+                    el.innerHTML = "";
+                    var width = Math.max(el.clientWidth, 300);
+                    var height = 170;
+                    var m = { top: 10, right: 6, bottom: 24, left: 6 };
+                    var svg = d3.select(el).append("svg")
+                        .attr("viewBox", "0 0 " + width + " " + height)
+                        .attr("role", "img")
+                        .attr("aria-label", "Fahrten je Stunde");
+                    var x = d3.scaleBand().domain(d3.range(24)).range([m.left, width - m.right]).padding(0.15);
+                    var y = d3.scaleLinear().domain([0, d3.max(hourTotals)]).range([height - m.bottom, m.top]);
+                    svg.selectAll("rect").data(hourTotals).join("rect")
+                        .attr("class", "bar")
+                        .attr("x", function (v, i) { return x(i); })
+                        .attr("width", x.bandwidth())
+                        .attr("y", function (v) { return y(v); })
+                        .attr("height", function (v) { return y(0) - y(v); })
+                        .attr("rx", 2)
+                        .attr("fill", function (v, i) { return i === state.hour ? "#d93a00" : "#8a939c"; })
+                        .attr("tabindex", 0)
+                        .attr("role", "button")
+                        .attr("aria-label", function (v, i) { return String(i).padStart(2, "0") + " Uhr: " + v.toLocaleString("de-DE") + " Fahrten"; })
+                        .on("click", function () { setHour(currentIndex(this)); })
+                        .append("title").text(function (v, i) { return String(i).padStart(2, "0") + ":00 Uhr: " + v.toLocaleString("de-DE"); });
+                    [0, 6, 12, 18, 23].forEach(function (h) {
+                        svg.append("text").attr("x", x(h) + x.bandwidth() / 2).attr("y", height - 6)
+                            .attr("text-anchor", "middle").attr("font-size", 11).attr("fill", "#5a5a5a")
+                            .text(String(h).padStart(2, "0"));
+                    });
+                }
+
+                function currentIndex(node) {
+                    return Array.prototype.indexOf.call(node.parentNode.querySelectorAll("rect"), node);
+                }
+
+                function drawFlows() {
+                    var tbody = document.getElementById("flows");
+                    tbody.innerHTML = "";
+                    var pairs = [];
+                    var matrix = od[state.hour];
+                    for (var a = 0; a < DISTRICTS.length; a++) {
+                        for (var b = 0; b < DISTRICTS.length; b++) {
+                            pairs.push({ from: a, to: b, n: matrix[a][b] });
+                        }
+                    }
+                    pairs.sort(function (p, q) { return q.n - p.n; });
+                    pairs.slice(0, 6).forEach(function (p) {
+                        var tr = document.createElement("tr");
+                        var td1 = document.createElement("td");
+                        td1.textContent = DISTRICTS[p.from].name + " → " + DISTRICTS[p.to].name;
+                        var td2 = document.createElement("td");
+                        td2.className = "num";
+                        td2.textContent = p.n.toLocaleString("de-DE");
+                        tr.appendChild(td1);
+                        tr.appendChild(td2);
+                        tbody.appendChild(tr);
+                    });
+                }
+
+                function setHour(h) {
+                    state.hour = ((h % 24) + 24) % 24;
+                    hourInput.value = state.hour;
+                    hourLabel.textContent = String(state.hour).padStart(2, "0") + ":00 Uhr";
+                    document.getElementById("kpi-hour").textContent = hourTotals[state.hour].toLocaleString("de-DE");
+                    drawMap();
+                    drawBars();
+                    drawFlows();
+                }
+
+                hourInput.addEventListener("input", function () { setHour(Number(hourInput.value)); });
+                metricSel.addEventListener("change", function () { state.metric = metricSel.value; drawMap(); });
+                playBtn.addEventListener("click", function () {
+                    if (state.playing) {
+                        clearInterval(state.playing);
+                        state.playing = null;
+                        playBtn.textContent = "Abspielen";
+                        playBtn.setAttribute("aria-pressed", "false");
+                    } else {
+                        state.playing = setInterval(function () { setHour(state.hour + 1); }, 900);
+                        playBtn.textContent = "Pause";
+                        playBtn.setAttribute("aria-pressed", "true");
+                    }
+                });
+
+                setHour(state.hour);
+                var resizeTimer = null;
+                window.addEventListener("resize", function () {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(function () { drawMap(); drawBars(); }, 150);
+                });
+            })();
+        </script>
+    </body>
+</html>

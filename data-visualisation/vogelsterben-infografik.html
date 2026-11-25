@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/assets/css/styles.css" />
+        <title>Vogelsterben durch menschlichen Einfluss</title>
+        <style>
+            body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #1a1a1a; background: #ffffff; line-height: 1.5; }
+            main { max-width: 1100px; margin: 0 auto; padding: 2rem 1.25rem; }
+            h1 { font-size: 1.6rem; margin: 0 0 0.2rem; }
+            p.source { margin: 0 0 1.5rem; font-size: 0.9rem; color: #5a5a5a; }
+            h2 { font-size: 1.1rem; margin: 0 0 0.6rem; }
+            .controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin: 0 0 0.75rem; }
+            .controls .label { font-weight: bold; font-size: 0.95rem; margin-right: 0.25rem; }
+            .toggle { font: inherit; font-size: 0.95rem; padding: 0.4rem 0.9rem; border: 1px solid #1f4e79; border-radius: 4px; background: #ffffff; color: #1f4e79; cursor: pointer; }
+            .toggle[aria-pressed="true"] { background: #1f4e79; color: #ffffff; }
+            .toggle:focus-visible { outline: 3px solid #b7791f; outline-offset: 2px; }
+            .panel { border: 1px solid #d9d9d9; border-radius: 6px; padding: 1rem; overflow-x: auto; }
+            .panel svg { display: block; width: 100%; height: auto; }
+            .note { font-size: 0.85rem; color: #5a5a5a; margin: 0.6rem 0 0; }
+            .legend { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0.6rem 0 0; padding: 0; list-style: none; font-size: 0.85rem; }
+            .legend li { display: flex; align-items: center; gap: 0.35rem; }
+            .swatch { width: 0.8rem; height: 0.8rem; border-radius: 2px; display: inline-block; }
+            section { margin: 0 0 2rem; }
+            table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+            th, td { padding: 0.5rem 0.6rem; border-bottom: 1px solid #e3e3e3; text-align: right; font-variant-numeric: tabular-nums; }
+            th:nth-child(-n+2), td:nth-child(-n+2) { text-align: left; }
+            th { background: #f4f6f8; font-weight: bold; }
+            tr.is-wind td { background: #fff1e6; font-weight: bold; }
+            tfoot td { font-weight: bold; border-top: 2px solid #8a939c; }
+            @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+        </style>
+    </head>
+    <body>
+        <main id="main-content">
+            <h1>Vogelsterben durch (meist) menschlichen Einfluss</h1>
+            <p class="source">Aus einer Untersuchung über Vor- und Nachteile von Windenergieparks (2017). Angaben: Anzahl toter Vögel pro Verursacher.</p>
+
+            <section aria-labelledby="bar-h">
+                <h2 id="bar-h">Anzahl toter Vögel nach Verursacher</h2>
+                <div class="controls" role="group" aria-label="Skala">
+                    <span class="label">Skala:</span>
+                    <button type="button" class="toggle" data-scale="linear" aria-pressed="true">Linear</button>
+                    <button type="button" class="toggle" data-scale="log" aria-pressed="false">Logarithmisch</button>
+                </div>
+                <div class="panel" id="bars"></div>
+                <ul class="legend" aria-label="Legende">
+                    <li><span class="swatch" style="background:#8a939c"></span>Verursacher</li>
+                    <li><span class="swatch" style="background:#d93a00"></span>Windenergiepark</li>
+                </ul>
+                <p class="note">Bei linearer Skala sind die kleinen Werte kaum sichtbar. Die logarithmische Skala macht die Größenunterschiede lesbar, Balkenlängen sind dann nicht mehr proportional.</p>
+            </section>
+
+            <section aria-labelledby="share-h">
+                <h2 id="share-h">Anteil am Gesamtwert</h2>
+                <div class="panel" id="share"></div>
+            </section>
+
+            <section aria-labelledby="bubble-h">
+                <h2 id="bubble-h">Bubble-Diagramm: Kreisfläche = Anzahl</h2>
+                <div class="panel" id="bubble"></div>
+                <p class="note">Je größer die Kreisfläche, desto mehr tote Vögel. Der Windenergiepark ist mit 573.000 im Vergleich zu Katzen (2,4 Mrd.) nur ein kleiner Punkt.</p>
+            </section>
+
+            <section aria-labelledby="tree-h">
+                <h2 id="tree-h">Treemap: Rechteckfläche = Anzahl</h2>
+                <div class="panel" id="treemap"></div>
+                <p class="note">Kleine Rechtecke zeigen nur den Namen, wenn der Platz reicht. Die Werte stehen in der Tabelle unten.</p>
+            </section>
+
+            <section aria-labelledby="table-h">
+                <h2 id="table-h">Daten</h2>
+                <div class="panel">
+                    <table>
+                        <caption style="text-align:left;font-weight:bold;padding-bottom:0.5rem;">Tote Vögel nach Verursacher</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Rang</th>
+                                <th scope="col">Verursacher</th>
+                                <th scope="col">Anzahl der toten Vögel</th>
+                                <th scope="col">Anteil</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rows"></tbody>
+                        <tfoot id="total"></tfoot>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script>
+            // >>>>>>>
+            var DATA = [
+                { rank: 1, label: "Katzen", value: 2400000000 },
+                { rank: 2, label: "Kollision mit Gebäuden", value: 599000000 },
+                { rank: 3, label: "Autokollisionen", value: 199600000 },
+                { rank: 4, label: "Stromleitungskollision", value: 22800000 },
+                { rank: 5, label: "Stromschlag", value: 5630000 },
+                { rank: 6, label: "Windenergiepark", value: 573000, wind: true }
+            ];
+            var HIGHLIGHT = "#d93a00";
+            var BASE = "#8a939c";
+            // <<<<<<<
+
+            (function () {
+                var fmt = function (v) { return v.toLocaleString("de-DE"); };
+                var fmtPct = function (v) { return v.toLocaleString("de-DE", { minimumFractionDigits: 1, maximumFractionDigits: 2 }) + " %"; };
+                var total = d3.sum(DATA, function (d) { return d.value; });
+                var scaleMode = "linear";
+
+                // Tabelle
+                var rows = document.getElementById("rows");
+                DATA.forEach(function (d) {
+                    var tr = document.createElement("tr");
+                    if (d.wind) { tr.className = "is-wind"; }
+                    [d.rank, d.label, fmt(d.value), fmtPct(d.value / total * 100)].forEach(function (c) {
+                        var td = document.createElement("td");
+                        td.textContent = c;
+                        tr.appendChild(td);
+                    });
+                    rows.appendChild(tr);
+                });
+                var foot = document.getElementById("total");
+                var tr = document.createElement("tr");
+                ["", "Gesamt", fmt(total), "100 %"].forEach(function (c) {
+                    var td = document.createElement("td");
+                    td.textContent = c;
+                    tr.appendChild(td);
+                });
+                foot.appendChild(tr);
+
+                function renderBars() {
+                    var el = document.getElementById("bars");
+                    el.innerHTML = "";
+                    var width = Math.max(el.clientWidth - 2, 480);
+                    var labelW = 210, valueW = 130, rowH = 46, top = 8;
+                    var height = top + DATA.length * rowH + 30;
+                    var svg = d3.select(el).append("svg")
+                        .attr("viewBox", "0 0 " + width + " " + height)
+                        .attr("role", "img")
+                        .attr("aria-label", "Balkendiagramm der toten Vögel nach Verursacher");
+
+                    var maxX = width - labelW - valueW;
+                    var x = scaleMode === "log"
+                        ? d3.scaleLog().domain([100000, 3000000000]).range([0, maxX]).clamp(true)
+                        : d3.scaleLinear().domain([0, 2400000000]).range([0, maxX]);
+
+                    DATA.forEach(function (d, i) {
+                        var y = top + i * rowH;
+                        var g = svg.append("g").attr("transform", "translate(0," + y + ")");
+                        g.append("text").attr("x", 0).attr("y", rowH / 2 + 5).attr("font-size", 14)
+                            .attr("font-weight", d.wind ? "bold" : "normal")
+                            .attr("fill", "#1a1a1a").text(d.rank + ". " + d.label);
+                        var barW = Math.max(x(d.value), 3);
+                        g.append("rect")
+                            .attr("x", labelW).attr("y", 8).attr("height", rowH - 16)
+                            .attr("width", barW).attr("rx", 2)
+                            .attr("fill", d.wind ? HIGHLIGHT : BASE)
+                            .append("title").text(d.label + ": " + fmt(d.value));
+                        g.append("text").attr("x", labelW + barW + 8).attr("y", rowH / 2 + 5)
+                            .attr("font-size", 13).attr("fill", "#1a1a1a")
+                            .text(fmt(d.value));
+                    });
+                    svg.append("line").attr("x1", labelW).attr("x2", labelW).attr("y1", top).attr("y2", top + DATA.length * rowH)
+                        .attr("stroke", "#8a939c");
+                    var axisY = top + DATA.length * rowH + 4;
+                    var axis = scaleMode === "log"
+                        ? d3.axisBottom(x).tickValues([1e5, 1e6, 1e7, 1e8, 1e9]).tickFormat(function (d) { return d.toLocaleString("de-DE"); })
+                        : d3.axisBottom(x).ticks(5).tickFormat(function (d) { return (d / 1e9).toLocaleString("de-DE") + " Mrd."; });
+                    svg.append("g").attr("transform", "translate(" + labelW + "," + axisY + ")")
+                        .call(axis)
+                        .call(function (g) { g.selectAll("text").attr("font-size", 11); });
+                }
+
+                function renderShare() {
+                    var el = document.getElementById("share");
+                    el.innerHTML = "";
+                    var width = Math.max(el.clientWidth - 2, 480);
+                    var height = 90;
+                    var svg = d3.select(el).append("svg")
+                        .attr("viewBox", "0 0 " + width + " " + height)
+                        .attr("role", "img")
+                        .attr("aria-label", "Anteil der Verursacher am Gesamtwert als gestapelter Balken");
+                    var x = d3.scaleLinear().domain([0, total]).range([0, width]);
+                    var acc = 0;
+                    var colors = ["#1f4e79", "#2f6f9f", "#5b8fb9", "#8fb3d0", "#c4d7e7", "#d93a00"];
+                    DATA.forEach(function (d, i) {
+                        var x0 = x(acc);
+                        var w = x(d.value);
+                        acc += d.value;
+                        svg.append("rect").attr("x", x0).attr("y", 10).attr("height", 40).attr("width", Math.max(w, 1.5))
+                            .attr("fill", colors[i]).attr("stroke", "#ffffff").attr("stroke-width", 1)
+                            .append("title").text(d.label + ": " + fmtPct(d.value / total * 100));
+                    });
+                    svg.append("text").attr("x", 0).attr("y", 72).attr("font-size", 12).attr("fill", "#5a5a5a")
+                        .text("Katzen: " + fmtPct(DATA[0].value / total * 100) + " der Gesamtzahl");
+                    svg.append("text").attr("x", width).attr("y", 72).attr("font-size", 12).attr("fill", "#5a5a5a")
+                        .attr("text-anchor", "end")
+                        .text("Windenergiepark: " + fmtPct(DATA[5].value / total * 100));
+                }
+
+                // >>>>>>>
+                function renderBubble() {
+                    var el = document.getElementById("bubble");
+                    el.innerHTML = "";
+                    var width = Math.max(el.clientWidth - 2, 480);
+                    var height = 420;
+                    var svg = d3.select(el).append("svg")
+                        .attr("viewBox", "0 0 " + width + " " + height)
+                        .attr("role", "img")
+                        .attr("aria-label", "Bubble-Diagramm: Kreisfläche proportional zur Anzahl toter Vögel je Verursacher");
+
+                    var root = d3.hierarchy({ children: DATA }).sum(function (d) { return d.value || 0; });
+                    d3.pack().size([width, height]).padding(4)(root);
+
+                    var nodes = svg.selectAll("g").data(root.leaves()).join("g")
+                        .attr("transform", function (d) { return "translate(" + d.x + "," + d.y + ")"; });
+                    nodes.append("circle")
+                        .attr("r", function (d) { return d.r; })
+                        .attr("fill", function (d) { return d.data.wind ? HIGHLIGHT : BASE; })
+                        .attr("fill-opacity", 0.75)
+                        .attr("stroke", "#ffffff")
+                        .append("title").text(function (d) { return d.data.label + ": " + fmt(d.data.value); });
+                    nodes.each(function (d) {
+                        var g = d3.select(this);
+                        if (d.r >= 42) {
+                            g.append("text").attr("text-anchor", "middle").attr("y", -4)
+                                .attr("font-size", 13).attr("font-weight", "bold").attr("fill", "#ffffff")
+                                .text(d.data.label);
+                            g.append("text").attr("text-anchor", "middle").attr("y", 14)
+                                .attr("font-size", 12).attr("fill", "#ffffff")
+                                .text(fmt(d.data.value));
+                        } else {
+                            g.append("text").attr("text-anchor", "middle").attr("y", d.r + 14)
+                                .attr("font-size", 12).attr("fill", "#1a1a1a")
+                                .text(d.data.label + " (" + fmt(d.data.value) + ")");
+                        }
+                    });
+                }
+
+                function renderTreemap() {
+                    var el = document.getElementById("treemap");
+                    el.innerHTML = "";
+                    var width = Math.max(el.clientWidth - 2, 480);
+                    var height = 340;
+                    var svg = d3.select(el).append("svg")
+                        .attr("viewBox", "0 0 " + width + " " + height)
+                        .attr("role", "img")
+                        .attr("aria-label", "Treemap: Rechteckfläche proportional zur Anzahl toter Vögel je Verursacher");
+
+                    var root = d3.hierarchy({ children: DATA }).sum(function (d) { return d.value || 0; })
+                        .sort(function (a, b) { return b.value - a.value; });
+                    d3.treemap().size([width, height]).paddingInner(3).round(true)(root);
+
+                    var cells = svg.selectAll("g").data(root.leaves()).join("g")
+                        .attr("transform", function (d) { return "translate(" + d.x0 + "," + d.y0 + ")"; });
+                    cells.append("rect")
+                        .attr("width", function (d) { return d.x1 - d.x0; })
+                        .attr("height", function (d) { return d.y1 - d.y0; })
+                        .attr("rx", 2)
+                        .attr("fill", function (d) { return d.data.wind ? HIGHLIGHT : BASE; })
+                        .attr("fill-opacity", 0.85)
+                        .append("title").text(function (d) { return d.data.label + ": " + fmt(d.data.value); });
+                    cells.each(function (d) {
+                        var w = d.x1 - d.x0;
+                        var h = d.y1 - d.y0;
+                        var g = d3.select(this);
+                        if (w >= 90 && h >= 36) {
+                            g.append("text").attr("x", 8).attr("y", 18).attr("font-size", 12)
+                                .attr("font-weight", "bold").attr("fill", "#ffffff").text(d.data.label);
+                            if (h >= 52) {
+                                g.append("text").attr("x", 8).attr("y", 34).attr("font-size", 12)
+                                    .attr("fill", "#ffffff").text(fmt(d.data.value));
+                            }
+                        }
+                    });
+                }
+                // <<<<<<<
+
+                function renderAll() {
+                    renderBars();
+                    renderShare();
+                    renderBubble();
+                    renderTreemap();
+                }
+
+                document.querySelectorAll(".toggle").forEach(function (btn) {
+                    btn.addEventListener("click", function () {
+                        scaleMode = btn.dataset.scale;
+                        document.querySelectorAll(".toggle").forEach(function (b) {
+                            b.setAttribute("aria-pressed", b === btn ? "true" : "false");
+                        });
+                        renderBars();
+                    });
+                });
+
+                renderAll();
+                var resizeTimer = null;
+                window.addEventListener("resize", function () {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(renderAll, 150);
+                });
+            })();
+        </script>
+    </body>
+</html>
