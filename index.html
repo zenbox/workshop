@@ -25,7 +25,7 @@
                 aria-label="GFU CYRUS AG – zur Startseite">
                 <img
                     src="./assets/figures/logo.svg"
-                    alt="Schaf-Logo – zur Startseite"
+                    alt=""
                     width="180"
                     height="60" />
             </a>
@@ -37,7 +37,7 @@
                 </ul>
             </nav>
         </header>
-        <main>
+        <div role="main">
             <article>
                 <h1>Hallo Welt!</h1>
                 <p>
@@ -55,6 +55,108 @@
                 </p>
             </article>
 
+            <section
+                class="login"
+                aria-labelledby="login-heading">
+                <h2 id="login-heading">Anmelden</h2>
+
+                <p>
+                    Mit <span aria-hidden="true">*</span> gekennzeichnete Felder
+                    sind Pflichtfelder.
+                </p>
+
+                <form
+                    id="login-form"
+                    class="login-form"
+                    action="/login"
+                    method="post">
+                    <div
+                        id="login-error-summary"
+                        class="login-form__summary"
+                        tabindex="-1"
+                        aria-labelledby="login-error-heading"
+                        hidden>
+                        <h3 id="login-error-heading">
+                            Bitte korrigiere folgende Angaben
+                        </h3>
+                        <ul id="login-error-list"></ul>
+                    </div>
+
+                    <div class="login-form__field">
+                        <label for="login-email">
+                            E-Mail-Adresse <span aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            id="login-email"
+                            name="email"
+                            type="email"
+                            autocomplete="username"
+                            aria-describedby="login-email-hint"
+                            required />
+                        <p
+                            id="login-email-hint"
+                            class="login-form__hint">
+                            Gib die E-Mail-Adresse deines Kontos ein.
+                        </p>
+                        <p
+                            id="login-email-error"
+                            class="login-form__error"
+                            hidden></p>
+                    </div>
+
+                    <div class="login-form__field">
+                        <label for="login-password">
+                            Passwort <span aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            id="login-password"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            required />
+                        <p
+                            id="login-password-error"
+                            class="login-form__error"
+                            hidden></p>
+                    </div>
+
+                    <div class="login-form__field">
+                        <label for="login-country">Land (optional)</label>
+                        <select
+                            id="login-country"
+                            name="country"
+                            autocomplete="country">
+                            <option value="">Bitte auswählen</option>
+                            <option value="DE">Deutschland</option>
+                            <option value="AT">Österreich</option>
+                            <option value="CH">Schweiz</option>
+                            <option value="LU">Luxemburg</option>
+                        </select>
+                    </div>
+
+                    <div class="login-form__checkbox">
+                        <input
+                            id="login-remember"
+                            name="remember"
+                            type="checkbox"
+                            value="1" />
+                        <label for="login-remember">Angemeldet bleiben</label>
+                    </div>
+
+                    <button
+                        class="login-form__submit"
+                        type="submit">
+                        <span
+                            class="material-symbols-outlined"
+                            aria-hidden="true"
+                            >login</span
+                        >
+                        <span>Anmelden</span>
+                    </button>
+                </form>
+            </section>
+
+           
             <section>
                 <form action="">
                     <fieldset>
@@ -68,6 +170,14 @@
                         <input
                             id="login-email"
                             type="email"
+                            name="email"
+
+                            autocomplete="off"
+                            required
+                            minlength="5"
+                            maxlength="50"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                            
                             placeholder="E-Mail" />
 
                         <label for="login-password">Passwort</label>
@@ -79,6 +189,19 @@
                         <button type="submit">Jetzt anmelden</button>
 
                         <style>
+                            input{
+                                transition: border 0.3s ease;
+                            }
+                            /* :valid {
+                                border: 1px solid green;
+                            }
+                            :invalid {
+                                border: 1px solid red;
+                            }
+                            :focus {
+                                border: 5px solid blue;
+                            } */
+
                             input::placeholder {
                                 color: #000;
                             }
@@ -98,7 +221,8 @@
                     </fieldset>
                 </form>
             </section>
-        </main>
+       
+        </div>
         <footer>&copy; 2026 Michael</footer>
 
         <script
