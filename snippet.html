@@ -1,0 +1,57 @@
+                        <p
+                            id="login-email-error"
+                            class="login-form__error"
+                            hidden></p>
+                    </div>
+
+                    <div class="login-form__field">
+                        <label for="login-password">
+                            Passwort <span aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            id="login-password"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            required />
+                        <p
+                            id="login-password-error"
+                            class="login-form__error"
+                            hidden></p>
+                    </div>
+
+                    <div class="login-form__field">
+                        <label for="login-country">Land (optional)</label>
+                        <select
+                            id="login-country"
+                            name="country"
+                            autocomplete="country">
+                            <option value="">Bitte auswählen</option>
+                            <option value="DE">Deutschland</option>
+                            <option value="AT">Österreich</option>
+                            <option value="CH">Schweiz</option>
+                            <option value="LU">Luxemburg</option>
+                        </select>
+                    </div>
+
+                    <div class="login-form__checkbox">
+                        <input
+                            id="login-remember"
+                            name="remember"
+                            type="checkbox"
+                            value="1" />
+                        <label for="login-remember">Angemeldet bleiben</label>
+                    </div>
+
+                    <button
+                        class="login-form__submit"
+                        type="submit">
+                        <span
+                            class="material-symbols-outlined"
+                            aria-hidden="true"
+                            >login</span
+                        >
+                        <span>Anmelden</span>
+                    </button>
+                </form>
+            </section>
