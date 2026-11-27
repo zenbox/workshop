@@ -1,0 +1,23 @@
+.site-logo {
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: calc(var(--header-height) - 1rem);
+    max-width: 100%;
+    margin-block: 0.5rem;
+    vertical-align: top;
+    border-radius: 2px;
+}
+
+.site-logo img {
+    display: block;
+    width: auto;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.site-logo:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}

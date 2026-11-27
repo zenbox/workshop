@@ -1,0 +1,57 @@
+/* >>>>>>> */
+:root {
+    --header-height: 5rem;
+    --page-width: 75rem;
+    --page-padding: 1.5rem;
+}
+
+/* Sprungziele bleiben unter dem fixierten Header sichtbar. */
+html {
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    margin: 0;
+    padding-top: var(--header-height);
+}
+
+/* Fixierter Header */
+body > header {
+    position: fixed;
+    z-index: 100;
+    inset: 0 0 auto;
+    box-sizing: border-box;
+    height: var(--header-height);
+    padding-inline: var(--page-padding);
+    background-color: #fff;
+    color: #111;
+    border-bottom: 1px solid #ccc;
+}
+
+/* Hauptinhalt füllt den verfügbaren Platz. */
+body > main {
+    box-sizing: border-box;
+    flex: 1;
+    width: 100%;
+    max-width: var(--page-width);
+    margin-inline: auto;
+    padding: 2rem var(--page-padding);
+}
+
+body > footer {
+    box-sizing: border-box;
+    padding: 1.5rem var(--page-padding);
+    background-color: #f2f2f2;
+    color: #111;
+    border-top: 1px solid #ccc;
+}
+
+@media (max-width: 600px) {
+    :root {
+        --page-padding: 1rem;
+    }
+}
+/* <<<<<<< */

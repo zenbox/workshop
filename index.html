@@ -1,148 +1,88 @@
 <!doctype html>
-<html lang="de">
+<html lang="de-DE">
     <head>
         <meta charset="UTF-8" />
         <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0" />
-        <title>Ein einfaches Bootstrap-Layout</title>
+        <title>Dokument</title>
         <link
             rel="stylesheet"
-            href="assets/css/bootstrap.css" />
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+        <link
+            rel="stylesheet"
+            href="assets/css/styles.css" />
     </head>
-    <body class="container">
-        <header class="row">
-            <div class="col">logo</div>
-            <div class="col">idle</div>
-            <div class="col">nav</div>
+    <body>
+        <nav
+            class="skiplinks"
+            aria-label="Sprunglinks"
+            hidden></nav>
+        <header>
+            <a
+                class="site-logo"
+                href="/"
+                aria-label="GFU CYRUS AG – zur Startseite">
+                <img
+                    src="/assets/figures/logo.svg"
+                    alt="Schaf-Logo – zur Startseite"
+                    width="180"
+                    height="60" />
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">Seite 1</a></li>
+                    <li><a href="#">Seite 2</a></li>
+                    <li><a href="#">Seite 3</a></li>
+                </ul>
+            </nav>
+            <button
+                class="theme-button"
+                type="button"
+                aria-label="Darstellung: Hell. Zu Dunkel wechseln">
+                <span
+                    class="material-symbols-outlined"
+                    aria-hidden="true">
+                    contrast
+                </span>
+                <span class="theme-button__label">Hell</span>
+            </button>
+            <div class="scale-control">
+                <label for="text-scale">Textgröße</label>
+                <input
+                    id="text-scale"
+                    type="range"
+                    min="80"
+                    max="200"
+                    step="5"
+                    value="100"
+                    aria-describedby="text-scale-value" />
+                <output
+                    id="text-scale-value"
+                    for="text-scale"
+                    >100 %</output
+                >
+            </div>
         </header>
+        <main>
+            <h1>Hallo Welt!</h1>
+            <p>
+                Willkommen auf unserer Webseite! Lorem, ipsum dolor sit amet
+                consectetur adipisicing elit. Nihil a exercitationem unde nisi
+                assumenda non eius sunt quis earum excepturi amet quae magnam,
+                possimus consequuntur, ducimus quam natus accusamus quidem
+                commodi molestiae veritatis rem fuga? Libero doloremque quo quis
+                possimus deleniti consequatur vel cupiditate nobis, dolorum
+                blanditiis esse consequuntur, unde sint cum doloribus facilis
+                minima nisi. Ex numquam iste sint tempora nihil dolorum non amet
+                explicabo adipisci, ullam assumenda, facere porro! Corrupti
+                ratione eos quam dolorum doloremque ullam placeat numquam.
+            </p>
+        </main>
+        <footer>&copy; 2026 Michael</footer>
 
-        <div class="row">
-            <nav class="col-5">nav</nav>
-            <main class="col-20">
-                <article>
-                    <h1>Überschrift</h1>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Dolores nihil magnam harum iure enim? Aperiam ducimus
-                        eveniet veritatis laborum rerum, id fugit labore vel
-                        inventore accusamus illo corrupti, reprehenderit
-                        dignissimos porro est voluptatem recusandae, numquam sed
-                        a dicta obcaecati debitis. Voluptatibus dicta provident
-                        totam corrupti nihil amet nesciunt vero autem quidem.
-                        Asperiores voluptatibus, vitae quam consequatur adipisci
-                        totam earum eaque, accusamus ex voluptatum corrupti.
-                    </p>
-                </article>
-            </main>
-        </div>
-
-        <!-- - - - - - - - - - - -->
-        <style>
-            :root {
-                --spacer: 1rem;
-            }
-            .my-container {
-                /* display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
-                text-align: center; 
-
-                row-gap: var(--spacer); */
-
-                display: grid;
-                grid-template-columns: repeat(3, auto);
-                grid-template-rows: auto;
-                grid-gap: var(--spacer);
-
-                > *:nth-child(1) {
-                    flex-basis: 40%;
-                    flex-grow: 0;
-                    flex-shrink: 0;
-                }
-                > *:nth-child(2) {
-                    flex-basis: 60%;
-                    flex-grow: 1;
-                    flex-shrink: 1;
-                }
-
-                > *:nth-child(5) {
-                    grid-column: 2 / 4;
-                }
-
-                > * {
-                    background: hsla(0, 0%, 0%, 0.15);
-                    outline: 1px solid gray;
-                }
-            }
-        </style>
-        <!-- - - - - - - - - - - -->
-        <article class="my-container">
-            <div>eins</div>
-            <div>zwei</div>
-            <div>drei<br />drei.zwei</div>
-            <div>vier</div>
-            <div>fünf</div>
-        </article>
-
-        <article>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Spalte 1</th>
-                        <th>Spalte 2</th>
-                        <th>Spalte 3</th>
-                    </tr>
-                </thead>
-
-                <tfoot>
-                    <tr>
-                        <td colspan="3">footer</td>
-                    </tr>
-                </tfoot>
-                
-                <tbody>
-                    <tr>
-                        <td>Inhalt 1</td>
-                        <td>Inhalt 2</td>
-                        <td>Inhalt 3</td>
-                    </tr>
-                    <tr>
-                        <td>Inhalt 1</td>
-                        <td>Inhalt 2</td>
-                        <td>Inhalt 3</td>
-                    </tr>
-                </tbody>
-
-                <caption>
-                    Tabellenunterschrift
-                </caption>
-            </table>
-        </article>
-
-        <!-- - - - - - - - - - - -->
-
-        <footer class="row">
-            <div class="col">left</div>
-            <div class="col">right</div>
-        </footer>
-
-        <style>
-            body {
-                background: hsla(120, 100%, 20%, 0.15);
-            }
-            body > * {
-                background: hsla(180, 100%, 50%, 0.15);
-            }
-            body > * > * {
-                background: hsla(39, 100%, 50%, 0.15);
-            }
-            body > * > * > * {
-                background: hsla(270, 100%, 50%, 0.15);
-            }
-        </style>
-
-        <script src="assets/vendor/bootstrap/bootstrap.js"></script>
+        <script
+            type="module"
+            src="./assets/js/index.js"></script>
     </body>
 </html>

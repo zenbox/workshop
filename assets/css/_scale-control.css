@@ -1,0 +1,23 @@
+/* >>>>>>> */
+.scale-control {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.scale-control input {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.scale-control input:focus-visible {
+    outline: 3px solid var(--theme-focus);
+    outline-offset: 2px;
+}
+
+.scale-control output {
+    min-width: 3.5em;
+    font-variant-numeric: tabular-nums;
+}
+/* <<<<<<< */

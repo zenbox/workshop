@@ -1,0 +1,27 @@
+.skiplinks {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+}
+
+.skiplinks a {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: max-content;
+    padding: 0.75rem 1rem;
+    transform: translateY(-200%);
+    background: #fff;
+    color: #000;
+    border: 2px solid currentColor;
+    text-decoration: underline;
+}
+
+.skiplinks a:focus {
+    position: relative;
+    display: block;
+    transform: none;
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
+}
