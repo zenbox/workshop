@@ -1,3 +1,46 @@
+  <section
+                class="login"
+                aria-labelledby="login-heading">
+                <h2 id="login-heading">Anmelden</h2>
+
+                <p>
+                    Mit <span aria-hidden="true">*</span> gekennzeichnete Felder
+                    sind Pflichtfelder.
+                </p>
+
+                <form
+                    id="login-form"
+                    class="login-form"
+                    action="/login"
+                    method="post">
+                    <div
+                        id="login-error-summary"
+                        class="login-form__summary"
+                        tabindex="-1"
+                        aria-labelledby="login-error-heading"
+                        hidden>
+                        <h3 id="login-error-heading">
+                            Bitte korrigiere folgende Angaben
+                        </h3>
+                        <ul id="login-error-list"></ul>
+                    </div>
+
+                    <div class="login-form__field">
+                        <label for="login-email">
+                            E-Mail-Adresse <span aria-hidden="true">*</span>
+                        </label>
+                        <input
+                            id="login-email"
+                            name="email"
+                            type="email"
+                            autocomplete="username"
+                            aria-describedby="login-email-hint"
+                            required />
+                        <p
+                            id="login-email-hint"
+                            class="login-form__hint">
+                            Gib die E-Mail-Adresse deines Kontos ein.
+                        </p>
                         <p
                             id="login-email-error"
                             class="login-form__error"
