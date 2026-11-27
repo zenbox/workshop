@@ -1,0 +1,63 @@
+/* >>>>>>> */
+.login-form__hint,
+.login-form__error {
+    margin: 0;
+}
+
+.login-form__hint {
+    font-size: 0.875rem;
+}
+
+.login-form__error {
+    color: #a00000;
+    font-weight: 600;
+}
+
+.login-form__field [aria-invalid="true"] {
+    border: 2px solid #a00000;
+}
+
+.login-form__summary {
+    padding: 1rem;
+    border: 2px solid #a00000;
+    border-radius: 0.25rem;
+}
+
+.login-form__summary h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+}
+
+.login-form__summary ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.login-form__summary a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+html.theme-dark .login-form__error,
+html.theme-high-contrast .login-form__error {
+    color: #ffb4ab;
+}
+
+html.theme-dark .login-form__field [aria-invalid="true"],
+html.theme-high-contrast .login-form__field [aria-invalid="true"],
+html.theme-dark .login-form__summary,
+html.theme-high-contrast .login-form__summary {
+    border-color: #ffb4ab;
+}
+
+@media (forced-colors: active) {
+    .login-form__error {
+        color: CanvasText;
+    }
+
+    .login-form__field [aria-invalid="true"],
+    .login-form__summary {
+        border-color: CanvasText;
+    }
+}
+/* <<<<<<< */
